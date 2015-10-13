@@ -2,6 +2,7 @@
 public class casilla {
 
 	private int value;
+	private int[][] pos;
 	
 	public casilla() {
 		value=-1;
