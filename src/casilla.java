@@ -2,7 +2,7 @@
 public class casilla {
 
 	private int value;
-	private int[][] pos;
+	private int[] pos;
 	
 	public casilla() {
 		value=-1;
@@ -14,5 +14,10 @@ public class casilla {
 	
 	public int getvalue() {
 		return value;
+	}
+	
+	public void setPos(int f, int c) {
+		this.pos[0] = f; 
+		pos[1] = c;
 	}
 }
