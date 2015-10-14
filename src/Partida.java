@@ -5,7 +5,7 @@
 
 
 public class Partida {
-	Tablero tablero1;
+	//Tablero tablero1;
 	int dificultad;
 	public static int ALTO = 1;
 	public static int MEDIO = 2;
