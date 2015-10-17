@@ -4,6 +4,7 @@
  * o poniendo la posición.
  */
 import java.util.Scanner; //Para probar
+import java.util.Random;
 
 public class Crear_tablero {
 
@@ -12,6 +13,7 @@ public class Crear_tablero {
 	public int num_inici;
 	public int[][] Matrix;
 	private static Scanner sc;
+	private static Random rm;
 	
 	
 	
@@ -27,15 +29,19 @@ public class Crear_tablero {
 	}
 	
 	public void posar_forats_aleatori(int forats){
+		rm = new Random();
 		this.forats = forats;
 		int posats;
 		int x = 0;
 		int y = 0;
 		for (posats = 0; posats < forats; ++posats){
-			x = ((this.n*(posats+1))+4);
+			x =  (rm.nextInt()*posats)-forats+rm.nextInt();
+			x = x%this.n;
+			if (x < 0) x = x*(-1);
+			y =  (rm.nextInt()+forats)-posats*rm.nextInt();
+			y = y%this.n;
+			if (y < 0) y = y*(-1);
 			System.out.println(x);
-			if (x > this.n) x = x%this.n;
-			y = (((forats*(posats+1)*13)+9)%this.n);
 			System.out.println(y);
 			int contador = 0;
 			while (this.Matrix[x][y] == -1) { //Busca posició no buida
