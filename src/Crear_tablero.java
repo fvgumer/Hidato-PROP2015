@@ -127,11 +127,13 @@ public class Crear_tablero {
 		}
 	
 	private int escollir_numero(boolean[] utilitzats){
-		sc = new Scanner(System.in);
+		rm = new Random();
 		int nrandom;
-		nrandom = sc.nextInt();
-		while(utilitzats[nrandom]) {
-			nrandom = sc.nextInt();
+		nrandom = (rm.nextInt()%utilitzats.length)+1;
+		if (nrandom < 0) nrandom = nrandom*(-1);
+		while(nrandom == 0 || utilitzats[nrandom-1]) {
+			nrandom = (rm.nextInt()%utilitzats.length)+1;
+			if (nrandom < 0) nrandom = nrandom*(-1);
 		}
 		return nrandom;
 	}
@@ -142,6 +144,8 @@ public class Crear_tablero {
 		Inicials.add(1);
 		Inicials.add(this.dimensions-this.forats);
 		boolean[] utilitzats = new boolean[this.dimensions-this.forats];
+		utilitzats[0] = true;
+		utilitzats[this.dimensions-this.forats] = true;
 		 System.out.println(this.forats);
 		//Numeros que queden
 		num_inicials -= 2;
@@ -149,13 +153,12 @@ public class Crear_tablero {
 		for (int i = 0; i < num_inicials; ++i){
 			nrandom = escollir_numero(utilitzats); //Escolleig num posible
 			Inicials.add(nrandom);
-			utilitzats[nrandom] = true;
+			utilitzats[nrandom-1] = true;
 		}
 		num_inicials += 2;
 		for (int j = 0; j < num_inicials; ++j){
 			int num = Inicials.get(j);
 		    colocar_al_tauler_numero(num);
-		    System.out.println(this.forats);
 		}
 	}
 	
