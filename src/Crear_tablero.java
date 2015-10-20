@@ -1,14 +1,14 @@
 
 /*Clase que crea tableros aleatorios poniendo las dimensiones i el
- * número de forats que quieres ponerle, lo puedes hacer aleatorio
- * o poniendo la posición.
+ * nÃºmero de forats que quieres ponerle, lo puedes hacer aleatorio
+ * o poniendo la posiciÃ³n.
  */
 import java.util.Scanner; //Para probar
 import java.util.Random;
 
 public class Crear_tablero {
 
-	public int n; // Número de dimensiones (M[n][n])
+	public int n; // NÃºmero de dimensiones (M[n][n])
 	public int forats;
 	public int num_inici;
 	public int[][] Matrix;
@@ -37,14 +37,14 @@ public class Crear_tablero {
 		for (posats = 0; posats < forats; ++posats){
 			x =  (rm.nextInt()*posats)-forats+rm.nextInt(); //Calcula una "x" ALEATORIA
 			x = x%this.n;
-			if (x < 0) x = x*(-1);
+			//if (x < 0) x = x*(-1);	no cal perque el residu no pot ser negatiu
 			y =  (rm.nextInt()+forats)-posats*rm.nextInt(); //Calcula un "y" ALEATORIA
 			y = y%this.n;
-			if (y < 0) y = y*(-1);
+			//if (y < 0) y = y*(-1);
 			System.out.println(x);
 			System.out.println(y);
 			int contador = 0;
-			while (this.Matrix[x][y] == -1) { //Sigue hasta que encuentra posición vacía
+			while (this.Matrix[x][y] == -1) { //Sigue hasta que encuentra posiciÃ³n vacÃ­a
 				if (contador < this.n) {
 					y = (y+1)%this.n;
 					++contador;
@@ -60,7 +60,7 @@ public class Crear_tablero {
 	
 	//IMPRIME TABLERO
 	//Forats = "X"
-	//Casillas vacías = "."
+	//Casillas vacÃ­as = "."
 	//Casillas iniciales = num
 	public void imprimir_tablero(){
 		for (int i = 0; i < this.n; ++i){
@@ -114,7 +114,7 @@ public class Crear_tablero {
 		
 		
 		System.out.println("Ara que sabem que vols "+ abujeros + " forats.\n" +
-				"Els vols distribuír aleatoriament? (POSA 1) \n" +
+				"Els vols distribuÃ­r aleatoriament? (POSA 1) \n" +
 				"O vols ficar les seves posicions? (POSA2) \n");
 		
 		/*3. Elegimos modo de poner abujeros*/
