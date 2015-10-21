@@ -4,7 +4,6 @@ public class Usuario {
 	
 	public Usuario(String u){
 		this.u = u;
-		//añadir id_usuario a la BD, establecer current user
 	}
 	
 	
