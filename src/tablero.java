@@ -2,7 +2,7 @@
 public class tablero {
 
 	private Casilla[][] map; 
-	public int n2, n;
+	public int n2, n, holes, n_predef, final_num;
 	private int[] start, end;
 	
 	tablero(int n) {
@@ -42,6 +42,18 @@ public class tablero {
 	
 	public int[] getStart(){
 		return start;
+	}
+	
+	public void setholes(int n) {
+		holes = n;
+	}
+	
+	public void setn_predef(int n) {
+		n_predef = n;
+	}
+	
+	public void setfinal_num(int n) {
+		final_num = n;
 	}
 	
 	public void print() {

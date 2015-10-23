@@ -67,4 +67,11 @@ public class GestionTablero {
 		return result;
 	}
 	
+	public static void create_map(int n, int holes, int n_predef) {
+		map = new tablero(n);
+		map.setholes(holes);
+		map.setn_predef(n_predef);
+		map.setfinal_num((n*n)-holes-n_predef);
+	}
+	
 }
