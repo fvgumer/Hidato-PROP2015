@@ -1,7 +1,7 @@
 
 public class GestionTablero {
 
-	tablero map;
+	private static tablero map;
 	
 	public static void main(String[] args) {
         String[] input = {"_ 33 35 _ _ . . .",
@@ -12,21 +12,20 @@ public class GestionTablero {
             ". . _ _ 18 _ _ .",
             ". . . . _ 7 _ _",
             ". . . . . . 5 _"};
- 
+        map = new tablero(8);
         setup(input);
-        printBoard();
+        map.print();
         System.out.println("\nFound:");
-        solve(start[0], start[1], 1, 0);
-        printBoard();
+        int[] start = map.getStart();
+        solver(start[0], start[1], 1);
+        map.print();
     }
 	
-	private void setup(String[] input) {
+	private static void setup(String[] input) {
 		String[][] puzzle = new String[input.length][];
         for (int i = 0; i < input.length; i++)
             puzzle[i] = input[i].split(" ");
-        
         int nCols = puzzle[0].length;
-        map = new tablero(nCols);
         for (int i=0; i<nCols; ++i) {
         	for (int j=0; j<nCols; ++j) {
         		String cell = puzzle[i][j];
@@ -47,13 +46,12 @@ public class GestionTablero {
         } 
 	}
 	
-	public boolean solver(int x, int y, int value) {
-		boolean result = false;
-		if (value == map.n2) result = true;
-		boolean predef = false;
-		if (map.getcellvalue(x, y) > 0) predef = true;
-		map.setcell(x, y, value);
+	public static boolean solver(int x, int y, int value) {
+		boolean result = false, predef = false;
+		if (value == 40) return true;
 		else
+			if (map.getcellvalue(x, y) > 0) predef = true;
+			map.setcell(x, y, value);
 			++value;
 			int c_value;
 		    for(int i=-1; i<2; ++i) {
@@ -65,7 +63,8 @@ public class GestionTablero {
 		    		}
 		    	}
 		    }
-		if (result == false && predef == false) map.setcell(x,y,0); 
+		if (result == false && predef == false) map.setcell(x,y,0);
+		return result;
 	}
 	
 }

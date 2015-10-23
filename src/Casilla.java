@@ -3,7 +3,7 @@ public class Casilla {
 
 	private int value;
 	
-	public void casilla(){
+	Casilla(){
 		value = -1;
 	}
 	

@@ -5,13 +5,20 @@ public class tablero {
 	public int n2, n;
 	private int[] start, end;
 	
-	public tablero(int n){
+	tablero(int n) {
 		this.n2 = n*n;
-		this.n2 = n;
+		this.n = n;
+		this.map = new Casilla[n][n];
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				map[i][j] = new Casilla();
+			}
+		}
+		start = end = new int[2];
 	}
 	
 	public void setcell(int x, int y, int n) {
-		map[x][y].setvalue(n);
+		this.map[x][y].setvalue(n);
 	}
 	
 	public Casilla getcell(int x, int y) {
@@ -24,15 +31,28 @@ public class tablero {
 	
 	public boolean enable_pos(int x, int y){
 		if (x < 0 || y < 0) return false;
-		if (x > n || y > n) return false;
-		else return true;
+		if (x >= n || y >= n) return false;
+		if (map[x][y].getvalue() == -1) return false;
+		return true;
 	}
 	
 	public void setStart(int x, int y){
 		start[0] = x; start[1] = y;
 	}
 	
-	public int[] getStart(int x, int y){
+	public int[] getStart(){
 		return start;
+	}
+	
+	public void print() {
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				int value = map[i][j].getvalue();
+				if (value == -1) System.out.print("." + " ");
+				else if (value == 0) System.out.print("_" + " ");
+				else System.out.print(value + " ");
+			}
+			System.out.println();
+		}
 	}
 }
