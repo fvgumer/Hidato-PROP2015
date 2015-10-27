@@ -153,7 +153,7 @@ public class Crear_tablero {
 		Inicials.add(this.dimensions-this.forats);
 		boolean[] utilitzats = new boolean[this.dimensions-this.forats];
 		utilitzats[0] = true;
-		utilitzats[this.dimensions-this.forats] = true;
+		utilitzats[this.dimensions-this.forats-1] = true;
 		 System.out.println(this.forats);
 		//Numeros que queden
 		num_inicials -= 2;
