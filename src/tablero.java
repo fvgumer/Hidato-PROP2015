@@ -38,6 +38,7 @@ public class tablero {
 	
 	public void setStart(int x, int y){
 		start[0] = x; start[1] = y;
+		map[x][y].setvalue(1);
 	}
 	
 	public int[] getStart(){
@@ -66,5 +67,6 @@ public class tablero {
 			}
 			System.out.println();
 		}
+		System.out.println();
 	}
 }

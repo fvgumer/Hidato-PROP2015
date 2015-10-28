@@ -1,10 +1,12 @@
+import java.util.Random;
 
 public class GestionTablero {
 
 	private static tablero map;
+	private static Random rm;
 	
 	public static void main(String[] args) {
-        String[] input = {"_ 33 35 _ _ . . .",
+        /*String[] input = {"_ 33 35 _ _ . . .",
             "_ _ 24 22 _ . . .",
             "_ _ _ 21 _ _ . .",
             "_ 26 _ 13 40 11 . .",
@@ -18,6 +20,18 @@ public class GestionTablero {
         System.out.println("\nFound:");
         int[] start = map.getStart();
         solver(start[0], start[1], 1);
+        map.print();*/
+		rm = new Random();
+		map = new tablero(5);
+        map.print();
+        omplir_forats(6);
+        map.print();
+        setStartEnd();
+        map.print();
+        int[] start = map.getStart();
+        solver(start[0], start[1], 1);
+        map.print();
+        generar_buits(8);
         map.print();
     }
 	
@@ -48,7 +62,7 @@ public class GestionTablero {
 	
 	public static boolean solver(int x, int y, int value) {
 		boolean result = false, predef = false;
-		if (value == 40) return true;
+		if (value == 19) return true;
 		else
 			if (map.getcellvalue(x, y) > 0) predef = true;
 			map.setcell(x, y, value);
@@ -73,5 +87,45 @@ public class GestionTablero {
 		map.setn_predef(n_predef);
 		map.setfinal_num((n*n)-holes-n_predef);
 	}
+
+	public static void omplir_forats(int n) {
+		int i = 0;
+		int[] pos;
+		int mida = map.n;
+		while(i < n) {
+			pos = getRandom(mida);
+			map.setcell(pos[0], pos[1], -1);
+			++i;
+		}
+	}
 	
+	public static void setStartEnd() {
+		int mida = map.n;
+		int[] pos;
+		pos = getRandom(mida);
+		map.setStart(pos[0],pos[1]);
+		pos = getRandom(mida);
+		map.setcell(pos[0], pos[1], 19);
+	}
+	
+	public static void generar_buits(int n) {
+		int[] pos;
+		while (n > 0) {
+			int mida = map.n;
+			pos = getRandom(mida);
+			map.setcell(pos[0], pos[1], 0);
+			--n;
+		}
+	}
+	private static int[] getRandom(int n) {
+		int[] pos = new int[2];
+		int x = rm.nextInt(n);
+		int y = rm.nextInt(n);
+		while (map.enable_pos(x, y) == false) {
+			x = rm.nextInt(n);
+			y = rm.nextInt(n);
+	}
+		pos[0] = x; pos[1] = y;
+		return pos;
+	}
 }
