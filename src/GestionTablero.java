@@ -5,36 +5,6 @@ public class GestionTablero {
 	private static tablero map;
 	private static Random rm;
 	
-	public static void main(String[] args) {
-        /*String[] input = {"_ 33 35 _ _ . . .",
-            "_ _ 24 22 _ . . .",
-            "_ _ _ 21 _ _ . .",
-            "_ 26 _ 13 40 11 . .",
-            "27 _ _ _ 9 _ 1 .",
-            ". . _ _ 18 _ _ .",
-            ". . . . _ 7 _ _",
-            ". . . . . . 5 _"};
-        map = new tablero(8);
-        setup(input);
-        map.print();
-        System.out.println("\nFound:");
-        int[] start = map.getStart();
-        solver(start[0], start[1], 1);
-        map.print();*/
-		rm = new Random();
-		map = new tablero(5);
-        map.print();
-        omplir_forats(6);
-        map.print();
-        setStartEnd();
-        map.print();
-        int[] start = map.getStart();
-        solver(start[0], start[1], 1);
-        map.print();
-        generar_buits(8);
-        map.print();
-    }
-	
 	private static void setup(String[] input) {
 		String[][] puzzle = new String[input.length][];
         for (int i = 0; i < input.length; i++)
@@ -62,7 +32,7 @@ public class GestionTablero {
 	
 	public static boolean solver(int x, int y, int value) {
 		boolean result = false, predef = false;
-		if (value == 19) return true;
+		if (value == map.final_num) return true;
 		else
 			if (map.getcellvalue(x, y) > 0) predef = true;
 			map.setcell(x, y, value);
@@ -81,11 +51,19 @@ public class GestionTablero {
 		return result;
 	}
 	
-	public static void create_map(int n, int holes, int n_predef) {
+	public static void crear_tablero_aleatorio(int n, int c_negras, int c_vacias) {
 		map = new tablero(n);
-		map.setholes(holes);
-		map.setn_predef(n_predef);
-		map.setfinal_num((n*n)-holes-n_predef);
+		map.setholes(c_negras);
+		map.setfinal_num((n*n)-c_negras);
+		omplir_forats(c_negras);
+		setStartEnd();
+		int[] start = map.getStart();
+		boolean b = solver(start[0], start[1], 1);
+		if (b) {
+			generar_buits(c_vacias);
+			map.print();
+		}
+		else System.out.println("No te solucio!");
 	}
 
 	public static void omplir_forats(int n) {
@@ -105,7 +83,7 @@ public class GestionTablero {
 		pos = getRandom(mida);
 		map.setStart(pos[0],pos[1]);
 		pos = getRandom(mida);
-		map.setcell(pos[0], pos[1], 19);
+		map.setcell(pos[0], pos[1], map.final_num);
 	}
 	
 	public static void generar_buits(int n) {
