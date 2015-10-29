@@ -4,6 +4,7 @@ public class driver_ctrl_tablero {
 	public static GestionTablero prueba;
 	
 	public static void main (String[] args) {
+		prueba = new GestionTablero();
 		Scanner s = new Scanner(System.in);
 		System.out.println("Menu Gestion Tablero:");
 		System.out.println("1.Crear tablero");
@@ -27,7 +28,6 @@ public class driver_ctrl_tablero {
 				casillas_vacias = s.nextInt();
 				prueba.crear_tablero_aleatorio(n, casillas_negras, casillas_vacias);
 		}
-		System.out.print(i);
 		s.close();
 	}
 	

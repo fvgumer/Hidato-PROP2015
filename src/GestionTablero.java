@@ -4,33 +4,15 @@ public class GestionTablero {
 
 	private static tablero map;
 	private static Random rm;
+	private static int n_sols;
 	
-	private static void setup(String[] input) {
-		String[][] puzzle = new String[input.length][];
-        for (int i = 0; i < input.length; i++)
-            puzzle[i] = input[i].split(" ");
-        int nCols = puzzle[0].length;
-        for (int i=0; i<nCols; ++i) {
-        	for (int j=0; j<nCols; ++j) {
-        		String cell = puzzle[i][j];
-        		switch(cell) {
-        			case ".":
-        				map.setcell(i, j, -1);
-        				break;
-        			case "_":
-        				map.setcell(i, j, 0);
-        				break;
-        			default:
-        				int val = Integer.parseInt(cell); //fa la convesio d char a int
-        				map.setcell(i, j, val);
-        				if(val == 1) 
-        					map.setStart(i, j);	
-        		}
-        	}
-        } 
+	GestionTablero() {
+		rm = new Random();
 	}
-	
+
 	public static boolean solver(int x, int y, int value) {
+		++n_sols;
+		System.out.println(n_sols);
 		boolean result = false, predef = false;
 		if (value == map.final_num) return true;
 		else
@@ -52,21 +34,26 @@ public class GestionTablero {
 	}
 	
 	public static void crear_tablero_aleatorio(int n, int c_negras, int c_vacias) {
+		n_sols = 0;
 		map = new tablero(n);
 		map.setholes(c_negras);
-		map.setfinal_num((n*n)-c_negras);
-		omplir_forats(c_negras);
+		map.setfinal_num((n*n)-c_negras); 
+		omplir_forats_alea(c_negras);
 		setStartEnd();
 		int[] start = map.getStart();
 		boolean b = solver(start[0], start[1], 1);
-		if (b) {
-			generar_buits(c_vacias);
-			map.print();
+		while (b == false) {
+			map.a_zero();
+			omplir_forats_alea(c_negras);
+			setStartEnd();
+			start = map.getStart();
+			b = solver(start[0], start[1], 1);
 		}
-		else System.out.println("No te solucio!");
+		generar_buits_alea(c_vacias);
+		map.print();
 	}
 
-	public static void omplir_forats(int n) {
+	private static void omplir_forats_alea(int n) {
 		int i = 0;
 		int[] pos;
 		int mida = map.n;
@@ -86,15 +73,26 @@ public class GestionTablero {
 		map.setcell(pos[0], pos[1], map.final_num);
 	}
 	
-	public static void generar_buits(int n) {
+	public static void generar_buits_alea(int n) {
 		int[] pos;
-		while (n > 0) {
-			int mida = map.n;
+		int i = 0;
+		int mida = map.n;
+		while (i < n) {
 			pos = getRandom(mida);
+			while(bona_pos_buits(pos[0], pos[1]) == false) {
+				pos = getRandom(mida);
+			}
 			map.setcell(pos[0], pos[1], 0);
-			--n;
+			++i;
 		}
 	}
+	
+	private static boolean bona_pos_buits(int x, int y) {
+		if (map.enable_pos(x, y) == false) return false;
+		if (map.getcellvalue(x, y) == 1 || map.getcellvalue(x, y) == map.final_num) return false;
+		return true;
+	}
+	
 	private static int[] getRandom(int n) {
 		int[] pos = new int[2];
 		int x = rm.nextInt(n);

@@ -69,4 +69,27 @@ public class tablero {
 		}
 		System.out.println();
 	}
+	
+	public void a_zero() {
+		for(int i=0; i<n; ++i) {
+			for (int j=0; j<n; ++j) {
+				map[i][j].setvalue(0);
+			}
+		}
+	}
+	
+	public boolean es_hamiltoniano() {
+		for (int x=0; x<n; ++x){
+			for (int y=0; y<n; ++y) {
+				int k = 0;
+				for(int i=-1; i<2; ++i) {
+			    	for(int j=-1; j<2; ++j) {
+			    		if (enable_pos(x+i, y+j)) ++k;
+			    	}
+			    }
+				if (k < 2) return false;
+			}
+		}
+		return true;
+	}
 }
