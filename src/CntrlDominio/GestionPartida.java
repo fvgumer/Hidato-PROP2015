@@ -5,6 +5,7 @@ public class GestionPartida {
 	//CONSTANTES
 	public static int READY = 1;
 	public static int PAUSE = 2;
+	public static int PAUSEe = 32;
 	
 	public static void Elegir_Caracteristicas_Partida(Usuario U){
 		Scanner sn = new Scanner(System.in);
