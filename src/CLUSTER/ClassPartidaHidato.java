@@ -8,16 +8,14 @@ public class ClassPartidaHidato extends Partida_Comp {
 	private int estado; 
 	 //Codificación de estado
 	
-	int dificultad;
+	private int dificultad;
 	public static int NOTIENE = 0;
 	public static int ALTO = 1;
 	public static int MEDIO = 2;
 	public static int BAJO = 3; //Codificación de dificultad
 	
-	Reloj R1;
-	
-	int modo;
-	int puntuacion;
+	private int modo;
+	private int puntuacion;
 	public static int CONTRA = 1;
 	public static int CLASIC = 2;
 	public static int EXTREM = 3; //Codificación modo
@@ -58,8 +56,13 @@ public class ClassPartidaHidato extends Partida_Comp {
 		return p;
 	}
 	
-	public int getvalorcell(){
-		int valor = T.getcellvalue();
+	public int get_valorcelloriginal(int x, int y){
+		int valor = T.getcellvalue(x, y); //DEL RESUELTO OJO ESTA MAL
+		return valor;
+	}
+	
+	public int get_valorcellpartida(int x, int y){
+		int valor = T.getcellvalue(x, y);
 		return valor;
 	}
 	

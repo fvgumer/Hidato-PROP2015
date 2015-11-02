@@ -1,3 +1,6 @@
+package G45;
+import CLUSTER.tablero;
+//import CLUSTER.Usuario;
 
 public class Partida_Comp {
 
@@ -18,7 +21,8 @@ public class Partida_Comp {
 	}
 	
 	
-	public static void modificar_casilla(int i, int j, int valor){
+	public void modificar_casilla(int i, int j, int valor){
+		T.setcell(i,j,valor);
 		
 	}
 	
