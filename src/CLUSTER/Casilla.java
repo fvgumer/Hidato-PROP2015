@@ -1,3 +1,4 @@
+package CLUSTER;
 
 public class Casilla {
 

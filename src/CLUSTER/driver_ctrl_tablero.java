@@ -1,4 +1,5 @@
 import java.util.Scanner;
+package CLUSTER;
 
 public class driver_ctrl_tablero {
 	public static GestionTablero prueba;

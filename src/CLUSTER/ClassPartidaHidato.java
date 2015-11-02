@@ -1,10 +1,8 @@
-/*Esta clase representa el conjunto de la configuración del tablero,
- * modo y dificultad. Además representa el estado de esta.
- */
+package CLUSTER;
 
+import G45.Partida_Comp;
 
-
-public class Partida_Hidato extends Partida_Comp {
+public class ClassPartidaHidato extends Partida_Comp {
 	//Tablero tablero1;
 	
 	public int estado; 

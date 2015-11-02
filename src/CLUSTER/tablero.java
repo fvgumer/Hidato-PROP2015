@@ -1,3 +1,5 @@
+package CLUSTER;
+
 
 public class tablero {
 
@@ -5,7 +7,7 @@ public class tablero {
 	public int n2, n, holes, n_predef, final_num;
 	private int[] start, end;
 	
-	tablero(int n) {
+	public tablero(int n) { //T'ho he canviat a "public" perque si no es imposible introduir T 
 		this.n2 = n*n;
 		this.n = n;
 		this.map = new Casilla[n][n];
@@ -92,4 +94,6 @@ public class tablero {
 		}
 		return true;
 	}
+
+
 }

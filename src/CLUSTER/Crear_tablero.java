@@ -1,4 +1,4 @@
-
+package CLUSTER;
 /*Clase que crea tableros aleatorios poniendo las dimensiones i el
  * número de forats que quieres ponerle, lo puedes hacer aleatorio
  * o poniendo la posición.
