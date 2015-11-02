@@ -1,7 +1,7 @@
 
 public class Partida_Comp {
 
-	private tablero T;
+	protected tablero T;
 	private Usuario U;
 	private int ID;
 	

@@ -5,7 +5,7 @@ import G45.Partida_Comp;
 public class ClassPartidaHidato extends Partida_Comp {
 	//Tablero tablero1;
 	
-	public int estado; 
+	private int estado; 
 	 //Codificación de estado
 	
 	int dificultad;
@@ -22,46 +22,45 @@ public class ClassPartidaHidato extends Partida_Comp {
 	public static int CLASIC = 2;
 	public static int EXTREM = 3; //Codificación modo
 	
-	public Partida_Hidato(){
+	public ClassPartidaHidato(){
 		estado = 2;
 		dificultad = NOTIENE;
 		modo = NOTIENE;
 		puntuacion = 0;
 	}
-	public Partida_Hidato(int modo, int dificultad){
-		estado = 2;
-		this.dificultad = dificultad;
-		this.modo = modo;
-		puntuacion = 0;
-	}
-	
+
 	public void set_dificultad(int dificultad){
 		this.dificultad = dificultad;
 	}
-	public static int get_dificultad(int dificultad){
+	public int get_dificultad(){
 		int d = dificultad;
 		return d;
 	}
 	public void set_modo(int modo){
 		this.modo = modo;
 	}
-	public static int get_modo(int modo){
+	public int get_modo(){
 		int m = modo;
 		return m;
 	}
 	public void set_estado(int estado){
 		this.estado = estado;
 	}
-	public static int get_estado(int estado){
+	public int get_estado(){
 		int e = estado;
 		return e;
 	}
 	public void set_puntuacion(int puntuacion){
 		this.puntuacion = puntuacion;
 	}
-	public static int get_puntuacion(int puntuacion){
+	public int get_puntuacion(){
 		int p = puntuacion;
 		return p;
+	}
+	
+	public int getvalorcell(){
+		int valor = T.getcellvalue();
+		return valor;
 	}
 	
 }
