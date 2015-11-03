@@ -5,11 +5,11 @@ import java.util.*;
 
 public class Ranking {
 	
-	private List<int> ranking;	/* contiene índices que corresponden a los resultados *
+	private ArrayList<int> ranking;	/* contiene índices que corresponden a los resultados *
 					 * del tablero correspondiente, ordenados según puntuación */
 	
-	public Ranking() {
-		ranking = new List<int>();	
+	public ClassRanking() {
+		ranking = new ArrayList<int>();	
 	}
 
 	/* Pre: */
