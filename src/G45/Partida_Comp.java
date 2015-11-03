@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 package G45;
 import CLUSTER.tablero;
 //import CLUSTER.Usuario;
+=======
+import CLUSTER.tablero;
+
+>>>>>>> origin/master
 
 public class Partida_Comp {
 
-	protected tablero T;
+	protected static tablero T;
 	private Usuario U;
 	private int ID;
 	
@@ -13,6 +18,11 @@ public class Partida_Comp {
 	}
 	
 	public void anadir_carc_PC(tablero T, Usuario U, int ID){
+		Partida_Comp.T = new tablero(0);
+		Partida_Comp.T = T;
+		this.ID = ID;
+		Partida_Comp.U  = new Usuario();
+		Partida_Comp.U = U;
 		
 	}
 	
@@ -22,8 +32,12 @@ public class Partida_Comp {
 	
 	
 	public void modificar_casilla(int i, int j, int valor){
+<<<<<<< HEAD
 		T.setcell(i,j,valor);
 		
+=======
+		T.setcell(j,i,valor);
+>>>>>>> origin/master
 	}
 	
 	public static tablero mostrar_tablero(){

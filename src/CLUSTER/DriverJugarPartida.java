@@ -1,11 +1,17 @@
 package CLUSTER;
 
 import java.util.Scanner;
+import java.util.Date;
 
 public class DriverJugarPartida {
 	private static CtrlPartida CP;
+<<<<<<< HEAD
 	private static CtrlJugar CJ;
 	private static Scanner sn;
+=======
+	static CtrlJugar CJ;
+	private Date tiem;
+>>>>>>> origin/master
 	
 	public static void main(String[] args) {
 		sn = new Scanner(System.in);
@@ -30,7 +36,7 @@ public class DriverJugarPartida {
 			//Elegir dificultad
 			int dificultad = sn.nextInt();
 			//Elegir modo juego
-					//CODIF: [0]Clasico [1]Contrareloj [3] Extrem
+					//CODIF: [1]Clasico [2]Contrareloj [3] Extrem
 			modo = sn.nextInt();
 			CP.insertar_dm(dificultad,modo);
 		}
@@ -40,7 +46,14 @@ public class DriverJugarPartida {
 		//JUGAR
 		boolean bucle = true;
 		CJ = new CtrlJugar();
-		CJ.jugar_partida(CP.PH);
+		CJ.jugar_partida(CP.get_partida());
+		if (modo == 2) {
+			int tiempo = sn.nextInt(); //EN SEGUNDOS
+			setTimeout(CJ.rendirse(), tiempo*1000);
+		}
+		else if (modo == 3) { //EXTREME
+			
+		}
 		int x,y;
 		while(bucle){
 			modo = sn.nextInt();
@@ -64,8 +77,12 @@ public class DriverJugarPartida {
 					if (modo == 0) {
 						x = sn.nextInt();
 						y = sn.nextInt();
+<<<<<<< HEAD
 						CJ.pista1(x,y); //INTRODUCE NUM. CORRECTO
 						CJ.imprimir();
+=======
+						CJ.pista1(x,y);
+>>>>>>> origin/master
 					}
 					//2. Mirar entre todas las opciones
 					else if (modo == 1) CJ.pista2();
@@ -92,7 +109,11 @@ public class DriverJugarPartida {
 			case 8: //COMPROBAR CASILLA
 					x = sn.nextInt();
 					y = sn.nextInt();
+<<<<<<< HEAD
 					CJ.comprobar_casilla(x,y);
+=======
+					CJ.comprobar_casilla(x, y);
+>>>>>>> origin/master
 					break;
 			}
 		}

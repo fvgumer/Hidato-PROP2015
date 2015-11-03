@@ -56,6 +56,7 @@ public class ClassPartidaHidato extends Partida_Comp {
 		return p;
 	}
 	
+<<<<<<< HEAD
 	public int get_valorcelloriginal(int x, int y){
 		int valor = T.getcellvalue(x, y); //DEL RESUELTO OJO ESTA MAL
 		return valor;
@@ -63,7 +64,39 @@ public class ClassPartidaHidato extends Partida_Comp {
 	
 	public int get_valorcellpartida(int x, int y){
 		int valor = T.getcellvalue(x, y);
+=======
+	public int getvalorcelloriginal(int x, int y){
+		int valor = T.getcellvalue(x,y); //DEL TABLERO SOLUCION (MAL)
+>>>>>>> origin/master
 		return valor;
 	}
 	
+	public int getvalorcellpartida(int x, int y){
+		int valor = T.getcellvalue(x,y); //DEL TABLERO SOLUCION (MAL)
+		return valor;
+	}
+	
+	public int set_dimensiont(){
+		int dim = T.get_n();
+		return dim;
+	}
+	
+	public int get_forats(){
+		int f = T.getholes();
+		return f;
+	}
+	
+	public int get_ninicials(){
+		int n = T.getn_predef();
+		return n;
+	}
+	
+	public void print_tablero(){
+		T.print();
+	}
+	
+	public void print_solucion(){
+		T.print();
+		
+	}
 }
