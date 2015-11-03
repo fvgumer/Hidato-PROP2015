@@ -1,17 +1,15 @@
 package CLUSTER;
 
 //import java.util.Random;
-import G45.Partida_Comp;
+import G45.ClassPartida_Comp;
 
 public class CtrlPartida {
 	//CONSTANTES
 	ClassPartidaHidato PH;
 	private tablero T;
-<<<<<<< HEAD
 	private Usuario U;
 
 	/*-----------------FALTA-------------------*/
-=======
 	//private Random rm;
 	
 	/*private boolean posicions_valides(int i, int j, tablero T){
@@ -23,7 +21,6 @@ public class CtrlPartida {
 
 	
 	/*__________NO_IMPLEMENTADO_________________*/
->>>>>>> origin/master
 	public void Cargar_Partida_Hidato(){
 		
 	}
@@ -34,11 +31,9 @@ public class CtrlPartida {
 		T.setholes(forats);
 		T.setn_predef(n_ini);
 	}
-<<<<<<< HEAD
-	/*-----------------FALTA-------------------*/
-=======
+
+	
 	/*__________NO_IMPLEMENTADO_________________*/
->>>>>>> origin/master
 	public void generar_Taleatorio(){
 		/*NO HACER NI PUUUUUUUUUUUUUUUUUUUUUUUUUUUUTO CASO A ESTO*/
 		/*int dim = PH.set_dimensiont();
@@ -78,12 +73,8 @@ public class CtrlPartida {
 		}*/
 		
 	}
-<<<<<<< HEAD
-	/*-----------------FALTA-------------------*/
-=======
-	
+
 	/*__________NO_IMPLEMENTADO_________________*/
->>>>>>> origin/master
 	public void elegir_tdisenado(){
 		//Sacar TOP5 de los mas parecidos
 		

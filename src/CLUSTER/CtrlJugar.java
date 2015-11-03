@@ -22,13 +22,7 @@ public class CtrlJugar {
 		PH = new ClassPartidaHidato();
 		PH = PH2;
 	}
-	
-<<<<<<< HEAD
-=======
-	public void ()
-	
-	
->>>>>>> origin/master
+
 	public void pausar(){
 		if (PH.get_estado() == GAME) {
 			PH.set_estado(PAUSE);
@@ -50,28 +44,6 @@ public class CtrlJugar {
 	}
 	
 	public void pista1(int x, int y){
-<<<<<<< HEAD
-		int valor=PH.get_valorcelloriginal(x,y);
-		PH.modificar_casilla(x, y, valor); //NO IMPLEMENTADA
-	}
-	
-	/*-----------------FALTA-------------------*/
-	public void pista2(){ //CREAR ALGORITMO SOLVER
-		
-	}
-	
-	/*-----------------FALTA-------------------*/
-	public void rendirse(){ 
-		
-	}
-	
-	/*-----------------FALTA-------------------*/
-	public void imprimir(){
-		
-	}
-	
-	/*-----------------FALTA-------------------*/
-=======
 		int valor= PH.getvalorcelloriginal(x,y);
 		PH.modificar_casilla(x,y,valor);
 	}
@@ -89,29 +61,10 @@ public class CtrlJugar {
 		
 	}
 	/*__________NO_IMPLEMENTADO_________________*/
->>>>>>> origin/master
 	public void guardar_partida(){
 		
 	}
 	
-<<<<<<< HEAD
-	public void introducirCasilla(int x,int y,int valor){
-		PH.modificar_casilla(x,y,valor);
-	}
-	
-	public void quitar_casilla(int x,int y){
-		PH.modificar_casilla(x, y, 0); // [0] = CASILLA BUIDA
-	}
-	
-	public void comprobar_casilla(int x, int y){
-		if (PH.get_valorcelloriginal(x, y) == PH.get_valorcellpartida(x,y)){
-			System.out.println("CORRECTO");
-		}
-		else System.out.println("INCORRECTO");
-	}
-
-	
-=======
 	public void introducirCasilla(int x, int y,int valor){
 		//1. INTRODUCIR CASILLA
 		PH.modificar_casilla(x,y,valor);
@@ -133,8 +86,6 @@ public class CtrlJugar {
 		}
 		else System.out.println("CORRECTO");
 	}
-
->>>>>>> origin/master
 }
 	
 	

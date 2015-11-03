@@ -1,8 +1,8 @@
 package CLUSTER;
 
-import G45.Partida_Comp;
+import G45.ClassPartida_Comp;
 
-public class ClassPartidaHidato extends Partida_Comp {
+public class ClassPartidaHidato extends ClassPartida_Comp {
 	//Tablero tablero1;
 	
 	private int estado; 
@@ -56,18 +56,8 @@ public class ClassPartidaHidato extends Partida_Comp {
 		return p;
 	}
 	
-<<<<<<< HEAD
-	public int get_valorcelloriginal(int x, int y){
-		int valor = T.getcellvalue(x, y); //DEL RESUELTO OJO ESTA MAL
-		return valor;
-	}
-	
-	public int get_valorcellpartida(int x, int y){
-		int valor = T.getcellvalue(x, y);
-=======
 	public int getvalorcelloriginal(int x, int y){
 		int valor = T.getcellvalue(x,y); //DEL TABLERO SOLUCION (MAL)
->>>>>>> origin/master
 		return valor;
 	}
 	
