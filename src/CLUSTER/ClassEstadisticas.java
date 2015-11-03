@@ -32,7 +32,8 @@ public class Estadisticas {
 	public void actualizarPuntuacion(int p){
 		if (p > mejorPuntuacion) mejorPuntuacion = p;
 	}
-	/* Post: Si la puntuación p es mayor que la mejor puntuación del jugador correspondiente, p pasa a ser la mejor puntuación de dicho jugador. En caso contrario, no hay cambios. */
+	/* Post: Si la puntuación p es mayor que la mejor puntuación del jugador correspondiente, 
+	 * p pasa a ser la mejor puntuación de dicho jugador. En caso contrario, no hay cambios. */
 	
 	/* Pre: */
 	public void anadirTablero(String t) {
@@ -73,5 +74,6 @@ public class Estadisticas {
 		for (int i = 0; i < tablerosCreados.size(); ++i) 
 			System.out.format("%d\n",tablerosCreados.get(i));
 	}
-	/* Post: Por pantalla se muestra el número de partidas creadas por el jugador correspondiente y un listado con sus nombres */
+	/* Post: Por pantalla se muestra el número de partidas creadas por el jugador correspondiente 
+	 * y un listado con sus nombres */
 }
