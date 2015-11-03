@@ -19,11 +19,24 @@ public class tablero {
 		start = end = new int[2];
 	}
 	
-	//NECESITO FUNCIO DE CONSULTA D'ATRIBUTS(elena)
+	//NECESITO FUNCIONS DE CONSULTA DE TOTS ELS ATRIBUTS(elena)
 	public int get_n(){
 		int dim = n;
 		return dim;
 	}
+	
+	public int getn_predef(){
+		int n = n_predef;
+		return n;
+	}
+	
+	public int getholes(){
+		int h = holes;
+		return h;
+	}
+	
+	
+	// ------------------------------------------------------//
 	
 	public void setcell(int x, int y, int n) {
 		this.map[x][y].setvalue(n);

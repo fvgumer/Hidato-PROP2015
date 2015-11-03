@@ -73,6 +73,16 @@ public class ClassPartidaHidato extends Partida_Comp {
 		return dim;
 	}
 	
+	public int get_forats(){
+		int f = T.getholes();
+		return f;
+	}
+	
+	public int get_ninicials(){
+		int n = T.getn_predef();
+		return n;
+	}
+	
 	public void print_tablero(){
 		T.print();
 	}

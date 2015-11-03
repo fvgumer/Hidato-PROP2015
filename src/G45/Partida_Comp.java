@@ -25,7 +25,7 @@ public class Partida_Comp {
 	}
 	
 	
-	public static void modificar_casilla(int i, int j, int valor){
+	public void modificar_casilla(int i, int j, int valor){
 		T.setcell(j,i,valor);
 	}
 	

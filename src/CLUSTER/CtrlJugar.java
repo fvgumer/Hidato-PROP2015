@@ -6,6 +6,7 @@ public class CtrlJugar {
 	private ClassPartidaHidato PH;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
+	private Reloj R1;
 
 	private void  print_tvacio(int n) {
 		for (int i = 0; i < n; ++i){
@@ -21,6 +22,9 @@ public class CtrlJugar {
 		PH = new ClassPartidaHidato();
 		PH = PH2;
 	}
+	
+	public void ()
+	
 	
 	public void pausar(){
 		if (PH.get_estado() == GAME) {
@@ -85,8 +89,5 @@ public class CtrlJugar {
 		}
 		else System.out.println("CORRECTO");
 	}
-	
-	
-	
-	
+
 }
