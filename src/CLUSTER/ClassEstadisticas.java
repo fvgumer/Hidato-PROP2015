@@ -73,4 +73,5 @@ public class Estadisticas {
 		for (int i = 0; i < tablerosCreados.size(); ++i) 
 			System.out.format("%d\n",tablerosCreados.get(i));
 	}
+	/* Post: Por pantalla se muestra el número de partidas creadas por el jugador correspondiente y un listado con sus nombres */
 }
