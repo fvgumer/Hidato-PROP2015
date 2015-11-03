@@ -58,9 +58,27 @@ public class ClassPartidaHidato extends Partida_Comp {
 		return p;
 	}
 	
-	public int getvalorcell(){
-		int valor = T.getcellvalue();
+	public int getvalorcelloriginal(int x, int y){
+		int valor = T.getcellvalue(x,y); //DEL TABLERO SOLUCION (MAL)
 		return valor;
 	}
 	
+	public int getvalorcellpartida(int x, int y){
+		int valor = T.getcellvalue(x,y); //DEL TABLERO SOLUCION (MAL)
+		return valor;
+	}
+	
+	public int set_dimensiont(){
+		int dim = T.get_n();
+		return dim;
+	}
+	
+	public void print_tablero(){
+		T.print();
+	}
+	
+	public void print_solucion(){
+		T.print();
+		
+	}
 }

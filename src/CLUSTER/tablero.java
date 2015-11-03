@@ -7,7 +7,7 @@ public class tablero {
 	public int n2, n, holes, n_predef, final_num;
 	private int[] start, end;
 	
-	public tablero(int n) { //T'ho he canviat a "public" perque si no es imposible introduir T 
+	public tablero(int n) { //T'ho he canviat a "public" perque si no es imposible introduir T (Elena)
 		this.n2 = n*n;
 		this.n = n;
 		this.map = new Casilla[n][n];
@@ -17,6 +17,12 @@ public class tablero {
 			}
 		}
 		start = end = new int[2];
+	}
+	
+	//NECESITO FUNCIO DE CONSULTA D'ATRIBUTS(elena)
+	public int get_n(){
+		int dim = n;
+		return dim;
 	}
 	
 	public void setcell(int x, int y, int n) {
