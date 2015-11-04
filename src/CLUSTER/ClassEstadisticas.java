@@ -4,6 +4,7 @@ import java.util.*;
 
 public class ClassEstadisticas {
 
+	private String jugador;
 	private int partidasJugadas;
 	private int segundosJugados;	//para mostrarlo por pantalla lo pasaremos a hh:mm:ss
 	private int puntuacionTotal;
@@ -11,7 +12,8 @@ public class ClassEstadisticas {
 	private ArrayList<String> tablerosCreados;
 	
 	
-	ClassEstadisticas(){
+	ClassEstadisticas(String jugador){
+		this.jugador = jugador;
 		partidasJugadas = segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
 		tablerosCreados = new ArrayList<String>();
 	}
