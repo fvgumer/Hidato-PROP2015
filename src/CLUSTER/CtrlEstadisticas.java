@@ -5,7 +5,7 @@ import java.util.*;
 public class CtrlEstadisticas {
 	
 	/* Pre: s > 0, p > 0*/
-	public void partidaJugada(int s, int p) {
+	public void partidaTerminada(int s, int p) {
 		incrementarPartidas();
 		incrementarTiempo(s);
 		incrementarPuntuacion(p);
