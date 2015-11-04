@@ -2,13 +2,21 @@ package CLUSTER;
 
 import java.util.*;
 
-public class Estadisticas {
+public class ClassEstadisticas {
 
+	private String jugador;
 	private int partidasJugadas;
 	private int segundosJugados;	//para mostrarlo por pantalla lo pasaremos a hh:mm:ss
 	private int puntuacionTotal;
 	private int mejorPuntuacion;
-	private List<String> tablerosCreados;
+	private ArrayList<String> tablerosCreados;
+	
+	
+	ClassEstadisticas(String jugador){
+		this.jugador = jugador;
+		partidasJugadas = segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
+		tablerosCreados = new ArrayList<String>();
+	}
 	
 	/*Pre: */
 	public void incrementarPartidas() {
@@ -70,7 +78,7 @@ public class Estadisticas {
 	
 	/* Pre: */
 	public void mostrarTablerosCreados() {
-		System.out.print("%d tableros creados:\n",tablerosCreados.size());
+		System.out.format("%d tableros creados:\n",tablerosCreados.size());
 		for (int i = 0; i < tablerosCreados.size(); ++i) 
 			System.out.format("%d\n",tablerosCreados.get(i));
 	}
