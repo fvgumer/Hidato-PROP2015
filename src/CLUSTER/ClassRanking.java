@@ -8,7 +8,7 @@ public class Ranking {
 	private ArrayList<int> ranking;	/* contiene índices que corresponden a los resultados *
 					 * del tablero correspondiente, ordenados según puntuación */
 	
-	public ClassRanking() {
+	ClassRanking() {
 		ranking = new ArrayList<int>();	
 	}
 
