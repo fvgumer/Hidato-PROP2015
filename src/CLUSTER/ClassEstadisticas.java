@@ -2,7 +2,7 @@ package CLUSTER;
 
 import java.util.*;
 
-public class Estadisticas {
+public class ClassEstadisticas {
 
 	private int partidasJugadas;
 	private int segundosJugados;	//para mostrarlo por pantalla lo pasaremos a hh:mm:ss
@@ -11,7 +11,7 @@ public class Estadisticas {
 	private ArrayList<String> tablerosCreados;
 	
 	
-	Estadisticas(){
+	ClassEstadisticas(){
 		partidasJugadas = segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
 		tablerosCreados = new ArrayList<String>();
 	}
