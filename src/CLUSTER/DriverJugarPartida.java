@@ -1,13 +1,14 @@
 package CLUSTER;
 
 import java.util.Scanner;
-import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DriverJugarPartida {
 	private static CtrlPartida CP;
 	private static CtrlJugar CJ;
 	private static Scanner sn;
-	public static Date tiem;
+	static Timer tiem;
 	
 	public static void main(String[] args) {
 		sn = new Scanner(System.in);
@@ -45,7 +46,8 @@ public class DriverJugarPartida {
 		CJ.jugar_partida(CP.get_partida());
 		if (modo == 2) {
 			int tiempo = sn.nextInt(); //EN SEGUNDOS
-			setTimeout(CJ.rendirse(), tiempo*1000);
+			Timer tiemp = new Timer();
+			tiemp.setTimeout(CJ.rendirse(), tiempo*1000);
 		}
 		else if (modo == 3) { //EXTREME
 			
