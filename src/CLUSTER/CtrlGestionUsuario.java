@@ -1,3 +1,5 @@
+package CLUSTER;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -5,32 +7,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Scanner;
 
-public class contrpersistenciausuario {
+public class CtrlGestionUsuario {
 	
-	contrpersistenciausuario(){
+	CtrlGestionUsuario(){
 	}
 	
-
-	public void crear_jugador(){
-		String nom = null;
-		Scanner scanjug = new Scanner(System.in);
-		System.out.println("Inserta el nom: ");
-		int existeix = 1;
-		while(existeix == 1){
-		nom = scanjug.nextLine();
-		File archiu = new File("jugadors\\"+nom+".bin");
+	public void crear_jugador(String nombre, String contrasenya){
+		File archiu = new File("jugadors\\"+nombre+".bin");
 		if(archiu.exists()){
 			System.out.println("El nom ja existeix, elegeix un altre");
+			return;
 		}
-		
-		else existeix = 0;
-		}
-		System.out.println("Inserta la teva contrasenya: ");
-		String contrasenya = scanjug.nextLine();
-		Jugador player = new Jugador(nom,contrasenya);
-		String filename = "jugadors\\"+nom+".bin";
+		Jugador player = new Jugador(nombre,contrasenya);
+		String filename = "jugadors\\"+nombre+".bin";
 		try {
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
 			os.writeObject(player);
@@ -42,15 +32,27 @@ public class contrpersistenciausuario {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Ja esta guardat");
-		
-		
+		System.out.println("Ja esta creat");
+	}
+	
+	public Jugador cargar_jugador(String nombre, String password){
+		String ruta = "jugadors\\"+nombre+".bin";
+		Jugador pla = new Jugador(null, null);
+		File archiu = new File(ruta);
+		if(archiu.exists()==false) {
+			System.out.println("El jugador no existeix");
+			return null;
+		}
+		else{
 		try {
-			ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename));
-			Jugador pla= (Jugador) is.readObject();
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
+			pla= (Jugador) is.readObject();
 			is.close();
-			System.out.println("Nombre: " +pla.nombre+ " Contraseña: " +pla.password);
-		} catch (FileNotFoundException e) {
+			if(pla.consultar_password()!=password)
+				System.out.println("IEEEEEEP Contrasenya incorrecta chavalín");
+				return null;
+		}
+		 catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -60,18 +62,35 @@ public class contrpersistenciausuario {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return pla;
+		}
 	}
-	
-	public void eliminar_jugador(){
-		
-		String nom = null;
-		Scanner scanjug = new Scanner(System.in);
-		System.out.println("Inserta el nom del jugador que vols eliminar: ");
-		nom = scanjug.nextLine();
-		scanjug.close();
-		File archiu = new File("jugadors\\"+nom+".bin");
-		if(archiu.delete())System.out.println("El jugador/a " +nom+ " ha estat eliminat/da");
-		else System.out.println("El jugador no existeix");
-	}	
-}
 
+	public void eliminar_jugador(String nombre, String contrasenya){
+		Jugador z = cargar_jugador(nombre,contrasenya);
+		if(z==null) return;
+		else{
+			String ruta = "jugadors\\"+nombre+".bin";
+			File archiu = new File(ruta);
+			if(archiu.delete())System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
+		}
+		//System.out.println("El jugador/a " +z.consultar_nombre()+ " ha estat eliminat/da");
+		//if(archiu.delete())System.out.println("El jugador/a " +nom+ " ha estat eliminat/da");
+		//else System.out.println("El jugador no existeix");
+	}	
+
+	public void guardar_jugador(Jugador player){
+		String filename = "jugadors\\"+player.nombre+".bin";
+		try {
+			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
+			os.writeObject(player);
+			os.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
