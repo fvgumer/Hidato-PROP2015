@@ -74,8 +74,11 @@ public class tablero {
 		n_predef = n;
 	}
 	
-	public void setfinal_num(int x, int y, int n) {
+	public void setfinal_num(int n) {
 		final_num = n;
+	}
+	
+	public void setEnd(int x, int y) {
 		end[0] = x; end[1] = y;
 	}
 	
