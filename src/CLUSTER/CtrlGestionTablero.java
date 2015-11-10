@@ -6,29 +6,30 @@ public class CtrlGestionTablero {
 
 	private tablero map;
 	private Random rm;
+	private algorithm a;
 	
-	CtrlGestionTablero() {
+	public CtrlGestionTablero() {
 		rm = new Random();
+		a = new algorithm();
 	}
 	
 	/*
 	 * Post: Se crea un tablero aleatorio con las caracteristicas de la cabezera
 	 */
 	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias) {
-		n_sols = 0;
 		map = new tablero(n);
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras); 
 		omplir_forats_alea(c_negras);
 		setStartEnd_alea();
 		int[] start = map.getStart();
-		boolean b = solver(start[0], start[1], 1);
+		boolean b = a.solver(start[0], start[1], 1,map);
 		while (b == false) {
 			map.a_zero();
 			omplir_forats_alea(c_negras);
 			setStartEnd_alea();
 			start = map.getStart();
-			b = solver(start[0], start[1], 1);
+			b = a.solver(start[0], start[1], 1,map);
 		}
 		generar_buits_alea(c_vacias);
 		map.print();
@@ -51,7 +52,7 @@ public class CtrlGestionTablero {
 	public void colocar_numero_casilla(int x, int y, int n) {
 		map.setcell(x,y,n);
 		if (n == 1) map.setStart(x,y);
-		if (n == map.final_num) map.setEnd(x,y);
+		//if (n == map.final_num) map.setEnd(x,y);
 	}
 	
 	/*
@@ -60,10 +61,30 @@ public class CtrlGestionTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		boolean b = solver(start[0], start[1], 1);
+		boolean b = a.solver(start[0], start[1], 1,map);
 		return b;
 	}
-
+	
+	public void muestra_mapa() {
+		map.print();
+	}
+	
+	public void escojer_forma(int f) {
+		switch (f) {
+			case 1: //Esfera xunga
+				for(int i=0; i < (map.n/2)+1; ++i) {
+					for (int j=0; j < map.n; ++j) {
+						if (j < (map.n/2)-i || j > (map.n/2)+i){
+							map.setcell(i, j, -1);
+							map.setcell(map.n - i-1, j, -1);
+							map.holes = map.holes - 2;
+						}
+					}
+				}
+				break;
+		}	
+	}
+	
 	/*
 	 * Post: El tablero se llena de n casillas negras en posiciones aleatorias
 	 */
