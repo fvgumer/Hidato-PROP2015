@@ -31,31 +31,40 @@ public class Prueba {
 			elementos_matriz (x - 1, dim-1, dim, posibles);
 	    }
 	 
-	 private void contar_num_costats(int x, int y, boolean[] posibles) {
+	 private void contar_num_costats(int x, int y, boolean[] posibles, boolean[] posats) {
 			
-			if (x > 0 && y < 0 && x < dim && y < dim) {
+			if (x > 0 && y > 0 && x < dim && y < dim) {
 				int valor = Matriz[x][y];	
-				if (valor - 1 > 0) posibles[valor - 2] = true;
-				if (valor - 2 > 0) posibles[valor - 3] = true;
-				if (valor + 2 <= posibles.length) posibles[valor] = true;
-				if (valor + 2 <= posibles.length) posibles[valor+ 1] = true;
+				if (valor - 1 > 0 && !posats[valor-2])  posibles[valor-2] = true;
+				if (valor - 2 > 0 && !posats[valor-1]) posibles[valor-1] = true;
+				if (valor + 1 <= posibles.length && !posats[valor]) {
+					posibles[valor] = true;
+				}
+				
+				if (valor + 2 <= posibles.length && !posats[valor+1]) posibles[valor+ 1] = true;
 			}
 	 }
 
-	
-	public Vector<Integer> bus_cantidats(int x, int y, int forats, boolean[] posibles) {
-			contar_num_costats(x - 1,y,posibles);
-			contar_num_costats(x - 1,y + 1,posibles);
-			contar_num_costats(x + 1,y - 1,posibles);
-			contar_num_costats(x + 1,y,posibles);
-			contar_num_costats(x + 1,y - 1,posibles);
-			contar_num_costats(x -1 ,y + 1,posibles);
-			contar_num_costats(x,y + 1,posibles);
-			contar_num_costats(x,y - 1,posibles);
+	public Vector<Integer> bus_cantidats(int x, int y, int forats, boolean[] posats){
+		for (int i = 0; i < posats.length; ++i) {
+			if (posats[i]) System.out.println(i+1);
+		}
+			boolean[] posibles = new boolean[posats.length];
+			contar_num_costats(x - 1,y,posibles,posats);
+			contar_num_costats(x - 1,y + 1,posibles,posats);
+			contar_num_costats(x + 1,y - 1,posibles,posats);
+			contar_num_costats(x + 1,y,posibles,posats);
+			contar_num_costats(x + 1,y - 1,posibles,posats);
+			contar_num_costats(x - 1 ,y + 1,posibles,posats);
+			contar_num_costats(x,y + 1,posibles,posats);
+			contar_num_costats(x,y - 1,posibles,posats);
 			
 			Vector<Integer> candidats = new Vector<>();
+			for (int i = 0; i < posats.length; ++i) {
+				if (posibles[i]) System.out.println(i+1);
+			}
 			for (int i = 0; i < posibles.length; ++i) {
-				if (!posibles[i]) {
+				if (posibles[i]) {
 					candidats.add(i+1);
 				}
 			}
