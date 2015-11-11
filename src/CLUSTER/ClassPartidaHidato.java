@@ -6,24 +6,14 @@ public class ClassPartidaHidato extends ClassPartida_Comp {
 	//Tablero tablero1;
 	
 	private int estado; 
-	 //Codificación de estado
-	
 	private int dificultad;
-	public static int NOTIENE = 0;
-	public static int ALTO = 1;
-	public static int MEDIO = 2;
-	public static int BAJO = 3; //Codificación de dificultad
-	
 	private int modo;
 	private int puntuacion;
-	public static int CONTRA = 1;
-	public static int CLASIC = 2;
-	public static int EXTREM = 3; //Codificación modo
 	
 	public ClassPartidaHidato(){
 		estado = 2;
-		dificultad = NOTIENE;
-		modo = NOTIENE;
+		dificultad = 0;
+		modo = 0;
 		puntuacion = 0;
 	}
 
@@ -66,7 +56,7 @@ public class ClassPartidaHidato extends ClassPartida_Comp {
 		return valor;
 	}
 	
-	public int set_dimensiont(){
+	public int get_dimensiont(){
 		int dim = T.get_n();
 		return dim;
 	}
@@ -80,6 +70,7 @@ public class ClassPartidaHidato extends ClassPartida_Comp {
 		int n = T.getn_predef();
 		return n;
 	}
+	
 	
 	public void print_tablero(){
 		T.print();
