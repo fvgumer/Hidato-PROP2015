@@ -134,7 +134,7 @@ public class CtrlJugar {
 		//Busca  los elementos que ya estan en el tablero
 		elementos_matriz(dim-1, dim-1, dim, posibles);
 		//Se guardan los enteros candidatos
-		ArrayList<Integer> can = bus_cantidats(x, y, forats posibles);
+		ArrayList<Integer> can = bus_cantidats(x, y, forats, posibles);
 		//Salen por pantalla
 		for (int i = 0; i < can.size(); ++i) {
 			System.out.println(can.get(i));

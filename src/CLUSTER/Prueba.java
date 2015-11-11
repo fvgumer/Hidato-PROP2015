@@ -31,29 +31,31 @@ public class Prueba {
 			elementos_matriz (x - 1, dim-1, dim, posibles);
 	    }
 	 
-	 private void contar_num_costats(int x, int y, ArrayList<Integer> posibles, boolean[] posats) {
+	 private void contar_num_costats(int x, int y, ArrayList<Integer> posibles,
+			 boolean[] posats, int al_costat) {
 		 System.out.println("SOY EL NUMERO "+ x + " "+ y);	
 		 if (x >= 0 && y >= 0 && x < dim && y < dim) {
 				int valor = Matriz[x][y];	
 				System.out.println("SOY EL NUMERO "+ valor);
 				if ( valor > 0) {
+					++al_costat;
 					if (valor - 1 > 0 && !posats[valor-2])  {
-						posats[valor-2]=true; //Para que no se vuelva a meter
+						posats[valor-2] = true;
 						posibles.add(valor-1);
 						System.out.println("WII SOY COMPATIBLE"+ (valor-1));
 					}
 					if (valor - 2 > 0 && !posats[valor-1]) {
-						posats[valor-1]=true;
 						posibles.add(valor-2);
+						posats[valor-1] = true; 
 						System.out.println("WII SOY COMPATIBLE"+ (valor-2));
 					}
 					if (valor + 1 <= posats.length && !posats[valor]){
-						posats[valor]=true;
+						posats[valor] = true; 
 						System.out.println("WII SOY COMPATIBLE"+ (valor+1));
 						posibles.add(valor+1);
 					}
 					if (valor + 2 <= posats.length && !posats[valor+1]){
-						posats[valor+1]=true;
+						posats[valor+1] = true; 
 						System.out.println("WII SOY COMPATIBLE"+ (valor+2));
 						posibles.add(valor+2);
 					}
@@ -66,21 +68,17 @@ public class Prueba {
 			if (posats[i]) System.out.println(i+1);
 		}
 		ArrayList<Integer> posibles = new ArrayList<Integer>();
-		contar_num_costats(x - 1,y,posibles,posats);
-		contar_num_costats(x - 1,y + 1,posibles,posats);
-		contar_num_costats(x + 1,y - 1,posibles,posats);
-		contar_num_costats(x + 1,y,posibles,posats);
-		contar_num_costats(x + 1,y + 1,posibles,posats);
-		contar_num_costats(x - 1 ,y + 1,posibles,posats);
-		contar_num_costats(x,y + 1,posibles,posats);
-		contar_num_costats(x,y - 1,posibles,posats);
-			
-			
-			/*for (int i = 0; i < posibles.size(); ++i) {
-				System.out.println(posibles.get(i));
-			}
-				*/
-			return posibles;
+		int al_costat = 0;
+		contar_num_costats(x - 1,y,posibles,posats,al_costat);
+		contar_num_costats(x - 1,y + 1,posibles,posats,al_costat);
+		contar_num_costats(x - 1 ,y - 1,posibles,posats,al_costat);
+		contar_num_costats(x + 1,y - 1,posibles,posats,al_costat);
+		contar_num_costats(x + 1,y,posibles,posats,al_costat);
+		contar_num_costats(x + 1,y + 1,posibles,posats,al_costat);
+		contar_num_costats(x,y + 1,posibles,posats,al_costat);
+		contar_num_costats(x,y - 1,posibles,posats,al_costat);
+		
+		return posibles;
 	}
 	
 	public void introducir_matriz(int dim) {
