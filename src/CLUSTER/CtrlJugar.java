@@ -1,49 +1,70 @@
 package CLUSTER;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Vector;
 
 
 public class CtrlJugar {
 	private ClassPartidaHidato PH;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
-	private Reloj R1;
 	
-	private boolean existe(int x, int y, int dim){
-		if ( x >= 0 && x < dim) {
-			if (y >= 0  && y< dim) { 
-				return true;
-			}
+	/*Pre: x,y son les coordenades del tauler en que es vol saber quin son els seus
+	 * candidats, posats es un boolea on si el seu el element es cert ens diu que
+	 * esta al tauler*/
+	public ArrayList<Integer> bus_cantidats(int x, int y, boolean[] posats){
+		for (int i = 0; i < posats.length; ++i) {
+			if (posats[i]) System.out.println(i+1);
 		}
-		return false;
+			boolean[] posibles = new boolean[posats.length];
+			contar_num_costats(x - 1,y,posibles,posats);
+			contar_num_costats(x - 1,y + 1,posibles,posats);
+			contar_num_costats(x + 1,y - 1,posibles,posats);
+			contar_num_costats(x + 1,y,posibles,posats);
+			contar_num_costats(x + 1,y - 1,posibles,posats);
+			contar_num_costats(x - 1 ,y + 1,posibles,posats);
+			contar_num_costats(x,y + 1,posibles,posats);
+			contar_num_costats(x,y - 1,posibles,posats);
+			
+			for (int i = 0; i < posats.length; ++i) {
+				if (posibles[i]) System.out.println(i+1);
+			}
+			ArrayList<Integer> candidats = new ArrayList<>();
+			for (int i = 0; i < posibles.length; ++i) {
+				if (posibles[i]) {
+					candidats.add(i+1);
+				}
+			}
+			return candidats;
 	}
 	
-	private void backtraking_candidatos(ArrayList<Integer>[] lista, int x, int y, boolean trobat,int anterior,
-			boolean[] posats) {
-		if (PH.getvalorcelloriginal(x, y) > 0) trobat = true;
-		if (trobat) {
-			int valor = PH.getvalorcellpartida(x, y);
-			anterior = valor;
-			posats[valor-1] = true;
-		}
-		else {
-			int dim = PH.get_dimensiont();
-			if (existe(x+1,y,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x+1,y+1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x+1,y-1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x-1,y+1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x-1,y-1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x-1,y,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x,y-1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x,y+1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			
-			if (anterior > 0 && anterior <= dim*dim) {
-				if ( !posats[anterior-2]) lista[(x-1)*dim+y].add(anterior-1);
-				if (!posats[anterior]) lista[(x-1)*dim+y].add(anterior+1);
+	 private void contar_num_costats(int x, int y, boolean[] posibles, boolean[] posats) {
+			if (x > 0 && y > 0 && x < PH.get_dimensiont() && y < PH.get_dimensiont()) {
+				int valor = PH.getvalorcellpartida(x, y);	
+				if (valor - 1 > 0 && !posats[valor-2])  posibles[valor-2] = true;
+				if (valor - 2 > 0 && !posats[valor-1]) posibles[valor-1] = true;
+				if (valor + 1 <= posibles.length && !posats[valor]) {
+					posibles[valor] = true;
+				}
+				
+				if (valor + 2 <= posibles.length && !posats[valor+1]) posibles[valor+ 1] = true;
 			}
-			
+	 }
+		public  void elementos_matriz (int x, int y, int dim, boolean[] posibles)
+	    {
+		if ( x >= 0 && y >= 0 && x < dim && y < dim) {
+		    if (PH.getvalorcellpartida(x, y) > 0) {
+		    	int valor = PH.getvalorcellpartida(x, y);
+		    	posibles[valor - 1] = true;
+
+		    }
+		    elementos_matriz(x, y - 1, dim, posibles);
 		}
-	}
+	    if (y < 0)
+			elementos_matriz (x - 1, dim-1, dim, posibles);
+	    }
+	
 	
 	private void modificar_puntuacion(int punt) {
 		int p = PH.get_puntuacion();
@@ -104,24 +125,38 @@ public class CtrlJugar {
 		modificar_puntuacion(-20);
 	}
 	
-	/*__________NO_IMPLEMENTADO_________________*/
-	public void pista2(){
-		int x = 0;
-		int y = 0;
-		modificar_puntuacion(-10);
-		int dim = PH.get_dimensiont();
-		ArrayList<Integer>[] posibles = (ArrayList<Integer>[])new ArrayList[(dim*dim)];
-		boolean trobat = false;
-		int anterior = 0;
-		boolean[] trobats = new boolean[dim*dim];
-		backtraking_candidatos(posibles,x,y,trobat,anterior,trobats);
-		for (int i = 0; i < posibles[x*dim +y].size(); ++i) {
-			int arg0 = posibles[x*dim+y].get(i);
-			System.out.println(arg0);
+	/*Pre: x,y es la posicion de memoria donde se quiere mirar sus candidatos. 
+	 * dim, dimensiones del tablero y forats las posiciones no validad*/
+	public void pista2(int x, int y, int dim, int forats){
+		boolean[] posibles = new boolean[dim*dim-forats];
+		//Busca  los elementos que ya estan en el tablero
+		elementos_matriz(dim-1, dim-1, dim, posibles);
+		//Se guardan los enteros candidatos
+		ArrayList<Integer> can = bus_cantidats(x, y, posibles);
+		//Salen por pantalla
+		for (int i = 0; i < can.size(); ++i) {
+			System.out.println(can.get(i));
 		}
-		
 	}
+	/*Post:  Sale por pantalla la lista de enteros que pueden ponerse en 
+	 * la posicion indicada en la pre*/
 	
+	public void pista3(int dim, int forats){
+		boolean[] posibles = new boolean[dim*dim-forats];
+		//Busca  los elementos que ya estan en el tablero
+		elementos_matriz(dim-1, dim-1, dim, posibles);
+		//Se guardan los enteros candidatos
+		for (int i = 0; i < dim; ++i) {
+			for(int j = 0; i < dim; ++j) {
+				ArrayList<Integer> can = bus_cantidats(i, j, posibles);
+				//Salen por pantalla
+				for (int k = 0; k < can.size(); ++k) {
+					System.out.println(can.get(k));
+				}
+			}
+		}
+	}
+
 	public void rendirse(){
 		PH.set_puntuacion(0);
 		//NO GUARDAR PARTIDA (NO IMPLEMENTADO)
