@@ -2,6 +2,7 @@ package CLUSTER;
 
 
 import java.util.*;
+import CLUSTER.algorithm;
 
 public class Prueba {
 	private static Scanner sn;
@@ -33,30 +34,25 @@ public class Prueba {
 	 
 	 private void contar_num_costats(int x, int y, ArrayList<Integer> posibles,
 			 boolean[] posats, int al_costat) {
-		 System.out.println("SOY EL NUMERO "+ x + " "+ y);	
+		 algorithm a = new algorithm();
 		 if (x >= 0 && y >= 0 && x < dim && y < dim) {
 				int valor = Matriz[x][y];	
-				System.out.println("SOY EL NUMERO "+ valor);
-				if ( valor > 0) {
+				if (valor > 0) {
 					++al_costat;
 					if (valor - 1 > 0 && !posats[valor-2])  {
-						posats[valor-2] = true;
+						if (solverposats[valor-2] = true;
 						posibles.add(valor-1);
-						System.out.println("WII SOY COMPATIBLE"+ (valor-1));
 					}
 					if (valor - 2 > 0 && !posats[valor-1]) {
 						posibles.add(valor-2);
 						posats[valor-1] = true; 
-						System.out.println("WII SOY COMPATIBLE"+ (valor-2));
 					}
 					if (valor + 1 <= posats.length && !posats[valor]){
 						posats[valor] = true; 
-						System.out.println("WII SOY COMPATIBLE"+ (valor+1));
 						posibles.add(valor+1);
 					}
 					if (valor + 2 <= posats.length && !posats[valor+1]){
 						posats[valor+1] = true; 
-						System.out.println("WII SOY COMPATIBLE"+ (valor+2));
 						posibles.add(valor+2);
 					}
 				}

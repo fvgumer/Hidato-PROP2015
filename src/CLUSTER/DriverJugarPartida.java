@@ -18,11 +18,24 @@ public class DriverJugarPartida {
 		CP = new CtrlPartida();
 		int modo = sn.nextInt();
 		if (modo == 0) CP.Cargar_Partida_Hidato();
-		else if (modo == 1) {
-			//Elegir tablero
+		else if (modo == 1) { //Elegir tablero
 				//1. Elegir Caracteristicas
+			//DIMENSIONES
+			System.out.print("Introduce dimensiones del tablero, rango[3,10]");
 			int dim = sn.nextInt();
+			while(dim > 10 || dim < 10) {
+				System.out.print("Entrada Incorrecta, repite el proceso");
+				dim = sn.nextInt();
+			}
+			//FORATS
+			System.out.print("Introduce forats, rango[0, "+dim/4*3+"]");
 			int abuj = sn.nextInt();
+			while(abuj > dim/4*3) {
+				System.out.print("Entrada Incorrecta, repite el proceso");
+				abuj = sn.nextInt();
+			}
+			//#inicials
+			System.out.print("Introduce el nombre de números inicias, rango[2,"+(dim-abuj-1)+"]");
 			int c_ini = sn.nextInt();
 			CP.anadir_carct_tablero(dim,abuj,c_ini);
 				//2. [0] Tablero Aleatorio [1] Tablero Diseñado
