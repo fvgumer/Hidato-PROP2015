@@ -27,7 +27,6 @@ public class CtrlGestionTablero {
 		omplir_forats_alea(c_negras);
 		setStart_alea();
 		int[] start = map.getStart();
-		map.print();
 		boolean b = a.generador(map, start[0], start[1],1);
 		while (b == false) {
 			map.a_zero(f);
