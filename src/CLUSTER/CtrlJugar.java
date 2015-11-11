@@ -1,19 +1,16 @@
 package CLUSTER;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
+import G45.Partida_comp;
 
-=======
-import G45.Partida_Comp;
->>>>>>> origin/master
 
 public class CtrlJugar {
 	private ClassPartidaHidato PH;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
-<<<<<<< HEAD
+
 	
 	/*Pre: x,y son les coordenades del tauler en que es vol saber quin son els seus
 	 * candidats, posats es un boolea on si el seu el element es cert ens diu que
@@ -83,10 +80,6 @@ public class CtrlJugar {
 	}
 	
 	/*Pre: dimension de el tablero*/
-=======
-	private Reloj R1;
-
->>>>>>> origin/master
 	private void  print_tvacio(int n) {
 		for (int i = 0; i < n; ++i){
 			for(int j = 0; j < n; ++i) {
@@ -126,8 +119,7 @@ public class CtrlJugar {
 		int valor= PH.getvalorcelloriginal(x,y);
 		PH.modificar_casilla(x,y,valor);
 	}
-	
-<<<<<<< HEAD
+
 	/*Pre: x,y es la posicion de memoria donde se quiere mirar sus candidatos. 
 	 * dim, dimensiones del tablero y forats las posiciones no validad*/
 	public void pista2(int x, int y, int dim, int forats){
@@ -140,11 +132,6 @@ public class CtrlJugar {
 		for (int i = 0; i < can.size(); ++i) {
 			System.out.println(can.get(i));
 		}
-=======
-	/*__________NO_IMPLEMENTADO_________________*/
-	public void pista2(){
-		
->>>>>>> origin/master
 	}
 	/*Post:  Sale por pantalla la lista de enteros que pueden ponerse en 
 	 * la posicion indicada en la pre*/

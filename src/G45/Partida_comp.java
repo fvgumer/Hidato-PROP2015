@@ -6,9 +6,9 @@ import CLUSTER.*;
  */
 public class Partida_comp {
        
-    private Tablero_comp tableroP;
-    private Usuario_comp usuarioP;
-    private int id;
+    protected Tablero_comp tableroP;
+    protected Usuario_comp usuarioP;
+    protected int id;
  
     /*Pre: cierto */
     public Partida_comp() {
