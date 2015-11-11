@@ -13,42 +13,44 @@ public class CtrlJugar {
 	/*Pre: x,y son les coordenades del tauler en que es vol saber quin son els seus
 	 * candidats, posats es un boolea on si el seu el element es cert ens diu que
 	 * esta al tauler*/
-	public ArrayList<Integer> bus_cantidats(int x, int y, boolean[] posats){
+	public ArrayList<Integer> bus_cantidats(int x, int y, int forats, boolean[] posats){
 		for (int i = 0; i < posats.length; ++i) {
 			if (posats[i]) System.out.println(i+1);
 		}
-			boolean[] posibles = new boolean[posats.length];
-			contar_num_costats(x - 1,y,posibles,posats);
-			contar_num_costats(x - 1,y + 1,posibles,posats);
-			contar_num_costats(x + 1,y - 1,posibles,posats);
-			contar_num_costats(x + 1,y,posibles,posats);
-			contar_num_costats(x + 1,y - 1,posibles,posats);
-			contar_num_costats(x - 1 ,y + 1,posibles,posats);
-			contar_num_costats(x,y + 1,posibles,posats);
-			contar_num_costats(x,y - 1,posibles,posats);
+		ArrayList<Integer> posibles = new ArrayList<Integer>();
+		contar_num_costats(x - 1,y,posibles,posats);
+		contar_num_costats(x - 1,y + 1,posibles,posats);
+		contar_num_costats(x + 1,y - 1,posibles,posats);
+		contar_num_costats(x + 1,y,posibles,posats);
+		contar_num_costats(x + 1,y + 1,posibles,posats);
+		contar_num_costats(x - 1 ,y + 1,posibles,posats);
+		contar_num_costats(x,y + 1,posibles,posats);
+		contar_num_costats(x,y - 1,posibles,posats);
 			
-			for (int i = 0; i < posats.length; ++i) {
-				if (posibles[i]) System.out.println(i+1);
-			}
-			ArrayList<Integer> candidats = new ArrayList<>();
-			for (int i = 0; i < posibles.length; ++i) {
-				if (posibles[i]) {
-					candidats.add(i+1);
-				}
-			}
-			return candidats;
+			return posibles;
 	}
 	
-	 private void contar_num_costats(int x, int y, boolean[] posibles, boolean[] posats) {
-			if (x > 0 && y > 0 && x < PH.get_dimensiont() && y < PH.get_dimensiont()) {
+	 private void contar_num_costats(int x, int y, ArrayList<Integer> posibles, boolean[] posats) {
+		 System.out.println("SOY EL NUMERO "+ x + " "+ y);	
+		 if (x >= 0 && y >= 0 && x < PH.get_dimensiont() && y < PH.get_dimensiont()) {
 				int valor = PH.getvalorcellpartida(x, y);	
-				if (valor - 1 > 0 && !posats[valor-2])  posibles[valor-2] = true;
-				if (valor - 2 > 0 && !posats[valor-1]) posibles[valor-1] = true;
-				if (valor + 1 <= posibles.length && !posats[valor]) {
-					posibles[valor] = true;
+				if ( valor > 0) {
+					if (valor - 1 > 0 && !posats[valor-2])  {
+						posats[valor-2]=true; //Para que no se vuelva a meter
+						posibles.add(valor-1);
+					}
+					if (valor - 2 > 0 && !posats[valor-1]) {
+						posats[valor-1]=true;
+						posibles.add(valor-2);
+					}
+					if (valor + 1 <= posats.length && !posats[valor]){
+						posats[valor]=true;
+						posibles.add(valor+1);
+					}
+					if (valor + 2 <= posats.length && !posats[valor+1]){
+						posibles.add(valor+2);
+					}
 				}
-				
-				if (valor + 2 <= posibles.length && !posats[valor+1]) posibles[valor+ 1] = true;
 			}
 	 }
 		public  void elementos_matriz (int x, int y, int dim, boolean[] posibles)
@@ -132,7 +134,7 @@ public class CtrlJugar {
 		//Busca  los elementos que ya estan en el tablero
 		elementos_matriz(dim-1, dim-1, dim, posibles);
 		//Se guardan los enteros candidatos
-		ArrayList<Integer> can = bus_cantidats(x, y, posibles);
+		ArrayList<Integer> can = bus_cantidats(x, y, forats posibles);
 		//Salen por pantalla
 		for (int i = 0; i < can.size(); ++i) {
 			System.out.println(can.get(i));
@@ -148,10 +150,13 @@ public class CtrlJugar {
 		//Se guardan los enteros candidatos
 		for (int i = 0; i < dim; ++i) {
 			for(int j = 0; i < dim; ++j) {
-				ArrayList<Integer> can = bus_cantidats(i, j, posibles);
-				//Salen por pantalla
-				for (int k = 0; k < can.size(); ++k) {
-					System.out.println(can.get(k));
+				if (PH.getvalorcelloriginal(i, i) >0) {
+					System.out.println("CANDIDATOS DE LA POSICION ("+i+","+j+")");
+					ArrayList<Integer> can = bus_cantidats(i, j,forats, posibles);
+					//Salen por pantalla
+					for (int k = 0; k < can.size(); ++k) {
+						System.out.println(can.get(k));
+					}
 				}
 			}
 		}
