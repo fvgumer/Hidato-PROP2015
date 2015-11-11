@@ -1,13 +1,13 @@
 package CLUSTER;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class Prueba {
 	private static Scanner sn;
 	int[][] Matriz;
 	int dim;
-	
+	/*
 	private boolean existe(int x, int y, int dim){
 		if ( x >= 0 && x < dim) {
 			if (y >= 0  && y< dim) { 
@@ -16,31 +16,50 @@ public class Prueba {
 		}
 		return false;
 	}
-	
-	public void backtraking_candidatos(ArrayList<Integer>[] lista, int x, int y, boolean trobat,int anterior,
-			boolean[] posats) {
-		if (Matriz[x][y] > 0) trobat = true;
-		if (trobat) {
-			int valor = Matriz[x][y];
-			anterior = valor;
-			posats[valor-1] = true;
+	*/
+	public  void elementos_matriz (int x, int y, int dim, boolean[] posibles)
+	    {
+		if ( x >= 0 && y >= 0 && x < dim && y < dim) {
+		    if (Matriz[x][y] > 0) {
+		    	int valor = Matriz[x][y];
+		    	posibles[valor - 1] = true;
+
+		    }
+		    elementos_matriz(x, y - 1, dim, posibles);
 		}
-		else {
-			if (existe(x+1,y,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x+1,y+1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x+1,y-1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x-1,y+1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x-1,y-1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x-1,y,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x,y-1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
-			if (existe(x,y+1,dim)) backtraking_candidatos(lista,x+1,y,trobat,anterior,posats);
+	    if (y < 0)
+			elementos_matriz (x - 1, dim-1, dim, posibles);
+	    }
+	 
+	 private void contar_num_costats(int x, int y, boolean[] posibles) {
 			
-			if (anterior > 0 && anterior <= dim*dim) {
-				if ( !posats[anterior-2]) lista[(x-1)*dim+y].add(anterior-1);
-				if (!posats[anterior]) lista[(x-1)*dim+y].add(anterior+1);
+			if (x > 0 && y < 0 && x < dim && y < dim) {
+				int valor = Matriz[x][y];	
+				if (valor - 1 > 0) posibles[valor - 2] = true;
+				if (valor - 2 > 0) posibles[valor - 3] = true;
+				if (valor + 2 <= posibles.length) posibles[valor] = true;
+				if (valor + 2 <= posibles.length) posibles[valor+ 1] = true;
 			}
+	 }
+
+	
+	public Vector<Integer> bus_cantidats(int x, int y, int forats, boolean[] posibles) {
+			contar_num_costats(x - 1,y,posibles);
+			contar_num_costats(x - 1,y + 1,posibles);
+			contar_num_costats(x + 1,y - 1,posibles);
+			contar_num_costats(x + 1,y,posibles);
+			contar_num_costats(x + 1,y - 1,posibles);
+			contar_num_costats(x -1 ,y + 1,posibles);
+			contar_num_costats(x,y + 1,posibles);
+			contar_num_costats(x,y - 1,posibles);
 			
-		}
+			Vector<Integer> candidats = new Vector<>();
+			for (int i = 0; i < posibles.length; ++i) {
+				if (!posibles[i]) {
+					candidats.add(i+1);
+				}
+			}
+			return candidats;
 	}
 	
 	public void introducir_matriz(int dim) {
@@ -60,19 +79,24 @@ public class Prueba {
 		int y = 0;
 		System.out.println("Entra dimension");
 		int dim = sn.nextInt();
-		prueva p = new prueva();
+		Prueba p = new Prueba();
 		p.introducir_matriz(dim);
-		ArrayList<Integer>[] posibles = (ArrayList<Integer>[])new ArrayList[(dim*dim)];
-		boolean trobat = false;
-		int anterior = 0;
-		boolean[] trobats = new boolean[dim*dim];
-		p.backtraking_candidatos(posibles,x,y,trobat,anterior,trobats);
+
+		
+		System.out.println("INTRODUEIX FORATS");
+		int forats = sn.nextInt();
+		
+		boolean[] posibles1 = new boolean[dim*dim-forats];
+		p.elementos_matriz(dim-1, dim-1, dim, posibles1);
+		System.out.println("INTRODUEIX POSICIO");
 		x = sn.nextInt();
 	    y = sn.nextInt();
-		for (int i = 0; i < posibles[x*dim +y].size(); ++i) {
-			System.out.println(posibles[x*dim +y].size());
-			int arg0 = posibles[x*dim+y].get(i);
-			System.out.println(arg0);
+		Vector<Integer> can = p.bus_cantidats(x, y, forats,posibles1);
+		
+		System.out.println();
+		
+		for (int i = 0; i < can.size(); ++i) {
+			System.out.println(can.get(i));
 		}
 
 	}
