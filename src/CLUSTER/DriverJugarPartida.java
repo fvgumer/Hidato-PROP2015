@@ -10,10 +10,10 @@ public class DriverJugarPartida {
 	private static Scanner sn;
 	static Timer tiem;
 	
-	public static void main(Jugador J) {
-		String nombre = J.consultar_nombre();
+	public static void main(String[] args) {
 		sn = new Scanner(System.in);
 		//IDENTIFICAR USUARIO
+		Usuario U = new Usuario();
 		//1. Decidir cargar("0") o crear Partida("1")
 		CP = new CtrlPartida();
 		int modo = sn.nextInt();
@@ -40,9 +40,9 @@ public class DriverJugarPartida {
 			CP.anadir_carct_tablero(dim,abuj,c_ini);
 				//2. [0] Tablero Aleatorio [1] Tablero Diseñado
 			modo = sn.nextInt();
-			if (modo == 0) CP.generar_Taleatorio();
+			if (modo == 0) CP.generar_Taleatorio(U);
 			else if (modo == 1) CP.elegir_tdisenado();
-			CP.crear_partida(J);
+			CP.crear_partida(U);
 			//Elegir dificultad
 			int dificultad = sn.nextInt();
 			//Elegir modo juego
@@ -60,7 +60,7 @@ public class DriverJugarPartida {
 		if (modo == 2) {
 			int tiempo = sn.nextInt(); //EN SEGUNDOS
 			Timer tiemp = new Timer();
-			//tiemp.setTimeout(CJ.rendirse(), tiempo*1000);
+			tiemp.setTimeout(CJ.rendirse(), tiempo*1000);
 		}
 		else if (modo == 3) { //EXTREME
 			
