@@ -10,6 +10,8 @@ public class tablero {
 	public tablero(int n) { //T'ho he canviat a "public" perque si no es imposible introduir T (Elena)
 		this.n2 = n*n;
 		this.n = n;
+		this.holes = 0;
+		this.final_num = 0;
 		this.map = new Casilla[n][n];
 		for(int i=0; i<n; ++i) {
 			for(int j=0; j<n; ++j) {
@@ -57,6 +59,14 @@ public class tablero {
 		return true;
 	}
 	
+	public boolean suitable_pos(int x, int y){
+		if (x < 0 || y < 0) return false;
+		if (x >= n || y >= n) return false;
+		if (map[x][y].getvalue() == -1) return false;
+		if (map[x][y].getvalue() > 0) return false;
+		return true;
+	}
+	
 	public void setStart(int x, int y){
 		start[0] = x; start[1] = y;
 		map[x][y].setvalue(1);
@@ -67,7 +77,7 @@ public class tablero {
 	}
 	
 	public void setholes(int n) {
-		holes = n;
+		holes = holes + n;
 	}
 	
 	public void setn_predef(int n) {
@@ -75,7 +85,7 @@ public class tablero {
 	}
 	
 	public void setfinal_num(int n) {
-		final_num = n;
+		final_num = final_num + n;
 	}
 	
 	public void setEnd(int x, int y) {
@@ -95,28 +105,43 @@ public class tablero {
 		System.out.println();
 	}
 	
-	public void a_zero() {
+	public void a_zero(int f) {
 		for(int i=0; i<n; ++i) {
 			for (int j=0; j<n; ++j) {
 				map[i][j].setvalue(0);
 			}
 		}
+		holes = 0; final_num = 0;
+		switch (f) {
+			case 1:
+				pinta_esfera();
+				break;
+			case 2:
+				pinta_diagonal();
+				break;
+		}
+				
 	}
 	
-	public boolean es_hamiltoniano() {
-		for (int x=0; x<n; ++x){
-			for (int y=0; y<n; ++y) {
-				int k = 0;
-				for(int i=-1; i<2; ++i) {
-			    	for(int j=-1; j<2; ++j) {
-			    		if (enable_pos(x+i, y+j)) ++k;
-			    	}
-			    }
-				if (k < 2) return false;
+	public void pinta_esfera() {
+		for(int i=0; i < (n/2)+1; ++i) {
+			for (int j=0; j < n; ++j) {
+				if (j < (n/2)-i || j > (n/2)+i){
+					map[i][j].setvalue(-1);
+					map[n-i-1][j].setvalue(-1);
+					holes = holes + 2;
+					final_num = final_num - 2;
+				}
 			}
 		}
-		return true;
 	}
-
+	
+	public void pinta_diagonal() {
+		for(int i=0; i < n; ++i) {
+			map[i][i].setvalue(-1);
+		}
+		holes = n;
+		final_num = -n;
+	}
 
 }

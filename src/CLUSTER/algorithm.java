@@ -1,11 +1,15 @@
 package CLUSTER;
 
+import java.util.*;
+
 public class algorithm {
 
-	int nsols;
+	private int nsols;
+	private Random rm;
 	
 	public algorithm() {
 		nsols=0;
+		rm = new Random();
 	}
 	
 	/*
@@ -76,5 +80,34 @@ public class algorithm {
 			return result;
 			}
 		}
+		
+		public boolean generador(tablero map, int x, int y, int value){
+			boolean b = false;
+			if (value == map.final_num) return true;
+			else {
+				++value;
+				int i = 0, j = 0;
+				i = random();
+				j = random();
+				int limit = 0; //Per evitar que el bucle es travi
+				while ((i == 0 && j == 0) || map.suitable_pos(x+i, y+j) == false) { 
+					i = random();
+					j = random();
+					++limit;
+					if(limit == 100) return false;
+				}
+				map.setcell(x+i, y+j, value);
+				b = generador(map, x+i, y+j, value);
+				if (b == false) map.setcell(x+i, y+j, 0);
+			}
+			return b;
+		}
+		
+		private int random() {
+			int i = (int)(rm.nextInt(3)) - 1;
+			return i;
+			
+		}
+			
 }
 

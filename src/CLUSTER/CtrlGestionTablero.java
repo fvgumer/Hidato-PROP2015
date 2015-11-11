@@ -16,20 +16,26 @@ public class CtrlGestionTablero {
 	/*
 	 * Post: Se crea un tablero aleatorio con las caracteristicas de la cabezera
 	 */
-	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias) {
+	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias, int f) {
 		map = new tablero(n);
 		map.setholes(c_negras);
-		map.setfinal_num((n*n)-c_negras); 
+		map.setfinal_num((n*n)-c_negras);
+		if (f > 0) {
+			if (f == 1) map.pinta_esfera();
+			if (f == 2) map.pinta_diagonal();
+		}
 		omplir_forats_alea(c_negras);
-		setStartEnd_alea();
+		setStart_alea();
 		int[] start = map.getStart();
-		boolean b = a.solver(start[0], start[1], 1,map);
+		map.print();
+		boolean b = a.generador(map, start[0], start[1],1);
 		while (b == false) {
-			map.a_zero();
+			map.a_zero(f);
+			map.setfinal_num((n*n)-c_negras);
 			omplir_forats_alea(c_negras);
-			setStartEnd_alea();
+			setStart_alea();
 			start = map.getStart();
-			b = a.solver(start[0], start[1], 1,map);
+			b = a.generador(map, start[0], start[1],1);
 		}
 		generar_buits_alea(c_vacias);
 		map.print();
@@ -52,7 +58,6 @@ public class CtrlGestionTablero {
 	public void colocar_numero_casilla(int x, int y, int n) {
 		map.setcell(x,y,n);
 		if (n == 1) map.setStart(x,y);
-		//if (n == map.final_num) map.setEnd(x,y);
 	}
 	
 	/*
@@ -61,7 +66,7 @@ public class CtrlGestionTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		boolean b = a.solver(start[0], start[1], 1,map);
+		boolean b = a.solver(start[0], start[1], 1, map);
 		return b;
 	}
 	
@@ -72,15 +77,10 @@ public class CtrlGestionTablero {
 	public void escojer_forma(int f) {
 		switch (f) {
 			case 1: //Esfera xunga
-				for(int i=0; i < (map.n/2)+1; ++i) {
-					for (int j=0; j < map.n; ++j) {
-						if (j < (map.n/2)-i || j > (map.n/2)+i){
-							map.setcell(i, j, -1);
-							map.setcell(map.n - i-1, j, -1);
-							map.holes = map.holes - 2;
-						}
-					}
-				}
+				map.pinta_esfera();
+				break;
+			case 2: //Diagonal
+				map.pinta_diagonal();
 				break;
 		}	
 	}
@@ -151,5 +151,12 @@ public class CtrlGestionTablero {
 	}
 		pos[0] = x; pos[1] = y;
 		return pos;
+	}
+	
+	private void setStart_alea() {
+		int mida = map.n;
+		int[] pos;
+		pos = getRandom(mida);
+		map.setStart(pos[0],pos[1]);
 	}
 }
