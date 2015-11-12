@@ -45,7 +45,6 @@ public class SuperDriver {
 					break;
 				default: break;
 			}
-		s.close();
 		}
 		
 	}

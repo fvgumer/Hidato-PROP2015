@@ -109,7 +109,6 @@ public class Driver_ctrl_tablero {
 			case 4:
 				break;
 		}
-		s.close();
 	}
 	
 	private boolean comprueba_entrada(int i, int cap) {
