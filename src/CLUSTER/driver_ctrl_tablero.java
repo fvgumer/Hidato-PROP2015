@@ -1,13 +1,13 @@
 package CLUSTER;
 import java.util.Scanner;
 
-public class driver_ctrl_tablero {
+public class Driver_ctrl_tablero {
 	
 	private static CtrlGestionTablero prueba;
 	
 	public static void main (String[] args) {
-		String input = "1 4 0 2 0 0 1 2 0 16";
-		String input2 = "2 11 1 0 15";
+		String input = "1 0 0 2 0 0 1 2 0 16";
+		String input2 = "2 8 0 20 15";
 	    Scanner s = new Scanner(input2);
 		System.out.println("Menu Gestion Tablero:");
 		System.out.println("1.Crear tablero");

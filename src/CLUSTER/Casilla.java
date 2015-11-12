@@ -1,18 +1,16 @@
 package CLUSTER;
 
-public class Casilla {
+import G45.*;
 
-	private int value;
+public class Casilla extends Casilla_comp{
 	
+	/**
+	   * Constructora que pone por defecto el valor a 0 y
+	   * el bool a false.
+	   */
 	Casilla(){
-		value = 0;
-	}
-	
-	public void setvalue(int n){
-		value = n;
-	}
-	
-	public int getvalue(){
-		return value;
+		super();
+		por_defecto = false;
+		valor = 0;
 	}
 }

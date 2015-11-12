@@ -3,9 +3,9 @@ import CLUSTER.*;
  
 public class Casilla_comp {
  
-        private boolean candidatos[];
-    private boolean por_defecto; // si esta en true es una casilla que esta llena desde el comienzo.
-    private int valor;
+    protected boolean candidatos[];
+    protected boolean por_defecto; // si esta en true es una casilla que esta llena desde el comienzo.
+    protected int valor;
  
     /*Pre: cierto */
     public Casilla_comp() {
