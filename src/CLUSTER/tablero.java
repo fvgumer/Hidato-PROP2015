@@ -1,6 +1,7 @@
 package CLUSTER;
 
 import G45.*;
+import java.util.Arrays;
 
 public class Tablero extends Tablero_comp {
 	
@@ -23,12 +24,14 @@ public class Tablero extends Tablero_comp {
 		super(n);
 		this.holes = 0;
 		this.final_num = 0;
+		solucio = new Casilla[n][n];
 		for(int i=0; i<n; ++i) {
 			for(int j=0; j<n; ++j) {
 				tauler[i][j] = new Casilla();
 			}
 		}
 		start = end = new int[2];
+		
 	}
 	
 	/**
@@ -185,6 +188,32 @@ public class Tablero extends Tablero_comp {
 		}
 		holes = mida;
 		final_num = (mida*mida)-mida;
+	}
+	
+	/**
+	   * Se crea la solucion a partir de la instancia tablero que no contiene
+	   * ninguna casilla vacia
+	   */
+	public void crea_solucion() {
+		for(int i=0; i<mida; ++i) {
+			for (int j=0; j<mida; ++j) {
+				int aux = tauler[i][j].getValor();
+				solucio[i][j] = new Casilla(aux);
+			}
+		}
+	}
+	
+	public void mostra_solucio() {
+		for(int i=0; i < mida; ++i) {
+			for(int j = 0; j < mida; ++j) {
+				int value = solucio[i][j].getValor();
+				if (value == -1) System.out.print("." + " ");
+				else if (value == 0) System.out.print("_" + " ");
+				else System.out.print(value + " ");
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 }

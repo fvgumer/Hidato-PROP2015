@@ -36,7 +36,9 @@ public class CtrlGestionTablero {
 			start = map.getStart();
 			b = a.generador(map, start[0], start[1],1);
 		}
+		map.crea_solucion();
 		generar_buits_alea(c_vacias);
+		map.mostra_solucio();
 		map.print();
 	}
 	
@@ -103,6 +105,7 @@ public class CtrlGestionTablero {
 	
 	/**
 	   *El tablero se llena de n "forats" en posiciones aleatorias
+	   *@param n Contiene el numero de "forats" con el qe se llenara el tablero
 	   */
 	private void omplir_forats_alea(int n) {
 		int i = 0;
@@ -117,6 +120,7 @@ public class CtrlGestionTablero {
 	
 	/**
 	   *Se eliminan numeros del tablero de forma aleatoria
+	   *@param n Indica el numero de vacios que se generaran
 	   */
 	private void generar_buits_alea(int n) {
 		int[] pos;

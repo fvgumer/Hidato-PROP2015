@@ -107,7 +107,6 @@ public class Algorithm {
 		int i = (int)(rm.nextInt(3)) - 1;
 		return i;
 		
-	}
-			
+	}	
 }
 

@@ -8,7 +8,6 @@ public class SuperDriver {
 		Driver_ctrl_tablero d;
 		d = new Driver_ctrl_tablero();
 		boolean b = true;
-		
 		int i;
 		while (b) {
 			Scanner s = new Scanner(System.in);
