@@ -184,7 +184,7 @@ public class Tablero extends Tablero_comp {
 			tauler[i][i].setValor(-1);
 		}
 		holes = mida;
-		final_num = -mida;
+		final_num = (mida*mida)-mida;
 	}
 
 }

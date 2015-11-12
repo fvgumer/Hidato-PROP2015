@@ -4,11 +4,9 @@ import java.util.*;
 
 public class Algorithm {
 
-	private int nsols;
 	private Random rm;
 	
 	public Algorithm() {
-		nsols=0;
 		rm = new Random();
 	}
 	/**
@@ -16,9 +14,6 @@ public class Algorithm {
 	   * Solo se da una solucion (Puede haber varias).
 	   */
 	public boolean solver(int x, int y, int value, Tablero map) {
-		++nsols;
-		System.out.println(nsols);
-		if (nsols == 331612) map.print();
 		boolean result = false, predef = false;
 		if (value == map.get_final_num()) return true;
 		else {
@@ -41,8 +36,6 @@ public class Algorithm {
 	}
 	
 	public boolean solverv2(int x, int y, int value, Tablero map) {
-		++nsols;
-		System.out.println(nsols);
 		boolean result = false, predef = false;
 		if (value == map.get_final_num()) return true;
 		else {

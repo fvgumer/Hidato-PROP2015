@@ -17,7 +17,7 @@ public class Driver_ctrl_tablero {
 		System.out.println("1.Crear tablero");
 		System.out.println("2.Crear tablero aleatorio");
 		System.out.println("3.Eliminar un tablero del repositorio");
-		System.out.println("4.Salir");
+		System.out.println("4.Atras");
 	 	prueba = new CtrlGestionTablero();
 		int i = s.nextInt();
 		int n, casillas_negras, casillas_vacias, f;
@@ -28,7 +28,7 @@ public class Driver_ctrl_tablero {
 				while (!comprueba_entrada(n,10)) {n = s.nextInt();}
 				System.out.println("Escojer numero de casillas negras:");
 				casillas_negras = s.nextInt();
-				while (!comprueba_entrada(casillas_negras,n-2)) {
+				while (!comprueba_entrada(casillas_negras,(n*n)-2)) {
 					casillas_negras = s.nextInt();
 				}
 				prueba.ini(n, casillas_negras);
@@ -56,9 +56,12 @@ public class Driver_ctrl_tablero {
 					prueba.muestra_mapa();
 				}
 				int c_pre, val;
-				System.out.println("Escojer numero de casillas dadas previamente (principio y fin incluidos):");
+				System.out.println("Escojer numero de casillas dadas previamente (principio y fin incluidos)(2 minimo):");
 				c_pre = s.nextInt();
-				while (!comprueba_entrada(c_pre,(n*n)-casillas_negras)) {c_pre = s.nextInt();}
+				while (c_pre < 2 || !comprueba_entrada(c_pre,(n*n)-casillas_negras)) {
+					if (c_pre < 2) System.out.println("Minimo 2!");
+					c_pre = s.nextInt();
+					}
 				while (c_pre > 0) {
 					System.out.println("Faltan " + c_pre + " numeros por colocar");
 					System.out.println("Escoje la posicion y el valor del siguiente numero a colocar:");
@@ -82,26 +85,36 @@ public class Driver_ctrl_tablero {
 			case 2:
 				System.out.println("Escojer medidas del tablero cuadrado:");
 				n = s.nextInt();
+				while (!comprueba_entrada(n,10)) {n = s.nextInt();}
 				System.out.println("Escojer forma:");
 				System.out.println("	0.Sin forma");
 				System.out.println("	1.Esfera");
-				System.out.println("	2.Diagonal");
+				System.out.println("	2.Diagonal(Puede tardar con segun que medidas)");
 				f = s.nextInt();
+				while (!comprueba_entrada(f,2)) {f = s.nextInt();}
 				System.out.println("Escojer numero de casillas negras:");
 				casillas_negras = s.nextInt();
+				while (!comprueba_entrada(casillas_negras,(n*n)-2)) {
+					casillas_negras = s.nextInt();
+				}
 				System.out.println("Escojer numero de casillas vacias:");
 				casillas_vacias = s.nextInt();
+				while (!comprueba_entrada(casillas_vacias,(n*n)-casillas_negras-2)) {
+					casillas_vacias = s.nextInt();
+				}
 				System.out.println("Cargando...");
 				prueba.crear_tablero_aleatorio(n, casillas_negras, casillas_vacias,f);
 				System.out.println("Quieres guardar el tablero creado? [y/n]");
 				break;
-			case 5:
+			case 4:
+				break;
 		}
 		s.close();
 	}
 	
 	private boolean comprueba_entrada(int i, int cap) {
 		if (i > cap) System.out.println("Valor erroneo");
+		if (i < 0) return false;
 		return i <= cap;
 	}
 }
