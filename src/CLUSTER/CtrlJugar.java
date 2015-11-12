@@ -1,13 +1,85 @@
 package CLUSTER;
 
-import G45.Partida_Comp;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import G45.Partida_comp;
+
 
 public class CtrlJugar {
 	private ClassPartidaHidato PH;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
-	private Reloj R1;
 
+	
+	/*Pre: x,y son les coordenades del tauler en que es vol saber quin son els seus
+	 * candidats, posats es un boolea on si el seu el element es cert ens diu que
+	 * esta al tauler*/
+	public ArrayList<Integer> bus_cantidats(int x, int y, int forats, boolean[] posats){
+		for (int i = 0; i < posats.length; ++i) {
+			if (posats[i]) System.out.println(i+1);
+		}
+		ArrayList<Integer> posibles = new ArrayList<Integer>();
+		contar_num_costats(x - 1,y,posibles,posats);
+		contar_num_costats(x - 1,y + 1,posibles,posats);
+		contar_num_costats(x + 1,y - 1,posibles,posats);
+		contar_num_costats(x + 1,y,posibles,posats);
+		contar_num_costats(x + 1,y + 1,posibles,posats);
+		contar_num_costats(x - 1 ,y + 1,posibles,posats);
+		contar_num_costats(x,y + 1,posibles,posats);
+		contar_num_costats(x,y - 1,posibles,posats);
+			
+			return posibles;
+	}
+	
+	 private void contar_num_costats(int x, int y, ArrayList<Integer> posibles, boolean[] posats) {
+		 System.out.println("SOY EL NUMERO "+ x + " "+ y);	
+		 if (x >= 0 && y >= 0 && x < PH.get_dimensiont() && y < PH.get_dimensiont()) {
+				int valor = PH.getvalorcellpartida(x, y);	
+				if ( valor > 0) {
+					if (valor - 1 > 0 && !posats[valor-2])  {
+						posats[valor-2]=true; //Para que no se vuelva a meter
+						posibles.add(valor-1);
+					}
+					if (valor - 2 > 0 && !posats[valor-1]) {
+						posats[valor-1]=true;
+						posibles.add(valor-2);
+					}
+					if (valor + 1 <= posats.length && !posats[valor]){
+						posats[valor]=true;
+						posibles.add(valor+1);
+					}
+					if (valor + 2 <= posats.length && !posats[valor+1]){
+						posibles.add(valor+2);
+					}
+				}
+			}
+	 }
+		public  void elementos_matriz (int x, int y, int dim, boolean[] posibles)
+	    {
+		if ( x >= 0 && y >= 0 && x < dim && y < dim) {
+		    if (PH.getvalorcellpartida(x, y) > 0) {
+		    	int valor = PH.getvalorcellpartida(x, y);
+		    	posibles[valor - 1] = true;
+
+		    }
+		    elementos_matriz(x, y - 1, dim, posibles);
+		}
+	    if (y < 0)
+			elementos_matriz (x - 1, dim-1, dim, posibles);
+	    }
+	
+	
+	private void modificar_puntuacion(int punt) {
+		int p = PH.get_puntuacion();
+		if (punt < 0) {
+			if (p > punt)PH.set_puntuacion(p + punt);
+			else PH.set_puntuacion(0);
+		}
+		else PH.set_puntuacion(p + punt);
+	}
+	
+	/*Pre: dimension de el tablero*/
 	private void  print_tvacio(int n) {
 		for (int i = 0; i < n; ++i){
 			for(int j = 0; j < n; ++i) {
@@ -47,12 +119,42 @@ public class CtrlJugar {
 		int valor= PH.getvalorcelloriginal(x,y);
 		PH.modificar_casilla(x,y,valor);
 	}
-	
-	/*__________NO_IMPLEMENTADO_________________*/
-	public void pista2(){
-		
+
+	/*Pre: x,y es la posicion de memoria donde se quiere mirar sus candidatos. 
+	 * dim, dimensiones del tablero y forats las posiciones no validad*/
+	public void pista2(int x, int y, int dim, int forats){
+		boolean[] posibles = new boolean[dim*dim-forats];
+		//Busca  los elementos que ya estan en el tablero
+		elementos_matriz(dim-1, dim-1, dim, posibles);
+		//Se guardan los enteros candidatos
+		ArrayList<Integer> can = bus_cantidats(x, y, forats, posibles);
+		//Salen por pantalla
+		for (int i = 0; i < can.size(); ++i) {
+			System.out.println(can.get(i));
+		}
 	}
+	/*Post:  Sale por pantalla la lista de enteros que pueden ponerse en 
+	 * la posicion indicada en la pre*/
 	
+	public void pista3(int dim, int forats){
+		boolean[] posibles = new boolean[dim*dim-forats];
+		//Busca  los elementos que ya estan en el tablero
+		elementos_matriz(dim-1, dim-1, dim, posibles);
+		//Se guardan los enteros candidatos
+		for (int i = 0; i < dim; ++i) {
+			for(int j = 0; i < dim; ++j) {
+				if (PH.getvalorcelloriginal(i, i) >0) {
+					System.out.println("CANDIDATOS DE LA POSICION ("+i+","+j+")");
+					ArrayList<Integer> can = bus_cantidats(i, j,forats, posibles);
+					//Salen por pantalla
+					for (int k = 0; k < can.size(); ++k) {
+						System.out.println(can.get(k));
+					}
+				}
+			}
+		}
+	}
+
 	public void rendirse(){
 		PH.set_puntuacion(0);
 		//NO GUARDAR PARTIDA (NO IMPLEMENTADO)

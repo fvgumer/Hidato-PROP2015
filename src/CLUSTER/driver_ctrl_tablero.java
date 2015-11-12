@@ -7,7 +7,7 @@ public class driver_ctrl_tablero {
 	
 	public static void main (String[] args) {
 		String input = "1 4 0 2 0 0 1 2 0 16";
-		String input2 = "2 8 0 6 30";
+		String input2 = "2 11 1 0 15";
 	    Scanner s = new Scanner(input2);
 		System.out.println("Menu Gestion Tablero:");
 		System.out.println("1.Crear tablero");
