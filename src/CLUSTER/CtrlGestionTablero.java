@@ -54,9 +54,11 @@ public class CtrlGestionTablero {
 	   *Post: Se coloca el numero n en la posicion (x,y) del tablero. Si n=-1 se considera que
 	   * la casilla sera negra. Si n=0 se considera que la casilla sera vacia.
 	   */
-	public void colocar_numero_casilla(int x, int y, int n) {
+	public boolean colocar_numero_casilla(int x, int y, int n) {
+		if(!map.suitable_pos(x, y) || n > map.get_final_num()) return false;
 		map.setValorTauler(x,y,n);
 		if (n == 1) map.setStart(x,y);
+		return true;
 	}
 	
 	/**
@@ -90,6 +92,13 @@ public class CtrlGestionTablero {
 				break;
 			default: break;
 		}	
+	}
+	
+	public boolean colocar_forat_man(int x, int y) {
+		boolean b;
+		if (!map.enable_pos(x, y)) return false;
+		map.setValorTauler(x, y, -1);
+		return true;
 	}
 	
 	/**
