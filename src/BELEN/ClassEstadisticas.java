@@ -11,6 +11,8 @@ public class ClassEstadisticas implements Serializable{
 	private int mejorPuntuacion;
 	private ArrayList<String> tablerosCreados;
 	
+	private static final long serialVersionUID = 1L;
+	
 	
 	ClassEstadisticas(){
 		partidasJugadas = segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
