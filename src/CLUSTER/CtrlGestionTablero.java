@@ -96,11 +96,22 @@ public class CtrlGestionTablero {
 		}	
 	}
 	
+	/**
+	   *Funcion que permite colocar "forats" en la posicion (x,y) de map. Si la posicion no
+	   *es valida se retorna false y la variable map no sufre ningun cambio.
+	   */
 	public boolean colocar_forat_man(int x, int y) {
-		boolean b;
 		if (!map.enable_pos(x, y)) return false;
 		map.setValorTauler(x, y, -1);
 		return true;
+	}
+	
+	/**
+	   *Se asocia el tablero t con el tablero de la clase map
+	   *@param t es el tablero que se quiere asociar
+	   */
+	public void asociar_tablero(Tablero t) {
+		t = this.map;
 	}
 	
 	/**
@@ -119,7 +130,7 @@ public class CtrlGestionTablero {
 	}
 	
 	/**
-	   *Se eliminan numeros del tablero de forma aleatoria
+	   *Se eliminan n numeros del tablero map de forma aleatoria
 	   *@param n Indica el numero de vacios que se generaran
 	   */
 	private void generar_buits_alea(int n) {
@@ -137,8 +148,8 @@ public class CtrlGestionTablero {
 	}
 	
 	/**
-	   *Post: Se comprueba que se puede quitar un numero de la posicion (x,y). Es decir, que el valor de la casilla
-	   * no sea ni 1, 0, final_num o bien una posicion de fuera el tablero
+	   *Post: Se comprueba que se puede quitar un numero de la posicion (x,y).
+	   *No se pueden quitar numeros de casillas vacias, "forats" o bien principio y final.
 	   */
 	private boolean bona_pos_buits(int x, int y) {
 		if (map.enable_pos(x, y) == false) return false;
@@ -148,7 +159,8 @@ public class CtrlGestionTablero {
 	}
 	
 	/**
-	   *Devuelve un entero aleatorio entre 1 i n
+	   *Devuelve una posicion aleatoria de map[n][n]. Se comprueba que la posicion no
+	   *esta ocupada por ningun "forat".
 	   */
 	private int[] getRandom(int n) {
 		int[] pos = new int[2];
@@ -163,7 +175,7 @@ public class CtrlGestionTablero {
 	}
 	
 	/**
-	   *Se determina la posicion aleatorio del primer numero, el punto de partida
+	   *Se determina una posicion aleatoria del primer numero, el punto de partida
 	   */
 	private void setStart_alea() {
 		int mida = map.getMida();
