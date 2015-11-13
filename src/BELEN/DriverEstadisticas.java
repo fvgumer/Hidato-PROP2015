@@ -10,8 +10,8 @@ public class DriverEstadisticas {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Introduce el nombre de un jugador para consultar sus estadísticas.\n");
 		String jugador = scan.nextLine();
-		CE.leerEst(jugador);
-		CE.mostrarEst(jugador);
+		CE.cargarEst(jugador);
+		CE.mostrarEst();
 		scan.close();
 	}
 }
