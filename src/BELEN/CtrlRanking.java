@@ -8,58 +8,35 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import JOEL.CtrlGestionPartida;
+
 public class CtrlRanking {
 
 	private ClassRanking R;
+	CtrlGestionPartida GP;
 	
 	CtrlRanking() {
 		
 	}
 	
-	private void escribirRank(String tablero) {
-		try {
-			FileOutputStream rnk = new FileOutputStream("rankings\\"+tablero+".bin");
-			ObjectOutputStream obj = new ObjectOutputStream(rnk);
-			
-			obj.writeObject(R);
-			obj.close();
-			} catch (FileNotFoundException e){
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	}
-	
-	 public void leerRank(String tablero) {
-		try {
-			FileInputStream rnk = new FileInputStream("estadisticas\\"+tablero+".bin");
-			ObjectInputStream obj = new ObjectInputStream(rnk);
-			
-			R = (ClassRanking) obj.readObject();
-			obj.close();
-			
-			} catch (ClassNotFoundException e){
-				e.printStackTrace();
-			} catch (FileNotFoundException e){
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	}
 	
 	public void crearRanking(String tablero) {
-		R = new ClassRanking();
-		escribirRank(tablero);
+		R = new ClassRanking(tablero);
+		GP.guardar(R);
 	}
 	
-	public void getTop(String tablero, int n){
+	public void cargarRanking(String tablero) {
+		R = GP.cargar(tablero);
+	}
+	
+	public void getTop(int n){
 		System.out.print("Jugador  ||  Modo  ||  Dificultad  || Puntuación\n");	//las lineas no se veran alineadas entre si :'(
 		for (int i = 0; i < n; ++i){
 			R.mostrarPosicion(i);
 		}
 	}
 	
-	public void anadirResultado(String tablero, ClassResultado r) {
+	public void anadirResultado(ClassResultado r) {
 		int found = 0;
 		int i = 0;
 		while (i < R.size() && found == 0) {
@@ -69,6 +46,14 @@ public class CtrlRanking {
 			}
 			++i;
 		}
+		GP.guardar(R);
 	}
+	
+	public void eliminarResultados(String jugador) { //cuando eliminamos un jugador
+		for (int i = 0; i < R.size(); ++i) {
+			if (R.getPosicion(i).getJugador() == jugador) R.eliminarResultado(i);
+		}
+		GP.guardar(R);
+	} 
 	
 }
