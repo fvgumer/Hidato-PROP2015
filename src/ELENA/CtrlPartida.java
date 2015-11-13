@@ -1,5 +1,6 @@
 package ELENA;
 
+import ClassPartidaHidato;
 import ALEX.*;
 import JOEL.*;
 //import java.util.Random;

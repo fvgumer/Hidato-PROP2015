@@ -1,14 +1,5 @@
 package JOEL;
-import java.io.FileNotFoundException;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.*;
-import java.util.*;
 import java.util.Scanner;
-import java.lang.Object;
 
 public class DriverGestionUsuario {
 
@@ -17,7 +8,7 @@ public class DriverGestionUsuario {
 		int i = 0;
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
-		contrpersistenciausuario controlador = new contrpersistenciausuario();
+		CtrlGestionUsuario controlador = new CtrlGestionUsuario();
 		while(i != -1){
 			System.out.print("Introduce codigo operación 1= crear , 2 = eliminar , 3= guardar, 4= cargar");
 			i = scan.nextInt();

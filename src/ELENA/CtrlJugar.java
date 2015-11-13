@@ -3,6 +3,8 @@ package ELENA;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import ClassPartidaHidato;
 import G45.Partida_comp;
 import ALEX.*;
 
