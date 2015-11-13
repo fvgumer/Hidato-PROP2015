@@ -53,6 +53,7 @@ public class CtrlRanking {
 	}
 	
 	public void getTop(String tablero, int n){
+		System.out.print("Jugador  ||  Modo  ||  Dificultad  || Puntuación\n")	//las lineas no se veran alineadas entre si :'(
 		for (int i = 0; i < n; ++i){
 			R.mostrarPosicion(i);
 		}
