@@ -1,16 +1,6 @@
-package BELEN;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.*;
+package hidato;
 
 import java.util.*;
-
-import java.lang.Object;
-
 
 public class DriverEstadisticas {
 
@@ -22,5 +12,6 @@ public class DriverEstadisticas {
 		String jugador = scan.nextLine();
 		CE.leerEst(jugador);
 		CE.mostrarEst(jugador);
+		scan.close();
 	}
 }
