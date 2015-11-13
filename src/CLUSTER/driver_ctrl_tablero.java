@@ -29,10 +29,11 @@ public class Driver_ctrl_tablero {
 			int i = s.nextInt();
 			switch (i) {
 				case 1:
-					System.out.println("Escojer medidas del tablero cuadrado:");
+					System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
+					System.out.println("ATENCION: El valor maximo depende de forma del tablero");
 					n = s.nextInt();
-					while (!comprueba_entrada(n,10)) {n = s.nextInt();}
-					System.out.println("Escojer numero de casillas negras:");
+					while (!comprueba_entrada(n,15)) {n = s.nextInt();}
+					System.out.println("Escojer numero de casillas negras:[0,"+((n*n)-2)+"]");
 					casillas_negras = s.nextInt();
 					while (!comprueba_entrada(casillas_negras,(n*n)-2)) {
 						casillas_negras = s.nextInt();
@@ -62,7 +63,7 @@ public class Driver_ctrl_tablero {
 						prueba.muestra_mapa();
 					}
 					int c_pre, val;
-					System.out.println("Escojer numero de casillas dadas previamente (principio y fin incluidos)(2 minimo):");
+					System.out.println("Escojer numero de casillas vacias:[1,(n*n)-casillas_negras-2]");
 					c_pre = s.nextInt();
 					while (c_pre < 2 || !comprueba_entrada(c_pre,(n*n)-casillas_negras)) {
 						if (c_pre < 2) System.out.println("Minimo 2!");

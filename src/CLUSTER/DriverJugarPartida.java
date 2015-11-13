@@ -20,6 +20,7 @@ public class DriverJugarPartida {
 
 	
 	private void coger_datos(int dim, int abuj, int c_ini) {
+
 		//DIMENSIONES
 		System.out.print("Escojer medidas del tablero cuadrado:");
 		dim = sn.nextInt();
@@ -43,10 +44,11 @@ public class DriverJugarPartida {
 		}
 		
 	}
+	
 	public void excec(Jugador J, CtrlGestionTablero CT) {
 		sn = new Scanner(System.in);
 		CP = new CtrlPartida();
-		int modo;
+		int modo,dim,abuj,c_ini;
 		//1. MODO GESTION JUEGO
 		// [0]Decidir cargar
 		// [1]Crear Partida
@@ -60,7 +62,6 @@ public class DriverJugarPartida {
 			else if (modo == 1) { //[1]
 				incorrecto = false;
 				//1. Elegir Caracteristicas
-				int dim,abuj,c_ini;
 				coger_datos(dim,abuj,c_ini);
 				
 				CP.anadir_carct_tablero(dim,abuj,c_ini);
@@ -92,7 +93,7 @@ public class DriverJugarPartida {
 		if (modo == 2) {
 			int tiempo = sn.nextInt(); //EN SEGUNDOS
 			Timer tiemp = new Timer();
-			tiemp.setTimeout(CJ.rendirse(), tiempo*1000);
+			//tiemp.setTimeout(CJ.rendirse(), tiempo*1000);
 		}
 		else if (modo == 3) { //EXTREME
 			
@@ -100,6 +101,7 @@ public class DriverJugarPartida {
 		int x,y;
 		while(bucle){
 			modo = sn.nextInt();
+			CJ.print();
 			switch(modo){
 	
 			case 0: //PAUSA
@@ -114,13 +116,14 @@ public class DriverJugarPartida {
 			case 3: //PISTA
 					modo = sn.nextInt();
 					//1. Que te diga que numero es
-					if (modo == 0) {
+					if (modo == 0 || modo == 1) {
 						x = sn.nextInt();
 						y = sn.nextInt();
-						CJ.pista1(x,y); //INTRODUCE NUM. CORRECTO
+						if (modo == 0)CJ.pista1(x,y); //INTRODUCE NUM. CORRECTO
+						else CJ.pista2(x, y, dim, abuj);
 					}
-					//2. Mirar entre todas las opciones
-					else if (modo == 1) CJ.pista2();
+					else if (modo == 2) CJ.pista3(dim,abuj);
+					else System.out.println("Valor Incorrecto");
 					break;
 			case 4: //SALIR
 					//Preguntar si guardar 
