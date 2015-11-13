@@ -70,6 +70,8 @@ public class CtrlGestionTablero {
 		int[] start;
 		start = map.getStart();
 		boolean b = a.solver(start[0], start[1], 1, map);
+		map.print();
+		map.mostra_solucio();
 		return b;
 	}
 	

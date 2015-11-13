@@ -6,14 +6,15 @@ public class Driver_ctrl_tablero {
 	private CtrlGestionTablero prueba;
 	private Scanner s;
 	int n, casillas_negras, casillas_vacias, f;
+	String input = "1 4 2 0 0 1 2 3 2 0 0 1 0 3 14";
 	
 	public Driver_ctrl_tablero() {
-		s = new Scanner(System.in);
+		s = new Scanner(input);
 	}
 	
 	public Driver_ctrl_tablero(CtrlGestionTablero p) {
 		this.prueba = p;
-		s = new Scanner(System.in);
+		s = new Scanner(input);
 	}
 	
 	public void exec () {
@@ -84,7 +85,7 @@ public class Driver_ctrl_tablero {
 					else {
 						System.out.println("El tablero no tiene solucion :(");
 					}
-					prueba.muestra_mapa();
+					//prueba.muestra_mapa();
 					break;
 				case 2:
 					crear_aleatorio(prueba);

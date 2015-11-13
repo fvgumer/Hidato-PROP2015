@@ -9,8 +9,9 @@ public class SuperDriver {
 		d = new Driver_ctrl_tablero();
 		boolean b = true;
 		int i;
+		String input = "2";
 		while (b) {
-			Scanner s = new Scanner(System.in);
+			Scanner s = new Scanner(input);
 			System.out.println("HIDATO");
 			/*System.out.println("Hola! Entro con tu usuario o bien crea uno nuevo:");
 			System.out.println("1.Login");
