@@ -3,26 +3,24 @@ package CLUSTER;
 import G45.*;
 
 public class ClassPartidaHidato extends Partida_comp {
-	Tablero tablero1;
-	tableroP = tablero1;
+
 	private int estado; 
 	private int dificultad;
 	private int modo;
 	private int puntuacion;
 
 	
-	public ClassPartidaHidato(Tablero T, Usuario_comp U, int ID){
+	public ClassPartidaHidato(Tablero T, Usuario_comp U, int ID,int dim){
+		
 		super(T,U,ID);
+		tableroP = new Tablero(dim);
 		estado = 2;
 		dificultad = 0; //NO TIENE
 		modo = 0; //NO TIENE
 		puntuacion = 0;
 	}
 	
-	public void anadir_atributosprin(Usuario_comp J, Tablero T, int ID) {
-		
-		
-	}
+	
 
 	public void set_dificultad(int dificultad){
 		this.dificultad = dificultad;

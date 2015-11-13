@@ -44,9 +44,9 @@ public class CtrlPartida {
 		//Sacar TOP5 de los mas parecidos
 		
 	}
-	public void crear_partida(Jugador U, int dificultad,int modo){
+	public void crear_partida(Jugador U, int dificultad,int modo, int dim){
 		int ID = 0; //CALCULAR ID
-		PH = new ClassPartidaHidato(T,U,ID);
+		PH = new ClassPartidaHidato(T,U,ID,dim);
 		PH.set_dificultad(dificultad);
 		PH.set_modo(modo);
 	}

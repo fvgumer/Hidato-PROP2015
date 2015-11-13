@@ -78,7 +78,7 @@ public class DriverJugarPartida {
 				//Elegir Parametros Juego
 				int dificultad = sn.nextInt();
 				modo = sn.nextInt(); //CODIF: [1]Clasico [2]Contrareloj [3] Extrem
-				CP.crear_partida(J,dificultad,modo);
+				CP.crear_partida(J,dificultad,modo,dim);
 			}
 			else {
 				System.out.println("DATO MAL INTRODUCIDO");
