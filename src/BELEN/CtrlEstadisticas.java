@@ -15,13 +15,30 @@ public class CtrlEstadisticas {
 		
 	}
 	
-	public void escribirEst(String jugador) {
+	private void escribirEst(String jugador) {
 		try {
 			FileOutputStream est = new FileOutputStream("estadisticas\\"+jugador+".bin");
 			ObjectOutputStream obj = new ObjectOutputStream(est);
 			
 			obj.writeObject(E);
 			obj.close();
+			} catch (FileNotFoundException e){
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	}
+	
+	public void leerEst(String jugador) {
+		try {
+			FileInputStream est = new FileInputStream("estadisticas\\"+jugador+".bin");
+			ObjectInputStream obj = new ObjectInputStream(est);
+			
+			E = (ClassEstadisticas) obj.readObject();
+			obj.close();
+			
+			} catch (ClassNotFoundException e){
+				e.printStackTrace();
 			} catch (FileNotFoundException e){
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -58,22 +75,6 @@ public class CtrlEstadisticas {
 	/* Post: Se ha actualizado el listado de tableros creados por el
 	 * jugador correspondiente*/
 	
-	public void leerEst(String jugador) {
-		try {
-			FileInputStream est = new FileInputStream("estadisticas\\"+jugador+".bin");
-			ObjectInputStream obj = new ObjectInputStream(est);
-			
-			E = (ClassEstadisticas) obj.readObject();
-			obj.close();
-			
-			} catch (ClassNotFoundException e){
-				e.printStackTrace();
-			} catch (FileNotFoundException e){
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	}
 	
 	public void mostrarEst(String jugador) {
 		E.mostrarPartidasJugadas();
