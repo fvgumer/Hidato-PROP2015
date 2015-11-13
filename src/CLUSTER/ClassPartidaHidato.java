@@ -8,14 +8,11 @@ public class ClassPartidaHidato extends Partida_comp {
 	private int dificultad;
 	private int modo;
 	private int puntuacion;
-
-	public ClassPartidaHidato() {
-		tableroP = new Tablero();
-	}
+	protected Tablero tableroP;
 	
 	public ClassPartidaHidato(Tablero T, Usuario_comp U, int ID, int dim){
-		super();
-		tableroP = new Tablero(dim);
+		super(T,U,ID);
+		tableroP = T;
 		estado = 2;
 		dificultad = 0; //NO TIENE
 		modo = 0; //NO TIENE
@@ -54,12 +51,12 @@ public class ClassPartidaHidato extends Partida_comp {
 	}
 	
 	public int getvalorcelloriginal(int x, int y){
-		int valor = tableroP.getcellvalue(x,y); //DEL TABLERO SOLUCION (MAL)
+		int valor = tableroP.getValorTauler(x,y); //DEL TABLERO SOLUCION (MAL)
 		return valor;
 	}
 	
 	public int getvalorcellpartida(int x, int y){
-		int valor = tableroP.getcellvalue(x,y); //DEL TABLERO SOLUCION (MAL)
+		int valor = tableroP.getValorTauler(x,y); //DEL TABLERO SOLUCION (MAL)
 		return valor;
 	}
 	

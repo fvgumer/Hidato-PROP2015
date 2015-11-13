@@ -12,7 +12,7 @@ public class Partida_comp {
  
     /*Pre: cierto */
     public Partida_comp() {
-    	
+ 
     }
     /* Post: se crea una partida sin parámetros */
  
