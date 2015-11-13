@@ -1,5 +1,6 @@
-package CLUSTER;
+package ELENA;
 
+import ALEX.Tablero;
 import G45.*;
 
 public class ClassPartidaHidato extends Partida_comp {

@@ -1,4 +1,4 @@
-package CLUSTER;
+package BELEN;
 
 public class ClassResultado {
 

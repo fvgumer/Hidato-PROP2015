@@ -2,7 +2,8 @@ package CLUSTER;
 
 
 import java.util.*;
-import CLUSTER.Algorithm;
+
+import ALEX.Algorithm;
 
 public class Prueba {
 	private static Scanner sn;

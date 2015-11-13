@@ -1,4 +1,4 @@
-package CLUSTER;
+package ALEX;
 import java.util.Scanner;
 
 public class Driver_ctrl_tablero {

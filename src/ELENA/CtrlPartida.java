@@ -1,7 +1,10 @@
-package CLUSTER;
+package ELENA;
 
+import ALEX.CtrlGestionTablero;
+import ALEX.Tablero;
 //import java.util.Random;
 import G45.Partida_comp;
+import JOEL.Jugador;
 
 public class CtrlPartida {
 	//CONSTANTES

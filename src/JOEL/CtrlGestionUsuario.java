@@ -1,4 +1,4 @@
-package CLUSTER;
+package JOEL;
 
 import java.io.File;
 import java.io.FileInputStream;

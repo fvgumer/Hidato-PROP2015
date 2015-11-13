@@ -1,8 +1,11 @@
-package CLUSTER;
+package ELENA;
 
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import ALEX.CtrlGestionTablero;
+import JOEL.Jugador;
 
 public class DriverJugarPartida {
 	private static CtrlPartida CP;
