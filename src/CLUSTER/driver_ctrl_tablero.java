@@ -128,21 +128,22 @@ public class Driver_ctrl_tablero {
 	}
 	
 	public void crear_aleatorio(CtrlGestionTablero c) {
-		System.out.println("Escojer medidas del tablero cuadrado:");
+		System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
+		System.out.println("ATENCION: El valor maximo depende de forma del tablero");
 		n = s.nextInt();
-		while (!comprueba_entrada(n,10)) {n = s.nextInt();}
+		while (!comprueba_entrada(n,15)) {n = s.nextInt();}
 		System.out.println("Escojer forma:");
 		System.out.println("	0.Sin forma");
 		System.out.println("	1.Esfera");
 		System.out.println("	2.Diagonal(Puede tardar con segun que medidas)");
 		f = s.nextInt();
 		while (!comprueba_entrada(f,2)) {f = s.nextInt();}
-		System.out.println("Escojer numero de casillas negras:");
+		System.out.println("Escojer numero de casillas negras:[0,(n*n)-2)]");
 		casillas_negras = s.nextInt();
 		while (!comprueba_entrada(casillas_negras,(n*n)-2)) {
 			casillas_negras = s.nextInt();
 		}
-		System.out.println("Escojer numero de casillas vacias:");
+		System.out.println("Escojer numero de casillas vacias:[1,(n*n)-casillas_negras-2]");
 		casillas_vacias = s.nextInt();
 		while (!comprueba_entrada(casillas_vacias,(n*n)-casillas_negras-2)) {
 			casillas_vacias = s.nextInt();
