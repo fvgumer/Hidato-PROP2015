@@ -213,6 +213,10 @@ public class Tablero extends Tablero_comp {
 		return solucion_unica;
 	}
 	
+	public int getValorSolucio(int x, int y) {
+		return solucio[x][y].getValor();
+	}
+	
 	public void mostra_solucio() {
 		for(int i=0; i < mida; ++i) {
 			for(int j = 0; j < mida; ++j) {

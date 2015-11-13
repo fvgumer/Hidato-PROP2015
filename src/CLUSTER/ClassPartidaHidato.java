@@ -9,10 +9,12 @@ public class ClassPartidaHidato extends Partida_comp {
 	private int modo;
 	private int puntuacion;
 
+	public ClassPartidaHidato() {
+		tableroP = new Tablero();
+	}
 	
-	public ClassPartidaHidato(Tablero T, Usuario_comp U, int ID,int dim){
-		
-		super(T,U,ID);
+	public ClassPartidaHidato(Tablero T, Usuario_comp U, int ID, int dim){
+		super();
 		tableroP = new Tablero(dim);
 		estado = 2;
 		dificultad = 0; //NO TIENE
