@@ -4,6 +4,7 @@ package ELENA;
 import java.util.ArrayList;
 import java.util.Scanner;
 import G45.Partida_comp;
+import ALEX.*;
 
 public class CtrlJugar {
 	private ClassPartidaHidato PH;
@@ -32,24 +33,43 @@ public class CtrlJugar {
 	}
 	
 	 private void contar_num_costats(int x, int y, ArrayList<Integer> posibles, boolean[] posats) {
+		 Algorithm a = new Algorithm();
 		 System.out.println("SOY EL NUMERO "+ x + " "+ y);	
 		 if (x >= 0 && y >= 0 && x < PH.get_dimensiont() && y < PH.get_dimensiont()) {
-				int valor = PH.getvalorcellpartida(x, y);	
+				int valor = PH.get_valorcasilla(x, y);	
 				if ( valor > 0) {
-					if (valor - 1 > 0 && !posats[valor-2])  {
-						posats[valor-2]=true; //Para que no se vuelva a meter
-						posibles.add(valor-1);
+					if (valor - 1 > 0 && !posats[valor-2]){
+						PH.set_valorcasilla(x, y, valor-1);
+						if (a.solver(x, y, valor-1, PH.get_tablero()))  {
+							posats[valor-2]=true; //Para que no se vuelva a meter
+							posibles.add(valor-1);
+						}
+						PH.set_valorcasilla(x,y,0);
 					}
+						
 					if (valor - 2 > 0 && !posats[valor-1]) {
-						posats[valor-1]=true;
-						posibles.add(valor-2);
+						PH.set_valorcasilla(x, y, valor-2);
+						if (a.solver(x, y, valor-2, PH.get_tablero()))  {
+							posats[valor-1]=true; //Para que no se vuelva a meter
+							posibles.add(valor-2);
+						}
+						PH.set_valorcasilla(x,y,0);
 					}
 					if (valor + 1 <= posats.length && !posats[valor]){
-						posats[valor]=true;
-						posibles.add(valor+1);
+						PH.set_valorcasilla(x, y, valor+1);
+						if (a.solver(x, y, valor+1, PH.get_tablero()))  {
+							posats[valor]=true; //Para que no se vuelva a meter
+							posibles.add(valor+1);
+						}
+						PH.set_valorcasilla(x,y,0);
 					}
 					if (valor + 2 <= posats.length && !posats[valor+1]){
-						posibles.add(valor+2);
+						PH.set_valorcasilla(x, y, valor+2);
+						if (a.solver(x, y, valor+2, PH.get_tablero()))  {
+							posats[valor+1]=true; //Para que no se vuelva a meter
+							posibles.add(valor+2);
+						}
+						PH.set_valorcasilla(x,y,0);
 					}
 				}
 			}
@@ -57,8 +77,8 @@ public class CtrlJugar {
 		public  void elementos_matriz (int x, int y, int dim, boolean[] posibles)
 	    {
 		if ( x >= 0 && y >= 0 && x < dim && y < dim) {
-		    if (PH.getvalorcellpartida(x, y) > 0) {
-		    	int valor = PH.getvalorcellpartida(x, y);
+		    if (PH.get_valorcasilla(x, y) > 0) {
+		    	int valor = PH.get_valorcasilla(x, y);
 		    	posibles[valor - 1] = true;
 
 		    }
@@ -90,7 +110,6 @@ public class CtrlJugar {
 	}
 	
 	public void jugar_partida(ClassPartidaHidato PH2){
-		PH = new ClassPartidaHidato();
 		PH = PH2;
 	}
 
@@ -98,7 +117,7 @@ public class CtrlJugar {
 		if (PH.get_estado() == GAME) {
 			PH.set_estado(PAUSE);
 			//Tapar PANTALLA
-			print_tvacio(PH.set_dimensiont());
+			print_tvacio(PH.get_dimensiont());
 		}
 		//Si ja esta parat no fer res
 		
@@ -115,13 +134,15 @@ public class CtrlJugar {
 	}
 	
 	public void pista1(int x, int y){
-		int valor= PH.getvalorcelloriginal(x,y);
-		PH.modificar_casilla(x,y,valor);
+		modificar_puntuacion(-10);
+		int valor= PH.get_valorcasillasolucion(x,y);
+		PH.set_valorcasilla(x,y,valor);
 	}
 
 	/*Pre: x,y es la posicion de memoria donde se quiere mirar sus candidatos. 
 	 * dim, dimensiones del tablero y forats las posiciones no validad*/
 	public void pista2(int x, int y, int dim, int forats){
+		modificar_puntuacion(-5);
 		boolean[] posibles = new boolean[dim*dim-forats];
 		//Busca  los elementos que ya estan en el tablero
 		elementos_matriz(dim-1, dim-1, dim, posibles);
@@ -136,13 +157,14 @@ public class CtrlJugar {
 	 * la posicion indicada en la pre*/
 	
 	public void pista3(int dim, int forats){
+		modificar_puntuacion(-10);
 		boolean[] posibles = new boolean[dim*dim-forats];
 		//Busca  los elementos que ya estan en el tablero
 		elementos_matriz(dim-1, dim-1, dim, posibles);
 		//Se guardan los enteros candidatos
 		for (int i = 0; i < dim; ++i) {
 			for(int j = 0; i < dim; ++j) {
-				if (PH.getvalorcelloriginal(i, i) >0) {
+				if (PH.get_valorcasillasolucion(i, i) >0) {
 					System.out.println("CANDIDATOS DE LA POSICION ("+i+","+j+")");
 					ArrayList<Integer> can = bus_cantidats(i, j,forats, posibles);
 					//Salen por pantalla
@@ -168,25 +190,28 @@ public class CtrlJugar {
 	
 	public void introducirCasilla(int x, int y,int valor){
 		//1. INTRODUCIR CASILLA
-		PH.modificar_casilla(x,y,valor);
-		//2. CALCULAR PUNTUACION [FALTA IMPLEMENTACION CALCULO]
-		PH.set_puntuacion(0);
+		PH.set_valorcasilla(x,y,valor);
+		//2. CALCULAR PUNTUACION 
+		modificar_puntuacion(15);
 		
 	}
 	
 	public void quitar_casilla(int x, int y){
 		//1. QUITAR CASILLA
-		PH.modificar_casilla(x,y,0);
-		//2. CALCULAR PUNTUACION [FALTA IMPLEMENTACION CALCULO]
-		PH.set_puntuacion(-3);
+		PH.set_valorcasilla(x,y,0);
+		//2. CALCULAR PUNTUACION 
+		modificar_puntuacion(-3);
 	}
 	
 	public void comprobar_casilla(int x, int y){
-		if ( PH.getvalorcelloriginal(x, y) == PH.getvalorcellpartida(x,y)){
+		modificar_puntuacion(-3);
+		if ( PH.get_valorcasillasolucion(x, y) == PH.get_valorcasilla(x,y)){
 			System.out.println("CORRECTO");
 		}
 		else System.out.println("CORRECTO");
 	}
+	
+	public void print() {
+		PH.print_solucion();
+	}
 }
-	
-	

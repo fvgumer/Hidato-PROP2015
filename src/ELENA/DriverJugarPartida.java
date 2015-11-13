@@ -39,19 +39,20 @@ public class DriverJugarPartida {
 			abuj = sn.nextInt();
 		}
 		//#inicials
-		System.out.print("Introduce el nombre de números inicias, rango[2,"+(dim-abuj-1)+"]");
+		System.out.print("Introduce el nombre de números inicias, rango[2,"+(dim*dim-abuj-1)+"]");
 		c_ini = sn.nextInt();
-		while(!control_error(c_ini,dim-abuj-1)) {
+		while(!control_error(c_ini,(dim*dim)-abuj-1)) {
 			System.out.print("Entrada Incorrecta, repite el proceso");
 			abuj = sn.nextInt();
 		}
 		
 	}
 	
-	public void excec(Jugador J, CtrlGestionTablero CT) {
+	public void exec(Jugador J) {
 		sn = new Scanner(System.in);
 		CP = new CtrlPartida();
 		int modo,dim,abuj,c_ini;
+		modo = dim = abuj = c_ini = 0;
 		//1. MODO GESTION JUEGO
 		// [0]Decidir cargar
 		// [1]Crear Partida
@@ -74,7 +75,7 @@ public class DriverJugarPartida {
 				modo = sn.nextInt();
 				if (modo == 0) {
 					int forma = 0;
-					CP.generar_Taleatorio(CT,dim,c_ini,forma);
+					CP.generar_Taleatorio(dim,c_ini,forma);
 				}
 				else if (modo == 1) CP.elegir_tdisenado(); // [[NO IMPLEMENTADO]]
 
