@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import G45.Partida_comp;
 
-
 public class CtrlJugar {
 	private ClassPartidaHidato PH;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
 
 	
-	/*Pre: x,y son les coordenades del tauler en que es vol saber quin son els seus
+	/** Pre: x,y son les coordenades del tauler en que es vol saber quin son els seus
 	 * candidats, posats es un boolea on si el seu el element es cert ens diu que
 	 * esta al tauler*/
 	public ArrayList<Integer> bus_cantidats(int x, int y, int forats, boolean[] posats){

@@ -34,7 +34,9 @@ public class CtrlPartida {
 
 	
 	/*__________NO_IMPLEMENTADO_________________*/
-	public void generar_Taleatorio(){
+	public void generar_Taleatorio(CtrlGestionTablero GT, int dim, int forats,int f){
+		GT.crear_tablero_aleatorio(dim, forats, dim*dim-forats, f);
+		
 	}
 
 	/*__________NO_IMPLEMENTADO_________________*/
