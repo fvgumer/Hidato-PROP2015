@@ -1,7 +1,6 @@
 package ELENA;
 
-import ALEX.*;
-import JOEL.*;
+import ALEX.Tablero;
 import G45.*;
 
 public class ClassPartidaHidato extends Partida_comp {
@@ -10,20 +9,18 @@ public class ClassPartidaHidato extends Partida_comp {
 	private int dificultad;
 	private int modo;
 	private int puntuacion;
-	private Tablero tableroP;
+	protected Tablero tableroP;
 	
-
-	public ClassPartidaHidato(Tablero T, Jugador J, int ID,int dim){
-		super(T,J,ID);
+	public ClassPartidaHidato(Tablero T, Usuario_comp U, int ID, int dim){
+		super(T,U,ID);
+		tableroP = T;
 		estado = 2;
 		dificultad = 0; //NO TIENE
 		modo = 0; //NO TIENE
 		puntuacion = 0;
 	}
 	
-	public Tablero get_tablero() {
-		return tableroP;
-	}
+	
 
 	public void set_dificultad(int dificultad){
 		this.dificultad = dificultad;
@@ -54,24 +51,17 @@ public class ClassPartidaHidato extends Partida_comp {
 		return p;
 	}
 	
-	
-	public int get_valorcasillasolucion(int x, int y){
-		int valor = tableroP.getValorSolucio(x,y); //DEL TABLERO SOLUCION (MAL)
-		return valor;
-	}
-	
-	
-	public void set_valorcasilla(int x, int y, int valor) {
-		tableroP.setValorTauler(x, y, valor);
-	}
-	
-	
-	public int get_valorcasilla(int x, int y){
+	public int getvalorcelloriginal(int x, int y){
 		int valor = tableroP.getValorTauler(x,y); //DEL TABLERO SOLUCION (MAL)
 		return valor;
 	}
 	
-	public int get_dimensiont(){
+	public int getvalorcellpartida(int x, int y){
+		int valor = tableroP.getValorTauler(x,y); //DEL TABLERO SOLUCION (MAL)
+		return valor;
+	}
+	
+	public int set_dimensiont(){
 		int dim = tableroP.getn_predef();
 		return dim;
 	}
