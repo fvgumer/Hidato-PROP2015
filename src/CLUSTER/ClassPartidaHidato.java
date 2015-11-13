@@ -11,11 +11,17 @@ public class ClassPartidaHidato extends Partida_comp {
 	private int puntuacion;
 
 	
-	public ClassPartidaHidato(){
+	public ClassPartidaHidato(Tablero_comp T, Usuario_comp U, int ID){
+		super(T,U,ID);
 		estado = 2;
 		dificultad = 0; //NO TIENE
 		modo = 0; //NO TIENE
 		puntuacion = 0;
+	}
+	
+	public void anadir_atributosprin(Usuario_comp J, Tablero T, int ID) {
+		
+		
 	}
 
 	public void set_dificultad(int dificultad){
