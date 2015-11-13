@@ -12,13 +12,12 @@ import java.io.ObjectOutputStream;
 public class CtrlEstadisticas {
 	
 	ClassEstadisticas E;
-	String jugador;
 	
 	CtrlEstadisticas(){
 		
 	}
 	
-	public void escribirEst() {
+	public void escribirEst(String jugador) {
 		try {
 			FileOutputStream est = new FileOutputStream("estadisticas\\"+jugador+".bin");
 			ObjectOutputStream obj = new ObjectOutputStream(est);
@@ -35,7 +34,6 @@ public class CtrlEstadisticas {
 	/* Pre: */
 	public void crearEstadisticas(String jugador) {	//llamarla una vez, cuando se crea el jugador
 		File estadisticas = new File("estadisticas\\"+jugador+".bin");
-		this.jugador = jugador;
 		E = new ClassEstadisticas();
 		
 		escribirEst();
@@ -43,27 +41,27 @@ public class CtrlEstadisticas {
 	/* Post: Se ha creado un fichero con las estadísticas del jugador */
 	
 	/* Pre: s > 0, p > 0*/
-	public void partidaTerminada(int s, int p) {
+	public void partidaTerminada(String jugador, int s, int p) {
 		E.incrementarPartidas();
 		E.incrementarTiempo(s);
 		E.incrementarPuntuacion(p);
 		E.actualizarPuntuacion(p);
 		
-		escribirEst();
+		escribirEst(jugador);
 	}
 	/* Post: Las estadísticas del jugador correspondiente se han 
 	 * actualizado con los datos introducidos */
 	
 	/* Pre: t es el nombre de un tablero credo por el jugador correspondiente */
-	public void tableroCreado(String t) {
+	public void tableroCreado(String jugador, String t) {
 		E.anadirTablero(t);
 		
-		escribirEst();
+		escribirEst(jugador);
 	}
 	/* Post: Se ha actualizado el listado de tableros creados por el
 	 * jugador correspondiente*/
 	
-	public void leerEst() {
+	public void leerEst(String jugador) {
 		try {
 			FileInputStream est = new FileInputStream("estadisticas\\"+jugador+".bin");
 			ObjectInputStream obj = new ObjectInputStream(est);
@@ -74,6 +72,14 @@ public class CtrlEstadisticas {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+	}
+	
+	public void mostrarEst(String jugador) {
+		E.mostrarPartidasJugadas();
+		E.mostrarTiempoJugado();
+		E.mostrarPuntuacionTotal();
+		E.mostrarMejorPuntuacion();
+		E.mostrarTablerosCreados();
 	}
 	
 }
