@@ -1,10 +1,10 @@
 package BELEN;
 
 import java.util.*;
+import java.io.Serializable;
 
-public class ClassEstadisticas {
+public class ClassEstadisticas implements Serializable{
 
-	private String jugador;
 	private int partidasJugadas;
 	private int segundosJugados;	//para mostrarlo por pantalla lo pasaremos a hh:mm:ss
 	private int puntuacionTotal;
@@ -12,8 +12,7 @@ public class ClassEstadisticas {
 	private ArrayList<String> tablerosCreados;
 	
 	
-	ClassEstadisticas(String jugador){
-		this.jugador = jugador;
+	ClassEstadisticas(){
 		partidasJugadas = segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
 		tablerosCreados = new ArrayList<String>();
 	}
