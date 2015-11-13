@@ -1,12 +1,14 @@
 package ALEX;
 
 import java.util.Scanner;
-
+import ELENA.*;
+import JOEL.*;
 public class SuperDriver {
 
 	public static void main(String[] args) {
 		Driver_ctrl_tablero d;
 		d = new Driver_ctrl_tablero();
+		DriverJugarPartida e = new DriverJugarPartida();
 		boolean b = true;
 		int i;
 		String input = "2";
@@ -36,6 +38,8 @@ public class SuperDriver {
 					break;
 				case 3:
 					//Llançar el driver d comenzar juego
+					Jugador J = new Jugador("pepito", "trololo");
+					e.exec(J);
 					break;
 				case 4:
 					//Llançar el driver d'estadistiques

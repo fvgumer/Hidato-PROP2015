@@ -1,26 +1,14 @@
 package ELENA;
 
-import ALEX.CtrlGestionTablero;
-import ALEX.Tablero;
+import ALEX.*;
 //import java.util.Random;
-import G45.Partida_comp;
-import JOEL.Jugador;
+import JOEL.*;
 
 public class CtrlPartida {
 	//CONSTANTES
 	ClassPartidaHidato PH;
 	Tablero T;
 	Jugador J;
-
-	/*-----------------FALTA-------------------*/
-	//private Random rm;
-	
-	/*private boolean posicions_valides(int i, int j, tablero T){
-		//MIRAR SI VACIO
-				if (T.getcellvalue(i, j) == 0)return true;
-				//Mirar si no hace illa [NO IMPLEMENTADO]
-				return false;
-	}*/
 
 	
 	/*__________NO_IMPLEMENTADO_________________*/
@@ -37,8 +25,13 @@ public class CtrlPartida {
 
 	
 	/*__________NO_IMPLEMENTADO_________________*/
-	public void generar_Taleatorio(CtrlGestionTablero GT, int dim, int forats,int f){
-		GT.crear_tablero_aleatorio(dim, forats, dim*dim-forats, f);
+	public void generar_Taleatorio(int dim, int c_ini, int forats, int f){
+		System.out.println("HOLA");
+		CtrlGestionTablero GT = new CtrlGestionTablero();
+		System.out.println("HOLA");
+		GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), f);
+		System.out.println("HOLA");
+		GT.asociar_tablero(T);
 		
 	}
 
