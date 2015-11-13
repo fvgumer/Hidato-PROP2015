@@ -74,30 +74,38 @@ public class Algorithm {
 	}
 	
 	public boolean unica_solucion(int x, int y, Tablero map, int value) {
+		boolean result = false, predef = false; 
 		int cont = 0;
-		boolean result = false, predef = false;
-		if (value == map.get_final_num()) return true;
+		if (value == map.get_final_num()) {
+			map.crea_solucion();
+			return true;
+		}
 		else {
 			if (map.getValorTauler(x, y) > 0) predef = true;
 			map.setValorTauler(x, y, value);
 			++value;
 			int c_value;
-			for(int i=-1; i<2; ++i) {
-		    	for(int j=-1; j<2; ++j) {
+			int i = -1;
+			
+			while(i < 2 && cont < 2) {
+				int j = -1;
+		    	while(j < 2 && cont < 2) {
 		    		if (map.enable_pos(x+i,y+j)) {
 		    			c_value = map.getValorTauler(x+i,y+j);
-		    			if (c_value == value)  {
+		    			if (c_value == value) {
 		    				result = solver(x+i,y+j,value,map);
 		    			}
-		    			else if (c_value == 0) {
-		   					result = solver(x+i,y+j,value,map);
-		   				}
-		   				if (result) ++cont;
+		    			else if (c_value == 0){
+		    				result = solver(x+i,y+j,value,map);
+		    			}
 		    		}
-		   		}
+		    		if(result) ++cont;
+		    		++j;
+		    	}
+		    	++i;
 		    }
 		}
-		if (result == false && predef == false) map.setValorTauler(x,y,0);
+		if (!predef) map.setValorTauler(x,y,0);
 		return (cont == 1);
 	}
 	

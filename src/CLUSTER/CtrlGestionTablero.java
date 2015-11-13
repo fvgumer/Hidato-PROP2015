@@ -38,6 +38,8 @@ public class CtrlGestionTablero {
 		}
 		map.crea_solucion();
 		generar_buits_alea(c_vacias);
+		boolean unica = a.unica_solucion(start[0], start[1], map, 1);
+		map.setSolucion_unica(unica);
 		map.mostra_solucio();
 		map.print();
 	}
@@ -66,12 +68,14 @@ public class CtrlGestionTablero {
 	/**
 	   *Se comprueba que el tablero tiene solucion.
 	   */
-	public boolean validar() {
+	public boolean validar(boolean unica) {
 		int[] start;
 		start = map.getStart();
 		boolean b = a.solver(start[0], start[1], 1, map);
 		map.print();
 		map.mostra_solucio();
+		unica = a.unica_solucion(start[0], start[1], map, 1);
+		map.setSolucion_unica(unica);
 		return b;
 	}
 	

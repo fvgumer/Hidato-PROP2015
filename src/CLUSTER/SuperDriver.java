@@ -11,7 +11,7 @@ public class SuperDriver {
 		int i;
 		String input = "2";
 		while (b) {
-			Scanner s = new Scanner(input);
+			Scanner s = new Scanner(System.in);
 			System.out.println("HIDATO");
 			/*System.out.println("Hola! Entro con tu usuario o bien crea uno nuevo:");
 			System.out.println("1.Login");

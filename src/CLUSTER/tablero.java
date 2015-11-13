@@ -16,6 +16,7 @@ public class Tablero extends Tablero_comp {
 	private Casilla[][] solucio; 
 	private int holes, n_predef, final_num;
 	private int[] start, end;
+	private boolean solucion_unica;
 	
 	/**
 	   * Inicializa y pone los valores necesarios a zero de la clase
@@ -30,6 +31,7 @@ public class Tablero extends Tablero_comp {
 				tauler[i][j] = new Casilla();
 			}
 		}
+		solucion_unica=false;
 		start = end = new int[2];
 		
 	}
@@ -201,6 +203,14 @@ public class Tablero extends Tablero_comp {
 				solucio[i][j] = new Casilla(aux);
 			}
 		}
+	}
+	
+	public void setSolucion_unica(boolean b) {
+		this.solucion_unica = b;
+	}
+	
+	public boolean getSolucion_unica() {
+		return solucion_unica;
 	}
 	
 	public void mostra_solucio() {
