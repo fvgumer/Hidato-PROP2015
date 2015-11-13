@@ -2,7 +2,7 @@ package CLUSTER;
 
 
 import java.util.*;
-import CLUSTER.algorithm;
+import CLUSTER.Algorithm;
 
 public class Prueba {
 	private static Scanner sn;
@@ -34,7 +34,7 @@ public class Prueba {
 	 
 	 private void contar_num_costats(int x, int y, ArrayList<Integer> posibles,
 			 boolean[] posats, int al_costat) {
-		 algorithm a = new algorithm();
+		 Algorithm a = new Algorithm();
 		 if (x >= 0 && y >= 0 && x < dim && y < dim) {
 				int valor = Matriz[x][y];	
 				if (valor > 0) {

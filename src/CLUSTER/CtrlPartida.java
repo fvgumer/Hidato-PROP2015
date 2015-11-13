@@ -1,13 +1,13 @@
 package CLUSTER;
 
 //import java.util.Random;
-import G45.ClassPartida_Comp;
+import G45.Partida_comp;
 
 public class CtrlPartida {
 	//CONSTANTES
 	ClassPartidaHidato PH;
-	private tablero T;
-	private Usuario U;
+	Tablero T;
+	Jugador J;
 
 	/*-----------------FALTA-------------------*/
 	//private Random rm;
@@ -27,7 +27,7 @@ public class CtrlPartida {
 	
 	public void anadir_carct_tablero(int dim, int forats, int n_ini){
 		//A tablero T añadir caracteristicas
-		T = new tablero(dim);
+		T = new Tablero(dim);
 		T.setholes(forats);
 		T.setn_predef(n_ini);
 	}
@@ -42,16 +42,13 @@ public class CtrlPartida {
 		//Sacar TOP5 de los mas parecidos
 		
 	}
-	public void crear_partida(Usuario U){
+	public void crear_partida(Jugador U, int dificultad,int modo){
 		int ID = 0; //CALCULAR ID
-		PH.anadir_carac_PC(T,U,ID);
-	}
-	
-	public void insertar_dm(int dificultad, int modo){
-		PH = new ClassPartidaHidato();
+		PH = new ClassPartidaHidato(T,U,ID);
 		PH.set_dificultad(dificultad);
 		PH.set_modo(modo);
 	}
+	
 	
 	public ClassPartidaHidato get_partida() {
 		return PH;
