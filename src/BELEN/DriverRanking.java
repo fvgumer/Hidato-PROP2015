@@ -12,7 +12,8 @@ public class DriverRanking {
 		String tablero = scan.nextLine();
 		scan.nextLine();
 		int n = scan.nextInt();
-		CR.getTop(tablero,n);
+		CR.cargarRanking(tablero);
+		CR.getTop(n);
 		scan.close();
 	}
 }
