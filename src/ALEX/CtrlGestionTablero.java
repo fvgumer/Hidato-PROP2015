@@ -13,6 +13,12 @@ public class CtrlGestionTablero {
 		a = new Algorithm();
 	}
 	
+	public CtrlGestionTablero(Tablero map) {
+		rm = new Random();
+		a = new Algorithm();
+		this.map = map;
+	}
+	
 	/**
 	   *Se crea un tablero aleatorio con las caracteristicas de la cabezera
 	   */

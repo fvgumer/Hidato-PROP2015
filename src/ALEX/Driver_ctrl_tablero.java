@@ -6,7 +6,6 @@ public class Driver_ctrl_tablero {
 	private CtrlGestionTablero prueba;
 	private Scanner s;
 	int n, casillas_negras, casillas_vacias, f;
-	String input = "1 4 2 0 0 1 2 3 2 0 0 1 0 3 14";
 	
 	public Driver_ctrl_tablero() {
 		s = new Scanner(System.in);
@@ -80,20 +79,6 @@ public class Driver_ctrl_tablero {
 						--c_pre;
 						prueba.muestra_mapa();
 					}
-					boolean unica = false, solucion;
-					solucion = prueba.validar(unica);
-					if (solucion) {
-						System.out.println("Has creado correctamente el tablero!");
-					}
-					else {
-						System.out.println("El tablero no tiene solucion :(");
-					}
-					if (unica)  {
-						System.out.println("Y la solucion es unica!");
-					}
-					else if(solucion){
-						System.out.println("Pero la solucion no es unica :(");
-					}
 					break;
 				case 2:
 					crear_aleatorio(prueba);
@@ -101,6 +86,20 @@ public class Driver_ctrl_tablero {
 				case 4:
 					b = false;
 					break;
+			}
+			boolean unica = false, solucion;
+			solucion = prueba.validar(unica);
+			if (solucion) {
+				System.out.println("Has creado correctamente el tablero!");
+			}
+			else {
+				System.out.println("El tablero no tiene solucion :(");
+			}
+			if (unica)  {
+				System.out.println("Y la solucion es unica!");
+			}
+			else if(solucion){
+				System.out.println("Pero la solucion no es unica :(");
 			}
 			if(b) {
 				System.out.println("Quieres guardar el tablero creado?");
