@@ -2,11 +2,13 @@ package ELENA;
 
 
 
+import java.io.Serializable;
+
 import ALEX.*;
 import JOEL.*;
 import G45.*;
 
-public class ClassPartidaHidato extends Partida_comp {
+public class ClassPartidaHidato extends Partida_comp implements Serializable{
 
 	private int estado; 
 	private int dificultad;

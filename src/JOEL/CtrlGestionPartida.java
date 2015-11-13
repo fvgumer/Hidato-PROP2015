@@ -49,14 +49,14 @@ public class CtrlGestionPartida {
 		else if(Onom.equals("ClassEstadisticas")){
 			ClassEstadisticas E = (ClassEstadisticas) objeto;
 			ruta = "Estadisticas";
-			archivo = "\\"+E.getID()+".bin";
+			archivo = "\\"+E.getName()+".bin";
 		}
 		try {
 			File archiu = new File(ruta);
 			archiu.mkdirs();
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(ruta + archivo));
 			os.writeObject(objeto);
-			os.close();
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
