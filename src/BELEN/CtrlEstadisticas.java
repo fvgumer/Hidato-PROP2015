@@ -1,7 +1,5 @@
 package BELEN;
 
-import java.util.*;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -33,10 +31,9 @@ public class CtrlEstadisticas {
 	
 	/* Pre: */
 	public void crearEstadisticas(String jugador) {	//llamarla una vez, cuando se crea el jugador
-		File estadisticas = new File("estadisticas\\"+jugador+".bin");
 		E = new ClassEstadisticas();
 		
-		escribirEst();
+		escribirEst(jugador);
 	}
 	/* Post: Se ha creado un fichero con las estadísticas del jugador */
 	
@@ -67,6 +64,10 @@ public class CtrlEstadisticas {
 			ObjectInputStream obj = new ObjectInputStream(est);
 			
 			E = (ClassEstadisticas) obj.readObject();
+			obj.close();
+			
+			} catch (ClassNotFoundException e){
+				e.printStackTrace();
 			} catch (FileNotFoundException e){
 				e.printStackTrace();
 			} catch (IOException e) {
