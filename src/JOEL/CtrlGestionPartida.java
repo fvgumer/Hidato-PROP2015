@@ -7,6 +7,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import ALEX.*;
 import BELEN.*;
@@ -19,30 +26,35 @@ public class CtrlGestionPartida {
 		String Onom = objeto.getClass().getSimpleName();
 		//String O1nom = objeto.getClass().getName();
 		//String O2nom = objeto.getClass().getCanonicalName();
-		System.out.println(Onom);
+		//System.out.println(Onom);
 		String ruta = null;
+		String archivo=null;
 		if(Onom.equals("ClassPartidaHidato")){
 			 ClassPartidaHidato P = (ClassPartidaHidato) objeto;
 			 String ID = String.valueOf(P.getID());
 			 String Player = P.getUsuario().consultar_nombre();
-			 ruta = "partidas/" +Player + "/" + ID + ".bin";
+			 ruta = "partidas\\" +Player;
+			 archivo = "\\" + ID + ".bin";
 		}
 		else if(Onom.equals("Jugador")){
 			Jugador J = (Jugador) objeto;
-			ruta = "jugadors/"+J.consultar_nombre()+".bin";
+			ruta = "jugadors";
+			archivo = "\\"+J.consultar_nombre()+ ".bin";
 		}
 		else if(Onom.equals("ClassRanking")){
 			ClassRanking R = (ClassRanking) objeto;
-			//ruta ="Ranking/"+ R.getID()+".bin";
+			ruta ="Ranking";
+			archivo= "\\"+R.getID()+".bin";
 		}
 		else if(Onom.equals("ClassEstadisticas")){
 			ClassEstadisticas E = (ClassEstadisticas) objeto;
-			//ruta = "Estadisticas" +"/"+ E.getName()+ ".bin";
+			ruta = "Estadisticas";
+			archivo = "\\"+E.getID()+".bin";
 		}
 		try {
 			File archiu = new File(ruta);
 			archiu.mkdirs();
-			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(ruta));
+			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(ruta + archivo));
 			os.writeObject(objeto);
 			os.close();
 		} catch (FileNotFoundException e) {
