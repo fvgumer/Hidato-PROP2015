@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class ClassRanking implements Serializable {
 	
-	String tablero;
+	private String tablero;
 	private ArrayList<ClassResultado> ranking;
 	
 	
