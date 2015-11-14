@@ -1,9 +1,14 @@
 package G45;
 
+import java.io.Serializable;
+
+public class Casilla_comp implements Serializable{
  
-public class Casilla_comp {
- 
-    protected boolean candidatos[];
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected boolean candidatos[];
     protected boolean por_defecto; // si esta en true es una casilla que esta llena desde el comienzo.
     protected int valor;
  
