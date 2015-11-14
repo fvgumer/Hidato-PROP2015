@@ -19,8 +19,10 @@ public class DriverGestionHidato {
 		ClassRanking R = new ClassRanking("nomtablero");
 		CtrlGestionHidato gestor = new CtrlGestionHidato();
 		CtrlGestionUsuario gestorj = new CtrlGestionUsuario();
+		CtrlGestionPArtida gestor
 		gestor.guardar(J);
 		gestor.guardar(P);
+		
 		gestor.guardar(E);
 		gestor.guardar(R);
 		//gestor.eliminar(R);
