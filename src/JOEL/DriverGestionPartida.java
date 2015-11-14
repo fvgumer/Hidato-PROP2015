@@ -44,7 +44,7 @@ public class DriverGestionPartida {
 				int id = scan.nextInt();
 				scan.nextLine();*/
 				x = gestor.cargar("joel", 342342);
-			if(x!=null)System.out.println("Partida con id " + x.getUsuario() + " del jugador ") ;//+ x.getUsuario().consultar_nombre() + " cargado");
+			if(x!=null)System.out.println("Partida con id " + x.getID() + " del jugador " + x.getUsuario().consultar_nombre() + " cargado");
 			}
 			else if(i==5){
 				System.out.println("Introducir id partida que queremos validar del usuario joel");
