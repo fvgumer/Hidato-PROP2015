@@ -32,6 +32,9 @@ public class DriverJugarPartida {
 		// [1]Crear Partida
 		boolean incorrecto = true;
 		while(incorrecto){
+			System.out.println("Escoje la acción que desas:");
+			System.out.println("[0] Cargar Partida Anterior");
+			System.out.println("[1] Crear Nueva Partida");
 			modo = sn.nextInt();
 			if (modo == 0) { //[0]
 				CP.Cargar_Partida_Hidato();
@@ -41,24 +44,24 @@ public class DriverJugarPartida {
 				incorrecto = false;
 				//1. Elegir Caracteristicas
 				//DIMENSIONES
-				System.out.print("Escojer medidas del tablero cuadrado:");
+				System.out.println("Escojer medidas del tablero cuadrado:");
 				dim = sn.nextInt();
 				while(!control_error(dim,dim_max) && !control_error(3,dim)) {
 					System.out.print("Valor erroneo");
 					dim = sn.nextInt();
 				}
 				//FORATS
-				System.out.print("Introduce forats, rango[0, "+(dim*dim-2)+"]");
+				System.out.println("Introduce forats, rango[0, "+(dim*dim-2)+"]");
 				abuj = sn.nextInt();
 				while(!control_error(abuj,dim*dim-2)) {
-					System.out.print("Entrada Incorrecta, repite el proceso");
+					System.out.println("Entrada Incorrecta, repite el proceso");
 					abuj = sn.nextInt();
 				}
 				//#inicials
-				System.out.print("Introduce el nombre de números inicias, rango[2,"+(dim*dim-abuj-1)+"]");
+				System.out.println("Introduce el nombre de números inicias, rango[2,"+(dim*dim-abuj-1)+"]");
 				c_ini = sn.nextInt();
 				while(!control_error(c_ini,(dim*dim)-abuj-1)) {
-					System.out.print("Entrada Incorrecta, repite el proceso");
+					System.out.println("Entrada Incorrecta, repite el proceso");
 					abuj = sn.nextInt();
 				}
 				
@@ -69,7 +72,6 @@ public class DriverJugarPartida {
 				modo = sn.nextInt();
 				if (modo == 0) {
 					int forma = 0;
-					System.out.println("DIM: "+dim+" FORMA: "+forma+" C_INI: "+c_ini);
 					CP.generar_Taleatorio(dim,c_ini,abuj,forma);
 				}
 				else if (modo == 1) CP.elegir_tdisenado(); // [[NO IMPLEMENTADO]]
