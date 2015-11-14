@@ -13,6 +13,10 @@ public class CtrlGestionTablero {
 		a = new Algorithm();
 	}
 	
+	/**
+	 * Creadora que asocia el tablero map que viene como parametro con el tablero de la clase
+	 * @param map
+	 */
 	public CtrlGestionTablero(Tablero map) {
 		rm = new Random();
 		a = new Algorithm();
@@ -20,7 +24,20 @@ public class CtrlGestionTablero {
 	}
 	
 	/**
-	   *Se crea un tablero aleatorio con las caracteristicas de la cabezera
+	   *Se crea un tablero aleatorio con las caracteristicas de la cabezera. El algoritmo funciona de la
+	   *siguiente manera: primero llena el tablero de la forma predeterminada que viene dada por el parametro
+	   *f. Acto seguido llena el tablero de (c_negras) "forats" en posiciones aleatorias y pone el numero
+	   *1 de manera aleatoria en el tablero. Justo despues se llama al algoritmo que pone los numeros restantes
+	   *partiendo del numero 1. Como que hay un elevado factor de aleatoriedad, podria ser que la llamada a generador()
+	   *no encontrase una manera de llenar el tablero con los numeros restantes. En caso de que no se encuentre una solucion se
+	   *repite todo el proceso anterior.
+	   *Una vez que el tablero esta lleno (es la solucion al tablero) se determina que esta sera la solucion al tablero y acto seguido
+	   *se llena de (c_vacias) casillas vacias.
+	   *La parte final del algoritmo determina si el tablero tiene solucion unica.
+	   *@param n
+	   *@param c_negras
+	   *@param c_vacias
+	   *@param f
 	   */
 	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias, int f) {
 		map = new Tablero(n);
@@ -52,6 +69,8 @@ public class CtrlGestionTablero {
 	/**
 	   *Se inicializa un tablero de nxn, se define el numero de casillas negras
 	   *y se define el numero final (deducido de los dos anteriores parametros)
+	   *@param n
+	   *@param c_negras
 	   */
 	public void ini(int n, int c_negras) {
 		map = new Tablero(n);
@@ -62,6 +81,9 @@ public class CtrlGestionTablero {
 	/**
 	   *Post: Se coloca el numero n en la posicion (x,y) del tablero. Si n=-1 se considera que
 	   * la casilla sera negra. Si n=0 se considera que la casilla sera vacia.
+	   * @param x
+	   * @param y
+	   * @param n
 	   */
 	public boolean colocar_numero_casilla(int x, int y, int n) {
 		if(!map.suitable_pos(x, y) || n > map.get_final_num()) return false;
@@ -71,20 +93,25 @@ public class CtrlGestionTablero {
 	}
 	
 	/**
-	   *Se comprueba que el tablero tiene solucion.
-	   */
+	 * Se determina si el tablero map tiene solucion, y en caso de que la tenga si la solucion es
+	 * unica
+	 * @param unica
+	 * @return
+	 */
 	public boolean validar(boolean unica) {
 		int[] start;
 		start = map.getStart();
 		boolean b = a.solver(start[0], start[1], 1, map);
-		unica = a.unica_solucion(start[0], start[1], map, 1);
-		map.setSolucion_unica(unica);
+		if(b) {
+			unica = a.unica_solucion(start[0], start[1], map, 1);
+			map.setSolucion_unica(unica);
+		}
 		return b;
 	}
 	
 	/**
-	   *Se muestra el mapa por pantalla
-	   */
+	 * Se muestra el mapa por pantalla
+	 */
 	public void muestra_mapa() {
 		map.print();
 	}
@@ -106,9 +133,12 @@ public class CtrlGestionTablero {
 	}
 	
 	/**
-	   *Funcion que permite colocar "forats" en la posicion (x,y) de map. Si la posicion no
-	   *es valida se retorna false y la variable map no sufre ningun cambio.
-	   */
+	 * Funcion que permite colocar "forats" en la posicion (x,y) de map. Si la posicion no
+	 * es valida se retorna false y la variable map no sufre ningun cambio.
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean colocar_forat_man(int x, int y) {
 		if (!map.enable_pos(x, y)) return false;
 		map.setValorTauler(x, y, -1);
@@ -159,6 +189,8 @@ public class CtrlGestionTablero {
 	/**
 	   *Post: Se comprueba que se puede quitar un numero de la posicion (x,y).
 	   *No se pueden quitar numeros de casillas vacias, "forats" o bien principio y final.
+	   *@param x
+	   *@param y
 	   */
 	private boolean bona_pos_buits(int x, int y) {
 		if (map.enable_pos(x, y) == false) return false;
@@ -170,6 +202,7 @@ public class CtrlGestionTablero {
 	/**
 	   *Devuelve una posicion aleatoria de map[n][n]. Se comprueba que la posicion no
 	   *esta ocupada por ningun "forat".
+	   *@param n
 	   */
 	private int[] getRandom(int n) {
 		int[] pos = new int[2];

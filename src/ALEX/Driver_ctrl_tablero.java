@@ -63,9 +63,9 @@ public class Driver_ctrl_tablero {
 						prueba.muestra_mapa();
 					}
 					int c_pre, val;
-					System.out.println("Escojer numero de casillas vacias:[1,(n*n)-casillas_negras-2]");
+					System.out.println("Escojer numero de casillas dadas previamente:[2,"+(n*n)+"]");
 					c_pre = s.nextInt();
-					while (c_pre < 2 || !comprueba_entrada(c_pre,(n*n)-casillas_negras)) {
+					while (c_pre < 2 || !comprueba_entrada(c_pre,(n*n))) {
 						if (c_pre < 2) System.out.println("Minimo 2!");
 						c_pre = s.nextInt();
 						}
@@ -80,6 +80,13 @@ public class Driver_ctrl_tablero {
 						--c_pre;
 						prueba.muestra_mapa();
 					}
+					System.out.println("^ Tu tablero es el mostrado arriba ^");
+					System.out.println("Quieres validarlo o bien volver al menu principal?");
+					System.out.println("	1.Validar");
+					System.out.println("	2.Menu principal");
+					int aux = s.nextInt();
+					while (!comprueba_entrada(aux, 2)) {aux = s.nextInt();}
+					if (aux == 2) b = false;
 					break;
 				case 2:
 					crear_aleatorio(prueba);

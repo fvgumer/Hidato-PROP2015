@@ -48,6 +48,7 @@ public class SuperDriver {
 					break;
 				case 5:
 					b = false;
+					System.out.println("Adios!");
 					break;
 				default: break;
 			}
