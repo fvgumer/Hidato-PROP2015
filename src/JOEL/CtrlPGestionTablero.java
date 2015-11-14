@@ -12,7 +12,6 @@ public class CtrlPGestionTablero {
 	private String Ruta;
 	
 	public CtrlPGestionTablero() {
-		
 	}
 
 	public Tablero cargar(int ID){
@@ -42,5 +41,15 @@ public class CtrlPGestionTablero {
 		}
 		return T;
 	}
-	}
+	
 
+	public int consultar_ultim_ID(){
+		Ruta = "Tableros"+  "\\";
+		File directory = new File(Ruta);
+		if(directory.exists()==false) {
+			directory.mkdir();
+			return 1;
+		}
+		else return directory.list().length;
+	}
+}

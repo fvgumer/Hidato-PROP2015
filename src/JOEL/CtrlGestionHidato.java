@@ -65,7 +65,6 @@ public class CtrlGestionHidato<T> {
 	}
 
 	//Eliminar de estadisticas, ranquing, partida 
-	
 
 	public void eliminar(T objeto){
 
