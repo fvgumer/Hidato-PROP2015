@@ -25,7 +25,6 @@ public class Algorithm {
 			++value;
 			int c_value;
 			int i = -1;
-			boolean b = false;
 			while(i < 2 && !result) {
 				int j = -1;
 		    	while(j < 2 && !result) {
