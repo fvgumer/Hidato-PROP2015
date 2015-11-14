@@ -9,5 +9,4 @@ public class Jugador extends Usuario_comp implements Serializable{
 	public Jugador(String nombre, String password) {
 		super(nombre, password);
 	}
-
 }
