@@ -6,10 +6,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class Tablero extends Tablero_comp implements Serializable{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 820754505192031630L;
 	/**
 	   * solucio contiene la solucion al tablero, holes es el numero de "forats"
@@ -26,7 +23,8 @@ public class Tablero extends Tablero_comp implements Serializable{
 	private boolean solucion_unica;
 	
 	/**
-	   * Inicializa y pone los valores necesarios a zero de la clase
+	   * Creadora que determina los valores iniciales de un tablero de nxn dimensiones
+	   * @param n Indica las dimensiones del nuevo tablero
 	   */
 	public Tablero(int n) {
 		super(n);
@@ -44,15 +42,15 @@ public class Tablero extends Tablero_comp implements Serializable{
 	}
 	
 	/**
-	   * @return Retorna el mayor numero possible del tablero
+	   * @return Retorna el mayor numero possible del tablero teniendo en cuenta la medida
+	   * del tablero y la cantidad de casillas negras del tablero
 	   */
 	public int get_final_num() {
 		return final_num;
 	}
 	
 	/**
-	   * @return Retorna el el numero de casillas que son visibles al
-	   * principio de partida
+	   * @return Retorna el numero de casillas que son visibles al principio de partida
 	   */
 	public int getn_predef(){
 		int n = n_predef;
@@ -68,6 +66,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	/**
 	   * Se configura el identificador del tablero segun el valor de n
+	   * @param n Indica el valor del nuevo identificador del tablero
 	   */
 	public void set_id(int n) {
 		id_tab = n;
@@ -82,8 +81,13 @@ public class Tablero extends Tablero_comp implements Serializable{
 	}
 	
 	/**
-	   * Se comprueva que la posicion (x,y) esta contenida en el tablero
+	   * Se comprueba que la posicion (x,y) esta contenida en el tablero y si no esta ocupada por
+	   * una casilla negra ("forat").
 	   * y que no es la posicion de un "forat".
+	   * @param x Indica la fila
+	   * @param y Indica la columna
+	   * @return Retorna true en caso de que la posicion (x,y) del tablero este comprendida entre sus
+	   * medidas y que no este ocupada por una casilla negra.
 	   */
 	public boolean enable_pos(int x, int y){
 		if (x < 0 || y < 0) return false;
@@ -92,6 +96,14 @@ public class Tablero extends Tablero_comp implements Serializable{
 		return true;
 	}
 
+	/**
+	 * Se comprueva que la posicion (x,y) del tablero esta comprendida en sus medidas, que no esta ocupada
+	 * por una casilla negra y que tampoco esta ocupada por un valor qualquiera. En otras palabras, si la casilla
+	 * esta vacia. 
+	 * @param x Indica la fila
+	 * @param y Indica la columna
+	 * @return Retorna true si la casilla (x,y) esta dentro de las medidas del tablero y si es una casilla vacia.
+	 */
 	public boolean suitable_pos(int x, int y){
 		if (x < 0 || y < 0) return false;
 		if (x >= mida || y >= mida) return false;
@@ -101,52 +113,62 @@ public class Tablero extends Tablero_comp implements Serializable{
 	}
 	
 	/**
-	   * Se determina la posicion (x,y) del primer numero.
-	   */
+	 * Se determina la posicion (x,y) del primer numero.
+	 * @param x Indica la fila
+	 * @param y Indica la columna
+	 */
 	public void setStart(int x, int y){
 		start[0] = x; start[1] = y;
 		tauler[x][y].setValor(1);
 	}
 	
 	/**
-	   * @return Retorna la posicion del primer numero del tablero.
-	   */
+	 * Operacion que devuelve la posicion del numero 1.
+	 * @return Retorna la posicion del primer numero del tablero.
+	 */
 	public int[] getStart(){
 		return start;
 	}
 	
 	/**
-	   * Suma n unidades a la variable holes.
-	   */
+	 * Suma n unidades a la variable holes.
+	 * @param n indica las unidades que hay que sumar a la variable holes
+	 */
 	public void setholes(int n) {
 		holes = holes + n;
 	}
 	
 	/**
-	   * Determinal el numero de casillas dadas en un principio
-	   */
+	 * Determinal el numero de casillas dadas en un principio
+	 * @param n Indica el numero de casillas dadas al principio que se quieren asociar al tablero
+	 */
 	public void setn_predef(int n) {
 		n_predef = n;
 	}
 	
 	/**
-	   * Determina el valor del mayor numero posible que se puede poner en
-	   * el tablero
-	   */
+	 * Determina el valor del mayor numero posible que puede contener
+	 * el tablero
+	 * @param n Indica el numero maximo que contendra el tablero
+	 */
 	public void setfinal_num(int n) {
 		final_num = final_num + n;
 	}
 	
 	/**
-	   * Determina la posicion(x,y) del ultimo valor
-	   */
+	 * Determina la posicion (x,y) del mayor numero posible del tablero
+	 * @param x Indica la fila
+	 * @param y Indica la columna
+	 */
 	public void setEnd(int x, int y) {
 		end[0] = x; end[1] = y;
 	}
 	
 	/**
-	   * Se muestra el tablero por consola
-	   */
+	 * Se muestra el tablero por el canal de salida. Se una la siguiente notacion:
+	 * 		- "." para las casillas negras ("forats")
+	 * 		- "_" para las casillas vacias
+	 */
 	public void print() {
 		for(int i=0; i<mida; ++i) {
 			for(int j=0; j<mida; ++j) {
@@ -186,7 +208,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	/**
 	   * Se dibuja una esfera en el tablero mediante la colocacion 
-	   * de "forats".
+	   * de estrategica de casillas negrsa ("forats").
 	   */
 	public void pinta_esfera() {
 		for(int i=0; i < (mida/2)+1; ++i) {
@@ -203,7 +225,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	/**
 	   * Se dibuja una diagonal en el tablero mediante la colocacion 
-	   * de "forats".
+	   * de casillas negrsa ("forats").
 	   */
 	public void pinta_diagonal() {
 		for(int i=0; i < mida; ++i) {
@@ -214,8 +236,8 @@ public class Tablero extends Tablero_comp implements Serializable{
 	}
 	
 	/**
-	   * Se crea la solucion a partir de la instancia tablero que no contiene
-	   * ninguna casilla vacia
+	   * Pre: El tablero de la clase no contiene ninguna casilla vacia
+	   * Post: El campo solucion de la clase contiene ahora la solucion al tablero Hidato.
 	   */
 	public void crea_solucion() {
 		for(int i=0; i<mida; ++i) {
@@ -226,18 +248,38 @@ public class Tablero extends Tablero_comp implements Serializable{
 		}
 	}
 	
+	/**
+	 * Determina el campo que si la solucion del tablero es unica 
+	 * @param b Indica si el tablero tendra solucion unica
+	 */
 	public void setSolucion_unica(boolean b) {
 		this.solucion_unica = b;
 	}
 	
+	/**
+	 * Retorna si el tablero tiene solucion unica
+	 * @return Retorna true en caso de que la solucion del tablero sea unica
+	 */
 	public boolean getSolucion_unica() {
 		return solucion_unica;
 	}
 	
+	/**
+	 * Retorna el valor de la casilla en la posicion (x,y) del tablero posicion.
+	 * @param x Indica la fila
+	 * @param y Indica la columna
+	 * @return Valor de la casilla en la posicion (x,y) del tablero solucion.
+	 */
 	public int getValorSolucio(int x, int y) {
 		return solucio[x][y].getValor();
 	}
 	
+	/**
+	 * Operacion que muestra la solucion al tablero por el canal de salida estandar. Se usa la siguiente
+	 * notacion:
+	 * 		- "." Para representar las casillas negrsa ("forats").
+	 * 		- "_" Para representar las casillas vacias.
+	 */
 	public void mostra_solucio() {
 		for(int i=0; i < mida; ++i) {
 			for(int j = 0; j < mida; ++j) {

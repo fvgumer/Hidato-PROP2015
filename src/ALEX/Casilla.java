@@ -6,9 +6,6 @@ import G45.*;
 
 public class Casilla extends Casilla_comp implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -21,6 +18,10 @@ public class Casilla extends Casilla_comp implements Serializable{
 		valor = 0;
 	}
 	
+	/**
+	 * Constructora que pone el valor de la nueva casilla a n.
+	 * @param n Indica el valor de la nueva casilla
+	 */
 	public Casilla(int n) {
 		valor = n;
 		por_defecto = false;

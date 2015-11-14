@@ -10,11 +10,16 @@ public class Algorithm {
 		rm = new Random();
 	}
 	/**
-	   * Se soluciona el tablero map mediante recusividad. La forma de funcionar del algoritmo
-	   * es parecia al backtracking.
-	   * 
-	   * El algoritmo determina si existe solucion y la crea. Puede haber mas de una solucion.
-	   */
+	 * Se soluciona el tablero map mediante recusividad. La forma de funcionar del algoritmo
+	 * es parecia al backtracking.
+	 * 
+	 * El algoritmo determina si existe solucion y la crea. Puede haber mas de una solucion.
+	 * @param x Indica la fila actual
+	 * @param y Indica la columna actual
+	 * @param value Indica el valor actual
+	 * @param map Tablero sobre el qual se ejecuta el solver
+	 * @return 
+	 */
 	public boolean solver(int x, int y, int value, Tablero map) {
 		boolean result = false, predef = false;
 		if (value == map.get_final_num()) {
@@ -55,10 +60,12 @@ public class Algorithm {
 	   * como el valor de la casilla actual + 1 y se vuelve a aplicar el mismo procedimiento de forma
 	   * recursiva. El altoritmo acaba quando se llega al ultimo numero o bien quando se han buscado todas las
 	   * posibilidades
-	   * @param map
-	   * @param x
-	   * @param y
-	   * @para value
+	   * @param x Indica la fila actual
+	   * @param y Indica la columna actual
+	   * @param value Indica el valor actual
+	   * @param map Tablero sobre el qual se ejecuta el generador
+	   * @return Retorna true en caso de que se haya podido llenar el tablero map con los numeros
+	   * de forma aleatoria. Retorna falso en caso contrario.
 	   */
 	public boolean generador(Tablero map, int x, int y, int value){
 		boolean b = false;
@@ -84,11 +91,12 @@ public class Algorithm {
 	
 	/**
 	 * El algoritmo determina si la solucion del tablero map es unica.
-	 * @param x
-	 * @param y
-	 * @param map
-	 * @param value
-	 * @return
+	 * @param x Indica la fila actual
+	 * @param y Indica la columna actual
+	 * @param value Indica el valor actual
+	 * @param map Tablero sobre el qual se ejecuta el algoritmo
+	 * @return Retorna true si el tablero map tiene solucion unica. Retorna false si hay mas de
+	 * una solucion
 	 */
 	public boolean unica_solucion(int x, int y, Tablero map, int value) {
 		boolean result = false, predef = false; 
@@ -128,7 +136,7 @@ public class Algorithm {
 	
 	/**
 	 * Devuelve un numero aleatorio entre [-1,1]
-	 * @return
+	 * @return Devuelve un numero aleatorio entre [-1,1]
 	 */
 	private int random() {
 		int i = (int)(rm.nextInt(3)) - 1;

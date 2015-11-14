@@ -1,21 +1,40 @@
 package ALEX;
 import java.util.Scanner;
 
+/**
+ * Este driver se encarga de mostrar y guiar al usuario durante la creacion de un tablero Hidato.
+ * El propio driver se encarga de comprovar que los valores introducidos son correctos. Tambien se
+ * avisa de que con segun que configuraciones el algoritmo de generacion de hidatos aleatorios puede
+ * tardar mas de lo deseado.
+ * @author Alex
+ *
+ */
 public class Driver_ctrl_tablero {
-	
+
 	private CtrlTablero prueba;
 	private Scanner s;
 	int n, casillas_negras, casillas_vacias, f;
 	
+	/**
+	 * Constructora por defecto
+	 */
 	public Driver_ctrl_tablero() {
 		s = new Scanner(System.in);
 	}
 	
+	/**
+	 * Constructora que asocia el CtrlTablero p con el CtrlTablero de la clase
+	 * @param p Parametro que se quiere asociar con el CtrlTablero de la clase
+	 */
 	public Driver_ctrl_tablero(CtrlTablero p) {
 		this.prueba = p;
 		s = new Scanner(System.in);
 	}
 	
+	/**
+	 * Operacion principal del driver. Esta operacion se encarga de recoger los datos necesarios para
+	 * crear un tablero. La propia operacion utiliza mecanismos de comprovacion de los valores de entrada.
+	 */
 	public void exec () {
 	    boolean b = true;
 	    while(b) {
@@ -129,12 +148,24 @@ public class Driver_ctrl_tablero {
 	    }
 	}
 	
+	/**
+	 * Operacion que determina si el parametro i se encuentra entre [0, cap]
+	 * @param i Indica el parametro que se quiere comprovar
+	 * @param cap Indica el numero maximo posible que puede ser n
+	 * @return Retorna true en caso de que el parametro i se encuentre entre [0, cap]. Retorna false
+	 * en caso contrario
+	 */
 	private boolean comprueba_entrada(int i, int cap) {
 		if (i > cap) System.out.println("Valor erroneo");
 		if (i < 0) return false;
 		return i <= cap;
 	}
 	
+	/**
+	 * Operacion encargada de recibir los parametros necesarios para crear un tablero aleatorio y
+	 * pasarlos al parametro CtrlTablero c.
+	 * @param c Es el gestor de tablero mediante el qual se creara un tablero aleatorio
+	 */
 	public void crear_aleatorio(CtrlTablero c) {
 		System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
 		System.out.println("ATENCION: El valor maximo depende de forma del tablero");

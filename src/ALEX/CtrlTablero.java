@@ -8,14 +8,17 @@ public class CtrlTablero {
 	private Random rm;
 	private Algorithm a;
 	
+	/**
+	 * Creadora por defecto
+	 */
 	public CtrlTablero() {
 		rm = new Random();
 		a = new Algorithm();
 	}
 	
 	/**
-	 * Creadora que asocia el tablero map que viene como parametro con el tablero de la clase
-	 * @param map
+	 * Creadora que asocia el parametro map con el tablero de la clase.
+	 * @param map Contiene el mapa que se quiere asociar con la clase
 	 */
 	public CtrlTablero(Tablero map) {
 		rm = new Random();
@@ -34,10 +37,12 @@ public class CtrlTablero {
 	   *Una vez que el tablero esta lleno (es la solucion al tablero) se determina que esta sera la solucion al tablero y acto seguido
 	   *se llena de (c_vacias) casillas vacias.
 	   *La parte final del algoritmo determina si el tablero tiene solucion unica.
-	   *@param n
-	   *@param c_negras
-	   *@param c_vacias
-	   *@param f
+	   *@param n Medidas del tablero
+	   *@param c_negras Numero de casillas negras con las que se quiere llenar el tablero. Importante remarcar que
+	   *en este valor no se contabilizan las casillas negras necesarias para construir la forma del tablero determinada por
+	   *el parametro f
+	   *@param c_vacias Numero de casillas vacias que se quieren en el tablero
+	   *@param f Indica la forma del tablero. La forma sera dada segun la colocacion estrategica de casillas negras "forats"
 	   */
 	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias, int f) {
 		map = new Tablero(n);
@@ -69,8 +74,9 @@ public class CtrlTablero {
 	/**
 	   *Se inicializa un tablero de nxn, se define el numero de casillas negras
 	   *y se define el numero final (deducido de los dos anteriores parametros)
-	   *@param n
-	   *@param c_negras
+	   *@param n Indica las medidas del tablero
+	   *@param c_negras Indica quantas casillas negras "forats" tendra el tablero. En este parametro no
+	   *se contabilizan las casillas necesarias para conseguir las formas del tablero.
 	   */
 	public void ini(int n, int c_negras) {
 		map = new Tablero(n);
@@ -81,9 +87,11 @@ public class CtrlTablero {
 	/**
 	   *Post: Se coloca el numero n en la posicion (x,y) del tablero. Si n=-1 se considera que
 	   * la casilla sera negra. Si n=0 se considera que la casilla sera vacia.
-	   * @param x
-	   * @param y
-	   * @param n
+	   * @param x Indica la fila
+	   * @param y Indica la columna
+	   * @param n Indica el valor a colocar en (x,y)
+	   * @return Se retorna false en caso de que la operacion no se haya podido realizar con exito.
+	   * Retorna true si la operacion se ha realizado correctamente.
 	   */
 	public boolean colocar_numero_casilla(int x, int y, int n) {
 		if(!map.suitable_pos(x, y) || n > map.get_final_num()) return false;
@@ -95,8 +103,9 @@ public class CtrlTablero {
 	/**
 	 * Se determina si el tablero map tiene solucion, y en caso de que la tenga si la solucion es
 	 * unica
-	 * @param unica
-	 * @return
+	 * @param unica Este parametro de salida indica, en caso de que el tablero de la clase tenga
+	 * solucion, si la solucion es unica
+	 * @return Se retorna true si el mapa de la clase tiene solucion
 	 */
 	public boolean validar(boolean unica) {
 		int[] start;
@@ -117,8 +126,8 @@ public class CtrlTablero {
 	}
 	
 	/**
-	   *Se determina la forma del tablero
-	   *@param f indica la forma del talblero
+	   *Se determina y pinta la forma del tablero segun el parametro f
+	   *@param f Indica la forma del talblero
 	   */
 	public void escojer_forma(int f) {
 		switch (f) {
@@ -135,9 +144,9 @@ public class CtrlTablero {
 	/**
 	 * Funcion que permite colocar "forats" en la posicion (x,y) de map. Si la posicion no
 	 * es valida se retorna false y la variable map no sufre ningun cambio.
-	 * @param x
-	 * @param y
-	 * @return
+	 * @param x Indica la fila
+	 * @param y Indica la columna
+	 * @return Retorna true si la operacion se ha podido realizar con exito. False en qualquier otro caso.
 	 */
 	public boolean colocar_forat_man(int x, int y) {
 		if (!map.enable_pos(x, y)) return false;
@@ -146,7 +155,7 @@ public class CtrlTablero {
 	}
 	
 	/**
-	   *Se asocia el tablero t con el tablero de la clase map
+	   *Se asocia el tablero t con el tablero de la clase
 	   *@param t es el tablero que se quiere asociar
 	   */
 	public void asociar_tablero(Tablero t) {
@@ -189,8 +198,10 @@ public class CtrlTablero {
 	/**
 	   *Post: Se comprueba que se puede quitar un numero de la posicion (x,y).
 	   *No se pueden quitar numeros de casillas vacias, "forats" o bien principio y final.
-	   *@param x
-	   *@param y
+	   *@param x Indica la fila
+	   *@param y Indica la columna
+	   *@return Retorna true en caso de que se pueda quitar un numero en la posicion (x,y) del
+	   *tablero. Al quitar un numero de una casilla la casilla queda vacia.
 	   */
 	private boolean bona_pos_buits(int x, int y) {
 		if (map.enable_pos(x, y) == false) return false;
@@ -202,7 +213,8 @@ public class CtrlTablero {
 	/**
 	   *Devuelve una posicion aleatoria de map[n][n]. Se comprueba que la posicion no
 	   *esta ocupada por ningun "forat".
-	   *@param n
+	   *@param n Indica las medidas del tablero
+	   *@return Retorna una posicion del tablero[n][n] que no esta ocupada por una casilla negra "forat"
 	   */
 	private int[] getRandom(int n) {
 		int[] pos = new int[2];
