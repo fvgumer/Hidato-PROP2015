@@ -3,10 +3,7 @@ package G45;
 import java.io.Serializable;
 
 public class Tablero_comp implements Serializable{
-       
-        /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 		protected Casilla_comp[][] tauler;
         protected int mida;
