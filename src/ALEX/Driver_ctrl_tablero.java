@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Driver_ctrl_tablero {
 	
-	private CtrlGestionTablero prueba;
+	private CtrlTablero prueba;
 	private Scanner s;
 	int n, casillas_negras, casillas_vacias, f;
 	
@@ -11,7 +11,7 @@ public class Driver_ctrl_tablero {
 		s = new Scanner(System.in);
 	}
 	
-	public Driver_ctrl_tablero(CtrlGestionTablero p) {
+	public Driver_ctrl_tablero(CtrlTablero p) {
 		this.prueba = p;
 		s = new Scanner(System.in);
 	}
@@ -24,7 +24,7 @@ public class Driver_ctrl_tablero {
 			System.out.println("2.Crear tablero aleatorio");
 			System.out.println("3.Eliminar un tablero del repositorio");
 			System.out.println("4.Atras");
-		 	prueba = new CtrlGestionTablero();
+		 	prueba = new CtrlTablero();
 			int i = s.nextInt();
 			while (!comprueba_entrada(i,4)) {i = s.nextInt();}
 			switch (i) {
@@ -135,7 +135,7 @@ public class Driver_ctrl_tablero {
 		return i <= cap;
 	}
 	
-	public void crear_aleatorio(CtrlGestionTablero c) {
+	public void crear_aleatorio(CtrlTablero c) {
 		System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
 		System.out.println("ATENCION: El valor maximo depende de forma del tablero");
 		n = s.nextInt();

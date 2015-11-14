@@ -8,10 +8,10 @@ import java.io.ObjectInputStream;
 
 import ALEX.Tablero;
 
-public class CtrlPGestionTablero {
+public class CtrlGestionTablero {
 	private String Ruta;
 	
-	public CtrlPGestionTablero() {
+	public CtrlGestionTablero() {
 	}
 
 	public Tablero cargar(int ID){
