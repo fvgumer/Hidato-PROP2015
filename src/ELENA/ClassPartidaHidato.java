@@ -1,13 +1,7 @@
 package ELENA;
-<<<<<<< HEAD
+
 import G45.*;
-=======
-
-
-
 import java.io.Serializable;
-
->>>>>>> origin/master
 import ALEX.*;
 import JOEL.*;
 

@@ -4,13 +4,9 @@ import ALEX.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-<<<<<<< HEAD
-=======
-
-import ClassPartidaHidato;
 import G45.Partida_comp;
 import ALEX.*;
->>>>>>> origin/master
+
 
 public class CtrlJugar {
 	private ClassPartidaHidato PH;

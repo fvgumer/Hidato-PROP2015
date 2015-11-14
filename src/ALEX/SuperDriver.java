@@ -5,8 +5,10 @@ import ELENA.*;
 import JOEL.*;
 public class SuperDriver {
 
+	private static Scanner s;
+
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
+		s = new Scanner(System.in);
 		Driver_ctrl_tablero d;
 		d = new Driver_ctrl_tablero();
 		DriverJugarPartida e = new DriverJugarPartida();

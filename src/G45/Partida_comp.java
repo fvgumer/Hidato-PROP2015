@@ -1,5 +1,5 @@
 package G45;
-import CLUSTER.*;
+
 
 /**
  * Creado por el grupo de Sudoku
