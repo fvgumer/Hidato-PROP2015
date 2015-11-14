@@ -26,6 +26,7 @@ public class Driver_ctrl_tablero {
 			System.out.println("4.Atras");
 		 	prueba = new CtrlGestionTablero();
 			int i = s.nextInt();
+			while (!comprueba_entrada(i,4)) {i = s.nextInt();}
 			switch (i) {
 				case 1:
 					System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
@@ -87,21 +88,21 @@ public class Driver_ctrl_tablero {
 					b = false;
 					break;
 			}
-			boolean unica = false, solucion;
-			solucion = prueba.validar(unica);
-			if (solucion) {
-				System.out.println("Has creado correctamente el tablero!");
-			}
-			else {
-				System.out.println("El tablero no tiene solucion :(");
-			}
-			if (unica)  {
-				System.out.println("Y la solucion es unica!");
-			}
-			else if(solucion){
-				System.out.println("Pero la solucion no es unica :(");
-			}
 			if(b) {
+				boolean unica = false, solucion;
+				solucion = prueba.validar(unica);
+				if (solucion) {
+					System.out.println("Has creado correctamente el tablero!");
+				}
+				else {
+					System.out.println("El tablero no tiene solucion :(");
+				}
+				if (unica)  {
+					System.out.println("Y la solucion es unica!");
+				}
+				else if(solucion){
+					System.out.println("Pero la solucion no es unica :(");
+				}
 				System.out.println("Quieres guardar el tablero creado?");
 				System.out.println("	1.Si");
 				System.out.println("	2.No");
