@@ -8,11 +8,15 @@ public class ClassResultado {
 	private String dificultad;
 	private int puntuacion;
 	
-	ClassResultado(String jugador, String modo, String dificultad, int puntuacion) {
+	public ClassResultado(String jugador, String modo, String dificultad, int puntuacion) {
 		this.jugador = jugador;
 		this.modo = modo;
 		this.dificultad = dificultad;
 		this.puntuacion = puntuacion;
+	}
+	
+	public String getJugador() {
+		return jugador;
 	}
 	
 	public int getPuntuacion() {
