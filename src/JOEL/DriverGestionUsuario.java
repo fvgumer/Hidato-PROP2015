@@ -27,11 +27,12 @@ public class DriverGestionUsuario {
 				String nombre = scan.nextLine();
 				String contrasenya = scan.nextLine();
 				Jugador player = new Jugador(nombre,contrasenya);
-				controlador.guardar_jugador(player);
+				controlador.guardar(player);
 			}
 			else if(i==4){
 				String nombre = scan.nextLine();
 				String contrasenya = scan.nextLine();
+				System.out.println(contrasenya);
 				Jugador x = controlador.cargar_jugador(nombre,contrasenya);
 			if(x!=null)System.out.println("Jugador con nombre " + x.nombre + " y contraseña " + contrasenya + " cargado");
 			}
