@@ -83,8 +83,6 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			File archiu = new File(ruta);
 			if(archiu.delete()) {
 				System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
-				ClassEstadisticas E = new ClassEstadisticas(nombre);
-				super.eliminar(E);
 				String rutapartida = "Partidas\\"+nombre;
 				if(new File(rutapartida).exists()){
 				try {

@@ -19,7 +19,7 @@ public ClassEstadisticas cargar(String NomE){
 	Ruta = "Rankings"+  "\\" + NomE+ ".bin";
 	File archiu = new File(Ruta);
 	if(archiu.exists()==false) {
-		System.out.println("La estadistica no existeix");
+		System.out.println("El jugador no existe");
 	}
 	else{
 		try{
