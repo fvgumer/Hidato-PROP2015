@@ -23,11 +23,12 @@ public class CtrlEstadisticas {
 		E = GP.cargar(jugador);
 	}
 	
-	public void eliminarEst(){	//cuando se elimina un jugador
+	public void eliminarEst(String jugador){	//cuando se elimina un jugador
+		E = GP.cargar(jugador);
 		for(int i = 0; i < E.tablerosJugados(); ++i) {
-			CtrlRanking CR;
+			CtrlRanking CR = new CtrlRanking;
 			CR.cargarRanking(E.getTableroJ(i));
-			CR.eliminarResultados(E.getName());
+			CR.eliminarResultados(jugador);
 		}
 		GP.eliminar(E);
 	}
