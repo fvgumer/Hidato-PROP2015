@@ -13,9 +13,13 @@ public class CtrlEstadisticas {
 	
 	private ClassEstadisticas E;
 	
+<<<<<<< HEAD
+	CtrlGestionEstadisticas GP;
+=======
 	CtrlGestionEstadisticas GE;
+>>>>>>> cc2efb71e41a77a07b9e344d3fcd92fa2b98ce3a
 	
-	CtrlEstadisticas(){
+	public CtrlEstadisticas(){
 		
 	}
 	
@@ -26,7 +30,7 @@ public class CtrlEstadisticas {
 	public void eliminarEst(String jugador){	//cuando se elimina un jugador
 		E = GE.cargar(jugador);
 		for(int i = 0; i < E.tablerosJugados(); ++i) {
-			CtrlRanking CR = new CtrlRanking;
+			CtrlRanking CR = new CtrlRanking();
 			CR.cargarRanking(E.getTableroJ(i));
 			CR.eliminarResultados(jugador);
 		}
