@@ -34,7 +34,6 @@ public class DriverGestionPartida {
 				int id = scan.nextInt();
 				scan.nextLine();
 				Partida_Hidato P = new Partida_Hidato(T, J, id, 4);
-				System.out.println(P.getUsuario().consultar_nombre());
 				gestor.guardar(P);
 			}
 			else if(i==4){

@@ -1,9 +1,16 @@
 package ALEX;
 
+import java.io.Serializable;
+
 import G45.*;
 
-public class Casilla extends Casilla_comp{
+public class Casilla extends Casilla_comp implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	   * Constructora que pone por defecto el valor a 0 y
 	   * el bool a false.
