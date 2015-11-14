@@ -33,17 +33,17 @@ public class DriverGestionPartida {
 				System.out.println("Introducir id partida que queremos guardar");
 				int id = scan.nextInt();
 				scan.nextLine();
-				Partida_Hidato P = new Partida_Hidato(T, J, 342342, 4);
+				Partida_Hidato P = new Partida_Hidato(T, J, id, 4);
 				System.out.println(P.getUsuario().consultar_nombre());
 				gestor.guardar(P);
 			}
 			else if(i==4){
 				System.out.println("Introducir nombre jugador y id de la partida que queremos cargar");
 				Partida_Hidato x;
-				/*String nombre = scan.nextLine();
+				String nombre = scan.nextLine();
 				int id = scan.nextInt();
-				scan.nextLine();*/
-				x = gestor.cargar("joel", 342342);
+				scan.nextLine();
+				x = gestor.cargar(nombre, id);
 			if(x!=null)System.out.println("Partida con id " + x.getID() + " del jugador " + x.getUsuario().consultar_nombre() + " cargado");
 			}
 			else if(i==5){
