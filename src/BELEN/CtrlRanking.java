@@ -13,7 +13,7 @@ import JOEL.*;
 public class CtrlRanking {
 
 	private ClassRanking R;
-	CtrlGestionHidato GP;
+	CtrlGestionRanking GP;
 	
 	CtrlRanking() {
 		
