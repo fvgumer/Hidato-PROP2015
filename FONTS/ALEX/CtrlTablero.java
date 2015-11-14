@@ -170,6 +170,7 @@ public class CtrlTablero {
 	public void guardar() {
 		CtrlGestionTablero c = new CtrlGestionTablero();
 		int aux = c.consultar_ultim_ID();
+		System.out.println("l'ultim id es "+ aux);
 		map.set_id(aux+1);
 		c.guardar(map);
 	}
