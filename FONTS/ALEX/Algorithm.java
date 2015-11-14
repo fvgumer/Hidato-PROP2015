@@ -91,7 +91,8 @@ public class Algorithm {
 	}
 	
 	/**
-	 * El algoritmo determina si la solucion del tablero map es unica.
+	 * El algoritmo determina si la solucion del tablero map es unica. El funcionamento es muy
+	 * parecido al solver.
 	 * @param x Indica la fila actual
 	 * @param y Indica la columna actual
 	 * @param value Indica el valor actual
