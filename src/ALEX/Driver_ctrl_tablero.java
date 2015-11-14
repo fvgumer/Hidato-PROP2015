@@ -136,6 +136,7 @@ public class Driver_ctrl_tablero {
 				while(!comprueba_entrada(i, 2)) {
 					i = s.nextInt();
 				}
+				if(i == 1) prueba.guardar();
 				System.out.println("Donde quieres ir?:");
 				System.out.println("	1.Menu principal");
 				System.out.println("	2.Menu de gestion de tablero");

@@ -18,7 +18,8 @@ public class Algorithm {
 	 * @param y Indica la columna actual
 	 * @param value Indica el valor actual
 	 * @param map Tablero sobre el qual se ejecuta el solver
-	 * @return 
+	 * @return Retorna true si el tablero map tiene al menos una solucion posible. False si no tiene 
+	 * ninguna solucion.
 	 */
 	public boolean solver(int x, int y, int value, Tablero map) {
 		boolean result = false, predef = false;

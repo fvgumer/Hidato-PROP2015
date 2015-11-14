@@ -1,6 +1,7 @@
 package ALEX;
 
 import java.util.Random;
+import JOEL.*;
 
 public class CtrlTablero {
 
@@ -236,5 +237,10 @@ public class CtrlTablero {
 		int[] pos;
 		pos = getRandom(mida);
 		map.setStart(pos[0],pos[1]);
+	}
+	
+	public void guardar() {
+		//CtrlGestionHidato<Tablero> p = new CtrlGestionHidato();
+		
 	}
 }
