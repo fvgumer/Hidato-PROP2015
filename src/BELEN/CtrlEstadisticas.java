@@ -13,31 +13,31 @@ public class CtrlEstadisticas {
 	
 	private ClassEstadisticas E;
 	
-	CtrlGestionPartida GP;
+	CtrlGestionEstadisticas GE;
 	
 	CtrlEstadisticas(){
 		
 	}
 	
 	public void cargarEst(String jugador) {
-		E = GP.cargar(jugador);
+		E = GE.cargar(jugador);
 	}
 	
 	public void eliminarEst(String jugador){	//cuando se elimina un jugador
-		E = GP.cargar(jugador);
+		E = GE.cargar(jugador);
 		for(int i = 0; i < E.tablerosJugados(); ++i) {
 			CtrlRanking CR = new CtrlRanking;
 			CR.cargarRanking(E.getTableroJ(i));
 			CR.eliminarResultados(jugador);
 		}
-		GP.eliminar(E);
+		GE.eliminar(E);
 	}
 	
 	/* Pre: */
 	public void crearEstadisticas(String jugador) {	//llamarla una vez, cuando se crea el jugador
 		E = new ClassEstadisticas(jugador);
 		
-		GP.guardar(E);
+		GE.guardar(E);
 	}
 	/* Post: Se ha creado un fichero con las estadísticas del jugador */
 	
@@ -48,7 +48,7 @@ public class CtrlEstadisticas {
 		E.actualizarPuntuacion(p);
 		E.anadirTableroJ(tablero);
 		
-		GP.guardar(E);
+		GE.guardar(E);
 	}
 	/* Post: Las estadísticas del jugador correspondiente se han 
 	 * actualizado con los datos introducidos */
@@ -57,7 +57,7 @@ public class CtrlEstadisticas {
 	public void tableroCreado(String t) {
 		E.anadirTableroC(t);
 		
-		GP.guardar(E);
+		GE.guardar(E);
 	}
 	/* Post: Se ha actualizado el listado de tableros creados por el
 	 * jugador correspondiente*/
