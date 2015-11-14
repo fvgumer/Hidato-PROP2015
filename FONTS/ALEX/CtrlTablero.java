@@ -164,6 +164,17 @@ public class CtrlTablero {
 	}
 	
 	/**
+	 * Se guarda el tablero de la clase en el sistema de ficheros. Se le asigna el identificador
+	 * dependiendo del identificador del ultimo tablero guardado.
+	 */
+	public void guardar() {
+		CtrlGestionTablero c = new CtrlGestionTablero();
+		int aux = c.consultar_ultim_ID();
+		map.set_id(aux+1);
+		c.guardar(map);
+	}
+
+	/**
 	   *El tablero se llena de n "forats" en posiciones aleatorias
 	   *@param n Contiene el numero de "forats" con el qe se llenara el tablero
 	   */
@@ -237,12 +248,5 @@ public class CtrlTablero {
 		int[] pos;
 		pos = getRandom(mida);
 		map.setStart(pos[0],pos[1]);
-	}
-	
-	public void guardar() {
-		CtrlGestionTablero c = new CtrlGestionTablero();
-		int aux = c.consultar_ultim_ID();
-		map.set_id(aux+1);
-		c.guardar(map);
 	}
 }
