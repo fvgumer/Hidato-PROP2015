@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import ELENA.ClassPartidaHidato;
+import ELENA.Partida_Hidato;
 
 public class CtrlGestionPartida extends CtrlGestionHidato{
 private String Ruta;
@@ -14,8 +14,8 @@ private String Ruta;
 CtrlGestionPartida(){
 }
 
-public ClassPartidaHidato cargar(String NomJ, String ID){
-	ClassPartidaHidato P = new ClassPartidaHidato(null, null, 0, 0);
+public Partida_Hidato cargar(String NomJ, String ID){
+	Partida_Hidato P = new Partida_Hidato(null, null, 0, 0);
 	Ruta = "Partidas"+  "\\" + NomJ+ "\\" + ID + ".bin";
 	File archiu = new File(Ruta);
 	if(archiu.exists()==false) {
@@ -24,7 +24,7 @@ public ClassPartidaHidato cargar(String NomJ, String ID){
 	else{
 		try{
 		ObjectInputStream is = new ObjectInputStream(new FileInputStream(Ruta));
-		P = (ClassPartidaHidato) is.readObject();
+		P = (Partida_Hidato) is.readObject();
 		is.close();
 		}
 		 catch (FileNotFoundException e) {

@@ -17,7 +17,7 @@ public class CtrlGestionHidato<T> {
 	
 	private void calcularruta(T objeto){
 		String Onom = objeto.getClass().getSimpleName();
-		if(Onom.equals("ClassPartidaHidato")){
+		if(Onom.equals("Partida_Hidato")){
 			 Partida_Hidato P = (Partida_Hidato) objeto;
 			 String ID = String.valueOf(P.getID());
 			 String Player = P.getUsuario().consultar_nombre();
@@ -63,7 +63,6 @@ public class CtrlGestionHidato<T> {
 			e.printStackTrace();
 		}	
 	}
-
 
 	//Eliminar de estadisticas, ranquing, partida 
 	
