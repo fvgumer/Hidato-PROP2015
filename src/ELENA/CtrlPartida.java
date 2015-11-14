@@ -27,7 +27,7 @@ public class CtrlPartida {
 	/*__________NO_IMPLEMENTADO_________________*/
 	public void generar_Taleatorio(int dim, int c_ini, int forats, int f){
 		System.out.println("HOLA");
-		CtrlGestionTablero GT = new CtrlGestionTablero();
+		CtrlTablero GT = new CtrlTablero();
 		System.out.println("HOLA");
 		GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), f);
 		System.out.println("HOLA");

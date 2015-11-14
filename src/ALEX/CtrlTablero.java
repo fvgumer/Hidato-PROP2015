@@ -2,13 +2,13 @@ package ALEX;
 
 import java.util.Random;
 
-public class CtrlGestionTablero {
+public class CtrlTablero {
 
 	private Tablero map;
 	private Random rm;
 	private Algorithm a;
 	
-	public CtrlGestionTablero() {
+	public CtrlTablero() {
 		rm = new Random();
 		a = new Algorithm();
 	}
@@ -17,7 +17,7 @@ public class CtrlGestionTablero {
 	 * Creadora que asocia el tablero map que viene como parametro con el tablero de la clase
 	 * @param map
 	 */
-	public CtrlGestionTablero(Tablero map) {
+	public CtrlTablero(Tablero map) {
 		rm = new Random();
 		a = new Algorithm();
 		this.map = map;
