@@ -1,36 +1,33 @@
 package BELEN;
 
 import java.util.*;
+
 import java.io.Serializable;
 
 public class ClassEstadisticas implements Serializable{
 
 	private String user;
 	
-	private int partidasJugadas;
 	private int segundosJugados;	//para mostrarlo por pantalla lo pasaremos a hh:mm:ss
 	private int puntuacionTotal;
 	private int mejorPuntuacion;
 	private ArrayList<String> tablerosCreados;
+
+	private ArrayList<String> tablerosJugados;
 	
 	private static final long serialVersionUID = 1L;
 	
 	
-	public ClassEstadisticas(String usuario){
-		partidasJugadas = segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
+	public ClassEstadisticas(String user){
+		this.user = user;
+		segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
 		tablerosCreados = new ArrayList<String>();
-		user=usuario;
+		tablerosJugados = new ArrayList<String>();
 	}
 
 	public String getName() {
 		return user;
 	}
-	
-	/*Pre: */
-	public void incrementarPartidas() {
-		++partidasJugadas;
-	}
-	/* Post: El contador de partidas jugadas del jugador correspondiente se ha incrementado en uno */
 	
 	/* Pre: s > 0 */
 	public void incrementarTiempo(int s){
@@ -52,16 +49,14 @@ public class ClassEstadisticas implements Serializable{
 	 * p pasa a ser la mejor puntuación de dicho jugador. En caso contrario, no hay cambios. */
 	
 	/* Pre: */
-	public void anadirTablero(String t) {
+	public void anadirTableroC(String t) {
 		tablerosCreados.add(t);
 	}
 	/* Post: El tablero con nombre t se ha añadido a la lista de tableros creados por el usuario corrspondiente */
 	
-	/* Pre: */
-	public void mostrarPartidasJugadas() {
-		System.out.format("Partidas jugadas: %d\n", partidasJugadas);
+	public void anadirTableroJ(String t) {
+		tablerosJugados.add(t);
 	}
-	/* Post: Por pantalla se muestra el número total de partidas jugadas por el jugador correspondiente */
 	
 	/* Pre: */
 	public void mostrarTiempoJugado() {
@@ -83,6 +78,20 @@ public class ClassEstadisticas implements Serializable{
 		System.out.format("Mejor puntuación obtenida: %d\n", mejorPuntuacion);
 	}
 	/* Post: Por pantalla se muestra la mejor puntuación obtenida por el jugador correspondiente */
+	
+	public String getTableroJ(int n) {
+		return tablerosJugados.get(n);
+	}
+	
+	public int tablerosJugados() {
+		return tablerosJugados.size();
+	}
+	
+	public void mostrarTablerosJugados() {
+		System.out.format("%d tableros jugados:\n",tablerosJugados.size());
+		for (int i = 0; i < tablerosJugados.size(); ++i) 
+			System.out.format("%d\n",tablerosJugados.get(i));
+	}
 	
 	/* Pre: */
 	public void mostrarTablerosCreados() {
