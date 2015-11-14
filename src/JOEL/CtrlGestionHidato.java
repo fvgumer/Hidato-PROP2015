@@ -52,7 +52,7 @@ public class CtrlGestionHidato {
 		else if(Onom.equals("Tablero")){
 			Tablero T = (Tablero) objeto;
 			ruta ="Tableros";
-			//archivo= "\\"+T.getID()+".bin";
+			archivo= "\\"+T.get_id()+".bin";
 		}
 	}
 

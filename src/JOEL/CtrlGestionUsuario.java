@@ -39,7 +39,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato{
 	}
 	
 	public Jugador cargar_jugador(String nombre, String password){
-		String ruta = "jugadors\\"+nombre+".bin";
+		String ruta = "Jugadors\\"+nombre+".bin";
 		Jugador pla = new Jugador(null, null);
 		File archiu = new File(ruta);
 		if(archiu.exists()==false) {
