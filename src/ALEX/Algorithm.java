@@ -10,8 +10,10 @@ public class Algorithm {
 		rm = new Random();
 	}
 	/**
-	   * Se soluciona el tablero map mediante recusividad. 
-	   * Solo se da una solucion (Puede haber varias).
+	   * Se soluciona el tablero map mediante recusividad. La forma de funcionar del algoritmo
+	   * es parecia al backtracking.
+	   * 
+	   * El algoritmo determina si existe solucion y la crea. Puede haber mas de una solucion.
 	   */
 	public boolean solver(int x, int y, int value, Tablero map) {
 		boolean result = false, predef = false;
@@ -48,7 +50,15 @@ public class Algorithm {
 
 	/**
 	   * El algoritmo genera un tablero Hidato de forma aleatoria partiendo del primer
-	   * numero y de forma recursiva
+	   * numero y de forma recursiva. Partiendo del numero 1, el algoritmo elige una casilla
+	   * vacia y disponible vecina de forma aleatoria. Determina el valor de la casilla vecina escogida
+	   * como el valor de la casilla actual + 1 y se vuelve a aplicar el mismo procedimiento de forma
+	   * recursiva. El altoritmo acaba quando se llega al ultimo numero o bien quando se han buscado todas las
+	   * posibilidades
+	   * @param map
+	   * @param x
+	   * @param y
+	   * @para value
 	   */
 	public boolean generador(Tablero map, int x, int y, int value){
 		boolean b = false;
@@ -72,6 +82,14 @@ public class Algorithm {
 		return b;
 	}
 	
+	/**
+	 * El algoritmo determina si la solucion del tablero map es unica.
+	 * @param x
+	 * @param y
+	 * @param map
+	 * @param value
+	 * @return
+	 */
 	public boolean unica_solucion(int x, int y, Tablero map, int value) {
 		boolean result = false, predef = false; 
 		int cont = 0;
@@ -109,8 +127,9 @@ public class Algorithm {
 	}
 	
 	/**
-	   * @return Retorna un numero aleatorio entre [-1,1]
-	   */
+	 * Devuelve un numero aleatorio entre [-1,1]
+	 * @return
+	 */
 	private int random() {
 		int i = (int)(rm.nextInt(3)) - 1;
 		return i;
