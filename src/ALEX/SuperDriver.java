@@ -6,14 +6,14 @@ import JOEL.*;
 public class SuperDriver {
 
 	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
 		Driver_ctrl_tablero d;
 		d = new Driver_ctrl_tablero();
 		DriverJugarPartida e = new DriverJugarPartida();
 		boolean b = true;
 		int i;
-		String input = "2";
 		while (b) {
-			Scanner s = new Scanner(System.in);
+			
 			System.out.println("HIDATO");
 			/*System.out.println("Hola! Entro con tu usuario o bien crea uno nuevo:");
 			System.out.println("1.Login");
@@ -21,12 +21,13 @@ public class SuperDriver {
 			//Toot el tema usuari, ja ho posaras joel
 			System.out.println("Menu Principal");
 			System.out.println("1.Gestion Usuario");
+			System.out.println("MEEEEEEEEEEEEc");
 			System.out.println("2.Gestion Tablero");
 			System.out.println("3.Comenzar Juego");
 			System.out.println("4.Estadisticas");
 			System.out.println("5.Salir");
 			i = s.nextInt();
-			while(!comprueba_entrada(i,4)) {
+			while(!comprueba_entrada(i,5)) {
 				i = s.nextInt();
 			}
 			switch (i) {
