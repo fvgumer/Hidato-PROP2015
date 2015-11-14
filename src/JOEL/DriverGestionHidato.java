@@ -14,16 +14,16 @@ public class DriverGestionHidato {
 		
 		Jugador J = new Jugador("joel3","codina");
 		Tablero T = new Tablero(10);
-		ClassPartidaHidato P = new ClassPartidaHidato(T, J, 999,1);
+		ClassPartidaHidato P = new ClassPartidaHidato(T, J, 9991,1);
 		ClassEstadisticas E = new ClassEstadisticas("joel3");
 		ClassRanking R = new ClassRanking("nomtablero");
 		CtrlGestionHidato gestor = new CtrlGestionHidato();
 		CtrlGestionUsuario gestorj = new CtrlGestionUsuario();
-		//gestor.guardar(J);
-		//gestor.guardar(P);
-		//gestor.guardar(E);
-		//gestor.guardar(R);
-		gestor.eliminar(R);
+		gestor.guardar(J);
+		gestor.guardar(P);
+		gestor.guardar(E);
+		gestor.guardar(R);
+		//gestor.eliminar(R);
 		gestorj.eliminar_jugador("joel3", "codina");
 	/*	Scanner scan = new Scanner(System.in);
 		int i = 1;
