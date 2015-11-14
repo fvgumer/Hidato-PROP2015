@@ -13,10 +13,11 @@ import JOEL.*;
 public class CtrlRanking {
 
 	private ClassRanking R;
+	
 	CtrlGestionRanking GP;
 	
 	CtrlRanking() {
-		
+		GP = new CtrlGestionRanking();
 	}
 	
 	
@@ -25,12 +26,15 @@ public class CtrlRanking {
 		GP.guardar(R);
 	}
 	
-	public void cargarRanking(String tablero) {
+	public int cargarRanking(String tablero) {
 		R = GP.cargar(tablero);
+		if (R.getID() == null) return 0;
+		else return 1;
 	}
 	
 	public void getTop(int n){
 		System.out.print("Jugador  ||  Modo  ||  Dificultad  || Puntuación\n");	//las lineas no se veran alineadas entre si :'(
+		if (R.size() < n) n = R.size();
 		for (int i = 0; i < n; ++i){
 			R.mostrarPosicion(i);
 		}

@@ -10,8 +10,12 @@ import ALEX.Tablero;
 
 public class CtrlGestionTablero {
 	private String Ruta;
+	private String barras;
 	
 	public CtrlGestionTablero() {
+		String s = System.getProperty("os.name");
+		if (s.charAt(0) == 'W') barras = "\\";
+		else barras = "/";
 	}
 
 	public Tablero cargar(int ID){
@@ -44,7 +48,7 @@ public class CtrlGestionTablero {
 	
 
 	public int consultar_ultim_ID(){
-		Ruta = "Tableros"+  "\\";
+		Ruta = "Tableros"+  barras;
 		File directory = new File(Ruta);
 		if(directory.exists()==false) {
 			directory.mkdir();
