@@ -21,7 +21,9 @@ import BELEN.*;
 public class CtrlGestionHidato {
 	private String ruta;
 	private String archivo;
-	CtrlGestionHidato(){}
+	CtrlGestionHidato(){
+		
+	}
 	
 	private <T> void calcularruta(T objeto){
 		String Onom = objeto.getClass().getSimpleName();
@@ -71,12 +73,13 @@ public class CtrlGestionHidato {
 		}	
 	}
 
+	//Eliminar de estadisticas, ranquing, partida 
+	
 	public <T> void eliminar(T objeto){
 			calcularruta(objeto);
 			File archiu = new File(ruta+archivo);
 			if(archiu.delete())System.out.println("S'ha eliminat correctament");
 			else System.out.println("No existeix");	
 	}
-
-	
 }
+
