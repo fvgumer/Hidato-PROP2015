@@ -7,13 +7,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import JOEL.*;
 
-import JOEL.CtrlGestionPartida;
 
 public class CtrlRanking {
 
 	private ClassRanking R;
-	CtrlGestionPartida GP;
+	CtrlGestionHidato GP;
 	
 	CtrlRanking() {
 		

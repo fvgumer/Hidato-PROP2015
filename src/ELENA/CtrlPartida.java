@@ -1,13 +1,12 @@
 package ELENA;
 
-import ClassPartidaHidato;
 import ALEX.*;
 //import java.util.Random;
 import JOEL.*;
 
 public class CtrlPartida {
 	//CONSTANTES
-	ClassPartidaHidato PH;
+	Partida_Hidato PH;
 	Tablero T;
 	Jugador J;
 
@@ -43,13 +42,13 @@ public class CtrlPartida {
 	}
 	public void crear_partida(Jugador U, int dificultad,int modo, int dim){
 		int ID = 0; //CALCULAR ID
-		PH = new ClassPartidaHidato(T,U,ID,dim);
+		PH = new Partida_Hidato(T,U,ID,dim);
 		PH.set_dificultad(dificultad);
 		PH.set_modo(modo);
 	}
 	
 	
-	public ClassPartidaHidato get_partida() {
+	public Partida_Hidato get_partida() {
 		return PH;
 	}
 

@@ -1,6 +1,5 @@
 package G45;
-import CLUSTER.*;
- 
+
 public class Tablero_comp {
        
         protected Casilla_comp[][] tauler;

@@ -1,5 +1,5 @@
 package G45;
-import CLUSTER.*;
+
  
 public class Casilla_comp {
  

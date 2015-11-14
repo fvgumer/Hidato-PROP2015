@@ -1,17 +1,11 @@
 package ELENA;
-<<<<<<< HEAD
+
 import G45.*;
-=======
-
-
-
 import java.io.Serializable;
-
->>>>>>> origin/master
 import ALEX.*;
 import JOEL.*;
 
-public class ClassPartidaHidato extends Partida_comp implements Serializable{
+public class Partida_Hidato extends Partida_comp implements Serializable{
 
 	/**
 	 * 
@@ -26,7 +20,7 @@ public class ClassPartidaHidato extends Partida_comp implements Serializable{
 
 
 	
-	public ClassPartidaHidato(Tablero T, Jugador J, int ID,int dim){
+	public Partida_Hidato(Tablero T, Jugador J, int ID,int dim){
 		super(T,J,ID);
 		estado = 2;
 		dificultad = 0; //NO TIENE

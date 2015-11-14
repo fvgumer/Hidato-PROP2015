@@ -2,8 +2,7 @@ package JOEL;
 import java.util.Scanner;
 
 import ALEX.Tablero;
-import BELEN.ClassEstadisticas;
-import BELEN.ClassRanking;
+import BELEN.*;
 import ELENA.*;
 
 public class DriverGestionHidato {
@@ -14,7 +13,7 @@ public class DriverGestionHidato {
 		
 		Jugador J = new Jugador("joel3","codina");
 		Tablero T = new Tablero(10);
-		ClassPartidaHidato P = new ClassPartidaHidato(T, J, 9991,1);
+		Partida_Hidato P = new Partida_Hidato(T, J, 9991,1);
 		ClassEstadisticas E = new ClassEstadisticas("joel3");
 		ClassRanking R = new ClassRanking("nomtablero");
 		CtrlGestionHidato gestor = new CtrlGestionHidato();

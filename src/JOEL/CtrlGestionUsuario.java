@@ -11,7 +11,7 @@ import org.apache.commons.io.*;
 
 import BELEN.ClassEstadisticas;
 
-public class CtrlGestionUsuario extends CtrlGestionHidato{
+public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	
 	CtrlGestionUsuario(){
 	}
@@ -39,7 +39,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato{
 	}
 	
 	public Jugador cargar_jugador(String nombre, String password){
-		String ruta = "Jugadors\\"+nombre+".bin";
+		String ruta = "jugadors\\"+nombre+".bin";
 		Jugador pla = new Jugador(null, null);
 		File archiu = new File(ruta);
 		if(archiu.exists()==false) {
@@ -68,6 +68,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato{
 		return pla;
 		}
 	}
+	
 //Elimina jugador, partides que tingués actives i estadistiques !actualizar ranking!
 	public void eliminar_jugador(String nombre, String contrasenya){
 		//Jugador z = cargar_jugador(nombre,contrasenya);
@@ -78,7 +79,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato{
 			if(archiu.delete()) {
 				System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
 				ClassEstadisticas E = new ClassEstadisticas(nombre);
-				this.eliminar(E);
+				super.eliminar(E);
 				String rutapartida = "Partidas\\"+nombre;
 				if(new File(rutapartida).exists()){
 				try {

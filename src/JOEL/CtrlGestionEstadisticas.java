@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 
 import BELEN.ClassEstadisticas;
 
-public class CtrlGestionEstadisticas extends CtrlGestionHidato{
+public class CtrlGestionEstadisticas extends CtrlGestionHidato<Object>{
 private String Ruta;
 
 public CtrlGestionEstadisticas(){

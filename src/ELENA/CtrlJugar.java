@@ -1,19 +1,10 @@
 package ELENA;
 import ALEX.*;
-
-
 import java.util.ArrayList;
-import java.util.Scanner;
-<<<<<<< HEAD
-=======
 
-import ClassPartidaHidato;
-import G45.Partida_comp;
-import ALEX.*;
->>>>>>> origin/master
 
 public class CtrlJugar {
-	private ClassPartidaHidato PH;
+	private Partida_Hidato PH;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
 
@@ -115,7 +106,7 @@ public class CtrlJugar {
 		}
 	}
 	
-	public void jugar_partida(ClassPartidaHidato PH2){
+	public void jugar_partida(Partida_Hidato PH2){
 		PH = PH2;
 	}
 

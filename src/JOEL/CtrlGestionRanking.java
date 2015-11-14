@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 
 import BELEN.ClassRanking;
 
-public class CtrlGestionRanking extends CtrlGestionHidato{
+public class CtrlGestionRanking extends CtrlGestionHidato<Object>{
 private String Ruta;
 
 CtrlGestionRanking(){

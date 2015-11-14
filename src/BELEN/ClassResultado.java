@@ -1,4 +1,4 @@
-package hidato;
+package BELEN;
 
 public class ClassResultado {
 

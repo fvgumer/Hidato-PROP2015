@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class CtrlTableroPersistencia {
 	
-	public void guardar_tablero(tablero map){
+	public void guardar_tablero(Tablero map){
 		String filename = "mapa1";
 		try{
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));

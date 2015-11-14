@@ -5,8 +5,10 @@ import ELENA.*;
 import JOEL.*;
 public class SuperDriver {
 
+	private static Scanner s;
+
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
+		s = new Scanner(System.in);
 		Driver_ctrl_tablero d;
 		d = new Driver_ctrl_tablero();
 		DriverJugarPartida e = new DriverJugarPartida();
@@ -21,7 +23,6 @@ public class SuperDriver {
 			//Toot el tema usuari, ja ho posaras joel
 			System.out.println("Menu Principal");
 			System.out.println("1.Gestion Usuario");
-			System.out.println("MEEEEEEEEEEEEc");
 			System.out.println("2.Gestion Tablero");
 			System.out.println("3.Comenzar Juego");
 			System.out.println("4.Estadisticas");

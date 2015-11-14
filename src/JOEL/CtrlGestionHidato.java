@@ -13,14 +13,12 @@ import BELEN.*;
 public class CtrlGestionHidato<T> {
 	private String ruta;
 	private String archivo;
-	CtrlGestionHidato(){
-		
-	}
+	CtrlGestionHidato(){}
 	
 	private void calcularruta(T objeto){
 		String Onom = objeto.getClass().getSimpleName();
 		if(Onom.equals("ClassPartidaHidato")){
-			 ClassPartidaHidato P = (ClassPartidaHidato) objeto;
+			 Partida_Hidato P = (Partida_Hidato) objeto;
 			 String ID = String.valueOf(P.getID());
 			 String Player = P.getUsuario().consultar_nombre();
 			 ruta = "Partidas\\" +Player;
@@ -44,7 +42,8 @@ public class CtrlGestionHidato<T> {
 		else if(Onom.equals("Tablero")){
 			Tablero T = (Tablero) objeto;
 			ruta ="Tableros";
-			archivo= "\\"+T.get_id()+".bin";
+			String Tnom = String.valueOf(T.get_id());
+			archivo= "\\"+Tnom+".bin";
 		}
 	}
 
@@ -65,15 +64,17 @@ public class CtrlGestionHidato<T> {
 		}	
 	}
 
+
 	//Eliminar de estadisticas, ranquing, partida 
 	
+
 	public void eliminar(T objeto){
-			calcularruta(objeto);
+
+		   calcularruta(objeto);
 			File archiu = new File(ruta+archivo);
 			if(archiu.delete())System.out.println("S'ha eliminat correctament");
 			else System.out.println("No existeix");	
 	}
-
 
 	public boolean existeix(T objeto){
 		calcularruta(objeto);
@@ -82,3 +83,4 @@ public class CtrlGestionHidato<T> {
 		else return false;
 	}
 }
+
