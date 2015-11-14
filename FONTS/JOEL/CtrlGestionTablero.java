@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 
 import ALEX.Tablero;
 
-public class CtrlGestionTablero {
+public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	private String Ruta;
 	
 	public CtrlGestionTablero() {

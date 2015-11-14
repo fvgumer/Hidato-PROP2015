@@ -240,7 +240,9 @@ public class CtrlTablero {
 	}
 	
 	public void guardar() {
-		//CtrlGestionHidato<Tablero> p = new CtrlGestionHidato();
-		
+		CtrlGestionTablero c = new CtrlGestionTablero();
+		int aux = c.consultar_ultim_ID();
+		map.set_id(aux+1);
+		c.guardar(map);
 	}
 }
