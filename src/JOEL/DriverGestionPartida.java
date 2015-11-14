@@ -1,9 +1,4 @@
 package JOEL;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 import ALEX.Tablero;
@@ -13,6 +8,7 @@ public class DriverGestionPartida {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		Jugador J = new Jugador("joel","codina");
 		Tablero T = new Tablero(4);

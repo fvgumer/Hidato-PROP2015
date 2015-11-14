@@ -1,13 +1,11 @@
 package JOEL;
-import java.util.Scanner;
-
+import java.io.Serializable;
 import ALEX.Tablero;
 import BELEN.*;
 import ELENA.*;
 
 public class DriverGestionHidato {
 
-	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -16,9 +14,9 @@ public class DriverGestionHidato {
 		Partida_Hidato P = new Partida_Hidato(T, J, 9991,1);
 		ClassEstadisticas E = new ClassEstadisticas("joel3");
 		ClassRanking R = new ClassRanking("nomtablero");
-		CtrlGestionHidato gestor = new CtrlGestionHidato();
+		CtrlGestionHidato<Serializable> gestor = new CtrlGestionHidato<Serializable>();
 		CtrlGestionUsuario gestorj = new CtrlGestionUsuario();
-		CtrlGestionPArtida gestor
+	
 		gestor.guardar(J);
 		gestor.guardar(P);
 		
