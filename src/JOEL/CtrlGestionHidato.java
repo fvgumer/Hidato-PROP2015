@@ -18,32 +18,28 @@ import java.io.ObjectOutputStream;
 import ALEX.*;
 import BELEN.*;
 
-public class CtrlGestionPartida {
+public class CtrlGestionHidato {
+	private String ruta;
+	private String archivo;
+	CtrlGestionHidato(){}
 	
-	CtrlGestionPartida(){}
-	
-	public <T> void guardar(T objeto){
+	private <T> void calcularruta(T objeto){
 		String Onom = objeto.getClass().getSimpleName();
-		//String O1nom = objeto.getClass().getName();
-		//String O2nom = objeto.getClass().getCanonicalName();
-		//System.out.println(Onom);
-		String ruta = null;
-		String archivo=null;
 		if(Onom.equals("ClassPartidaHidato")){
 			 ClassPartidaHidato P = (ClassPartidaHidato) objeto;
 			 String ID = String.valueOf(P.getID());
 			 String Player = P.getUsuario().consultar_nombre();
-			 ruta = "partidas\\" +Player;
+			 ruta = "Partidas\\" +Player;
 			 archivo = "\\" + ID + ".bin";
 		}
 		else if(Onom.equals("Jugador")){
 			Jugador J = (Jugador) objeto;
-			ruta = "jugadors";
+			ruta = "Jugadors";
 			archivo = "\\"+J.consultar_nombre()+ ".bin";
 		}
 		else if(Onom.equals("ClassRanking")){
 			ClassRanking R = (ClassRanking) objeto;
-			ruta ="Ranking";
+			ruta ="Rankings";
 			archivo= "\\"+R.getID()+".bin";
 		}
 		else if(Onom.equals("ClassEstadisticas")){
@@ -51,12 +47,21 @@ public class CtrlGestionPartida {
 			ruta = "Estadisticas";
 			archivo = "\\"+E.getName()+".bin";
 		}
+		else if(Onom.equals("Tablero")){
+			Tablero T = (Tablero) objeto;
+			ruta ="Tableros";
+			//archivo= "\\"+T.getID()+".bin";
+		}
+	}
+
+	public <T> void guardar(T objeto){
+		calcularruta(objeto);
 		try {
 			File archiu = new File(ruta);
 			archiu.mkdirs();
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(ruta + archivo));
 			os.writeObject(objeto);
-			
+			os.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,5 +70,13 @@ public class CtrlGestionPartida {
 			e.printStackTrace();
 		}	
 	}
-}
 
+	public <T> void eliminar(T objeto){
+			calcularruta(objeto);
+			File archiu = new File(ruta+archivo);
+			if(archiu.delete())System.out.println("S'ha eliminat correctament");
+			else System.out.println("No existeix");	
+	}
+
+	
+}

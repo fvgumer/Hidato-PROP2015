@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class CtrlGestionUsuario {
+import BELEN.ClassEstadisticas;
+
+public class CtrlGestionUsuario extends CtrlGestionHidato{
 	
 	CtrlGestionUsuario(){
 	}
 	
-	public void crear_jugador(String nombre, String contrasenya){
+	/*public void crear_jugador(String nombre, String contrasenya){
 		File archiu = new File("jugadors\\"+nombre+".bin");
 		if(archiu.exists()){
 			System.out.println("El nom ja existeix, elegeix un altre");
@@ -34,7 +36,7 @@ public class CtrlGestionUsuario {
 		}
 		System.out.println("Ja esta creat");
 	}
-	
+	*/
 	public Jugador cargar_jugador(String nombre, String password){
 		String ruta = "jugadors\\"+nombre+".bin";
 		Jugador pla = new Jugador(null, null);
@@ -67,18 +69,25 @@ public class CtrlGestionUsuario {
 	}
 
 	public void eliminar_jugador(String nombre, String contrasenya){
-		Jugador z = cargar_jugador(nombre,contrasenya);
-		if(z==null) return;
-		else{
-			String ruta = "jugadors\\"+nombre+".bin";
+		//Jugador z = cargar_jugador(nombre,contrasenya);
+		//if(z==null) return;
+		
+			String ruta = "Jugadors\\"+nombre+".bin";
 			File archiu = new File(ruta);
-			if(archiu.delete())System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
-		}
+			if(archiu.delete()) {
+				System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
+				ClassEstadisticas E = new ClassEstadisticas("nombre");
+				this.eliminar(E);
+				String rutapartida = "Partidas\\"+nombre;
+				File archiu1 = new File(rutapartida);
+				if(archiu1.delete()) System.out.println("S'han eliminat les sever partides també");
+			}
+		
 		//System.out.println("El jugador/a " +z.consultar_nombre()+ " ha estat eliminat/da");
 		//if(archiu.delete())System.out.println("El jugador/a " +nom+ " ha estat eliminat/da");
 		//else System.out.println("El jugador no existeix");
-	}	
-
+}	
+/*
 	public void guardar_jugador(Jugador player){
 		String filename = "jugadors\\"+player.nombre+".bin";
 		try {
@@ -93,4 +102,6 @@ public class CtrlGestionUsuario {
 			e.printStackTrace();
 		}
 	}
+	*/
 }
+	

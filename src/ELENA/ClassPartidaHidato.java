@@ -10,6 +10,10 @@ import G45.*;
 
 public class ClassPartidaHidato extends Partida_comp implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int estado; 
 	private int dificultad;
 	private int modo;

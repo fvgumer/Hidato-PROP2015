@@ -12,7 +12,7 @@ public class ClassRanking implements Serializable {
 	
 	private static final long serialVersionUID = 2L;
 	
-	ClassRanking(String tablero) {
+	public ClassRanking(String tablero) {
 		this.tablero = tablero;
 		ranking = new ArrayList<ClassResultado>();	
 	}

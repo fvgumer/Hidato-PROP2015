@@ -16,9 +16,10 @@ public class ClassEstadisticas implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
-	ClassEstadisticas(){
+	public ClassEstadisticas(String usuario){
 		partidasJugadas = segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
 		tablerosCreados = new ArrayList<String>();
+		user=usuario;
 	}
 
 	public String getName() {
