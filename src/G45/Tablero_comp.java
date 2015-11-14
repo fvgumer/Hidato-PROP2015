@@ -1,8 +1,14 @@
 package G45;
 
-public class Tablero_comp {
+import java.io.Serializable;
+
+public class Tablero_comp implements Serializable{
        
-        protected Casilla_comp[][] tauler;
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		protected Casilla_comp[][] tauler;
         protected int mida;
        
         /**

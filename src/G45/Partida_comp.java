@@ -1,14 +1,19 @@
 package G45;
 
+import java.io.Serializable;
 
 /**
  * Creado por el grupo de Sudoku
  */
-public class Partida_comp {
+public class Partida_comp implements Serializable{
        
-    protected Tablero_comp tableroP;
-    protected Usuario_comp usuarioP;
-    protected int id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public Tablero_comp tableroP;
+    public Usuario_comp usuarioP;
+    public int id;
  
     /*Pre: cierto */
     public Partida_comp() {

@@ -7,9 +7,9 @@ import JOEL.*;
 
 public class Partida_Hidato extends Partida_comp implements Serializable{
 
-	/**
-	 * 
-	 */
+	
+	
+	
 	private static final long serialVersionUID = 1L;
 	private int estado; 
 	private int dificultad;

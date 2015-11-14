@@ -1,10 +1,16 @@
 package ALEX;
 
 import G45.*;
+
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Tablero extends Tablero_comp {
+public class Tablero extends Tablero_comp implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 820754505192031630L;
 	/**
 	   * solucio contiene la solucion al tablero, holes es el numero de "forats"
 	   * del tablero, n_predef es el numero de casillas dadas en el juego,
