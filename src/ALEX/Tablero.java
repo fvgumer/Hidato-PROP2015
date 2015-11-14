@@ -13,6 +13,7 @@ public class Tablero extends Tablero_comp {
 	   * start y end contienen las posiciones de principio y fin respectivamente
 	   * 	
 	   */
+	private int id_tab;
 	private Casilla[][] solucio; 
 	private int holes, n_predef, final_num;
 	private int[] start, end;
@@ -50,6 +51,20 @@ public class Tablero extends Tablero_comp {
 	public int getn_predef(){
 		int n = n_predef;
 		return n;
+	}
+	
+	/**
+	   * @return Retorna el el identificador del tablero
+	   */
+	public int get_id() {
+		return id_tab;
+	}
+	
+	/**
+	   * Se configura el identificador del tablero segun el valor de n
+	   */
+	public void set_id(int n) {
+		id_tab = n;
 	}
 	
 	/**
