@@ -7,25 +7,26 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import ALEX.Tablero;
-import BELEN.ClassEstadisticas;
 
 public class CtrlPGestionTablero {
 	private String Ruta;
+	
 	public CtrlPGestionTablero() {
 		
 	}
 
-	public Tablero cargar(String NomE){
+	public Tablero cargar(int ID){
 		Tablero T = new Tablero(0);
-		Ruta = "Tableros"+  "\\" + NomE+ ".bin";
+		String nomT = String.valueOf(ID);
+		Ruta = "Tableros"+  "\\" + nomT+ ".bin";
 		File archiu = new File(Ruta);
 		if(archiu.exists()==false) {
-			System.out.println("El Ranking no existeix");
+			System.out.println("El Tablero no existeix");
 		}
 		else{
 			try{
 			ObjectInputStream is = new ObjectInputStream(new FileInputStream(Ruta));
-			E = (ClassEstadisticas) is.readObject();
+			T = (Tablero) is.readObject();
 			is.close();
 			}
 			 catch (FileNotFoundException e) {
@@ -39,7 +40,7 @@ public class CtrlPGestionTablero {
 					e.printStackTrace();
 				}
 		}
-		return E;
+		return T;
 	}
 	}
-}
+

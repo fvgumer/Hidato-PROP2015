@@ -10,14 +10,14 @@ import java.io.ObjectOutputStream;
 import ALEX.*;
 import BELEN.*;
 
-public class CtrlGestionHidato {
+public class CtrlGestionHidato<T> {
 	private String ruta;
 	private String archivo;
 	CtrlGestionHidato(){
 		
 	}
 	
-	private <T> void calcularruta(T objeto){
+	private void calcularruta(T objeto){
 		String Onom = objeto.getClass().getSimpleName();
 		if(Onom.equals("ClassPartidaHidato")){
 			 ClassPartidaHidato P = (ClassPartidaHidato) objeto;
@@ -48,7 +48,7 @@ public class CtrlGestionHidato {
 		}
 	}
 
-	public <T> void guardar(T objeto){
+	public void guardar(T objeto){
 		calcularruta(objeto);
 		try {
 			File archiu = new File(ruta);
@@ -67,11 +67,18 @@ public class CtrlGestionHidato {
 
 	//Eliminar de estadisticas, ranquing, partida 
 	
-	public <T> void eliminar(T objeto){
+	public void eliminar(T objeto){
 			calcularruta(objeto);
 			File archiu = new File(ruta+archivo);
 			if(archiu.delete())System.out.println("S'ha eliminat correctament");
 			else System.out.println("No existeix");	
 	}
-}
 
+
+	public boolean existeix(T objeto){
+		calcularruta(objeto);
+		File archiu = new File(ruta+archivo);
+		if(archiu.exists()) return true;
+		else return false;
+	}
+}
