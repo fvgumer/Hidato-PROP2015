@@ -11,7 +11,7 @@ import JOEL.CtrlGestionPartida;
 
 public class CtrlEstadisticas {
 	
-	ClassEstadisticas E;
+	private ClassEstadisticas E;
 	
 	CtrlGestionPartida GP;
 	
@@ -24,23 +24,28 @@ public class CtrlEstadisticas {
 	}
 	
 	public void eliminarEst(){	//cuando se elimina un jugador
-		GP.eliminar(E.getName());
+		for(int i = 0; i < E.tablerosJugados(); ++i) {
+			CtrlRanking CR;
+			CR.cargarRanking(E.getTableroJ(i));
+			CR.eliminarResultados(E.getName());
+		}
+		GP.eliminar(E);
 	}
 	
 	/* Pre: */
-	public void crearEstadisticas() {	//llamarla una vez, cuando se crea el jugador
-		E = new ClassEstadisticas();
+	public void crearEstadisticas(String jugador) {	//llamarla una vez, cuando se crea el jugador
+		E = new ClassEstadisticas(jugador);
 		
 		GP.guardar(E);
 	}
 	/* Post: Se ha creado un fichero con las estadísticas del jugador */
 	
 	/* Pre: s > 0, p > 0*/
-	public void partidaTerminada(int s, int p) {
-		E.incrementarPartidas();
+	public void partidaTerminada(int s, int p, String tablero) {
 		E.incrementarTiempo(s);
 		E.incrementarPuntuacion(p);
 		E.actualizarPuntuacion(p);
+		E.anadirTableroJ(tablero);
 		
 		GP.guardar(E);
 	}
@@ -49,7 +54,7 @@ public class CtrlEstadisticas {
 	
 	/* Pre: t es el nombre de un tablero credo por el jugador correspondiente */
 	public void tableroCreado(String t) {
-		E.anadirTablero(t);
+		E.anadirTableroC(t);
 		
 		GP.guardar(E);
 	}
@@ -58,10 +63,10 @@ public class CtrlEstadisticas {
 	
 	
 	public void mostrarEst() {
-		E.mostrarPartidasJugadas();
 		E.mostrarTiempoJugado();
 		E.mostrarPuntuacionTotal();
 		E.mostrarMejorPuntuacion();
 		E.mostrarTablerosCreados();
+		E.mostrarTablerosJugados();
 	}
 }
