@@ -13,11 +13,10 @@ public class CtrlEstadisticas {
 	
 	private ClassEstadisticas E;
 	
-<<<<<<< HEAD
+
 	CtrlGestionEstadisticas GP;
-=======
 	CtrlGestionEstadisticas GE;
->>>>>>> cc2efb71e41a77a07b9e344d3fcd92fa2b98ce3a
+
 	
 	public CtrlEstadisticas(){
 		
