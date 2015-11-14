@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 
 import ELENA.Partida_Hidato;
 
-public class CtrlGestionPartida extends CtrlGestionHidato{
+public class CtrlGestionPartida extends CtrlGestionHidato<Object>{
 private String Ruta;
 
 CtrlGestionPartida(){
