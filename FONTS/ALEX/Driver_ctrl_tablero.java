@@ -48,6 +48,12 @@ public class Driver_ctrl_tablero {
 			while (!comprueba_entrada(i,4)) {i = s.nextInt();}
 			switch (i) {
 				case 1:
+					System.out.println("Escojer forma:");
+					System.out.println("	0.Sin forma(A partir de 9x9 puede tardar mas de lo deseado)");
+					System.out.println("	1.Esfera(A partir de 11x11 puede tardar mas de lo deseado)");
+					System.out.println("	2.Diagonal(Es la forma mas compleja, se recomiendam tableros menores a 6x6)");
+					f = s.nextInt();
+					while (!comprueba_entrada(f, 2)) {f = s.nextInt();}
 					System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
 					System.out.println("ATENCION: El valor maximo depende de forma del tablero");
 					n = s.nextInt();
@@ -58,12 +64,6 @@ public class Driver_ctrl_tablero {
 						casillas_negras = s.nextInt();
 					}
 					prueba.ini(n, casillas_negras);
-					System.out.println("Escojer forma:");
-					System.out.println("	0.Sin forma");
-					System.out.println("	1.Esfera");
-					System.out.println("	2.Diagonal");
-					f = s.nextInt();
-					while (!comprueba_entrada(f,2)) {f = s.nextInt();}
 					if (f > 0) {
 						prueba.escojer_forma(f);
 						prueba.muestra_mapa();
@@ -168,16 +168,16 @@ public class Driver_ctrl_tablero {
 	 * @param c Es el gestor de tablero mediante el qual se creara un tablero aleatorio
 	 */
 	public void crear_aleatorio(CtrlTablero c) {
+		System.out.println("Escojer forma:");
+		System.out.println("	0.Sin forma(A partir de 9x9 puede tardar mas de lo deseado)");
+		System.out.println("	1.Esfera(A partir de 11x11 puede tardar mas de lo deseado)");
+		System.out.println("	2.Diagonal(Es la forma mas compleja, se recomiendam tableros menores a 6x6)");
+		f = s.nextInt();
+		while (!comprueba_entrada(f,2)) {f = s.nextInt();}
 		System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
 		System.out.println("ATENCION: El valor maximo depende de forma del tablero");
 		n = s.nextInt();
 		while (!comprueba_entrada(n,15)) {n = s.nextInt();}
-		System.out.println("Escojer forma:");
-		System.out.println("	0.Sin forma");
-		System.out.println("	1.Esfera");
-		System.out.println("	2.Diagonal(Puede tardar con segun que medidas)");
-		f = s.nextInt();
-		while (!comprueba_entrada(f,2)) {f = s.nextInt();}
 		System.out.println("Escojer numero de casillas negras:[0,(n*n)-2)]");
 		casillas_negras = s.nextInt();
 		while (!comprueba_entrada(casillas_negras,(n*n)-2)) {
