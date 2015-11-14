@@ -36,7 +36,8 @@ public class CtrlRanking {
 		}
 	}
 	
-	public void anadirResultado(ClassResultado r) {
+	public void anadirResultado(String j, String m, String d, int p) {
+		ClassResultado r = new ClassResultado(j,m,d,p);
 		int found = 0;
 		int i = 0;
 		while (i < R.size() && found == 0) {
@@ -48,12 +49,12 @@ public class CtrlRanking {
 		}
 		GP.guardar(R);
 	}
-	
+
 	public void eliminarResultados(String jugador) { //cuando eliminamos un jugador
 		for (int i = 0; i < R.size(); ++i) {
 			if (R.getPosicion(i).getJugador() == jugador) R.eliminarResultado(i);
 		}
 		GP.guardar(R);
-	} 
+	}
 	
 }
