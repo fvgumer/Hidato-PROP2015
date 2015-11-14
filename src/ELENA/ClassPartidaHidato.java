@@ -1,10 +1,22 @@
 package ELENA;
+<<<<<<< HEAD
 import G45.*;
+=======
+
+
+
+import java.io.Serializable;
+
+>>>>>>> origin/master
 import ALEX.*;
 import JOEL.*;
 
-public class ClassPartidaHidato extends Partida_comp {
+public class ClassPartidaHidato extends Partida_comp implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int estado; 
 	private int dificultad;
 	private int modo;

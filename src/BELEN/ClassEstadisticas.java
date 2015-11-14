@@ -5,6 +5,8 @@ import java.io.Serializable;
 
 public class ClassEstadisticas implements Serializable{
 
+	private String user;
+	
 	private int partidasJugadas;
 	private int segundosJugados;	//para mostrarlo por pantalla lo pasaremos a hh:mm:ss
 	private int puntuacionTotal;
@@ -14,9 +16,14 @@ public class ClassEstadisticas implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
-	ClassEstadisticas(){
+	public ClassEstadisticas(String usuario){
 		partidasJugadas = segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
 		tablerosCreados = new ArrayList<String>();
+		user=usuario;
+	}
+
+	public String getName() {
+		return user;
 	}
 	
 	/*Pre: */

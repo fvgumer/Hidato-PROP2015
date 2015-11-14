@@ -7,20 +7,23 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import org.apache.commons.io.*;
 
-public class CtrlGestionUsuario {
+import BELEN.ClassEstadisticas;
+
+public class CtrlGestionUsuario extends CtrlGestionHidato{
 	
 	CtrlGestionUsuario(){
 	}
 	
 	public void crear_jugador(String nombre, String contrasenya){
-		File archiu = new File("jugadors\\"+nombre+".bin");
+		File archiu = new File("Jugadors\\"+nombre+".bin");
 		if(archiu.exists()){
 			System.out.println("El nom ja existeix, elegeix un altre");
 			return;
 		}
 		Jugador player = new Jugador(nombre,contrasenya);
-		String filename = "jugadors\\"+nombre+".bin";
+		String filename = "Jugadors\\"+nombre+".bin";
 		try {
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
 			os.writeObject(player);
@@ -65,32 +68,31 @@ public class CtrlGestionUsuario {
 		return pla;
 		}
 	}
-
+//Elimina jugador, partides que tingués actives i estadistiques !actualizar ranking!
 	public void eliminar_jugador(String nombre, String contrasenya){
-		Jugador z = cargar_jugador(nombre,contrasenya);
-		if(z==null) return;
-		else{
-			String ruta = "jugadors\\"+nombre+".bin";
+		//Jugador z = cargar_jugador(nombre,contrasenya);
+		//if(z==null) return;
+		
+			String ruta = "Jugadors\\"+nombre+".bin";
 			File archiu = new File(ruta);
-			if(archiu.delete())System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
-		}
-		//System.out.println("El jugador/a " +z.consultar_nombre()+ " ha estat eliminat/da");
-		//if(archiu.delete())System.out.println("El jugador/a " +nom+ " ha estat eliminat/da");
-		//else System.out.println("El jugador no existeix");
-	}	
+			if(archiu.delete()) {
+				System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
+				ClassEstadisticas E = new ClassEstadisticas(nombre);
+				this.eliminar(E);
+				String rutapartida = "Partidas\\"+nombre;
+				if(new File(rutapartida).exists()){
+				try {
+					FileUtils.deleteDirectory(new File(rutapartida));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println("S'han eliminat les sever partides també");
+				}
+			}
+			else System.out.println("El jugador no existeix");
+		
+}	
 
-	public void guardar_jugador(Jugador player){
-		String filename = "jugadors\\"+player.nombre+".bin";
-		try {
-			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
-			os.writeObject(player);
-			os.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }
+	

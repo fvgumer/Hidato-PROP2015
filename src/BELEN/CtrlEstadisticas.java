@@ -7,80 +7,66 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import JOEL.CtrlGestionPartida;
+
 public class CtrlEstadisticas {
 	
-	ClassEstadisticas E;
+	private ClassEstadisticas E;
+	
+	CtrlGestionPartida GP;
 	
 	CtrlEstadisticas(){
 		
 	}
 	
-	public void escribirEst(String jugador) {
-		try {
-			FileOutputStream est = new FileOutputStream("estadisticas\\"+jugador+".bin");
-			ObjectOutputStream obj = new ObjectOutputStream(est);
-			
-			obj.writeObject(E);
-			obj.close();
-			} catch (FileNotFoundException e){
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	public void cargarEst(String jugador) {
+		E = GP.cargar(jugador);
+	}
+	
+	public void eliminarEst(){	//cuando se elimina un jugador
+		for(int i = 0; i < E.tablerosJugados(); ++i) {
+			CtrlRanking CR;
+			CR.cargarRanking(E.getTableroJ(i));
+			CR.eliminarResultados(E.getName());
+		}
+		GP.eliminar(E);
 	}
 	
 	/* Pre: */
 	public void crearEstadisticas(String jugador) {	//llamarla una vez, cuando se crea el jugador
-		E = new ClassEstadisticas();
+		E = new ClassEstadisticas(jugador);
 		
-		escribirEst(jugador);
+		GP.guardar(E);
 	}
 	/* Post: Se ha creado un fichero con las estadísticas del jugador */
 	
 	/* Pre: s > 0, p > 0*/
-	public void partidaTerminada(String jugador, int s, int p) {
-		E.incrementarPartidas();
+	public void partidaTerminada(int s, int p, String tablero) {
 		E.incrementarTiempo(s);
 		E.incrementarPuntuacion(p);
 		E.actualizarPuntuacion(p);
+		E.anadirTableroJ(tablero);
 		
-		escribirEst(jugador);
+		GP.guardar(E);
 	}
 	/* Post: Las estadísticas del jugador correspondiente se han 
 	 * actualizado con los datos introducidos */
 	
 	/* Pre: t es el nombre de un tablero credo por el jugador correspondiente */
-	public void tableroCreado(String jugador, String t) {
-		E.anadirTablero(t);
+	public void tableroCreado(String t) {
+		E.anadirTableroC(t);
 		
-		escribirEst(jugador);
+		GP.guardar(E);
 	}
 	/* Post: Se ha actualizado el listado de tableros creados por el
 	 * jugador correspondiente*/
 	
-	public void leerEst(String jugador) {
-		try {
-			FileInputStream est = new FileInputStream("estadisticas\\"+jugador+".bin");
-			ObjectInputStream obj = new ObjectInputStream(est);
-			
-			E = (ClassEstadisticas) obj.readObject();
-			obj.close();
-			
-			} catch (ClassNotFoundException e){
-				e.printStackTrace();
-			} catch (FileNotFoundException e){
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	}
 	
-	public void mostrarEst(String jugador) {
-		E.mostrarPartidasJugadas();
+	public void mostrarEst() {
 		E.mostrarTiempoJugado();
 		E.mostrarPuntuacionTotal();
 		E.mostrarMejorPuntuacion();
 		E.mostrarTablerosCreados();
+		E.mostrarTablerosJugados();
 	}
-	
 }

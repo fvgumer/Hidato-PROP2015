@@ -1,29 +1,60 @@
 package BELEN;
 
-import java.util.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import JOEL.CtrlGestionPartida;
 
 public class CtrlRanking {
+
+	private ClassRanking R;
+	CtrlGestionPartida GP;
 	
-	//ordenar nuevo resultado guardado
-	//pedir n mejores resultados de un tablero
-	
-	/* Pre: j, m, d y p corresponden a los datos relevantes (username jugador, modo, 
-	 * dificultad, puntuación) de la última partida finalizada del tablero con nombre t */
-	public void anadirResultado(String t, String j, String m, String d, int p) {
+	CtrlRanking() {
 		
 	}
-	/* Post: Se han añadido los datos relevantes al fichero de resultados
-	 * del tablero con nombre t, se ha añadido un nuevo índice al fichero de índices de 
-	 * resultados de dicho tablero y este se ha ordenado debidamente */
 	
-	/* Pre: El fichero de índices de resultados del tablero con nombre t está
-	 * ordenado decrecientemente según las puntuaciones correspondientes indicadas
-	 * en el fichero de resultados de dicho tablero */
-	public void obtenerResultados(String t, int n) {
-		
+	
+	public void crearRanking(String tablero) {
+		R = new ClassRanking(tablero);
+		GP.guardar(R);
 	}
-	/* Post: Se muestran por pantalla los n mejores resultados del tablero
-	 * con nombre t */
 	
+	public void cargarRanking(String tablero) {
+		R = GP.cargar(tablero);
+	}
+	
+	public void getTop(int n){
+		System.out.print("Jugador  ||  Modo  ||  Dificultad  || Puntuación\n");	//las lineas no se veran alineadas entre si :'(
+		for (int i = 0; i < n; ++i){
+			R.mostrarPosicion(i);
+		}
+	}
+	
+	public void anadirResultado(String j, String m, String d, int p) {
+		ClassResultado r = new ClassResultado(j,m,d,p);
+		int found = 0;
+		int i = 0;
+		while (i < R.size() && found == 0) {
+			if (R.getPosicion(i).getPuntuacion() < r.getPuntuacion()) {
+				R.anadirResultado(i,r);
+				found = 1;
+			}
+			++i;
+		}
+		GP.guardar(R);
+	}
+
+	public void eliminarResultados(String jugador) { //cuando eliminamos un jugador
+		for (int i = 0; i < R.size(); ++i) {
+			if (R.getPosicion(i).getJugador() == jugador) R.eliminarResultado(i);
+		}
+		GP.guardar(R);
+	}
 	
 }
