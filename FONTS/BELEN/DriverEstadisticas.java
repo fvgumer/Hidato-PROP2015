@@ -1,13 +1,13 @@
 package BELEN;
 
 import java.util.Scanner;
-import ALEX.SuperDriver;
 import JOEL.Jugador;
 
 public class DriverEstadisticas {
 
 	private Scanner scan;
 	private CtrlEstadisticas CE = new CtrlEstadisticas();
+
 	
 	public DriverEstadisticas() {
 		scan = new Scanner(System.in);
@@ -28,17 +28,15 @@ public class DriverEstadisticas {
 			scan.nextLine();
 			switch (i) {
 				case 1:
-					CE.mostrarEst(jActivo.consultarNombre());
+					CE.mostrarEst(jActivo.consultar_nombre());
 					break;
 				case 2:
 					System.out.print("Introduce un nombre de usuario:\n");
 					String jugador = scan.nextLine();
-<<<<<<< HEAD
-					ClassEstadisticas C = new ClassEstadisticas(jugador);
-					if (CE.existeix(C)) CE.mostrarEst(jugador);
-=======
+
+
 					if (CE.existe()) CE.mostrarEst(jugador);
->>>>>>> be5d8bcfa9c0a65cff7151f946771ccfbd7b76a4
+
 					else System.out.print("El usuario no existe.\n");
 					break;
 				case 3: 

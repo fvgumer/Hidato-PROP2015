@@ -17,7 +17,8 @@ public class CtrlEstadisticas {
 	}
 		
 	public boolean existe() {
-		GE.existeix(E);
+		if(GE.existeix(E)) return true;
+		else return false;
 	}
 	
 	public boolean cargarEst(String jugador) {
