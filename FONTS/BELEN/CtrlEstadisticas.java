@@ -1,33 +1,62 @@
 package BELEN;
 
-
 import JOEL.*;
+
+/**
+ * Esta clase implementa las operaciones necesarias para gestionar, 
+ * actualizar y mostrar las estadisticas de un usuario.
+ * 
+ * @author Belen San Martin
+ *
+ */
 
 public class CtrlEstadisticas {
 	
-	private ClassEstadisticas E;
+	private ClassEstadisticas E;	
+	//Instancia de ClassEstadisticas asociada al controlador
 	
 
 	CtrlGestionEstadisticas GE;
+	//Instancia del controlador de persistencia asociada al controlador
 
-	
+	/**
+	 * Creadora por defecto de la clase.
+	 */
 	public CtrlEstadisticas(){
 		GE = new CtrlGestionEstadisticas();
 		
 	}
+	
+	/**
+	 * Metodo que, dado un nombre de jugador, crea sus estadisticas asociadas.
+	 * @param jugador Nombre del jugador del cual queremos crear las estadisticas.
+	 */
+	public void crearEstadisticas(String jugador) {	//llamarla una vez, cuando se crea el jugador
+		E = new ClassEstadisticas(jugador);
 		
-	public boolean existe() {
-		if(GE.existeix(E)) return true;
-		else return false;
+		GE.guardar(E);
 	}
 	
+	/**
+	 * Metodo que, dado un nombre de jugador, asocia las estadisticas de dicho
+	 * jugador al controlador actual.
+	 * @param jugador Nombre del jugador del cual queremos cargar las estadisticas.
+	 * @return True si el jugador existe en la base de datos, falso si no existe 
+	 * y, por lo tanto, no se ha podido cargar.
+	 */
 	public boolean cargarEst(String jugador) {
 		E = GE.cargar(jugador);
 		if (E.getName() == null) return false;
 		else return true;
 	}
 	
-	public void eliminarEst(String jugador){	//cuando se elimina un jugador
+	/**
+	 * Metodo que, dado un nombre de jugador, elimina sus estadisticas de la 
+	 * base de datos así como todas las posiciones que ocupa dicho jugador en los
+	 * rankings existentes. Esta funcion solo se debe llamar al eliminar un usuario.
+	 * @param jugador Nombre del jugador del cual queremos cargar las estadisticas.
+	 */
+	public void eliminarEst(String jugador){
 		E = GE.cargar(jugador);
 		for(int i = 0; i < E.tablerosJugados(); ++i) {
 			CtrlRanking CR = new CtrlRanking();
@@ -37,16 +66,16 @@ public class CtrlEstadisticas {
 		GE.eliminar(E);
 	}
 	
-	/* Pre: */
-	public void crearEstadisticas(String jugador) {	//llamarla una vez, cuando se crea el jugador
-		E = new ClassEstadisticas(jugador);
-		
-		GE.guardar(E);
-	}
-	/* Post: Se ha creado un fichero con las estadísticas del jugador */
-	
-	/* Pre: s > 0, p > 0*/
-	public void partidaTerminada(int s, int p, String tablero) {
+	/**
+	 * Metodo que, dados los resultados de una partida terminada y el jugador
+	 * que los ha obtenido, actualiza las estadisticas de dicho jugador.
+	 * @param jugador Nombre del jugador del cual queremos actualizar las estadisticas.
+	 * @param s Segundos que ha durado la partida.
+	 * @param p Puntuacion obtenida en la partida.
+	 * @param tablero Nombre del tablero jugado en la partida.
+	 */
+	public void partidaTerminada(String jugador, int s, int p, String tablero) {
+		E = GE.cargar(jugador);
 		E.incrementarTiempo(s);
 		E.incrementarPuntuacion(p);
 		E.actualizarPuntuacion(p);
@@ -54,20 +83,40 @@ public class CtrlEstadisticas {
 		
 		GE.guardar(E);
 	}
-	/* Post: Las estadísticas del jugador correspondiente se han 
-	 * actualizado con los datos introducidos */
 	
-	/* Pre: t es el nombre de un tablero credo por el jugador correspondiente */
-	public void tableroCreado(String t) {
+	/**
+	 * Metodo que, dado un nombre de jugador y un nombre de tablero,
+	 * actualiza las estadisticas de dicho jugador con el tablero creado.
+	 * @param jugador  Nombre del jugador que ha creado el tablero.
+	 * @param t Tablero creado por el jugador.
+	 */
+	public void tableroCreado(String jugador, String t) {
+		E = GE.cargar(jugador);
 		E.anadirTableroC(t);
 		
 		GE.guardar(E);
 	}
-	/* Post: Se ha actualizado el listado de tableros creados por el
-	 * jugador correspondiente*/
 	
+	/**
+	 * Metodo que, dado un nombre de jugador y un nombre de tablero,
+	 * actualiza las estadisticas de dicho jugador con el tablero jugado.
+	 * @param jugador  Nombre del jugador que ha jugado el tablero.
+	 * @param t Tablero jugado por el jugador.
+	 */
+	public void tableroJugado(String jugador, String t) {
+		E = GE.cargar(jugador);
+		E.anadirTableroJ(t);
+		
+		GE.guardar(E);
+	}
 	
+	/**
+	 * Metodo que, dado un nombre de jugador,muestra por pantalla las 
+	 * estadisticas de dicho jugador.
+	 * @param jugador Nombre del jugador del cual queremos mostrar las estadisticas.
+	 */
 	public void mostrarEst(String jugador) {
+		E = GE.cargar(jugador);
 		System.out.format("Estadisticas del usuario %s:\n",jugador);
 		E.mostrarTiempoJugado();
 		E.mostrarPuntuacionTotal();
