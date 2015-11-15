@@ -2,6 +2,12 @@ package ALEX;
 
 import java.util.*;
 
+/**
+ * Esta clase contiene los algoritmos de solucion, generacion de hidatos aleatorios y unica
+ * solucion.
+ * @author Alex
+ *
+ */
 public class Algorithm {
 
 	private Random rm;

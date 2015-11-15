@@ -3,11 +3,24 @@ package ALEX;
 import java.util.Random;
 import JOEL.*;
 
+/**
+ * Esta clase contiene las operaciones que se encargan de generar tableros de Hidatos
+ * segun los parametros de entrada que reciben. Estos tableros pueden ser creados de manera
+ * manual o aleatoriamente.
+ * @author Alex
+ *
+ */
 public class CtrlTablero {
 
+	/**
+	 * map representa el tablero sobre el cual se van a realizar las operaciones
+	 * rm es necesario para generar numeros aleatorios
+	 * a es necesario para aplicar los algoritmos de solucion o de generacion aleatoria de tableros
+	 */
 	private Tablero map;
 	private Random rm;
 	private Algorithm a;
+	private CtrlGestionTablero c;
 	
 	/**
 	 * Creadora por defecto
@@ -83,6 +96,11 @@ public class CtrlTablero {
 		map = new Tablero(n);
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras);
+	}
+	
+	public int ini_guarda_carga() {
+		c = new CtrlGestionTablero();
+		return c.consultar_ultim_ID();
 	}
 	
 	/**
@@ -173,6 +191,21 @@ public class CtrlTablero {
 		System.out.println("l'ultim id es "+ aux);
 		map.set_id(aux+1);
 		c.guardar(map);
+	}
+	
+	public int getUltimId(){
+		int aux = c.consultar_ultim_ID();
+		return aux;
+	}
+	
+	public boolean cargar(int n) {
+		boolean b = true;
+		map = c.cargar(n,b);
+		return b;
+	}
+	
+	public void eliminar() {
+		c.eliminar(map);
 	}
 
 	/**

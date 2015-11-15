@@ -110,11 +110,36 @@ public class Driver_ctrl_tablero {
 				case 2:
 					crear_aleatorio(prueba);
 					break;
+				case 3:
+					int max_id = prueba.ini_guarda_carga();
+					System.out.println("Escribe el id del tablero que quieres eliminar: [1, "
+										+ max_id + "]:");
+					int id = s.nextInt();
+					while (!comprueba_entrada(id, max_id)) {id = s.nextInt();}
+					boolean carga = prueba.cargar(id);
+					if (carga) {
+						prueba.muestra_mapa();
+						System.out.println("^ Este es el mapa que quieres eliminar, estas seguro? ^");
+						System.out.println("	1.Si");
+						System.out.println("	2.No");
+						aux = s.nextInt();
+						while(!comprueba_entrada(aux, 2)) {aux = s.nextInt();}
+						if (aux == 1) {
+							prueba.eliminar();
+							System.out.println("El tablero ha sido eliminado con exito!");
+						}
+						
+					}
+					else {
+						System.out.println("Error al cargar el tablero con el id proporcionado,"
+								+ "el tablero no existe");
+					}
+					break;
 				case 4:
 					b = false;
 					break;
 			}
-			if(b) {
+			if(b && i != 3) {
 				boolean unica = false, solucion;
 				solucion = prueba.validar(unica);
 				if (solucion) {
@@ -133,9 +158,7 @@ public class Driver_ctrl_tablero {
 				System.out.println("	1.Si");
 				System.out.println("	2.No");
 				i = s.nextInt();
-				while(!comprueba_entrada(i, 2)) {
-					i = s.nextInt();
-				}
+				while(!comprueba_entrada(i, 2)) {i = s.nextInt();}
 				if(i == 1) prueba.guardar();
 				System.out.println("Donde quieres ir?:");
 				System.out.println("	1.Menu principal");
