@@ -42,7 +42,7 @@ public class CtrlEstadisticas {
 	 * jugador al controlador actual.
 	 * @param jugador Nombre del jugador del cual queremos cargar las estadisticas.
 	 * @return True si el jugador existe en la base de datos, falso si no existe 
-	 * y, por lo tanto, no se ha podido cargar.
+	 * y, por lo tanto, no se han podido cargar sus estadisticas.
 	 */
 	public boolean cargarEst(String jugador) {
 		E = GE.cargar(jugador);
