@@ -16,11 +16,15 @@ public class CtrlTablero {
 	 * map representa el tablero sobre el cual se van a realizar las operaciones
 	 * rm es necesario para generar numeros aleatorios
 	 * a es necesario para aplicar los algoritmos de solucion o de generacion aleatoria de tableros
+	 * tableros_repo Contiene los nombres de los tableros contenidos en el sistema de ficheros
+	 * max_nombre Contiene el maximo id de tableros existentes en el sistema de ficheros
 	 */
 	private Tablero map;
 	private Random rm;
 	private Algorithm a;
 	private CtrlGestionTablero c;
+	private String[] tableros_repo;
+	private int max_nombre;
 	
 	/**
 	 * Creadora por defecto
@@ -98,9 +102,14 @@ public class CtrlTablero {
 		map.setfinal_num((n*n)-c_negras);
 	}
 	
+	/**
+	 * Este metodo inicializa el ctrl de persistencia para poder guardar/cargar/eliminar tableros
+	 * @return Retorna el id de los tableros en el sistema de ficheros mas grande
+	 */
 	public int ini_guarda_carga() {
 		c = new CtrlGestionTablero();
-		return c.consultar_ultim_ID();
+		actu_tab_repo();
+		return max_nombre;
 	}
 	
 	/**
@@ -126,13 +135,14 @@ public class CtrlTablero {
 	 * solucion, si la solucion es unica
 	 * @return Se retorna true si el mapa de la clase tiene solucion
 	 */
-	public boolean validar(boolean unica) {
+	public boolean[] validar() {
 		int[] start;
 		start = map.getStart();
-		boolean b = a.solver(start[0], start[1], 1, map);
-		if(b) {
-			unica = a.unica_solucion(start[0], start[1], map, 1);
-			map.setSolucion_unica(unica);
+		boolean[] b = new boolean[2];
+		b[0] = a.solver(start[0], start[1], 1, map);
+		if(b[0]) {
+			b[1] = a.unica_solucion(start[0], start[1], map, 1);
+			map.setSolucion_unica(b[1]);
 		}
 		return b;
 	}
@@ -174,8 +184,8 @@ public class CtrlTablero {
 	}
 	
 	/**
-	   *Se asocia el tablero t con el tablero de la clase
-	   *@param t es el tablero que se quiere asociar
+	   *Retorna el tablero de la clase
+	   *@param t es el tablero que se ha devuelto
 	   */
 	public Tablero asociar_tablero() {
 		return this.map;
@@ -183,21 +193,14 @@ public class CtrlTablero {
 	
 	/**
 	 * Se guarda el tablero de la clase en el sistema de ficheros. Se le asigna el identificador
-	 * dependiendo del identificador del ultimo tablero guardado. El parametro de salida i contiene
-	 * el id asignado
-	 * @param i Indica el id asignado al tablero
+	 * dependiendo del identificador del ultimo tablero guardado.
+	 * @return Retorna el id de los tableros en el sistema de ficheros mas grande
 	 */
-	public void guardar(int i) {
-		CtrlGestionTablero c = new CtrlGestionTablero();
-		int aux = c.consultar_ultim_ID();
-		i = aux+1;
-		map.set_id(aux+1);
+	public int guardar() {
+		map.set_id(max_nombre+1);
 		c.guardar(map);
-	}
-	
-	public int getUltimId(){
-		int aux = c.consultar_ultim_ID();
-		return aux;
+		actu_tab_repo();
+		return max_nombre;
 	}
 	
 	/**
@@ -211,12 +214,35 @@ public class CtrlTablero {
 		return b;
 	}
 	
+	public void muestra_repo_tab() {
+		for(int i = 0; i < tableros_repo.length; ++i) {
+			System.out.println(tableros_repo[i]);
+		}
+	}
+	
 	/**
 	 * Pre: El tablero cargado en la clase existe en el sistema de ficheros
 	 * Post: Se ha eliminado el tablero con id = map.id del sistema de ficheros
 	 */
 	public void eliminar() {
 		c.eliminar(map);
+		actu_tab_repo();
+	}
+	
+	/**
+	 * Este metodo actualiza las variables tableros_repo y max_nombre de la clase de acuerdo
+	 * con los tableros que existen en el sitema de ficheros
+	 */
+	private void actu_tab_repo() {
+		tableros_repo = c.consultar_nomstableros();
+		for(int i=0; i<tableros_repo.length; ++i) {
+			int aux = Character.getNumericValue(tableros_repo[i].charAt(0));
+			char aux1 = tableros_repo[i].charAt(1);
+			if(aux1 >= 48 && aux1 <= 57) {
+				aux = (aux*10)+aux1;
+			}
+			if(aux>max_nombre) max_nombre = aux;
+		}
 	}
 
 	/**

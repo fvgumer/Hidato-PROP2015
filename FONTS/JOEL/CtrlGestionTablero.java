@@ -48,7 +48,7 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 		
 	}
 	
-	public String[] consultar_nomstableros(){
+	public String[] consultar_nomstableros() {
 		ruta = "Tableros"+  barras;
 		File directory = new File(ruta);
 		String[] llista_noms=directory.list();

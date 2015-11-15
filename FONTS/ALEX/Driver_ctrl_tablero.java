@@ -44,6 +44,7 @@ public class Driver_ctrl_tablero {
 			System.out.println("3.Eliminar un tablero del repositorio");
 			System.out.println("4.Atras");
 		 	prueba = new CtrlTablero();
+		 	int max_id = prueba.ini_guarda_carga();
 			int i = s.nextInt();
 			while (!comprueba_entrada(i,4)) {i = s.nextInt();}
 			switch (i) {
@@ -111,7 +112,7 @@ public class Driver_ctrl_tablero {
 					crear_aleatorio(prueba);
 					break;
 				case 3:
-					int max_id = prueba.ini_guarda_carga();
+					prueba.muestra_repo_tab();
 					System.out.println("Escribe el id del tablero que quieres eliminar: [1, "
 										+ max_id + "]:");
 					int id = s.nextInt();
@@ -141,18 +142,18 @@ public class Driver_ctrl_tablero {
 			}
 			if(b && i != 3) {
 				System.out.println("Comprovando si la solucion es unica...");
-				boolean unica = false, solucion;
-				solucion = prueba.validar(unica);
-				if (solucion) {
+				boolean[] sol;
+				sol = prueba.validar();
+				if (sol[0]) {
 					System.out.println("Has creado correctamente el tablero!");
 				}
 				else {
 					System.out.println("El tablero no tiene solucion :(");
 				}
-				if (unica)  {
+				if (sol[1])  {
 					System.out.println("Y la solucion es unica!");
 				}
-				else if(solucion){
+				else if(sol[0]){
 					System.out.println("Pero la solucion no es unica :(");
 				}
 				System.out.println("Quieres guardar el tablero creado?");
@@ -161,7 +162,7 @@ public class Driver_ctrl_tablero {
 				int aux = s.nextInt();
 				while(!comprueba_entrada(aux, 2)) {aux = s.nextInt();}
 				if(aux == 1) {
-					prueba.guardar(aux);
+					aux = prueba.guardar();
 					System.out.println("Se le ha asignado el siguiente id: " + aux);
 				}
 				System.out.println("Donde quieres ir?:");
@@ -206,11 +207,15 @@ public class Driver_ctrl_tablero {
 		n = s.nextInt();
 		while (!comprueba_entrada(n,15)) {n = s.nextInt();}
 		System.out.println("Escojer numero de casillas negras:[0,(n*n)-2)]");
+		System.out.println("ATENCION: La forma esferica contiene un elevado numero de casillas"
+				+ "negras, se recomienda escojer un numero menor a (n*n/2)");
 		casillas_negras = s.nextInt();
 		while (!comprueba_entrada(casillas_negras,(n*n)-2)) {
 			casillas_negras = s.nextInt();
 		}
 		System.out.println("Escojer numero de casillas vacias:[1,(n*n)-casillas_negras-2]");
+		System.out.println("ATENCION: Hay que tener en cuenta las casillas negras necesarias para las formas "
+				+ "del tablero");
 		casillas_vacias = s.nextInt();
 		while (!comprueba_entrada(casillas_vacias,(n*n)-casillas_negras-2)) {
 			casillas_vacias = s.nextInt();
