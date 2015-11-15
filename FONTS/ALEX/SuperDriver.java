@@ -1,6 +1,8 @@
 package ALEX;
 
 import java.util.Scanner;
+
+import BELEN.DriverEstadisticas;
 import ELENA.*;
 import JOEL.*;
 public class SuperDriver {
@@ -14,7 +16,7 @@ public class SuperDriver {
 		DriverJugarPartida e = new DriverJugarPartida();
 		DriverGestionUsuario gestorJ = new DriverGestionUsuario();
 		DriverEstadisticas est = new DriverEstadisticas();
-		Jugador Jactivo;
+		Jugador Jactivo = null;
 		boolean b = true;
 		int i;
 		while (b) {
@@ -47,7 +49,10 @@ public class SuperDriver {
 					e.exec(J);
 					break;
 				case 4:
+					if(Jactivo==null)System.out.println("Debes loguearte antes de consultar tus estadisticas");
+					else{
 					est.exec(Jactivo);
+					}
 					break;
 				case 5:
 					b = false;

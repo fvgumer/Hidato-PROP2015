@@ -8,12 +8,28 @@ import java.io.ObjectInputStream;
 
 import ALEX.Tablero;
 
+/**
+ * Esta clase hereda las operaciones  de la super clase de control de gestión, CtrlGestionHidato
+ * e implementa algunos metodos propios para la gestion correcta de tablero. 
+ * @author Joel Codina
+ *
+ */
+
 public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	
-	
+	/**
+	 * Creadora por defecto de la clase CtrlGestionTablero
+	 */
 	public CtrlGestionTablero() {
 	}
 
+	/**
+	 * Funcion que carga un tablero desde la base de datos
+	 * @param ID Identificador del tablero que queremos cargar.
+	 * @param b  "El tablero ha sido cargado correctamente"
+	 * @return Una instancia de la clase Tablero
+	 * Post: Si no se ha cargado correctamente, devuelve un tablero null.
+	 */
 	public Tablero cargar(int ID, boolean b){
 		Tablero T = null;
 		String nomT = String.valueOf(ID);
@@ -42,7 +58,10 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 		return T;
 	}
 	
-	
+	/**
+	 * Consultora de los nombres de todos los tableros existentes.
+	 * @return Devuelve una lista con todos los identificadores de todos los tableros creados
+	 */
 	public String[] consultar_nomstableros() {
 		ruta = "Tableros"+  barras;
 		File directory = new File(ruta);
