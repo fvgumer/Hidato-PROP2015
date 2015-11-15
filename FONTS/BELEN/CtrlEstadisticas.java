@@ -16,10 +16,10 @@ public class CtrlEstadisticas {
 		
 	}
 	
-	public int cargarEst(String jugador) {
+	public boolean cargarEst(String jugador) {
 		E = GE.cargar(jugador);
-		if (E.getName() == null) return 0;
-		else return 1;
+		if (E.getName() == null) return false;
+		else return true;
 	}
 	
 	public void eliminarEst(String jugador){	//cuando se elimina un jugador

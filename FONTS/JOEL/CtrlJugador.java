@@ -29,6 +29,9 @@ public class CtrlJugador {
 	}
 	
 	public void crear_usuario(String nombre, String contrasenya){
-		Gestor.crear_jugador(nombre, contrasenya);
+		if(Gestor.crear_jugador(nombre, contrasenya)) {
+			System.out.println("crear estadi");
+			CtrlE.crearEstadisticas(nombre);
+		}
 	}
 }

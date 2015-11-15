@@ -44,12 +44,14 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	
 
 	public int consultar_ultim_ID(){
+		return 0;
+		
+	}
+	
+	public String[] consultar_nomstableros(){
 		ruta = "Tableros"+  barras;
 		File directory = new File(ruta);
-		if(directory.exists()==false) {
-			directory.mkdir();
-			return 1;
-		}
-		else return directory.list().length;
+		String[] llista_noms=directory.list();
+		return llista_noms;
 	}
 }
