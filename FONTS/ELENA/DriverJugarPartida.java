@@ -64,11 +64,11 @@ public class DriverJugarPartida {
 					System.out.println("Entrada Incorrecta, repite el proceso");
 					abuj = sn.nextInt();
 				}
-				
-				CP.anadir_carct_tablero(dim,abuj,c_ini);
+				//CP.anadir_carct_tablero(dim,abuj,c_ini);
 				//2. Elegir tipo tablero
 				//[0] Tablero Aleatorio 
 				//[1] Tablero Diseñado
+				System.out.println("Introducir modo 0 es aleatorio");
 				modo = sn.nextInt();
 				if (modo == 0) {
 					int forma = 0;

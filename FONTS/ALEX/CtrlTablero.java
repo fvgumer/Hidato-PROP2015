@@ -177,8 +177,8 @@ public class CtrlTablero {
 	   *Se asocia el tablero t con el tablero de la clase
 	   *@param t es el tablero que se quiere asociar
 	   */
-	public void asociar_tablero(Tablero t) {
-		t = this.map;
+	public Tablero asociar_tablero() {
+		return this.map;
 	}
 	
 	/**
