@@ -20,16 +20,17 @@ public class CtrlRanking {
 		GP.guardar(R);
 	}
 	
-	public int cargarRanking(String tablero) {
+	public boolean cargarRanking(String tablero) {
 		R = GP.cargar(tablero);
-		if (R.getID() == null) return 0;
-		else return 1;
+		if (R.getID() == null) return false;
+		else return true;
 	}
 	
 	public void getTop(int n){
-		System.out.print("Jugador  ||  Modo  ||  Dificultad  || Puntuacion\n");	//las lineas no se veran alineadas entre si :'(
+		System.out.print("Posicion  ||  Jugador  ||  Modo  ||  Dificultad  || Puntuacion\n");	//las lineas no se veran alineadas entre si :'(
 		if (R.size() < n) n = R.size();
 		for (int i = 0; i < n; ++i){
+			System.out.format("%d. ",i+1);
 			R.mostrarPosicion(i);
 		}
 	}
