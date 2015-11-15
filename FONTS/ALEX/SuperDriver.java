@@ -13,6 +13,7 @@ public class SuperDriver {
 		d = new Driver_ctrl_tablero();
 		DriverJugarPartida e = new DriverJugarPartida();
 		DriverGestionUsuario gestorJ = new DriverGestionUsuario();
+		DriverEstadisticas est = new DriverEstadisticas();
 		Jugador Jactivo;
 		boolean b = true;
 		int i;
@@ -34,19 +35,19 @@ public class SuperDriver {
 			}
 			switch (i) {
 				case 1:
-					//Llançar el driver d gestio usuari
+					//LlanÃ§ar el driver d gestio usuari
 					Jactivo=gestorJ.exec();
 					break;
 				case 2:
 					d.exec();
 					break;
 				case 3:
-					//Llançar el driver d comenzar juego
+					//LlanÃ§ar el driver d comenzar juego
 					Jugador J = new Jugador("pepito", "trololo");
 					e.exec(J);
 					break;
 				case 4:
-					//Llançar el driver d'estadistiques
+					est.exec(Jactivo);
 					break;
 				case 5:
 					b = false;
