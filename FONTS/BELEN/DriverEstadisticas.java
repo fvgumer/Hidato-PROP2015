@@ -1,7 +1,6 @@
 package BELEN;
 
 import java.util.Scanner;
-import ALEX.SuperDriver;
 import JOEL.Jugador;
 
 public class DriverEstadisticas {
@@ -15,46 +14,27 @@ public class DriverEstadisticas {
 	}
 	
 	public void exec(Jugador jActivo) {
-		if (jActivo == null) {
-			System.out.print("Por favor, inicia sesion para consultar estadisticas.\n");
-			return;
-		}
 		int ex = 1;
 		while (ex == 1) {
 			System.out.print("Consulta de estadisticas de juego.\n");
 			System.out.print("1 - Consultar tus estadisticas.\n");
 			System.out.print("2 - Consultar las estadisticas de otro usuario.\n");
-<<<<<<< HEAD
-			System.out.print("3 - Salir al menu principal.\n");
-=======
 			System.out.print("3 - Consultar el ranking de un tablero.\n");
-			System.out.print("4 - Salir al menú principal.\n");
->>>>>>> a66c90d4f2908d99dd234db02c549feed28503e1
+			System.out.print("4 - Salir al menu principal.\n");
 			int i = scan.nextInt();
 			scan.nextLine();
 			switch (i) {
 				case 1:
-<<<<<<< HEAD
 					CE.cargarEst(jActivo.consultar_nombre());
 					CE.mostrarEst(jActivo.consultar_nombre());
-=======
-					CE.mostrarEst(jActivo.consultar_Nombre());
->>>>>>> a66c90d4f2908d99dd234db02c549feed28503e1
 					break;
 				case 2:
 					System.out.print("Introduce un nombre de usuario:\n");
 					String jugador = scan.nextLine();
-<<<<<<< HEAD
 
-					if (CE.existe()) {
-						CE.cargarEst(jugador);
-						CE.mostrarEst(jugador);
-					}
-
-=======
-					if (CE.existe()) CE.mostrarEst(jugador);
->>>>>>> a66c90d4f2908d99dd234db02c549feed28503e1
+					if(CE.cargarEst(jugador)) CE.mostrarEst(jugador);
 					else System.out.print("El usuario no existe.\n");
+					
 					break;
 				case 3:
 					System.out.print("Introduce un nombre de tablero.\n");

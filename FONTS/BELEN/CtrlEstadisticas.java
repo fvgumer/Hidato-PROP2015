@@ -68,7 +68,7 @@ public class CtrlEstadisticas {
 	
 	
 	public void mostrarEst(String jugador) {
-		System.out.format("Estadísticas del usuario %s:\n",jugador);
+		System.out.format("Estadisticas del usuario %s:\n",jugador);
 		E.mostrarTiempoJugado();
 		E.mostrarPuntuacionTotal();
 		E.mostrarMejorPuntuacion();

@@ -37,7 +37,7 @@ public class SuperDriver {
 			}
 			switch (i) {
 				case 1:
-					//Llançar el driver d gestio usuari
+					//Llansar el driver d gestio usuari
 					Jactivo=gestorJ.exec();
 					break;
 				case 2:
@@ -45,8 +45,8 @@ public class SuperDriver {
 					break;
 				case 3:
 					//Llançar el driver d comenzar juego
-					Jugador J = new Jugador("pepito", "trololo");
-					e.exec(J);
+					if(Jactivo==null)System.out.println("Debes loguearte antes de consultar tus estadisticas");
+					e.exec(Jactivo);
 					break;
 				case 4:
 					if(Jactivo==null)System.out.println("Debes loguearte antes de consultar tus estadisticas");
