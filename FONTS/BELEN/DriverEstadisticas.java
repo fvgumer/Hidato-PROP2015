@@ -33,7 +33,7 @@ public class DriverEstadisticas {
 				case 2:
 					System.out.print("Introduce un nombre de usuario:\n");
 					String jugador = scan.nextLine();
-					if (CE.existeix()) CE.mostrarEst(jugador);
+					if (CE.existeix(jugador)) CE.mostrarEst(jugador);
 					else System.out.print("El usuario no existe.\n");
 					break;
 				case 3: 
