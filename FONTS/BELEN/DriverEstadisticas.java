@@ -25,8 +25,8 @@ public class DriverEstadisticas {
 			scan.nextLine();
 			switch (i) {
 				case 1:
-					CE.cargarEst(jActivo.consultar_Nombre());
-					CE.mostrarEst(jActivo.consultar_Nombre());
+					CE.cargarEst(jActivo.consultar_nombre());
+					CE.mostrarEst(jActivo.consultar_nombre());
 					break;
 				case 2:
 					System.out.print("Introduce un nombre de usuario:\n");
