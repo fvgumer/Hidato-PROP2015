@@ -16,7 +16,7 @@ public class CtrlEstadisticas {
 	//Instancia de ClassEstadisticas asociada al controlador de Estadisticas
 	
 
-	CtrlGestionEstadisticas GE;
+	private CtrlGestionEstadisticas GE;
 	//Instancia del controlador de persistencia asociada al controlador de Estadisticas
 
 	/**
