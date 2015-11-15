@@ -77,7 +77,6 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			String ruta = "Jugadors"+barras+nombre+".bin";
 			File archiu = new File(ruta);
 			if(archiu.delete()) {
-				System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
 				String rutapartida = "Partidas"+barras+nombre;
 				if(new File(rutapartida).exists()){
 				try {
@@ -86,7 +85,6 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.out.println("S'han eliminat les sever partides també");
 				}
 			}
 			else System.out.println("El jugador no existeix");

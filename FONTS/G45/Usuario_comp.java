@@ -13,36 +13,49 @@ public class Usuario_comp implements Serializable{
  
     /**
 	   * Constructora donde el nombre de usuario nombre = "nombre" y su contrasenya password="password"
-	   * 
+	   * Post:Se crea una instancia de Jugador con nombre = 'nombre' y contraseña = 'password'
 	   */
     public Usuario_comp(String nombre, String password){
         this.nombre = nombre;
         this.password = password;
     }
-/*POST: Se crea una instancia de Jugador con nombre = 'nombre' y contraseña = 'password'
- */
  
-    /*PRE: El jugador existe*/
+    /**
+     * Consultora del nombre
+     * Pre: El jugador existe*
+     * @return Retorna el nombre del jugador
+     */
     public String consultar_nombre(){
         return this.nombre;
     }
-/*POST: Retorna el nombre del Jugador*/
+
  
-    /*PRE: El jugador existe*/
+    /**
+     * Consultora de la contrasenya
+     * Pre: El jugador existe
+     * @return Nos devuelve la contrasenya del jugador
+     * */
     public String consultar_password(){
         return this.password;
     }
-/*POST: Retorna la contraseña del Jugador*/
+
  
-    /*PRE: El jugador existe.*/
+   /**
+    * Modificadora de la clase
+    * Pre: El jugador existe
+    * @param newpassword es la contrasenya que le queremos poner / modificar
+    * Post: La contrasenya del jugador pasa a ser newpassword
+    */
     public void set_password(String newpassword){
         this.password = newpassword;
     }
-/*POST:  La password del jugador pasa a ser 'newpassword'*/
  
-    /*PRE: El jugador existe.*/
+    /**
+     * Pre: El jugador existe
+     * @param newnombre Nuevo nombre que queremos ponerle al jugador
+     * Post: Jugador pasa a tener nombre = "newnombre"
+     */
     public void set_nombre(String newnombre){
         this.nombre = newnombre;
     }
-/*POST:  El nombre del jugador pasa a ser 'newnombre'*/
 }
