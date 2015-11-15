@@ -1,59 +1,108 @@
 package JOEL;
 import java.util.Scanner;
 
-import ALEX.CtrlTablero;
-
 public class DriverGestionUsuario {
 	
-	private CtrlGestionUsuario prueba;
 	private Scanner s;
-	
-	public DriverGestionUsuario(){
-		
+	private CtrlJugador jug = new CtrlJugador();
+	Jugador JUGADOR = null;
+	/**
+	 * Constructora por defecto
+	 */
+	public DriverGestionUsuario() {
+		s = new Scanner(System.in);
 	}
 	
-	public static void main(String[] args) {
+	public Jugador exec() {
 		// TODO Auto-generated method stub
-		CtrlJugador jug = new CtrlJugador();
-	
-		int i = 0;
-		@SuppressWarnings("resource")
-		Scanner scan = new Scanner(System.in);
-		CtrlGestionUsuario controlador = new CtrlGestionUsuario();
-		while(i != -1){
-			System.out.print("Introduce codigo operación 1= crear , 2 = eliminar , 3= guardar, 4= cargar, 5=existe?");
-			i = scan.nextInt();
-			scan.nextLine(); //Para consumir la /n
-			if(i==1){
-				String nombre = scan.nextLine();
-				String contrasenya = scan.nextLine();
-				
-				controlador.crear_jugador(nombre, contrasenya);
+		boolean execucion = true;
+		while(execucion){
+			System.out.println("Bienvenidos a la ventana de login del sistema");
+			System.out.println("1 - Login si ya existe tu usuario");
+			System.out.println("2 - Entrar en Centro de creacion, modificación y eliminación");
+			
+		int w = s.nextInt();
+		s.nextLine();
+		if(w==1){
+			System.out.println("Login del sistema");
+			System.out.println("Por favor, ingrese usuario");
+			String nomlogin = s.nextLine();
+			System.out.println("Ahora ingrese la contrasenya por favor ");
+			String passlogin = s.nextLine();
+			if(jug.ingresarusuario(nomlogin, passlogin)){
+				JUGADOR = jug.jugador_cargat();
+				System.out.println("Logueado correctamente");
 			}
-			else if (i==2){
-				String nombre = scan.nextLine();
-				String contrasenya = scan.nextLine();
-				controlador.eliminar_jugador(nombre, contrasenya);
+			else System.out.println("Error al loguearse, mire que la contrasenya sea correcta o el jugador exista.");
+		}
+		else if(w==2){
+		boolean b = true;
+		while(b){
+			System.out.println("Centro de creacion, modificación y eliminación");
+			System.out.println("1 - Crear Usuario");
+			System.out.println("2 - Modificar Contrasenya");
+			System.out.println("3 - Eliminar Usuario");
+			System.out.println("4 - Atras" );
+		int i = s.nextInt();
+		while (!comprueba_entrada(i,4)) {i = s.nextInt(); }
+		switch (i) {
+			case 1:
+				s.nextLine();
+				System.out.print("Introduce el nombre del usuario que quieras crear :");
+				s.nextLine();
+				String nombre = s.nextLine();
+				System.out.println("Introduce la contrasenya de este usuario");
+				String contrasenya = s.nextLine();
+				if(jug.crear_usuario(nombre, contrasenya)) System.out.print("Jugador creado satisfactoriamente");
+				else System.out.println("El usuario ya existe, por favor intentelo de nuevo");
+				break;
+			case 2:
+				s.nextLine();
+				if(JUGADOR==null) System.out.println("Por favor logueese primero! Pulse 4 para volver");
+				else{
+				System.out.println("Por favor, ingrese la vieja contrasenya: ");
+				String oldpassword = s.nextLine();
+				System.out.println("Ahora ingrese la nueva contrasenya: ");
+				String newpassword = s.nextLine();
+				if(jug.editarcontrasenya(oldpassword, newpassword)) System.out.println("Contrasenya cambiada correctament");
+				else System.out.println("Tu password vieja es incorrecta");
+				}
+				break;
+			case 3:
+				s.nextLine();
+				System.out.println("Ingresar el nombre del usuario que queremos eliminar: ");
+				String nombre1 = s.nextLine();
+				System.out.println("Ingresar la contrasenya del usuario que queremos eliminar: ");
+				String contrasenya1 = s.nextLine();
+				if(jug.ingresarusuario(nombre1, contrasenya1)) {
+					jug.eliminar_usuario();
+					System.out.println("El jugador " +nombre1+ " ha sido eliminado ");
+					}
+				else System.out.println("Error al eliminar el jugador, por favor introduzca los datos correctos");
+				break;
+			case 4:
+				System.out.println("Volvemos a la pantalla anterior de login");
+				b = false;
+				break;
+					}	
+				}
 			}
-			else if(i==3){
-				String nombre = scan.nextLine();
-				String contrasenya = scan.nextLine();
-				Jugador player = new Jugador(nombre,contrasenya);
-				controlador.guardar(player);
-			}
-			else if(i==4){
-				String nombre = scan.nextLine();
-				String contrasenya = scan.nextLine();
-				Jugador x = controlador.cargar_jugador(nombre,contrasenya);
-			if(x!=null)System.out.println("Jugador con nombre " + x.nombre + " y contraseña " + contrasenya + " cargado");
-			}
-			else if(i==5){
-				String nombre = scan.nextLine();
-				String contrasenya = scan.nextLine();
-				Jugador player = new Jugador(nombre,contrasenya);
-				if(controlador.existeix(player)) System.out.println("Existeix el jugador");
-				else System.out.println("No existeix el jugador");
-			}
+		else System.out.println("Introduce numero correcto");
+		}
+		return JUGADOR;
+}
+		
+		/**
+		 * Operacion que determina si el parametro i se encuentra entre [0, cap]
+		 * @param i Indica el parametro que se quiere comprovar
+		 * @param cap Indica el numero maximo posible que puede ser n
+		 * @return Retorna true en caso de que el parametro i se encuentre entre [0, cap]. Retorna false
+		 * en caso contrario
+		 */
+		private boolean comprueba_entrada(int i, int cap) {
+			if (i > cap) System.out.println("Valor erroneo");
+			if (i < 0) return false;
+			return i <= cap;
+		}
 	}
-}
-}
+

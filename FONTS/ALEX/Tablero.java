@@ -320,5 +320,9 @@ public class Tablero extends Tablero_comp implements Serializable{
 		}
 		System.out.println();
 	}
+<<<<<<< HEAD
+}
+=======
 
 }
+>>>>>>> 4fc99ca907f06c7742992eb6906fe149910793b3

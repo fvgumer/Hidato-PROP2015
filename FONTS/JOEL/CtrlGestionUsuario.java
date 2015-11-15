@@ -53,7 +53,6 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			pla= (Jugador) is.readObject();
 			is.close();
 			if(pla.consultar_password().equals(password)==false){
-				System.out.println("IEEEEEEPA Contrasenya incorrecta");
 				return null;
 			}
 				else return pla;
