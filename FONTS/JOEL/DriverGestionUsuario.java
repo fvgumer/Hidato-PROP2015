@@ -20,7 +20,7 @@ public class DriverGestionUsuario {
 			System.out.println("Bienvenidos a la ventana de login del sistema");
 			System.out.println("1 - Login si ya existe tu usuario");
 			System.out.println("2 - Entrar en Centro de creacion, modificación y eliminación");
-			
+			System.out.println("3 - Salir al menu principal");
 		int w = s.nextInt();
 		s.nextLine();
 		if(w==1){
@@ -47,7 +47,7 @@ public class DriverGestionUsuario {
 		while (!comprueba_entrada(i,4)) {i = s.nextInt(); }
 		switch (i) {
 			case 1:
-				s.nextLine();
+				//s.nextLine();
 				System.out.print("Introduce el nombre del usuario que quieras crear :");
 				s.nextLine();
 				String nombre = s.nextLine();
@@ -87,7 +87,11 @@ public class DriverGestionUsuario {
 					}	
 				}
 			}
-		else System.out.println("Introduce numero correcto");
+		else if(w==3) {
+			execucion=false;
+			System.out.println("Volvemos al menu principal");
+		}
+		else System.out.println("Introduzca un numero correcto por favor");
 		}
 		return JUGADOR;
 }
