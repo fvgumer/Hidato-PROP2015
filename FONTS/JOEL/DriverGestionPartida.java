@@ -31,6 +31,8 @@ public class DriverGestionPartida {
 				scan.nextLine();
 				Partida_Hidato P = new Partida_Hidato(T, J, id, 4);
 				gestor.guardar(P);
+				int x = gestor.consultar_ultim_ID("joel");
+				System.out.println(x + " es el nombre de partides del jugador joel");
 			}
 			else if(i==4){
 				System.out.println("Introducir nombre jugador y id de la partida que queremos cargar");

@@ -9,26 +9,22 @@ import java.io.ObjectInputStream;
 import ALEX.Tablero;
 
 public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
-	private String Ruta;
-	private String barras;
+	
 	
 	public CtrlGestionTablero() {
-		String s = System.getProperty("os.name");
-		if (s.charAt(0) == 'W') barras = "\\";
-		else barras = "/";
 	}
 
 	public Tablero cargar(int ID){
 		Tablero T = new Tablero(0);
 		String nomT = String.valueOf(ID);
-		Ruta = "Tableros"+  "\\" + nomT+ ".bin";
-		File archiu = new File(Ruta);
+		ruta = "Tableros"+  barras + nomT+ ".bin";
+		File archiu = new File(ruta);
 		if(archiu.exists()==false) {
 			System.out.println("El Tablero no existeix");
 		}
 		else{
 			try{
-			ObjectInputStream is = new ObjectInputStream(new FileInputStream(Ruta));
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
 			T = (Tablero) is.readObject();
 			is.close();
 			}
@@ -48,8 +44,8 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	
 
 	public int consultar_ultim_ID(){
-		Ruta = "Tableros"+  barras;
-		File directory = new File(Ruta);
+		ruta = "Tableros"+  barras;
+		File directory = new File(ruta);
 		if(directory.exists()==false) {
 			directory.mkdir();
 			return 1;

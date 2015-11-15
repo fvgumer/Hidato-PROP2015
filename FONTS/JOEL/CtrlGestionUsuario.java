@@ -9,22 +9,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import org.apache.commons.io.*;
 
-import BELEN.ClassEstadisticas;
-
 public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
-	private String Ruta;
-	private String barras;
 	
 	CtrlGestionUsuario(){
-		String s = System.getProperty("os.name");
-		if (s.charAt(0) == 'W') barras = "\\";
-		else barras = "/";
 	}
 	
 	public void crear_jugador(String nombre, String contrasenya){
-		Ruta = "Jugadors"+barras;
+		ruta = "Jugadors"+barras;
 		File archiu = new File("Jugadors"+barras+nombre+".bin");
-		File directory = new File(Ruta);
+		File directory = new File(ruta);
 		directory.mkdir();
 		if(archiu.exists()){
 			System.out.println("El nom ja existeix, elegeix un altre");
@@ -81,8 +74,6 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	
 //Elimina jugador, partides que tingués actives i estadistiques !actualizar ranking!
 	public void eliminar_jugador(String nombre, String contrasenya){
-		//Jugador z = cargar_jugador(nombre,contrasenya);
-		//if(z==null) return;
 		
 			String ruta = "Jugadors"+barras+nombre+".bin";
 			File archiu = new File(ruta);

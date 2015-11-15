@@ -9,14 +9,16 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import ALEX.*;
 import BELEN.*;
+import org.apache.commons.io.*;
 
 public class CtrlGestionHidato<T> {
-	private String ruta;
+	public String ruta;
 	private String archivo;
-	private String barras;
+	public String barras;
 	
 	CtrlGestionHidato(){
 		String s = System.getProperty("os.name");
+		//System.out.println(s.charAt(0));
 		if (s.charAt(0) == 'W') barras = "\\";
 		else barras = "/";
 	}
@@ -86,5 +88,19 @@ public class CtrlGestionHidato<T> {
 		if(archiu.exists()) return true;
 		else return false;
 	}
-}
+
+	public void clean_all(){
+		try {
+			FileUtils.deleteDirectory(new File("Partidas"));
+			FileUtils.deleteDirectory(new File("Rankings"));
+			FileUtils.deleteDirectory(new File("Estadisticas"));
+			FileUtils.deleteDirectory(new File("Tableros"));
+			FileUtils.deleteDirectory(new File("Jugadors"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	}
 

@@ -9,13 +9,9 @@ import java.io.ObjectInputStream;
 import ELENA.Partida_Hidato;
 
 public class CtrlGestionPartida extends CtrlGestionHidato<Object>{
-//private String Ruta;
-	private String barras;
+
 
 CtrlGestionPartida(){
-	String s = System.getProperty("os.name");
-	if (s.charAt(0) == 'W') barras = "\\";
-	else barras = "/";
 }
 
 //retorna null si no existeix
@@ -23,9 +19,9 @@ public Partida_Hidato cargar(String NomJ, int IDs){
 	String ID = String.valueOf(IDs);
 	System.out.println(ID);
 	Partida_Hidato P;
-	String rutas = "Partidas"+  barras + NomJ+ barras + ID + ".bin";
-	System.out.println(rutas);
-	File archiu = new File(rutas);
+	ruta = "Partidas"+  barras + NomJ+ barras + ID + ".bin";
+	System.out.println(ruta);
+	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
 		System.out.println("La partida no existeix");
 		return null;
@@ -33,7 +29,7 @@ public Partida_Hidato cargar(String NomJ, int IDs){
 	else{
 		
 		try {
-			ObjectInputStream is = new ObjectInputStream(new FileInputStream("Partidas"+  barras + NomJ+ barras + ID + ".bin"));
+			ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
 			P= (Partida_Hidato) is.readObject();
 			is.close();
 			return P;
@@ -52,5 +48,15 @@ public Partida_Hidato cargar(String NomJ, int IDs){
 		return null;
 	}
 }
-}
 
+
+public int consultar_ultim_ID(String NomJ){
+	ruta = "Partidas"+ barras + NomJ + barras;
+	File directory = new File(ruta);
+	if(directory.exists()==false) {
+		directory.mkdir();
+		return 1;
+	}
+	else return directory.list().length;
+}
+}

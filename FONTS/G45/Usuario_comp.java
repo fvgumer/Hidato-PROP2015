@@ -1,7 +1,7 @@
 package G45 ;
 /**
  
- * Creada por el grupo de Hidato
+ * Creada por el grupo de Hidato (Joel)
  */
 import java.io.Serializable;
  
@@ -11,8 +11,10 @@ public class Usuario_comp implements Serializable{
     public String nombre;
     public String password;
  
-    /*PRE: No existe ningún Jugador con nombre = 'nombre'.
-     */
+    /**
+	   * Constructora donde el nombre de usuario nombre = "nombre" y su contrasenya password="password"
+	   * 
+	   */
     public Usuario_comp(String nombre, String password){
         this.nombre = nombre;
         this.password = password;
