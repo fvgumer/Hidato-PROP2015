@@ -32,9 +32,9 @@ public class DriverJugarPartida {
 		// [1]Crear Partida
 		boolean incorrecto = true;
 		while(incorrecto){
-			System.out.println("Escoje la acción que desas:");
-			System.out.println("[0] Cargar Partida Anterior");
-			System.out.println("[1] Crear Nueva Partida");
+			System.out.println("Escoje la acciÃ³n que desas:");
+			System.out.println("0.Cargar Partida Anterior");
+			System.out.println("1.Crear Nueva Partida");
 			modo = sn.nextInt();
 			if (modo == 0) { //[0]
 				CP.Cargar_Partida_Hidato();
@@ -44,7 +44,7 @@ public class DriverJugarPartida {
 				incorrecto = false;
 				//1. Elegir Caracteristicas
 				//DIMENSIONES
-				System.out.println("Escojer medidas del tablero cuadrado:");
+				System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
 				dim = sn.nextInt();
 				while(!control_error(dim,dim_max) && !control_error(3,dim)) {
 					System.out.print("Valor erroneo");
@@ -58,26 +58,36 @@ public class DriverJugarPartida {
 					abuj = sn.nextInt();
 				}
 				//#inicials
-				System.out.println("Introduce el nombre de números inicias, rango[2,"+(dim*dim-abuj-1)+"]");
+				System.out.println("Introduce el nombre de nÃºmeros inicias, rango[2,"+(dim*dim-abuj-1)+"]");
 				c_ini = sn.nextInt();
 				while(!control_error(c_ini,(dim*dim)-abuj-1)) {
 					System.out.println("Entrada Incorrecta, repite el proceso");
 					abuj = sn.nextInt();
 				}
-				//CP.anadir_carct_tablero(dim,abuj,c_ini);
+				
+				CP.anadir_carct_tablero(dim,abuj,c_ini);
 				//2. Elegir tipo tablero
 				//[0] Tablero Aleatorio 
-				//[1] Tablero Diseñado
-				System.out.println("Introducir modo 0 es aleatorio");
+				//[1] Tablero DiseÃ±ado
+				System.out.println("Introduce el tipo de tablero para jugar:");
+				System.out.println("0.Tablero Aleatorio");
+				System.out.println("1.Tablero DiseÃ±ado");
 				modo = sn.nextInt();
 				if (modo == 0) {
 					int forma = 0;
 					CP.generar_Taleatorio(dim,c_ini,abuj,forma);
 				}
 				else if (modo == 1) CP.elegir_tdisenado(); // [[NO IMPLEMENTADO]]
-
+				System.out.println("Introduce la dificultad de la partida");
+				System.out.println("0.Facil");
+				System.out.println("1.Medio");
+				System.out.println("2.Alto");
 				//Elegir Parametros Juego
 				int dificultad = sn.nextInt();
+				System.out.println("Introduce el modo de la partida");
+				System.out.println("0.Clasico");
+				System.out.println("1.Contrareloj");
+				System.out.println("2.Extremo");
 				modo = sn.nextInt(); //CODIF: [1]Clasico [2]Contrareloj [3] Extrem
 				CP.crear_partida(J,dificultad,modo,dim);
 			}
@@ -86,42 +96,53 @@ public class DriverJugarPartida {
 			}
 		}
 		
-		
 		//JUGAR
 		boolean bucle = true;
-		CJ = new CtrlJugar();
-		CJ.jugar_partida(CP.get_partida());
-		modo = sn.nextInt();
+
 		if (modo == 2) {
-			int tiempo = sn.nextInt(); //EN SEGUNDOS
-			Timer tiemp = new Timer();
-			//tiemp.setTimeout(CJ.rendirse(), tiempo*1000);
+			System.out.println("Escoger tiempo de partida:");
+			System.out.println();
 		}
-		else if (modo == 3) { //EXTREME
-			
-		}
+		int delay = 0;
+		CJ = new CtrlJugar();
+		CJ.comenzar_partida(CP, delay,modo);
 		int x,y;
+		System.out.println("Opciones partida:");
+		System.out.println("0.Pausa");
+		System.out.println("1.Reanudar");
+		System.out.println("2.Rendirse");
+		System.out.println("3.Pista");
+		System.out.println("4.Salir");
+		System.out.println("5.Guardar Partida");
+		System.out.println("6.Introducir Casilla");
+		System.out.println("7.Quitar Casilla");
+		System.out.println("8.Comprobar Casilla");
+		modo = sn.nextInt();
 		while(bucle){
-			modo = sn.nextInt();
-			CJ.print();
 			switch(modo){
 	
 			case 0: //PAUSA
+					System.out.println("Estado partida: EN PAUSA");
 					CJ.pausar();
 					break;
 			case 1: //REANUDAR
+					System.out.println("Estado partida: EN JUEGO");
 					CJ.reanudar();
 					break;
 			case 2: //RENDIRSE
+					System.out.println("Fin Partida");
 					CJ.rendirse();
 					break;
 			case 3: //PISTA
+					System.out.println("Escoge modo de pista");
+					System.out.println("0.Saber Casilla");
+					System.out.println("1.Candidatos Casilla");
+					System.out.println("2.Candidatos Tablero");
 					modo = sn.nextInt();
-					//1. Que te diga que numero es
 					if (modo == 0 || modo == 1) {
 						x = sn.nextInt();
 						y = sn.nextInt();
-						if (modo == 0)CJ.pista1(x,y); //INTRODUCE NUM. CORRECTO
+						if (modo == 0)CJ.pista1(x,y); 
 						else CJ.pista2(x, y, dim, abuj);
 					}
 					else if (modo == 2) CJ.pista3(dim,abuj);
@@ -133,25 +154,52 @@ public class DriverJugarPartida {
 					bucle = false;
 					break;
 			case 5: //GUARDAR
-					CJ.guardar_partida();
+					System.out.println("Â¿Deseas guardar la partida?");
+					System.out.println("Y. Si");
+					System.out.println("N. No");
+					char c = (char) sn.nextShort();
+					if (c == 'Y') CJ.guardar_partida();
 					break;
 			case 6: //INTRODUCIR CASILLA
+					System.out.println("Introduce casilla: rango [0,"+(dim-1)+").");
+					System.out.println("Introduce x:");
 					x = sn.nextInt();
+					System.out.println("Introduce y:");
 					y = sn.nextInt();
+					System.out.println("Introduce valor:");
 					int valor = sn.nextInt();
 					CJ.introducirCasilla(x,y,valor);
 					break;
 			case 7: //QUITAR CASILLA
+					System.out.println("Introduce casilla: rango [0,"+(dim-1)+").");
+					System.out.println("Introduce x:");
 					x = sn.nextInt();
+					System.out.println("Introduce y:");
 					y = sn.nextInt();
 					CJ.quitar_casilla(x,y);
 					break;
 			case 8: //COMPROBAR CASILLA
+					System.out.println("Introduce casilla para comprobar: rango [0,"+(dim-1)+"].");
+					System.out.println("Introduce x:");
 					x = sn.nextInt();
+					System.out.println("Introduce y:");
 					y = sn.nextInt();
 					CJ.comprobar_casilla(x,y);
 					break;
 			}
+			if (CJ.get_estado()!=0) CJ.print(); 
+			CJ.print_puntuacion();
+			System.out.println("Opciones partida:");
+			System.out.println("0.Pausa");
+			System.out.println("1.Reanudar");
+			System.out.println("2.Rendirse");
+			System.out.println("3.Pista");
+			System.out.println("4.Salir");
+			System.out.println("5.Guardar Partida");
+			System.out.println("6.Introducir Casilla");
+			System.out.println("7.Quitar Casilla");
+			System.out.println("8.Comprobar Casilla");
+			modo = sn.nextInt();
 		}
 	}
 }

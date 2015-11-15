@@ -1,7 +1,7 @@
 package ELENA;
 
 import ALEX.*;
-//import java.util.Random;
+import G45.Partida_comp;
 import JOEL.*;
 
 public class CtrlPartida {
@@ -13,42 +13,69 @@ public class CtrlPartida {
 	
 	/*__________NO_IMPLEMENTADO_________________*/
 	public void Cargar_Partida_Hidato(){
-		
 	}
 	
+	/**
+	 * Añadir características de la partida
+	 * @param dim Entero que indica las dimensiones del tablero de la partida.
+	 * @param forats Entero que indica el número de casillas vacías del tablero.
+	 * @param n_ini Entero que indica el número de casillas iniciales que contienen
+	 * un número.
+	 */
 	public void anadir_carct_tablero(int dim, int forats, int n_ini){
-		//A tablero T a�adir caracteristicas
 		T = new Tablero(dim);
 		T.setholes(forats);
 		T.setn_predef(n_ini);
 	}
 
-	
-	/*__________NO_IMPLEMENTADO_________________*/
+	/**
+	 * Generar tablero aleatorio
+	 * @param dim Entero que indica las dimensiones del tablero de la partida.
+	 * @param c_ini Entero que indica el número de casillas iniciales que contienen
+	 * un número.
+	 * @param forats Entero que indica el número de casillas vacías del tablero
+	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
+	 */
 	public void generar_Taleatorio(int dim, int c_ini, int forats, int f){
 		//System.out.println("HOLA");
-		CtrlTablero GT = new CtrlTablero();
-		//System.out.println("HOLA");
-		GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), f);
-		//System.out.println("HOLA");
-		T = GT.asociar_tablero();
-		System.out.println("ara printejo el de la calse:");
-		T.print();
+				CtrlTablero GT = new CtrlTablero();
+				//System.out.println("HOLA");
+				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), f);
+				//System.out.println("HOLA");
+				T = GT.asociar_tablero();
+				System.out.println("ara printejo el de la calse:");
+				T.print();
 	}
 
+	/**
+	 * Elegir tablero diseñado
+	 * A partir de los parametros impícitos del objeto partida se substraen
+	 * de los ficheros los tableros que se ajustan mas a la petición del jugador
+	 */
 	/*__________NO_IMPLEMENTADO_________________*/
 	public void elegir_tdisenado(){
 		//Sacar TOP5 de los mas parecidos
 		
 	}
+	/**
+	 * Crear Partida
+	 * @param U Jugador previamente identificado
+	 * @param dificultad Entero que identifica la dificultad de la partida.
+	 * @param modo Entero que identifica el modo de juego de la partida.
+	 * @param dim Entero que hace referencia a las dimensiones del tablero 
+	 * de la partida.
+	 */
 	public void crear_partida(Jugador U, int dificultad,int modo, int dim){
 		int ID = 0; //CALCULAR ID
-		PH = new Partida_Hidato(T,U,ID,dim);
+		PH = new Partida_Hidato(T,U,ID);
 		PH.set_dificultad(dificultad);
 		PH.set_modo(modo);
 	}
 	
-	
+	/**
+	 * Consulta partida
+	 * @return Devuelve el objeto Partida del parametro implícito.
+	 */
 	public Partida_Hidato get_partida() {
 		return PH;
 	}

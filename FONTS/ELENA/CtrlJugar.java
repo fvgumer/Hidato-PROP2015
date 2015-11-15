@@ -1,17 +1,42 @@
 package ELENA;
 import ALEX.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.Timer;
 
 
 public class CtrlJugar {
 	private Partida_Hidato PH;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
-
-	
-	/** Pre: x,y son les coordenades del tauler en que es vol saber quin son els seus
-	 * candidats, posats es un boolea on si el seu el element es cert ens diu que
-	 * esta al tauler*/
+	ActionListener action = new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+        	System.out.println("TIEMPO ACABADO");
+        	PH.set_puntuacion(0);
+    		//NO GUARDAR PARTIDA (NO IMPLEMENTADO)
+    		//Sacamos solucion
+    		PH.print_solucion();
+        	T1.stop();
+        }
+    };
+	ActionListener action2 = new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+        	System.out.println("TIEMPO ACABADO");
+        	PH.set_puntuacion(0);
+    		//NO GUARDAR PARTIDA (NO IMPLEMENTADO)
+    		//Sacamos solucion
+    		PH.print_solucion();
+        	T1.stop();
+        }
+    };
+	Timer T1;
+	/** Pre:
+	 * @param x,y son dos enteros que hacen referencia a unas coordenadas válidas del tablero 
+	 * del parametro impícito.
+	 * @forats Entero que indica el numero de                                                                                                                                                                
+	 * */
 	public ArrayList<Integer> bus_cantidats(int x, int y, int forats, boolean[] posats){
 		for (int i = 0; i < posats.length; ++i) {
 			if (posats[i]) System.out.println(i+1);
@@ -25,7 +50,6 @@ public class CtrlJugar {
 		contar_num_costats(x - 1 ,y + 1,posibles,posats);
 		contar_num_costats(x,y + 1,posibles,posats);
 		contar_num_costats(x,y - 1,posibles,posats);
-			
 			return posibles;
 	}
 	
@@ -106,17 +130,15 @@ public class CtrlJugar {
 		}
 	}
 	
-	public void jugar_partida(Partida_Hidato PH2){
-		PH = PH2;
-	}
-
 	public void pausar(){
 		if (PH.get_estado() == GAME) {
 			PH.set_estado(PAUSE);
 			//Tapar PANTALLA
 			print_tvacio(PH.get_dimensiont());
+			T1.stop();
 		}
 		//Si ja esta parat no fer res
+
 		
 	}
 	
@@ -125,6 +147,7 @@ public class CtrlJugar {
 			PH.set_estado(GAME);
 			//Sacar TABLERO
 			PH.print_tablero();
+			T1.restart();
 		}
 		//Si esta en juego no hace nada
 		
@@ -178,6 +201,7 @@ public class CtrlJugar {
 		//NO GUARDAR PARTIDA (NO IMPLEMENTADO)
 		//Sacamos solucion
 		PH.print_solucion();
+		T1.stop();
 		
 	}
 	/*__________NO_IMPLEMENTADO_________________*/
@@ -188,6 +212,8 @@ public class CtrlJugar {
 	public void introducirCasilla(int x, int y,int valor){
 		//1. INTRODUCIR CASILLA
 		PH.set_valorcasilla(x,y,valor);
+		if (valor == -1) System.out.println("Posición incorrecta");
+		else System.out.println("Se ha introducido el valor: "+valor+"en la posicion ("+x+","+y+")");
 		//2. CALCULAR PUNTUACION 
 		modificar_puntuacion(15);
 		
@@ -195,7 +221,10 @@ public class CtrlJugar {
 	
 	public void quitar_casilla(int x, int y){
 		//1. QUITAR CASILLA
-		PH.set_valorcasilla(x,y,0);
+		int valor = 0;
+		PH.set_valorcasilla(x,y,valor);
+		if (valor == -1) System.out.println("Posición incorrecta");
+		else System.out.println("Se ha quitado la casilla: ("+x+","+y+")");
 		//2. CALCULAR PUNTUACION 
 		modificar_puntuacion(-3);
 	}
@@ -209,6 +238,26 @@ public class CtrlJugar {
 	}
 	
 	public void print() {
-		PH.print_solucion();
+		PH.print_tablero();
+	}
+	public void print_puntuacion(){
+		int p = PH.get_puntuacion();
+		System.out.println("Puntuacion Actual: "+p);
+	}
+	
+	public void comenzar_partida(CtrlPartida P,int delay, int modo) {
+		PH = P.get_partida();
+		if (modo == 0) T1 = new Timer(0,null);
+		else if (modo == 1) T1 = new Timer(delay,action);
+		else T1 = new Timer(delay,action2);
+		T1.start();
+	}
+	
+	public void get_tiempo() {
+		int tiempo = T1.getDelay();
+		System.out.println("Tiempo transcurrido: "+tiempo);
+	}
+	public int get_estado(){
+		return PH.get_estado();
 	}
 }
