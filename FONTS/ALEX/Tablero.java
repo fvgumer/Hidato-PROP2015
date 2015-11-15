@@ -5,12 +5,6 @@ import G45.*;
 import java.io.Serializable;
 import java.util.Arrays;
 
-/**
- * Esta clase hereda las funcionalidades de Tablero_comp. Añadimos nuevos parametros y metodos
- * en la clase por tal de que el tablero se adapte a un tablero del juego Hidato.
- * @author Alex
- *
- */
 public class Tablero extends Tablero_comp implements Serializable{
 
 	private static final long serialVersionUID = 820754505192031630L;
@@ -44,6 +38,28 @@ public class Tablero extends Tablero_comp implements Serializable{
 		}
 		solucion_unica=false;
 		start = end = new int[2];
+		
+	}
+	
+	public Tablero copia_t(){
+		Tablero T = new Tablero(mida);
+		T.setholes(holes);
+		T.set_id(T.get_id());
+		T.setfinal_num(T.get_final_num());
+		T.setn_predef(mida);
+		T.setSolucion(solucio);
+		solucion_unica=true;
+		for(int i=0; i<mida; ++i) {
+			for(int j=0; j<mida; ++j) {
+				T.setValorTauler(i, j, tauler[i][j].getValor());
+			}
+		}
+		solucion_unica=false;
+		return T;
+	}
+	
+	public void setSolucion(Casilla[][] sol){
+		solucio = sol;
 	}
 	
 	/**
