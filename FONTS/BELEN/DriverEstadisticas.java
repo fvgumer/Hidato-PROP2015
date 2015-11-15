@@ -14,7 +14,6 @@ public class DriverEstadisticas {
 	}
 	
 	public void exec(Jugador jActivo) {
-		if (jActivo == null) {
 		int ex = 1;
 		while (ex == 1) {
 			System.out.print("Consulta de estadisticas de juego.\n");
