@@ -37,14 +37,9 @@ public class CtrlPartida {
 	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
 	 */
 	public void generar_Taleatorio(int dim, int c_ini, int forats, int f){
-		//System.out.println("HOLA");
 				CtrlTablero GT = new CtrlTablero();
-				//System.out.println("HOLA");
 				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), f);
-				//System.out.println("HOLA");
 				T = GT.asociar_tablero();
-				System.out.println("ara printejo el de la calse:");
-				T.print();
 	}
 
 	/**
