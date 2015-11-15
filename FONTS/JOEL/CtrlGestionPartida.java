@@ -63,17 +63,27 @@ public Partida_Hidato cargar(String NomJ, int IDs){
 	}
 }
 
-
+/**
+ * COnsultora del numero de partidas activas del jugador con nombre = NomJ
+ * @param NomJ Nombre del jugador del cual se quiere consultar el numero de partidas
+ * @return Nos devuelve el numero de partidas activas del jugador NomJ, sino tenia ninguna 
+ * devuelve un 0.
+ * Post: Crea el directorio donde se crearan las partidas del jugador en caso de que no exista.
+ */
 public int consultar_numeropartidas(String NomJ){
 	ruta = "Partidas"+ barras + NomJ + barras;
 	File directory = new File(ruta);
 	if(directory.exists()==false) {
 		directory.mkdir();
-		return 1;
+		return 0;
 	}
 	else return directory.list().length;
 }
-
+/**
+ * Consultora de los nombres de todas las partidas de un jugador
+ * @param NomJ Nombre del jugador del cual queremos consultar todos los nombres de sus partidas.
+ * @return Devuelve una lista con todos los identificadores del jugador con nombre= nomJ
+ */
 public String[] lista_partidas(String NomJ){
 	ruta = "Partidas"+  barras;
 	File directory = new File(ruta);
