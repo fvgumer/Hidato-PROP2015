@@ -15,6 +15,10 @@ public class CtrlEstadisticas {
 		GE = new CtrlGestionEstadisticas();
 		
 	}
+		
+	public boolean existe() {
+		GE.existeix(E);
+	}
 	
 	public boolean cargarEst(String jugador) {
 		E = GE.cargar(jugador);
