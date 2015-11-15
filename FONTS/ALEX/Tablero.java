@@ -47,27 +47,6 @@ public class Tablero extends Tablero_comp implements Serializable{
 		
 	}
 	
-	public Tablero copia_t(){
-		Tablero T = new Tablero(mida);
-		T.setholes(holes);
-		T.set_id(T.get_id());
-		T.setfinal_num(T.get_final_num());
-		T.setn_predef(mida);
-		T.setSolucion(solucio);
-		solucion_unica=true;
-		for(int i=0; i<mida; ++i) {
-			for(int j=0; j<mida; ++j) {
-				T.setValorTauler(i, j, tauler[i][j].getValor());
-			}
-		}
-		solucion_unica=false;
-		return T;
-	}
-	
-	public void setSolucion(Casilla[][] sol){
-		solucio = sol;
-	}
-	
 	/**
 	   * @return Retorna el mayor numero possible del tablero teniendo en cuenta la medida
 	   * del tablero y la cantidad de casillas negras del tablero
