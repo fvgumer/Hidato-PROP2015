@@ -71,7 +71,7 @@ public class CtrlGestionHidato<T> {
 		}
 	}
 	/**
-	 * Metodo que se encarga de guardar el objeto en su ruta.
+	 * Metodo que se encarga de guardar el objeto en su ruta y sobreescribir el existente con el mismo nombre.
 	 * @param objeto Objeto que puede ser de las clases principales Jugador, ClassRanking, ClassEstadisticas,
 	 * Tablero, Partida_Hidato
 	 */
@@ -96,7 +96,7 @@ public class CtrlGestionHidato<T> {
 	 *Metodo que elimina el objeto del directorio donde esta guardado.
 	 * @param objeto Objeto que puede ser de las clases principales Jugador, ClassRanking, ClassEstadisticas,
 	 * Tablero, Partida_Hidato
-	 * @return Cierto si el fichero del objeto se ha eliminado correctamente, falso si no se ha eliminado
+	 * @return Cierto si el fichero del objeto se ha eliminado correctamente, falso si no se ha eliminado.
 	 */
 
 	public boolean eliminar(T objeto){

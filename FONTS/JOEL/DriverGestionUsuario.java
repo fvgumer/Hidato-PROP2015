@@ -1,6 +1,13 @@
 package JOEL;
 import java.util.Scanner;
 
+/**
+ * Este driver se encarga del logueo de un usuario en el sistema para que pase a ser el usuario
+ * activo del juego y tambien de todas las operaciones que consciernen a los datos de usuarios,
+ * eliminar, cargar, cambiar contrasenyas. Todas las operaciones estan en este driver.
+ * @author Joel Codina
+ *
+ */
 public class DriverGestionUsuario {
 	
 	private Scanner s;
@@ -12,6 +19,12 @@ public class DriverGestionUsuario {
 	public DriverGestionUsuario() {
 		s = new Scanner(System.in);
 	}
+	
+	/**
+	 * Operacion principal de la clase. Aqui se llevan a cabo todas las operaciones.
+	 * @return Retorna null si el Jugador no se ha logueado. Si se ha logueado, retorna
+	 * el jugador logueado. 
+	 */
 	
 	public Jugador exec() {
 		// TODO Auto-generated method stub
@@ -89,7 +102,11 @@ public class DriverGestionUsuario {
 			}
 		else if(w==3) {
 			execucion=false;
-			System.out.println("Volvemos al menu principal");
+			if(JUGADOR==null){
+				System.out.println("Volvemos al menu principal, pero no estas logueado");
+				System.out.println("Recuerda que para poder jugar tienes que loguearte ;-)");
+			}
+			else System.out.println("Volvemos al menu principal");
 		}
 		else System.out.println("Introduzca un numero correcto por favor");
 		}
