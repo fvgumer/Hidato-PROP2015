@@ -13,11 +13,11 @@ import JOEL.*;
 public class CtrlEstadisticas {
 	
 	private ClassEstadisticas E;	
-	//Instancia de ClassEstadisticas asociada al controlador
+	//Instancia de ClassEstadisticas asociada al controlador de Estadisticas
 	
 
 	CtrlGestionEstadisticas GE;
-	//Instancia del controlador de persistencia asociada al controlador
+	//Instancia del controlador de persistencia asociada al controlador de Estadisticas
 
 	/**
 	 * Creadora por defecto de la clase.
