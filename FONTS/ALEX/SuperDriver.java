@@ -15,7 +15,6 @@ public class SuperDriver {
 		boolean b = true;
 		int i;
 		while (b) {
-			
 			System.out.println("HIDATO");
 			/*System.out.println("Hola! Entro con tu usuario o bien crea uno nuevo:");
 			System.out.println("1.Login");

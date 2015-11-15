@@ -18,13 +18,13 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 		else barras = "/";
 	}
 
-	public Tablero cargar(int ID){
+	public Tablero cargar(int ID, boolean b){
 		Tablero T = new Tablero(0);
 		String nomT = String.valueOf(ID);
 		Ruta = "Tableros"+  "\\" + nomT+ ".bin";
 		File archiu = new File(Ruta);
 		if(archiu.exists()==false) {
-			System.out.println("El Tablero no existeix");
+			b = false;
 		}
 		else{
 			try{

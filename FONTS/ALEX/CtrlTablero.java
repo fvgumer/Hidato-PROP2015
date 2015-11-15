@@ -20,6 +20,7 @@ public class CtrlTablero {
 	private Tablero map;
 	private Random rm;
 	private Algorithm a;
+	private CtrlGestionTablero c;
 	
 	/**
 	 * Creadora por defecto
@@ -95,6 +96,11 @@ public class CtrlTablero {
 		map = new Tablero(n);
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras);
+	}
+	
+	public int ini_guarda_carga() {
+		c = new CtrlGestionTablero();
+		return c.consultar_ultim_ID();
 	}
 	
 	/**
@@ -185,6 +191,21 @@ public class CtrlTablero {
 		System.out.println("l'ultim id es "+ aux);
 		map.set_id(aux+1);
 		c.guardar(map);
+	}
+	
+	public int getUltimId(){
+		int aux = c.consultar_ultim_ID();
+		return aux;
+	}
+	
+	public boolean cargar(int n) {
+		boolean b = true;
+		map = c.cargar(n,b);
+		return b;
+	}
+	
+	public void eliminar() {
+		c.eliminar(map);
 	}
 
 	/**

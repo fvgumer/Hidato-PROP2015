@@ -44,7 +44,6 @@ public class Tablero extends Tablero_comp implements Serializable{
 		}
 		solucion_unica=false;
 		start = end = new int[2];
-		
 	}
 	
 	/**
