@@ -10,16 +10,20 @@ import BELEN.ClassRanking;
 
 public class CtrlGestionRanking extends CtrlGestionHidato<Object>{
 private String Ruta;
+private String barras;
 
-CtrlGestionRanking(){
+public CtrlGestionRanking(){
+	String s = System.getProperty("os.name");
+	if (s.charAt(0) == 'W') barras = "\\";
+	else barras = "/";
 }
 
 public ClassRanking cargar(String NomR){
 	ClassRanking R = new ClassRanking(null);
-	Ruta = "Rankings"+  "\\" + NomR+ ".bin";
+	Ruta = "Rankings"+  barras + NomR+ ".bin";
 	File archiu = new File(Ruta);
 	if(archiu.exists()==false) {
-		System.out.println("El Ranking no existeix");
+		System.out.println("El tablero no existe.\n");
 	}
 	else{
 		try{

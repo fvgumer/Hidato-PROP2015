@@ -13,7 +13,13 @@ import BELEN.*;
 public class CtrlGestionHidato<T> {
 	private String ruta;
 	private String archivo;
-	CtrlGestionHidato(){}
+	private String barras;
+	
+	CtrlGestionHidato(){
+		String s = System.getProperty("os.name");
+		if (s.charAt(0) == 'W') barras = "\\";
+		else barras = "/";
+	}
 	
 	private void calcularruta(T objeto){
 		String Onom = objeto.getClass().getSimpleName();
@@ -21,29 +27,29 @@ public class CtrlGestionHidato<T> {
 			 Partida_Hidato P = (Partida_Hidato) objeto;
 			 String ID = String.valueOf(P.getID());
 			 String Player = P.getUsuario().consultar_nombre();
-			 ruta = "Partidas\\" +Player;
-			 archivo = "\\" + ID + ".bin";
+			 ruta = "Partidas"+barras +Player;
+			 archivo = barras + ID + ".bin";
 		}
 		else if(Onom.equals("Jugador")){
 			Jugador J = (Jugador) objeto;
 			ruta = "Jugadors";
-			archivo = "\\"+J.consultar_nombre()+ ".bin";
+			archivo = barras+J.consultar_nombre()+ ".bin";
 		}
 		else if(Onom.equals("ClassRanking")){
 			ClassRanking R = (ClassRanking) objeto;
 			ruta ="Rankings";
-			archivo= "\\"+R.getID()+".bin";
+			archivo= barras+R.getID()+".bin";
 		}
 		else if(Onom.equals("ClassEstadisticas")){
 			ClassEstadisticas E = (ClassEstadisticas) objeto;
 			ruta = "Estadisticas";
-			archivo = "\\"+E.getName()+".bin";
+			archivo = barras+E.getName()+".bin";
 		}
 		else if(Onom.equals("Tablero")){
 			Tablero T = (Tablero) objeto;
 			ruta ="Tableros";
 			String Tnom = String.valueOf(T.get_id());
-			archivo= "\\"+Tnom+".bin";
+			archivo= barras+Tnom+".bin";
 		}
 	}
 

@@ -1,11 +1,5 @@
 package BELEN;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 import JOEL.*;
 
@@ -13,18 +7,19 @@ public class CtrlEstadisticas {
 	
 	private ClassEstadisticas E;
 	
-<<<<<<< HEAD
-	CtrlGestionEstadisticas GP;
-=======
+
 	CtrlGestionEstadisticas GE;
->>>>>>> cc2efb71e41a77a07b9e344d3fcd92fa2b98ce3a
+
 	
 	public CtrlEstadisticas(){
+		GE = new CtrlGestionEstadisticas();
 		
 	}
 	
-	public void cargarEst(String jugador) {
+	public int cargarEst(String jugador) {
 		E = GE.cargar(jugador);
+		if (E.getName() == null) return 0;
+		else return 1;
 	}
 	
 	public void eliminarEst(String jugador){	//cuando se elimina un jugador

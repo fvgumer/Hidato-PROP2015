@@ -17,7 +17,7 @@ public class CtrlJugador {
 	
 	public void editarcontrasenya(String oldPassword, String newPassword){
 		if(oldPassword.equals(J.password)) {
-			J.password = oldPassword;
+			J.password = newPassword;
 			Gestor.guardar(J);
 		}
 	}

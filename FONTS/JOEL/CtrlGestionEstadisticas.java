@@ -10,16 +10,20 @@ import BELEN.ClassEstadisticas;
 
 public class CtrlGestionEstadisticas extends CtrlGestionHidato<Object>{
 private String Ruta;
+private String barras;
 
 public CtrlGestionEstadisticas(){
+	String s = System.getProperty("os.name");
+	if (s.charAt(0) == 'W') barras = "\\";
+	else barras = "/";
 }
 
 public ClassEstadisticas cargar(String NomE){
 	ClassEstadisticas E = new ClassEstadisticas(null);
-	Ruta = "Rankings"+  "\\" + NomE+ ".bin";
+	Ruta = "Rankings"+  barras + NomE+ ".bin";
 	File archiu = new File(Ruta);
 	if(archiu.exists()==false) {
-		System.out.println("La estadistica no existeix");
+		System.out.println("El jugador no existe\n");
 	}
 	else{
 		try{

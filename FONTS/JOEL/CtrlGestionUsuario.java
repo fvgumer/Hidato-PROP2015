@@ -13,12 +13,17 @@ import BELEN.ClassEstadisticas;
 
 public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	private String Ruta;
+	private String barras;
+	
 	CtrlGestionUsuario(){
+		String s = System.getProperty("os.name");
+		if (s.charAt(0) == 'W') barras = "\\";
+		else barras = "/";
 	}
 	
 	public void crear_jugador(String nombre, String contrasenya){
-		Ruta = "Jugadors\\";
-		File archiu = new File("Jugadors\\"+nombre+".bin");
+		Ruta = "Jugadors"+barras;
+		File archiu = new File("Jugadors"+barras+nombre+".bin");
 		File directory = new File(Ruta);
 		directory.mkdir();
 		if(archiu.exists()){
@@ -26,7 +31,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			return;
 		}
 		Jugador player = new Jugador(nombre,contrasenya);
-		String filename = "Jugadors\\"+nombre+".bin";
+		String filename = "Jugadors"+barras+nombre+".bin";
 		try {
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
 			os.writeObject(player);
@@ -42,7 +47,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	}
 	
 	public Jugador cargar_jugador(String nombre, String password){
-		String ruta = "Jugadors\\"+nombre+".bin";
+		String ruta = "Jugadors"+barras+nombre+".bin";
 		Jugador pla = new Jugador(null, null);
 		File archiu = new File(ruta);
 		if(archiu.exists()==false) {
@@ -79,13 +84,11 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 		//Jugador z = cargar_jugador(nombre,contrasenya);
 		//if(z==null) return;
 		
-			String ruta = "Jugadors\\"+nombre+".bin";
+			String ruta = "Jugadors"+barras+nombre+".bin";
 			File archiu = new File(ruta);
 			if(archiu.delete()) {
 				System.out.println("El jugador/a " +nombre+ " ha estat eliminat/da");
-				ClassEstadisticas E = new ClassEstadisticas(nombre);
-				super.eliminar(E);
-				String rutapartida = "Partidas\\"+nombre;
+				String rutapartida = "Partidas"+barras+nombre;
 				if(new File(rutapartida).exists()){
 				try {
 					FileUtils.deleteDirectory(new File(rutapartida));
