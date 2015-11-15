@@ -12,6 +12,7 @@ public class SuperDriver {
 		Driver_ctrl_tablero d;
 		d = new Driver_ctrl_tablero();
 		DriverJugarPartida e = new DriverJugarPartida();
+		DriverGestionUsuario gestorJ = new DriverGestionUsuario();
 		boolean b = true;
 		int i;
 		while (b) {
@@ -33,6 +34,7 @@ public class SuperDriver {
 			switch (i) {
 				case 1:
 					//Llançar el driver d gestio usuari
+					gestorJ.exec();
 					break;
 				case 2:
 					d.exec();
