@@ -13,6 +13,7 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	private int modo;
 	private int puntuacion;
 	private Tablero tableroP;
+	private int casillas_quedan;
 	
 	/**
 	 * Contructora del objeto Partida_Hidato
@@ -30,7 +31,7 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 		dificultad = 0; 
 		modo = 0;
 		puntuacion = 0;
-	}
+}
 	/**Consulta del objeto Tablero
 	 *@return Devuelve el tablero de la partida
 	 */
@@ -155,12 +156,27 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 		int n = tableroP.getn_predef();
 		return n;
 	}
+	
+	public boolean casilla_posible(int x, int y) {
+		if (tableroP.enable_pos(x, y)){
+			if (tableroP.getValorTauler(x, y) == 0){
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+	
+	public String nom_usuari(){
+		return usuarioP.consultar_nombre();
+	}
+	
 	/** Imprime por consola el tablero actual de la partida
 	 */
 	public void print_tablero(){
 		tableroP.print();
 	}
-	/** Imprime por pantalla la soluciÃ³n del tablero de la partida
+	/** Imprime por pantalla la solución del tablero de la partida
 	 */
 	public void print_solucion(){
 		tableroP.mostra_solucio();
