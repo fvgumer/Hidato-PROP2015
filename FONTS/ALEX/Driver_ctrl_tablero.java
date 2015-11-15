@@ -91,6 +91,8 @@ public class Driver_ctrl_tablero {
 						}
 					while (c_pre > 0) {
 						System.out.println("Faltan " + c_pre + " numeros por colocar");
+						System.out.println("AVISO: Es muy importante que se pongan el principio"
+								+ "y final en el tablero");
 						System.out.println("Escoje la posicion y el valor del siguiente numero a colocar:");
 						x = s.nextInt(); y = s.nextInt(); val = s.nextInt();
 						while(!prueba.colocar_numero_casilla(x,y,val)) {
@@ -210,6 +212,12 @@ public class Driver_ctrl_tablero {
 		c.crear_tablero_aleatorio(n, casillas_negras, casillas_vacias,f);
 	}
 	
+	/**
+	 * Esta funcion es la encargada de comunicar al usuario si el tablero creado tiene
+	 * solucion y si, en caso de que la tenga, si es unica.
+	 * @param c Contiene el tablero sobre el qual se van a realizar las operaciones
+	 * @param manual Indica si el tablero ha sido creado de forma manual o aleatoria
+	 */
 	public void validar(CtrlTablero c, boolean manual) {
 		boolean unica = false, sol = true;;
 		if (manual) {

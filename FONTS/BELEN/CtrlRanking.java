@@ -10,7 +10,7 @@ public class CtrlRanking {
 	
 	CtrlGestionRanking GP;
 	
-	CtrlRanking() {
+	public CtrlRanking() {
 		GP = new CtrlGestionRanking();
 	}
 	
@@ -54,5 +54,7 @@ public class CtrlRanking {
 		}
 		GP.guardar(R);
 	}
+	
+	public void eliminarRanking(String tablero) {}
 	
 }

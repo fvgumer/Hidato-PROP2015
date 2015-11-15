@@ -2,6 +2,7 @@ package ALEX;
 
 import java.util.Random;
 import JOEL.*;
+import BELEN.*;
 
 /**
  * Esta clase contiene las operaciones que se encargan de generar tableros de Hidatos
@@ -135,9 +136,16 @@ public class CtrlTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		return a.solver(start[0], start[1], 1, map);
+		boolean b = a.solver(start[0], start[1], 1, map);
+		System.out.println(b);
+		return b;
 	}
 	
+	/**
+	 * Pre: El tablero de la clase tiene como minimo una solucion posible
+	 * Operacion encargada de determinar si el tablero de la clase tiene solucion.
+	 * @return Retorna true si tiene solucion unica. False si tiene mas de una.
+	 */
 	public boolean solucion_unica() {
 		int[] start;
 		start = map.getStart();
@@ -154,6 +162,9 @@ public class CtrlTablero {
 		map.print();
 	}
 	
+	/**
+	 * Se muestra la solucion del tablero de la clase por pantalla
+	 */
 	public void mostra_solu(){
 		map.mostra_solucio();
 	}
@@ -197,12 +208,17 @@ public class CtrlTablero {
 	
 	/**
 	 * Se guarda el tablero de la clase en el sistema de ficheros. Se le asigna el identificador
-	 * dependiendo del identificador del ultimo tablero guardado.
+	 * dependiendo del identificador del ultimo tablero guardado. Tambien se genera el ranking
+	 * asociado al tablero.
 	 * @return Retorna el id de los tableros en el sistema de ficheros mas grande
 	 */
 	public int guardar() {
-		map.set_id(max_nombre+1);
+		max_nombre = max_nombre + 1;
+		map.set_id(max_nombre);
 		c.guardar(map);
+		CtrlRanking rnk = new CtrlRanking();
+		String aux = Integer.toString(max_nombre);
+		rnk.crearRanking(aux);
 		actu_tab_repo();
 		return max_nombre;
 	}
@@ -225,11 +241,14 @@ public class CtrlTablero {
 	}
 	
 	/**
-	 * Pre: El tablero cargado en la clase existe en el sistema de ficheros
-	 * Post: Se ha eliminado el tablero con id = map.id del sistema de ficheros
+	 * Pre: El tablero cargado en la clase existe en el sistema de ficheros.
+	 * Post: Se ha eliminado el tablero con id = map.id del sistema de ficheros y su ranking asociado
 	 */
 	public void eliminar() {
 		c.eliminar(map);
+		CtrlRanking rnk = new CtrlRanking();
+		String aux = Integer.toString(max_nombre+1);
+		rnk.eliminarRanking(aux);
 		actu_tab_repo();
 	}
 	
@@ -240,12 +259,9 @@ public class CtrlTablero {
 	private void actu_tab_repo() {
 		tableros_repo = c.consultar_nomstableros();
 		for(int i=0; i<tableros_repo.length; ++i) {
-			int aux = Character.getNumericValue(tableros_repo[i].charAt(0));
-			char aux1 = tableros_repo[i].charAt(1);
-			if(aux1 >= 48 && aux1 <= 57) {
-				aux = (aux*10)+aux1;
-			}
-			if(aux>max_nombre) max_nombre = aux;
+			String auxs = tableros_repo[i];
+			int aux = Integer.parseInt((auxs.substring(0,auxs.length()-4)));
+			if(aux > max_nombre) max_nombre = aux;
 		}
 	}
 
