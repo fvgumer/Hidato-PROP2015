@@ -8,13 +8,27 @@ import java.io.ObjectInputStream;
 
 import ELENA.Partida_Hidato;
 
+/**
+ * Esta clase hereda las operaciones  de la super clase de control de gestión, CtrlGestionHidato
+ * e implementa algunos metodos propios para la gestion correcta de partidas. 
+ * @author Joel Codina
+ *
+ */
+
 public class CtrlGestionPartida extends CtrlGestionHidato<Object>{
 
-
+/**
+ * Creadora por defecto de la clase
+ */
 CtrlGestionPartida(){
 }
 
-//retorna null si no existeix
+/**
+ * 
+ * @param NomJ
+ * @param IDs
+ * @return
+ */
 public Partida_Hidato cargar(String NomJ, int IDs){
 	String ID = String.valueOf(IDs);
 	System.out.println(ID);
@@ -50,7 +64,7 @@ public Partida_Hidato cargar(String NomJ, int IDs){
 }
 
 
-public int consultar_ultim_ID(String NomJ){
+public int consultar_numeropartidas(String NomJ){
 	ruta = "Partidas"+ barras + NomJ + barras;
 	File directory = new File(ruta);
 	if(directory.exists()==false) {
@@ -58,5 +72,12 @@ public int consultar_ultim_ID(String NomJ){
 		return 1;
 	}
 	else return directory.list().length;
+}
+
+public String[] lista_partidas(String NomJ){
+	ruta = "Partidas"+  barras;
+	File directory = new File(ruta);
+	String[] llista_noms=directory.list();
+	return llista_noms;
 }
 }

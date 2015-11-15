@@ -11,18 +11,34 @@ import ALEX.*;
 import BELEN.*;
 import org.apache.commons.io.*;
 
+/**
+ * Esta clase contiene las operaciones de la super clase de control de gestión. Es una clase genérica que 
+ * implementa las operaciones de guardar, eliminar, calcular las rutas de los archivos y ver si existen de 
+ * los objetos. 
+ * @author Joel Codina
+ *
+ */
+
 public class CtrlGestionHidato<T> {
-	public String ruta;
-	private String archivo;
-	public String barras;
+	public String ruta;     //Ruta de guardar los ficheros
+	private String archivo;  //Nombre del archivo a guardar
+	public String barras;  //Utiles para pasar de Linux a windows
 	
+	/**
+	 * Creadora por defecto de la clase, tambien detecta el OS ya que cada uno tiene una manera 
+	 * diferente de representar las rutas a los ficheros
+	 */
 	CtrlGestionHidato(){
 		String s = System.getProperty("os.name");
-		//System.out.println(s.charAt(0));
 		if (s.charAt(0) == 'W') barras = "\\";
 		else barras = "/";
 	}
 	
+	/**
+	 * Metodo privado que nos calcula la ruta y archivo donde debe guardarse el objeto. 
+	 * @param objeto Objeto que puede ser de las clases principales Jugador, ClassRanking, ClassEstadisticas,
+	 * Tablero, Partida_Hidato
+	 */
 	private void calcularruta(T objeto){
 		String Onom = objeto.getClass().getSimpleName();
 		if(Onom.equals("Partida_Hidato")){
@@ -54,7 +70,11 @@ public class CtrlGestionHidato<T> {
 			archivo= barras+Tnom+".bin";
 		}
 	}
-
+	/**
+	 * Metodo que se encarga de guardar el objeto en su ruta.
+	 * @param objeto Objeto que puede ser de las clases principales Jugador, ClassRanking, ClassEstadisticas,
+	 * Tablero, Partida_Hidato
+	 */
 	public void guardar(T objeto){
 		calcularruta(objeto);
 		try {
@@ -72,16 +92,26 @@ public class CtrlGestionHidato<T> {
 		}	
 	}
 
-	//Eliminar de estadisticas, ranquing, partida 
+	/**
+	 *Metodo que elimina el objeto del directorio donde esta guardado.
+	 * @param objeto Objeto que puede ser de las clases principales Jugador, ClassRanking, ClassEstadisticas,
+	 * Tablero, Partida_Hidato
+	 * @return Cierto si el fichero del objeto se ha eliminado correctamente, falso si no se ha eliminado
+	 */
 
-	public void eliminar(T objeto){
-
+	public boolean eliminar(T objeto){
 		   calcularruta(objeto);
-			File archiu = new File(ruta+archivo);
-			if(archiu.delete())System.out.println("S'ha eliminat correctament");
-			else System.out.println("No existeix");	
+		   File archiu = new File(ruta+archivo);
+		   if(archiu.delete())return true;
+		   else return false;	
 	}
 
+	/**
+	 * Consultora que comprueba si existe el objeto = 'objeto' guardado en la base de datos.
+	 * @param objeto Objeto que puede ser de las clases principales Jugador, ClassRanking, ClassEstadisticas,
+	 * Tablero, Partida_Hidato
+	 * @return Cierto si existe en la base de datos, falso si no existe. 
+	 */
 	public boolean existeix(T objeto){
 		calcularruta(objeto);
 		File archiu = new File(ruta+archivo);
@@ -89,6 +119,9 @@ public class CtrlGestionHidato<T> {
 		else return false;
 	}
 
+	/**
+	 * Metodo que borra todas las carpetas que contienen los objetos del juego Hidato, esten o no vacias.
+	 */
 	public void clean_all(){
 		try {
 			FileUtils.deleteDirectory(new File("Partidas"));

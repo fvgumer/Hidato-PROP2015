@@ -2,6 +2,11 @@ package JOEL;
 import java.io.Serializable;
 import G45.*;
 
+/**
+ * Esta clase hereda las funcionalidades de Jugador_comp. Se añade la constructora propia.
+ * @author Joel Codina
+ */
+
 public class Jugador extends Usuario_comp implements Serializable{
 	
 	private static final long serialVersionUID = 1846695613718020013L;
