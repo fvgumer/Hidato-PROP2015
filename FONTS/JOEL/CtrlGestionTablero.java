@@ -15,7 +15,7 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	}
 
 	public Tablero cargar(int ID, boolean b){
-		Tablero T = new Tablero(0);
+		Tablero T = null;
 		String nomT = String.valueOf(ID);
 		ruta = "Tableros"+  barras + nomT+ ".bin";
 		File archiu = new File(ruta);
@@ -42,7 +42,6 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 		return T;
 	}
 	
-
 	
 	public String[] consultar_nomstableros() {
 		ruta = "Tableros"+  barras;

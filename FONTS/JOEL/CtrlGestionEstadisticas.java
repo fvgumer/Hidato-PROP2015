@@ -8,13 +8,27 @@ import java.io.ObjectInputStream;
 
 import BELEN.ClassEstadisticas;
 
+/**
+ * Esta clase hereda las operaciones  de la super clase de control de gestión, CtrlGestionHidato
+ * e implementa el metodo propio de cargar estadisticas.
+ * @author Joel Codina
+ *
+ */
+
 public class CtrlGestionEstadisticas extends CtrlGestionHidato<Object>{
 
-
+/**
+ * Creador del controlador estadisticas.
+ */
 public CtrlGestionEstadisticas(){
 	
 }
 
+/**
+ * Cargador de estadisticas
+ * @param NomE Nom de les estadistiques que volem cargar
+ * @return Retorna les estadistiques amb nom NomE
+ */
 public ClassEstadisticas cargar(String NomE){
 	ClassEstadisticas E = new ClassEstadisticas(null);
 	super.ruta = "Estadisticas"+  barras + NomE+ ".bin";

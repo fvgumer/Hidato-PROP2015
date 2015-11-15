@@ -23,7 +23,7 @@ public class SuperDriver {
 			System.out.println("2.Crear nuevo usuario");*/
 			//Toot el tema usuari, ja ho posaras joel
 			System.out.println("Menu Principal");
-			System.out.println("1.Gestion Usuario");
+			System.out.println("1.Login y Gestion Usuario");
 			System.out.println("2.Gestion Tablero");
 			System.out.println("3.Comenzar Juego");
 			System.out.println("4.Estadisticas");
@@ -55,7 +55,6 @@ public class SuperDriver {
 				default: break;
 			}
 		}
-		
 	}
 	
 	private static boolean comprueba_entrada(int i, int cap) {

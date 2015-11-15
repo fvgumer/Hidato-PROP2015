@@ -22,14 +22,14 @@ public class DriverGestionPartida {
 				System.out.println("Introducir id partida que queremos eliminar");
 				int id = scan.nextInt();
 				scan.nextLine();
-				Partida_Hidato P = new Partida_Hidato(T, J, id, 4);
+				Partida_Hidato P = new Partida_Hidato(T, J, id);
 				gestor.eliminar(P);
 			}
 			else if(i==3){
 				System.out.println("Introducir id partida que queremos guardar");
 				int id = scan.nextInt();
 				scan.nextLine();
-				Partida_Hidato P = new Partida_Hidato(T, J, id, 4);
+				Partida_Hidato P = new Partida_Hidato(T, J, id);
 				gestor.guardar(P);
 				int x = gestor.consultar_ultim_ID("joel");
 				System.out.println(x + " es el nombre de partides del jugador joel");
@@ -47,7 +47,7 @@ public class DriverGestionPartida {
 				System.out.println("Introducir id partida que queremos validar del usuario joel");
 				int id = scan.nextInt();
 				scan.nextLine();
-				Partida_Hidato P = new Partida_Hidato(T, J, id, 4);
+				Partida_Hidato P = new Partida_Hidato(T, J, id);
 				if(gestor.existeix(P)) System.out.println("Existeix la partida");
 				else System.out.println("No existeix la partida");
 			}

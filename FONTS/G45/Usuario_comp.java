@@ -1,7 +1,8 @@
 package G45 ;
 /**
- 
- * Creada por el grupo de Hidato (Joel)
+ * Esta clase es la superclase de la clase Jugador que se compartio con el resto del cluster. 
+ * Implementa funciones consultoras, modificadoras y la creadora de la clase. 
+ * @author Joel Codina
  */
 import java.io.Serializable;
  
