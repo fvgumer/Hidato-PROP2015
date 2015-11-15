@@ -141,21 +141,7 @@ public class Driver_ctrl_tablero {
 					break;
 			}
 			if(b && i != 3) {
-				System.out.println("Comprovando si la solucion es unica...");
-				boolean[] sol;
-				sol = prueba.validar();
-				if (sol[0]) {
-					System.out.println("Has creado correctamente el tablero!");
-				}
-				else {
-					System.out.println("El tablero no tiene solucion :(");
-				}
-				if (sol[1])  {
-					System.out.println("Y la solucion es unica!");
-				}
-				else if(sol[0]){
-					System.out.println("Pero la solucion no es unica :(");
-				}
+				validar(prueba,i==1);
 				System.out.println("Quieres guardar el tablero creado?");
 				System.out.println("	1.Si");
 				System.out.println("	2.No");
@@ -222,5 +208,30 @@ public class Driver_ctrl_tablero {
 		}
 		System.out.println("Cargando...");
 		c.crear_tablero_aleatorio(n, casillas_negras, casillas_vacias,f);
+	}
+	
+	public void validar(CtrlTablero c, boolean manual) {
+		boolean unica = false, sol = true;;
+		if (manual) {
+			System.out.println("Comprovando si existe solucion...");
+			sol = c.validar();
+		}
+		if(sol) {
+			System.out.println("Comprovando si la solucion es unica...");
+			unica = c.solucion_unica();
+		}
+		c.muestra_mapa();
+		if (sol) {
+			System.out.println("Has creado correctamente el tablero!");
+		}
+		else {
+			System.out.println("El tablero no tiene solucion :(");
+		}
+		if (unica)  {
+			System.out.println("Y la solucion es unica!");
+		}
+		else if(!unica){
+			System.out.println("Pero la solucion no es unica :(");
+		}
 	}
 }
