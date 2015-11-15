@@ -32,7 +32,6 @@ public class CtrlPartida {
 		GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), f);
 		System.out.println("HOLA");
 		GT.asociar_tablero(T);
-		
 	}
 
 	/*__________NO_IMPLEMENTADO_________________*/

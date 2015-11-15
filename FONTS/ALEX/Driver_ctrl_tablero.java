@@ -140,6 +140,7 @@ public class Driver_ctrl_tablero {
 					break;
 			}
 			if(b && i != 3) {
+				System.out.println("Comprovando si la solucion es unica...");
 				boolean unica = false, solucion;
 				solucion = prueba.validar(unica);
 				if (solucion) {
@@ -159,7 +160,10 @@ public class Driver_ctrl_tablero {
 				System.out.println("	2.No");
 				int aux = s.nextInt();
 				while(!comprueba_entrada(aux, 2)) {aux = s.nextInt();}
-				if(aux == 1) prueba.guardar();
+				if(aux == 1) {
+					prueba.guardar(aux);
+					System.out.println("Se le ha asignado el siguiente id: " + aux);
+				}
 				System.out.println("Donde quieres ir?:");
 				System.out.println("	1.Menu principal");
 				System.out.println("	2.Menu de gestion de tablero");

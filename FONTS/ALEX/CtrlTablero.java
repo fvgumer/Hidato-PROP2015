@@ -184,11 +184,12 @@ public class CtrlTablero {
 	/**
 	 * Se guarda el tablero de la clase en el sistema de ficheros. Se le asigna el identificador
 	 * dependiendo del identificador del ultimo tablero guardado.
+	 * @param i Indica el id asignado al tablero
 	 */
-	public void guardar() {
+	public void guardar(int i) {
 		CtrlGestionTablero c = new CtrlGestionTablero();
 		int aux = c.consultar_ultim_ID();
-		System.out.println("l'ultim id es "+ aux);
+		i = aux+1;
 		map.set_id(aux+1);
 		c.guardar(map);
 	}
