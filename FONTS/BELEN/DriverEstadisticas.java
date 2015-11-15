@@ -15,33 +15,40 @@ public class DriverEstadisticas {
 	
 	public void exec(Jugador jActivo) {
 		if (jActivo == null) {
-			System.out.print("Por favor, inicia sesion para consultar estadisticas.\n");
-			return;
-		}
 		int ex = 1;
 		while (ex == 1) {
 			System.out.print("Consulta de estadisticas de juego.\n");
 			System.out.print("1 - Consultar tus estadisticas.\n");
 			System.out.print("2 - Consultar las estadisticas de otro usuario.\n");
+<<<<<<< HEAD
 			System.out.print("3 - Salir al menu principal.\n");
+=======
+>>>>>>> 20a631e44504f32d4b4a66125e44311deaccf8e1
 			System.out.print("3 - Consultar el ranking de un tablero.\n");
 			System.out.print("4 - Salir al menú principal.\n");
 			int i = scan.nextInt();
 			scan.nextLine();
 			switch (i) {
 				case 1:
+<<<<<<< HEAD
 					CE.cargarEst(jActivo.consultar_nombre());
 
+=======
+					CE.mostrarEst(jActivo.consultar_Nombre());
+>>>>>>> 20a631e44504f32d4b4a66125e44311deaccf8e1
 					break;
 				case 2:
 					System.out.print("Introduce un nombre de usuario:\n");
 					String jugador = scan.nextLine();
+<<<<<<< HEAD
 
 					if (CE.existe()) {
 						CE.cargarEst(jugador);
 						CE.mostrarEst(jugador);
 					}
 
+=======
+>>>>>>> 20a631e44504f32d4b4a66125e44311deaccf8e1
 					if (CE.existe()) CE.mostrarEst(jugador);
 					else System.out.print("El usuario no existe.\n");
 					break;

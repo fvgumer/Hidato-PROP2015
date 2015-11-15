@@ -56,6 +56,8 @@ public class CtrlRanking {
 		GP.guardar(R);
 	}
 	
-	public void eliminarRanking(String tablero) {}
+	public void eliminarRanking(String tablero) {
+		GP.eliminar(R);
+	}
 	
 }

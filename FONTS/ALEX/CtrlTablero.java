@@ -137,7 +137,6 @@ public class CtrlTablero {
 		int[] start;
 		start = map.getStart();
 		boolean b = a.solver(start[0], start[1], 1, map);
-		System.out.println(b);
 		return b;
 	}
 	
