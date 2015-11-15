@@ -18,16 +18,16 @@ import ELENA.Partida_Hidato;
 public class CtrlGestionPartida extends CtrlGestionHidato<Object>{
 
 /**
- * Creadora por defecto de la clase
+ * Creadora por defecto de la clase CtrlGestionPartida
  */
 CtrlGestionPartida(){
 }
 
 /**
- * 
- * @param NomJ
- * @param IDs
- * @return
+ * Metodo que carga la partida_hidato del jugador = 'NomJ' y ID = 'IDs'
+ * @param NomJ Nombre del jugador que tiene la partida guardada
+ * @param IDs Identificador de la partida
+ * @return Devuelve una instancia de la clase Partida_Hidato, si no existia devuelve null
  */
 public Partida_Hidato cargar(String NomJ, int IDs){
 	String ID = String.valueOf(IDs);
