@@ -128,12 +128,12 @@ public class Driver_ctrl_tablero {
 							prueba.eliminar();
 							System.out.println("El tablero ha sido eliminado con exito!");
 						}
-						
 					}
 					else {
 						System.out.println("Error al cargar el tablero con el id proporcionado,"
 								+ "el tablero no existe");
 					}
+					System.out.println("Seras redirigido al menu de gestion de tablero");
 					break;
 				case 4:
 					b = false;
@@ -157,17 +157,17 @@ public class Driver_ctrl_tablero {
 				System.out.println("Quieres guardar el tablero creado?");
 				System.out.println("	1.Si");
 				System.out.println("	2.No");
-				i = s.nextInt();
-				while(!comprueba_entrada(i, 2)) {i = s.nextInt();}
-				if(i == 1) prueba.guardar();
+				int aux = s.nextInt();
+				while(!comprueba_entrada(aux, 2)) {aux = s.nextInt();}
+				if(aux == 1) prueba.guardar();
 				System.out.println("Donde quieres ir?:");
 				System.out.println("	1.Menu principal");
 				System.out.println("	2.Menu de gestion de tablero");
-				i = s.nextInt();
-				while (!comprueba_entrada(i,2)) {
-					i = s.nextInt();
+				aux = s.nextInt();
+				while (!comprueba_entrada(aux,2)) {
+					aux = s.nextInt();
 				}
-				if (i == 1) b = false;
+				if (aux == 1) b = false;
 	    	}
 	    }
 	}
