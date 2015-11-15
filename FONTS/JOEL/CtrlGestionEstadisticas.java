@@ -34,7 +34,7 @@ public ClassEstadisticas cargar(String NomE){
 	super.ruta = "Estadisticas"+  barras + NomE+ ".bin";
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
-		System.out.println("El jugador no existe\n");
+		return null;
 	}
 	else{
 		try{
