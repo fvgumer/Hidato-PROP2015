@@ -4,6 +4,13 @@ import java.io.Serializable;
 
 import G45.*;
 
+/**
+ * Esta clase hereda las caracteristicas de Casilla_comp. Principalmente añadimos metodos
+ * para facilitar la copia de casillas (la constructora con parametro) y añadimos la funcion
+ * Serializable por tal de poder guardar el objeto en el sistema de ficheros.
+ * @author Alex
+ *
+ */
 public class Casilla extends Casilla_comp implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

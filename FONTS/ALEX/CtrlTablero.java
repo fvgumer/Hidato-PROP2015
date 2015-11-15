@@ -3,8 +3,20 @@ package ALEX;
 import java.util.Random;
 import JOEL.*;
 
+/**
+ * Esta clase contiene las operaciones que se encargan de generar tableros de Hidatos
+ * segun los parametros de entrada que reciben. Estos tableros pueden ser creados de manera
+ * manual o aleatoriamente.
+ * @author Alex
+ *
+ */
 public class CtrlTablero {
 
+	/**
+	 * map representa el tablero sobre el cual se van a realizar las operaciones
+	 * rm es necesario para generar numeros aleatorios
+	 * a es necesario para aplicar los algoritmos de solucion o de generacion aleatoria de tableros
+	 */
 	private Tablero map;
 	private Random rm;
 	private Algorithm a;
