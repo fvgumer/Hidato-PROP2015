@@ -15,6 +15,10 @@ public class CtrlEstadisticas {
 		GE = new CtrlGestionEstadisticas();
 		
 	}
+		
+	public boolean existe() {
+		GE.existeix(E);
+	}
 	
 	public boolean cargarEst(String jugador) {
 		E = GE.cargar(jugador);
@@ -62,7 +66,8 @@ public class CtrlEstadisticas {
 	 * jugador correspondiente*/
 	
 	
-	public void mostrarEst() {
+	public void mostrarEst(String jugador) {
+		System.out.format("Estadísticas del usuario %s:\n",jugador);
 		E.mostrarTiempoJugado();
 		E.mostrarPuntuacionTotal();
 		E.mostrarMejorPuntuacion();
