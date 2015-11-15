@@ -27,7 +27,7 @@ public CtrlGestionEstadisticas(){
 /**
  * Cargador de estadisticas
  * @param NomE Nom de les estadistiques que volem cargar
- * @return Retorna les estadistiques amb nom NomE
+ * @return Retorna les estadistiques amb nom NomE si no existeixen, retorna null.
  */
 public ClassEstadisticas cargar(String NomE){
 	ClassEstadisticas E = new ClassEstadisticas(null);

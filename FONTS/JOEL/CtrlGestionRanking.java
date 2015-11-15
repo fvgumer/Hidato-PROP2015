@@ -8,12 +8,26 @@ import java.io.ObjectInputStream;
 
 import BELEN.ClassRanking;
 
+/**
+ * Esta clase hereda las operaciones  de la super clase de control de gestión, CtrlGestionHidato
+ * e implementa metodos propios para la carga correcta de Ranking. 
+ * @author Joel Codina
+ *
+ */
+
 public class CtrlGestionRanking extends CtrlGestionHidato<Object>{
-
-
+	
+	/**
+	 * Creadora por defecto de la clase CtrlGestionRanking
+	 */
 public CtrlGestionRanking(){
 }
 
+/**
+ * Cargador de estadisticas
+ * @param NomR Nom del Ranking que volem cargar
+ * @return Retorna el ranking amb nom NomR, si no existeix retorna null
+ */
 public ClassRanking cargar(String NomR){
 	ClassRanking R = new ClassRanking(null);
 	ruta = "Rankings"+  barras + NomR+ ".bin";
