@@ -17,7 +17,7 @@ public CtrlGestionEstadisticas(){
 
 public ClassEstadisticas cargar(String NomE){
 	ClassEstadisticas E = new ClassEstadisticas(null);
-	super.ruta = "Rankings"+  barras + NomE+ ".bin";
+	super.ruta = "Estadisticas"+  barras + NomE+ ".bin";
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
 		System.out.println("El jugador no existe\n");

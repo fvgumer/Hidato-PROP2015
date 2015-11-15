@@ -14,14 +14,14 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	CtrlGestionUsuario(){
 	}
 	
-	public void crear_jugador(String nombre, String contrasenya){
+	public boolean crear_jugador(String nombre, String contrasenya){
 		ruta = "Jugadors"+barras;
 		File archiu = new File("Jugadors"+barras+nombre+".bin");
 		File directory = new File(ruta);
 		directory.mkdir();
 		if(archiu.exists()){
 			System.out.println("El nom ja existeix, elegeix un altre");
-			return;
+			return false;
 		}
 		Jugador player = new Jugador(nombre,contrasenya);
 		String filename = "Jugadors"+barras+nombre+".bin";
@@ -36,7 +36,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Ja esta creat");
+		return true;
 	}
 	
 	public Jugador cargar_jugador(String nombre, String password){

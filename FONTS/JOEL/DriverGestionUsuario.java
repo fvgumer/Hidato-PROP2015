@@ -1,10 +1,21 @@
 package JOEL;
 import java.util.Scanner;
 
-public class DriverGestionUsuario {
+import ALEX.CtrlTablero;
 
+public class DriverGestionUsuario {
+	
+	private CtrlGestionUsuario prueba;
+	private Scanner s;
+	
+	public DriverGestionUsuario(){
+		
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		CtrlJugador jug = new CtrlJugador();
+	
 		int i = 0;
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
@@ -16,6 +27,7 @@ public class DriverGestionUsuario {
 			if(i==1){
 				String nombre = scan.nextLine();
 				String contrasenya = scan.nextLine();
+				
 				controlador.crear_jugador(nombre, contrasenya);
 			}
 			else if (i==2){

@@ -69,13 +69,13 @@ public class ClassEstadisticas implements Serializable{
 	
 	/* Pre: */
 	public void mostrarPuntuacionTotal() {
-		System.out.format("Puntuación total obtenida: %d\n",puntuacionTotal);
+		System.out.format("Puntuacion total obtenida: %d\n",puntuacionTotal);
 	}
 	/* Post: Por pantalla se muestra la puntuación total obtenida por el jugador correspondiente */
 	
 	/* Pre: */
 	public void mostrarMejorPuntuacion() {
-		System.out.format("Mejor puntuación obtenida: %d\n", mejorPuntuacion);
+		System.out.format("Mejor puntuacion obtenida: %d\n", mejorPuntuacion);
 	}
 	/* Post: Por pantalla se muestra la mejor puntuación obtenida por el jugador correspondiente */
 	
