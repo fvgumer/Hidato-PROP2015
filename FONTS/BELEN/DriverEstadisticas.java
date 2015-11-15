@@ -7,7 +7,7 @@ import JOEL.Jugador;
 public class DriverEstadisticas {
 
 	private Scanner scan;
-	private static CtrlEstadisticas CE = new CtrlEstadisticas();
+	private CtrlEstadisticas CE = new CtrlEstadisticas();
 	
 	public DriverEstadisticas() {
 		scan = new Scanner(System.in);
