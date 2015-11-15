@@ -255,12 +255,12 @@ public class CtrlJugar {
 		System.out.println("Puntuacion Actual: "+p);
 	}
 	
-	public void comenzar_partida(CtrlPartida P,int seg) {
+	public void comenzar_partida(CtrlPartida P,int seg,int forats,int c_ini) {
 		PH = P.get_partida();
 		T1 = new Temporizador(0,0,seg);
 		T1.iniciar();
 		PH.set_estado(GAME);
-		casillas_faltan = (PH.get_dimensiont()*PH.get_dimensiont()) - PH.get_forats();
+		casillas_faltan = (PH.get_dimensiont()*PH.get_dimensiont()) - forats - c_ini;
 		parar = false;
 	}
 	public void resolver_partida(){
@@ -278,12 +278,16 @@ public class CtrlJugar {
 		if (!incorrecto) {
 			System.out.println("PARTIDA RESUELTA!!");
 			PH.set_estado(PAUSE);
-			String m=null;
-			if (PH.get_modo() == 0) m = 'Clasico';
-			else if(PH.get_modo() == 1) m = 'Contrareloj';
-			else m = 'Extremo';
-			CR.anadirResultado(PH.nom_usuari(), m, PH.get_dificultad(), PH.get_puntuacion());
-			//AQUI LLAMAR A FUNCION PARA GUARDAR PUNTUACION
+			//GUARDAR PUNTUACION PARA RANKING
+			String m;
+			if (PH.get_modo() == 0) m = "Clasico";
+			else if(PH.get_modo() == 1) m = "Contrareloj";
+			else m = "Extremo";
+			String d;
+			if (PH.get_dificultad() == 0) d = "Facil";
+			else if(PH.get_dificultad() == 1) d = "Medio";
+			else d = "Dificil";
+			CR.anadirResultado(PH.nom_usuari(), m, d, PH.get_puntuacion());
 		}
 		else System.out.println("SOLUCIÓN INCORRECTA");
 		parar = false;

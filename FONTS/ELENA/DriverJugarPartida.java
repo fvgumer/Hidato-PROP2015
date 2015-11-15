@@ -150,7 +150,7 @@ public class DriverJugarPartida {
 		else delay = 9999999;
 
 		CJ = new CtrlJugar();
-		CJ.comenzar_partida(CP, delay);
+		CJ.comenzar_partida(CP, delay,abuj,c_ini);
 		int x,y;
 		System.out.println("Opciones partida:");
 		System.out.println("0.Pausa");
