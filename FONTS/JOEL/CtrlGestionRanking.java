@@ -9,25 +9,21 @@ import java.io.ObjectInputStream;
 import BELEN.ClassRanking;
 
 public class CtrlGestionRanking extends CtrlGestionHidato<Object>{
-private String Ruta;
-private String barras;
+
 
 public CtrlGestionRanking(){
-	String s = System.getProperty("os.name");
-	if (s.charAt(0) == 'W') barras = "\\";
-	else barras = "/";
 }
 
 public ClassRanking cargar(String NomR){
 	ClassRanking R = new ClassRanking(null);
-	Ruta = "Rankings"+  barras + NomR+ ".bin";
-	File archiu = new File(Ruta);
+	ruta = "Rankings"+  barras + NomR+ ".bin";
+	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
 		System.out.println("El tablero no existe.\n");
 	}
 	else{
 		try{
-		ObjectInputStream is = new ObjectInputStream(new FileInputStream(Ruta));
+		ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
 		R = (ClassRanking) is.readObject();
 		is.close();
 		}

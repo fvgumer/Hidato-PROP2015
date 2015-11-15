@@ -8,7 +8,8 @@ public class DriverGestionHidato {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		CtrlGestionEstadisticas gestor = new CtrlGestionEstadisticas();
+		/*
 		Jugador J = new Jugador("joel3","codina");
 		Tablero T = new Tablero(10);
 		Partida_Hidato P = new Partida_Hidato(T, J, 9991,1);

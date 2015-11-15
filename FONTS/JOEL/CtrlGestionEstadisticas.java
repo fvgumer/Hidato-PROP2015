@@ -9,25 +9,22 @@ import java.io.ObjectInputStream;
 import BELEN.ClassEstadisticas;
 
 public class CtrlGestionEstadisticas extends CtrlGestionHidato<Object>{
-private String Ruta;
-private String barras;
+
 
 public CtrlGestionEstadisticas(){
-	String s = System.getProperty("os.name");
-	if (s.charAt(0) == 'W') barras = "\\";
-	else barras = "/";
+	
 }
 
 public ClassEstadisticas cargar(String NomE){
 	ClassEstadisticas E = new ClassEstadisticas(null);
-	Ruta = "Rankings"+  barras + NomE+ ".bin";
-	File archiu = new File(Ruta);
+	super.ruta = "Rankings"+  barras + NomE+ ".bin";
+	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
 		System.out.println("El jugador no existe\n");
 	}
 	else{
 		try{
-		ObjectInputStream is = new ObjectInputStream(new FileInputStream(Ruta));
+		ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
 		E = (ClassEstadisticas) is.readObject();
 		is.close();
 		}
