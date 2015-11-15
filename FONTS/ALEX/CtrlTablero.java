@@ -183,7 +183,8 @@ public class CtrlTablero {
 	
 	/**
 	 * Se guarda el tablero de la clase en el sistema de ficheros. Se le asigna el identificador
-	 * dependiendo del identificador del ultimo tablero guardado.
+	 * dependiendo del identificador del ultimo tablero guardado. El parametro de salida i contiene
+	 * el id asignado
 	 * @param i Indica el id asignado al tablero
 	 */
 	public void guardar(int i) {
@@ -199,12 +200,21 @@ public class CtrlTablero {
 		return aux;
 	}
 	
+	/**
+	 * Se copia el tablero con el id=n del sistema de ficheros al tablero de la clase
+	 * @param n Indica el id del tablero que se quiere cargar
+	 * @return Retorna true si la carga se ha realizado con exito. False en caso contrario.
+	 */
 	public boolean cargar(int n) {
 		boolean b = true;
 		map = c.cargar(n,b);
 		return b;
 	}
 	
+	/**
+	 * Pre: El tablero cargado en la clase existe en el sistema de ficheros
+	 * Post: Se ha eliminado el tablero con id = map.id del sistema de ficheros
+	 */
 	public void eliminar() {
 		c.eliminar(map);
 	}
