@@ -84,9 +84,6 @@ public class CtrlTablero {
 		}
 		map.crea_solucion();
 		generar_buits_alea(c_vacias);
-		boolean unica = a.unica_solucion(start[0], start[1], map, 1);
-		map.setSolucion_unica(unica);
-		map.print();
 	}
 	
 	/**
@@ -135,16 +132,19 @@ public class CtrlTablero {
 	 * solucion, si la solucion es unica
 	 * @return Se retorna true si el mapa de la clase tiene solucion
 	 */
-	public boolean[] validar() {
+	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		boolean[] b = new boolean[2];
-		b[0] = a.solver(start[0], start[1], 1, map);
-		if(b[0]) {
-			b[1] = a.unica_solucion(start[0], start[1], map, 1);
-			map.setSolucion_unica(b[1]);
-		}
-		return b;
+		return a.solver(start[0], start[1], 1, map);
+	}
+	
+	public boolean solucion_unica() {
+		int[] start;
+		start = map.getStart();
+		int aux = a.unica_solucion(start[0], start[1], map, 1);
+		if(aux == 1) map.setSolucion_unica(true);
+		else map.setSolucion_unica(false);
+		return (aux == 1);
 	}
 	
 	/**
@@ -152,6 +152,10 @@ public class CtrlTablero {
 	 */
 	public void muestra_mapa() {
 		map.print();
+	}
+	
+	public void mostra_solu(){
+		map.mostra_solucio();
 	}
 	
 	/**

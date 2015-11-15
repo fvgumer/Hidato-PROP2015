@@ -76,7 +76,9 @@ public class Algorithm {
 	   */
 	public boolean generador(Tablero map, int x, int y, int value){
 		boolean b = false;
-		if (value == map.get_final_num()) return true;
+		if (value == map.get_final_num()) {
+			return true;
+		}
 		else {
 			++value;
 			int i = 0, j = 0;
@@ -106,12 +108,11 @@ public class Algorithm {
 	 * @return Retorna true si el tablero map tiene solucion unica. Retorna false si hay mas de
 	 * una solucion
 	 */
-	public boolean unica_solucion(int x, int y, Tablero map, int value) {
-		boolean result = false, predef = false; 
-		int cont = 0;
+	public int unica_solucion(int x, int y, Tablero map, int value) {
+		boolean predef = false; 
+		int result = 0;
 		if (value == map.get_final_num()) {
-			map.crea_solucion();
-			return true;
+			return 1;
 		}
 		else {
 			if (map.getValorTauler(x, y) > 0) predef = true;
@@ -119,27 +120,25 @@ public class Algorithm {
 			++value;
 			int c_value;
 			int i = -1;
-			
-			while(i < 2 && cont < 2) {
+			while(i < 2 && result < 2) {
 				int j = -1;
-		    	while(j < 2 && cont < 2) {
+		    	while(j < 2 && result < 2) {
 		    		if (map.enable_pos(x+i,y+j)) {
 		    			c_value = map.getValorTauler(x+i,y+j);
 		    			if (c_value == value) {
-		    				result = solver(x+i,y+j,value,map);
+		    				result = result + unica_solucion(x+i,y+j,map,value);
 		    			}
 		    			else if (c_value == 0){
-		    				result = solver(x+i,y+j,value,map);
+		    				result = result + unica_solucion(x+i,y+j,map,value);
 		    			}
 		    		}
-		    		if(result) ++cont;
 		    		++j;
 		    	}
 		    	++i;
 		    }
 		}
 		if (!predef) map.setValorTauler(x,y,0);
-		return (cont == 1);
+		return result;
 	}
 	
 	/**
