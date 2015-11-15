@@ -100,7 +100,6 @@ public class CtrlGestionHidato<T> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-	}
+}
 

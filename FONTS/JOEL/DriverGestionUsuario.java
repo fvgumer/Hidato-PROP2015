@@ -7,12 +7,15 @@ public class DriverGestionUsuario {
 	
 	private CtrlGestionUsuario prueba;
 	private Scanner s;
-	
-	public DriverGestionUsuario(){
-		
+	private CtrlJugador jug = new CtrlJugador();
+	/**
+	 * Constructora por defecto
+	 */
+	public DriverGestionUsuario() {
+		s = new Scanner(System.in);
 	}
 	
-	public static void main(String[] args) {
+	public void exec() {
 		// TODO Auto-generated method stub
 		CtrlJugador jug = new CtrlJugador();
 	
