@@ -43,10 +43,6 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	}
 	
 
-	public int consultar_ultim_ID(){
-		return 0;
-		
-	}
 	
 	public String[] consultar_nomstableros(){
 		ruta = "Tableros"+  barras;

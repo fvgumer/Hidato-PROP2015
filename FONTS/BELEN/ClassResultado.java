@@ -1,7 +1,13 @@
 package BELEN;
 
-public class ClassResultado {
+import java.io.Serializable;
 
+public class ClassResultado implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//private String tablero;
 	private String jugador;
 	private String modo;
