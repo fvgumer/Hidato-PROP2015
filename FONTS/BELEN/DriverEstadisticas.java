@@ -28,12 +28,12 @@ public class DriverEstadisticas {
 			scan.nextLine();
 			switch (i) {
 				case 1:
-					CE.mostrarEst(jActivo);
+					CE.mostrarEst(jActivo.consultarNombre());
 					break;
 				case 2:
 					System.out.print("Introduce un nombre de usuario:\n");
 					String jugador = scan.nextLine();
-					if (CE.existeix()) CE.mostrarEst(jugador);
+					if (CE.existe()) CE.mostrarEst(jugador);
 					else System.out.print("El usuario no existe.\n");
 					break;
 				case 3: 
