@@ -13,11 +13,10 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	private int modo;
 	private int puntuacion;
 	private Tablero tableroP;
-	private int casillas_quedan;
 	
 	/**
 	 * Contructora del objeto Partida_Hidato
-	 * @param T Tablero no vacÃ­o 
+	 * @param T Tablero no vacio 
 	 * @param J Jugador que se ha identificado previamente y desea comenzar 
 	 * una partida con el tablero T
 	 * @param ID Identificador de la nueva partida
@@ -89,23 +88,28 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	/** 
 	 * Introducir puntuacion de la partida
 	 * @param estado Introduce un entero mayor a 0 que corresponde a la
-	 * puntuaciÃ³n de la partida
+	 * puntuacion de la partida
 	 * 
 	 */
 	public void set_puntuacion(int puntuacion){
 		this.puntuacion = puntuacion;
 	}
-	/** Consulta puntuación de la partida
-	 * @return Devuelve un entero que corresponde a la puntuaciÃ³n de la partida
+	/** Consulta puntuacion de la partida
+	 * @return Devuelve un entero que corresponde a la puntuacion de la partida
 	 */
 	public int get_puntuacion(){
 		int p = puntuacion;
 		return p;
 	}
 	
+	
+	/** Consulta casilla valida para introducido
+	 * @return Devuelve cierto si las coordenadas introducidas son validas en el 
+	 * tablero y no pertenecen a casillas vacías o abujeros
+	 */
 	public boolean casilla_posible(int x, int y) {
 		if (tableroP.enable_pos(x, y)){
-			if (tableroP.getValorTauler(x, y) == 0){
+			if (!tableroP.get_casilla(x, y).isPor_defecto()){
 				return true;
 			}
 			else return false;
@@ -113,11 +117,17 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 		else return false;
 	}
 	
-	
+	/**
+	 * Consulta ID del tablero
+	 * @return Retorna el entero que identifica la partida del parametro implícito
+	 */
 	public int get_ID(){
 		return super.id;
 	}
-	
+	/**
+	 * Modifica ID de la partida
+	 * @param ID Entero identifica a la partida del parámetro implícito
+	 */
 	public void set_ID(int ID){
 		super.id=ID;
 	}
@@ -128,11 +138,18 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 		tableroP.print();
 	}
 
-	
+	/**
+	 *Consultar tablero
+	 * @return Devuelve el objeto Tablero del parametro implicito
+	 */
 	public Tablero get_Tablero(){
 		return tableroP;
 	}
-
+	/**
+	 *Consultar tablero
+	 * @return Devuelve el objeto Tablero del parametro implicito
+	 * con ninguna casilla inicial, solo las casillas vacías.
+	 */
 	public Tablero getTsinnumeros() {
 		Tablero T = new Tablero(tableroP.getMida());
 		for (int i = 0; i < tableroP.getMida(); ++i) {
@@ -145,7 +162,10 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 		}
 		return T;
 	}
-	
+	/**
+	 *Modificar tablero
+	 * @param T Tablero no vacio. 
+	 */
 	public void set_tablero(Tablero T){
 		tableroP = T.copia_t();
 	}
