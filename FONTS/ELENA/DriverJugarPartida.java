@@ -84,7 +84,7 @@ public class DriverJugarPartida {
 							dim_max = 6;
 						}
 						dim = sn.nextInt();
-						while(!control_error(dim,dim_max) && !control_error(3,dim)) {
+						while(!control_error(dim,dim_max) && !control_error(2,dim)) {
 							System.out.print("Valor erroneo");
 							dim = sn.nextInt();
 						}
@@ -162,7 +162,7 @@ public class DriverJugarPartida {
 			boolean bucle = true;
 			int delay = 0;
 			CJ = new CtrlJugar();
-			CJ.comenzar_partida(CP,abuj,c_ini,restart);
+			CJ.comenzar_partida(CP);
 			if (modo == 1) {
 				System.out.println("Escoger tiempo de partida:");
 				System.out.println();
@@ -174,15 +174,15 @@ public class DriverJugarPartida {
 				while (error) {
 					error = false;
 					int t = sn.nextInt();
-					if (t == 0) delay = 60;
-					else if (t == 1) delay = 120;
-					else if (t == 2) delay = 240;
-					else if (t == 3) delay = 480;
+					if (t == 0) delay = 1;
+					else if (t == 1) delay = 2;
+					else if (t == 2) delay = 3;
+					else if (t == 3) delay = 4;
 					else error = true;
 				}
 			}
 			else if (modo == 2){
-						delay = 60;
+						delay = 1;
 						System.out.println("HOLA");
 			}
 			else delay = 9999999;
@@ -210,7 +210,6 @@ public class DriverJugarPartida {
 				case 0: //PAUSA
 						System.out.println("Estado partida: EN PAUSA");
 						CJ.pausar();
-						CJ.get_tiempo();
 						break;
 				case 1: //REANUDAR
 						System.out.println("Estado partida: EN JUEGO");
@@ -244,6 +243,7 @@ public class DriverJugarPartida {
 						//Volver a pantalla inicial
 						bucle = false;
 						salir = true;
+						CJ.get_PartidaHidato().set_estado(2);
 						break;
 				case 5: //GUARDAR
 						System.out.println("¿Deseas guardar la partida?");
@@ -305,19 +305,20 @@ public class DriverJugarPartida {
 						
 				case 12: //REESTART
 						restart = 1;
-						CJ.comenzar_partida(CP, abuj,c_ini,restart);
+						CJ.reestart(CP);
 						CJ.iniciar_tiempo(delay);
+						CJ.print();
 						break;
 				}
 				
-				if (!parar) { 
-				CJ.estado_partida(parar,CP);
-				CJ.print_puntuacion();
-				CJ.get_tiempo();
-				modo = sn.nextInt();
+				if (CJ.get_PartidaHidato().get_estado() != 2) { 
+					CJ.estado_partida(CP);
+					CJ.print_puntuacion();
+					CJ.get_tiempo();
+					modo = sn.nextInt();
 				}
 				else {
-					System.out.println("TIEMPO TERMINADO");
+					if (CJ.get_timer().getTacabado())System.out.println("TIEMPO TERMINADO");
 					System.out.println("¿Deseas volver a comenzar?");
 					System.out.println("0. Si");
 					System.out.println("1. No");
