@@ -5,6 +5,14 @@ import java.io.Serializable;
 import ALEX.*;
 import JOEL.*;
 
+/**
+ * Esta clase hereda las funcionalidades de Partida_comp. Se complementa de manera de que le decimos que nuestro
+ * tablero será de tipo Tablero. Además se le introducen las características básicas que necesita una partida Hidato
+ * que son: el estado de la partida, la dificultad, el modo de juego, y su puntuación
+ * @author Elena
+ *
+ */
+
 public class Partida_Hidato extends Partida_comp implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -109,7 +117,7 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	 */
 	public boolean casilla_posible(int x, int y) {
 		if (tableroP.enable_pos(x, y)){
-			if (!tableroP.get_casilla(x, y).isPor_defecto()){
+			if (tableroP.get_casilla(x, y).isPor_defecto()){
 				return true;
 			}
 			else return false;
