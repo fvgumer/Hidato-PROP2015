@@ -1,0 +1,26 @@
+14:45:45,727 I: (ErlangCore.java:64) : Starting CORE Thread[Worker-3,5,main]
+14:45:45,741 I: (ErlangCore.java:79) : *** starting Erlide v0.29.11.201502161407 (core=0.24.12.201502161407) (model api=0.24.11.201502161407) *** (Cp1252) ui
+14:45:45,745 I: (ErlangCore.java:86) : Started CORE
+14:45:45,745 F: (ErlangPlugin.java:88) : Core started
+14:45:49,117 F: (ErlangHostnameRetriever.java:40) : Test long hostname: A5S104PC53.fib.upc.es
+14:45:50,134 W: (ErlangHostnameRetriever.java:46) : Can't use A5S104PC53.fib.upc.es as long name
+14:45:50,447 F: (ErlangHostnameRetriever.java:40) : Test long hostname: 10.10.43.155
+14:45:51,512 W: (ErlangHostnameRetriever.java:46) : Can't use 10.10.43.155 as long name
+14:45:51,813 F: (ErlangHostnameRetriever.java:40) : Test short hostname: A5S104PC53
+14:45:51,822 F: (HostnameUtils.java:74) : Detected:: A5S104PC53 && null
+14:45:51,838 F: (BackendActivator.java:25) : Backend plugin started
+14:45:51,852 I: (ErlideUIPlugin.java:130) : Starting UI Thread[Worker-3,5,main]
+14:45:51,864 F: (ModelActivator.java:19) : Starting Erlang model api
+14:45:51,912 F: (BackendFactory.java:42) : Create ide backend 17.5.0
+14:45:51,913 F: (BackendFactory.java:56) : Create backend fd655_belensanmartin_8b6e16_erlide
+14:45:51,958 F: (OtpNodeProxy.java:302) : Runtime fd655_belensanmartin_8b6e16_erlide@A5S104PC53 starting
+14:45:51,959 F: (OtpNodeProxy.java:420) : START node :> ["c:\program files\erl6.4/bin/erl", -sname, fd655_belensanmartin_8b6e16_erlide@A5S104PC53, -setcookie, erlide] *** C:\Users\belen.san.martin\Documents\Hidato-PROP
+14:45:51,984 F: (OtpNodeProxy.java:213) : fd655_belensanmartin_8b6e16_erlide@A5S104PC53: waiting connection to peer... 
+14:45:52,391 F: (OtpNodeProxy.java:220) : connected!
+14:45:52,501 F: (OtpNodeProxy.java:307) : Runtime fd655_belensanmartin_8b6e16_erlide@A5S104PC53 running
+14:45:52,894 F: (LogEventHandler.java:27) : info: {"Monitoring java node",jerlide_8b6e5c@A5S104PC53}
+14:45:52,895 F: (LogEventHandler.java:27) : info: {"Start monitor process: ",10000000,50000000}
+14:45:53,023 F: (ModelActivator.java:30) : Started model api
+14:45:53,042 I: (ErlideUIPlugin.java:152) : Started UI
+14:51:12,704 F: (OtpNodeProxy.java:312) : Runtime fd655_belensanmartin_8b6e16_erlide@A5S104PC53 stopping
+14:51:12,715 F: (OtpNodeProxy.java:272) : Runtime fd655_belensanmartin_8b6e16_erlide@A5S104PC53 terminated
