@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 
 public class CtrlJugar {
-	private CtrlRanking CR;
-	private Partida_Hidato PH;
+	private CtrlRanking CR = new CtrlRanking();
+	private CtrlEstadisticas CE = new CtrlEstadisticas();
 	public static int PAUSE = 0;
 	public static int GAME = 1;
 	public static int ACABADO = 2;
@@ -19,7 +19,7 @@ public class CtrlJugar {
 	private int max_nombre;
 	int num_p;
 	Temporizador T1;
-	CtrlGestionPartida c;
+	private CtrlGestionPartida c = new CtrlGestionPartida();
 	/** Pre:
 	 * @param x,y son dos enteros que hacen referencia a unas coordenadas vÃ¡lidas del tablero 
 	 * del parametro impÃ­cito.
@@ -288,6 +288,8 @@ public class CtrlJugar {
 			
 			String idd = String.valueOf(PH.get_tablero().get_id());
 			CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
+			CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
+			CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd);
 		}
 		else System.out.println("SOLUCIÓN INCORRECTA");
 		parar = false;
