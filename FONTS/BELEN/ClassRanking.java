@@ -49,7 +49,7 @@ public class ClassRanking implements Serializable {
 	
 	/**
 	 * Constultora de una posicion del ranking.
-	 * @param pos Posicion que queremos obtener
+	 * @param pos Posicion que queremos obtener.
 	 * @return Resultado de la partida que ocupa la posicion del ranking
 	 * que hemos consultado.
 	 */
