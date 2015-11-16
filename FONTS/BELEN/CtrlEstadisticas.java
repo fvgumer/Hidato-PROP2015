@@ -31,7 +31,7 @@ public class CtrlEstadisticas {
 	 * Metodo que, dado un nombre de jugador, crea sus estadisticas asociadas.
 	 * @param jugador Nombre del jugador del cual queremos crear las estadisticas.
 	 */
-	public void crearEstadisticas(String jugador) {	//llamarla una vez, cuando se crea el jugador
+	public void crearEstadisticas(String jugador) {
 		E = new ClassEstadisticas(jugador);
 		
 		GE.guardar(E);
@@ -46,13 +46,13 @@ public class CtrlEstadisticas {
 	 */
 	public boolean cargarEst(String jugador) {
 		E = GE.cargar(jugador);
-		if (E.getName() == null) return false;
+		if (E == null) return false;
 		else return true;
 	}
 	
 	/**
 	 * Metodo que, dado un nombre de jugador, elimina sus estadisticas de la 
-	 * base de datos así como todas las posiciones que ocupa dicho jugador en los
+	 * base de datos asi como todas las posiciones que ocupa dicho jugador en los
 	 * rankings existentes. Esta funcion solo se debe llamar al eliminar un usuario.
 	 * @param jugador Nombre del jugador del cual queremos cargar las estadisticas.
 	 */
