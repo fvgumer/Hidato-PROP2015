@@ -17,17 +17,22 @@ public class Algorithm {
 	}
 	/**
 	 * Se soluciona el tablero map mediante recusividad. La forma de funcionar del algoritmo
-	 * es parecia al backtracking.
+	 * es parecia al backtracking. Si el algoritmo no encuentra una solucion posible en menos
+	 * de lo que marca el temporizador (20 segundos) se retorna false.
 	 * 
 	 * El algoritmo determina si existe solucion y la crea. Puede haber mas de una solucion.
 	 * @param x Indica la fila actual
 	 * @param y Indica la columna actual
 	 * @param value Indica el valor actual
 	 * @param map Tablero sobre el qual se ejecuta el solver
+	 * @param t Indica el tiempo de ejecucion del algoritmo
 	 * @return Retorna true si el tablero map tiene al menos una solucion posible. False si no tiene 
 	 * ninguna solucion.
 	 */
-	public boolean solver(int x, int y, int value, Tablero map) {
+	public boolean solver(int x, int y, int value, Tablero map, Temporizador t) {
+		if(!t.estaCorriendo()) {
+			return false;
+		}
 		boolean result = false, predef = false;
 		if (value == map.get_final_num()) {
 			map.crea_solucion();
@@ -45,10 +50,10 @@ public class Algorithm {
 		    		if (map.enable_pos(x+i,y+j)) {
 		    			c_value = map.getValorTauler(x+i,y+j);
 		    			if (c_value == value) {
-		    				result = solver(x+i,y+j,value,map);
+		    				result = solver(x+i,y+j,value,map,t);
 		    			}
 		    			else if (c_value == 0){
-		    				result = solver(x+i,y+j,value,map);
+		    				result = solver(x+i,y+j,value,map,t);
 		    			}
 		    		}
 		    		++j;
@@ -105,10 +110,14 @@ public class Algorithm {
 	 * @param y Indica la columna actual
 	 * @param value Indica el valor actual
 	 * @param map Tablero sobre el qual se ejecuta el algoritmo
+	 * @param t Se utiliza para conocer el tiempo de ejecucion del timer
 	 * @return Retorna true si el tablero map tiene solucion unica. Retorna false si hay mas de
 	 * una solucion
 	 */
-	public int unica_solucion(int x, int y, Tablero map, int value) {
+	public int unica_solucion(int x, int y, Tablero map, int value, Temporizador t) {
+		if (!t.estaCorriendo()) {
+			System.out.println("timer funciona"); return 3;
+		}
 		boolean predef = false; 
 		int result = 0;
 		if (value == map.get_final_num()) {
@@ -126,10 +135,10 @@ public class Algorithm {
 		    		if (map.enable_pos(x+i,y+j)) {
 		    			c_value = map.getValorTauler(x+i,y+j);
 		    			if (c_value == value) {
-		    				result = result + unica_solucion(x+i,y+j,map,value);
+		    				result = result + unica_solucion(x+i,y+j,map,value,t);
 		    			}
 		    			else if (c_value == 0){
-		    				result = result + unica_solucion(x+i,y+j,map,value);
+		    				result = result + unica_solucion(x+i,y+j,map,value,t);
 		    			}
 		    		}
 		    		++j;

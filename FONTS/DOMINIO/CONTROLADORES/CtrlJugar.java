@@ -56,7 +56,10 @@ public class CtrlJugar {
 				T_aux.setValorTauler(x,y,i+1);
 				int[] start;
 				start = T_aux.getStart();
-				boolean p = a.solver(start[0], start[1], 1,T_aux);
+				Temporizador t = new Temporizador();
+				t.timer_max();
+				t.iniciar();
+				boolean p = a.solver(start[0], start[1], 1,T_aux,t);
 				if (p) {
 					Posibles.add(i+1);
 				}

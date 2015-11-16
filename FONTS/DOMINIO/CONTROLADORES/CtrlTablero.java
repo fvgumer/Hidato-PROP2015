@@ -4,6 +4,7 @@ import java.util.Random;
 import PERSISTENCIA.CtrlGestionTablero;
 import DOMINIO.CLASES.Algorithm;
 import DOMINIO.CLASES.Tablero;
+import DOMINIO.CLASES.Temporizador;
 
 /**
  * Esta clase contiene las operaciones que se encargan de generar tableros de Hidatos
@@ -75,6 +76,7 @@ public class CtrlTablero {
 		omplir_forats_alea(c_negras);
 		setStart_alea();
 		int[] start = map.getStart();
+		Temporizador t = new Temporizador();
 		boolean b = a.generador(map, start[0], start[1],1);
 		while (b == false) {
 			map.a_zero(f);
@@ -138,7 +140,10 @@ public class CtrlTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		boolean b = a.solver(start[0], start[1], 1, map);
+		Temporizador t = new Temporizador();
+		t.timer_max();
+		t.iniciar();
+		boolean b = a.solver(start[0], start[1], 1, map,t);
 		return b;
 	}
 	
@@ -150,7 +155,10 @@ public class CtrlTablero {
 	public boolean solucion_unica() {
 		int[] start;
 		start = map.getStart();
-		int aux = a.unica_solucion(start[0], start[1], map, 1);
+		Temporizador t = new Temporizador();
+		t.timer_max();
+		t.iniciar();
+		int aux = a.unica_solucion(start[0], start[1], map, 1, t);
 		if(aux == 1) map.setSolucion_unica(true);
 		else map.setSolucion_unica(false);
 		return (aux == 1);
@@ -277,7 +285,7 @@ public class CtrlTablero {
 			String auxs = tableros_repo[i];
 			int aux = Integer.parseInt((auxs.substring(0,auxs.length()-4)));
 			if(aux > max_nombre) max_nombre = aux;
-	}
+		}
 	}
 
 	/**
