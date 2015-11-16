@@ -2,8 +2,8 @@ package ALEX;
 
 import G45.*;
 
+
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  * Esta clase hereda las funcionalidades de Tablero_comp. A�adimos nuevos parametros y metodos
@@ -22,7 +22,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	   * start y end contienen las posiciones de principio y fin respectivamente
 	   * 	
 	   */
-	private int id_tab;
+	private int id_tab, dif;
 	private Casilla[][] solucio; 
 	private int holes, n_predef, final_num;
 	private int[] start, end;
@@ -69,6 +69,33 @@ public class Tablero extends Tablero_comp implements Serializable{
 	public int get_id() {
 		return id_tab;
 	}
+	
+	/**
+	 * Esta funcion determina la dificultad del tablero en funcion de las dimensiones del
+	 * tablero, las casillas vacias y las casillas negras.
+	 */
+	public void calcular_dificultad() {
+		dif = 0;
+		if(mida <= 5) dif += 5;
+		else if(mida <= 8) dif += 10;
+		else dif += 15;
+		int aux = (mida*mida)/3;
+		if(holes < aux) dif += 15;
+		else if (holes < 2*aux) dif += 10;
+		else dif += 5;
+		if(n_predef < aux) dif += 15;
+		else if (n_predef < 2*aux) dif += 10;
+		else dif += 5;
+		System.out.println("te n holes :" + holes);
+		System.out.println("te n c_ini :" + n_predef);
+		System.out.println("te aqesta dificultat :" + dif);
+	}
+	
+	/**
+	 * Se retorna la dificultad del tablero
+	 * @return Representa la dificultad
+	 */
+	public int get_dificultad() {return dif;}
 	
 	/**
 	   * Se configura el identificador del tablero segun el valor de n

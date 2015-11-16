@@ -89,6 +89,7 @@ public class Driver_ctrl_tablero {
 						if (c_pre < 2) System.out.println("Minimo 2!");
 						c_pre = s.nextInt();
 						}
+					prueba.setn_predef(c_pre);
 					while (c_pre > 0) {
 						System.out.println("Faltan " + c_pre + " numeros por colocar");
 						System.out.println("AVISO: Es muy importante que se pongan el principio"
@@ -241,5 +242,6 @@ public class Driver_ctrl_tablero {
 		else if(!unica){
 			System.out.println("Pero la solucion no es unica :(");
 		}
+		c.asignar_dificultad();
 	}
 }
