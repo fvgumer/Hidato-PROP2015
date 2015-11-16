@@ -6,7 +6,7 @@ import G45.*;
 import java.io.Serializable;
 
 /**
- * Esta clase hereda las funcionalidades de Tablero_comp. A�adimos nuevos parametros y metodos
+ * Esta clase hereda las funcionalidades de Tablero_comp. Aï¿½adimos nuevos parametros y metodos
  * en la clase por tal de que el tablero se adapte a un tablero del juego Hidato.
  * @author Alex
  *
@@ -47,8 +47,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 		
 	}
 	
-	
-		public Tablero copia_t() {
+	public Tablero copia_t() {
 		Tablero T2 = new Tablero(mida);
 		T2.setholes(holes);
 		T2.set_solucio(solucio);
@@ -64,8 +63,6 @@ public class Tablero extends Tablero_comp implements Serializable{
 	public void set_solucio(Casilla[][] s){
 		solucio = s;
 	}
-	
-	
 	
 	/**
 	   * @return Retorna el mayor numero possible del tablero teniendo en cuenta la medida
@@ -120,6 +117,16 @@ public class Tablero extends Tablero_comp implements Serializable{
 	   */
 	public void set_id(int n) {
 		id_tab = n;
+	}
+	/**
+	 * 
+	 * @param x Entero mayor a 0 y menos a dim-1 del parametro implícito
+	 * @param y Entero mayor a 0 y menos a dim-1 del parametro implícito
+	 * @return Devuelve el objeto casilla que se encuentra en la posición x,y 
+	 * del tablero del parametro implícito.
+	 */
+	public Casilla get_casilla(int x, int y){
+		return (Casilla) tauler[x][y];
 	}
 	
 	/**
