@@ -74,6 +74,8 @@ public class CtrlGestionHidato<T> {
 	 * Metodo que se encarga de guardar el objeto en su ruta y sobreescribir el existente con el mismo nombre.
 	 * @param objeto Objeto que puede ser de las clases principales Jugador, ClassRanking, ClassEstadisticas,
 	 * Tablero, Partida_Hidato
+	 * Post: Objeto de la clase guardado en un fichero en su directorio correspondiente. Si el directorio padre,
+	 * no existia, lo crea. 
 	 */
 	public void guardar(T objeto){
 		calcularruta(objeto);

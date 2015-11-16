@@ -90,12 +90,12 @@ public class CtrlEstadisticas {
 	 * @param jugador  Nombre del jugador que ha creado el tablero.
 	 * @param t Tablero creado por el jugador.
 	 */
-	public void tableroCreado(String jugador, String t) {
+	/* public void tableroCreado(String jugador, String t) {
 		E = GE.cargar(jugador);
 		E.anadirTableroC(t);
 		
 		GE.guardar(E);
-	}
+	} */
 	
 	/**
 	 * Metodo que, dado un nombre de jugador y un nombre de tablero,
@@ -121,7 +121,7 @@ public class CtrlEstadisticas {
 		E.mostrarTiempoJugado();
 		E.mostrarPuntuacionTotal();
 		E.mostrarMejorPuntuacion();
-		E.mostrarTablerosCreados();
+		//E.mostrarTablerosCreados();
 		E.mostrarTablerosJugados();
 	}
 }
