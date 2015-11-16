@@ -61,7 +61,7 @@ public class CtrlEstadisticas {
 		for(int i = 0; i < E.tablerosJugados(); ++i) {
 			CtrlRanking CR = new CtrlRanking();
 			CR.cargarRanking(E.getTableroJ(i));
-			CR.eliminarResultados(jugador);
+			CR.eliminarResultados(E.getTableroJ(i),jugador);
 		}
 		GE.eliminar(E);
 	}
