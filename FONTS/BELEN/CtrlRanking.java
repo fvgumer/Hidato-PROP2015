@@ -44,7 +44,7 @@ public class CtrlRanking {
 	 */
 	public boolean cargarRanking(String tablero) {
 		R = GP.cargar(tablero);
-		if (R.getID() == null) return false;
+		if (R == null) return false;
 		else return true;
 	}
 	
@@ -78,7 +78,7 @@ public class CtrlRanking {
 	
 	/**
 	 * Metodo que, dado un nombre de tablero, un nombre de jugador y los 
-	 * resultados de una partida terminada, añade estos resultados obtenidos
+	 * resultados de una partida terminada, aÃ±ade estos resultados obtenidos
 	 * por el jugador a la posicion adecuada del ranking de dicho tablero.
 	 * @param t Nombre del tablero jugado.
 	 * @param j Nombre del jugador que ha obtenido los resultados dados.
