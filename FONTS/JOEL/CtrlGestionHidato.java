@@ -28,7 +28,7 @@ public class CtrlGestionHidato<T> {
 	 * Creadora por defecto de la clase, tambien detecta el OS ya que cada uno tiene una manera 
 	 * diferente de representar las rutas a los ficheros
 	 */
-	CtrlGestionHidato(){
+	public CtrlGestionHidato(){
 		String s = System.getProperty("os.name");
 		if (s.charAt(0) == 'W') barras = "\\";
 		else barras = "/";

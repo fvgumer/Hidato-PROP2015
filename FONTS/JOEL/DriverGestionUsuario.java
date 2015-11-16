@@ -6,7 +6,6 @@ import java.util.Scanner;
  * activo del juego y tambien de todas las operaciones que consciernen a los datos de usuarios,
  * eliminar, cargar, cambiar contrasenyas. Todas las operaciones estan en este driver.
  * @author Joel Codina
- *
  */
 public class DriverGestionUsuario {
 	

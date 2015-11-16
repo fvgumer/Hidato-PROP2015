@@ -46,7 +46,7 @@ public class SuperDriver {
 				case 3:
 					//Llançar el driver d comenzar juego
 					if(Jactivo==null)System.out.println("Debes loguearte antes de consultar tus estadisticas");
-					e.exec(Jactivo);
+					else e.exec(Jactivo);
 					break;
 				case 4:
 					if(Jactivo==null)System.out.println("Debes loguearte antes de consultar tus estadisticas");

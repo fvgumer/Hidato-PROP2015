@@ -33,7 +33,7 @@ public ClassRanking cargar(String NomR){
 	ruta = "Rankings"+  barras + NomR+ ".bin";
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
-		System.out.println("El tablero no existe.\n");
+		return null;
 	}
 	else{
 		try{

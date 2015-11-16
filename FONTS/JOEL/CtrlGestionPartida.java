@@ -20,7 +20,7 @@ public class CtrlGestionPartida extends CtrlGestionHidato<Object>{
 /**
  * Creadora por defecto de la clase CtrlGestionPartida
  */
-CtrlGestionPartida(){
+public CtrlGestionPartida(){
 }
 
 /**

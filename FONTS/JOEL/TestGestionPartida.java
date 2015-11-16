@@ -4,7 +4,11 @@ import java.util.Scanner;
 import ALEX.Tablero;
 import ELENA.*;
 
-public class DriverGestionPartida {
+/**
+ * Test para probar que funcionan las operaciones del gestor de partidas. 
+ * @author Joel Codina
+ */
+public class TestGestionPartida {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
