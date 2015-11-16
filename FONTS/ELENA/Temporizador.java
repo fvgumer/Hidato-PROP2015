@@ -8,20 +8,27 @@ public class Temporizador implements ActionListener,Serializable {
 
 	private static final long serialVersionUID = 1L;
 	Timer timer; 
-	private int seg_max = 9999999;
+	private int min_max = 20;
 	private int segundos=0; 
 	private int minutos=0; 
+	private int modo; 
 	private boolean congelado=false;  
 	private boolean tacabado=false;
+	private boolean tapar = false;
 	public Temporizador(){ 
 	timer=new Timer(1000,this); 
 } 
 
-	public Temporizador(int minuto,int segundo,int seg_max){ 
+	public Temporizador(int minuto,int segundo,int min_max, int modo){ 
 		timer=new Timer(1000,this); 
-		this.seg_max = seg_max;
+		this.min_max = min_max;
 		estMinuto(minuto); 
 		estSegundo(segundo); 
+		this.modo = modo;
+		if (modo == 2) {
+			tapar = false;
+		}
+		else tapar = true;
 	
 	} 
 
@@ -67,15 +74,43 @@ public class Temporizador implements ActionListener,Serializable {
 		return tacabado;
 	}
 	
+	public boolean getTapar() {
+		return tapar;
+	}
+	
+	public void setTapar(int i) {
+		if (i == 0) tapar = false;
+		else tapar = true;
+	}
+	
 	//Se Actualiza cada segundo
-	public void actionPerformed(ActionEvent e){ 
-		if (segundos > seg_max) tacabado = true;
-		if (!congelado) {
-			segundos++; 
-			if (segundos > 60) {
-					minutos++; 
-					segundos=0;  
-			}  
+	public void actionPerformed(ActionEvent e){
+		if(modo == 2) {
+			if (segundos == 0 && min_max == minutos){
+				tapar = true;
+			}
+			if (!congelado){
+				segundos++;
+				if (segundos > 60) {
+						minutos++; 
+						segundos=0;  
+				}  
+			}
+		}
+		else {
+			
+			if (!congelado) {
+				segundos++; 
+				if (segundos > 60) {
+						minutos++; 
+						segundos=0;  
+				}  
+				if (minutos == min_max && segundos == 0) {
+					tacabado = true;
+					congelado = true;
+				}
+			}
+			
 		}
 	}
 } 
