@@ -39,14 +39,6 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 		modo = 0;
 		puntuacion = 0;
 	}
-	
-
-	/**Consulta del objeto Tablero
-	 *@return Devuelve el tablero de la partida
-	 */
-	public Tablero get_tablero() {
-		return tableroP;
-	}
 	/**
 	 * Introducir dificultad a la partida
 	 * @param dificultad Entero que indentifica la dificultad de la partida

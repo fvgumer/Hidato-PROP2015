@@ -21,9 +21,9 @@ public class SuperDriver {
 		int i;
 		while (b) {
 			System.out.println("HIDATO");
-			/*System.out.println("Hola! Entro con tu usuario o bien crea uno nuevo:");
-			System.out.println("1.Login");
-			System.out.println("2.Crear nuevo usuario");*/
+			System.out.println("Bienvenido, recuerda loguearte para poder jugar");
+			//System.out.println("1.Login");
+			//System.out.println("2.Crear nuevo usuario");*/
 			//Toot el tema usuari, ja ho posaras joel
 			System.out.println("Menu Principal");
 			System.out.println("1.Login y Gestion Usuario");
@@ -49,7 +49,7 @@ public class SuperDriver {
 					else e.exec(Jactivo);
 					break;
 				case 4:
-					if(Jactivo==null)System.out.println("Debes loguearte antes de consultar tus estadisticas");
+					if(Jactivo==null)System.out.println("Debes loguearte antes de jugar");
 					else{
 					est.exec(Jactivo);
 					}
