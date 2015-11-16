@@ -37,7 +37,7 @@ public class CtrlJugar {
 	public void comenzar_partida(CtrlPartida P) {
 		PH = P.get_partida();
 		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
-				- PH.get_tablero().getn_predef();
+				- PH.get_Tablero().getn_predef();
 	}
 	
 	/** Pre: Busqueda de candidatos
@@ -54,8 +54,9 @@ public class CtrlJugar {
 		for (int i = 0; i < posats.length; ++i) {
 			if (!posats[i]) { //Si no esta posat
 				T_aux.setValorTauler(x,y,i+1);
-				//AQUI ALEX!!!!! 
-				p = a.solver(x1, y1, 1,T_aux);
+				int[] start;
+				start = T_aux.getStart();
+				p = a.solver(start[0], start[1], 1,T_aux);
 				if (p) {
 					Posibles.add(i+1);
 				}
@@ -348,7 +349,7 @@ public class CtrlJugar {
 	public void reestart(CtrlPartida P) {
 		PH = P.get_partida_inicial();
 		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
-				- PH.get_tablero().getn_predef();
+				- PH.get_Tablero().getn_predef();
 		
 	}
 	/**
@@ -383,7 +384,7 @@ public class CtrlJugar {
 			else if(PH.get_dificultad() == 1) d1 = "Medio";
 			else d1 = "Dificil";
 			
-			String idd = String.valueOf(PH.get_tablero().get_id());
+			String idd = String.valueOf(PH.get_Tablero().get_id());
 			CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
 			CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
 			CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd);

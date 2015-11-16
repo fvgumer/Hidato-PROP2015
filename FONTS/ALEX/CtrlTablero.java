@@ -271,10 +271,12 @@ public class CtrlTablero {
 	 */
 	private void actu_tab_repo() {
 		tableros_repo = c.consultar_nomstableros();
-		for(int i=0; i<tableros_repo.length; ++i) {
-			String auxs = tableros_repo[i];
-			int aux = Integer.parseInt((auxs.substring(0,auxs.length()-4)));
-			if(aux > max_nombre) max_nombre = aux;
+		if(tableros_repo.length > 1) {
+			for(int i=0; i < tableros_repo.length; ++i) {
+				String auxs = tableros_repo[i];
+				int aux = Integer.parseInt((auxs.substring(0,auxs.length()-4)));
+				if(aux > max_nombre) max_nombre = aux;
+			}
 		}
 	}
 
