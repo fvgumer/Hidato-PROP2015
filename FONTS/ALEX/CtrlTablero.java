@@ -256,7 +256,7 @@ public class CtrlTablero {
 	public void eliminar() {
 		c.eliminar(map);
 		CtrlRanking rnk = new CtrlRanking();
-		String aux = Integer.toString(max_nombre+1);
+		String aux = Integer.toString(map.get_id());
 		rnk.eliminarRanking(aux);
 		actu_tab_repo();
 	}

@@ -26,7 +26,7 @@ public class CtrlJugar {
 	 * @forats Entero que indica el numero de                                                                                                                                                                
 	 * */
 	public ArrayList<Integer> bus_cantidats(int x, int y, int x1,
-					int y1, int forats, boolean[] posats){
+		int y1, int forats, boolean[] posats){
 		Algorithm a = new Algorithm();
 		Tablero T_aux = PH.get_Tablero().copia_t();
 		boolean p;
