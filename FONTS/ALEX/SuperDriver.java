@@ -41,7 +41,8 @@ public class SuperDriver {
 					Jactivo=gestorJ.exec();
 					break;
 				case 2:
-					d.exec();
+					if(Jactivo==null) System.out.println("Debes loguearte antes de crear tableros");
+					else d.exec();
 					break;
 				case 3:
 					//Llançar el driver d comenzar juego

@@ -117,9 +117,9 @@ public class Driver_ctrl_tablero {
 				case 3:
 					prueba.muestra_repo_tab();
 					System.out.println("Escribe el id del tablero que quieres eliminar: [1, "
-										+ max_id + "]:");
+										+ (max_id+1) + "]:");
 					int id = s.nextInt();
-					while (!comprueba_entrada(id, max_id)) {id = s.nextInt();}
+					while (!comprueba_entrada(id, max_id+1)) {id = s.nextInt();}
 					boolean carga = prueba.cargar(id);
 					if (carga) {
 						prueba.muestra_mapa();

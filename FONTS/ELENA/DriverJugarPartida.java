@@ -57,6 +57,7 @@ public class DriverJugarPartida {
 					
 					if (n == 0) {
 						System.out.println("No tienes ninguna partida en proceso");
+						opcion = -1;
 					}
 					else {
 						String[] listaids = CP.conseguir_partidas_enproceso(J.consultar_nombre());
