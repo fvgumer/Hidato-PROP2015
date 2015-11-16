@@ -1,10 +1,7 @@
 package ELENA;
 
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import ALEX.*;
 import JOEL.*;
 
 public class DriverJugarPartida {
@@ -12,7 +9,6 @@ public class DriverJugarPartida {
 	private static CtrlJugar CJ;
 	private static Scanner sn;
 	private int dim_max;
-	static Timer tiem;
 	
 	private boolean control_error(int c1, int c2) {
 		if (c1 > c2) {
@@ -233,7 +229,7 @@ public class DriverJugarPartida {
 							System.out.println("Introduce y:");
 							y = sn.nextInt();
 							if (modo == 0)CJ.pista1(x,y); 
-							else CJ.pista2(x, y, dim, abuj);
+							else CJ.pista2(x, y);
 						}
 						else if (modo == 2) CJ.pista3(dim,abuj);
 						else System.out.println("Valor Incorrecto");
