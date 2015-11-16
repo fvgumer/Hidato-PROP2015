@@ -1,12 +1,18 @@
+package ELENA;
+import ALEX.*;
+import BELEN.*;
+import JOEL.*;
+
+import java.util.ArrayList;
+
+
 
 public class CtrlJugar {
 	private CtrlRanking CR;
 	private Partida_Hidato PH;
-	private Partida_Hidato PH_inicial;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
-	private int min;
-	private int seg;
+	public static int ACABADO = 2;
 	private int casillas_faltan;
 	boolean parar;
 	private int max_nombre;
@@ -131,7 +137,7 @@ public class CtrlJugar {
 	}
 	
 	public void pista1(int x, int y){
-		if (PH.get_estado() == GAME && !T1.getTapar()) {
+		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
 				modificar_puntuacion(-10);
 				int valor= PH.get_Tablero().getValorSolucio(x, y);
@@ -147,7 +153,7 @@ public class CtrlJugar {
 	/*Pre: x,y es la posicion de memoria donde se quiere mirar sus candidatos. 
 	 * dim, dimensiones del tablero y forats las posiciones no validad*/
 	public void pista2(int x, int y, int dim, int forats){
-		if (PH.get_estado() == GAME && !T1.getTapar()) {
+		if (PH.get_estado() == GAME && T1.getTapar()) {
 			modificar_puntuacion(-5);
 			boolean[] posibles = new boolean[dim*dim-forats];
 			//Busca  los elementos que ya estan en el tablero
@@ -166,7 +172,7 @@ public class CtrlJugar {
 	 * la posicion indicada en la pre*/
 	
 	public void pista3(int dim, int forats){
-		if (PH.get_estado() == GAME && !T1.getTapar()) {
+		if (PH.get_estado() == GAME && T1.getTapar()) {
 			modificar_puntuacion(-10);
 			boolean[] posibles = new boolean[dim*dim-forats];
 			//Busca  los elementos que ya estan en el tablero
@@ -193,6 +199,7 @@ public class CtrlJugar {
 		//NO GUARDAR PARTIDA (NO IMPLEMENTADO)
 		//Sacamos solucion
 		PH.get_Tablero().mostra_solucio();
+		PH.set_estado(ACABADO);
 		T1.detenerse();
 		
 	}
@@ -210,7 +217,7 @@ public class CtrlJugar {
 	}
 	
 	public void introducirCasilla(int x, int y,int valor){
-		if (PH.get_estado() == GAME && !T1.getTapar()) {
+		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
 				//1. INTRODUCIR CASILLA
 				PH.get_Tablero().setValorTauler(x, y, valor);
@@ -228,7 +235,7 @@ public class CtrlJugar {
 	}
 	
 	public void quitar_casilla(int x, int y){
-		if (PH.get_estado() == GAME && !T1.getTapar()) {
+		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
 				//1. QUITAR CASILLA
 				int valor = 0;
@@ -247,7 +254,7 @@ public class CtrlJugar {
 	}
 	
 	public void comprobar_casilla(int x, int y){
-		if (PH.get_estado() == GAME && !T1.getTapar()) {
+		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
 				modificar_puntuacion(-3);
 				if (PH.get_Tablero().getValorTauler(x, y) == PH.get_Tablero().getValorSolucio(x, y)){
@@ -275,14 +282,19 @@ public class CtrlJugar {
 		PH.set_estado(GAME);
 		parar = false;
 	}
-	public void comenzar_partida(CtrlPartida P,int forats,int c_ini, int restart) {
-		if (restart == 0) {
-			PH = P.get_partida();
-		}
-		else PH = P.get_partida_inicial();
-
-		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) - forats - c_ini;
+	public void comenzar_partida(CtrlPartida P) {
+		PH = P.get_partida();
+		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
+				- PH.get_tablero().getn_predef();
 	}
+	
+	public void reestart(CtrlPartida P) {
+		PH = P.get_partida_inicial();
+		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
+				- PH.get_tablero().getn_predef();
+		
+	}
+	
 	public void resolver_partida(){
 		int i = 0;
 		int d = PH.get_Tablero().getn_predef();
@@ -324,18 +336,28 @@ public class CtrlJugar {
 		return PH.get_estado();
 	}
 	
-	public void estado_partida(boolean parar, CtrlPartida CP) {
+	public void estado_partida( CtrlPartida CP) {
 		System.out.println("Quedan "+casillas_faltan+ " por poner.");
-		if (T1.getTacabado()) parar = true;
-		if (T1.getTapar()) {
-			T1.setTapar(0);
-			PH.set_tablero(CP.get_partida().getTsinnumeros());
+		
+		if (CP.get_partida().get_modo() == 2) {
+			boolean stop = false;
+			if (T1.getTapar() && !stop) {
+				PH.set_tablero(CP.get_partida().getTsinnumeros());
+				stop = true;
+			}
 		}
-		else parar =false; 
+		else if (CP.get_partida().get_modo() == 1) {
+			if (T1.getTacabado()) PH.set_estado(ACABADO);
+		}
+		
 	}
 	
 	public Partida_Hidato get_PartidaHidato(){
 		return PH;
 	}
 	
+	public Temporizador get_timer(){
+		return T1;
+	}
 }
+
