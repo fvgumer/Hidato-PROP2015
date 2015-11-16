@@ -1,10 +1,7 @@
-package DOMINIO.CONTROLADORES;
-
-import DOMINIO.CLASES.Algorithm;
-import DOMINIO.CLASES.Partida_Hidato;
-import DOMINIO.CLASES.Tablero;
-import DOMINIO.CLASES.Temporizador;
-import PERSISTENCIA.CtrlGestionPartida;
+package ELENA;
+import ALEX.*;
+import BELEN.*;
+import JOEL.*;
 
 import java.util.ArrayList;
 
@@ -56,10 +53,7 @@ public class CtrlJugar {
 				T_aux.setValorTauler(x,y,i+1);
 				int[] start;
 				start = T_aux.getStart();
-				Temporizador t = new Temporizador();
-				t.timer_max();
-				t.iniciar();
-				boolean p = a.solver(start[0], start[1], 1,T_aux,t);
+				boolean p = a.solver(start[0], start[1], 1,T_aux);
 				if (p) {
 					Posibles.add(i+1);
 				}
@@ -122,8 +116,6 @@ public class CtrlJugar {
 				System.out.println();
 			}	
 		}
-		//Si ja esta parat no fer res
-		else System.out.println("PARTIDA YA EN PAUSA");
 	}
 	/**
 	 * Reanudar
@@ -145,7 +137,7 @@ public class CtrlJugar {
 	 * El valor de la soluciÃ³n que va en las coordenadas (x,y) se introduce en el tablero
 	 */
 	public void pista1(int x, int y){
-		if (PH.get_estado() == GAME && T1.getTapar()) {
+		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
 			if (PH.casilla_posible(x,y)) {
 				modificar_puntuacion(-10);
 				int valor= PH.get_Tablero().getValorSolucio(x, y);
@@ -166,7 +158,7 @@ public class CtrlJugar {
 	 * del tablero del parametro implÃ­cito
 	 */
 	public void pista2(int x, int y){
-		if (PH.get_estado() == GAME && T1.getTapar()) {
+		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
 			modificar_puntuacion(-5);
 			//int dim = PH.get_Tablero().getMida();
 			int f = PH.get_Tablero().getholes();
@@ -191,7 +183,7 @@ public class CtrlJugar {
 	 * a las que se les ha de introducir un valor
 	 */
 	public void pista3(int dim, int forats){
-		if (PH.get_estado() == GAME && T1.getTapar()) {
+		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
 			modificar_puntuacion(-10);
 			//Busca  los elementos que ya estan en el tablero
 			boolean[] posibles = elementos_matriz();
@@ -218,12 +210,11 @@ public class CtrlJugar {
 	 */
 	public void rendirse(){
 		PH.set_puntuacion(0);
-		//NO GUARDAR PARTIDA (NO IMPLEMENTADO)
+		//NO GUARDAR PARTIDA 
 		//Sacamos solucion
 		PH.get_Tablero().mostra_solucio();
 		PH.set_estado(ACABADO);
 		T1.detenerse();
-		
 	}
 	
 	/**
@@ -250,11 +241,11 @@ public class CtrlJugar {
 	 * si la posiciÃ³n es valida.
 	 */
 	public void introducirCasilla(int x, int y,int valor){
-		if (PH.get_estado() == GAME && T1.getTapar()) {
+		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
 			if (PH.casilla_posible(x,y)) {
 				//1. INTRODUCIR CASILLA
 				int v = PH.get_Tablero().getValorTauler(x, y);
-				if (v == -1 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) System.out.println("PosiciÃ³n incorrecta");
+				if (v == -1 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) System.out.println("Posicion incorrecta");
 				else {
 					PH.get_Tablero().setValorTauler(x, y,valor);
 					--casillas_faltan;
@@ -274,7 +265,7 @@ public class CtrlJugar {
 	 * Se extrae el valor de la posiciÃ³n del tablero (x,y) si es una posiciÃ³n vÃ¡lida
 	 */
 	public void quitar_casilla(int x, int y){
-		if (PH.get_estado() == GAME && T1.getTapar()) {
+		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
 			if (PH.casilla_posible(x,y)) {
 				//1. QUITAR CASILLA
 				int valor = 0;
@@ -299,7 +290,7 @@ public class CtrlJugar {
 	 *Nos introduce por pantalla si en esa posiciÃ³n hemos introducido el valor correcto o no
 	 */
 	public void comprobar_casilla(int x, int y){
-		if (PH.get_estado() == GAME && T1.getTapar()) {
+		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
 			if (PH.casilla_posible(x,y)) {
 				modificar_puntuacion(-3);
 				if (PH.get_Tablero().getValorTauler(x, y) == PH.get_Tablero().getValorSolucio(x, y)){
@@ -307,7 +298,7 @@ public class CtrlJugar {
 				}
 				else System.out.println("INCORRECTO");
 			}
-			else System.out.println("PosiciÃ³n Incorrecta");
+			else System.out.println("Posicion Incorrecta");
 		}
 		else System.out.println("NO PUEDES JUGAR");
 	}
@@ -317,23 +308,17 @@ public class CtrlJugar {
 	public void print() {
 		PH.print_tablero();
 	}
-	/**
-	 * Imprimir puntuacion de la partida
-	 * Pasa por consola la puntuaciÃ³n actual de la partida
-	 */
-	public void print_puntuacion(){
-		int p = PH.get_puntuacion();
-		System.out.println("Puntuacion Actual: "+p);
-	}
 	
 	/**
 	 * Iniciar Temporizado
 	 * @param min entero que sera mayor a 0 si el temporizado
-	 * tiene alguna condiciÃ³n durante el juego.
+	 * tiene alguna condición durante el juego.
 	 * Se inicializa el temporizador y se pone el estado de juego en activvo
 	 */
 	public void iniciar_tiempo(int min) {
-		T1 = new Temporizador(0,0,min,PH.get_modo());
+		int modo = PH.get_modo();
+		T1 = new Temporizador();
+		T1.inicializar(min,modo);
 		T1.iniciar();
 		PH.set_estado(GAME);
 		parar = false;
@@ -357,7 +342,7 @@ public class CtrlJugar {
 	 */
 	public void resolver_partida(){
 		int i = 0;
-		int d = PH.get_Tablero().getn_predef();
+		int d = PH.get_Tablero().getMida();
 		boolean incorrecto = false;
 		while (!incorrecto && i < d) {
 			int j = 0;
@@ -366,7 +351,7 @@ public class CtrlJugar {
 					incorrecto = true;
 				++j;
 			}
-			++j;
+			++i;
 		}
 		if (!incorrecto) {
 			System.out.println("PARTIDA RESUELTA!!");
@@ -388,7 +373,7 @@ public class CtrlJugar {
 			CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
 			CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd);
 		}
-		else System.out.println("SOLUCIÃ“N INCORRECTA");
+		else System.out.println("SOLUCION INCORRECTA");
 		parar = false;
 	}
 	/**
@@ -418,19 +403,20 @@ public class CtrlJugar {
 	 * de juego.
 	 */
 	public void estado_partida( CtrlPartida CP) {
-		System.out.println("Quedan "+casillas_faltan+ " por poner.");
-		
-		if (CP.get_partida().get_modo() == 2) {
+		if (CP.get_partida().get_modo() == 2) { //MODO EXTREME
 			boolean stop = false;
-			if (T1.getTapar() && !stop) {
+			if (!stop &&T1.inicializar_tablero()) {
 				PH.set_tablero(CP.get_partida().getTsinnumeros());
-				stop = true;
+				stop = true; //Así no inicializa constantemente
 			}
 		}
-		else if (CP.get_partida().get_modo() == 1) {
-			if (T1.getTacabado()) PH.set_estado(ACABADO);
+		else if (CP.get_partida().get_modo() == 1) { //MODO CRONOMETRO
+			if (T1.acabar()) PH.set_estado(ACABADO);
 		}
-		
+	}
+	
+	public int getFaltanCasillas() {
+		return casillas_faltan;
 	}
 	/**
 	 * Consulta Clase Partida
