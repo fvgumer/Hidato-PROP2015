@@ -88,6 +88,10 @@ public class CtrlTablero {
 		int holes = map.getholes();
 		map.setn_predef((n*n)-holes-c_vacias);
 		generar_buits_alea(c_vacias);
+
+		CtrlRanking rnk = new CtrlRanking();
+		String aux = Integer.toString(max_nombre);
+		rnk.crearRanking(aux);
 	}
 	
 	/**
@@ -222,9 +226,6 @@ public class CtrlTablero {
 		max_nombre = max_nombre + 1;
 		map.set_id(max_nombre);
 		c.guardar(map);
-		CtrlRanking rnk = new CtrlRanking();
-		String aux = Integer.toString(max_nombre);
-		rnk.crearRanking(aux);
 		actu_tab_repo();
 		return max_nombre;
 	}
