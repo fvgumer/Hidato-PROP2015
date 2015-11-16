@@ -51,6 +51,8 @@ public class Tablero extends Tablero_comp implements Serializable{
 		for(int i=0; i<mida; ++i) {
 			for(int j=0; j<mida; ++j) {
 				T2.setValorTauler(i, j, tauler[i][j].getValor());
+				if (tauler[i][j].isPor_defecto())
+					T2.get_casilla(i,j).setPor_defecto(true);
 			}
 		}
 		T2.setSolucion_unica(solucion_unica);
@@ -59,6 +61,19 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	public void set_solucio(Casilla[][] s){
 		solucio = s;
+	}
+	/** Inicialitzacio caselles per defecte
+	 * Especifica les caselles que formen part dels numeros 
+	 * inicials, que estan posats per defete
+	 */
+	public void inicialitzar_caselles() {
+		for(int i=0; i<mida; ++i) {
+			for(int j=0; j<mida; ++j) {
+				if (tauler[i][j].getValor() > 0) {
+					tauler[i][j].setPor_defecto(true);
+				}
+			}
+		}
 	}
 	
 	/**
