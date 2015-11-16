@@ -9,7 +9,7 @@ import JOEL.*;
 public class CtrlPartida {
 	//CONSTANTES
 	Partida_Hidato PH;
-	Partida_Hidato PH2;
+	Partida_Hidato PH2; //SIN JUGAR
 	Tablero T;
 	Jugador J;
 	CtrlGestionPartida c;
