@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 import JOEL.*;
 /**
- * Este driver se encarga del propio proceso de la creación de una Partida eligiendo todos los
+ * Este driver se encarga del propio proceso de la creaciÃ³n de una Partida eligiendo todos los
  * parametros posibles, ya sean nuevos o cargados.
- * Además el mismo introduce la partida a iniciar el Juego y controlando todas las acciones que el
+ * AdemÃ¡s el mismo introduce la partida a iniciar el Juego y controlando todas las acciones que el
  * usuario puede tener para controlar el juego.
  * @author Elena
  *
@@ -33,7 +33,7 @@ public class DriverJugarPartida {
 	/**
 	 * Ejecutar Gestion de Partida y Juego
 	 * @param J Jugador que va a gestionar su partida
-	 * Durante este proceso el Jugador que ha sido identificado previamente y podrá introducir
+	 * Durante este proceso el Jugador que ha sido identificado previamente y podrÃ¡ introducir
 	 * por pantalla todas las caracteristicas necesarias para controlar su partida y su juego
 	 */
 	public void exec(Jugador J) {
@@ -44,12 +44,13 @@ public class DriverJugarPartida {
 		//1. MODO GESTION JUEGO
 		// [0]Decidir cargar
 		// [1]Crear Partida
+		boolean bucle = true;
 		boolean incorrecto = true;
 		while(incorrecto){
-			System.out.println("Escoje la acción que desas:");
+			System.out.println("Escoje la accion que desas:");
 			System.out.println("0.Cargar Partida Anterior");
 			System.out.println("1.Crear Nueva Partida");
-			System.out.println("2.Salir al menú principal");
+			System.out.println("2.Salir al menu principal");
 			opcion = sn.nextInt();
 			switch(opcion) { 
 			case 0:  //Cargar
@@ -57,6 +58,7 @@ public class DriverJugarPartida {
 					
 					if (n == 0) {
 						System.out.println("No tienes ninguna partida en proceso");
+						incorrecto = true;
 						opcion = -1;
 					}
 					else {
@@ -110,7 +112,7 @@ public class DriverJugarPartida {
 							abuj = sn.nextInt();
 						}
 						//#inicials
-						System.out.println("Introduce el nombre de nÃºmeros inicias, rango[2,"+(dim*dim-abuj-1)+"]");
+						System.out.println("Introduce el nombre de numeros iniciales, rango[2,"+(dim*dim-abuj-1)+"]");
 						c_ini = sn.nextInt();
 						while(!control_error(c_ini,(dim*dim)-abuj-1)) {
 							System.out.println("Entrada Incorrecta, repite el proceso");
@@ -129,51 +131,51 @@ public class DriverJugarPartida {
 						modo = sn.nextInt();
 						if (modo == 0) elegido = true;
 					}
-					//____________________________________________________________________________________________
-					CP.anadir_carct_tablero(dim,abuj,c_ini);
-					//2. Elegir tipo tablero
-					System.out.println("Introduce el tipo de tablero para jugar:");
-					System.out.println("0.Tablero Aleatorio");
-					System.out.println("1.Tablero Diseñdo");
-					modo = sn.nextInt();
-					if (modo == 0) {
-						boolean escogido = false;
-						while (!escogido) {
-							CP.generar_Taleatorio(dim,c_ini,abuj,f);
-							System.out.println("¿Deseas escogerlo?");
-							System.out.println("0. Si");
-							System.out.println("1. No");
-							modo = sn.nextInt();
-							if (modo == 0) escogido = true;
-						}
-					}
-					else if (modo == 1) CP.elegir_tdisenado(); // [[NO IMPLEMENTADO]]
-					else {
-						System.out.println("DATO MAL INTRODUCIDO");
-					}
-					//3. Elegir parametros de la partida
-					//_____________________________________________________________________________________________
-					System.out.println("Introduce el modo de la partida");
-					System.out.println("0.Clasico");
-					System.out.println("1.Contrareloj");
-					System.out.println("2.Extremo");
-					modo = sn.nextInt(); 
-					//CONTROL ERROR MODO 0 < modo < 4
-					while(!control_error(modo,4) && !control_error(0,modo)) { 
-						System.out.print("Valor erroneo");
+						//____________________________________________________________________________________________
+						CP.anadir_carct_tablero(dim,abuj,c_ini);
+						//2. Elegir tipo tablero
+						System.out.println("Introduce el tipo de tablero para jugar:");
+						System.out.println("0.Tablero Aleatorio");
+						System.out.println("1.Tablero Disenado");
 						modo = sn.nextInt();
-					}
-					//_____________________________________________________________________________________________
-					//CREACION PARTIDA
-					CP.crear_partida(J,dificultad,modo,dim);
-					break;
+						if (modo == 0) {
+							boolean escogido = false;
+							while (!escogido) {
+								CP.generar_Taleatorio(dim,c_ini,abuj,f);
+								System.out.println("Â¿Deseas escogerlo?");
+								System.out.println("0. Si");
+								System.out.println("1. No");
+								modo = sn.nextInt();
+								if (modo == 0) escogido = true;
+							}
+						}
+						else if (modo == 1) CP.elegir_tdisenado(); // [[NO IMPLEMENTADO]]
+						else if (incorrecto)
+							System.out.println("DATO MAL INTRODUCIDO");
+						//3. Elegir parametros de la partida
+						//_____________________________________________________________________________________________
+						System.out.println("Introduce el modo de la partida");
+						System.out.println("0.Clasico");
+						System.out.println("1.Contrareloj");
+						System.out.println("2.Extremo");
+						modo = sn.nextInt(); 
+						//CONTROL ERROR MODO 0 < modo < 4
+						while(!control_error(modo,4) && !control_error(0,modo)) { 
+							System.out.print("Valor erroneo");
+							modo = sn.nextInt();
+						}
+						//_____________________________________________________________________________________________
+						//CREACION PARTIDA
+						CP.crear_partida(J,dificultad,modo,dim);
+						break;
 			case 2: incorrecto = false; //Salir
+			}
 		}
 		
 		//JUGAR
 		
 		if (opcion == 0 || opcion == 1) {
-			boolean bucle = true;
+			bucle = true;
 			int delay = 0;
 			CJ = new CtrlJugar();
 			CJ.comenzar_partida(CP);
@@ -197,7 +199,6 @@ public class DriverJugarPartida {
 			}
 			else if (modo == 2){
 						delay = 1;
-						System.out.println("HOLA");
 			}
 			else delay = 9999999;
 			CJ.iniciar_tiempo(delay);
@@ -343,7 +344,6 @@ public class DriverJugarPartida {
 			}
 			if (!salir) System.out.println("PARTIDA TERMINADA");
 		}
-		System.out.println("Volviendo a menú principal");
+		System.out.println("Volviendo a menu principal");
 		}
-	}
 }
