@@ -91,6 +91,7 @@ public class CtrlTablero {
 		int holes = map.getholes();
 		map.setn_predef((n*n)-holes-c_vacias);
 		generar_buits_alea(c_vacias);
+		map.inicialitzar_caselles();
 	}
 	
 	/**
