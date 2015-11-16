@@ -86,29 +86,35 @@ public class ClassEstadisticas implements Serializable{
 	}
 	
 	/**
-	 * Actualizadora de la mejor puntuacion obtenida. Dada una puntuación,
+	 * Actualizadora de la mejor puntuacion obtenida. Dada una puntuacion,
 	 * comprueba si es mayor que la mejor puntuacion hasta el momento. 
 	 * En caso afirmativo, actualiza este campo.
-	 * @param p Puntuacion a la que queremos actualizar el parámetro.
+	 * @param p Puntuacion a la que queremos actualizar el parametro.
 	 */
 	public void actualizarPuntuacion(int p){
 		if (p > mejorPuntuacion) mejorPuntuacion = p;
 	}
 
 	/**
-	 * Metodo que añade un tablero a la lista de tableros creados.
-	 * @param t Tablero que queremos añadir.
+	 * Metodo que anade un tablero a la lista de tableros creados.
+	 * @param t Tablero que queremos anadir.
 	 */
 	public void anadirTableroC(String t) {
 		tablerosCreados.add(t);
 	}
 	
 	/**
-	 * Metodo que añade un tablero a la lista de tableros jugados.
-	 * @param t Tablero que queremos añadir.
+	 * Metodo que anade un tablero a la lista de tableros jugados si este no estaba en ella.
+	 * @param t Tablero que queremos anadir.
 	 */
 	public void anadirTableroJ(String t) {
-		tablerosJugados.add(t);
+		boolean b = false;
+		int i = 0;
+		while (i < tablerosJugados.size()) {
+			if (tablerosJugados.get(i) == t) b = false;
+			++i;
+		}
+		if (b) tablerosJugados.add(t);
 	}
 	
 	/**
