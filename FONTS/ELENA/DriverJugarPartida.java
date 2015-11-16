@@ -3,13 +3,25 @@ package ELENA;
 import java.util.Scanner;
 
 import JOEL.*;
-
+/**
+ * Este driver se encarga del propio proceso de la creación de una Partida eligiendo todos los
+ * parametros posibles, ya sean nuevos o cargados.
+ * Además el mismo introduce la partida a iniciar el Juego y controlando todas las acciones que el
+ * usuario puede tener para controlar el juego.
+ * @author Elena
+ *
+ */ 
 public class DriverJugarPartida {
 	private static CtrlPartida CP;
 	private static CtrlJugar CJ;
 	private static Scanner sn;
 	private int dim_max;
 	
+	/**
+	 * Control de error
+	 * @param c1 y c2: Enteros que quieren ser comparados
+	 * @return Devoldera cierto si c1 <= a c2 y falso en el caso contrario 
+	 */
 	private boolean control_error(int c1, int c2) {
 		if (c1 > c2) {
 			return false;
@@ -18,7 +30,12 @@ public class DriverJugarPartida {
 	}
 	
 
-
+	/**
+	 * Ejecutar Gestion de Partida y Juego
+	 * @param J Jugador que va a gestionar su partida
+	 * Durante este proceso el Jugador que ha sido identificado previamente y podrá introducir
+	 * por pantalla todas las caracteristicas necesarias para controlar su partida y su juego
+	 */
 	public void exec(Jugador J) {
 		sn = new Scanner(System.in);
 		CP = new CtrlPartida();
