@@ -238,6 +238,7 @@ public class CtrlTablero {
 	public boolean cargar(int n) {
 		boolean b = true;
 		map = c.cargar(n,b);
+		if (map == null) b = false;
 		return b;
 	}
 	
