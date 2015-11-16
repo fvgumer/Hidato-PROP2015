@@ -3,16 +3,36 @@ package BELEN;
 import java.util.Scanner;
 import JOEL.Jugador;
 
+/**
+ * Este driver gestiona las consultas de estadisticas (tanto del jugador activo 
+ * como de cualquier otro jugador) asi como de los rankings de cada tablero 
+ * existente en la base de datos.
+ * @author Belen San Martin
+ */
+
 public class DriverEstadisticas {
 
 	private Scanner scan;
-	private CtrlEstadisticas CE = new CtrlEstadisticas();
-	private CtrlRanking CR = new CtrlRanking();
+	//Para obtener los datos introducidos por pantalla por el actor.
 	
+	private CtrlEstadisticas CE = new CtrlEstadisticas();
+	//Instancia del controlador de estadisticas.
+	
+	private CtrlRanking CR = new CtrlRanking();
+	//Instancia del controlador de ranking.
+	
+	/**
+	 * Creadora por defecto de la clase.
+	 */
 	public DriverEstadisticas() {
 		scan = new Scanner(System.in);
 	}
 	
+	/**
+	 * Operacion principal de la clase. Ofrece distintas operaciones de consulta al actor
+	 * y las gestiona.
+	 * @param jActivo Jugador activo. Es util para mostrar las estadisticas personales del actor.
+	 */
 	public void exec(Jugador jActivo) {
 		int ex = 1;
 		while (ex == 1) {
@@ -42,7 +62,7 @@ public class DriverEstadisticas {
 					System.out.print("Introduce el numero de posiciones que quieres ver.\n");
 					int n = scan.nextInt();
 					scan.nextLine();
-					if (CR.cargarRanking(tablero)) CR.getTop(n);
+					if (CR.cargarRanking(tablero)) CR.getTop(tablero,n);
 					else System.out.print("El tablero no existe.\n");
 					break;
 				case 4: 
@@ -54,4 +74,5 @@ public class DriverEstadisticas {
 			}
 		}
 	}
+	
 }

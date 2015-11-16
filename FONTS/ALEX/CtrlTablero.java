@@ -77,6 +77,7 @@ public class CtrlTablero {
 		boolean b = a.generador(map, start[0], start[1],1);
 		while (b == false) {
 			map.a_zero(f);
+			map.setholes(c_negras);
 			map.setfinal_num((n*n)-c_negras);
 			omplir_forats_alea(c_negras);
 			setStart_alea();
@@ -84,6 +85,8 @@ public class CtrlTablero {
 			b = a.generador(map, start[0], start[1],1);
 		}
 		map.crea_solucion();
+		int holes = map.getholes();
+		map.setn_predef((n*n)-holes-c_vacias);
 		generar_buits_alea(c_vacias);
 	}
 	
@@ -127,11 +130,9 @@ public class CtrlTablero {
 	}
 	
 	/**
-	 * Se determina si el tablero map tiene solucion, y en caso de que la tenga si la solucion es
-	 * unica
-	 * @param unica Este parametro de salida indica, en caso de que el tablero de la clase tenga
+	 * Se determina si el tablero map tiene solucion.
 	 * solucion, si la solucion es unica
-	 * @return Se retorna true si el mapa de la clase tiene solucion
+	 * @return Se retorna true si el mapa de la clase tiene como minimo una solucion
 	 */
 	public boolean validar() {
 		int[] start;
@@ -185,6 +186,12 @@ public class CtrlTablero {
 	}
 	
 	/**
+	 * Metodo que asigna el numero de casillas iniciales de un tablero
+	 * @param n Indica la cantidad de casillas
+	 */
+	public void setn_predef(int n) {map.setn_predef(n);}
+	
+	/**
 	 * Funcion que permite colocar "forats" en la posicion (x,y) de map. Si la posicion no
 	 * es valida se retorna false y la variable map no sufre ningun cambio.
 	 * @param x Indica la fila
@@ -199,7 +206,7 @@ public class CtrlTablero {
 	
 	/**
 	   *Retorna el tablero de la clase
-	   *@param t es el tablero que se ha devuelto
+	   *@return el tablero que se ha devuelto
 	   */
 	public Tablero asociar_tablero() {
 		return this.map;
@@ -233,6 +240,9 @@ public class CtrlTablero {
 		return b;
 	}
 	
+	/**
+	 * Se muestran por pantalla el nombre de todos los tableros mostrados por pantalla
+	 */
 	public void muestra_repo_tab() {
 		for(int i = 0; i < tableros_repo.length; ++i) {
 			System.out.println(tableros_repo[i]);
@@ -249,6 +259,10 @@ public class CtrlTablero {
 		String aux = Integer.toString(max_nombre+1);
 		rnk.eliminarRanking(aux);
 		actu_tab_repo();
+	}
+	
+	public void asignar_dificultad() {
+		map.calcular_dificultad();
 	}
 	
 	/**

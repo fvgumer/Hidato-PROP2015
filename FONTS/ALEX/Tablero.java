@@ -2,11 +2,11 @@ package ALEX;
 
 import G45.*;
 
+
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
- * Esta clase hereda las funcionalidades de Tablero_comp. A�adimos nuevos parametros y metodos
+ * Esta clase hereda las funcionalidades de Tablero_comp. Aï¿½adimos nuevos parametros y metodos
  * en la clase por tal de que el tablero se adapte a un tablero del juego Hidato.
  * @author Alex
  *
@@ -22,7 +22,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	   * start y end contienen las posiciones de principio y fin respectivamente
 	   * 	
 	   */
-	private int id_tab;
+	private int id_tab, dif;
 	private Casilla[][] solucio; 
 	private int holes, n_predef, final_num;
 	private int[] start, end;
@@ -45,6 +45,23 @@ public class Tablero extends Tablero_comp implements Serializable{
 		solucion_unica=false;
 		start = end = new int[2];
 		
+	}
+	
+	public Tablero copia_t() {
+		Tablero T2 = new Tablero(mida);
+		T2.setholes(holes);
+		T2.set_solucio(solucio);
+		for(int i=0; i<mida; ++i) {
+			for(int j=0; j<mida; ++j) {
+				T2.setValorTauler(i, j, tauler[i][j].getValor());
+			}
+		}
+		T2.setSolucion_unica(solucion_unica);
+		return T2;
+	}
+	
+	public void set_solucio(Casilla[][] s){
+		solucio = s;
 	}
 	
 	/**
@@ -71,11 +88,45 @@ public class Tablero extends Tablero_comp implements Serializable{
 	}
 	
 	/**
+	 * Esta funcion determina la dificultad del tablero en funcion de las dimensiones del
+	 * tablero, las casillas vacias y las casillas negras.
+	 */
+	public void calcular_dificultad() {
+		dif = 0;
+		if(mida <= 5) dif += 5;
+		else if(mida <= 8) dif += 10;
+		else dif += 15;
+		int aux = (mida*mida)/3;
+		if(holes < aux) dif += 15;
+		else if (holes < 2*aux) dif += 10;
+		else dif += 5;
+		if(n_predef < aux) dif += 15;
+		else if (n_predef < 2*aux) dif += 10;
+		else dif += 5;
+	}
+	
+	/**
+	 * Se retorna la dificultad del tablero
+	 * @return Representa la dificultad
+	 */
+	public int get_dificultad() {return dif;}
+	
+	/**
 	   * Se configura el identificador del tablero segun el valor de n
 	   * @param n Indica el valor del nuevo identificador del tablero
 	   */
 	public void set_id(int n) {
 		id_tab = n;
+	}
+	/**
+	 * 
+	 * @param x Entero mayor a 0 y menos a dim-1 del parametro implícito
+	 * @param y Entero mayor a 0 y menos a dim-1 del parametro implícito
+	 * @return Devuelve el objeto casilla que se encuentra en la posición x,y 
+	 * del tablero del parametro implícito.
+	 */
+	public Casilla get_casilla(int x, int y){
+		return (Casilla) tauler[x][y];
 	}
 	
 	/**
