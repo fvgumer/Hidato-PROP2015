@@ -1,11 +1,10 @@
-package DOMINIO.CONTROLADORES;
+package ELENA;
 
 import java.io.File;
-import DOMINIO.CLASES.Jugador;
-import DOMINIO.CLASES.Partida_Hidato;
-import DOMINIO.CLASES.Partida_comp;
-import DOMINIO.CLASES.Tablero;
-import PERSISTENCIA.CtrlGestionPartida;
+
+import ALEX.*;
+import G45.Partida_comp;
+import JOEL.*;
 
 public class CtrlPartida {
 	//CONSTANTES
@@ -37,7 +36,7 @@ public class CtrlPartida {
 	
 	/**
 	 * Consulta partida
-	 * @return Devuelve el objeto Partida del parametro implÃ­cito.
+	 * @return Devuelve el objeto Partida del parametro implÃƒÂ­cito.
 	 */
 	public Partida_Hidato get_partida() {
 		return PH;
@@ -98,11 +97,11 @@ public class CtrlPartida {
 
 	
 	/**
-	 * Añadir caracteristicas de la partida
+	 * AÃ±adir caracteristicas de la partida
 	 * @param dim Entero que indica las dimensiones del tablero de la partida.
 	 * @param forats Entero que indica el numero de casillas vacias del tablero.
 	 * @param n_ini Entero que indica el numero de casillas iniciales que contienen
-	 * un número.
+	 * un nÃºmero.
 	 */
 	public void anadir_carct_tablero(int dim, int forats, int n_ini){
 		T = new Tablero(dim);
@@ -113,9 +112,9 @@ public class CtrlPartida {
 	/**
 	 * Generar tablero aleatorio
 	 * @param dim Entero que indica las dimensiones del tablero de la partida.
-	 * @param c_ini Entero que indica el nÃºmero de casillas iniciales que contienen
-	 * un nÃºmero.
-	 * @param forats Entero que indica el nÃºmero de casillas vacÃ­as del tablero
+	 * @param c_ini Entero que indica el nÃƒÂºmero de casillas iniciales que contienen
+	 * un nÃƒÂºmero.
+	 * @param forats Entero que indica el nÃƒÂºmero de casillas vacÃƒÂ­as del tablero
 	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
 	 */
 	public void generar_Taleatorio(int dim, int c_ini, int forats, int f){
@@ -126,9 +125,9 @@ public class CtrlPartida {
 	}
 
 	/**
-	 * Elegir tablero diseÃ±ado
-	 * A partir de los parametros impÃ­citos del objeto partida se substraen
-	 * de los ficheros los tableros que se ajustan mas a la peticiÃ³n del jugador
+	 * Elegir tablero diseÃƒÂ±ado
+	 * A partir de los parametros impÃƒÂ­citos del objeto partida se substraen
+	 * de los ficheros los tableros que se ajustan mas a la peticiÃƒÂ³n del jugador
 	 */
 	/*__________NO_IMPLEMENTADO_________________*/
 	public void elegir_tdisenado(){
@@ -143,9 +142,9 @@ public class CtrlPartida {
 	  * A partir de los parametros de entrada se hace un calculo para estimar la 
 	  * dificultad del tablero.
 	  * @param dim Entero dentro de las dimensiones validas del tipo de tablero
-	  * @param abuj Entero valido que identifica el número de casillas vacias
+	  * @param abuj Entero valido que identifica el nÃºmero de casillas vacias
 	  * que contiene el tablero.
-	  * @param c_ini Entero valido que identifica el número de casillas inciales
+	  * @param c_ini Entero valido que identifica el nÃºmero de casillas inciales
 	  * que contiene el tablero.
 	  * @return Retorna un entero que identifica la dificultad del tablero
 	  */
