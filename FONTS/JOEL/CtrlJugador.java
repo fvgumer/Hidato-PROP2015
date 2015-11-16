@@ -2,6 +2,12 @@ package JOEL;
 
 import BELEN.CtrlEstadisticas;
 
+/**
+ * Esta clase es el controlador de dominio de la clase Jugador. Implementa los metodos
+ * de logueo y de interacción con el controlador de gestión. 
+ * @author Joel Codina
+ *
+ */
 public class CtrlJugador {
 	public Jugador J;
 	private final CtrlGestionUsuario Gestor = new CtrlGestionUsuario();
