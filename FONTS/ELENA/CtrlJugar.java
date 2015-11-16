@@ -184,9 +184,10 @@ public class CtrlJugar {
 		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
 				//1. INTRODUCIR CASILLA
-				PH.get_Tablero().setValorTauler(x, y, valor);
-				if (valor == -1) System.out.println("Posición incorrecta");
+				int v = PH.get_Tablero().getValorTauler(x, y);
+				if (v == -1 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) System.out.println("Posición incorrecta");
 				else {
+					PH.get_Tablero().setValorTauler(x, y,valor);
 					--casillas_faltan;
 					System.out.println("Se ha introducido el valor: "+valor+" en la posicion ("+x+","+y+")");
 				}
@@ -204,7 +205,7 @@ public class CtrlJugar {
 				//1. QUITAR CASILLA
 				int valor = 0;
 				PH.get_Tablero().setValorTauler(x, y, valor);
-				if (valor == -1) System.out.println("Posición incorrecta");
+				if (valor == -1 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) System.out.println("Posición incorrecta");
 				else {
 					System.out.println("Se ha quitado la casilla: ("+x+","+y+")");
 					++casillas_faltan;
@@ -324,4 +325,3 @@ public class CtrlJugar {
 		return T1;
 	}
 }
-
