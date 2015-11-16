@@ -1,6 +1,7 @@
 package ELENA;
 import ALEX.*;
 import BELEN.*;
+import JOEL.CtrlGestionTablero;
 
 import java.util.ArrayList;
 
@@ -193,6 +194,30 @@ public class CtrlJugar {
 	}
 	/*__________NO_IMPLEMENTADO_________________*/
 	public void guardar_partida(){
+		
+		private void actu_tab_repo() {
+			tableros_repo = c.consultar_nomstableros();
+			for(int i=0; i<tableros_repo.length; ++i) {
+				String auxs = tableros_repo[i];
+				int aux = Integer.parseInt((auxs.substring(0,auxs.length()-4)));
+				if(aux > max_nombre) max_nombre = aux;
+			}
+		}
+		public int guardar() {
+			max_nombre = max_nombre + 1;
+			map.set_id(max_nombre);
+			c.guardar(map);
+			CtrlRanking rnk = new CtrlRanking();
+			String aux = Integer.toString(max_nombre);
+			rnk.crearRanking(aux);
+			actu_tab_repo();
+			return max_nombre;
+		}
+		public int ini_guarda_carga() {
+			c = new CtrlGestionTablero();
+			actu_tab_repo();
+			return max_nombre;
+		}
 		
 	}
 	
