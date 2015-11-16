@@ -86,9 +86,6 @@ public class Tablero extends Tablero_comp implements Serializable{
 		if(n_predef < aux) dif += 15;
 		else if (n_predef < 2*aux) dif += 10;
 		else dif += 5;
-		System.out.println("te n holes :" + holes);
-		System.out.println("te n c_ini :" + n_predef);
-		System.out.println("te aqesta dificultat :" + dif);
 	}
 	
 	/**

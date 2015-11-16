@@ -22,7 +22,7 @@ public class CtrlRanking {
 	/**
 	 * Creadora por defecto de la clase
 	 */
-	CtrlRanking() {
+	public CtrlRanking() {
 		GP = new CtrlGestionRanking();
 	}
 	
