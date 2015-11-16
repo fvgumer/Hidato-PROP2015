@@ -25,7 +25,7 @@ public class ClassEstadisticas implements Serializable{
 	private int mejorPuntuacion;
 	//Mejor puntuacion obtenida en una partida.
 	
-	private ArrayList<String> tablerosCreados;
+	//private ArrayList<String> tablerosCreados;
 	//Listado de todos los tableros creados por un usuario.
 
 	private ArrayList<String> tablerosJugados;
@@ -40,7 +40,7 @@ public class ClassEstadisticas implements Serializable{
 	public ClassEstadisticas(String user){
 		this.user = user;
 		segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
-		tablerosCreados = new ArrayList<String>();
+		//tablerosCreados = new ArrayList<String>();
 		tablerosJugados = new ArrayList<String>();
 	}
 	
@@ -99,9 +99,9 @@ public class ClassEstadisticas implements Serializable{
 	 * Metodo que anade un tablero a la lista de tableros creados.
 	 * @param t Tablero que queremos anadir.
 	 */
-	public void anadirTableroC(String t) {
+	/* public void anadirTableroC(String t) {
 		tablerosCreados.add(t);
-	}
+	} */
 	
 	/**
 	 * Metodo que anade un tablero a la lista de tableros jugados si este no estaba en ella.
@@ -154,9 +154,9 @@ public class ClassEstadisticas implements Serializable{
 	/**
 	 * Metodo que muestra por pantalla el listado de tableros jugados.
 	 */
-	public void mostrarTablerosCreados() {
+	/* public void mostrarTablerosCreados() {
 		System.out.format("%d tableros creados:\n",tablerosCreados.size());
 		for (int i = 0; i < tablerosCreados.size(); ++i) 
 			System.out.format("%d\n",tablerosCreados.get(i));
-	}
+	} */
 }

@@ -5,11 +5,18 @@ import JOEL.*;
 
 import java.util.ArrayList;
 
-
-
+/**
+ * Este controlador contiene los parametros principales para poder gestionar una partida que son, la clase Partida_Hidato y 
+ * temporizador. Ademas cuenta con la conexión de los controladores de GestionPartida y Ranking para poder llevar y traer todos
+ * los datos de las partidas a disco. Y por último varior parametros que ayudan a llevar a cabo el objetivo de este controlador
+ * que es permitir todos los tipos de acciones que se permiten a la hora de jugar una Partida_Hidato
+ * @author Elena
+ *
+ */ 
 public class CtrlJugar {
 	private CtrlRanking CR = new CtrlRanking();
 	private CtrlEstadisticas CE = new CtrlEstadisticas();
+	private Partida_Hidato PH;
 	public static int PAUSE = 0;
 	public static int GAME = 1;
 	public static int ACABADO = 2;
@@ -19,14 +26,27 @@ public class CtrlJugar {
 	private int max_nombre;
 	int num_p;
 	Temporizador T1;
-	private CtrlGestionPartida c = new CtrlGestionPartida();
-	/** Pre:
+	CtrlGestionPartida c;
+	
+	/**Comenzar Partida
+	 * @param P Controlador que contiene toda la información sobre la partida que se va
+	 * a comenza a jugar
+	 * Se introduce el objeto partida dentro del parametro implícito y se hace un cálculo de
+	 * cuantas casillas faltan para terminar la partida.
+	 */
+	public void comenzar_partida(CtrlPartida P) {
+		PH = P.get_partida();
+		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
+				- PH.get_tablero().getn_predef();
+	}
+	
+	/** Pre: Busqueda de candidatos
 	 * @param x,y son dos enteros que hacen referencia a unas coordenadas vÃ¡lidas del tablero 
 	 * del parametro impÃ­cito.
 	 * @forats Entero que indica el numero de                                                                                                                                                                
 	 * */
 	public ArrayList<Integer> bus_cantidats(int x, int y, int x1,
-					int y1, int forats, boolean[] posats){
+		int y1, int forats, boolean[] posats){
 		Algorithm a = new Algorithm();
 		Tablero T_aux = PH.get_Tablero().copia_t();
 		boolean p;
@@ -44,7 +64,15 @@ public class CtrlJugar {
 		return Posibles;
 	}
 
-		public  boolean[] elementos_matriz ()
+	
+	/**
+	 * Elementos que contiene la matriz
+	 * Se hace una búsqueda por todo el tablero para identificar que numeros estan colocado ya dentro
+	 * del tablero mientras se juega la partida
+	 * @return Devuelve un vertor de booleanos donde sera cierta la posicion i, si el valor i+1 esta 
+	 * contenido en el tablero
+	 */
+	public  boolean[] elementos_matriz ()
 	    {
 			boolean[] posibles = new boolean[PH.get_Tablero().getMida()*PH.get_Tablero().getMida()-
 			                 PH.get_Tablero().getholes()];
@@ -62,7 +90,11 @@ public class CtrlJugar {
 			return posibles;
 	    }
 	
-	
+	/** Pre:
+	 * @param x,y son dos enteros que hacen referencia a unas coordenadas vÃ¡lidas del tablero 
+	 * del parametro impÃ­cito.
+	 * @forats Entero que indica el numero de                                                                                                                                                                
+	 * */
 	private void modificar_puntuacion(int punt) {
 		int p = PH.get_puntuacion();
 		if (punt < 0) {
@@ -72,7 +104,12 @@ public class CtrlJugar {
 		else PH.set_puntuacion(p + punt);
 	}
 	
-
+	/**
+	 * Pausar la partida
+	 * Se pone el estado de la partida en pause para no dejar realizar ninguna acción mientras esta así
+	 * y se tapa la pantalla para no poder verla mientras esta la partida congelada. Ademas se pone el
+	 * temporizador en pause
+	 */
 	public void pausar(){
 		if (PH.get_estado() == GAME) {
 			PH.set_estado(PAUSE);
@@ -88,7 +125,11 @@ public class CtrlJugar {
 		//Si ja esta parat no fer res
 		else System.out.println("PARTIDA YA EN PAUSA");
 	}
-	
+	/**
+	 * Reanudar
+	 * Se pone el estado de la partida en juego para poder voler a realizar cualquier acción mientras esta así
+	 * Ademas se pone el temporizador se pone otra vez en activo
+	 */
 	public void reanudar(){
 		if (PH.get_estado() == PAUSE){
 			PH.set_estado(GAME);
@@ -98,6 +139,11 @@ public class CtrlJugar {
 		else System.out.println("PARTIDA YA EN JUEGO");
 	}
 	
+	/**
+	 * PISTA1: Te da la solución de la posición del tablero indicado
+	 * @param x,y Entero que indicar una coordenada del tablero
+	 * El valor de la solución que va en las coordenadas (x,y) se introduce en el tablero
+	 */
 	public void pista1(int x, int y){
 		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
@@ -112,8 +158,13 @@ public class CtrlJugar {
 		
 	}
 
-	/*Pre: x,y es la posicion de memoria donde se quiere mirar sus candidatos. 
-	 * dim, dimensiones del tablero y forats las posiciones no validad*/
+	/**
+	 * PISTA 2: Candidatos de una casilla
+	 * Te dan los posibles valores validos de la casilla indicada y
+	 * salen por pantalla
+	 * @param x,y Son dos enteros que hacen referencia a una casilla
+	 * del tablero del parametro implícito
+	 */
 	public void pista2(int x, int y){
 		if (PH.get_estado() == GAME && T1.getTapar()) {
 			modificar_puntuacion(-5);
@@ -121,7 +172,6 @@ public class CtrlJugar {
 			int f = PH.get_Tablero().getholes();
 			//Busca  los elementos que ya estan en el tablero
 			boolean[] posibles = elementos_matriz();
-			System.out.println("POSICION 1:_"+x1+" "+y1);
 			//Se guardan los enteros candidatos
 			ArrayList<Integer> can = bus_cantidats(x, y, x1, y1, f, posibles);
 			//Salen por pantalla
@@ -133,9 +183,14 @@ public class CtrlJugar {
 		}
 		else System.out.println("NO PUEDES JUGAR");
 	}
-	/*Post:  Sale por pantalla la lista de enteros que pueden ponerse en 
-	 * la posicion indicada en la pre*/
-	
+
+	/**
+	 * PISTA 3: Candidatos de todas las posiciones vacías del tablero
+	 * @param dim dimensiones del tablero
+	 * @param forats Casillas vacias del tablero
+	 * Sale por pantalla las listas de candidatos de todas las posiciones vacias
+	 * a las que se les ha de introducir un valor
+	 */
 	public void pista3(int dim, int forats){
 		if (PH.get_estado() == GAME && T1.getTapar()) {
 			modificar_puntuacion(-10);
@@ -157,7 +212,11 @@ public class CtrlJugar {
 		}
 		else System.out.println("NO PUEDES JUGAR");
 	}
-
+	/**Rendirse
+	 * 
+	 * Se acaba la partida, se puestra la solucion por pantalla 
+	 * la puntuación pasa a ser 0, y no se puede guardar en el ranking
+	 */
 	public void rendirse(){
 		PH.set_puntuacion(0);
 		//NO GUARDAR PARTIDA (NO IMPLEMENTADO)
@@ -168,7 +227,12 @@ public class CtrlJugar {
 		
 	}
 	
-	
+	/**
+	 * Guardar la partida
+	 * Se le asigna un ID valido para introducir en el disco y se llama a 
+	 * una función de persistencia que permite guardar toda la información
+	 * de partida en el disco.
+	 */
 	public void guardar_partida(){
 	//Asignarle ID	
 		System.out.println("MI ID ASIGNADO ES:"+PH.get_ID());
@@ -179,7 +243,14 @@ public class CtrlJugar {
 		}
 		c.guardar(PH);
 	}
-	
+
+	/**
+	 * Introducir Casilla
+	 * @param x,y Enteros que hacen referencia a una posición del parametros implícito
+	 * @param valor Entero tal que 1 <= valor <= dim*dim
+	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implícito
+	 * si la posición es valida.
+	 */
 	public void introducirCasilla(int x, int y,int valor){
 		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
@@ -199,6 +270,11 @@ public class CtrlJugar {
 		else System.out.println("NO PUEDES JUGAR");
 	}
 	
+	/**
+	 * Quitar Casilla
+	 * @param x,y Enteros que hacen referencia a una posición del parametros implícito
+	 * Se extrae el valor de la posición del tablero (x,y) si es una posición válida
+	 */
 	public void quitar_casilla(int x, int y){
 		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
@@ -218,6 +294,12 @@ public class CtrlJugar {
 		else System.out.println("NO PUEDES JUGAR");
 	}
 	
+	/**
+	 * Comprobar Casilla
+	 *@param x,y Enteros que hacen referencia a una posición del parametros implícito
+	 *que debe apuntar a una casilla que previamente hemos introducido un valor en el juego.
+	 *Nos introduce por pantalla si en esa posición hemos introducido el valor correcto o no
+	 */
 	public void comprobar_casilla(int x, int y){
 		if (PH.get_estado() == GAME && T1.getTapar()) {
 			if (PH.casilla_posible(x,y)) {
@@ -231,35 +313,50 @@ public class CtrlJugar {
 		}
 		else System.out.println("NO PUEDES JUGAR");
 	}
-	
+	/**
+	 * Imprimir tablero
+	 */
 	public void print() {
 		PH.print_tablero();
 	}
+	/**
+	 * Imprimir puntuacion de la partida
+	 * Pasa por consola la puntuación actual de la partida
+	 */
 	public void print_puntuacion(){
 		int p = PH.get_puntuacion();
 		System.out.println("Puntuacion Actual: "+p);
 	}
 	
-	
-	public void iniciar_tiempo(int seg) {
-		T1 = new Temporizador(0,0,seg,PH.get_modo());
+	/**
+	 * Iniciar Temporizado
+	 * @param min entero que sera mayor a 0 si el temporizado
+	 * tiene alguna condición durante el juego.
+	 * Se inicializa el temporizador y se pone el estado de juego en activvo
+	 */
+	public void iniciar_tiempo(int min) {
+		T1 = new Temporizador(0,0,min,PH.get_modo());
 		T1.iniciar();
 		PH.set_estado(GAME);
 		parar = false;
 	}
-	public void comenzar_partida(CtrlPartida P) {
-		PH = P.get_partida();
-		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
-				- PH.get_tablero().getn_predef();
-	}
-	
+
+	/**Reiniciar la partida
+	 * Se reinicia el tablero, el temporizador y su puntuación para poder volver a comenzar
+	 * @param P Controlador que contiene toda las configuraciones de la partida inicial
+	 */
 	public void reestart(CtrlPartida P) {
 		PH = P.get_partida_inicial();
 		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
 				- PH.get_tablero().getn_predef();
 		
 	}
-	
+	/**
+	 * Resolver partida
+	 * Comprobamos si el tablero que tenemos en ese momento es correcto respecto a la solución 
+	 * propuesta. Si es así se llama al controlador de persistencia de Ranking para guardar las 
+	 * puntuaciones
+	 */
 	public void resolver_partida(){
 		int i = 0;
 		int d = PH.get_Tablero().getn_predef();
@@ -294,15 +391,32 @@ public class CtrlJugar {
 		else System.out.println("SOLUCIÓN INCORRECTA");
 		parar = false;
 	}
+	/**
+	 * Consulta del tiempo
+	 * @return Nos retorna los segundo en los que estamos en la partida
+	 */
 	public void get_tiempo() {
 		int min = T1.obtMinuto();
 		int seg = T1.obtSegundo();
 		System.out.println("Llevas "+min+"min(s) y "+seg+"seg(s).");
 	}
+	/**
+	 * Consulta estado de la partida
+	 * @return Nos retorna un entero que identifica el estado en el 
+	 * que se encuentra la partida que estamos jugando
+	 */
 	public int get_estado(){
 		return PH.get_estado();
 	}
-	
+	/**
+	 * Actualiza el estado de la partida
+	 * @param CP Controlador que contiene todas las propiedades de la configuración
+	 * de la partida a la que estamos jugando.
+	 * Puede realizar diversas acciones. 
+	 * Re-inicializar el tablero de la partida si estamos en el modelo de juego Extreme
+	 * Acabar la partida si estamos en el modelo de juego Contrareloj y se ha acabado el tiempo
+	 * de juego.
+	 */
 	public void estado_partida( CtrlPartida CP) {
 		System.out.println("Quedan "+casillas_faltan+ " por poner.");
 		
@@ -318,11 +432,16 @@ public class CtrlJugar {
 		}
 		
 	}
-	
+	/**
+	 * Consulta Clase Partida
+	 * @return Devuelve el objeto de la clase Partida del parametro implícito
+	 */
 	public Partida_Hidato get_PartidaHidato(){
 		return PH;
 	}
-	
+	/** Consulta Clase Temporizador
+	 * @return Nos devuelve el objeto Temporizador de nuestra clase partida
+	 */
 	public Temporizador get_timer(){
 		return T1;
 	}
