@@ -40,7 +40,7 @@ public class ClassRanking implements Serializable {
 	}
 	
 	/**
-	 * Consultora del tamaño del ranking.
+	 * Consultora del tamano del ranking.
 	 * @return Numero de posiciones de dicho ranking.
 	 */
 	public int size() {
@@ -58,10 +58,10 @@ public class ClassRanking implements Serializable {
 	}
 	
 	/**
-	 * Metodo que, dado un resultado de una partida y un entero n, añade
+	 * Metodo que, dado un resultado de una partida y un entero n, anade
 	 * dicho resultado en la posicion n del ranking.
-	 * @param pos Posicion en la que queremos añadir el nuevo resultado.
-	 * @param res Resultado que queremos añadir al ranking.
+	 * @param pos Posicion en la que queremos anadir el nuevo resultado.
+	 * @param res Resultado que queremos anadir al ranking.
 	 */
 	public void anadirResultado(int pos, ClassResultado res) {
 		ranking.add(pos,res);
