@@ -1,4 +1,4 @@
-package DOMINIO.CLASES;
+package ELENA;
 import javax.swing.Timer; 
 import java.awt.event.*; 
 import java.io.Serializable; 
@@ -15,9 +15,21 @@ public class Temporizador implements ActionListener,Serializable {
 	private boolean congelado=false;  
 	private boolean tacabado=false;
 	private boolean tapar = false;
+	
+	ActionListener temps_maxim = new ActionListener() {
+	      public void actionPerformed(ActionEvent evt) {
+	    		  timer.stop();
+	      }
+	  };
+	
+	public void timer_max(){
+		timer = new Timer(30000,temps_maxim);
+	}
+	
+	
 	public Temporizador(){ 
 	timer=new Timer(1000,this); 
-} 
+	} 
 
 	public Temporizador(int minuto,int segundo,int min_max, int modo){ 
 		timer=new Timer(1000,this); 
@@ -30,8 +42,8 @@ public class Temporizador implements ActionListener,Serializable {
 		}
 		else tapar = true;
 	
-	} 
-
+	}
+	
 	public void estMinuto(int min){ 
 		this.minutos=min; 
 	} 
@@ -81,6 +93,10 @@ public class Temporizador implements ActionListener,Serializable {
 	public void setTapar(int i) {
 		if (i == 0) tapar = false;
 		else tapar = true;
+	}
+	
+	public void actionPerformed2(ActionEvent e1) {
+		
 	}
 	
 	//Se Actualiza cada segundo
