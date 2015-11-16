@@ -130,11 +130,9 @@ public class CtrlTablero {
 	}
 	
 	/**
-	 * Se determina si el tablero map tiene solucion, y en caso de que la tenga si la solucion es
-	 * unica
-	 * @param unica Este parametro de salida indica, en caso de que el tablero de la clase tenga
+	 * Se determina si el tablero map tiene solucion.
 	 * solucion, si la solucion es unica
-	 * @return Se retorna true si el mapa de la clase tiene solucion
+	 * @return Se retorna true si el mapa de la clase tiene como minimo una solucion
 	 */
 	public boolean validar() {
 		int[] start;
@@ -208,7 +206,7 @@ public class CtrlTablero {
 	
 	/**
 	   *Retorna el tablero de la clase
-	   *@param t es el tablero que se ha devuelto
+	   *@return el tablero que se ha devuelto
 	   */
 	public Tablero asociar_tablero() {
 		return this.map;
