@@ -8,13 +8,72 @@ import JOEL.*;
 
 public class CtrlPartida {
 	//CONSTANTES
-	Partida_Hidato PH;
-	Partida_Hidato PH2; //SIN JUGAR
-	Tablero T;
-	Jugador J;
-	CtrlGestionPartida c;
-	String[] ids;
-
+	private Partida_Hidato PH;
+	private Partida_Hidato PH2; //SIN JUGAR
+	private Tablero T;
+	private Jugador J;
+	private CtrlGestionPartida c;
+	private String[] ids;
+	
+	
+	/**
+	 * Crear Partida
+	 * @param U Jugador previamente identificado
+	 * @param dificultad Entero que identifica la dificultad de la partida.
+	 * @param modo Entero que identifica el modo de juego de la partida.
+	 * @param dim Entero que hace referencia a las dimensiones del tablero 
+	 * de la partida.
+	 */
+	public void crear_partida(Jugador U, int dificultad,int modo, int dim){
+		int ID = 0; //CALCULAR ID
+		PH = new Partida_Hidato(T,U,ID);
+		PH.set_dificultad(dificultad);
+		PH.set_modo(modo);
+		PH2 = new Partida_Hidato(T,U,ID);
+		PH2.set_dificultad(dificultad);
+		PH2.set_modo(modo);
+	}
+	
+	/**
+	 * Consulta partida
+	 * @return Devuelve el objeto Partida del parametro implÃ­cito.
+	 */
+	public Partida_Hidato get_partida() {
+		return PH;
+	}
+	
+	/**
+	 * Consulta partida sin jugar
+	 * @return Devuelve el objeto Partida del parametro implicito que 
+	 * contiene el tablero sin haber comenzado a jugar.
+	 */
+	public Partida_Hidato get_partida_inicial() {
+		return PH2;
+	}
+	
+	/**
+	 * Cargar Partida
+	 * A partir de un id previamente elegido se carga de 
+	 * persistencia para poder jugar.
+	 * 
+	 * @param id Entero valido que identifica a la partida
+	 * que se desea cargar
+	 */
+	public void Cargar_Partida_Hidato(String id){
+		int i = Integer.parseInt(id);
+		c.cargar(PH.getUsuario().consultar_nombre(), i);
+		
+		
+	}
+	
+	
+	
+	/**
+	 * Consulta de ID
+	 * @param id Entero > 0
+	 * @return Devuelve cierto si existe una partida que se identifica con
+	 * id guardado en el disco.
+	 */
 	public boolean existe_id(String id) {
 		int i = 0;
 		while (i < ids.length){
@@ -23,6 +82,8 @@ public class CtrlPartida {
 		}
 		return false;
 	}
+	
+	
 	public int n_partidasproceso(String NomJ){
 		c = new CtrlGestionPartida();
 		int num = c.consultar_numeropartidas(NomJ);
@@ -33,19 +94,13 @@ public class CtrlPartida {
 			ids = c.lista_partidas(NomJ);
 		return ids;
 	}
-	
-	public void Cargar_Partida_Hidato(String id){
-		int i = Integer.parseInt(id);
-		c.cargar(PH.getUsuario().consultar_nombre(), i);
-		
-		
-	}
+
 	
 	/**
-	 * AÃ±adir caracterÃ­sticas de la partida
+	 * Añadir caracteristicas de la partida
 	 * @param dim Entero que indica las dimensiones del tablero de la partida.
-	 * @param forats Entero que indica el nÃºmero de casillas vacÃ­as del tablero.
-	 * @param n_ini Entero que indica el nÃºmero de casillas iniciales que contienen
+	 * @param forats Entero que indica el numero de casillas vacias del tablero.
+	 * @param n_ini Entero que indica el numero de casillas iniciales que contienen
 	 * un número.
 	 */
 	public void anadir_carct_tablero(int dim, int forats, int n_ini){
@@ -79,24 +134,20 @@ public class CtrlPartida {
 		//Sacar TOP5 de los mas parecidos
 		
 	}
-	/**
-	 * Crear Partida
-	 * @param U Jugador previamente identificado
-	 * @param dificultad Entero que identifica la dificultad de la partida.
-	 * @param modo Entero que identifica el modo de juego de la partida.
-	 * @param dim Entero que hace referencia a las dimensiones del tablero 
-	 * de la partida.
-	 */
-	public void crear_partida(Jugador U, int dificultad,int modo, int dim){
-		int ID = 0; //CALCULAR ID
-		PH = new Partida_Hidato(T,U,ID);
-		PH.set_dificultad(dificultad);
-		PH.set_modo(modo);
-		PH2 = new Partida_Hidato(T,U,ID);
-		PH2.set_dificultad(dificultad);
-		PH2.set_modo(modo);
-	}
+
+
 	
+	 /**
+	  * Calcular dificultad del tablero
+	  * A partir de los parametros de entrada se hace un calculo para estimar la 
+	  * dificultad del tablero.
+	  * @param dim Entero dentro de las dimensiones validas del tipo de tablero
+	  * @param abuj Entero valido que identifica el número de casillas vacias
+	  * que contiene el tablero.
+	  * @param c_ini Entero valido que identifica el número de casillas inciales
+	  * que contiene el tablero.
+	  * @return Retorna un entero que identifica la dificultad del tablero
+	  */
 	public int calcular_dificultad(int dim, int abuj,int c_ini) {
 		double p1,p2,p3;
 		//Segun dimension
@@ -112,22 +163,13 @@ public class CtrlPartida {
 		else if (c_ini > (double)(dim*dim)/3 && c_ini <= (double)(dim*dim*2)/3) p3 = 10;
 		else p3 = 5;
 		
-		p1 = (p1*0.2+p2*0.3+p3*0.4);
+		p1 = (p1*0.2+p2*0.3+p3*0.5);
 		if (p1 <= 5) return 0;
 		else if (p1 <= 10) return 1;
 		else return 2;
 	}
 	
 	
-	/**
-	 * Consulta partida
-	 * @return Devuelve el objeto Partida del parametro implÃ­cito.
-	 */
-	public Partida_Hidato get_partida() {
-		return PH;
-	}
-	public Partida_Hidato get_partida_inicial() {
-		return PH2;
-	}
+
 
 }
