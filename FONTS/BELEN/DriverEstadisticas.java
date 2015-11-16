@@ -59,10 +59,12 @@ public class DriverEstadisticas {
 				case 3:
 					System.out.print("Introduce un nombre de tablero.\n");
 					String tablero = scan.nextLine();
-					System.out.print("Introduce el numero de posiciones que quieres ver.\n");
-					int n = scan.nextInt();
-					scan.nextLine();
-					if (CR.cargarRanking(tablero)) CR.getTop(tablero,n);
+					if (CR.cargarRanking(tablero)) {
+						System.out.print("Introduce el numero de posiciones que quieres ver.\n");
+						int n = scan.nextInt();
+						scan.nextLine();
+						CR.getTop(tablero,n);
+					}
 					else System.out.print("El tablero no existe.\n");
 					break;
 				case 4: 
