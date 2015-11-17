@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import DOMINIO.CLASES.ClassEstadisticas;
 
 /**
- * Esta clase hereda las operaciones  de la super clase de control de gestión, CtrlGestionHidato
+ * Esta clase hereda las operaciones  de la super clase de control de gestion, CtrlGestionHidato
  * e implementa el metodo propio de cargar estadisticas.
  * @author Joel Codina
  *

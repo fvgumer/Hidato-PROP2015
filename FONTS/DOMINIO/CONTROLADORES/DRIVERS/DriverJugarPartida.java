@@ -142,7 +142,7 @@ public class DriverJugarPartida {
 							boolean escogido = false;
 							while (!escogido) {
 								CP.generar_Taleatorio(dim,c_ini,abuj,f);
-								System.out.println("¿Deseas escogerlo?");
+								System.out.println("Deseas escogerlo?");
 								System.out.println("0. Si");
 								System.out.println("1. No");
 								modo = sn.nextInt();

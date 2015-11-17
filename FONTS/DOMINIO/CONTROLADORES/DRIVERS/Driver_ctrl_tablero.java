@@ -69,7 +69,7 @@ public class Driver_ctrl_tablero {
 					else if (f == 1) casillas_forma = (n*n/2)-1;
 					else casillas_forma = n;
 					System.out.println("Escojer numero de casillas negras:[0,"+((n*n)-3-casillas_forma)+"]");
-					if (f != 0) System.out.println("AVISO: Estas casillas negras seran añadidas "
+					if (f != 0) System.out.println("AVISO: Estas casillas negras seran anadidas "
 							+ "ademas de las casillas que crean la forma del tablero");
 					casillas_negras = s.nextInt();
 					while (!comprueba_entrada(casillas_negras,(n*n)-3-casillas_forma)) {
@@ -215,7 +215,7 @@ public class Driver_ctrl_tablero {
 		else if (f == 1) casillas_forma = (n*n/2)-1;
 		else casillas_forma = n;
 		System.out.println("Escojer numero de casillas negras:[0,"+((n*n)-3-casillas_forma)+"]");
-		if (f != 0) System.out.println("AVISO: Estas casillas negras seran añadidas aleatoriamente"
+		if (f != 0) System.out.println("AVISO: Estas casillas negras seran anadidas aleatoriamente"
 				+ "ademas de las casillas que crean la forma del tablero");	
 		casillas_negras = s.nextInt();
 		while (!comprueba_entrada(casillas_negras,(n*n)-2-casillas_forma)) {

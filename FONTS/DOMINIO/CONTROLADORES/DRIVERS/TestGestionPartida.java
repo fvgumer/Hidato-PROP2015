@@ -21,7 +21,7 @@ public class TestGestionPartida {
 		CtrlGestionPartida gestor = new CtrlGestionPartida();
 		int i=0;
 		while(i != -1){
-			System.out.print("Introduce codigo operación  2 = eliminar , 3= guardar, 4=cargar, 5=existeix?");
+			System.out.print("Introduce codigo operacion  2 = eliminar , 3= guardar, 4=cargar, 5=existeix?");
 			i = scan.nextInt();
 			scan.nextLine(); //Para consumir la /n
 			if (i==2){

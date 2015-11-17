@@ -120,7 +120,7 @@ public class CtrlJugar {
 	}
 	/**
 	 * Reanudar
-	 * Se pone el estado de la partida en juego para poder voler a realizar cualquier accion mientras esta asi­
+	 * Se pone el estado de la partida en juego para poder voler a realizar cualquier accion mientras esta asi
 	 * Ademas se pone el temporizador se pone otra vez en activo
 	 */
 	public void reanudar(){
@@ -316,7 +316,7 @@ public class CtrlJugar {
 	/**
 	 * Iniciar Temporizado
 	 * @param min entero que sera mayor a 0 si el temporizado
-	 * tiene alguna condición durante el juego.
+	 * tiene alguna condicion durante el juego.
 	 * Se inicializa el temporizador y se pone el estado de juego en activvo
 	 */
 	public void iniciar_tiempo(int min) {
@@ -411,7 +411,7 @@ public class CtrlJugar {
 			boolean stop = false;
 			if (!stop &&T1.inicializar_tablero()) {
 				PH.set_tablero(CP.get_partida().getTsinnumeros());
-				stop = true; //Así no inicializa constantemente
+				stop = true; //Asi no inicializa constantemente
 			}
 		}
 		else if (CP.get_partida().get_modo() == 1) { //MODO CRONOMETRO

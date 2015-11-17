@@ -34,7 +34,7 @@ public class DriverGestionUsuario {
 		while(execucion){
 			System.out.println("Bienvenidos a la ventana de login del sistema");
 			System.out.println("1 - Login si ya existe tu usuario");
-			System.out.println("2 - Entrar en Centro de creacion, modificación y eliminación");
+			System.out.println("2 - Entrar en Centro de creacion, modificacion y eliminacion");
 			System.out.println("3 - Salir al menu principal");
 		int w = s.nextInt();
 		s.nextLine();
@@ -53,7 +53,7 @@ public class DriverGestionUsuario {
 		else if(w==2){
 		boolean b = true;
 		while(b){
-			System.out.println("Centro de creacion, modificación y eliminación");
+			System.out.println("Centro de creacion, modificacion y eliminacion");
 			System.out.println("1 - Crear Usuario");
 			System.out.println("2 - Modificar Contrasenya");
 			System.out.println("3 - Eliminar Usuario");

@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import DOMINIO.CLASES.ClassRanking;
 
 /**
- * Esta clase hereda las operaciones  de la super clase de control de gestión, CtrlGestionHidato
+ * Esta clase hereda las operaciones  de la super clase de control de gestion, CtrlGestionHidato
  * e implementa metodos propios para la carga correcta de Ranking. 
  * @author Joel Codina
  *

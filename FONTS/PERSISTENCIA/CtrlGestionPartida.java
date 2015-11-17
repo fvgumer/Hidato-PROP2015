@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import DOMINIO.CLASES.Partida_Hidato;
 
 /**
- * Esta clase hereda las operaciones  de la super clase de control de gestión, CtrlGestionHidato
+ * Esta clase hereda las operaciones  de la super clase de control de gestion, CtrlGestionHidato
  * e implementa algunos metodos propios para la gestion correcta de partidas. 
  * @author Joel Codina
  *

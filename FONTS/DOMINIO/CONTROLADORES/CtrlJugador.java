@@ -5,7 +5,7 @@ import PERSISTENCIA.CtrlGestionUsuario;
 
 /**
  * Esta clase es el controlador de dominio de la clase Jugador. Implementa los metodos
- * de logueo y de interacción con el controlador de gestión. 
+ * de logueo y de interaccion con el controlador de gestion. 
  * @author Joel Codina
  *
  */

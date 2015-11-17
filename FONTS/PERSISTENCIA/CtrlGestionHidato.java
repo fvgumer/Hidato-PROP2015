@@ -14,7 +14,7 @@ import DOMINIO.CLASES.Tablero;
 import org.apache.commons.io.*;
 
 /**
- * Esta clase contiene las operaciones de la super clase de control de gestión. Es una clase genérica que 
+ * Esta clase contiene las operaciones de la super clase de control de gestion. Es una clase generica que 
  * implementa las operaciones de guardar, eliminar, calcular las rutas de los archivos y ver si existen de 
  * los objetos. 
  * @author Joel Codina

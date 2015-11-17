@@ -11,7 +11,7 @@ import org.apache.commons.io.*;
 import DOMINIO.CLASES.Jugador;
 
 /**
- * Esta clase hereda las operaciones  de la super clase de control de gestión, CtrlGestionHidato
+ * Esta clase hereda las operaciones  de la super clase de control de gestion, CtrlGestionHidato
  * e implementa algunos metodos propios para la gestion correcta de un usuario. 
  * @author Joel Codina
  *
@@ -61,7 +61,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 * @param nombre Nombre del jugador que se quiere cargar
 	 * @param password Contrasenya del usuario que se quiere cargar.
 	 * @return Un objeto Jugador
-	 * Post: Nos retorna el jugador con nombre= 'nombre' si la contraseña era la correcta
+	 * Post: Nos retorna el jugador con nombre= 'nombre' si la contrasena era la correcta
 	 * o el usuario existia. Retorna un Jugador null otramente. 
 	 */
 	public Jugador cargar_jugador(String nombre, String password){
