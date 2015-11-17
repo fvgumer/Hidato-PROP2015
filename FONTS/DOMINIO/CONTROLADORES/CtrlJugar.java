@@ -3,11 +3,10 @@ import DOMINIO.CLASES.*;
 import PERSISTENCIA.*;
 
 import java.util.ArrayList;
-
 /**
  * Este controlador contiene los parametros principales para poder gestionar una partida que son, la clase Partida_Hidato y 
- * temporizador. Ademas cuenta con la conexiÃ³n de los controladores de GestionPartida y Ranking para poder llevar y traer todos
- * los datos de las partidas a disco. Y por Ãºltimo varior parametros que ayudan a llevar a cabo el objetivo de este controlador
+ * temporizador. Ademas cuenta con la conexión de los controladores de GestionPartida y Ranking para poder llevar y traer todos
+ * los datos de las partidas a disco. Y por último varior parametros que ayudan a llevar a cabo el objetivo de este controlador
  * que es permitir todos los tipos de acciones que se permiten a la hora de jugar una Partida_Hidato
  * @author Elena
  *
@@ -67,7 +66,7 @@ public class CtrlJugar {
 	
 	/**
 	 * Elementos que contiene la matriz
-	 * Se hace una bÃºsqueda por todo el tablero para identificar que numeros estan colocado ya dentro
+	 * Se hace una búsqueda por todo el tablero para identificar que numeros estan colocado ya dentro
 	 * del tablero mientras se juega la partida
 	 * @return Devuelve un vertor de booleanos donde sera cierta la posicion i, si el valor i+1 esta 
 	 * contenido en el tablero
@@ -121,7 +120,7 @@ public class CtrlJugar {
 	}
 	/**
 	 * Reanudar
-	 * Se pone el estado de la partida en juego para poder voler a realizar cualquier accion mientras esta asi­
+	 * Se pone el estado de la partida en juego para poder voler a realizar cualquier accion mientras esta asi�
 	 * Ademas se pone el temporizador se pone otra vez en activo
 	 */
 	public void reanudar(){
@@ -134,9 +133,9 @@ public class CtrlJugar {
 	}
 	
 	/**
-	 * PISTA1: Te da la soluciÃ³n de la posicion del tablero indicado
+	 * PISTA1: Te da la solución de la posicion del tablero indicado
 	 * @param x,y Entero que indicar una coordenada del tablero
-	 * El valor de la soluciÃ³n que va en las coordenadas (x,y) se introduce en el tablero
+	 * El valor de la solución que va en las coordenadas (x,y) se introduce en el tablero
 	 */
 	public void pista1(int x, int y){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
@@ -157,7 +156,7 @@ public class CtrlJugar {
 	 * Te dan los posibles valores validos de la casilla indicada y
 	 * salen por pantalla
 	 * @param x,y Son dos enteros que hacen referencia a una casilla
-	 * del tablero del parametro implÃ­cito
+	 * del tablero del parametro implícito
 	 */
 	public void pista2(int x, int y){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
@@ -178,7 +177,7 @@ public class CtrlJugar {
 	}
 
 	/**
-	 * PISTA 3: Candidatos de todas las posiciones vacÃ­as del tablero
+	 * PISTA 3: Candidatos de todas las posiciones vacías del tablero
 	 * @param dim dimensiones del tablero
 	 * @param forats Casillas vacias del tablero
 	 * Sale por pantalla las listas de candidatos de todas las posiciones vacias
@@ -208,7 +207,7 @@ public class CtrlJugar {
 	/**Rendirse
 	 * 
 	 * Se acaba la partida, se puestra la solucion por pantalla 
-	 * la puntuaciÃ³n pasa a ser 0, y no se puede guardar en el ranking
+	 * la puntuación pasa a ser 0, y no se puede guardar en el ranking
 	 */
 	public void rendirse(){
 		PH.set_puntuacion(0);
@@ -222,7 +221,7 @@ public class CtrlJugar {
 	/**
 	 * Guardar la partida
 	 * Se le asigna un ID valido para introducir en el disco y se llama a 
-	 * una funciÃ³n de persistencia que permite guardar toda la informaciÃ³n
+	 * una función de persistencia que permite guardar toda la información
 	 * de partida en el disco.
 	 */
 	public void guardar_partida(){
@@ -237,17 +236,17 @@ public class CtrlJugar {
 
 	/**
 	 * Introducir Casilla
-	 * @param x,y Enteros que hacen referencia a una posiciÃ³n del parametros implÃ­cito
+	 * @param x,y Enteros que hacen referencia a una posición del parametros implícito
 	 * @param valor Entero tal que 1 <= valor <= dim*dim
-	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implÃ­cito
-	 * si la posiciÃ³n es valida.
+	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implícito
+	 * si la posición es valida.
 	 */
 	public void introducirCasilla(int x, int y,int valor){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
 			if (PH.casilla_posible(x,y)) {
 				//1. INTRODUCIR CASILLA
 				int v = PH.get_Tablero().getValorTauler(x, y);
-				if (v == -1 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) System.out.println("Posicion incorrecta");
+				if (v == -1) System.out.println("Posicion Invalida");
 				else if (PH.get_Tablero().getNumPosat(valor)) System.out.println("Este numero ya esta en el tablero");
 				else {
 					PH.get_Tablero().setValorTauler(x, y,valor);
@@ -258,15 +257,15 @@ public class CtrlJugar {
 				//2. CALCULAR PUNTUACION 
 				modificar_puntuacion(15);
 			}
-			else System.out.println("Posicion Incorrecta");
+			else System.out.println("Posicion Invalida");
 		}
 		else System.out.println("NO PUEDES JUGAR");
 	}
 	
 	/**
 	 * Quitar Casilla
-	 * @param x,y Enteros que hacen referencia a una posiciÃ³n del parametros implÃ­cito
-	 * Se extrae el valor de la posiciÃ³n del tablero (x,y) si es una posiciÃ³n vÃ¡lida
+	 * @param x,y Enteros que hacen referencia a una posición del parametros implícito
+	 * Se extrae el valor de la posición del tablero (x,y) si es una posición válida
 	 */
 	public void quitar_casilla(int x, int y){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
@@ -290,9 +289,9 @@ public class CtrlJugar {
 	
 	/**
 	 * Comprobar Casilla
-	 *@param x,y Enteros que hacen referencia a una posiciÃ³n del parametros implÃ­cito
+	 *@param x,y Enteros que hacen referencia a una posición del parametros implícito
 	 *que debe apuntar a una casilla que previamente hemos introducido un valor en el juego.
-	 *Nos introduce por pantalla si en esa posiciÃ³n hemos introducido el valor correcto o no
+	 *Nos introduce por pantalla si en esa posición hemos introducido el valor correcto o no
 	 */
 	public void comprobar_casilla(int x, int y){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
@@ -317,7 +316,7 @@ public class CtrlJugar {
 	/**
 	 * Iniciar Temporizado
 	 * @param min entero que sera mayor a 0 si el temporizado
-	 * tiene alguna condición durante el juego.
+	 * tiene alguna condici�n durante el juego.
 	 * Se inicializa el temporizador y se pone el estado de juego en activvo
 	 */
 	public void iniciar_tiempo(int min) {
@@ -330,7 +329,7 @@ public class CtrlJugar {
 	}
 
 	/**Reiniciar la partida
-	 * Se reinicia el tablero, el temporizador y su puntuaciÃ³n para poder volver a comenzar
+	 * Se reinicia el tablero, el temporizador y su puntuación para poder volver a comenzar
 	 * @param P Controlador que contiene toda las configuraciones de la partida inicial
 	 */
 	public void reestart(CtrlPartida P) {
@@ -341,8 +340,8 @@ public class CtrlJugar {
 	}
 	/**
 	 * Resolver partida
-	 * Comprobamos si el tablero que tenemos en ese momento es correcto respecto a la soluciÃ³n 
-	 * propuesta. Si es asÃ­ se llama al controlador de persistencia de Ranking para guardar las 
+	 * Comprobamos si el tablero que tenemos en ese momento es correcto respecto a la solución 
+	 * propuesta. Si es así se llama al controlador de persistencia de Ranking para guardar las 
 	 * puntuaciones
 	 */
 	public void resolver_partida(){
@@ -360,7 +359,7 @@ public class CtrlJugar {
 		}
 		if (!incorrecto) {
 			System.out.println("PARTIDA RESUELTA!!");
-			PH.set_estado(PAUSE);
+			PH.set_estado(ACABADO);
 			//GUARDAR PUNTUACION PARA RANKING
 			String m;
 			if (PH.get_modo() == 0) m = "Clasico";
@@ -372,9 +371,9 @@ public class CtrlJugar {
 			else d1 = "Dificil";
 			
 			String idd = String.valueOf(PH.get_Tablero().get_id());
-			CR = new CtrlRanking();
+			//CR = new CtrlRanking();
 			CE = new CtrlEstadisticas();
-			CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
+			//CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
 			CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
 			CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd);
 		}
@@ -400,7 +399,7 @@ public class CtrlJugar {
 	}
 	/**
 	 * Actualiza el estado de la partida
-	 * @param CP Controlador que contiene todas las propiedades de la configuraciÃ³n
+	 * @param CP Controlador que contiene todas las propiedades de la configuración
 	 * de la partida a la que estamos jugando.
 	 * Puede realizar diversas acciones. 
 	 * Re-inicializar el tablero de la partida si estamos en el modelo de juego Extreme
@@ -412,7 +411,7 @@ public class CtrlJugar {
 			boolean stop = false;
 			if (!stop &&T1.inicializar_tablero()) {
 				PH.set_tablero(CP.get_partida().getTsinnumeros());
-				stop = true; //Así no inicializa constantemente
+				stop = true; //As� no inicializa constantemente
 			}
 		}
 		else if (CP.get_partida().get_modo() == 1) { //MODO CRONOMETRO
@@ -430,7 +429,7 @@ public class CtrlJugar {
 	}
 	/**
 	 * Consulta Clase Partida
-	 * @return Devuelve el objeto de la clase Partida del parametro implÃ­cito
+	 * @return Devuelve el objeto de la clase Partida del parametro implícito
 	 */
 	public Partida_Hidato get_PartidaHidato(){
 		return PH;
@@ -442,3 +441,4 @@ public class CtrlJugar {
 		return T1;
 	}
 }
+

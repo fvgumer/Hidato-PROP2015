@@ -106,7 +106,7 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	 */
 	public boolean casilla_posible(int x, int y) {
 		if (tableroP.enable_pos(x, y)){
-			if (tableroP.get_casilla(x, y).isPor_defecto()){
+			if (!tableroP.get_casilla(x, y).isPor_defecto()){
 				return true;
 			}
 			else return false;
