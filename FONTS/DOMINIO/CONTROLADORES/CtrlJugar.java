@@ -5,8 +5,8 @@ import PERSISTENCIA.*;
 import java.util.ArrayList;
 /**
  * Este controlador contiene los parametros principales para poder gestionar una partida que son, la clase Partida_Hidato y 
- * temporizador. Ademas cuenta con la conexión de los controladores de GestionPartida y Ranking para poder llevar y traer todos
- * los datos de las partidas a disco. Y por último varior parametros que ayudan a llevar a cabo el objetivo de este controlador
+ * temporizador. Ademas cuenta con la conexion de los controladores de GestionPartida y Ranking para poder llevar y traer todos
+ * los datos de las partidas a disco. Y por ultimo varior parametros que ayudan a llevar a cabo el objetivo de este controlador
  * que es permitir todos los tipos de acciones que se permiten a la hora de jugar una Partida_Hidato
  * @author Elena
  *
@@ -66,7 +66,7 @@ public class CtrlJugar {
 	
 	/**
 	 * Elementos que contiene la matriz
-	 * Se hace una búsqueda por todo el tablero para identificar que numeros estan colocado ya dentro
+	 * Se hace una busqueda por todo el tablero para identificar que numeros estan colocado ya dentro
 	 * del tablero mientras se juega la partida
 	 * @return Devuelve un vertor de booleanos donde sera cierta la posicion i, si el valor i+1 esta 
 	 * contenido en el tablero
@@ -133,9 +133,9 @@ public class CtrlJugar {
 	}
 	
 	/**
-	 * PISTA1: Te da la solución de la posicion del tablero indicado
+	 * PISTA1: Te da la solucion de la posicion del tablero indicado
 	 * @param x,y Entero que indicar una coordenada del tablero
-	 * El valor de la solución que va en las coordenadas (x,y) se introduce en el tablero
+	 * El valor de la solucion que va en las coordenadas (x,y) se introduce en el tablero
 	 */
 	public void pista1(int x, int y){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
@@ -156,7 +156,7 @@ public class CtrlJugar {
 	 * Te dan los posibles valores validos de la casilla indicada y
 	 * salen por pantalla
 	 * @param x,y Son dos enteros que hacen referencia a una casilla
-	 * del tablero del parametro implícito
+	 * del tablero del parametro implicito
 	 */
 	public void pista2(int x, int y){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
@@ -264,8 +264,8 @@ public class CtrlJugar {
 	
 	/**
 	 * Quitar Casilla
-	 * @param x,y Enteros que hacen referencia a una posición del parametros implícito
-	 * Se extrae el valor de la posición del tablero (x,y) si es una posición válida
+	 * @param x,y Enteros que hacen referencia a una posicion del parametros implocito
+	 * Se extrae el valor de la posicion del tablero (x,y) si es una posicion valida
 	 */
 	public void quitar_casilla(int x, int y){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
@@ -289,9 +289,9 @@ public class CtrlJugar {
 	
 	/**
 	 * Comprobar Casilla
-	 *@param x,y Enteros que hacen referencia a una posición del parametros implícito
+	 *@param x,y Enteros que hacen referencia a una posicion del parametros implicito
 	 *que debe apuntar a una casilla que previamente hemos introducido un valor en el juego.
-	 *Nos introduce por pantalla si en esa posición hemos introducido el valor correcto o no
+	 *Nos introduce por pantalla si en esa posicion hemos introducido el valor correcto o no
 	 */
 	public void comprobar_casilla(int x, int y){
 		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
@@ -329,7 +329,7 @@ public class CtrlJugar {
 	}
 
 	/**Reiniciar la partida
-	 * Se reinicia el tablero, el temporizador y su puntuación para poder volver a comenzar
+	 * Se reinicia el tablero, el temporizador y su puntuacion para poder volver a comenzar
 	 * @param P Controlador que contiene toda las configuraciones de la partida inicial
 	 */
 	public void reestart(CtrlPartida P) {
@@ -340,8 +340,8 @@ public class CtrlJugar {
 	}
 	/**
 	 * Resolver partida
-	 * Comprobamos si el tablero que tenemos en ese momento es correcto respecto a la solución 
-	 * propuesta. Si es así se llama al controlador de persistencia de Ranking para guardar las 
+	 * Comprobamos si el tablero que tenemos en ese momento es correcto respecto a la solucion 
+	 * propuesta. Si es asi se llama al controlador de persistencia de Ranking para guardar las 
 	 * puntuaciones
 	 */
 	public void resolver_partida(){
@@ -399,7 +399,7 @@ public class CtrlJugar {
 	}
 	/**
 	 * Actualiza el estado de la partida
-	 * @param CP Controlador que contiene todas las propiedades de la configuración
+	 * @param CP Controlador que contiene todas las propiedades de la configuracion
 	 * de la partida a la que estamos jugando.
 	 * Puede realizar diversas acciones. 
 	 * Re-inicializar el tablero de la partida si estamos en el modelo de juego Extreme
@@ -429,7 +429,7 @@ public class CtrlJugar {
 	}
 	/**
 	 * Consulta Clase Partida
-	 * @return Devuelve el objeto de la clase Partida del parametro implícito
+	 * @return Devuelve el objeto de la clase Partida del parametro implicito
 	 */
 	public Partida_Hidato get_PartidaHidato(){
 		return PH;

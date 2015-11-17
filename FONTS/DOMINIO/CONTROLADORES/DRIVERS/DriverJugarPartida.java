@@ -4,9 +4,9 @@ import java.util.Scanner;
 import DOMINIO.CLASES.*;
 import DOMINIO.CONTROLADORES.*;
 /**
- * Este driver se encarga del propio proceso de la creaciÃ³n de una Partida eligiendo todos los
+ * Este driver se encarga del propio proceso de la creacion de una Partida eligiendo todos los
  * parametros posibles, ya sean nuevos o cargados.
- * AdemÃ¡s el mismo introduce la partida a iniciar el Juego y controlando todas las acciones que el
+ * Ademas el mismo introduce la partida a iniciar el Juego y controlando todas las acciones que el
  * usuario puede tener para controlar el juego.
  * @author Elena
  *
@@ -39,8 +39,8 @@ public class DriverJugarPartida {
 	public void exec(Jugador J) {
 		sn = new Scanner(System.in);
 		CP = new CtrlPartida();
-		int modo,dim,abuj,c_ini,f,dificultad, opcion, restart;
-		modo = dim = abuj = c_ini = f = dificultad = opcion = restart = 0;
+		int modo,dim,abuj,c_ini,f,dificultad, opcion;
+		modo = dim = abuj = c_ini = f = dificultad = opcion = 0;
 		//1. MODO GESTION JUEGO
 		// [0]Decidir cargar
 		// [1]Crear Partida
@@ -100,7 +100,7 @@ public class DriverJugarPartida {
 							dim_max = 6;
 						}
 						dim = sn.nextInt();
-						while(!control_error(dim,dim_max) && !control_error(2,dim)) {
+						while(!control_error(dim,dim_max) || !control_error(2,dim)) {
 							System.out.print("Valor erroneo");
 							dim = sn.nextInt();
 						}
@@ -125,7 +125,7 @@ public class DriverJugarPartida {
 						else if (dificultad == 1) d = "Medio";
 						else d = "Dificil";
 						System.out.println("Tu tablero es de dificultad "+d+".");
-						System.out.println("¿Deseas escogerlo?");
+						System.out.println("Deseas escogerlo?");
 						System.out.println("0. Si");
 						System.out.println("1. No");
 						modo = sn.nextInt();
@@ -142,7 +142,7 @@ public class DriverJugarPartida {
 							boolean escogido = false;
 							while (!escogido) {
 								CP.generar_Taleatorio(dim,c_ini,abuj,f);
-								System.out.println("Â¿Deseas escogerlo?");
+								System.out.println("�Deseas escogerlo?");
 								System.out.println("0. Si");
 								System.out.println("1. No");
 								modo = sn.nextInt();
@@ -254,7 +254,7 @@ public class DriverJugarPartida {
 				case 4: //SALIR
 						//Preguntar si guardar 
 						//Volver a pantalla inicial
-						System.out.println("¿Deseas Salir?");
+						System.out.println("Deseas Salir?");
 						System.out.println("0. Si");
 						System.out.println("1. No");
 						modo = sn.nextInt();
@@ -264,7 +264,7 @@ public class DriverJugarPartida {
 						}
 						break;
 				case 5: //GUARDAR
-						System.out.println("¿Deseas guardar la partida?");
+						System.out.println("Deseas guardar la partida?");
 						System.out.println("0. Si");
 						System.out.println("1. No");
 						int i = sn.nextInt();
@@ -326,7 +326,6 @@ public class DriverJugarPartida {
 						break;
 						
 				case 12: //REESTART
-						restart = 1;
 						CJ.reestart(CP);
 						CJ.iniciar_tiempo(delay);
 						CJ.print();
@@ -341,7 +340,7 @@ public class DriverJugarPartida {
 					System.out.println("Te quedan: "+CJ.get_timer().obtMinuto()+"min(s) y "+ 
 								CJ.get_timer().obtSegundo()+"seg(s).");
 				else {		
-					if (!CJ.get_timer().inicializar_tablero()) System.out.println("Aún no puedes realizar"
+					if (!CJ.get_timer().inicializar_tablero()) System.out.println("Aun no puedes realizar"
 					+ " ninguna accion");
 					System.out.println("Tiempo transcurrido: "+CJ.get_timer().obtMinuto()+"min(s) y "+ 
 					CJ.get_timer().obtSegundo()+"seg(s).");
