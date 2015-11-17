@@ -70,7 +70,6 @@ public class CtrlTablero {
 	   */
 	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias, int f) {
 		map = new Tablero(n);
-		Temporizador t = new Temporizador();
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras);
 		if (f > 0) {
@@ -94,7 +93,7 @@ public class CtrlTablero {
 		int holes = map.getholes();
 		map.setn_predef((n*n)-holes-c_vacias);
 		generar_buits_alea(c_vacias);
-		map.inicialitzar_caselles();
+		map.inicialitzar_caselles(); //El tema de los holes con formas no esta arreglado del todo
 	}
 	
 	/**
