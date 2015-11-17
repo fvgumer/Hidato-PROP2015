@@ -1,9 +1,8 @@
 package DOMINIO.CLASES;
-
 import java.io.Serializable;
 
 /**
- * Esta clase hereda las funcionalidades de Tablero_comp. Aï¿½adimos nuevos parametros y metodos
+ * Esta clase hereda las funcionalidades de Tablero_comp. AÃ¯Â¿Â½adimos nuevos parametros y metodos
  * en la clase por tal de que el tablero se adapte a un tablero del juego Hidato.
  * @author Alex
  *
@@ -23,6 +22,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	private Casilla[][] solucio; 
 	private int holes, n_predef, final_num;
 	private int[] start, end;
+	private boolean[] posats;
 	private boolean solucion_unica;
 	
 	/**
@@ -43,7 +43,10 @@ public class Tablero extends Tablero_comp implements Serializable{
 		start = end = new int[2];
 		
 	}
-	
+	/**
+	   * Copia el objeto del parametro implicito
+	   * @return Devuelve un tablero igual al objeto referenciado
+	   */
 	public Tablero copia_t() {
 		Tablero T2 = new Tablero(mida);
 		T2.setholes(holes);
@@ -51,26 +54,35 @@ public class Tablero extends Tablero_comp implements Serializable{
 		for(int i=0; i<mida; ++i) {
 			for(int j=0; j<mida; ++j) {
 				T2.setValorTauler(i, j, tauler[i][j].getValor());
-				if (tauler[i][j].isPor_defecto())
-					T2.get_casilla(i,j).setPor_defecto(true);
 			}
 		}
+		T2.inicialitzar_caselles();
 		T2.setSolucion_unica(solucion_unica);
 		return T2;
 	}
-	
+	/**
+	 * Introducir solucion
+	 * @param s Matriz de casillas que contienen la solucion de un
+	 * tablero.
+	 * La matriz s es introducida en el parametro implicito como solucion
+	 * del tablero
+	 */
 	public void set_solucio(Casilla[][] s){
 		solucio = s;
 	}
+	
+	
 	/** Inicialitzacio caselles per defecte
 	 * Especifica les caselles que formen part dels numeros 
 	 * inicials, que estan posats per defete
 	 */
 	public void inicialitzar_caselles() {
+		posats = new boolean[mida*mida-holes];
 		for(int i=0; i<mida; ++i) {
 			for(int j=0; j<mida; ++j) {
 				if (tauler[i][j].getValor() > 0) {
 					tauler[i][j].setPor_defecto(true);
+					posats[tauler[i][j].getValor()-1] = true;
 				}
 			}
 		}
@@ -132,10 +144,10 @@ public class Tablero extends Tablero_comp implements Serializable{
 	}
 	/**
 	 * 
-	 * @param x Entero mayor a 0 y menos a dim-1 del parametro implícito
-	 * @param y Entero mayor a 0 y menos a dim-1 del parametro implícito
-	 * @return Devuelve el objeto casilla que se encuentra en la posición x,y 
-	 * del tablero del parametro implícito.
+	 * @param x Entero mayor a 0 y menos a dim-1 del parametro implÃ­cito
+	 * @param y Entero mayor a 0 y menos a dim-1 del parametro implÃ­cito
+	 * @return Devuelve el objeto casilla que se encuentra en la posiciÃ³n x,y 
+	 * del tablero del parametro implÃ­cito.
 	 */
 	public Casilla get_casilla(int x, int y){
 		return (Casilla) tauler[x][y];
@@ -233,6 +245,29 @@ public class Tablero extends Tablero_comp implements Serializable{
 		end[0] = x; end[1] = y;
 	}
 	
+	/**
+	 * Determinar un valor como colocado o no en el tablero
+	 * @param valor Entero tal que 0 < valor <= mida*mida-holes
+	 * @param b boleano
+	 * Se coloca en el vector de valores puestos el boleano 
+	 * del parametro de entrada. Si es cierto, significara
+	 * que el valor esta colocado en el tablero, si es falso 
+	 * el caso contrario.
+	 */
+	public void setNumPosat(int valor, boolean b){
+		posats[valor-1] = b;
+	}
+	
+	/**
+	 * Consulta si un valor esta colocado en el tablero
+	 * @param valor Entero tal que 0 < valor <= mida*mida-holes
+	 * @return Sera cierto si el valor introducido esta colocado en el tablero
+	 * sera falso en el caso contrario
+	 */
+	public boolean getNumPosat(int valor) {
+		if (posats[valor-1]) return true;
+		else return false;
+	}
 	/**
 	 * Se muestra el tablero por el canal de salida. Se una la siguiente notacion:
 	 * 		- "." para las casillas negras ("forats")
