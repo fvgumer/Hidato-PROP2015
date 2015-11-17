@@ -1,5 +1,5 @@
-package CONTROLADORES;
-import CLASES.*;
+package DOMINIO.CONTROLADORES;
+import DOMINIO.CLASES.*;
 
 import java.util.ArrayList;
 
