@@ -3,6 +3,7 @@ package DOMINIO.CONTROLADORES.DRIVERS;
 import java.util.Scanner;
 import DOMINIO.CONTROLADORES.CtrlTablero;
 
+
 /**
  * Este driver se encarga de mostrar y guiar al usuario durante la creacion de un tablero Hidato.
  * El propio driver se encarga de comprovar que los valores introducidos son correctos. Tambien se
@@ -58,20 +59,12 @@ public class Driver_ctrl_tablero {
 					f = s.nextInt();
 					while (!comprueba_entrada(f, 2)) {f = s.nextInt();}
 					System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
-					if (f != 0) {
-						System.out.println("ATENCION: El valor maximo depende de forma del tablero");
-					}
+					System.out.println("ATENCION: El valor maximo depende de forma del tablero");
 					n = s.nextInt();
 					while (!comprueba_entrada(n,15)) {n = s.nextInt();}
-					int casillas_forma = 0;
-					if(f == 0) casillas_forma = 0;
-					else if (f == 1) casillas_forma = (n*n/2)-1;
-					else casillas_forma = n;
-					System.out.println("Escojer numero de casillas negras:[0,"+((n*n)-3-casillas_forma)+"]");
-					if (f != 0) System.out.println("AVISO: Estas casillas negras seran añadidas "
-							+ "ademas de las casillas que crean la forma del tablero");
+					System.out.println("Escojer numero de casillas negras:[0,"+((n*n)-2)+"]");
 					casillas_negras = s.nextInt();
-					while (!comprueba_entrada(casillas_negras,(n*n)-3-casillas_forma)) {
+					while (!comprueba_entrada(casillas_negras,(n*n)-2)) {
 						casillas_negras = s.nextInt();
 					}
 					prueba.ini(n, casillas_negras);
@@ -93,9 +86,9 @@ public class Driver_ctrl_tablero {
 						prueba.muestra_mapa();
 					}
 					int c_pre, val;
-					System.out.println("Escojer numero de casillas dadas previamente:[2,"+((n*n)-casillas_negras-casillas_forma)+"]");
+					System.out.println("Escojer numero de casillas dadas previamente:[2,"+(n*n)+"]");
 					c_pre = s.nextInt();
-					while (c_pre < 2 || !comprueba_entrada(c_pre,(n*n-casillas_negras-casillas_forma))) {
+					while (c_pre < 2 || !comprueba_entrada(c_pre,(n*n))) {
 						if (c_pre < 2) System.out.println("Minimo 2!");
 						c_pre = s.nextInt();
 						}
@@ -127,7 +120,7 @@ public class Driver_ctrl_tablero {
 				case 3:
 					prueba.muestra_repo_tab();
 					System.out.println("Escribe el id del tablero que quieres eliminar: [1, "
-										+ (max_id+1) + "):");
+										+ (max_id+1) + "]:");
 					int id = s.nextInt();
 					while (!comprueba_entrada(id, max_id+1)) {id = s.nextInt();}
 					boolean carga = prueba.cargar(id);
@@ -161,6 +154,7 @@ public class Driver_ctrl_tablero {
 				int aux = s.nextInt();
 				while(!comprueba_entrada(aux, 2)) {aux = s.nextInt();}
 				if(aux == 1) {
+					prueba.get_Tablero().inicialitzar_caselles();
 					aux = prueba.guardar();
 					System.out.println("Se le ha asignado el siguiente id: " + aux);
 				}
@@ -202,30 +196,21 @@ public class Driver_ctrl_tablero {
 		f = s.nextInt();
 		while (!comprueba_entrada(f,2)) {f = s.nextInt();}
 		System.out.println("Escojer medidas del tablero cuadrado:[3,15]");
-		if (f != 0) {
-			System.out.println("ATENCION: El valor maximo depende de forma del tablero");
-		}
+		System.out.println("ATENCION: El valor maximo depende de forma del tablero");
 		n = s.nextInt();
 		while (!comprueba_entrada(n,15)) {n = s.nextInt();}
-		int casillas_forma = 0;
-		if(f == 0) casillas_forma = 0;
-		else if (f == 1) casillas_forma = (n*n/2)-1;
-		else casillas_forma = n;
-		System.out.println("Escojer numero de casillas negras:[0,"+((n*n)-3-casillas_forma)+"]");
-		if (f != 0) System.out.println("AVISO: Estas casillas negras seran añadidas aleatoriamente"
-				+ "ademas de las casillas que crean la forma del tablero");
-		
+		System.out.println("Escojer numero de casillas negras:[0,(n*n)-2)]");
+		System.out.println("ATENCION: La forma esferica contiene un elevado numero de casillas"
+				+ "negras, se recomienda escojer un numero menor a (n*n/2)");
 		casillas_negras = s.nextInt();
-		while (!comprueba_entrada(casillas_negras,(n*n)-2-casillas_forma)) {
+		while (!comprueba_entrada(casillas_negras,(n*n)-2)) {
 			casillas_negras = s.nextInt();
 		}
-		System.out.println("Escojer numero de casillas vacias:[1,"+((n*n)-casillas_negras-casillas_forma-3)+"]");
-		if(f != 0) {
-			System.out.println("AVISO: Hay que tener en cuenta las casillas negras necesarias para las formas "
+		System.out.println("Escojer numero de casillas vacias:[1,(n*n)-casillas_negras-2]");
+		System.out.println("ATENCION: Hay que tener en cuenta las casillas negras necesarias para las formas "
 				+ "del tablero");
-		}
 		casillas_vacias = s.nextInt();
-		while (!comprueba_entrada(casillas_vacias,(n*n)-casillas_negras-casillas_forma-2)) {
+		while (!comprueba_entrada(casillas_vacias,(n*n)-casillas_negras-2)) {
 			casillas_vacias = s.nextInt();
 		}
 		System.out.println("Cargando...");
@@ -242,12 +227,10 @@ public class Driver_ctrl_tablero {
 		boolean unica = false, sol = true;;
 		if (manual) {
 			System.out.println("Comprovando si existe solucion...");
-			System.out.println("Tiempo de espera maximo: 30seg");
 			sol = c.validar();
 		}
 		if(sol) {
 			System.out.println("Comprovando si la solucion es unica...");
-			System.out.println("Tiempo de espera maximo: 30seg");
 			unica = c.solucion_unica();
 		}
 		c.muestra_mapa();
