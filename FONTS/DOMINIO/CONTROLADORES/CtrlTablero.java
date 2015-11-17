@@ -5,7 +5,6 @@ import PERSISTENCIA.CtrlGestionTablero;
 import DOMINIO.CLASES.Algorithm;
 import DOMINIO.CLASES.Tablero;
 import DOMINIO.CLASES.Temporizador;
-
 /**
  * Esta clase contiene las operaciones que se encargan de generar tableros de Hidatos
  * segun los parametros de entrada que reciben. Estos tableros pueden ser creados de manera
@@ -47,6 +46,11 @@ public class CtrlTablero {
 		this.map = map;
 	}
 	
+	
+	public Tablero get_Tablero(){
+		return map;
+	}
+	
 	/**
 	   *Se crea un tablero aleatorio con las caracteristicas de la cabezera. El algoritmo funciona de la
 	   *siguiente manera: primero llena el tablero de la forma predeterminada que viene dada por el parametro
@@ -76,7 +80,6 @@ public class CtrlTablero {
 		omplir_forats_alea(c_negras);
 		setStart_alea();
 		int[] start = map.getStart();
-		Temporizador t = new Temporizador();
 		boolean b = a.generador(map, start[0], start[1],1);
 		while (b == false) {
 			map.a_zero(f);
@@ -141,10 +144,7 @@ public class CtrlTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		Temporizador t = new Temporizador();
-		t.timer_max();
-		t.iniciar();
-		boolean b = a.solver(start[0], start[1], 1, map,t);
+		boolean b = a.solver(start[0], start[1], 1, map);
 		return b;
 	}
 	
@@ -156,10 +156,7 @@ public class CtrlTablero {
 	public boolean solucion_unica() {
 		int[] start;
 		start = map.getStart();
-		Temporizador t = new Temporizador();
-		t.timer_max();
-		t.iniciar();
-		int aux = a.unica_solucion(start[0], start[1], map, 1, t);
+		int aux = a.unica_solucion(start[0], start[1], map, 1);
 		if(aux == 1) map.setSolucion_unica(true);
 		else map.setSolucion_unica(false);
 		return (aux == 1);
@@ -247,7 +244,6 @@ public class CtrlTablero {
 	public boolean cargar(int n) {
 		boolean b = true;
 		map = c.cargar(n,b);
-		if (map == null) b = false;
 		return b;
 	}
 	
@@ -282,10 +278,12 @@ public class CtrlTablero {
 	 */
 	private void actu_tab_repo() {
 		tableros_repo = c.consultar_nomstableros();
-		for(int i=0; i < tableros_repo.length; ++i) {
-			String auxs = tableros_repo[i];
-			int aux = Integer.parseInt((auxs.substring(0,auxs.length()-4)));
-			if(aux > max_nombre) max_nombre = aux;
+		if(tableros_repo.length > 1) {
+			for(int i=0; i < tableros_repo.length; ++i) {
+				String auxs = tableros_repo[i];
+				int aux = Integer.parseInt((auxs.substring(0,auxs.length()-4)));
+				if(aux > max_nombre) max_nombre = aux;
+			}
 		}
 	}
 
