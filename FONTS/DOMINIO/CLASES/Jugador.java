@@ -3,7 +3,7 @@ package DOMINIO.CLASES;
 import java.io.Serializable;
 
 /**
- * Esta clase hereda las funcionalidades de Jugador_comp. Se añade la constructora propia.
+ * Esta clase hereda las funcionalidades de Jugador_comp. Se anade la constructora propia.
  * @author Joel Codina
  */
 
@@ -14,7 +14,7 @@ public class Jugador extends Usuario_comp implements Serializable{
 	/**
 	   * Constructora que que llama a la constructora de la superclase
 	   * @param nombre indica el nombre del jugador
-	   * @param password indica la contraseña del jugador
+	   * @param password indica la contrasena del jugador
 	   */
 	public Jugador(String nombre, String password) {
 		super(nombre, password);
