@@ -1,7 +1,5 @@
-package ELENA;
-import ALEX.*;
-import BELEN.*;
-import JOEL.*;
+package CONTROLADORES;
+import CLASES.*;
 
 import java.util.ArrayList;
 
@@ -246,8 +244,10 @@ public class CtrlJugar {
 				//1. INTRODUCIR CASILLA
 				int v = PH.get_Tablero().getValorTauler(x, y);
 				if (v == -1 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) System.out.println("Posicion incorrecta");
+				else if (PH.get_Tablero().getNumPosat(valor)) System.out.println("Este numero ya esta en el tablero");
 				else {
 					PH.get_Tablero().setValorTauler(x, y,valor);
+					PH.get_Tablero().setNumPosat(valor,true);
 					--casillas_faltan;
 					System.out.println("Se ha introducido el valor: "+valor+" en la posicion ("+x+","+y+")");
 				}
@@ -272,6 +272,7 @@ public class CtrlJugar {
 				PH.get_Tablero().setValorTauler(x, y, valor);
 				if (valor == -1 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) System.out.println("Posicion incorrecta");
 				else {
+					PH.get_Tablero().setNumPosat(valor,true);
 					System.out.println("Se ha quitado la casilla: ("+x+","+y+")");
 					++casillas_faltan;
 				}
@@ -414,7 +415,12 @@ public class CtrlJugar {
 			if (T1.acabar()) PH.set_estado(ACABADO);
 		}
 	}
-	
+	/**
+	 * Consulta de casillas que faltan
+	 * @return Retorna un entero mayor a 0 que referencia
+	 * el numero de casillas del tablero en el que se esta jugando
+	 * que faltan por completar
+	 */
 	public int getFaltanCasillas() {
 		return casillas_faltan;
 	}
