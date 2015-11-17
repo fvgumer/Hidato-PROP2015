@@ -1,9 +1,8 @@
 package DOMINIO.CONTROLADORES.DRIVERS;
 
 import java.util.Scanner;
-import DOMINIO.CLASES.Jugador;
-import DOMINIO.CONTROLADORES.CtrlJugar;
-import DOMINIO.CONTROLADORES.CtrlPartida;
+import DOMINIO.CLASES.*;
+import DOMINIO.CONTROLADORES.*;
 /**
  * Este driver se encarga del propio proceso de la creaciÃ³n de una Partida eligiendo todos los
  * parametros posibles, ya sean nuevos o cargados.
@@ -46,7 +45,7 @@ public class DriverJugarPartida {
 		// [0]Decidir cargar
 		// [1]Crear Partida
 		boolean bucle = true;
-		boolean incorrecto = true;
+		boolean incorrecto = true;;
 		while(incorrecto){
 			System.out.println("Escoje la accion que desas:");
 			System.out.println("0.Cargar Partida Anterior");
@@ -201,7 +200,7 @@ public class DriverJugarPartida {
 			else if (modo == 2){
 						delay = 1;
 			}
-			else delay = 9999999;
+			else delay = 0;
 			CJ.iniciar_tiempo(delay);
 			int x,y;
 			System.out.println("Opciones partida:");
@@ -219,22 +218,20 @@ public class DriverJugarPartida {
 			System.out.println("11.Resolver Partida");
 			System.out.println("12.Reestart");
 			modo = sn.nextInt();
-			boolean parar = false;
-			boolean salir = false;
 			while(bucle){
 				switch(modo){
 				case 0: //PAUSA
-						System.out.println("Estado partida: EN PAUSA");
 						CJ.pausar();
 						break;
 				case 1: //REANUDAR
-						System.out.println("Estado partida: EN JUEGO");
 						CJ.reanudar();
+						if (CJ.get_PartidaHidato().get_estado()==1)
+							System.out.println("Estado de la partida: EN JUEGO");
 						break;
 				case 2: //RENDIRSE
 						System.out.println("Fin Partida");
 						CJ.rendirse();
-						CJ.print_puntuacion();
+						System.out.print("Puntuacion acutal: 0");
 						bucle =false;
 						break;
 				case 3: //PISTA
@@ -257,9 +254,14 @@ public class DriverJugarPartida {
 				case 4: //SALIR
 						//Preguntar si guardar 
 						//Volver a pantalla inicial
-						bucle = false;
-						salir = true;
-						CJ.get_PartidaHidato().set_estado(2);
+						System.out.println("¿Deseas Salir?");
+						System.out.println("0. Si");
+						System.out.println("1. No");
+						modo = sn.nextInt();
+						if (modo == 0) {
+							bucle = false;
+							CJ.get_PartidaHidato().set_estado(2);
+						}
 						break;
 				case 5: //GUARDAR
 						System.out.println("¿Deseas guardar la partida?");
@@ -269,7 +271,8 @@ public class DriverJugarPartida {
 						if (i == 0) CJ.guardar_partida();
 						break;
 				case 6: //INTRODUCIR CASILLA
-						System.out.println("Introduce casilla: rango [0,"+(dim-1)+").");
+						System.out.println("Introduce casilla: rango"
+								+ " [0,"+(CJ.get_PartidaHidato().getTablero().getMida()-1)+"].");
 						System.out.println("Introduce x:");
 						x = sn.nextInt();
 						System.out.println("Introduce y:");
@@ -279,7 +282,8 @@ public class DriverJugarPartida {
 						CJ.introducirCasilla(x,y,valor);
 						break;
 				case 7: //QUITAR CASILLA
-						System.out.println("Introduce casilla: rango [0,"+(dim-1)+").");
+						System.out.println("Introduce casilla: rango"
+								+ " [0,"+(CJ.get_PartidaHidato().getTablero().getMida()-1)+"].");
 						System.out.println("Introduce x:");
 						x = sn.nextInt();
 						System.out.println("Introduce y:");
@@ -295,7 +299,9 @@ public class DriverJugarPartida {
 						CJ.comprobar_casilla(x,y);
 						break;
 				case 9: //MOSTRAR TABLERO
+						if (CJ.get_PartidaHidato().get_estado() !=0)
 						CJ.print();
+						else System.out.println("En Pausa no puedes ver el tablero");
 						break;
 						
 				case 10: //MOSTRAR OPCIONES
@@ -326,24 +332,38 @@ public class DriverJugarPartida {
 						CJ.print();
 						break;
 				}
+				//GESTIONA EL CRONOMETRO
+				int m = CJ.get_PartidaHidato().get_modo();
+				if (m == 0) //Clasico
+					System.out.println("Tiempo transcurrido: "+CJ.get_timer().obtMinuto()+"min(s) y "+ 
+								CJ.get_timer().obtSegundo()+"seg(s).");
+				else if (m == 1) //ContraReloj
+					System.out.println("Te quedan: "+CJ.get_timer().obtMinuto()+"min(s) y "+ 
+								CJ.get_timer().obtSegundo()+"seg(s).");
+				else {		
+					if (!CJ.get_timer().inicializar_tablero()) System.out.println("Aún no puedes realizar"
+					+ " ninguna accion");
+					System.out.println("Tiempo transcurrido: "+CJ.get_timer().obtMinuto()+"min(s) y "+ 
+					CJ.get_timer().obtSegundo()+"seg(s).");
+				}
+				//GESTIONA EL ESTADO DE LA PARTIDA
+				int e = CJ.get_PartidaHidato().get_estado();
+				if (e == 0) { //PAUSA
+						System.out.println("Estado de la partida: EN PAUSA");
+						modo = sn.nextInt();
+				}
 				
-				if (CJ.get_PartidaHidato().get_estado() != 2) { 
-					CJ.estado_partida(CP);
-					CJ.print_puntuacion();
-					CJ.get_tiempo();
-					modo = sn.nextInt();
+				else if (e == 1) { //EN JUEGO
+						CJ.estado_partida(CP);
+						System.out.println("Faltan "+CJ.getFaltanCasillas()+" casilla(s).");
+						System.out.println("Tu puntuacion es: "+CJ.get_PartidaHidato().get_puntuacion()+" puntos.");
+						modo = sn.nextInt();
 				}
 				else {
-					if (CJ.get_timer().getTacabado())System.out.println("TIEMPO TERMINADO");
-					System.out.println("¿Deseas volver a comenzar?");
-					System.out.println("0. Si");
-					System.out.println("1. No");
-					modo = sn.nextInt();
-					if (modo == 0) modo = 12; //Reestart
-					else modo = 4; //Salir
+						System.out.println("Estado de la partida: ACABADA");
+						bucle = false;
 				}
 			}
-			if (!salir) System.out.println("PARTIDA TERMINADA");
 		}
 		System.out.println("Volviendo a menu principal");
 		}
