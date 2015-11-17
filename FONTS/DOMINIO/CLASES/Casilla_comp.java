@@ -15,7 +15,7 @@ public class Casilla_comp implements Serializable{
     /*Pre: cierto */
     public Casilla_comp() {
     }
-    /*Post: se crea una casilla vacía*/
+    /*Post: se crea una casilla vacia*/
  
     /*Pre: cierto */
         public Casilla_comp(boolean candidatos[], boolean por_defecto, int valor) {
@@ -23,7 +23,7 @@ public class Casilla_comp implements Serializable{
         this.por_defecto = por_defecto;
         this.valor = valor;
     }
-    /*Post: se crea una casilla con la lista de candidatos y el valor dados por parámetros, y el booleano por_defecto (true -> dada desde el principio)*/
+    /*Post: se crea una casilla con la lista de candidatos y el valor dados por parametros, y el booleano por_defecto (true -> dada desde el principio)*/
        
     public Casilla_comp(int n, boolean por_defecto)
     {
@@ -36,7 +36,7 @@ public class Casilla_comp implements Serializable{
         valor = 0;
     }
        
-    /*Pre: La lista de candidatos no está vacía*/
+    /*Pre: La lista de candidatos no esta vacia*/
     public boolean[] getCandidatos() {
         return candidatos;
     }
@@ -52,14 +52,14 @@ public class Casilla_comp implements Serializable{
     }
     /*Post: candidatos es la nueva lista de candidatos del objeto. */
    
-    /*Pre: n es un numero entre 0 y el tamañño del tablero*/
+    /*Pre: n es un numero entre 0 y el tamano del tablero*/
     public void esborrarCandidat(int n)
     {
         this.candidatos[n] = false;
     }
     /*Post: n se ha borrado de la lista de candidatos de la casilla*/
    
-    /*Pre: la casilla no está vacía */
+    /*Pre: la casilla no esta vacia */
     public boolean isPor_defecto() {
         return por_defecto;
     }
