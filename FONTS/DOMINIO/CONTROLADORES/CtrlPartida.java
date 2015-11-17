@@ -1,10 +1,8 @@
-package ELENA;
+package DOMINIO.CONTROLADORES;
 
 import java.io.File;
 
-import ALEX.*;
-import G45.Partida_comp;
-import JOEL.*;
+import DOMINIO.CLASES.*;
 
 public class CtrlPartida {
 	//CONSTANTES
