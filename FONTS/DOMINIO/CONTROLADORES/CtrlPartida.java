@@ -1,4 +1,6 @@
 package DOMINIO.CONTROLADORES;
+import DOMINIO.CLASES.*;
+import PERSISTENCIA.*;
 
 import java.io.File;
 

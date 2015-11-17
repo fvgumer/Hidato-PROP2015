@@ -1,10 +1,9 @@
 package DOMINIO.CONTROLADORES;
-
+import DOMINIO.CLASES.*;
+import PERSISTENCIA.*;
 import java.util.Random;
-import PERSISTENCIA.CtrlGestionTablero;
-import DOMINIO.CLASES.Algorithm;
-import DOMINIO.CLASES.Tablero;
 import DOMINIO.CLASES.Temporizador;
+
 /**
  * Esta clase contiene las operaciones que se encargan de generar tableros de Hidatos
  * segun los parametros de entrada que reciben. Estos tableros pueden ser creados de manera
@@ -71,6 +70,7 @@ public class CtrlTablero {
 	   */
 	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias, int f) {
 		map = new Tablero(n);
+		Temporizador t = new Temporizador();
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras);
 		if (f > 0) {
@@ -144,7 +144,10 @@ public class CtrlTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		boolean b = a.solver(start[0], start[1], 1, map);
+		Temporizador t = new Temporizador();
+		t.timer_max();
+		t.iniciar();
+		boolean b = a.solver(start[0], start[1], 1, map,t);
 		return b;
 	}
 	
@@ -156,7 +159,10 @@ public class CtrlTablero {
 	public boolean solucion_unica() {
 		int[] start;
 		start = map.getStart();
-		int aux = a.unica_solucion(start[0], start[1], map, 1);
+		Temporizador t = new Temporizador();
+		t.timer_max();
+		t.iniciar();
+		int aux = a.unica_solucion(start[0], start[1], map, 1, t);
 		if(aux == 1) map.setSolucion_unica(true);
 		else map.setSolucion_unica(false);
 		return (aux == 1);

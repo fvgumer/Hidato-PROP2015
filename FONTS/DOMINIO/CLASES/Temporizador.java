@@ -1,4 +1,4 @@
-package DOMINIO.CLASES.*;
+package DOMINIO.CLASES;
 import javax.swing.Timer; 
 import java.awt.event.*; 
 import java.io.Serializable; 
@@ -21,8 +21,8 @@ public class Temporizador implements ActionListener,Serializable {
 	      }
 	  };
 	  
-	  public void temps_maxim(){
-		  timer = new Timer(30000,temps_maxim);
+	  public void timer_max(){
+		  timer = new Timer(20000,temps_maxim);
 	  }
 	  
 	  public Temporizador(){
