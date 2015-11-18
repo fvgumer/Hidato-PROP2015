@@ -1,0 +1,1 @@
+Es importante que antes de ejecutar el programa, en la carpeta del ejecutable exista una carpeta nombrada "Tableros" aunque este vacia.
