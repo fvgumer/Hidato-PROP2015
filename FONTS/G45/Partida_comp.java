@@ -19,9 +19,9 @@ public class Partida_comp implements Serializable{
     public Partida_comp() {
  
     }
-    /* Post: se crea una partida sin parámetros */
+    /* Post: se crea una partida sin parametros */
  
-    /*Pre: t, u existen y no están vacíos */
+    /*Pre: t, u existen y no estan vacios */
     public Partida_comp(Tablero_comp t, Usuario_comp u, int id) {
                 this.tableroP = t;
                 this.usuarioP = u;

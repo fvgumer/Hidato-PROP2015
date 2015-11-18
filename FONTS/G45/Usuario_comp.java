@@ -14,7 +14,7 @@ public class Usuario_comp implements Serializable{
  
     /**
 	   * Constructora donde el nombre de usuario nombre = "nombre" y su contrasenya password="password"
-	   * Post:Se crea una instancia de Jugador con nombre = 'nombre' y contraseña = 'password'
+	   * Post:Se crea una instancia de Jugador con nombre = 'nombre' y contrasena = 'password'
 	   */
     public Usuario_comp(String nombre, String password){
         this.nombre = nombre;
