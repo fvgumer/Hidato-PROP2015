@@ -1,10 +1,36 @@
-ALEX:
-Tablero, CtrlTablero, Casilla, Driver_ctrl_tablero, Algorithm
-ELENA:
+Entre todos:
+- SuperDriver.java
 
-JOEL:
+Alex Catala:
+- Casilla.java
+- Algorithm.java
+- Tablero.java
+- CtrlTablero.java
+- Driver_ctrl_tablero.java
 
-BELEN:
+Joel Codina:
+- Usuario_comp.java
+- Jugador.java
+- CtrlJugador.java
+- CtrlGestionHidato.java
+- CtrlGestionPartida.java
+- CtrlGestionEstadisticas.java
+- CtrlGestionRanking.java
+- CtrlGestionTablero.java
+- CtrlGestionUsuario.java
+- DriverGestionUsuario.java
 
+Elena Ruiz:
+- CtrlJugar.java
+- Partida_Hidato.java
+- CtrlPartida.java
+- Temporizador.java
+- DriverJugarPartida.java
 
-SuperDriver entre todos
+Belen San Martin:
+- ClassEstadisticas.java
+- CtrlEstadisticas.java
+- ClassRanking.java
+- CtrlRanking.java
+- ClassResultado.java
+- DriverEstadisticas.java
