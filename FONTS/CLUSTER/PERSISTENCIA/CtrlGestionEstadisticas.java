@@ -31,7 +31,7 @@ public CtrlGestionEstadisticas(){
  */
 public ClassEstadisticas cargar(String NomE){
 	ClassEstadisticas E = new ClassEstadisticas(null);
-	super.ruta = "Estadisticas"+  barras + NomE+ ".bin";
+	super.ruta = ".."+ barras + "DATOS" + barras + "Estadisticas"+  barras + NomE+ ".bin";
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
 		return null;

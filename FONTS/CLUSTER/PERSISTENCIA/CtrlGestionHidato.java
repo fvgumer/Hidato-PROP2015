@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-import org.apache.commons.io.*;
+//import org.apache.commons.io.*;
 
 import CLUSTER.DOMINIO.CLASES.ClassEstadisticas;
 import CLUSTER.DOMINIO.CLASES.ClassRanking;
@@ -48,27 +48,27 @@ public class CtrlGestionHidato<T> {
 			 Partida_Hidato P = (Partida_Hidato) objeto;
 			 String ID = String.valueOf(P.getID());
 			 String Player = P.getUsuario().consultar_nombre();
-			 ruta = "Partidas"+barras +Player;
+			 ruta = ".."+ barras + "DATOS" + barras +"Partidas"+barras +Player;
 			 archivo = barras + ID + ".bin";
 		}
 		else if(Onom.equals("Jugador")){
 			Jugador J = (Jugador) objeto;
-			ruta = "Jugadors";
+			ruta = ".."+ barras + "DATOS" + barras +"Jugadors";
 			archivo = barras+J.consultar_nombre()+ ".bin";
 		}
 		else if(Onom.equals("ClassRanking")){
 			ClassRanking R = (ClassRanking) objeto;
-			ruta ="Rankings";
+			ruta =".."+ barras + "DATOS" + barras +"Rankings";
 			archivo= barras+R.getID()+".bin";
 		}
 		else if(Onom.equals("ClassEstadisticas")){
 			ClassEstadisticas E = (ClassEstadisticas) objeto;
-			ruta = "Estadisticas";
+			ruta = ".."+ barras + "DATOS" + barras +"Estadisticas";
 			archivo = barras+E.getName()+".bin";
 		}
 		else if(Onom.equals("Tablero")){
 			Tablero T = (Tablero) objeto;
-			ruta ="Tableros";
+			ruta =".."+ barras + "DATOS" + barras +"Tableros";
 			String Tnom = String.valueOf(T.get_id());
 			archivo= barras+Tnom+".bin";
 		}
@@ -127,7 +127,7 @@ public class CtrlGestionHidato<T> {
 	/**
 	 * Metodo que borra todas las carpetas que contienen los objetos del juego Hidato, esten o no vacias.
 	 */
-	public void clean_all(){
+	/*public void clean_all(){
 		try {
 			FileUtils.deleteDirectory(new File("Partidas"));
 			FileUtils.deleteDirectory(new File("Rankings"));
@@ -138,6 +138,6 @@ public class CtrlGestionHidato<T> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 }
 

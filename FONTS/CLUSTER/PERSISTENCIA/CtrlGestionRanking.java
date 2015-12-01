@@ -30,7 +30,7 @@ public CtrlGestionRanking(){
  */
 public ClassRanking cargar(String NomR){
 	ClassRanking R = new ClassRanking(null);
-	ruta = "Rankings"+  barras + NomR+ ".bin";
+	ruta = ".."+ barras + "DATOS" + barras +"Rankings"+  barras + NomR+ ".bin";
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
 		return null;

@@ -33,7 +33,7 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	public Tablero cargar(int ID, boolean b){
 		Tablero T = null;
 		String nomT = String.valueOf(ID);
-		ruta = "Tableros"+  barras + nomT+ ".bin";
+		ruta = ".."+ barras + "DATOS" + barras +"Tableros"+  barras + nomT+ ".bin";
 		File archiu = new File(ruta);
 		if(archiu.exists()==false) {
 			b = false;
@@ -63,7 +63,7 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	 * @return Devuelve una lista con todos los identificadores de todos los tableros creados
 	 */
 	public String[] consultar_nomstableros() {
-		ruta = "Tableros"+  barras;
+		ruta = ".."+ barras + "DATOS" + barras +"Tableros"+  barras;
 		File directory = new File(ruta);
 		String[] llista_noms=directory.list();
 		return llista_noms;

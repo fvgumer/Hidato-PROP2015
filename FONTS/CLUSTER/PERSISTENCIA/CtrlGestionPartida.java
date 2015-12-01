@@ -33,7 +33,7 @@ public Partida_Hidato cargar(String NomJ, int IDs){
 	String ID = String.valueOf(IDs);
 	System.out.println(ID);
 	Partida_Hidato P;
-	ruta = "Partidas"+  barras + NomJ+ barras + ID + ".bin";
+	ruta = ".."+ barras + "DATOS" + barras +"Partidas"+  barras + NomJ+ barras + ID + ".bin";
 	System.out.println(ruta);
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
@@ -71,7 +71,7 @@ public Partida_Hidato cargar(String NomJ, int IDs){
  * Post: Crea el directorio donde se crearan las partidas del jugador en caso de que no exista.
  */
 public int consultar_numeropartidas(String NomJ){
-	ruta = "Partidas"+ barras + NomJ + barras;
+	ruta = ".."+ barras + "DATOS" + barras +"Partidas"+ barras + NomJ + barras;
 	File directory = new File(ruta);
 	if(directory.exists()==false) {
 		directory.mkdir();
@@ -85,7 +85,7 @@ public int consultar_numeropartidas(String NomJ){
  * @return Devuelve una lista con todos los identificadores del jugador con nombre= nomJ
  */
 public String[] lista_partidas(String NomJ){
-	ruta = "Partidas"+  barras;
+	ruta = ".."+ barras + "DATOS" + barras +"Partidas"+  barras;
 	File directory = new File(ruta);
 	String[] llista_noms=directory.list();
 	return llista_noms;

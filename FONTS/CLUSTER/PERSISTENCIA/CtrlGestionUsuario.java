@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import org.apache.commons.io.*;
+//import org.apache.commons.io.*;
 
 import CLUSTER.DOMINIO.CLASES.Jugador;
 
@@ -33,7 +33,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 * @return Cierto si el usuario se ha creado satisfactoriamente, falso si ya existia.
 	 */
 	public boolean crear_jugador(String nombre, String contrasenya){
-		ruta = "Jugadors"+barras;
+		ruta = ".."+ barras + "DATOS" + barras +"Jugadors"+barras;
 		File archiu = new File("Jugadors"+barras+nombre+".bin");
 		File directory = new File(ruta);
 		directory.mkdir();
@@ -42,7 +42,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			return false;
 		}
 		Jugador player = new Jugador(nombre,contrasenya);
-		String filename = "Jugadors"+barras+nombre+".bin";
+		String filename = ".."+ barras + "DATOS" + barras +"Jugadors"+barras+nombre+".bin";
 		try {
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
 			os.writeObject(player);
@@ -66,7 +66,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 * o el usuario existia. Retorna un Jugador null otramente. 
 	 */
 	public Jugador cargar_jugador(String nombre, String password){
-		String ruta = "Jugadors"+barras+nombre+".bin";
+		String ruta = ".."+ barras + "DATOS" + barras +"Jugadors"+barras+nombre+".bin";
 		Jugador pla = new Jugador(null, null);
 		File archiu = new File(ruta);
 		if(archiu.exists()==false) {
@@ -106,18 +106,18 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 */
 	public void eliminar_jugador(String nombre, String contrasenya){
 		
-			String ruta = "Jugadors"+barras+nombre+".bin";
+			String ruta = ".."+ barras + "DATOS" + barras +"Jugadors"+barras+nombre+".bin";
 			File archiu = new File(ruta);
 			if(archiu.delete()) {
-				String rutapartida = "Partidas"+barras+nombre;
-				if(new File(rutapartida).exists()){
+				String rutapartida = ".."+ barras + "DATOS" + barras +"Partidas"+barras+nombre;
+				/*if(new File(rutapartida).exists()){
 				try {
 					FileUtils.deleteDirectory(new File(rutapartida));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				}
+				}*/
 			}
 			else System.out.println("El jugador no existeix");
 		
