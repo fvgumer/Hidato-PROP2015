@@ -1,6 +1,9 @@
-package CLUSTER.DOMINIO.CLASES;
+package CLUSTER.DOMINIO.CONTROLADORES;
 
 import java.util.*;
+
+import CLUSTER.DOMINIO.CLASES.Tablero;
+import CLUSTER.DOMINIO.CLASES.Temporizador;
 
 /**
  * Esta clase contiene los algoritmos de solucion, generacion de hidatos aleatorios y unica

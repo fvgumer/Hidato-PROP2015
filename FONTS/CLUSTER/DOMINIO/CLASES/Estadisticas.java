@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  */
 
-public class ClassEstadisticas implements Serializable{
+public class Estadisticas implements Serializable{
 
 	private String user;
 	//Nombre del usuario asociado a las estadisticas.
@@ -37,7 +37,7 @@ public class ClassEstadisticas implements Serializable{
 	 * Creadora por defecto de la clase.
 	 * @param user Nombre del jugador del cual queremos crear las estadisticas.
 	 */
-	public ClassEstadisticas(String user){
+	public Estadisticas(String user){
 		this.user = user;
 		segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
 		//tablerosCreados = new ArrayList<String>();

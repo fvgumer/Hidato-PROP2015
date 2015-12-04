@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  */
 
-public class ClassResultado implements Serializable {
+public class Resultado implements Serializable {
 	
 	private String jugador;
 	//Nombre del usuario que ha jugado la partida.
@@ -32,7 +32,7 @@ public class ClassResultado implements Serializable {
 	 * @param dificultad Dificultad asignada.
 	 * @param puntuacion Puntuacion obtenida.
 	 */
-	public ClassResultado(String jugador, String modo, String dificultad, int puntuacion) {
+	public Resultado(String jugador, String modo, String dificultad, int puntuacion) {
 		this.jugador = jugador;
 		this.modo = modo;
 		this.dificultad = dificultad;

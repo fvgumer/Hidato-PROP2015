@@ -12,12 +12,12 @@ import java.io.Serializable;
  *
  */
 
-public class ClassRanking implements Serializable {
+public class Ranking implements Serializable {
 	
 	private String tablero;
 	//Nombre del tablero asociado al ranking.
 	
-	private ArrayList<ClassResultado> ranking;
+	private ArrayList<Resultado> ranking;
 	//Listado de las posiciones del ranking y sus resultados.
 	
 	private static final long serialVersionUID = 2L;
@@ -26,9 +26,9 @@ public class ClassRanking implements Serializable {
 	 * Creadora por defecto del ranking.
 	 * @param tablero Nombre del tablero del cual queremos crear el ranking.
 	 */
-	public ClassRanking(String tablero) {
+	public Ranking(String tablero) {
 		this.tablero = tablero;
-		ranking = new ArrayList<ClassResultado>();	
+		ranking = new ArrayList<Resultado>();	
 	}
 	
 	/**
@@ -53,7 +53,7 @@ public class ClassRanking implements Serializable {
 	 * @return Resultado de la partida que ocupa la posicion del ranking
 	 * que hemos consultado.
 	 */
-	public ClassResultado getPosicion(int pos){
+	public Resultado getPosicion(int pos){
 		return ranking.get(pos);
 	}
 	
@@ -63,7 +63,7 @@ public class ClassRanking implements Serializable {
 	 * @param pos Posicion en la que queremos anadir el nuevo resultado.
 	 * @param res Resultado que queremos anadir al ranking.
 	 */
-	public void anadirResultado(int pos, ClassResultado res) {
+	public void anadirResultado(int pos, Resultado res) {
 		ranking.add(pos,res);
 	}
 	
