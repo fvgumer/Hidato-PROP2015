@@ -48,7 +48,7 @@ public class Driver_ctrl_tablero {
 			System.out.println("3.Eliminar un tablero del repositorio");
 			System.out.println("4.Atras");
 		 	prueba = new CtrlTablero();
-		 	int max_id = prueba.ini_guarda_carga();
+		 	prueba.ini_guarda_carga();
 			int i = s.nextInt();
 			while (!comprueba_entrada(i,4)) {i = s.nextInt();}
 			switch (i) {
@@ -128,10 +128,9 @@ public class Driver_ctrl_tablero {
 					break;
 				case 3:
 					prueba.muestra_repo_tab();
-					System.out.println("Escribe el id del tablero que quieres eliminar: [1, "
-										+ (max_id+1) + "]:");
-					int id = s.nextInt();
-					while (!comprueba_entrada(id, max_id+1)) {id = s.nextInt();}
+					System.out.println("Escribe el id del tablero que quieres eliminar:");
+					String id = s.next();
+					//while (!comprueba_entrada(id, max_id+1)) {id = s.nextInt();}
 					boolean carga = prueba.cargar(id);
 					if (carga) {
 						prueba.muestra_mapa();
@@ -164,8 +163,7 @@ public class Driver_ctrl_tablero {
 				while(!comprueba_entrada(aux, 2)) {aux = s.nextInt();}
 				if(aux == 1) {
 					prueba.get_Tablero().inicialitzar_caselles();
-					aux = prueba.guardar();
-					System.out.println("Se le ha asignado el siguiente id: " + aux);
+					prueba.guardar();
 				}
 				System.out.println("Donde quieres ir?:");
 				System.out.println("	1.Menu principal");

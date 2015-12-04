@@ -30,10 +30,9 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	 * @return Una instancia de la clase Tablero
 	 * Post: Si no se ha cargado correctamente, devuelve un tablero null.
 	 */
-	public Tablero cargar(int ID, boolean b){
+	public Tablero cargar(String ID, boolean b){
 		Tablero T = null;
-		String nomT = String.valueOf(ID);
-		ruta = ".."+ barras + "DATOS" + barras +"Tableros"+  barras + nomT+ ".bin";
+		ruta = ".."+ barras + "DATOS" + barras +"Tableros"+  barras + ID + ".bin";
 		File archiu = new File(ruta);
 		if(archiu.exists()==false) {
 			b = false;
