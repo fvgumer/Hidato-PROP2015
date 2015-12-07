@@ -14,23 +14,10 @@ public class VistaIniciarSesion extends VistaPadreInicio {
 	private JTextField textField2;
 
 
-	public void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaIniciarSesion frame = new VistaIniciarSesion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
-	public VistaIniciarSesion() {
+	public VistaIniciarSesion(CtrlVista CV) {
 		super.setTextLayer("Inicio");
 		contentPane.setLayout(null);
 

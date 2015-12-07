@@ -14,25 +14,30 @@ public class VistaInicial extends VistaPadreInicio {
 
 
 
-	public VistaInicial(CtrlVista CV) {
+	public VistaInicial(final CtrlVista CV) {
 		//Config layer 
 		super.setTextLayer("Inicio");
 		contentPane.setLayout(null);
 		Titulo t = new Titulo("JUEGO HIDATO",130,247);
 		contentPane.add(t);
 		
-		
+		//Declaración Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Entrar",50,200);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				
+				CV.entrar_InicioSesion();
 			}
 		});
 		contentPane.add(b1);
 		
-		
+		//Declarar Boton "Salir" y su funcion
 		Botones b2 = new Botones("Salir",250,200);
-		contentPane.add(b2);		
+		contentPane.add(b2);
+		b2.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.Salir();
+			}
+		});
 		
 
 	}

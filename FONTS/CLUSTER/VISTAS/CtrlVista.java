@@ -15,6 +15,7 @@ public class CtrlVista {
 		public CtrlVista(){
 			CDominio = new CtrlDominio();
 			VInicial = new VistaInicial(this);
+			VIniSesion = new VistaIniciarSesion(this);
 		}
 
 		/**
@@ -25,7 +26,14 @@ public class CtrlVista {
 		}
 		
 		//Funciones para cambiar las vistas
+		public void entrar_InicioSesion(){
+			VIniSesion.setVisible(true);
+			VInicial.setVisible(false);
+		}
 		
+		public void Salir() {
+			VInicial.setVisible(false);
+		}
 		
 		
 }
