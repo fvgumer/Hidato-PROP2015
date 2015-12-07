@@ -1,5 +1,5 @@
-package VISTAS;
-
+package CLUSTER.VISTAS;
+import CLUSTER.DOMINIO.CONTROLADORES.*;
 
 import java.awt.EventQueue;
 import java.awt.Button;
@@ -13,21 +13,8 @@ public class VistaInicial extends VistaPadreInicio {
 	private Button b2;
 
 
-	public void exec() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaInicial frame = new VistaInicial();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-
-	public VistaInicial() {
+	public VistaInicial(CtrlVista CV) {
 		//Config layer 
 		super.setTextLayer("Inicio");
 		contentPane.setLayout(null);
@@ -37,12 +24,13 @@ public class VistaInicial extends VistaPadreInicio {
 		
 		Botones b1 = new Botones("Entrar",50,200);
 		b1.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
 			}
 		});
 		contentPane.add(b1);
+		
+		
 		Botones b2 = new Botones("Salir",250,200);
 		contentPane.add(b2);		
 		

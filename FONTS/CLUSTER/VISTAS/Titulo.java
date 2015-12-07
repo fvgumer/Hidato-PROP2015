@@ -1,4 +1,4 @@
-package VISTAS;
+package CLUSTER.VISTAS;
 
 
 import java.awt.Font;
