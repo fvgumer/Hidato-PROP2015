@@ -8,8 +8,8 @@ import java.io.ObjectOutputStream;
 
 //import org.apache.commons.io.*;
 
-import CLUSTER.DOMINIO.CLASES.Estadisticas;
-import CLUSTER.DOMINIO.CLASES.Ranking;
+import CLUSTER.DOMINIO.CLASES.ClassEstadisticas;
+import CLUSTER.DOMINIO.CLASES.ClassRanking;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CLASES.Partida_Hidato;
 import CLUSTER.DOMINIO.CLASES.Tablero;
@@ -57,12 +57,12 @@ public class CtrlGestionHidato<T> {
 			archivo = barras+J.consultar_nombre()+ ".bin";
 		}
 		else if(Onom.equals("ClassRanking")){
-			Ranking R = (Ranking) objeto;
+			ClassRanking R = (ClassRanking) objeto;
 			ruta =".."+ barras + "DATOS" + barras +"Rankings";
 			archivo= barras+R.getID()+".bin";
 		}
 		else if(Onom.equals("ClassEstadisticas")){
-			Estadisticas E = (Estadisticas) objeto;
+			ClassEstadisticas E = (ClassEstadisticas) objeto;
 			ruta = ".."+ barras + "DATOS" + barras +"Estadisticas";
 			archivo = barras+E.getName()+".bin";
 		}

@@ -7,7 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-//import org.apache.commons.io.*;
+
+import org.apache.commons.io.FileUtils;
 
 import CLUSTER.DOMINIO.CLASES.Jugador;
 
@@ -34,15 +35,15 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 */
 	public boolean crear_jugador(String nombre, String contrasenya){
 		ruta = ".."+ barras + "DATOS" + barras +"Jugadors"+barras;
-		File archiu = new File("Jugadors"+barras+nombre+".bin");
+		File archiu = new File(ruta+nombre+".bin");
 		File directory = new File(ruta);
-		directory.mkdir();
+		directory.mkdirs();
 		if(archiu.exists()){
 			System.out.println("El nom ja existeix, elegeix un altre");
 			return false;
 		}
 		Jugador player = new Jugador(nombre,contrasenya);
-		String filename = ".."+ barras + "DATOS" + barras +"Jugadors"+barras+nombre+".bin";
+		String filename = ruta+nombre+".bin";
 		try {
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
 			os.writeObject(player);
@@ -110,14 +111,14 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			File archiu = new File(ruta);
 			if(archiu.delete()) {
 				String rutapartida = ".."+ barras + "DATOS" + barras +"Partidas"+barras+nombre;
-				/*if(new File(rutapartida).exists()){
+				if(new File(rutapartida).exists()){
 				try {
 					FileUtils.deleteDirectory(new File(rutapartida));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				}*/
+				}
 			}
 			else System.out.println("El jugador no existeix");
 		
@@ -128,7 +129,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 * @return Devuelve una lista con todos los nombres de todos los Jugadores creados.
 	 */
 	public String[] lista_usuarios(){
-		ruta = "Jugadors"+  barras;
+		ruta = ".."+ barras + "DATOS" + barras + "Jugadors"+  barras;
 		File directory = new File(ruta);
 		String[] llista_noms=directory.list();
 		return llista_noms;

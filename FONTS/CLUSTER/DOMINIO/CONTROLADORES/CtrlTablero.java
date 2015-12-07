@@ -24,6 +24,8 @@ public class CtrlTablero {
 	private Random rm;
 	private Algorithm a;
 	private CtrlGestionTablero c;
+	private String[] tableros_repo;
+	private int max_nombre;
 	
 	/**
 	 * Creadora por defecto
@@ -111,8 +113,10 @@ public class CtrlTablero {
 	 * Este metodo inicializa el ctrl de persistencia para poder guardar/cargar/eliminar tableros
 	 * @return Retorna el id de los tableros en el sistema de ficheros mas grande
 	 */
-	public void ini_guarda_carga() {
+	public int ini_guarda_carga() {
 		c = new CtrlGestionTablero();
+		actu_tab_repo();
+		return max_nombre;
 	}
 	
 	/**
@@ -220,31 +224,21 @@ public class CtrlTablero {
 		return this.map;
 	}
 	
-	private String obten_id() {
-		String nom = "";
-		if (map.getMida() < 10) {
-			nom = nom + "0";
-		}
-		nom = nom + String.valueOf(map.getMida());
-		if (map.getholes() < 10) {
-			nom = nom + "0";
-		}
-		nom = nom + String.valueOf(map.getholes());
-		int caselles_buides = (map.getMida()*map.getMida()) 
-				- map.getholes() - map.getn_predef();
-		if (caselles_buides < 10) {
-			nom = nom + "0";
-		}
-		nom = nom + String.valueOf(caselles_buides);
-		return nom;
-	}
-	
-	public void guardar() {
-		map.set_id(obten_id());
+	/**
+	 * Se guarda el tablero de la clase en el sistema de ficheros. Se le asigna el identificador
+	 * dependiendo del identificador del ultimo tablero guardado. Tambien se genera el ranking
+	 * asociado al tablero.
+	 * @return Retorna el id de los tableros en el sistema de ficheros mas grande
+	 */
+	public int guardar() {
+		max_nombre = max_nombre + 1;
+		map.set_id(max_nombre);
 		c.guardar(map);
-		System.out.println("Se le ha asignado el siguiente id: " + map.get_id());
 		CtrlRanking rnk = new CtrlRanking();
-		rnk.crearRanking(map.get_id());
+		String aux = Integer.toString(max_nombre);
+		rnk.crearRanking(aux);
+		actu_tab_repo();
+		return max_nombre;
 	}
 	
 	/**
@@ -252,9 +246,9 @@ public class CtrlTablero {
 	 * @param n Indica el id del tablero que se quiere cargar
 	 * @return Retorna true si la carga se ha realizado con exito. False en caso contrario.
 	 */
-	public boolean cargar(String id) {
+	public boolean cargar(int n) {
 		boolean b = true;
-		map = c.cargar(id,b);
+		map = c.cargar(n,b);
 		return b;
 	}
 	
@@ -262,9 +256,8 @@ public class CtrlTablero {
 	 * Se muestran por pantalla el nombre de todos los tableros mostrados por pantalla
 	 */
 	public void muestra_repo_tab() {
-		String[] s = c.consultar_nomstableros();
-		for(int i = 0; i < s.length; ++i) {
-			System.out.println(s[i]);
+		for(int i = 0; i < tableros_repo.length; ++i) {
+			System.out.println(tableros_repo[i]);
 		}
 	}
 	
@@ -275,11 +268,28 @@ public class CtrlTablero {
 	public void eliminar() {
 		c.eliminar(map);
 		CtrlRanking rnk = new CtrlRanking();
-		rnk.eliminarRanking(map.get_id());
+		String aux = Integer.toString(map.get_id());
+		rnk.eliminarRanking(aux);
+		actu_tab_repo();
 	}
 	
 	public void asignar_dificultad() {
 		map.calcular_dificultad();
+	}
+	
+	/**
+	 * Este metodo actualiza las variables tableros_repo y max_nombre de la clase de acuerdo
+	 * con los tableros que existen en el sitema de ficheros
+	 */
+	private void actu_tab_repo() {
+		tableros_repo = c.consultar_nomstableros();
+		if(tableros_repo.length > 1) {
+			for(int i=0; i < tableros_repo.length; ++i) {
+				String auxs = tableros_repo[i];
+				int aux = Integer.parseInt((auxs.substring(0,auxs.length()-4)));
+				if(aux > max_nombre) max_nombre = aux;
+			}
+		}
 	}
 
 	/**

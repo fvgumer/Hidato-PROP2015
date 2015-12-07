@@ -1,0 +1,25 @@
+15:39:14,789 I: (ErlangCore.java:64) : Starting CORE Thread[Worker-3,5,main]
+15:39:14,793 I: (ErlangCore.java:79) : *** starting Erlide v0.29.11.201502161407 (core=0.24.12.201502161407) (model api=0.24.11.201502161407) *** (UTF-8) ui
+15:39:14,803 I: (ErlangCore.java:86) : Started CORE
+15:39:14,803 F: (ErlangPlugin.java:88) : Core started
+15:39:15,388 F: (ErlangHostnameRetriever.java:40) : Test long hostname: a5s104mac43.fib.upc.es
+15:39:15,826 F: (ErlangHostnameRetriever.java:40) : Test short hostname: a5s104mac43
+15:39:15,910 F: (HostnameUtils.java:74) : Detected:: a5s104mac43 && a5s104mac43.fib.upc.es
+15:39:15,932 F: (BackendActivator.java:25) : Backend plugin started
+15:39:15,937 I: (ErlideUIPlugin.java:130) : Starting UI Thread[Worker-3,5,main]
+15:39:15,946 F: (ModelActivator.java:19) : Starting Erlang model api
+15:39:15,961 F: (BackendFactory.java:42) : Create ide backend 17.1.0
+15:39:15,961 F: (BackendFactory.java:56) : Create backend 7f0c8_joelcodina_2f65f7_erlide
+15:39:16,065 F: (OtpNodeProxy.java:302) : Runtime 7f0c8_joelcodina_2f65f7_erlide@a5s104mac43.fib.upc.es starting
+15:39:16,066 F: (OtpNodeProxy.java:420) : START node :> [/usr/lib64/erlang/bin/erl, -name, 7f0c8_joelcodina_2f65f7_erlide@a5s104mac43.fib.upc.es, -setcookie, erlide] *** /home2/users/alumnes/1185348/Desktop/Hidato-PROP-master
+15:39:16,090 F: (OtpNodeProxy.java:213) : 7f0c8_joelcodina_2f65f7_erlide@a5s104mac43.fib.upc.es: waiting connection to peer... 
+15:39:16,502 F: (OtpNodeProxy.java:220) : connected!
+15:39:16,668 F: (OtpNodeProxy.java:307) : Runtime 7f0c8_joelcodina_2f65f7_erlide@a5s104mac43.fib.upc.es running
+15:39:16,669 F: (LogEventHandler.java:27) : info: {"Monitoring java node",'jerlide_2f6677@a5s104mac43.fib.upc.es'}
+15:39:16,670 F: (LogEventHandler.java:27) : info: {"Start monitor process: ",10000000,50000000}
+15:39:17,129 F: (ModelActivator.java:30) : Started model api
+15:39:17,134 I: (ErlideUIPlugin.java:152) : Started UI
+15:39:57,468 F: (OtpNodeProxy.java:312) : Runtime 7f0c8_joelcodina_2f65f7_erlide@a5s104mac43.fib.upc.es stopping
+15:39:57,980 F: (OtpNodeProxy.java:302) : Runtime 7f0c8_joelcodina_2f65f7_erlide@a5s104mac43.fib.upc.es starting
+15:39:57,980 F: (OtpNodeProxy.java:420) : START node :> [/usr/lib64/erlang/bin/erl, -name, 7f0c8_joelcodina_2f65f7_erlide@a5s104mac43.fib.upc.es, -setcookie, erlide] *** /home2/users/alumnes/1185348/Desktop/Hidato-PROP-master
+15:39:57,985 F: (OtpNodeProxy.java:213) : 7f0c8_joelcodina_2f65f7_erlide@a5s104mac43.fib.upc.es: waiting connection to peer... 

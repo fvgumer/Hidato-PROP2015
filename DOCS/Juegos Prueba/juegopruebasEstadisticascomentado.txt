@@ -1,0 +1,18 @@
+4	//Entramos en el menu de estadisticas
+1	//Consultamos nuestras estadisticas personales
+56385	//Codigo de operacion erroneo
+2	//Consultamos las estadisticas de otro usuario
+belen	//Elegimos el usuario belen
+2	//Consultamos las estadisticas de otro usuario
+eduard	//Elegimos el usuario eduard --- no existe
+3	//Consultamos el ranking de un tablero
+4	//Elegimos el tablero 4
+3	//Elegimos mostrar el top 3 de este tablero
+3	//Consultamos el ranking de un tablero
+890	//Elegimos el tablero 890 --- no existe
+3	//Consultamos el ranking de un tablero
+2	//Elegimos el tablero 2
+1000	//Elegimos mostrar el top 1000 de este tablero --- 
+		//como se ha jugado menos de 1000 veces, se muestran
+		//todas las posiciones
+4	//Salimos al menu principal

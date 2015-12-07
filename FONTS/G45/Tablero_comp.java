@@ -2,27 +2,25 @@ package G45;
 
 import java.io.Serializable;
 
-public class Tablero_comp implements Serializable {
-       
-		private static final long serialVersionUID = 1L;
-        protected Casilla_comp[][] tauler;
+public class Tablero_comp implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+		protected Casilla_comp[][] tauler;
         protected int mida;
        
-        public Tablero_comp() {}
         /**
          * Crea un tauler de mida NxN
          */
         public Tablero_comp(int N)
         {
                 tauler = new Casilla_comp[N][N];
-                mida = N;
-       
                 int i,j;
                 for (i = 0; i < N; ++i) {
                         for (j = 0; j < N; ++j) {
-                                tauler[i][j] = new Casilla_comp(mida+1,false);
+                                tauler[i][j] = new Casilla_comp(new boolean[mida], false, 0);
                         }
                 }
+                mida = N;
         }
        
         /**
@@ -77,11 +75,10 @@ public class Tablero_comp implements Serializable {
         {
                 tauler[x][y].setCandidat(n);
         }
-     
        
         /**
          * Esborra n dels candidats de la casella que hi
-         * ha a la posiciï¿½ x,y del tauler
+         * ha a la posici� x,y del tauler
          */
         public void esborrarCandidatTauler(int x, int y, int n)
         {

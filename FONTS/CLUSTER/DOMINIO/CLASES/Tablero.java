@@ -20,13 +20,12 @@ public class Tablero extends Tablero_comp implements Serializable{
 	   * start y end contienen las posiciones de principio y fin respectivamente
 	   * 	
 	   */
-	private int dif;
+	private int id_tab, dif;
 	private Casilla[][] solucio; 
 	private int holes, n_predef, final_num;
 	private int[] start, end;
 	private boolean[] posats;
 	private boolean solucion_unica;
-	private String id;
 	
 	/**
 	   * Creadora que determina los valores iniciales de un tablero de nxn dimensiones
@@ -110,8 +109,8 @@ public class Tablero extends Tablero_comp implements Serializable{
 	/**
 	   * @return Retorna el el identificador del tablero
 	   */
-	public String get_id() {
-		return id;
+	public int get_id() {
+		return id_tab;
 	}
 	
 	/**
@@ -142,8 +141,8 @@ public class Tablero extends Tablero_comp implements Serializable{
 	   * Se configura el identificador del tablero segun el valor de n
 	   * @param n Indica el valor del nuevo identificador del tablero
 	   */
-	public void set_id(String s) {
-		id = s;
+	public void set_id(int n) {
+		id_tab = n;
 	}
 	/**
 	 * 

@@ -1,6 +1,6 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 
-import CLUSTER.DOMINIO.CLASES.Estadisticas;
+import CLUSTER.DOMINIO.CLASES.ClassEstadisticas;
 import CLUSTER.PERSISTENCIA.CtrlGestionEstadisticas;
 
 /**
@@ -13,7 +13,7 @@ import CLUSTER.PERSISTENCIA.CtrlGestionEstadisticas;
 
 public class CtrlEstadisticas {
 	
-	private Estadisticas E;	
+	private ClassEstadisticas E;	
 	//Instancia de ClassEstadisticas asociada al controlador de Estadisticas
 	
 
@@ -33,7 +33,7 @@ public class CtrlEstadisticas {
 	 * @param jugador Nombre del jugador del cual queremos crear las estadisticas.
 	 */
 	public void crearEstadisticas(String jugador) {
-		E = new Estadisticas(jugador);
+		E = new ClassEstadisticas(jugador);
 		
 		GE.guardar(E);
 	}

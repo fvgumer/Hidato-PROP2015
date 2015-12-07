@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import CLUSTER.DOMINIO.CLASES.Ranking;
+import CLUSTER.DOMINIO.CLASES.ClassRanking;
 
 /**
  * Esta clase hereda las operaciones  de la super clase de control de gestion, CtrlGestionHidato
@@ -28,8 +28,8 @@ public CtrlGestionRanking(){
  * @param NomR Nom del Ranking que volem cargar
  * @return Retorna el ranking amb nom NomR, si no existeix retorna null
  */
-public Ranking cargar(String NomR){
-	Ranking R = new Ranking(null);
+public ClassRanking cargar(String NomR){
+	ClassRanking R = new ClassRanking(null);
 	ruta = ".."+ barras + "DATOS" + barras +"Rankings"+  barras + NomR+ ".bin";
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
@@ -38,7 +38,7 @@ public Ranking cargar(String NomR){
 	else{
 		try{
 		ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
-		R = (Ranking) is.readObject();
+		R = (ClassRanking) is.readObject();
 		is.close();
 		}
 		 catch (FileNotFoundException e) {
