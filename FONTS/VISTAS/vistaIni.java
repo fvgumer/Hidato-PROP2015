@@ -13,12 +13,15 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("unused")
 public class vistaIni {
 
 	private JFrame frame;
-	private JTextField txtHidatoGame;
+	private JTextField textField;
+	private JTextField txtDa;
 
 	/**
 	 * Launch the application.
@@ -48,22 +51,15 @@ public class vistaIni {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setBackground(new Color(255, 51, 51));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		
-		frame.getContentPane().add(btnSalir);
-		frame.setSize(1024, 768);
-		txtHidatoGame = new JTextField();
-		txtHidatoGame.setFont(new Font("Nyala", Font.BOLD, 35));
-		txtHidatoGame.setForeground(new Color(51, 51, 51));
-		txtHidatoGame.setBackground(new Color(255, 255, 255));
-		txtHidatoGame.setText("HIDATO GAME");
-		txtHidatoGame.setBounds(97, 45, 241, 39);
-		frame.getContentPane().add(txtHidatoGame);
-		txtHidatoGame.setColumns(10);
+		Color C = new Color(0, 255, 0);
+		Titulo textField = new Titulo("HIDATO GAME",C);
 		
-		
+		frame.getContentPane().add(textField);
 	}
 }
