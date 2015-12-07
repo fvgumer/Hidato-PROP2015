@@ -41,7 +41,7 @@ public class VistaPadreInicio extends JFrame {
 		this.textLayer = textLayer;
 	}
 	
-	public void main(String[] args) {
+	public void exec() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
