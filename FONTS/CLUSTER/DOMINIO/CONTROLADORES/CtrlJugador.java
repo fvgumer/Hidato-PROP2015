@@ -44,8 +44,8 @@ public class CtrlJugador {
 	 * Post: La contrasenya del jugador J cargado en el controlador pasa a ser 'newpassword'
 	 */
 	public boolean editarcontrasenya(String oldPassword, String newPassword){
-		if(oldPassword.equals(J.password)) {
-			J.password = newPassword;
+		if(oldPassword.equals(J.consultar_password())) {
+			J.set_password(newPassword);
 			Gestor.guardar(J);
 			return true;
 		}
@@ -57,8 +57,8 @@ public class CtrlJugador {
 	 * Post: El jugador J es eliminado
 	 */
 	public void eliminar_usuario(){
-		Gestor.eliminar_jugador(J.nombre, J.password);
-		CtrlE.eliminarEst(J.nombre);
+		Gestor.eliminar_jugador(J.consultar_nombre(), J.consultar_password());
+		CtrlE.eliminarEst(J.consultar_nombre());
 		J = null;
 	}
 	

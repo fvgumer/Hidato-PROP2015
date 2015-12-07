@@ -1,7 +1,7 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 
-import CLUSTER.DOMINIO.CLASES.ClassRanking;
-import CLUSTER.DOMINIO.CLASES.ClassResultado;
+import CLUSTER.DOMINIO.CLASES.Ranking;
+import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.PERSISTENCIA.CtrlGestionRanking;
 
 /**
@@ -14,7 +14,7 @@ import CLUSTER.PERSISTENCIA.CtrlGestionRanking;
 
 public class CtrlRanking {
 
-	private ClassRanking R;
+	private Ranking R;
 	//Instancia de ClassRanking asociada al controlador de Ranking
 	
 	private CtrlGestionRanking GP;
@@ -33,7 +33,7 @@ public class CtrlRanking {
 	 * @param tablero Nombre del tablero del cual queremos crear el ranking.
 	 */
 	public void crearRanking(String tablero) {
-		R = new ClassRanking(tablero);
+		R = new Ranking(tablero);
 		GP.guardar(R);
 	}
 	
@@ -90,7 +90,7 @@ public class CtrlRanking {
 	 */
 	public void anadirResultado(String t, String j, String m, String d, int p) {
 		R = GP.cargar(t);
-		ClassResultado r = new ClassResultado(j,m,d,p);
+		Resultado r = new Resultado(j,m,d,p);
 		int found = 0;
 		int i = 0;
 		while (i < R.size() && found == 0) {

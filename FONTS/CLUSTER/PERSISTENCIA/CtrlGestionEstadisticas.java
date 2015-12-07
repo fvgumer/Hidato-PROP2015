@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import CLUSTER.DOMINIO.CLASES.ClassEstadisticas;
+import CLUSTER.DOMINIO.CLASES.Estadisticas;
 
 /**
  * Esta clase hereda las operaciones  de la super clase de control de gestion, CtrlGestionHidato
@@ -29,8 +29,8 @@ public CtrlGestionEstadisticas(){
  * @param NomE Nom de les estadistiques que volem cargar
  * @return Retorna les estadistiques amb nom NomE si no existeixen, retorna null.
  */
-public ClassEstadisticas cargar(String NomE){
-	ClassEstadisticas E = new ClassEstadisticas(null);
+public Estadisticas cargar(String NomE){
+	Estadisticas E = new Estadisticas(null);
 	super.ruta = ".."+ barras + "DATOS" + barras + "Estadisticas"+  barras + NomE+ ".bin";
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
@@ -39,7 +39,7 @@ public ClassEstadisticas cargar(String NomE){
 	else{
 		try{
 		ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
-		E = (ClassEstadisticas) is.readObject();
+		E = (Estadisticas) is.readObject();
 		is.close();
 		}
 		 catch (FileNotFoundException e) {
