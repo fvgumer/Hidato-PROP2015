@@ -14,10 +14,20 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenuBar;
+import java.awt.Button;
+import java.awt.SystemColor;
 
 public class VistaInicial extends VistaPadreInicio {
 
-	private void anadir_texto(String texto,int x, int y) {
+	private static final JTextPane JTextPane = null;
+	private Button b1;
+	private Button b2;
+
+
+	public void anadir_titulo(String texto,int x, int y) {
 		JTextPane txtpnJuegoHidato = new JTextPane();
 		txtpnJuegoHidato.setForeground(new Color(255, 250, 240));
 		txtpnJuegoHidato.setBounds(x, 56, y, 50);
@@ -26,6 +36,10 @@ public class VistaInicial extends VistaPadreInicio {
 		txtpnJuegoHidato.setText(texto);
 		txtpnJuegoHidato.setBackground(null);
 		contentPane.add(txtpnJuegoHidato);
+	}
+	
+	public void anadir_boton(Button b, int x, int y){
+		
 	}
 
 	public void main(String[] args) {
@@ -45,28 +59,20 @@ public class VistaInicial extends VistaPadreInicio {
 	public VistaInicial() {
 		//Config layer 
 		super.setTextLayer("Inicio");
-		anadir_texto("JUEGO HIDATO",130,247);
-		
-		JButton button = new JButton("Entrar");
-		button.setFont(new Font("Nueva Std", Font.BOLD, 17));
-		button.setForeground(new Color(255, 250, 240));
-		button.setBackground(new Color(240, 128, 128));
-		button.setBounds(23, 197, 200, 50);
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		contentPane.setLayout(null);
+		anadir_titulo("JUEGO HIDATO",130,247);
+		
+		
+		Botones b1 = new Botones("Entrar",50,200);
+		contentPane.add(b1);
+		Botones b2 = new Botones("Salir",250,200);
+		contentPane.add(b2);		
+		
+		Button button = new Button("Hola\r\n");
+		button.setForeground(SystemColor.text);
+		button.setBackground(SystemColor.desktop);
+		button.setBounds(0, 0, 124, 62);
 		contentPane.add(button);
-		
-		JButton btnNewButton = new JButton("Salir");
-		btnNewButton.setBackground(new Color(233, 150, 122));
-		btnNewButton.setBounds(239, 197, 200, 50);
-		contentPane.add(btnNewButton);
-		
-		
 
-		
 	}
-
 }
