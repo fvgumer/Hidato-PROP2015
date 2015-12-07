@@ -31,7 +31,6 @@ public class VistaPadreInicio extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(135, 206, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.add(getLayeredPane(), BorderLayout.CENTER);
 		setContentPane(contentPane);
 	}
 

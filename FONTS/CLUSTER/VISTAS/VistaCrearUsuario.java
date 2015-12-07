@@ -3,6 +3,7 @@ package CLUSTER.VISTAS;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -13,7 +14,7 @@ import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class VistaIniciarSesion extends VistaPadreInicio {
+public class VistaCrearUsuario extends VistaPadreInicio {
 	private JTextField textField1;
 	private JTextField textField2;
 
@@ -21,38 +22,37 @@ public class VistaIniciarSesion extends VistaPadreInicio {
 	/**
 	 * Create the frame.
 	 */
-	public VistaIniciarSesion(final CtrlVista CV) {
+	public VistaCrearUsuario(final CtrlVista CV) {
 		super.setTextLayer("Inicio");
 		contentPane.setLayout(null);
-
 		
 		//Para Introducir Campos
 		textField1 = new JTextField();
-		textField1.setBounds(160, 100, 153, 30);
+		textField1.setBounds(150, 80, 173, 30);
 		contentPane.add(textField1);
 		textField1.setColumns(10);
 		
 		textField2 = new JTextField();
-		textField2.setBounds(160, 160, 153, 30);
+		textField2.setBounds(150, 130, 173, 30);
 		contentPane.add(textField2);
 		textField2.setColumns(10);
+		
+		JTextField textField3 = new JTextField();
+		textField3.setBounds(150, 180, 173, 30);
+		contentPane.add(textField3);
+		textField3.setColumns(10);
 		//Textos
-		Titulo t = new Titulo("INICIAR SESION",130,247);
-		t.setBounds(118, 10, 247, 44);
+		Titulo t = new Titulo("CREAR USUARIO",118,10);
+		t.setBounds(100, 10, 274, 44);
 		contentPane.add(t);
-		Texto usu = new Texto("Nombre Usuario:", 160,70,15);
+		Texto usu = new Texto("Nombre Usuario:", 150,55,15);
 		contentPane.add(usu);
-		Texto Contra = new Texto("Contraseña:", 160,130,15);
+		Texto Contra = new Texto("Contraseña:", 150,107,15);
 		contentPane.add(Contra);
+		Texto Contra2 = new Texto("Repetir contraseña:", 150,155,15);
+		contentPane.add(Contra2);
 		//Botones y Links
-		Botones b = new Botones("Log In", 150,210);
+		Botones b = new Botones("Crear", 150,222);
 		contentPane.add(b);
-		Texto crear = new Texto("Crear Usuario",195,250,11);
-		crear.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				CV.Crear_Usuario();
-			}
-		});
-		contentPane.add(crear);
 	}
 }

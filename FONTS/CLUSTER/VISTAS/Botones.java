@@ -14,7 +14,7 @@ public class Botones extends JButton {
 
 		public Botones (String texto, int x, int y) {
 			super(texto);
-			setBackground(SystemColor.desktop);
+			setBackground(new Color(102, 153, 204));
 			setForeground(SystemColor.window);
 			setFont(new Font("Cooper Std Black", Font.BOLD, 19));
 			setBounds(x, y, 172, 42);
