@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VistaRanking extends VistaPadreInicio{
 	private JTextField textField;
@@ -51,6 +53,10 @@ public class VistaRanking extends VistaPadreInicio{
 		textField.setColumns(10);  
 		
 		Botones B = new Botones("Consultar Ranking",128,218);
+		B.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		B.setSize(226, 42);
 		getContentPane().add(B);
 	}
