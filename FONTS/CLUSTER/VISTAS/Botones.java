@@ -21,6 +21,7 @@ public class Botones extends JButton {
 			setBorderPainted(false);
 			setFocusPainted(false);
 		}
+	
 		
 		public void set_name (String nombre){
 			
