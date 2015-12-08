@@ -15,8 +15,6 @@ public class VistaConsultaEst extends VistaPadreInicio{
 	/**
 	 * Launch the application.
 	 */
-
-	private JTextField textField;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -35,15 +33,19 @@ public class VistaConsultaEst extends VistaPadreInicio{
 	 * Create the application.
 	 */
 	public VistaConsultaEst(final CtrlVista CV) {
+		
 		super.setTextLayer("Consulta Estadísticas");
 		getContentPane().setName("Consulta Estadísticas");
+		
 		Botones B1 = new Botones("Estadísticas personales", 100, 60);
 		B1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				
 			}
 		});
 		B1.setSize(272, 42);
 		getContentPane().add(B1);
+		
 		Botones B2 = new Botones("Estadísticas de usuario", 100, 130);
 		B2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -51,6 +53,7 @@ public class VistaConsultaEst extends VistaPadreInicio{
 		});
 		B2.setSize(272, 42);
 		getContentPane().add(B2);
+		
 		Botones B3 = new Botones("Ranking de tablero", 100, 200);
 		B3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -58,6 +61,7 @@ public class VistaConsultaEst extends VistaPadreInicio{
 		});
 		B3.setSize(272, 42);
 		getContentPane().add(B3);
+		
 		Botons Batras = new Botons("Atrás");
 		Batras.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
