@@ -10,7 +10,7 @@ public class Botons extends JButton {
 		public Botons (String text) {
 			super(text);
 			this.setBackground(new Color(255, 0, 0));
-			this.setBounds(414, 261, 71, 23);
+			this.setBounds(392, 261, 81, 23);
 			this.setForeground(new Color(0, 0, 0));
 			this.setFont(new Font("Nyala", Font.PLAIN, 20));
 		}

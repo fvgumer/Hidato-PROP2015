@@ -16,7 +16,7 @@ public class VistaUsuario extends VistaPadreInicio{
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	protected Botones B = new Botones(null, 190, 209);
+	protected Botones B = new Botones(null, 150, 188);
 	protected Botons Bsalir = new Botons(null);
 	/**
 	 * Launch the application.
@@ -48,9 +48,8 @@ public class VistaUsuario extends VistaPadreInicio{
 		textField.setBounds(163, 136, 141, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
-		B.setBounds(150, 188, 172, 42);
 		getContentPane().add(B);
-		Bsalir.setBounds(402, 261, 71, 23);
+		//Bsalir.setBounds(402, 261, 71, 23);
 		Bsalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
