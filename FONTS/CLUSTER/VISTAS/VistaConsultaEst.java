@@ -46,13 +46,6 @@ public class VistaConsultaEst extends VistaPadreInicio{
 		getContentPane().add(B3);
 		Botons Batras = new Botons("Atrás");
 		getContentPane().add(Batras);
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 	}
 
 }
