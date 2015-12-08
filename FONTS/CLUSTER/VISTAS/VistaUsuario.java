@@ -17,6 +17,7 @@ import java.awt.TextField;
 import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 
 public class VistaUsuario extends VistaPadreInicio{
 
@@ -26,7 +27,7 @@ public class VistaUsuario extends VistaPadreInicio{
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JPasswordField passwordField;
-
+	private Botones B = new Botones("title", 190, 209);
 	/**
 	 * Launch the application.
 	 */
@@ -70,15 +71,7 @@ public class VistaUsuario extends VistaPadreInicio{
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(427, 270, 46, 14);
 		getContentPane().add(lblNewLabel);
-		initialize();
+		B.set_name("Start");
+		getContentPane().add(B);
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		
-	
-	}
-
 }
