@@ -22,7 +22,7 @@ public class VistaPadreInicio extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected JPanel contentPane;
-	protected static String textLayer;
+	protected static String textLayer =" ";
 
 	public VistaPadreInicio() {
 		super("Partida Hidato - "+textLayer);
@@ -37,8 +37,17 @@ public class VistaPadreInicio extends JFrame {
 		setContentPane(contentPane);
 	}
 
-	//Configurar text barra adalt 
+	/**
+	 * Cambio en la variable para configurar el titulo de la barra de arriba
+	 * @param textLayer String que describe la vista actual en la que estamos
+	 */
 	public void setTextLayer(String textLayer) {
 		VistaPadreInicio.textLayer = textLayer;
+	}
+	/**
+	 * Cierra la visibilidad de la ventana
+	 */
+	public void Salir(){
+		setVisible(false);
 	}
 }
