@@ -13,11 +13,9 @@ public class VistaConsultaEst extends VistaPadreInicio{
 	/**
 	 * Launch the application.
 	 */
-<<<<<<< HEAD:FONTS/CLUSTER/VISTAS/USUARIO/VistaConsultaEst.java
 
 	private JTextField textField;
 
-=======
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -31,17 +29,16 @@ public class VistaConsultaEst extends VistaPadreInicio{
 			}
 		});
 	}
->>>>>>> origin/master:FONTS/CLUSTER/VISTAS/VistaConsultaEst.java
 
 	/**
 	 * Create the application.
 	 */
 	public VistaConsultaEst(final CtrlVista CV) {
 		
-		super.setTextLayer("Consulta EstadÌsticas");
-		getContentPane().setName("Consulta EstadÌsticas");
+		super.setTextLayer("Consulta Estad√≠sticas");
+		getContentPane().setName("Consulta Estad√≠sticas");
 		
-		Botones B1 = new Botones("EstadÌsticas personales", 100, 60);
+		Botones B1 = new Botones("Estad√≠sticas personales", 100, 60);
 		B1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				
@@ -50,7 +47,7 @@ public class VistaConsultaEst extends VistaPadreInicio{
 		B1.setSize(272, 42);
 		getContentPane().add(B1);
 		
-		Botones B2 = new Botones("EstadÌsticas de usuario", 100, 130);
+		Botones B2 = new Botones("Estad√≠sticas de usuario", 100, 130);
 		B2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 			}
@@ -66,7 +63,7 @@ public class VistaConsultaEst extends VistaPadreInicio{
 		B3.setSize(272, 42);
 		getContentPane().add(B3);
 		
-		Botons Batras = new Botons("Atr·s");
+		Botons Batras = new Botons("Atr√°s");
 		Batras.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 			}
