@@ -9,6 +9,7 @@ public class CtrlVista {
 	private CtrlDominio CDominio;
 	private VistaCrearUsuario VCrearUsuario;
 	private VistaMenu VMenu;
+	private VistaMenuPartida VMenuPartida;
 	
 		//Funciones iniciales del controlador
 		/**
@@ -20,6 +21,7 @@ public class CtrlVista {
 			VIniSesion = new VistaIniciarSesion(this);
 			VCrearUsuario = new VistaCrearUsuario(this);
 			VMenu = new VistaMenu(this);
+			VMenuPartida = new VistaMenuPartida(this);
 		}
 
 		/**
@@ -30,23 +32,21 @@ public class CtrlVista {
 		}
 		
 		//Funciones para cambiar las vistas
-		public void entrar_InicioSesion(){
+		public void entrarAInicioSesion(){
 			VIniSesion.setVisible(true);
-			VInicial.setVisible(false);
 		}
 		
-		public void entrar_Menu(String nombre, String contra){
+		public void entrarAMenu(String nombre, String contra){
 			CDominio.ingresarUsuario(nombre, contra);
 			VMenu.setVisible(true);
-			VIniSesion.setVisible(false);
-			
 		}
 
-		public void Crear_Usuario(){
+		public void entrarACrearUsuario(){
 			VCrearUsuario.setVisible(true);
-			VIniSesion.setVisible(false);
-			
-			
+		}
+		
+		public void entrarAMenuPartida(){
+			VMenuPartida.setVisible(true);
 		}
 		
 		
