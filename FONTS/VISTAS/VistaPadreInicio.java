@@ -1,4 +1,4 @@
-package VISTAS;
+package CLUSTER.VISTAS;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -15,24 +15,22 @@ import java.awt.Color;
 import javax.swing.JTextField;
 
 
-public class VistaSuper extends JFrame {
+public class VistaPadreInicio extends JFrame {
 
 	protected JPanel contentPane;
-	protected static Titulo titulo;
 	protected static String textLayer;
-	
 
 	
 
-	public VistaSuper() {
+	public VistaPadreInicio() {
 		super("Partida Hidato - "+textLayer);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 499, 334);
 		//COSAS EN COMÚN CON SUS HIJOS
 		//Fondo
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 51, 51));
-		contentPane.setBounds(100, 100, 450, 300);
+		contentPane.setBackground(new Color(135, 206, 235));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.add(getLayeredPane(), BorderLayout.CENTER);
 		setContentPane(contentPane);
 	}

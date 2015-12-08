@@ -15,7 +15,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("unused")
 public class vistaIni {
@@ -62,9 +61,5 @@ public class vistaIni {
 		Titulo textField = new Titulo("HIDATO GAME",C);
 		
 		frame.getContentPane().add(textField);
-		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setBounds(396, 222, 28, 28);
-		frame.getContentPane().add(btnNewButton);
 	}
 }
