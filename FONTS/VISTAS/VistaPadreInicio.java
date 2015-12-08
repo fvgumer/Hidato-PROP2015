@@ -20,6 +20,8 @@ public class VistaPadreInicio extends JFrame {
 	protected JPanel contentPane;
 	protected static String textLayer;
 
+	
+
 	public VistaPadreInicio() {
 		super("Partida Hidato - "+textLayer);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,11 +31,16 @@ public class VistaPadreInicio extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(135, 206, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.add(getLayeredPane(), BorderLayout.CENTER);
 		setContentPane(contentPane);
 	}
+
+
 
 	//Configurar text barra adalt 
 	public void setTextLayer(String textLayer) {
 		this.textLayer = textLayer;
 	}
+	
+
 }
