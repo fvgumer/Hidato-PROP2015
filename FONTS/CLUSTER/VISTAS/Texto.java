@@ -12,12 +12,12 @@ public class Texto extends JTextPane {
 
 
 		public Texto (String texto, int x, int y, int mida) {
-			setEnabled(false);
-			this.setForeground(new Color(255, 204, 51));
+			
+			setForeground(Color.WHITE);
 			this.setBounds(x, y, 163, 30);
-			this.setEditable(false);
 			this.setFont(new Font("Nirmala UI", Font.BOLD, mida));
 			this.setText(texto);
+			setEditable(false);
 			this.setBackground(null);
 		}
 }
