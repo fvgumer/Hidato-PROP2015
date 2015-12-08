@@ -48,7 +48,7 @@ public class VistaIniciarSesion extends VistaPadreInicio {
 		Botones b = new Botones("Log In", 150,210);
 		b.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAMenu(textField1.getText(), textField2.getText());
+				CV.entrarAMenu();
 				Salir();
 			}
 		});

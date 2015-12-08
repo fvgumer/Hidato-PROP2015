@@ -10,6 +10,7 @@ public class CtrlVista {
 	private VistaCrearUsuario VCrearUsuario;
 	private VistaMenu VMenu;
 	private VistaMenuPartida VMenuPartida;
+	private VistaElegirCarcteristicasP VElegirCaracteristicasP;
 	
 		//Funciones iniciales del controlador
 		/**
@@ -22,6 +23,7 @@ public class CtrlVista {
 			VCrearUsuario = new VistaCrearUsuario(this);
 			VMenu = new VistaMenu(this);
 			VMenuPartida = new VistaMenuPartida(this);
+			VElegirCaracteristicasP = new VistaElegirCarcteristicasP(this);
 		}
 
 		/**
@@ -36,8 +38,7 @@ public class CtrlVista {
 			VIniSesion.setVisible(true);
 		}
 		
-		public void entrarAMenu(String nombre, String contra){
-			CDominio.ingresarUsuario(nombre, contra);
+		public void entrarAMenu(){
 			VMenu.setVisible(true);
 		}
 
@@ -49,6 +50,9 @@ public class CtrlVista {
 			VMenuPartida.setVisible(true);
 		}
 		
+		public void entrarACrearPartida(){
+			VElegirCaracteristicasP.setVisible(true);
+		}
 		
 }
 

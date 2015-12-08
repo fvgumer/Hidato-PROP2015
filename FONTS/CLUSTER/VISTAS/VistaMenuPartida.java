@@ -22,6 +22,8 @@ public class VistaMenuPartida extends VistaPadreInicio {
 		
 		//Declaración Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Cargar Partida",50,120);
+		b1.setSize(221, 42);
+		b1.setLocation(120, 120);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				//Nueva Ventana
@@ -29,18 +31,23 @@ public class VistaMenuPartida extends VistaPadreInicio {
 		});
 		contentPane.add(b1);
 		Botones b2 = new Botones("Crear Partida",250,120);
-		b1.addMouseListener(new MouseAdapter() {
+		b2.setSize(221, 42);
+		b2.setLocation(120, 180);
+		b2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				//Nueva Ventana
+				CV.entrarACrearPartida();
+				Salir();
 			}
 		});
 		contentPane.add(b2);
 		
 		
 		//Declarar Boton "Salir" y su funcion
-		Botones b5 = new Botones("Atras",160,240);
+		BotonAtras b5 = new BotonAtras(160,240);
+		b5.setLocation(400, 240);
 		b5.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				CV.entrarAMenu();
 				Salir();
 			}
 		});

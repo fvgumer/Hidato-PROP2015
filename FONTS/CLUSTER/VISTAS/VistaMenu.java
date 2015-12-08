@@ -35,7 +35,7 @@ public class VistaMenu extends VistaPadreInicio {
 		});
 		contentPane.add(b2);
 		Botones b3 = new Botones("Jugar",50,180);
-		b1.addMouseListener(new MouseAdapter() {
+		b3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				//Nueva Ventana
 				CV.entrarAMenuPartida();
