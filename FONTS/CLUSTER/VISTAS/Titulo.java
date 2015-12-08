@@ -12,7 +12,7 @@ public class Titulo extends JTextPane {
 
 	public Titulo (String texto, int x, int y) {
 			this.setForeground(new Color(255, 250, 240));
-			this.setBounds(x, 53, y, 50);
+			this.setBounds(x, y, 313, 50);
 			this.setEditable(false);
 			this.setFont(new Font("Graphite Std Light", Font.BOLD, 37));
 			this.setText(texto);

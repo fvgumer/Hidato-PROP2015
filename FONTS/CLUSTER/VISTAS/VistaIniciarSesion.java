@@ -46,6 +46,11 @@ public class VistaIniciarSesion extends VistaPadreInicio {
 		contentPane.add(Contra);
 		//Botones y Links
 		Botones b = new Botones("Log In", 150,210);
+		b.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.entrar_Menu(textField1.getText(), textField2.getText());
+			}
+		});
 		contentPane.add(b);
 		Texto crear = new Texto("Crear Usuario",195,250,11);
 		crear.addMouseListener(new MouseAdapter() {

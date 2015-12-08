@@ -23,9 +23,7 @@ public class VistaCrearUsuario extends VistaPadreInicio {
 	 * Create the frame.
 	 */
 	public VistaCrearUsuario(final CtrlVista CV) {
-		super.setTextLayer("Inicio");
 		contentPane.setLayout(null);
-		
 		//Para Introducir Campos
 		textField1 = new JTextField();
 		textField1.setBounds(150, 80, 173, 30);
