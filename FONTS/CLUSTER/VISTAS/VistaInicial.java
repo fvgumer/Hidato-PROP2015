@@ -1,5 +1,9 @@
 package CLUSTER.VISTAS;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
+import CLUSTER.VISTAS.BASES.Botones;
+import CLUSTER.VISTAS.BASES.Titulo;
+import CLUSTER.VISTAS.BASES.VistaPadreInicio;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.EventQueue;
 import java.awt.Button;

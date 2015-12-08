@@ -1,16 +1,13 @@
-package CLUSTER.VISTAS;
-import CLUSTER.DOMINIO.CONTROLADORES.*;
-
-import java.awt.EventQueue;
-import java.awt.Button;
-import java.awt.SystemColor;
+package CLUSTER.VISTAS.PARTIDA;
+import CLUSTER.VISTAS.BASES.Botones;
+import CLUSTER.VISTAS.BASES.Titulo;
+import CLUSTER.VISTAS.BASES.VistaPadreInicio;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JFrame;
-
 public class VistaMenu extends VistaPadreInicio {
-
+	private static final long serialVersionUID = 1L;
 
 	public VistaMenu(final CtrlVista CV) {
 		//Config layer 

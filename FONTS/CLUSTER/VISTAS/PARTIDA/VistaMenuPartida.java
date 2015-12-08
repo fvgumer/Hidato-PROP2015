@@ -1,16 +1,14 @@
-package CLUSTER.VISTAS;
-import CLUSTER.DOMINIO.CONTROLADORES.*;
-
-import java.awt.EventQueue;
-import java.awt.Button;
-import java.awt.SystemColor;
+package CLUSTER.VISTAS.PARTIDA;
+import CLUSTER.VISTAS.BASES.Titulo;
+import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
+import CLUSTER.VISTAS.BASES.Botones;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JFrame;
+public class VistaMenuPartida extends VistaPadreIniConBoton {
 
-public class VistaMenuPartida extends VistaPadreInicio {
-
+	private static final long serialVersionUID = 1L;
 
 	public VistaMenuPartida(final CtrlVista CV) {
 		//Config layer 
@@ -35,7 +33,7 @@ public class VistaMenuPartida extends VistaPadreInicio {
 		b2.setLocation(120, 180);
 		b2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAElegirCarcteristicasPartida();
+				CV.entrarAElegirForma();
 				Salir();
 			}
 		});
@@ -43,15 +41,14 @@ public class VistaMenuPartida extends VistaPadreInicio {
 		
 		
 		//Declarar Boton "Salir" y su funcion
-		BotonAtras b5 = new BotonAtras(160,240);
-		b5.setLocation(400, 240);
-		b5.addMouseListener(new MouseAdapter() {
+		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAMenu();
 				Salir();
 			}
 		});
-		contentPane.add(b5);
+		
+		
 
 	}
 }

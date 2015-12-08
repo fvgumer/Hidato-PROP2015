@@ -1,5 +1,10 @@
-package CLUSTER.VISTAS;
+package CLUSTER.VISTAS.CONTROLADORES;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
+import CLUSTER.VISTAS.VistaInicial;
+import CLUSTER.VISTAS.PARTIDA.VistaElegirDimensiones;
+import CLUSTER.VISTAS.PARTIDA.VistaElegirForma;
+import CLUSTER.VISTAS.PARTIDA.VistaMenu;
+import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 
 import java.awt.EventQueue;
 
@@ -9,7 +14,8 @@ public class CtrlVista {
 	private VistaMenu VMenu;
 	private VistaMenuPartida VMenuPartida;
 	private CtrlVistaPartida CVistaPartida;
-	private VistaElegirCarcteristicasP VElegirCP;
+	private VistaElegirForma VElegirCF;
+	private VistaElegirDimensiones VElegirCD;
 	
 		//Funciones iniciales del controlador
 		/**
@@ -32,7 +38,9 @@ public class CtrlVista {
 			VInicial = new VistaInicial(this);
 			VMenu = new VistaMenu(this);
 			VMenuPartida = new VistaMenuPartida(this);
-			VElegirCP = new VistaElegirCarcteristicasP(this,CVistaPartida);
+			VElegirCF = new VistaElegirForma(this,CVistaPartida);
+			VElegirCD = new VistaElegirDimensiones(this,CVistaPartida);
+
 		}
 
 		/**
@@ -59,9 +67,21 @@ public class CtrlVista {
 			VMenuPartida.setVisible(true);
 		}
 		
-		public void entrarAElegirCarcteristicasPartida(){
-			VElegirCP.setVisible(true);
+		public void entrarAElegirForma(){
+			VElegirCF.setVisible(true);
 		}
 		
+		public void entrarAElegirDimensiones(){
+			VElegirCD.setVisible(true);
+		}
+		
+		/**
+		 * FUNCIONES DE RECOGIDA DE INFORMACION
+		 */
+		
+		/**
+		 * Sobre Partida
+		 */
+
 }
 

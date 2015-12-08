@@ -1,4 +1,5 @@
 package CLUSTER.VISTAS;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 public class Main {
 	

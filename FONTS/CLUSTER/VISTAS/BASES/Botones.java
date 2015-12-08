@@ -1,4 +1,4 @@
-package CLUSTER.VISTAS;
+package CLUSTER.VISTAS.BASES;
 
 import java.awt.Button;
 import java.awt.Font;

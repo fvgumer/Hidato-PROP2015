@@ -1,35 +1,21 @@
-package CLUSTER.VISTAS;
+package CLUSTER.VISTAS.USUARIO;
+import CLUSTER.VISTAS.BASES.Botones;
+import CLUSTER.VISTAS.BASES.Botons;
+import CLUSTER.VISTAS.BASES.VistaPadreInicio;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class VistaConsultaEst extends VistaPadreInicio{
 
-
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Launch the application.
 	 */
 
 	private JTextField textField;
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaConsultaEst window = new VistaConsultaEst(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
