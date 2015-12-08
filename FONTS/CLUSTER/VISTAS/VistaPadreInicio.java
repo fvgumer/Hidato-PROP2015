@@ -17,6 +17,10 @@ import javax.swing.JTextField;
 
 public class VistaPadreInicio extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected JPanel contentPane;
 	protected static String textLayer;
 
@@ -27,6 +31,7 @@ public class VistaPadreInicio extends JFrame {
 		//COSAS EN COMÚN CON SUS HIJOS
 		//Fondo
 		contentPane = new JPanel();
+		contentPane.setLayout(null);
 		contentPane.setBackground(new Color(135, 206, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -34,6 +39,6 @@ public class VistaPadreInicio extends JFrame {
 
 	//Configurar text barra adalt 
 	public void setTextLayer(String textLayer) {
-		this.textLayer = textLayer;
+		VistaPadreInicio.textLayer = textLayer;
 	}
 }
