@@ -1,6 +1,7 @@
 package CLUSTER.VISTAS;
 
-public class CtrlVistaPartida extends CtrlVista{
+public class CtrlVistaPartida {
+	
 	
 	/**
 	 * Funciones para controlar la vista

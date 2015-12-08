@@ -16,7 +16,7 @@ public class VistaElegirCarcteristicasP extends VistaPadreInicio {
 		JSlider slider;
 		JLabel lblSinForma;
 
-	public VistaElegirCarcteristicasP(final CtrlVista ctrlVista) {
+	public VistaElegirCarcteristicasP(final CtrlVista CV, CtrlVistaPartida CVPartida) {
 		//Config layer 
 		setTextLayer("Inicio");
 		contentPane.setLayout(null);

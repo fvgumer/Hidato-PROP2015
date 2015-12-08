@@ -35,7 +35,7 @@ public class VistaMenuPartida extends VistaPadreInicio {
 		b2.setLocation(120, 180);
 		b2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarACrearPartida();
+				CV.entrarAElegirCarcteristicasPartida();
 				Salir();
 			}
 		});

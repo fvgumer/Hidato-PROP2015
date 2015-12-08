@@ -5,25 +5,34 @@ import java.awt.EventQueue;
 
 public class CtrlVista {
 	private VistaInicial VInicial; 
-	private VistaIniciarSesion VIniSesion;
 	private CtrlDominio CDominio;
-	private VistaCrearUsuario VCrearUsuario;
 	private VistaMenu VMenu;
 	private VistaMenuPartida VMenuPartida;
-	private VistaElegirCarcteristicasP VElegirCaracteristicasP;
+	private CtrlVistaPartida CVistaPartida;
+	private VistaElegirCarcteristicasP VElegirCP;
 	
 		//Funciones iniciales del controlador
 		/**
 		 * Creadora del CtrlVista
 		 */
-		public CtrlVista(){
+		public CtrlVista(){ //FIXEHO-VOS EN EL QUE FA AQUESTA CLASSE
+							// DEFINEIX : 
+							//		-Controladors
+							//		-Totes Les Vistes
+							// TE TOTES LES FUNCIONS PER A CANVIAR DE VISTES
+							// IMPORTANT: LES FUNCIONS PER MANEJAR INFORMACIO 
+							// VAN ALS ALTRES CONTROLADOS.
+			//Carregar Controladors 
 			CDominio = new CtrlDominio();
+			CVistaPartida = new CtrlVistaPartida();
+			
+			
+			
+			//Carregar Vistes
 			VInicial = new VistaInicial(this);
-			VIniSesion = new VistaIniciarSesion(this);
-			VCrearUsuario = new VistaCrearUsuario(this);
 			VMenu = new VistaMenu(this);
 			VMenuPartida = new VistaMenuPartida(this);
-			VElegirCaracteristicasP = new VistaElegirCarcteristicasP(this);
+			VElegirCP = new VistaElegirCarcteristicasP(this,CVistaPartida);
 		}
 
 		/**
@@ -35,7 +44,7 @@ public class CtrlVista {
 		
 		//Funciones para cambiar las vistas
 		public void entrarAInicioSesion(){
-			VIniSesion.setVisible(true);
+			
 		}
 		
 		public void entrarAMenu(){
@@ -43,15 +52,15 @@ public class CtrlVista {
 		}
 
 		public void entrarACrearUsuario(){
-			VCrearUsuario.setVisible(true);
+			
 		}
 		
 		public void entrarAMenuPartida(){
 			VMenuPartida.setVisible(true);
 		}
 		
-		public void entrarACrearPartida(){
-			VElegirCaracteristicasP.setVisible(true);
+		public void entrarAElegirCarcteristicasPartida(){
+			VElegirCP.setVisible(true);
 		}
 		
 }
