@@ -1,8 +1,8 @@
 package CLUSTER.VISTAS.CONTROLADORES;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
 import CLUSTER.VISTAS.VistaInicial;
-import CLUSTER.VISTAS.PARTIDA.VistaElegirDimensiones;
-import CLUSTER.VISTAS.PARTIDA.VistaElegirForma;
+import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
+import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenu;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 
@@ -14,9 +14,8 @@ public class CtrlVista {
 	private VistaMenu VMenu;
 	private VistaMenuPartida VMenuPartida;
 	private CtrlVistaPartida CVistaPartida;
-	private VistaElegirForma VElegirCF;
-	private VistaElegirDimensiones VElegirCD;
-	
+	private VistaElegirCarac1 VElegirC1;
+	private VistaElegirCarac2 VElegirC2;
 		//Funciones iniciales del controlador
 		/**
 		 * Creadora del CtrlVista
@@ -38,8 +37,8 @@ public class CtrlVista {
 			VInicial = new VistaInicial(this);
 			VMenu = new VistaMenu(this);
 			VMenuPartida = new VistaMenuPartida(this);
-			VElegirCF = new VistaElegirForma(this,CVistaPartida);
-			VElegirCD = new VistaElegirDimensiones(this,CVistaPartida);
+			VElegirC1 = new VistaElegirCarac1(this,CVistaPartida,"Forma","Dimensiones");
+			VElegirC2 = new VistaElegirCarac2(this,CVistaPartida,"Forats","Iniciales");
 
 		}
 
@@ -68,12 +67,13 @@ public class CtrlVista {
 		}
 		
 		public void entrarAElegirForma(){
-			VElegirCF.setVisible(true);
+			VElegirC1.setVisible(true);
 		}
 		
-		public void entrarAElegirDimensiones(){
-			VElegirCD.setVisible(true);
+		public void entrarAElegirForats(){
+			VElegirC2.setVisible(true);
 		}
+		
 		
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION

@@ -10,9 +10,10 @@ public class CtrlVistaPartida {
 	/**
 	 * Funciones para controlar la vista
 	 */
-	public int getnumMaxTablero(int i){
-		if (i == 0) return 15;
-		else if (i == 1) return 7;
+	
+	public int getnumMaxTablero(){
+		if (forma == 0) return 15;
+		else if (forma == 1) return 7;
 		return 6;
 	}
 	
@@ -22,6 +23,30 @@ public class CtrlVistaPartida {
 	
 	public void setforma(int i){
 		forma = i;
+	}
+	
+	public int getdimensiones(){
+		return dimensiones;
+	}
+	
+	public void setdimension(int i){
+		dimensiones = i;
+	}
+	
+	public int getforats(){
+		return nforats;
+	}
+	
+	public void setforats(int i){
+		nforats = i;
+	}
+	
+	public int getinicials(){
+		return nini;
+	}
+	
+	public void setinicials(int i){
+		nini = i;
 	}
 	
 }
