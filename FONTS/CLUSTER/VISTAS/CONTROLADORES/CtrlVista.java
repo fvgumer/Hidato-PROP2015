@@ -18,6 +18,7 @@ public class CtrlVista {
 	private VistaElegirCarac1 VElegirC1;
 	private VistaElegirCarac2 VElegirC2;
 	private VistaGestionTablero VGTableros;
+	private VistaCrearManual VCrearTablero1;
 		//Funciones iniciales del controlador
 		/**
 		 * Creadora del CtrlVista
@@ -42,7 +43,7 @@ public class CtrlVista {
 			VElegirC1 = new VistaElegirCarac1(this,CVistaPartida,"Forma","Dimensiones");
 			VElegirC2 = new VistaElegirCarac2(this,CVistaPartida,"Forats","Iniciales");
 			VGTableros = new VistaGestionTablero(this);
-
+			VCrearTablero1 = new VistaCrearManual(this);
 		}
 
 		/**
@@ -81,7 +82,7 @@ public class CtrlVista {
 			
 		}
 		public void entrarACrearMan(){
-			
+			VCrearTablero1.setVisible(true);
 		}
 		public void entrarABorrarTablero(){
 			
