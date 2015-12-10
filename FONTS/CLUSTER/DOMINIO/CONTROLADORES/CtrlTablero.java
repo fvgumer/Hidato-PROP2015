@@ -220,6 +220,33 @@ public class CtrlTablero {
 		return this.map;
 	}
 	
+	public void set_tablero(String[][] t, boolean unica) {
+		int n = t[0].length;
+		map = new Tablero(n);
+		int vacias = 0;
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				int aux = Integer.parseInt(t[i][j]);
+				if (aux == -1) map.setholes(1);
+				if (aux == 0) ++vacias;
+				map.setValorTauler(i, j, aux);
+			}
+		}
+		map.setn_predef((n*n)-map.getholes()-vacias);
+		map.setSolucion_unica(unica);
+	}
+	
+	public String[][] get_tablero() {
+		int n = map.getMida();
+		String[][] t = new String[n][n];
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				t[i][j] = Integer.toString(map.getValorTauler(i, j));
+			}
+		}
+		return t;
+	}
+	
 	private String obten_id() {
 		String nom = "";
 		if (map.getMida() < 10) {

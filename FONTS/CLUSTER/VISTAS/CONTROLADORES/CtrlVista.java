@@ -19,6 +19,8 @@ public class CtrlVista {
 	private VistaElegirCarac2 VElegirC2;
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
+	private VistaValidar VGTValidar;
+	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
 		 * Creadora del CtrlVista
@@ -44,6 +46,7 @@ public class CtrlVista {
 			VElegirC2 = new VistaElegirCarac2(this,CVistaPartida,"Forats","Iniciales");
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
+			VGTValidar = new VistaValidar(this);
 		}
 
 		/**
@@ -90,6 +93,13 @@ public class CtrlVista {
 		
 		public void entrarAGTableros() {
 			VGTableros.setVisible(true);
+		}
+		
+		public void entrarAValidar(String[][] t) {
+			/*CDominio.set_tablero();
+			String[][] s = CDominio.solucionar();
+			VGTValidar.set_tablero(s);*/
+			VGTValidar.setVisible(true);
 		}
 		
 		/**

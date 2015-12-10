@@ -13,6 +13,7 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+import javax.swing.JButton;
 
 public class VistaCrearManual extends VistaPadreIniConBoton{
 
@@ -31,10 +32,6 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(N,N));
 		
-		JTextPane txtpnInstrucciones = new JTextPane();
-		txtpnInstrucciones.setText("Instrucciones:\r\n-Se deben colocar principio y final\r\n\r\n-Para colocar una casilla negra,\r\nintroduzca -1 en la casilla que se desee");
-		txtpnInstrucciones.setBounds(377, 13, 312, 86);
-		getContentPane().add(txtpnInstrucciones);
 		for (int row = 0; row < N; ++row) {
 	         for (int col = 0; col < N; ++col) {
 	            board[row][col] = new JTextField();
@@ -42,5 +39,23 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	            panel.add(board[row][col]);
 	         }
 	     }
+		
+		JTextPane txtpnInstrucciones = new JTextPane();
+		txtpnInstrucciones.setText("Instrucciones:\r\n-Se deben colocar principio y final\r\n\r\n-Para colocar una casilla negra,\r\nintroduzca -1 en la casilla que se desee");
+		txtpnInstrucciones.setBounds(377, 13, 312, 86);
+		getContentPane().add(txtpnInstrucciones);
+		
+		JButton btnValidar = new JButton("Validar");
+		btnValidar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//String[][] aux = new String
+				//CV.entrarAValidar();
+				Salir();
+			}
+		});
+		btnValidar.setBounds(377, 158, 97, 25);
+		getContentPane().add(btnValidar);
+		
 	}
 }

@@ -17,7 +17,6 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
-		
 	}
 	
 	public void ingresarUsuario(String nombre, String contrasenya){
