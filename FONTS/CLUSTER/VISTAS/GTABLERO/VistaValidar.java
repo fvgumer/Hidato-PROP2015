@@ -13,7 +13,7 @@ import javax.swing.JButton;
 
 public class VistaValidar extends VistaPadreIniConBoton{
 	
-	private int N = 6;
+	private int N = 4;
 	private JTextField[][] board = new JTextField[N][N];
 	
 	public VistaValidar(final CtrlVista CV) {
@@ -25,7 +25,7 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		for (int row = 0; row < N; ++row) {
 	         for (int col = 0; col < N; ++col) {
 	            board[row][col] = new JTextField();
-	            board[row][col].setText("5");
+	            board[row][col].setText("0");
 	            panel.add(board[row][col]);
 	         }
 	     }
@@ -38,5 +38,14 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(300, 108, 97, 25);
 		getContentPane().add(btnGuardar);
+	}
+	
+	public void set_tablero(String[][] t) {
+		int n = t[0].length;
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j){
+				board[i][j].setText(t[i][j]);
+			}
+		}
 	}
 }

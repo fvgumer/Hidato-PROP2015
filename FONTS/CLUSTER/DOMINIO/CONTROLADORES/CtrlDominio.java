@@ -22,5 +22,15 @@ public class CtrlDominio {
 	public void ingresarUsuario(String nombre, String contrasenya){
 		CJugador.ingresarusuario(nombre, contrasenya);
 	}
+	
+	public void set_tablero(String[][] t) {
+		CTablero.set_tablero(t,false);
+	}
+	
+	public String[][] solucionar() {
+		CTablero.validar();
+		String[][] s = CTablero.get_solucion();
+		return s;
+	}
 
 }

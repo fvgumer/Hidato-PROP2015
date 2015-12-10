@@ -143,6 +143,8 @@ public class CtrlTablero {
 		t.timer_max();
 		t.iniciar();
 		boolean b = a.solver(start[0], start[1], 1, map,t);
+		Casilla[][] aux = a.get_solucio();
+		map.set_solucio(aux);
 		return b;
 	}
 	
@@ -242,6 +244,17 @@ public class CtrlTablero {
 		for(int i=0; i<n; ++i) {
 			for(int j=0; j<n; ++j) {
 				t[i][j] = Integer.toString(map.getValorTauler(i, j));
+			}
+		}
+		return t;
+	}
+	
+	public String[][] get_solucion() {
+		int n = map.getMida();
+		String[][] t = new String[n][n];
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				t[i][j] = Integer.toString(map.getValorSolucio(i, j));
 			}
 		}
 		return t;

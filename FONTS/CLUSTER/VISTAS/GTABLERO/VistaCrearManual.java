@@ -35,7 +35,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		for (int row = 0; row < N; ++row) {
 	         for (int col = 0; col < N; ++col) {
 	            board[row][col] = new JTextField();
-	            board[row][col].setText("5");
+	            board[row][col].setText("0");
 	            panel.add(board[row][col]);
 	         }
 	     }
@@ -49,8 +49,14 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		btnValidar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//String[][] aux = new String
-				//CV.entrarAValidar();
+				int n = board.length;
+				String[][] aux = new String[n][n];
+				for(int i=0; i<n; ++i) {
+					for(int j=0; j<n; ++j) {
+						aux[i][j] = board[i][j].getText();
+					}
+				}
+				CV.entrarAValidar(aux);
 				Salir();
 			}
 		});

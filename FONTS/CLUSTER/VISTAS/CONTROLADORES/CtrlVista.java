@@ -96,9 +96,9 @@ public class CtrlVista {
 		}
 		
 		public void entrarAValidar(String[][] t) {
-			/*CDominio.set_tablero();
+			CDominio.set_tablero(t);
 			String[][] s = CDominio.solucionar();
-			VGTValidar.set_tablero(s);*/
+			VGTValidar.set_tablero(s);
 			VGTValidar.setVisible(true);
 		}
 		
