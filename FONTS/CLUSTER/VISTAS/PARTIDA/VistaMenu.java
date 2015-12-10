@@ -25,9 +25,10 @@ public class VistaMenu extends VistaPadreInicio {
 		});
 		contentPane.add(b1);
 		Botones b2 = new Botones("Tableros",250,120);
-		b1.addMouseListener(new MouseAdapter() {
+		b2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				//Nueva Ventana
+				CV.entrarAGTableros();
+				Salir();
 			}
 		});
 		contentPane.add(b2);
