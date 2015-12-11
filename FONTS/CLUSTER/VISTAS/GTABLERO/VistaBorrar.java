@@ -17,18 +17,17 @@ import javax.swing.JTextField;
 public class VistaBorrar extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;
-	private int N=0;
+	private int N;
 	private JTextField[][] board;
 	
 	public VistaBorrar(final CtrlVista CV) {
 		//Config layer 
-		setTextLayer("Menu de Importación de Tableros");
+		setTextLayer("Borrado de Tableros");
 		contentPane.setLayout(null);
 		
 		final JPanel panel = new JPanel();
 		panel.setBounds(156, 13, 313, 216);
 		getContentPane().add(panel);
-		
 		
 		DefaultListModel listModel;
 		listModel = new DefaultListModel();
@@ -37,24 +36,24 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 				listModel.addElement(s[i]);
 		}
 		final JList list = new JList(listModel);
+		
 		list.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String id = list.getSelectedValue().toString().substring(0, 6);
-				String[][] tab = CV.cargar_tab(id);
-				N =Integer.parseInt(id.substring(0, 2));
-				panel.setLayout(new GridLayout(N,N));
-				board = new JTextField[N][N];
-				for(int i=0; i<N; ++i) {
-					for(int j=0; j<N; ++j) {
-						board[i][j] = new JTextField();
-			            panel.add(board[i][j]);
-						board[i][j].setText(tab[i][j]);
-					}
-				}
+				CV.entrarABorrarConfirmar(id);
+				Salir();
 			}
 		});
+		
 		list.setBounds(0, 13, 144, 263);
 		getContentPane().add(list);
+		
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.entrarAGTableros();
+				Salir();
+			}
+		});
 	}
 }

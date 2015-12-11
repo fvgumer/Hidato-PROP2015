@@ -21,6 +21,7 @@ public class CtrlVista {
 	private VistaCrearManual VCrearTablero1;
 	private VistaValidar VGTValidar;
 	private VistaBorrar VBorrar;
+	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -49,6 +50,7 @@ public class CtrlVista {
 			VCrearTablero1 = new VistaCrearManual(this);
 			VGTValidar = new VistaValidar(this);
 			VBorrar = new VistaBorrar(this);
+			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 		}
 
 		/**
@@ -104,6 +106,11 @@ public class CtrlVista {
 			VGTValidar.setVisible(true);
 		}
 		
+		public void entrarABorrarConfirmar(String id) {
+			VGTBorrarConfirmar.set_tablero(id);
+			VGTBorrarConfirmar.setVisible(true);
+		}
+		
 		public String[] get_tableros_repo() {
 			return CDominio.get_tableros_repo();
 		}
@@ -111,6 +118,7 @@ public class CtrlVista {
 		public String[][] cargar_tab(String id) {
 			return CDominio.cargar_tab(id);
 		}
+		
 		
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION

@@ -72,5 +72,12 @@ public class VistaCrearTablero1 extends VistaPadreIniConBoton {
 		slider_vacias.setValue(0);
 		slider_vacias.setBounds(125, 178, 200, 23);
 		getContentPane().add(slider_vacias);
+		
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.entrarAGTableros();
+				Salir();
+			}
+		});
 	}
 }

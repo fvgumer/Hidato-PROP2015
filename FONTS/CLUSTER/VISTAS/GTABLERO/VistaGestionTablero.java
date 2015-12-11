@@ -58,8 +58,5 @@ public class VistaGestionTablero extends VistaPadreIniConBoton {
 				Salir();
 			}
 		});
-		
-		
-
 	}
 }
