@@ -52,11 +52,6 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 						board[i][j].setText(tab[i][j]);
 					}
 				}
-				for(int i=0; i<N; ++i) {
-					for(int j=0; j<N; ++j) {
-						System.out.print(tab[i][j]);
-					}
-				}
 			}
 		});
 		list.setBounds(0, 13, 144, 263);
