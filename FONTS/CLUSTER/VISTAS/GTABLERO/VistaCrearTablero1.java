@@ -34,35 +34,6 @@ public class VistaCrearTablero1 extends VistaPadreIniConBoton {
 		Lblc_vacias.setBounds(337, 178, 104, 29);
 		getContentPane().add(Lblc_vacias);
 		
-		final JScrollBar N = new JScrollBar();
-		N.setBlockIncrement(1);
-		N.setMaximum(8);
-		N.setToolTipText("Casillas Negras");
-		N.setOrientation(JScrollBar.HORIZONTAL);
-		N.setBounds(137, 92, 174, 29);
-		N.addMouseListener(new MouseAdapter() {
-			public void mouseReleased(MouseEvent arg0) {
-				String s = Integer.toString(N.getValue());
-				LblN.setText(s);
-			}
-		});
-		getContentPane().add(N);
-		
-		JScrollBar C_negras = new JScrollBar();
-		C_negras.setBlockIncrement(1);
-		C_negras.setMaximum(N.getValue()*N.getValue()-2);
-		C_negras.setToolTipText("Casillas Negras");
-		C_negras.setOrientation(JScrollBar.HORIZONTAL);
-		C_negras.setBounds(137, 136, 174, 29);
-		getContentPane().add(C_negras);
-		
-		JScrollBar C_vacias = new JScrollBar();
-		C_vacias.setBlockIncrement(1);
-		C_vacias.setToolTipText("Casillas Vacias");
-		C_vacias.setOrientation(JScrollBar.HORIZONTAL);
-		C_vacias.setBounds(137, 178, 174, 29);
-		getContentPane().add(C_vacias);
-		
 		
 		
 		JLabel lbl1 = new JLabel("N:");
@@ -76,5 +47,30 @@ public class VistaCrearTablero1 extends VistaPadreIniConBoton {
 		JLabel lbl3 = new JLabel("Casillas Vacias:");
 		lbl3.setBounds(21, 178, 104, 29);
 		getContentPane().add(lbl3);
+		
+		final JSlider slider_n = new JSlider();
+		slider_n.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				LblN.setText(Integer.toString(slider_n.getValue()));
+			}
+		});
+		slider_n.setValue(4);
+		slider_n.setMaximum(8);
+		slider_n.setBounds(125, 92, 200, 23);
+		getContentPane().add(slider_n);
+		
+		JSlider slider_negras = new JSlider();
+		slider_negras.setMaximum((slider_n.getValue()*slider_n.getValue())-2);
+		slider_negras.setValue(0);
+		slider_negras.setBounds(125, 136, 200, 23);
+		getContentPane().add(slider_negras);
+		
+		JSlider slider_vacias = new JSlider();
+		slider_vacias.setMaximum((slider_n.getValue()*slider_n.getValue())
+				-2 -slider_negras.getValue());
+		slider_vacias.setValue(0);
+		slider_vacias.setBounds(125, 178, 200, 23);
+		getContentPane().add(slider_vacias);
 	}
 }

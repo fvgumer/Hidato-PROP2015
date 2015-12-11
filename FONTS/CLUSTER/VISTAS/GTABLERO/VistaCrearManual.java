@@ -42,7 +42,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		
 		JTextPane txtpnInstrucciones = new JTextPane();
 		txtpnInstrucciones.setText("Instrucciones:\r\n-Se deben colocar principio y final\r\n\r\n-Para colocar una casilla negra,\r\nintroduzca -1 en la casilla que se desee");
-		txtpnInstrucciones.setBounds(377, 13, 312, 86);
+		txtpnInstrucciones.setBounds(377, 13, 312, 132);
 		getContentPane().add(txtpnInstrucciones);
 		
 		JButton btnValidar = new JButton("Validar");

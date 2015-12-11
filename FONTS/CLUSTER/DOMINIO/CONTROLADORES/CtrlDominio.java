@@ -32,5 +32,14 @@ public class CtrlDominio {
 		String[][] s = CTablero.get_solucion();
 		return s;
 	}
+	
+	public String[] get_tableros_repo() {
+		return CTablero.get_tableros_repositorio();
+	}
+	
+	public String[][] cargar_tab(String id) {
+		CTablero.cargar(id);
+		return CTablero.get_tablero();
+	}
 
 }

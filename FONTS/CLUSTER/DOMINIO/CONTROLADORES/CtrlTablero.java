@@ -31,6 +31,7 @@ public class CtrlTablero {
 	public CtrlTablero() {
 		rm = new Random();
 		a = new Algorithm();
+		c = new CtrlGestionTablero();
 	}
 	
 	/**
@@ -41,6 +42,7 @@ public class CtrlTablero {
 		rm = new Random();
 		a = new Algorithm();
 		this.map = map;
+		c = new CtrlGestionTablero();
 	}
 	
 	
@@ -306,6 +308,11 @@ public class CtrlTablero {
 		for(int i = 0; i < s.length; ++i) {
 			System.out.println(s[i]);
 		}
+	}
+	
+	public String[] get_tableros_repositorio() {
+		String[] s = c.consultar_nomstableros();
+		return s;
 	}
 	
 	/**

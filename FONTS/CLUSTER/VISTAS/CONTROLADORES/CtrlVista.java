@@ -20,6 +20,7 @@ public class CtrlVista {
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
 	private VistaValidar VGTValidar;
+	private VistaBorrar VBorrar;
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -47,6 +48,7 @@ public class CtrlVista {
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
 			VGTValidar = new VistaValidar(this);
+			VBorrar = new VistaBorrar(this);
 		}
 
 		/**
@@ -88,7 +90,7 @@ public class CtrlVista {
 			VCrearTablero1.setVisible(true);
 		}
 		public void entrarABorrarTablero(){
-			
+			VBorrar.setVisible(true);
 		}
 		
 		public void entrarAGTableros() {
@@ -100,6 +102,14 @@ public class CtrlVista {
 			String[][] s = CDominio.solucionar();
 			VGTValidar.set_tablero(s);
 			VGTValidar.setVisible(true);
+		}
+		
+		public String[] get_tableros_repo() {
+			return CDominio.get_tableros_repo();
+		}
+		
+		public String[][] cargar_tab(String id) {
+			return CDominio.cargar_tab(id);
 		}
 		
 		/**

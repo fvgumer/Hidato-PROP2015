@@ -31,7 +31,7 @@ public class VistaValidar extends VistaPadreIniConBoton{
 	     }
 		
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("Esta es la Solucion del tablero!");
 		lblNewLabel.setBounds(300, 13, 169, 59);
 		getContentPane().add(lblNewLabel);
 		
