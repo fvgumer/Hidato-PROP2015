@@ -17,17 +17,11 @@ import javax.swing.JTextField;
 public class VistaBorrar extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;
-	private int N;
-	private JTextField[][] board;
 	
 	public VistaBorrar(final CtrlVista CV) {
 		//Config layer 
 		setTextLayer("Borrado de Tableros");
 		contentPane.setLayout(null);
-		
-		final JPanel panel = new JPanel();
-		panel.setBounds(156, 13, 313, 216);
-		getContentPane().add(panel);
 		
 		DefaultListModel listModel;
 		listModel = new DefaultListModel();
@@ -46,7 +40,7 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 			}
 		});
 		
-		list.setBounds(0, 13, 144, 263);
+		list.setBounds(262, 33, 144, 371);
 		getContentPane().add(list);
 		
 		super.JB.addMouseListener(new MouseAdapter() {

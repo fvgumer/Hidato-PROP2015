@@ -4,6 +4,8 @@ import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
+
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
@@ -15,6 +17,8 @@ public class VistaImportar extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
+	private int N = 10;
+	private JTextField[][] board = new JTextField[N][N];
 
 	public VistaImportar(final CtrlVista CV) {
 		//Config layer 
@@ -24,6 +28,15 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 316, 276);
 		getContentPane().add(panel);
+		panel.setLayout(new GridLayout(N,N));
+		
+		for (int row = 0; row < N; ++row) {
+	         for (int col = 0; col < N; ++col) {
+	            board[row][col] = new JTextField();
+	            board[row][col].setText("0");
+	            panel.add(board[row][col]);
+	         }
+	     }
 		
 		textField = new JTextField();
 		textField.setBounds(328, 35, 116, 22);
@@ -38,7 +51,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		btnValidar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarAValidar(t);
+				//CV.entrarAValidar(t);
 				Salir();
 			}
 		});

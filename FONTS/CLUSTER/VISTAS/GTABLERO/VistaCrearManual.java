@@ -27,8 +27,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		contentPane.setLayout(null);
 		
 		Container panel = new JPanel();
-		panel.setBounds(0, 0, 369, 295); //Acabar de trobar la medida
-		JB.setBounds(400, 356, 87, 47);
+		panel.setBounds(0, 0, 487, 377); //Acabar de trobar la medida
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(N,N));
 		
@@ -42,7 +41,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		
 		JTextPane txtpnInstrucciones = new JTextPane();
 		txtpnInstrucciones.setText("Instrucciones:\r\n-Se deben colocar principio y final\r\n\r\n-Para colocar una casilla negra,\r\nintroduzca -1 en la casilla que se desee");
-		txtpnInstrucciones.setBounds(377, 13, 312, 132);
+		txtpnInstrucciones.setBounds(509, 13, 312, 132);
 		getContentPane().add(txtpnInstrucciones);
 		
 		JButton btnValidar = new JButton("Validar");
@@ -60,8 +59,16 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 				Salir();
 			}
 		});
-		btnValidar.setBounds(377, 158, 97, 25);
+		
+		btnValidar.setBounds(616, 211, 97, 25);
 		getContentPane().add(btnValidar);
+		
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.entrarAGTableros();
+				Salir();
+			}
+		});
 		
 	}
 }

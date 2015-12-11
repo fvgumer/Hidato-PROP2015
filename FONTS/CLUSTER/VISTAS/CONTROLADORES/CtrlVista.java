@@ -22,6 +22,7 @@ public class CtrlVista {
 	private VistaValidar VGTValidar;
 	private VistaBorrar VBorrar;
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
+	private VistaImportar VImportar;
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -51,6 +52,7 @@ public class CtrlVista {
 			VGTValidar = new VistaValidar(this);
 			VBorrar = new VistaBorrar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
+			VImportar = new VistaImportar(this);
 		}
 
 		/**
@@ -86,7 +88,7 @@ public class CtrlVista {
 		}
 		
 		public void entrarAImportar(){
-			
+			VImportar.setVisible(true);
 		}
 		public void entrarACrearMan(){
 			VCrearTablero1.setVisible(true);

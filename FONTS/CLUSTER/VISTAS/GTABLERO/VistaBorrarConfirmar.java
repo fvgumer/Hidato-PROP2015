@@ -18,6 +18,8 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 	private JPanel panel;
 	
 	public VistaBorrarConfirmar(final CtrlVista CV) {
+		setTextLayer("Borrado de Tableros");
+		contentPane.setLayout(null);
 		this.CV = CV;
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
@@ -29,7 +31,7 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 	
 	public void set_tablero(String id) {
 		panel = new JPanel();
-		panel.setBounds(0, 0, 349, 289);
+		panel.setBounds(0, 0, 536, 370);
 		getContentPane().add(panel);
 		String[][] tab = CV.cargar_tab(id);
 		N = Integer.parseInt(id.substring(0, 2));
