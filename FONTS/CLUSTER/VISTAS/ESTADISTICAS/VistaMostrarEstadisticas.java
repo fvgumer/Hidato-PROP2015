@@ -5,25 +5,21 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JTable;
 
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
-import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-import javax.swing.JList;
- 
-public class VistaEstPersonales extends VistaPadreIniConBoton{
-	private JTable table;
+public class VistaMostrarEstadisticas extends VistaPadreIniConBoton{
+
 
 	/**
-	 * Launch the application. 
+	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaEstPersonales window = new VistaEstPersonales(null);
+					VistaMostrarEstadisticas window = new VistaMostrarEstadisticas(null);
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,25 +31,14 @@ public class VistaEstPersonales extends VistaPadreIniConBoton{
 	/**
 	 * Create the application.
 	 */
-	public VistaEstPersonales(final CtrlVista CV) {
-		
-		super.setTextLayer("Estadísticas personales");
-		getContentPane().setName("Estadísticas personales");
-		
-		super.JB.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				CV.entrarAConsultaEst();
-				Salir();
-			}
-		});
+	public VistaMostrarEstadisticas(final CtrlVista CV) {
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarAConsultaEst();
+				CV.entrarAEstUsuario();
 				Salir();
 			}
 		});
-		
-		
 	}
+
 }

@@ -9,6 +9,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 //import org.apache.commons.io.*;
 
+import org.apache.commons.io.FileUtils;
+
 import CLUSTER.DOMINIO.CLASES.Jugador;
 
 /**
@@ -110,14 +112,14 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			File archiu = new File(ruta);
 			if(archiu.delete()) {
 				String rutapartida = ".."+ barras + "DATOS" + barras +"Partidas"+barras+nombre;
-				/*if(new File(rutapartida).exists()){
+				if(new File(rutapartida).exists()){
 				try {
 					FileUtils.deleteDirectory(new File(rutapartida));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				}*/
+				}
 			}
 			else System.out.println("El jugador no existeix");
 		

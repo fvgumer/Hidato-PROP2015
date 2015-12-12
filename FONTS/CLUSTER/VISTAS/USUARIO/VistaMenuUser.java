@@ -11,6 +11,8 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class VistaMenuUser extends VistaPadreIniConBoton{
 
@@ -27,6 +29,8 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 	 */
 	public VistaMenuUser(final CtrlVista CV) {
 		super();
+		
+		
 		JB.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -56,7 +60,7 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 		b2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				CV.entrarAeliminarUser();
 			}
 		});
 		
@@ -67,6 +71,7 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarCambiarPass();
+				Salir();
 			}
 		});
 		

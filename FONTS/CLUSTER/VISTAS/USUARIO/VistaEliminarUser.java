@@ -27,7 +27,7 @@ public class VistaEliminarUser extends VistaUsuario {
 		
 
 		Bsalir.setText("Atras");
-		B.set_name("Crear Usuario");
+		B.set_name("Eliminar");
 		lblUsuario.setText("Usuario a eliminar");
 		lblContrasea.setText("Contraseña");
 	}

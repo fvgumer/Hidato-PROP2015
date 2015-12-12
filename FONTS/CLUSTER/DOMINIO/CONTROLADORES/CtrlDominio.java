@@ -1,4 +1,5 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
+import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.VISTAS.*;
 
 public class CtrlDominio {
@@ -9,6 +10,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
+	private Jugador Jactivo;
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -18,9 +20,17 @@ public class CtrlDominio {
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
 	}
-	
-	public void ingresarUsuario(String nombre, String contrasenya){
-		CJugador.ingresarusuario(nombre, contrasenya);
+	//USUARIO
+	public boolean ingresarUsuario(String nombre, String contrasenya){
+		if(CJugador.ingresarusuario(nombre, contrasenya)){
+			Jactivo.set_nombre(nombre);
+			Jactivo.set_password(contrasenya);	
+			return true;
+		}
+		else return false;
+	}
+	public boolean jugadoractivo(){
+		return (Jactivo!=null);
 	}
 	
 	public void set_tablero(String[][] t) {
@@ -42,6 +52,7 @@ public class CtrlDominio {
 		return CTablero.get_tablero();
 	}
 
+<<<<<<< HEAD
 	public void guardar_tablero() {
 		CTablero.guardar();
 	}
@@ -49,4 +60,16 @@ public class CtrlDominio {
 	public void eliminar_tablero() {
 		CTablero.eliminar();
 	}
+=======
+	public boolean crearUsuario(String nombre, String password) {
+		return CJugador.crear_usuario(nombre, password);
+	}
+
+	
+	public void getRanking(String nTab, String nPos) {
+		int n = Integer.parseInt(nPos);
+		CRanking.getTop(nTab,n);
+	}
+
+>>>>>>> 9a1a44810b06864fd68eba1e6346c126d8d86154
 }

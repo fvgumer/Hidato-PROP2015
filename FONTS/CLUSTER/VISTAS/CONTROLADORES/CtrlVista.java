@@ -4,6 +4,8 @@ import CLUSTER.VISTAS.VistaInicial;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaEstPersonales;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarEstadisticas;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarRanking;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
@@ -28,10 +30,13 @@ public class CtrlVista {
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private VistaImportar VImportar;
 	private VistaMenuTipoTablero VMTipoTablero;
+	//Estadisticas
 	private VistaConsultaEst VEst;
 	private VistaEstUsuario VEstU;
 	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
+	private VistaMostrarRanking VMRank;
+	private VistaMostrarEstadisticas VMEst;
 	//Usuario
 	private VistaLogin VLogin;
 	private VistaEliminarUser VEliminarUser;
@@ -72,10 +77,14 @@ public class CtrlVista {
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
 			VBorrar = new VistaBorrar(this);
+			/*Sobre Estadisticas*/
 			VEst = new VistaConsultaEst(this);
 			VEstP = new VistaEstPersonales(this);
 			VEstU = new VistaEstUsuario(this);
 			VRank = new VistaRanking(this);
+			VMRank = new VistaMostrarRanking(this);
+			VMEst = new VistaMostrarEstadisticas(this);
+			/*Sobre usuario*/
 			VLogin = new VistaLogin(this);
 			VEliminarUser = new VistaEliminarUser(this);
 			VCrearUsuario = new VistaCrearUsuario(this);
@@ -110,7 +119,9 @@ public class CtrlVista {
 		public void entrarCambiarPass(){
 			VNewPassword.setVisible(true);
 		}
-		
+		public void entrarAeliminarUser(){
+			VEliminarUser.setVisible(true);
+		}
 		
 		public void entrarAMenuPartida(){
 			VMenuPartida.setVisible(true);
@@ -180,9 +191,19 @@ public class CtrlVista {
 			VEstU.setVisible(true);
 		}
 
+		public void entrarAMostrarEstadisticas() {
+			VMEst.setVisible(true);
+		}
+		
 		public void entrarARanking() {
 			VRank.setVisible(true);
 		}
+		
+		public void entrarAMostrarRanking(String nTab, String nPos) {
+			VMRank.setVisible(true);
+			CDominio.getRanking(nTab,nPos);
+		}
+
 		
 		public String[] get_tableros_repo() {
 			return CDominio.get_tableros_repo();
@@ -195,7 +216,16 @@ public class CtrlVista {
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION
 		 */
-		
+		//USER
+		public boolean login(String nombre, String password){
+			return CDominio.ingresarUsuario(nombre, password);
+		}
+		public boolean Jactivo(){
+			return CDominio.jugadoractivo();
+		}
+		public boolean crearUsuario(String nombre, String password){
+			return CDominio.crearUsuario(nombre,password);
+		}
 		/**
 		 * Sobre Partida
 		 */

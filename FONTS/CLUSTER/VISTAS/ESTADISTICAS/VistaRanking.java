@@ -11,12 +11,19 @@ import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class VistaRanking extends VistaPadreIniConBoton{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField;
+	private String nTab, nPos;
 
 	/** 
 	 * Launch the application.
@@ -39,36 +46,52 @@ public class VistaRanking extends VistaPadreIniConBoton{
 	 */
 	public VistaRanking(final CtrlVista CV) {
 		
-		super.setTextLayer("Ranking de tablero");
-		getContentPane().setName("Ranking de tablero");
+		super.setTextLayer("Seleccion de ranking de tablero");
+		getContentPane().setName("Seleccion de ranking de tablero");
 		
-		Texto n = new Texto("Por favor, introduce el nombre del tablero.",36,46,14);
+		Texto n = new Texto("Por favor, introduce el nombre del tablero.",36,46,15);
 		n.setSize(313, 30);
 		getContentPane().add(n);
 		
 		textField = new JTextField();
-		textField.setBounds(36, 81, 195, 20);
+		textField.setBounds(36, 81, 207, 34);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		textField.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent ae){
+			      nTab = textField.getText();
+			   }
+			});
 
-		Texto p = new Texto("Ahora introduce el número de posiciones que deseas ver.",36,126,14);
+
+		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,14);
+
 		p.setSize(402, 30);
 		getContentPane().add(p);
 		
 		textField = new JTextField();
-		textField.setBounds(36, 161, 195, 20);
+		textField.setBounds(36, 175, 207, 34);
 		getContentPane().add(textField);
 		textField.setColumns(10);  
+
+		textField.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent ae){
+			      nPos = textField.getText();
+			   }
+			});
 		
-		Botones B = new Botones("Consultar Ranking",128,218);
+		Botones B = new Botones("Consultar Ranking",129,269);
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				CV.entrarAMostrarRanking(nTab,nPos);
+				Salir();
 			}
 		});
-		B.setSize(226, 42);
+		B.setSize(368, 46);
 		getContentPane().add(B);
 		
-		super.JB.addMouseListener(new MouseAdapter() {
+		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarAConsultaEst();
 				Salir();
