@@ -42,4 +42,11 @@ public class CtrlDominio {
 		return CTablero.get_tablero();
 	}
 
+	public void guardar_tablero() {
+		CTablero.guardar();
+	}
+	
+	public void eliminar_tablero() {
+		CTablero.eliminar();
+	}
 }

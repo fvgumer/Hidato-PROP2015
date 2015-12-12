@@ -38,6 +38,7 @@ public class CtrlVista {
 	private VistaCrearUsuario VCrearUsuario;
 	private VistaMenuUser VMenuUser;
 	private VistaNewPassword VNewPassword;
+	private VistaCaracteristicasGT VCaracGT;
 	
 	private String[][] map;
 		//Funciones iniciales del controlador
@@ -80,6 +81,7 @@ public class CtrlVista {
 			VCrearUsuario = new VistaCrearUsuario(this);
 			VNewPassword = new VistaNewPassword(this);
 			VMenuUser= new VistaMenuUser(this);
+			VCaracGT = new VistaCaracteristicasGT(this);
 			
 		}
 
@@ -131,10 +133,17 @@ public class CtrlVista {
 		public void entrarAImportar(){
 			VImportar.setVisible(true);
 		}
-		public void entrarACrearMan(){
+		public void entrarACrearMan(int n, int c_negras, int c_vacias){
+			VCrearTablero1.set_data(n, c_negras, c_vacias);
 			VCrearTablero1.setVisible(true);
 		}
+		
+		public void entrarAElegirCaracGT() {
+			VCaracGT.setVisible(true);
+		}
+		
 		public void entrarABorrarTablero(){
+			VBorrar.actualitza_llista();
 			VBorrar.setVisible(true);
 		}
 		
@@ -147,6 +156,11 @@ public class CtrlVista {
 			String[][] s = CDominio.solucionar();
 			VGTValidar.set_tablero(s);
 			VGTValidar.setVisible(true);
+		}
+		
+		public void guardar_tablero(String[][] t) {
+			CDominio.guardar_tablero();
+			VBorrar.setVisible(true);
 		}
 		
 		public void entrarABorrarConfirmar(String id) {

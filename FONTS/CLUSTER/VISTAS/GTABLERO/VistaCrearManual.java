@@ -18,26 +18,18 @@ import javax.swing.JButton;
 public class VistaCrearManual extends VistaPadreIniConBoton{
 
 	private static final long serialVersionUID = 1L;
-	private int N = 4;
-	private JTextField[][] board = new JTextField[N][N];
+	private int N, c_negras, c_vacias;
+	private JTextField[][] board;
+	private Container panel;
 
 	public VistaCrearManual(final CtrlVista CV) {
 		//Config layer 
-		setTextLayer("Menu de Importación de Tableros");
+		setTextLayer("Menu de Creacion Manual de Tableros");
 		contentPane.setLayout(null);
 		
-		Container panel = new JPanel();
-		panel.setBounds(0, 0, 487, 377); //Acabar de trobar la medida
+		panel = new JPanel();
+		panel.setBounds(12, 13, 475, 364); //Acabar de trobar la medida
 		contentPane.add(panel);
-		panel.setLayout(new GridLayout(N,N));
-		
-		for (int row = 0; row < N; ++row) {
-	         for (int col = 0; col < N; ++col) {
-	            board[row][col] = new JTextField();
-	            board[row][col].setText("0");
-	            panel.add(board[row][col]);
-	         }
-	     }
 		
 		JTextPane txtpnInstrucciones = new JTextPane();
 		txtpnInstrucciones.setText("Instrucciones:\r\n-Se deben colocar principio y final\r\n\r\n-Para colocar una casilla negra,\r\nintroduzca -1 en la casilla que se desee");
@@ -70,5 +62,20 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 			}
 		});
 		
+	}
+	
+	public void set_data(int n, int c_negras, int c_vacias) {
+		this.N = n;
+		this.c_negras = c_negras;
+		this.c_vacias = c_vacias;
+		panel.setLayout(new GridLayout(N,N));
+		board = new JTextField[N][N];
+		for (int row = 0; row < N; ++row) {
+	         for (int col = 0; col < N; ++col) {
+	            board[row][col] = new JTextField();
+	            board[row][col].setText("0");
+	            panel.add(board[row][col]);
+	         }
+	     }
 	}
 }
