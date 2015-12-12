@@ -10,8 +10,22 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVistaPartida;
 
 public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 	private static final long serialVersionUID = 1L;
-	int max_forats;
-	int max_ninicals;
+	private int max_forats;
+	private int max_ninicals;
+	private int dim;
+	private int forma;
+	private int inicials;
+	private int forats;
+	
+	
+	public void setdimensions(int d) {
+		this.dim = d;
+	}
+	
+	public void setforma(int f){
+		this.forma = f;
+	}
+	
 	
 	private int calcul_max_forats(int mida){
 		return (mida*mida-2);
@@ -26,7 +40,7 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 		
 		//ACCIONES FORATS ________________________________________________________
 		slider.setMinimum(0);
-		max_forats = calcul_max_forats(CVPartida.getdimensiones());
+		max_forats = calcul_max_forats(dim);
 		slider.setMaximum(max_forats);
 		slider.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent arg0) {

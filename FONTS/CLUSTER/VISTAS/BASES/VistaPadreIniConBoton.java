@@ -24,7 +24,7 @@ public class VistaPadreIniConBoton extends VistaPadreInicio {
 		JB.setForeground(null);
 		JB.setBorder(null);
 		JB.setBounds(370, 240, 87, 47);
-		contentPane.add(JB);
+		getContentPane().add(JB);
 	}
 
 }

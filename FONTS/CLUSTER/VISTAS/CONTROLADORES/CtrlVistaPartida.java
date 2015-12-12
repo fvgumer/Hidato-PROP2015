@@ -11,11 +11,7 @@ public class CtrlVistaPartida {
 	 * Funciones para controlar la vista
 	 */
 	
-	public int getnumMaxTablero(){
-		if (forma == 0) return 15;
-		else if (forma == 1) return 7;
-		return 6;
-	}
+
 	
 	public int getforma(){
 		return forma;

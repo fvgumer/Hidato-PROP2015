@@ -32,7 +32,6 @@ public class CtrlVista {
 			CVistaPartida = new CtrlVistaPartida();
 			
 			
-			
 			//Carregar Vistes
 			VInicial = new VistaInicial(this);
 			VMenu = new VistaMenu(this);
@@ -70,8 +69,10 @@ public class CtrlVista {
 			VElegirC1.setVisible(true);
 		}
 		
-		public void entrarAElegirForats(){
+		public void entrarAElegirForats(int dimensions, int forma){
 			VElegirC2.setVisible(true);
+			VElegirC2.setdimensions(dimensions);
+			VElegirC2.setforma(forma);
 		}
 		
 		

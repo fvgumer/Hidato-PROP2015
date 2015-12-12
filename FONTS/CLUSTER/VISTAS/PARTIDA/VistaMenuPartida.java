@@ -13,10 +13,10 @@ public class VistaMenuPartida extends VistaPadreIniConBoton {
 	public VistaMenuPartida(final CtrlVista CV) {
 		//Config layer 
 		setTextLayer("Menu Partida");
-		contentPane.setLayout(null);
+		getContentPane().setLayout(null);
 		Titulo t = new Titulo("Elegir Partida",110,53);
 		t.setLocation(140, 40);
-		contentPane.add(t);
+		getContentPane().add(t);
 		
 		//Declaración Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Cargar Partida",50,120);
@@ -27,7 +27,7 @@ public class VistaMenuPartida extends VistaPadreIniConBoton {
 				//Nueva Ventana
 			}
 		});
-		contentPane.add(b1);
+		getContentPane().add(b1);
 		Botones b2 = new Botones("Crear Partida",250,120);
 		b2.setSize(221, 42);
 		b2.setLocation(120, 180);
@@ -37,7 +37,7 @@ public class VistaMenuPartida extends VistaPadreIniConBoton {
 				Salir();
 			}
 		});
-		contentPane.add(b2);
+		getContentPane().add(b2);
 		
 		
 		//Declarar Boton "Salir" y su funcion
