@@ -8,7 +8,7 @@ import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenu;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
-import CLUSTER.VISTAS.USUARIO.VistaConsultaEst;
+import CLUSTER.VISTAS.USUARIO.*;
 import CLUSTER.VISTAS.GTABLERO.*;
 
 import java.awt.EventQueue;
@@ -31,6 +31,11 @@ public class CtrlVista {
 	private VistaEstUsuario VEstU;
 	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
+	//Usuario
+	private VistaLogin VLogin;
+	private VistaCrearUsuario VCrearUsuario;
+	private VistaMenuUser VMenuUser;
+	private VistaNewPassword VNewPassword;
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -64,6 +69,10 @@ public class CtrlVista {
 			VEstP = new VistaEstPersonales(this);
 			VEstU = new VistaEstUsuario(this);
 			VRank = new VistaRanking(this);
+			VLogin = new VistaLogin(this);
+			VCrearUsuario = new VistaCrearUsuario(this);
+			VNewPassword = new VistaNewPassword(this);
+			VMenuUser= new VistaMenuUser(this);
 		}
 
 		/**
@@ -75,7 +84,7 @@ public class CtrlVista {
 		
 		//Funciones para cambiar las vistas
 		public void entrarAInicioSesion(){
-			
+			VLogin.setVisible(true);
 		}
 		
 		public void entrarAMenu(){

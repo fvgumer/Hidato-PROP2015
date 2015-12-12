@@ -24,21 +24,12 @@ public class VistaUsuario extends VistaPadreInicio{
 	private JPasswordField passwordField;
 	protected Botones B = new Botones(null, 150, 188);
 	protected Botons Bsalir = new Botons(null);
+	protected JLabel lblUsuario = new JLabel("Usuario");
+	protected JLabel lblContrasea = new JLabel("Contrase\u00F1a");
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaUsuario window = new VistaUsuario(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -47,11 +38,11 @@ public class VistaUsuario extends VistaPadreInicio{
 		
 		super.setTextLayer("User");
 		getContentPane().setName("User");
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
-		lblContrasea.setBounds(86, 139, 71, 14);
+		
+		lblContrasea.setBounds(34, 139, 123, 14);
 		getContentPane().add(lblContrasea);
 		textField = new JTextField();
-		textField.setBounds(163, 136, 141, 20);
+		textField.setBounds(162, 89, 141, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		B.addActionListener(new ActionListener() {
@@ -66,11 +57,10 @@ public class VistaUsuario extends VistaPadreInicio{
 		});
 		getContentPane().add(Bsalir);
 		passwordField = new JPasswordField();
-		passwordField.setBounds(163, 89, 141, 20);
+		passwordField.setBounds(162, 136, 141, 20);
 		getContentPane().add(passwordField);
 		
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(86, 92, 55, 14);
+		lblUsuario.setBounds(34, 92, 107, 14);
 		getContentPane().add(lblUsuario);
 	}
 }

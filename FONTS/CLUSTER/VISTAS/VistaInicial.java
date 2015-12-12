@@ -13,6 +13,10 @@ import java.awt.event.MouseEvent;
 
 public class VistaInicial extends VistaPadreInicio {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Button b1;
 	private Button b2;
 
