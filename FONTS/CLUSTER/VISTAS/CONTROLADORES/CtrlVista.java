@@ -203,7 +203,7 @@ public class CtrlVista {
 			int n = Integer.parseInt(nPos);
 			VMRank.setPos(n);
 			VMRank.setVisible(true);
-			CDominio.getRanking(nTab,n);
+			//CDominio.getRanking(nTab,n);
 		}
 
 		
