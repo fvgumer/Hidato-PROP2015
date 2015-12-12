@@ -60,7 +60,6 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 			
 		
 		getContentPane().add(table);
-		System.out.print(n);
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarARanking();

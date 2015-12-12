@@ -79,7 +79,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 			   public void actionPerformed(ActionEvent ae){
 			      nPos = textField.getText();
 			   }
-			});System.out.format("nPos %d", nPos);
+			});
 		
 		Botones B = new Botones("Consultar Ranking",129,269);
 		B.addMouseListener(new MouseAdapter() {
