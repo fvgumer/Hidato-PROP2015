@@ -1,4 +1,4 @@
-package CLUSTER.VISTAS;
+package CLUSTER.VISTAS.USUARIO;
 
 import java.awt.EventQueue;
 

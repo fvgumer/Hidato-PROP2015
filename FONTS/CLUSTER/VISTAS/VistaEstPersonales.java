@@ -3,11 +3,19 @@ package CLUSTER.VISTAS;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JTable;
 
-public class VistaEstPersonales extends VistaPadreInicio{
+import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
+import CLUSTER.VISTAS.BASES.VistaPadreInicio;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
+
+import javax.swing.JList;
+
+public class VistaEstPersonales extends VistaPadreIniConBoton{
+	private JTable table;
 
 	/**
-	 * Launch the application.
+	 * Launch the application. 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -30,7 +38,6 @@ public class VistaEstPersonales extends VistaPadreInicio{
 		super.setTextLayer("Estadísticas personales");
 		getContentPane().setName("Estadísticas personales");
 		
+		
 	}
-
-
 }

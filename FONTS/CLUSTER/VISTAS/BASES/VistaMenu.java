@@ -46,7 +46,8 @@ public class VistaMenu extends VistaPadreInicio {
 		b4.setLocation(385, 231);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				//Nueva Ventana
+				CV.entrarAConsultaEst();
+				Salir();
 			}
 		});
 		getContentPane().add(b4);

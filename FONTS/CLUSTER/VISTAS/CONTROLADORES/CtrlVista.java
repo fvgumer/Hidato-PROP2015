@@ -1,11 +1,18 @@
 package CLUSTER.VISTAS.CONTROLADORES;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
+import CLUSTER.VISTAS.VistaEstPersonales;
+import CLUSTER.VISTAS.VistaEstUsuario;
 import CLUSTER.VISTAS.VistaInicial;
+import CLUSTER.VISTAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
+<<<<<<< HEAD
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
 import CLUSTER.VISTAS.BASES.VistaMenu;
+=======
+import CLUSTER.VISTAS.USUARIO.VistaConsultaEst;
+>>>>>>> origin/master
 import CLUSTER.VISTAS.GTABLERO.*;
 
 import java.awt.EventQueue;
@@ -23,7 +30,14 @@ public class CtrlVista {
 	private VistaBorrar VBorrar;
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private VistaImportar VImportar;
+<<<<<<< HEAD
 	private VistaMenuTipoTablero VMTipoTablero;
+=======
+	private VistaConsultaEst VEst;
+	private VistaEstUsuario VEstU;
+	private VistaEstPersonales VEstP;
+	private VistaRanking VRank;
+>>>>>>> origin/master
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -55,6 +69,10 @@ public class CtrlVista {
 			//VBorrar = new VistaBorrar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
+			VEst = new VistaConsultaEst(this);
+			VEstP = new VistaEstPersonales(this);
+			VEstU = new VistaEstUsuario(this);
+			VRank = new VistaRanking(this);
 		}
 
 		/**
@@ -121,6 +139,22 @@ public class CtrlVista {
 			VGTBorrarConfirmar.setVisible(true);
 		}
 		
+		public void entrarAConsultaEst() {
+			VEst.setVisible(true);
+		}
+		
+		public void entrarAEstPersonales() {
+			VEstP.setVisible(true);
+		}
+
+		public void entrarAEstUsuario() {
+			VEstU.setVisible(true);
+		}
+
+		public void entrarARanking() {
+			VRank.setVisible(true);
+		}
+		
 		public String[] get_tableros_repo() {
 			return CDominio.get_tableros_repo();
 		}
@@ -128,7 +162,6 @@ public class CtrlVista {
 		public String[][] cargar_tab(String id) {
 			return CDominio.cargar_tab(id);
 		}
-		
 		
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION

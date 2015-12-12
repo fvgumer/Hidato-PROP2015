@@ -1,17 +1,22 @@
 package CLUSTER.VISTAS.USUARIO;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class VistaLogin extends VistaUsuario{
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class VistaCrearUsuario extends VistaUsuario {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
 	/**
 	 * Launch the application.
 	 */
@@ -19,8 +24,8 @@ public class VistaLogin extends VistaUsuario{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaLogin window = new VistaLogin();
-					window.setVisible(true);
+					VistaCrearUsuario frame = new VistaCrearUsuario();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -29,15 +34,16 @@ public class VistaLogin extends VistaUsuario{
 	}
 
 	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
-	public VistaLogin() {
+	public VistaCrearUsuario() {
 		super(null);
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
+		
 		initialize();
 	}
 
@@ -45,9 +51,8 @@ public class VistaLogin extends VistaUsuario{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		Bsalir.setText("Salir");
-		B.set_name("Login");
-	
+		Bsalir.setText("Atras");
+		B.set_name("Crear Usuario");
 	}
 
 }

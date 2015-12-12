@@ -1,10 +1,16 @@
-package CLUSTER.VISTAS;
+package CLUSTER.VISTAS.USUARIO;
 
 import java.awt.EventQueue;
 
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import CLUSTER.VISTAS.BASES.Botones;
+import CLUSTER.VISTAS.BASES.Botons;
+import CLUSTER.VISTAS.BASES.VistaPadreInicio;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -48,6 +54,10 @@ public class VistaUsuario extends VistaPadreInicio{
 		textField.setBounds(163, 136, 141, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		B.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		getContentPane().add(B);
 		//Bsalir.setBounds(402, 261, 71, 23);
 		Bsalir.addActionListener(new ActionListener() {
