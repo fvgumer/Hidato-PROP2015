@@ -47,7 +47,7 @@ public class VistaEstPersonales extends VistaPadreIniConBoton{
 			}
 		});
 		
-		super.JB.addMouseListener(new MouseAdapter() {
+		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarAConsultaEst();
 				Salir();

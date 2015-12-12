@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
@@ -40,16 +41,27 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		super.setTextLayer("Estadísticas de usuario");
 		getContentPane().setName("Estadísticas de usuario");
 		
-		Texto n = new Texto("Por favor, introduce el nombre del usuario.",36,46,14);
+		Texto n = new Texto("Por favor, introduce el nombre del usuario.",36,46,15);
 		n.setSize(313, 30);
 		getContentPane().add(n);
 		
 		textField = new JTextField();
-		textField.setBounds(36, 81, 195, 20);
+		textField.setBounds(36, 81, 207, 34);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		super.JB.addMouseListener(new MouseAdapter() {
+		Botones B = new Botones("Consultar Estadisticas",129,269);
+		B.setLocation(129, 269);
+		B.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarAMostrarEstadisticas();
+				Salir();
+			}
+		});
+		B.setSize(408, 46);
+		getContentPane().add(B);
+		
+		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarAConsultaEst();
 				Salir();
