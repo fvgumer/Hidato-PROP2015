@@ -1,4 +1,4 @@
-package CLUSTER.VISTAS;
+package CLUSTER.VISTAS.ESTADISTICAS;
 
 import java.awt.EventQueue;
 

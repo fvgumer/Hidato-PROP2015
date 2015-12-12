@@ -1,14 +1,14 @@
 package CLUSTER.VISTAS.CONTROLADORES;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
-import CLUSTER.VISTAS.VistaEstPersonales;
-import CLUSTER.VISTAS.VistaEstUsuario;
 import CLUSTER.VISTAS.VistaInicial;
-import CLUSTER.VISTAS.VistaRanking;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaEstPersonales;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenu;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
-import CLUSTER.VISTAS.USUARIO.VistaConsultaEst;
 import CLUSTER.VISTAS.GTABLERO.*;
 
 import java.awt.EventQueue;
