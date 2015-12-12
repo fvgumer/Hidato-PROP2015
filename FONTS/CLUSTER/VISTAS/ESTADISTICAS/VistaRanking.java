@@ -18,6 +18,10 @@ import java.awt.event.MouseEvent;
 
 public class VistaRanking extends VistaPadreIniConBoton{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private String nTab, nPos;
 
@@ -60,11 +64,9 @@ public class VistaRanking extends VistaPadreIniConBoton{
 			   }
 			});
 
-<<<<<<< HEAD
+
 		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,14);
-=======
-		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,15);
->>>>>>> 23fb59e21f9f9e2e1665d81ec93ddcc335baa59b
+
 		p.setSize(402, 30);
 		getContentPane().add(p);
 		
