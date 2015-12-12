@@ -228,6 +228,9 @@ public class CtrlVista {
 		public boolean crearUsuario(String nombre, String password){
 			return CDominio.crearUsuario(nombre,password);
 		}
+		public boolean eliminarUsuario(String password){
+			return CDominio.eliminarUsuario(password);
+		}
 		/**
 		 * Sobre Partida
 		 */
