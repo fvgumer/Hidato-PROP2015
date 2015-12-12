@@ -13,6 +13,10 @@ import java.awt.event.MouseEvent;
 
 public class VistaInicial extends VistaPadreInicio {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Button b1;
 	private Button b2;
 
@@ -23,21 +27,25 @@ public class VistaInicial extends VistaPadreInicio {
 		setTextLayer("Inicio");
 		contentPane.setLayout(null);
 		Titulo t = new Titulo("JUEGO HIDATO",130,53);
-		contentPane.add(t);
+		t.setSize(400, 87);
+		t.setLocation(162, 119);
+		getContentPane().add(t);
 		
 		//Declaración Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Entrar",50,200);
+		b1.setLocation(84, 283);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAMenu();
 				Salir();
 			}
 		});
-		contentPane.add(b1);
+		getContentPane().add(b1);
 		
 		//Declarar Boton "Salir" y su funcion
 		Botones b2 = new Botones("Salir",250,200);
-		contentPane.add(b2);
+		b2.setLocation(372, 283);
+		getContentPane().add(b2);
 		b2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				Salir();

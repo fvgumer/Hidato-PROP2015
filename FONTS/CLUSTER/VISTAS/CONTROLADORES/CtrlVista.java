@@ -7,18 +7,19 @@ import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
-import CLUSTER.VISTAS.PARTIDA.VistaMenu;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
+import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
+import CLUSTER.VISTAS.BASES.VistaMenu;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
+import CLUSTER.VISTAS.USUARIO.VistaUsuario;
+import CLUSTER.VISTAS.USUARIO.*;
 import CLUSTER.VISTAS.GTABLERO.*;
-
-import java.awt.EventQueue;
 
 public class CtrlVista {
 	private VistaInicial VInicial; 
 	private CtrlDominio CDominio;
 	private VistaMenu VMenu;
 	private VistaMenuPartida VMenuPartida;
-	private CtrlVistaPartida CVistaPartida;
 	private VistaElegirCarac1 VElegirC1;
 	private VistaElegirCarac2 VElegirC2;
 	private VistaGestionTablero VGTableros;
@@ -27,10 +28,19 @@ public class CtrlVista {
 	private VistaBorrar VBorrar;
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private VistaImportar VImportar;
+	private VistaMenuTipoTablero VMTipoTablero;
 	private VistaConsultaEst VEst;
 	private VistaEstUsuario VEstU;
 	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
+	//Usuario
+	private VistaLogin VLogin;
+	/** Ho comentaritzo perque si no peta el controlador, perque
+	 * no compilen les clases 
+	private VistaCrearUsuario VCrearUsuario;
+	private VistaMenuUser VMenuUser;
+	private VistaNewPassword VNewPassword;
+	*/
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -45,25 +55,33 @@ public class CtrlVista {
 							// VAN ALS ALTRES CONTROLADOS.
 			//Carregar Controladors 
 			CDominio = new CtrlDominio();
-			CVistaPartida = new CtrlVistaPartida();
 			
 			
 			//Carregar Vistes
 			VInicial = new VistaInicial(this);
 			VMenu = new VistaMenu(this);
+			/*Sobre Partida*/
 			VMenuPartida = new VistaMenuPartida(this);
-			VElegirC1 = new VistaElegirCarac1(this,CVistaPartida,"Forma","Dimensiones");
-			VElegirC2 = new VistaElegirCarac2(this,CVistaPartida,"Forats","Iniciales");
+			VElegirC1 = new VistaElegirCarac1(this,"Forma","Dimensiones");
+			VElegirC2 = new VistaElegirCarac2(this,"Forats","Iniciales");
+			VMTipoTablero = new VistaMenuTipoTablero(this);
+			/*Sobre Tableros*/
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
 			VGTValidar = new VistaValidar(this);
-			VBorrar = new VistaBorrar(this);
+			//VBorrar = new VistaBorrar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
 			VEst = new VistaConsultaEst(this);
 			VEstP = new VistaEstPersonales(this);
 			VEstU = new VistaEstUsuario(this);
 			VRank = new VistaRanking(this);
+			VLogin = new VistaLogin(this);
+			/**
+			VCrearUsuario = new VistaUsuario(this);
+			VNewPassword = new VistaNewPassword(this);
+			VMenuUser= new VistaMenuUser(this);
+			**/
 		}
 
 		/**
@@ -75,7 +93,7 @@ public class CtrlVista {
 		
 		//Funciones para cambiar las vistas
 		public void entrarAInicioSesion(){
-			
+			VLogin.setVisible(true);
 		}
 		
 		public void entrarAMenu(){
@@ -98,6 +116,10 @@ public class CtrlVista {
 			VElegirC2.setVisible(true);
 			VElegirC2.setdimensions(dimensions);
 			VElegirC2.setforma(forma);
+		}
+		
+		public void entrarAMenuElegirTablero() {
+			
 		}
 		
 		public void entrarAImportar(){

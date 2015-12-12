@@ -3,6 +3,10 @@ package CLUSTER.VISTAS.USUARIO;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,23 +19,13 @@ public class VistaLogin extends VistaUsuario{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaLogin window = new VistaLogin();
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+
 
 	/**
 	 * Create the application.
 	 */
-	public VistaLogin() {
+	public VistaLogin(final CtrlVista CV) {
 		super(null);
 		B.addMouseListener(new MouseAdapter() {
 			@Override
@@ -47,7 +41,6 @@ public class VistaLogin extends VistaUsuario{
 	private void initialize() {
 		Bsalir.setText("Salir");
 		B.set_name("Login");
-	
 	}
 
 }

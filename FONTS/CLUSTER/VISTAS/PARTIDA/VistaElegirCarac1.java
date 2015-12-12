@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 
 import CLUSTER.VISTAS.BASES.VistaError;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-import CLUSTER.VISTAS.CONTROLADORES.CtrlVistaPartida;
 
 public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 	private static final long serialVersionUID = 1L;
@@ -21,14 +20,20 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 		return 6;
 	}	
 
-	public VistaElegirCarac1(final CtrlVista CV, final CtrlVistaPartida CVPartida,String t1,String t2) {
-		super(CV,CVPartida,t1,t2);
+	public VistaElegirCarac1(final CtrlVista CV,String t1,String t2) {
+		super(CV,t1,t2);
 		
 		/**
 		 * 1er FORMA
 		 */
+		//VALORES POR DEFECTO
 		slider.setMinimum(0);
 		slider.setMaximum(2);
+		/*Valores Iniciales */
+		slider.setValue(0);
+		lblSinForma.setText("SIN FORMA");
+		//ACCIONES
+		//Movimiento de raton
 		slider.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent arg0) {
 				String In;
@@ -41,7 +46,7 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 				
 			}
 		});
-		//Actuacion si lo mueve por teclas
+		//Movimiento de teclas
 		slider.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent arg0) {
 				String In;
@@ -59,7 +64,13 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 		/**
 		 * 2on Dimensiones
 		 */
+		
+		//VALORES POR DEFECTO
 		slider2.setMinimum(3);
+		slider2.setMaximum(6);
+		/*Valores iniciales*/
+		slider2.setValue(3);
+		lblSinForma2.setText("3");
 			//Actuacion si lo mueve el raton
 			slider2.addMouseListener(new MouseAdapter() {
 
@@ -67,8 +78,6 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 					String In;
 					In = Integer.toString(slider2.getValue());
 					lblSinForma2.setText(In);
-					dim = slider2.getValue();
-					if (dim > slider2.getMaximum()) dim = slider2.getMaximum();
 				}
 			});
 			//Actuacion si lo mueve por teclas
@@ -78,8 +87,6 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 					String In;
 					In = Integer.toString(slider2.getValue());
 					lblSinForma2.setText(In);
-					dim = slider2.getValue();
-					if (dim > slider2.getMaximum()) dim = slider2.getMaximum();
 				}
 			});
 			
@@ -87,7 +94,7 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 			Siguiente.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					
-					CV.entrarAElegirForats(dim,form);
+					CV.entrarAElegirForats(slider2.getValue(),slider.getValue());
 					Salir();
 				}
 			});
