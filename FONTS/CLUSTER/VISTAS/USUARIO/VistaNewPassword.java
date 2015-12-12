@@ -25,9 +25,11 @@ public class VistaNewPassword extends VistaUsuario{
 	 */
 	public VistaNewPassword(final CtrlVista CV) {
 		super(null);
-		B.addMouseListener(new MouseAdapter() {
+		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				CV.entrarMenuUsuario();
+				Salir();
 			}
 		});
 		initialize();
