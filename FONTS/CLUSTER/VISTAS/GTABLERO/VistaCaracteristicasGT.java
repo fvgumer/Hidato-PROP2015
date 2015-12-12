@@ -14,36 +14,31 @@ public class VistaCaracteristicasGT extends VistaElegirCaracPatron2{
 		super(CV, "Medida", "Casillas negras", "Casillas vacias");
 		
 		
-		slider3.setValue(0);
-		slider2.setValue(0);
-		slider.setValue(0);
+		lblCarac1.setText("0"); lblCarac2.setText("0"); lblCarac3.setText("0");
 		slider.setMaximum(8);
 		slider.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent arg0) {
-				String In;
-				In = Integer.toString(slider.getValue());
-				lblCarac1.setText(In);
+				actualitza_lbl();
 				slider2.setMaximum(slider.getValue()*slider.getValue()-3);
+				slider2.setValue(0);
+				slider3.setValue(0);
 			}
 		});
 		
 		slider2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				String In;
-				In = Integer.toString(slider2.getValue());
-				lblCarac2.setText(In);
+				actualitza_lbl();
 				slider3.setMaximum(slider.getValue()*slider.getValue()-3
 						-slider2.getValue());
+				slider3.setValue(0);
 			}
 		});
 		
 		slider3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				String In;
-				In = Integer.toString(slider2.getValue());
-				lblCarac3.setText(In);
+				actualitza_lbl();
 			}
 		});
 		
@@ -57,5 +52,25 @@ public class VistaCaracteristicasGT extends VistaElegirCaracPatron2{
 		});
 		btnSiguiente.setBounds(325, 339, 97, 25);
 		getContentPane().add(btnSiguiente);
+		
+		JB.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarAGTableros();
+				Salir();
+			}
+		});
 	}
+	
+	private void actualitza_lbl() {
+		String In;
+		In = Integer.toString(slider.getValue());
+		lblCarac1.setText(In);
+		In = Integer.toString(slider2.getValue());
+		lblCarac2.setText(In);
+		In = Integer.toString(slider3.getValue());
+		lblCarac3.setText(In);
+		slider.setMinimum(3); slider2.setMinimum(0); slider3.setMinimum(0);
+	}
+	
 }

@@ -57,7 +57,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAGTableros();
+				CV.entrarAElegirCaracGT();
 				Salir();
 			}
 		});

@@ -73,10 +73,8 @@ public class CtrlVista {
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
 			VGTValidar = new VistaValidar(this);
-			//VBorrar = new VistaBorrar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
-			VBorrar = new VistaBorrar(this);
 			/*Sobre Estadisticas*/
 			VEst = new VistaConsultaEst(this);
 			VEstP = new VistaEstPersonales(this);
@@ -154,6 +152,8 @@ public class CtrlVista {
 		}
 		
 		public void entrarABorrarTablero(){
+			//De moment es una solucio funcional que permet tenir la llista actualitzadaa
+			VBorrar = new VistaBorrar(this);
 			VBorrar.actualitza_llista();
 			VBorrar.setVisible(true);
 		}
