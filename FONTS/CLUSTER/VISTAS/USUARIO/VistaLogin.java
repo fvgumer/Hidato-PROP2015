@@ -47,6 +47,7 @@ public class VistaLogin extends VistaUsuario{
 	private void initialize() {
 		Bsalir.setText("Salir");
 		B.set_name("Login");
+	
 	}
 
 }
