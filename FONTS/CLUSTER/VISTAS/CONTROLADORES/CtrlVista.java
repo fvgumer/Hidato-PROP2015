@@ -5,6 +5,7 @@ import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenu;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
+import CLUSTER.VISTAS.USUARIO.VistaConsultaEst;
 import CLUSTER.VISTAS.GTABLERO.*;
 
 import java.awt.EventQueue;
@@ -23,6 +24,7 @@ public class CtrlVista {
 	private VistaBorrar VBorrar;
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private VistaImportar VImportar;
+	private VistaConsultaEst VEst;
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -52,6 +54,7 @@ public class CtrlVista {
 			VBorrar = new VistaBorrar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
+			VEst = new VistaConsultaEst(this);
 		}
 
 		/**
@@ -122,6 +125,9 @@ public class CtrlVista {
 			return CDominio.cargar_tab(id);
 		}
 		
+		public void entrarConsultaEst() {
+			VEst.setVisible(true);
+		}
 		
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION
