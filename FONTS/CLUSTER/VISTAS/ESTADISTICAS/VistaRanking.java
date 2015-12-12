@@ -11,6 +11,8 @@ import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -50,6 +52,12 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		textField.setBounds(36, 81, 207, 34);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		textField.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent ae){
+			      String nTab = textField.getText();
+			   }
+			});
 
 		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,15);
 		p.setSize(402, 30);
@@ -59,6 +67,12 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		textField.setBounds(36, 175, 207, 34);
 		getContentPane().add(textField);
 		textField.setColumns(10);  
+
+		textField.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent ae){
+			      String nPos = textField.getText();
+			   }
+			});
 		
 		Botones B = new Botones("Consultar Ranking",129,269);
 		B.addMouseListener(new MouseAdapter() {
