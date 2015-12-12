@@ -47,25 +47,27 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		getContentPane().add(n);
 		
 		textField = new JTextField();
-		textField.setBounds(36, 81, 195, 20);
+		textField.setBounds(36, 81, 207, 34);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
-		Texto p = new Texto("Ahora introduce el número de posiciones que deseas ver.",36,126,14);
+		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,126,14);
+		p.setLocation(36, 138);
 		p.setSize(402, 30);
 		getContentPane().add(p);
 		
 		textField = new JTextField();
-		textField.setBounds(36, 161, 195, 20);
+		textField.setBounds(36, 175, 207, 34);
 		getContentPane().add(textField);
 		textField.setColumns(10);  
 		
 		Botones B = new Botones("Consultar Ranking",128,218);
+		B.setLocation(129, 269);
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		B.setSize(226, 42);
+		B.setSize(368, 46);
 		getContentPane().add(B);
 		
 		super.JB.addMouseListener(new MouseAdapter() {
