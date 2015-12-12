@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.FilenameFilter;
 
 import CLUSTER.DOMINIO.CLASES.Tablero;
 
@@ -67,4 +68,19 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 		String[] llista_noms=directory.list();
 		return llista_noms;
 	}
+	
+	public int num_tableros(final String indice){
+		//String ruta2 = ".."+ barras + "DATOS" + barras +"Tableros"+  barras;
+		File dir = new File(".."+ barras + "DATOS" + barras +"Tableros"+  barras);
+		File[] foundFiles = dir.listFiles(new FilenameFilter() {
+		    public boolean accept(File dir, String name) {
+		        return name.startsWith(indice);
+		    }
+		});
+       
+        //return files.length;
+        if(foundFiles==null) return 0;
+        else return foundFiles.length;
+}
+	
 }

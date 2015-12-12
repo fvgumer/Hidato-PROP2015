@@ -3,6 +3,7 @@ package CLUSTER.DOMINIO.CONTROLADORES.DRIVERS;
 import java.util.Scanner;
 
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.PERSISTENCIA.CtrlGestionTablero;
 
 public class SuperDriver {
 
@@ -16,6 +17,7 @@ public class SuperDriver {
 		DriverGestionUsuario gestorJ = new DriverGestionUsuario();
 		DriverEstadisticas est = new DriverEstadisticas();
 		Jugador Jactivo = null;
+		CtrlGestionTablero g = new CtrlGestionTablero();
 		boolean b = true;
 		int i;
 		while (b) {
@@ -31,7 +33,7 @@ public class SuperDriver {
 			System.out.println("4.Estadisticas");
 			System.out.println("5.Salir");
 			i = s.nextInt();
-			while(!comprueba_entrada(i,5)) {
+			while(!comprueba_entrada(i,6)) {
 				i = s.nextInt();
 			}
 			switch (i) {
@@ -58,6 +60,9 @@ public class SuperDriver {
 					b = false;
 					System.out.println("Adios!");
 					break;
+				case 6:
+					int x = g.num_tableros("9");
+					System.out.println(x);
 				default: break;
 			}
 		}
