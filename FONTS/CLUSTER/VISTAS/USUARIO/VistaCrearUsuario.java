@@ -16,6 +16,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 
 	public VistaCrearUsuario(final CtrlVista CV) {
 		super(null);
+		B.setBounds(116, 188, 279, 70);
 		//Acciones
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
@@ -27,7 +28,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 		
 
 		Bsalir.setText("Atras");
-		B.set_name("Crear Usuario");
+		B.set_name("Crear");
 	}
 
 }

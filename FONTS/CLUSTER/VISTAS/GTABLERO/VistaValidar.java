@@ -19,7 +19,7 @@ public class VistaValidar extends VistaPadreIniConBoton{
 	public VistaValidar(final CtrlVista CV) {
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 288, 276);
+		panel.setBounds(12, 13, 482, 430);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(N,N));
 		for (int row = 0; row < N; ++row) {
@@ -32,11 +32,11 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		
 		
 		JLabel lblNewLabel = new JLabel("Esta es la Solucion del tablero!");
-		lblNewLabel.setBounds(300, 13, 169, 59);
+		lblNewLabel.setBounds(506, 13, 198, 59);
 		getContentPane().add(lblNewLabel);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(300, 108, 97, 25);
+		btnGuardar.setBounds(545, 85, 97, 25);
 		getContentPane().add(btnGuardar);
 	}
 	

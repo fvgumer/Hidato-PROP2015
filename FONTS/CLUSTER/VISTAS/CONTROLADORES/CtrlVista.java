@@ -70,6 +70,7 @@ public class CtrlVista {
 			//VBorrar = new VistaBorrar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
+			VBorrar = new VistaBorrar(this);
 			VEst = new VistaConsultaEst(this);
 			VEstP = new VistaEstPersonales(this);
 			VEstU = new VistaEstUsuario(this);
@@ -107,7 +108,9 @@ public class CtrlVista {
 		public void entrarCambiarPass(){
 			VNewPassword.setVisible(true);
 		}
-		
+		public void entrarAeliminarUser(){
+			VEliminarUser.setVisible(true);
+		}
 		
 		public void entrarAMenuPartida(){
 			VMenuPartida.setVisible(true);

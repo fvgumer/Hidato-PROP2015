@@ -47,12 +47,12 @@ public class VistaUsuario extends VistaPadreInicio{
 		textField.setBounds(162, 89, 141, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
-		B.setBounds(112, 185, 267, 62);
 		B.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		getContentPane().add(B);
+		
 		getContentPane().add(Bsalir);
 		
 		passwordField = new JPasswordField();

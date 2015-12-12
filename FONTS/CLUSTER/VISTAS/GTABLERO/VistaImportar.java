@@ -26,7 +26,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 316, 276);
+		panel.setBounds(0, 0, 498, 443);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(N,N));
 		
@@ -39,12 +39,12 @@ public class VistaImportar extends VistaPadreIniConBoton {
 	     }
 		
 		textField = new JTextField();
-		textField.setBounds(328, 35, 116, 22);
+		textField.setBounds(539, 97, 116, 22);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblEscribeElNombre = new JLabel("Escribe el nombre del archivo que desee importar:");
-		lblEscribeElNombre.setBounds(328, 13, 141, 16);
+		lblEscribeElNombre.setBounds(539, 68, 165, 16);
 		getContentPane().add(lblEscribeElNombre);
 		
 		JButton btnValidar = new JButton("Validar");
@@ -55,7 +55,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 				Salir();
 			}
 		});
-		btnValidar.setBounds(328, 178, 97, 25);
+		btnValidar.setBounds(539, 246, 97, 25);
 		getContentPane().add(btnValidar);
 		
 		JButton btnCargar = new JButton("Cargar");
@@ -65,7 +65,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 				
 			}
 		});
-		btnCargar.setBounds(328, 70, 97, 25);
+		btnCargar.setBounds(539, 132, 97, 25);
 		getContentPane().add(btnCargar);
 		
 		super.JB.addMouseListener(new MouseAdapter() {
