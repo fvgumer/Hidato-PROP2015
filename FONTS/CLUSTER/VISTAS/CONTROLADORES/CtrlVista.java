@@ -7,15 +7,10 @@ import CLUSTER.VISTAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
-<<<<<<< HEAD
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
 import CLUSTER.VISTAS.BASES.VistaMenu;
-=======
 import CLUSTER.VISTAS.USUARIO.VistaConsultaEst;
->>>>>>> origin/master
 import CLUSTER.VISTAS.GTABLERO.*;
-
-import java.awt.EventQueue;
 
 public class CtrlVista {
 	private VistaInicial VInicial; 
@@ -30,14 +25,11 @@ public class CtrlVista {
 	private VistaBorrar VBorrar;
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private VistaImportar VImportar;
-<<<<<<< HEAD
 	private VistaMenuTipoTablero VMTipoTablero;
-=======
 	private VistaConsultaEst VEst;
 	private VistaEstUsuario VEstU;
 	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
->>>>>>> origin/master
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
