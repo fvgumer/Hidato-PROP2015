@@ -4,6 +4,7 @@ import CLUSTER.VISTAS.VistaInicial;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
+import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
 import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.GTABLERO.*;
 
@@ -14,7 +15,6 @@ public class CtrlVista {
 	private CtrlDominio CDominio;
 	private VistaMenu VMenu;
 	private VistaMenuPartida VMenuPartida;
-	private CtrlVistaPartida CVistaPartida;
 	private VistaElegirCarac1 VElegirC1;
 	private VistaElegirCarac2 VElegirC2;
 	private VistaGestionTablero VGTableros;
@@ -23,6 +23,7 @@ public class CtrlVista {
 	private VistaBorrar VBorrar;
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private VistaImportar VImportar;
+	private VistaMenuTipoTablero VMTipoTablero;
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -37,15 +38,17 @@ public class CtrlVista {
 							// VAN ALS ALTRES CONTROLADOS.
 			//Carregar Controladors 
 			CDominio = new CtrlDominio();
-			CVistaPartida = new CtrlVistaPartida();
 			
 			
 			//Carregar Vistes
 			VInicial = new VistaInicial(this);
 			VMenu = new VistaMenu(this);
+			/*Sobre Partida*/
 			VMenuPartida = new VistaMenuPartida(this);
-			VElegirC1 = new VistaElegirCarac1(this,CVistaPartida,"Forma","Dimensiones");
-			VElegirC2 = new VistaElegirCarac2(this,CVistaPartida,"Forats","Iniciales");
+			VElegirC1 = new VistaElegirCarac1(this,"Forma","Dimensiones");
+			VElegirC2 = new VistaElegirCarac2(this,"Forats","Iniciales");
+			VMTipoTablero = new VistaMenuTipoTablero(this);
+			/*Sobre Tableros*/
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
 			VGTValidar = new VistaValidar(this);
@@ -86,6 +89,10 @@ public class CtrlVista {
 			VElegirC2.setVisible(true);
 			VElegirC2.setdimensions(dimensions);
 			VElegirC2.setforma(forma);
+		}
+		
+		public void entrarAMenuElegirTablero() {
+			
 		}
 		
 		public void entrarAImportar(){

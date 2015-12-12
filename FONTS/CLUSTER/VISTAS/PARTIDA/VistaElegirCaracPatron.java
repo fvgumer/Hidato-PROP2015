@@ -1,18 +1,11 @@
 package CLUSTER.VISTAS.PARTIDA;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.Titulo;
-import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VPBotonSiguiente;
-import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-import CLUSTER.VISTAS.CONTROLADORES.CtrlVistaPartida;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.JSlider;
 import javax.swing.JLabel;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
 
 public class VistaElegirCaracPatron extends VPBotonSiguiente {
 	private static final long serialVersionUID = 1L;
@@ -23,7 +16,7 @@ public class VistaElegirCaracPatron extends VPBotonSiguiente {
 	protected String t1;
 	protected String t2;
 	
-	public VistaElegirCaracPatron (final CtrlVista CV, CtrlVistaPartida CVPartida2, String t1,String t2) {
+	public VistaElegirCaracPatron (final CtrlVista CV, String t1,String t2) {
 
 		//Config layer 
 		setTextLayer("Caracteristicas del tablero");

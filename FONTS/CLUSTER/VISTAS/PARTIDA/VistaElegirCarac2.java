@@ -6,7 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-import CLUSTER.VISTAS.CONTROLADORES.CtrlVistaPartida;
+
 
 public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 	private static final long serialVersionUID = 1L;
@@ -30,8 +30,8 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 
 
 
-	public VistaElegirCarac2(final CtrlVista CV, final CtrlVistaPartida CVPartida,String t1,String t2) {
-		super(CV,CVPartida,t1,t2);
+	public VistaElegirCarac2(final CtrlVista CV,String t1,String t2) {
+		super(CV,t1,t2);
 		
 		//ACCIONES FORATS ________________________________________________________
 		slider.setMinimum(0);
@@ -44,8 +44,6 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 				String In;
 				In = Integer.toString(slider.getValue());
 				lblSinForma.setText(In);
-				CVPartida.setinicials(slider.getValue());
-				
 				max_ninicals = max_forats - slider.getValue();
 				slider2.setMaximum(max_ninicals);
 			}
@@ -57,7 +55,6 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 				String In;
 				In = Integer.toString(slider.getValue());
 				lblSinForma.setText(In);
-				CVPartida.setinicials(slider.getValue());
 				max_ninicals = max_forats - slider.getValue();
 				slider2.setMaximum(max_ninicals);
 			}
@@ -75,7 +72,6 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 					String In;
 					In = Integer.toString(slider2.getValue());
 					lblSinForma2.setText(In);
-					CVPartida.setinicials(slider2.getValue());
 				}
 			});
 			//Actuacion si lo mueve por teclas
@@ -84,13 +80,12 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 					String In;
 					In = Integer.toString(slider2.getValue());
 					lblSinForma2.setText(In);
-					CVPartida.setinicials(slider2.getValue());
 				}
 			});
 			//Para Pasara a la siguiente pagina
 			Siguiente.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
-					CV.entrarAMenuPartida();
+					CV.entrarAMenuElegirTablero();
 					Salir();
 				}
 			});

@@ -4,7 +4,6 @@ import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-import CLUSTER.VISTAS.CONTROLADORES.CtrlVistaPartida;
 import javax.swing.JSlider;
 import javax.swing.JLabel;
 
@@ -20,7 +19,7 @@ public class VistaElegirCaracPatron2 extends VistaPadreIniConBoton {
 	protected String t1;
 	protected String t2;
 	
-	public VistaElegirCaracPatron2 (final CtrlVista CV, CtrlVistaPartida CVPartida2, String t1,String t2) {
+	public VistaElegirCaracPatron2 (final CtrlVista CV, String t1,String t2) {
 
 		//Config layer 
 		setTextLayer("Caracteristicas del tablero");

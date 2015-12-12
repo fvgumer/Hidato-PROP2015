@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 
 import CLUSTER.VISTAS.BASES.VistaError;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-import CLUSTER.VISTAS.CONTROLADORES.CtrlVistaPartida;
 
 public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 	private static final long serialVersionUID = 1L;
@@ -21,8 +20,8 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 		return 6;
 	}	
 
-	public VistaElegirCarac1(final CtrlVista CV, final CtrlVistaPartida CVPartida,String t1,String t2) {
-		super(CV,CVPartida,t1,t2);
+	public VistaElegirCarac1(final CtrlVista CV,String t1,String t2) {
+		super(CV,t1,t2);
 		
 		/**
 		 * 1er FORMA
