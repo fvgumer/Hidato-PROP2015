@@ -1,4 +1,4 @@
-package CLUSTER.VISTAS.USUARIO;
+package CLUSTER.VISTAS.ESTADISTICAS;
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Botons;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
@@ -18,7 +18,18 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 	 * Launch the application.
 	 */
 
-
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VistaConsultaEst window = new VistaConsultaEst(null);
+					window.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 
 

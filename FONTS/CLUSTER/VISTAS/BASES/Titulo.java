@@ -14,7 +14,7 @@ public class Titulo extends JTextPane {
 			this.setForeground(new Color(255, 250, 240));
 			this.setBounds(x, y, 313, 50);
 			this.setEditable(false);
-			this.setFont(new Font("Graphite Std Light", Font.BOLD, 37));
+			this.setFont(new Font("Lucida Sans", Font.BOLD, 50));
 			this.setText(texto);
 			this.setBackground(null);
 		}

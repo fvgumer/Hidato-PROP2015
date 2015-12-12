@@ -1,15 +1,12 @@
 package CLUSTER.VISTAS.BASES;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+
 
 public class VistaPadreIniConBoton extends VistaPadreInicio {
+	private static final long serialVersionUID = 1L;
 		protected JButton JB;
 
 	/**
@@ -24,7 +21,7 @@ public class VistaPadreIniConBoton extends VistaPadreInicio {
 		JB.setBackground(null);
 		JB.setForeground(null);
 		JB.setBorder(null);
-		//JB.setBounds(370, 240, 87, 47);
 	}
 
 }
+

@@ -1,4 +1,4 @@
-package CLUSTER.VISTAS;
+package CLUSTER.VISTAS.ESTADISTICAS;
 
 import java.awt.EventQueue;
 
@@ -10,7 +10,7 @@ import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import javax.swing.JList;
-
+ 
 public class VistaEstPersonales extends VistaPadreIniConBoton{
 	private JTable table;
 
