@@ -74,11 +74,12 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 		B3.setSize(448, 42);
 		getContentPane().add(B3);
 		
-		/*super.addMouseListener(new MouseAdapter() {
+		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				System.out.print("ww");
+				CV.entrarAMenu();
+				Salir();
 			}
-		});*/
+		});
 		
 	}		
 
