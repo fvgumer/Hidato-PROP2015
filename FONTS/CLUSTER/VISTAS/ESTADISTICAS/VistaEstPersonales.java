@@ -1,6 +1,8 @@
 package CLUSTER.VISTAS.ESTADISTICAS;
 
 import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -35,8 +37,15 @@ public class VistaEstPersonales extends VistaPadreIniConBoton{
 	 */
 	public VistaEstPersonales(final CtrlVista CV) {
 		
-		super.setTextLayer("Estadísticas personales");
-		getContentPane().setName("Estadísticas personales");
+		super.setTextLayer("EstadÃ­sticas personales");
+		getContentPane().setName("EstadÃ­sticas personales");
+		
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarAConsultaEst();
+				Salir();
+			}
+		});
 		
 		
 	}
