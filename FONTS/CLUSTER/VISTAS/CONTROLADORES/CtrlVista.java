@@ -107,7 +107,9 @@ public class CtrlVista {
 		public void entrarCambiarPass(){
 			VNewPassword.setVisible(true);
 		}
-		
+		public void entrarAeliminarUser(){
+			VEliminarUser.setVisible(true);
+		}
 		
 		public void entrarAMenuPartida(){
 			VMenuPartida.setVisible(true);
