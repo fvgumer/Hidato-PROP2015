@@ -185,8 +185,9 @@ public class CtrlVista {
 			VRank.setVisible(true);
 		}
 		
-		public void entrarAMostrarRanking() {
+		public void entrarAMostrarRanking(String nTab, String nPos) {
 			VMRank.setVisible(true);
+			CDominio.getRanking(nTab,nPos);
 		}
 
 		

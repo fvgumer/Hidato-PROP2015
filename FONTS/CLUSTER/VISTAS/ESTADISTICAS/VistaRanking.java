@@ -19,6 +19,7 @@ import java.awt.event.MouseEvent;
 public class VistaRanking extends VistaPadreIniConBoton{
 	
 	private JTextField textField;
+	private String nTab, nPos;
 
 	/** 
 	 * Launch the application.
@@ -55,7 +56,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		
 		textField.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent ae){
-			      String nTab = textField.getText();
+			      nTab = textField.getText();
 			   }
 			});
 
@@ -70,14 +71,14 @@ public class VistaRanking extends VistaPadreIniConBoton{
 
 		textField.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent ae){
-			      String nPos = textField.getText();
+			      nPos = textField.getText();
 			   }
 			});
 		
 		Botones B = new Botones("Consultar Ranking",129,269);
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarAMostrarRanking();
+				CV.entrarAMostrarRanking(nTab,nPos);
 				Salir();
 			}
 		});

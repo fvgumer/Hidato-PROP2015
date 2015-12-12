@@ -49,5 +49,10 @@ public class CtrlDominio {
 		CTablero.cargar(id);
 		return CTablero.get_tablero();
 	}
+	
+	public void getRanking(String nTab, String nPos) {
+		int n = Integer.parseInt(nPos);
+		CRanking.getTop(nTab,n);
+	}
 
 }
