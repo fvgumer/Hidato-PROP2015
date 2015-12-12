@@ -70,15 +70,14 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	}
 	
 	public int num_tableros(final String indice){
-		//String ruta2 = ".."+ barras + "DATOS" + barras +"Tableros"+  barras;
-		File dir = new File(".."+ barras + "DATOS" + barras +"Tableros"+  barras);
+		String ruta2 = ".."+ barras + "DATOS" + barras +"Tableros"+  barras;
+		File dir = new File(ruta2);
 		File[] foundFiles = dir.listFiles(new FilenameFilter() {
 		    public boolean accept(File dir, String name) {
 		        return name.startsWith(indice);
 		    }
 		});
        
-        //return files.length;
         if(foundFiles==null) return 0;
         else return foundFiles.length;
 }

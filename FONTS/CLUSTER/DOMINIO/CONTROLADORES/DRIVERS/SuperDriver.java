@@ -33,7 +33,7 @@ public class SuperDriver {
 			System.out.println("4.Estadisticas");
 			System.out.println("5.Salir");
 			i = s.nextInt();
-			while(!comprueba_entrada(i,6)) {
+			while(!comprueba_entrada(i,5)) {
 				i = s.nextInt();
 			}
 			switch (i) {
@@ -60,9 +60,6 @@ public class SuperDriver {
 					b = false;
 					System.out.println("Adios!");
 					break;
-				case 6:
-					int x = g.num_tableros("9");
-					System.out.println(x);
 				default: break;
 			}
 		}
