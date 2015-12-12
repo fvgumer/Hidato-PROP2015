@@ -50,9 +50,8 @@ public class CtrlDominio {
 		return CTablero.get_tablero();
 	}
 	
-	public void getRanking(String nTab, String nPos) {
-		int n = Integer.parseInt(nPos);
-		CRanking.getTop(nTab,n);
+	public void getRanking(String nTab, int nPos) {
+		CRanking.getTop(nTab,nPos);
 	}
 
 }
