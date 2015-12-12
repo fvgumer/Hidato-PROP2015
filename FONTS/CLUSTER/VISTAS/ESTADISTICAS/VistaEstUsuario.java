@@ -1,6 +1,8 @@
 package CLUSTER.VISTAS.ESTADISTICAS;
 
 import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -35,8 +37,8 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 	 */
 	public VistaEstUsuario(final CtrlVista CV) {
 
-		super.setTextLayer("Estadísticas de usuario");
-		getContentPane().setName("Estadísticas de usuario");
+		super.setTextLayer("EstadÃ­sticas de usuario");
+		getContentPane().setName("EstadÃ­sticas de usuario");
 		
 		Texto n = new Texto("Por favor, introduce el nombre del usuario.",36,46,14);
 		n.setSize(313, 30);
@@ -46,10 +48,13 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		textField.setBounds(36, 81, 195, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarAConsultaEst();
+				Salir();
+			}
+		});
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
 
 }
