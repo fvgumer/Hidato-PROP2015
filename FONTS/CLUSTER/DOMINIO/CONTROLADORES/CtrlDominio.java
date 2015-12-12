@@ -1,4 +1,5 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
+import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.VISTAS.*;
 
 public class CtrlDominio {
@@ -9,6 +10,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
+	private Jugador Jactivo;
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -17,10 +19,16 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
+		Jactivo = new Jugador(null, null);
 	}
 	
-	public void ingresarUsuario(String nombre, String contrasenya){
-		CJugador.ingresarusuario(nombre, contrasenya);
+	public boolean ingresarUsuario(String nombre, String contrasenya){
+		if(CJugador.ingresarusuario(nombre, contrasenya)){
+			Jactivo.set_nombre(nombre);
+			Jactivo.set_password(contrasenya);	
+			return true;
+		}
+		else return false;
 	}
 	
 	public void set_tablero(String[][] t) {

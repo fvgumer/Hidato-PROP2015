@@ -201,7 +201,9 @@ public class CtrlVista {
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION
 		 */
-		
+		public boolean login(String nombre, String password){
+			return CDominio.ingresarUsuario(nombre, password);
+		}
 		/**
 		 * Sobre Partida
 		 */

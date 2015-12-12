@@ -16,6 +16,12 @@ public class VistaCrearUsuario extends VistaUsuario {
 
 	public VistaCrearUsuario(final CtrlVista CV) {
 		super(null);
+		B.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		B.setBounds(116, 188, 279, 70);
 		//Acciones
 		Bsalir.addMouseListener(new MouseAdapter() {
