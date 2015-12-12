@@ -186,6 +186,9 @@ public class CtrlVista {
 		public boolean login(String nombre, String password){
 			return CDominio.ingresarUsuario(nombre, password);
 		}
+		public boolean Jactivo(){
+			return CDominio.jugadoractivo();
+		}
 		/**
 		 * Sobre Partida
 		 */
