@@ -25,6 +25,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 				if(CV.crearUsuario(textField.getText(), new String(passwordField.getPassword()))){
 					if(CV.Jactivo()==false) CV.entrarAInicioSesion();
 					else CV.entrarMenuUsuario();
+					clear();
 					Salir();
 				}
 				else {
@@ -41,13 +42,13 @@ public class VistaCrearUsuario extends VistaUsuario {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(CV.Jactivo()){
-					CV.entrarMenuUsuario();
-					Salir();
+					CV.entrarMenuUsuario();	
 				}
 				else {
-					CV.run();
-					Salir();
+					CV.run();	
 				}
+				clear();
+				Salir();
 			}
 		});	
 		

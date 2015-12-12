@@ -56,8 +56,8 @@ public class CtrlJugador {
 	 * Pre: J no puede ser null
 	 * Post: El jugador J es eliminado
 	 */
-	public void eliminar_usuario(){
-		Gestor.eliminar_jugador(J.consultar_nombre(), J.consultar_password());
+	public void eliminar_usuario(String nombre, String password){
+		Gestor.eliminar_jugador(nombre, password);
 		CtrlE.eliminarEst(J.consultar_nombre());
 		J = null;
 	}

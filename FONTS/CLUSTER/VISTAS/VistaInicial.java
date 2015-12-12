@@ -40,7 +40,7 @@ public class VistaInicial extends VistaPadreInicio {
 		b1.setLocation(84, 283);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAMenu();
+				CV.entrarAInicioSesion();
 				Salir();
 			}
 		});

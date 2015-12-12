@@ -16,11 +16,22 @@ public class VistaEliminarUser extends VistaUsuario {
 
 	public VistaEliminarUser(final CtrlVista CV) {
 		super(null);
+		textField.setText(CV.nomactiu());
+		B.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				CV.eliminarUsuario(textField.getText(), new String(passwordField.getPassword()));
+				CV.entrarAInicioSesion();
+				clear();
+				Salir();
+			}
+		});
 		//Acciones
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarMenuUsuario();
+				clear();
 				Salir();
 			}
 		});	
