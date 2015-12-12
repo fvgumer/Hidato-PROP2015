@@ -45,7 +45,8 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 		Botones B1 = new Botones("Estadísticas personales", 100, 60);
 		B1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				
+				CV.entrarAEstPersonales();
+				Salir();
 			}
 		});
 		B1.setSize(272, 42);
@@ -54,6 +55,8 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 		Botones B2 = new Botones("Estadísticas de usuario", 100, 130);
 		B2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				CV.entrarAEstUsuario();
+				Salir();
 			}
 		});
 		B2.setSize(272, 42);
@@ -62,10 +65,19 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 		Botones B3 = new Botones("Ranking de tablero", 100, 200);
 		B3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				CV.entrarARanking();
+				Salir();
 			}
 		});
 		B3.setSize(272, 42);
 		getContentPane().add(B3);
-	}
+		
+		/*super.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				System.out.print("ww");
+			}
+		});*/
+		
+	}		
 
 }

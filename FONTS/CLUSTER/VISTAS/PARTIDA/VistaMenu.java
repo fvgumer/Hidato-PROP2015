@@ -44,7 +44,7 @@ public class VistaMenu extends VistaPadreInicio {
 		Botones b4 = new Botones("Estadisticas",250,180);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarConsultaEst();
+				CV.entrarAConsultaEst();
 				Salir();
 			}
 		});

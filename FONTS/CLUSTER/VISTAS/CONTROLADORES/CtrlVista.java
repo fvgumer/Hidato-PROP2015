@@ -1,6 +1,9 @@
 package CLUSTER.VISTAS.CONTROLADORES;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
+import CLUSTER.VISTAS.VistaEstPersonales;
+import CLUSTER.VISTAS.VistaEstUsuario;
 import CLUSTER.VISTAS.VistaInicial;
+import CLUSTER.VISTAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenu;
@@ -25,6 +28,9 @@ public class CtrlVista {
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private VistaImportar VImportar;
 	private VistaConsultaEst VEst;
+	private VistaEstUsuario VEstU;
+	private VistaEstPersonales VEstP;
+	private VistaRanking VRank;
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -55,6 +61,9 @@ public class CtrlVista {
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
 			VEst = new VistaConsultaEst(this);
+			VEstP = new VistaEstPersonales(this);
+			VEstU = new VistaEstUsuario(this);
+			VRank = new VistaRanking(this);
 		}
 
 		/**
@@ -117,16 +126,28 @@ public class CtrlVista {
 			VGTBorrarConfirmar.setVisible(true);
 		}
 		
+		public void entrarAConsultaEst() {
+			VEst.setVisible(true);
+		}
+		
+		public void entrarAEstPersonales() {
+			VEstP.setVisible(true);
+		}
+
+		public void entrarAEstUsuario() {
+			VEstU.setVisible(true);
+		}
+
+		public void entrarARanking() {
+			VRank.setVisible(true);
+		}
+		
 		public String[] get_tableros_repo() {
 			return CDominio.get_tableros_repo();
 		}
 		
 		public String[][] cargar_tab(String id) {
 			return CDominio.cargar_tab(id);
-		}
-		
-		public void entrarConsultaEst() {
-			VEst.setVisible(true);
 		}
 		
 		/**
