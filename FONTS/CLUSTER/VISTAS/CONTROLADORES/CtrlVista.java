@@ -200,8 +200,10 @@ public class CtrlVista {
 		}
 		
 		public void entrarAMostrarRanking(String nTab, String nPos) {
+			int n = Integer.parseInt(nPos);
+			VMRank.setPos(n);
 			VMRank.setVisible(true);
-			CDominio.getRanking(nTab,nPos);
+			CDominio.getRanking(nTab,n);
 		}
 
 		
