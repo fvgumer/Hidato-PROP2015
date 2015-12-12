@@ -34,7 +34,7 @@ public class CtrlVista {
 	private VistaRanking VRank;
 	//Usuario
 	private VistaLogin VLogin;
-	
+	private VistaEliminarUser VEliminarUser;
 	private VistaCrearUsuario VCrearUsuario;
 	private VistaMenuUser VMenuUser;
 	private VistaNewPassword VNewPassword;
@@ -75,7 +75,7 @@ public class CtrlVista {
 			VEstU = new VistaEstUsuario(this);
 			VRank = new VistaRanking(this);
 			VLogin = new VistaLogin(this);
-			
+			VEliminarUser = new VistaEliminarUser(this);
 			VCrearUsuario = new VistaCrearUsuario(this);
 			VNewPassword = new VistaNewPassword(this);
 			VMenuUser= new VistaMenuUser(this);

@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-public class VistaCrearUsuario extends VistaUsuario {
+public class VistaEliminarUser extends VistaUsuario {
 
 	/**
 	 * 
@@ -14,7 +14,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 	
 
 
-	public VistaCrearUsuario(final CtrlVista CV) {
+	public VistaEliminarUser(final CtrlVista CV) {
 		super(null);
 		//Acciones
 		Bsalir.addMouseListener(new MouseAdapter() {
@@ -28,6 +28,8 @@ public class VistaCrearUsuario extends VistaUsuario {
 
 		Bsalir.setText("Atras");
 		B.set_name("Crear Usuario");
+		lblUsuario.setText("Usuario a eliminar");
+		lblContrasea.setText("Contraseña");
 	}
 
 }
