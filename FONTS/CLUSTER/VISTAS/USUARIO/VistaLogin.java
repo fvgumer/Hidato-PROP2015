@@ -1,4 +1,4 @@
-package CLUSTER.VISTAS;
+package CLUSTER.VISTAS.USUARIO;
 
 import java.awt.EventQueue;
 
@@ -33,6 +33,11 @@ public class VistaLogin extends VistaUsuario{
 	 */
 	public VistaLogin() {
 		super(null);
+		B.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		initialize();
 	}
 
