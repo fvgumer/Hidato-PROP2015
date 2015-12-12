@@ -22,7 +22,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(CV.crearUsuario(textField.getText(), new String(passwordField.getPassword()))){
-					if(!CV.Jactivo()) CV.entrarAInicioSesion();
+					if(CV.Jactivo()==false) CV.entrarAInicioSesion();
 					else CV.entrarMenuUsuario();
 				}
 				else {
