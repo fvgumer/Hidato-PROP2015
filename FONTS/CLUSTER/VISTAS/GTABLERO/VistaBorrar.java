@@ -17,35 +17,47 @@ import javax.swing.JTextField;
 public class VistaBorrar extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;
+	private DefaultListModel listModel;
+	private CtrlVista CV;
+	private JList list;
 	
 	public VistaBorrar(final CtrlVista CV) {
 		//Config layer 
 		setTextLayer("Borrado de Tableros");
 		contentPane.setLayout(null);
 		
-		DefaultListModel listModel;
+		this.CV = CV;
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.entrarAGTableros();
+				Salir();
+			}
+		});
+		
+	}
+	
+	public void actualitza_llista() {
 		listModel = new DefaultListModel();
 		String[] s = CV.get_tableros_repo();
+<<<<<<< HEAD
+		for(int i=0; i < s.length; ++i) {
+				listModel.addElement(s[i]);
+		}
+		list = new JList(listModel);
+		list.setBounds(262, 33, 144, 371);
+		getContentPane().add(list);
+=======
 		/*for(int i=0; i<s.length; ++i) {
 				listModel.addElement(s[i]);
 		}*/
 		final JList list = new JList(listModel);
 		
+>>>>>>> 9a1a44810b06864fd68eba1e6346c126d8d86154
 		list.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String id = list.getSelectedValue().toString().substring(0, 6);
+				String id = list.getSelectedValue().toString().substring(0, 8);
 				CV.entrarABorrarConfirmar(id);
-				Salir();
-			}
-		});
-		
-		list.setBounds(262, 33, 144, 371);
-		getContentPane().add(list);
-		
-		super.JB.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAGTableros();
 				Salir();
 			}
 		});

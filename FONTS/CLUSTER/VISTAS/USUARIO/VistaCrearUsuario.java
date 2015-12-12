@@ -3,6 +3,8 @@ package CLUSTER.VISTAS.USUARIO;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.Spring;
+
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 public class VistaCrearUsuario extends VistaUsuario {
@@ -19,7 +21,15 @@ public class VistaCrearUsuario extends VistaUsuario {
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				if(CV.crearUsuario(textField.getText(), new String(passwordField.getPassword()))){
+					if(!CV.Jactivo()) CV.entrarAInicioSesion();
+					else CV.entrarMenuUsuario();
+				}
+				else {
+					lblError.setText("El jugador " +textField.getText()+ " puede que ya exista");
+					textField.setText("");
+					passwordField.setText("");
+				}
 			}
 		});
 		B.setBounds(116, 188, 279, 70);
@@ -27,7 +37,8 @@ public class VistaCrearUsuario extends VistaUsuario {
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarMenuUsuario();
+				if(CV.Jactivo())CV.entrarMenuUsuario();
+				else CV.run();
 				Salir();
 			}
 		});	

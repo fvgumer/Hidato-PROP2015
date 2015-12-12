@@ -34,6 +34,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	   */
 	public Tablero(int n) {
 		super(n);
+		mida = n;
 		this.holes = 0;
 		this.final_num = 0;
 		solucio = new Casilla[n][n];
@@ -402,6 +403,10 @@ public class Tablero extends Tablero_comp implements Serializable{
 			System.out.println();
 		}
 		System.out.println();
+	}
+	
+	public void setMida(int n) {
+		mida = n;
 	}
 
 }

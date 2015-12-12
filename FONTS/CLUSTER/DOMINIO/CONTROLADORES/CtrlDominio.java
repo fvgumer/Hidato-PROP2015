@@ -19,9 +19,8 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
-		Jactivo = new Jugador(null, null);
 	}
-	
+	//USUARIO
 	public boolean ingresarUsuario(String nombre, String contrasenya){
 		if(CJugador.ingresarusuario(nombre, contrasenya)){
 			Jactivo.set_nombre(nombre);
@@ -29,6 +28,9 @@ public class CtrlDominio {
 			return true;
 		}
 		else return false;
+	}
+	public boolean jugadoractivo(){
+		return (Jactivo!=null);
 	}
 	
 	public void set_tablero(String[][] t) {
@@ -49,9 +51,24 @@ public class CtrlDominio {
 		CTablero.cargar(id);
 		return CTablero.get_tablero();
 	}
+
+<<<<<<< HEAD
+	public void guardar_tablero() {
+		CTablero.guardar();
+	}
+	
+	public void eliminar_tablero() {
+		CTablero.eliminar();
+	}
+=======
+	public boolean crearUsuario(String nombre, String password) {
+		return CJugador.crear_usuario(nombre, password);
+	}
+
 	
 	public void getRanking(String nTab, int nPos) {
 		CRanking.getTop(nTab,nPos);
 	}
 
+>>>>>>> 9a1a44810b06864fd68eba1e6346c126d8d86154
 }
