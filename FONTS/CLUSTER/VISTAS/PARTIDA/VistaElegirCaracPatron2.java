@@ -13,18 +13,19 @@ public class VistaElegirCaracPatron2 extends VistaPadreIniConBoton {
 	protected JSlider slider;
 	protected JSlider slider2;
 	protected JSlider slider3;
-	protected JLabel lblSinForma;
-	protected JLabel lblSinForma2;
-	protected JLabel lblSinForma3;
+	protected JLabel lblCarac1;
+	protected JLabel lblCarac2;
+	protected JLabel lblCarac3;
 	protected String t1;
 	protected String t2;
 	
-	public VistaElegirCaracPatron2 (final CtrlVista CV, String t1,String t2) {
+	public VistaElegirCaracPatron2 (final CtrlVista CV, String t1,String t2, String t3) {
 
 		//Config layer 
 		setTextLayer("Caracteristicas del tablero");
 		contentPane.setLayout(null);
 		Titulo t = new Titulo("Elegir Caracteristicas",97,30);
+		t.setSize(487, 132);
 		t.setLocation(97, 23);
 		getContentPane().add(t);
 		
@@ -33,53 +34,53 @@ public class VistaElegirCaracPatron2 extends VistaPadreIniConBoton {
 		 */
 		//TEXTO
 		Texto nombreCarc = new Texto(t1+":", 40, 85, 15);
-		nombreCarc.setBounds(40, 84, 106, 30);
+		nombreCarc.setBounds(136, 184, 106, 30);
 		getContentPane().add(nombreCarc);
 
 		//BARRA DE ELECCION
 		slider = new JSlider();
-		slider.setBounds(162, 84, 160, 30);
+		slider.setBounds(293, 184, 160, 30);
 		getContentPane().add(slider);
 
 		//TEXTO DE LA ELECCION
-		lblSinForma = new JLabel(" ");
-		lblSinForma.setBounds(350, 84, 97, 30);
-		getContentPane().add(lblSinForma);
+		lblCarac1 = new JLabel(" ");
+		lblCarac1.setBounds(487, 184, 97, 30);
+		getContentPane().add(lblCarac1);
 		
 		/**
 		 * 2a FILA
 		 */
 		//TEXTO
 		Texto nombreCarc2 = new Texto(t2+":", 40, 85, 15);
-		nombreCarc2.setBounds(40, 125, 106, 30);
+		nombreCarc2.setBounds(136, 227, 146, 30);
 		getContentPane().add(nombreCarc2);
 
 		//TEXTO DE LA ELECCION
-		lblSinForma2 = new JLabel(" ");
-		lblSinForma2.setBounds(350, 125, 97, 30);
-		getContentPane().add(lblSinForma2);
+		lblCarac2 = new JLabel(" ");
+		lblCarac2.setBounds(487, 225, 97, 30);
+		getContentPane().add(lblCarac2);
 		
 				//BARRA DE ELECCION
 		slider2 = new JSlider();
-		slider2.setBounds(162, 125, 160, 30);
+		slider2.setBounds(293, 225, 160, 30);
 		getContentPane().add(slider2);
 		
 		/**
 		 * 3a FILA
 		 */
 		//TEXTO
-		Texto nombreCarc3 = new Texto(t2+":", 40, 85, 15);
-		nombreCarc3.setBounds(40, 166, 106, 30);
+		Texto nombreCarc3 = new Texto(t3+":", 40, 85, 15);
+		nombreCarc3.setBounds(136, 268, 146, 30);
 		getContentPane().add(nombreCarc3);
 
 		//TEXTO DE LA ELECCION
-		lblSinForma3 = new JLabel(" ");
-		lblSinForma3.setBounds(350, 166, 97, 30);
-		getContentPane().add(lblSinForma3);
+		lblCarac3 = new JLabel(" ");
+		lblCarac3.setBounds(465, 268, 97, 30);
+		getContentPane().add(lblCarac3);
 		
 				//BARRA DE ELECCION
 		slider3 = new JSlider();
-		slider3.setBounds(162, 166, 160, 30);
+		slider3.setBounds(293, 266, 160, 30);
 		getContentPane().add(slider3);
 	}
 }

@@ -26,9 +26,9 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 		DefaultListModel listModel;
 		listModel = new DefaultListModel();
 		String[] s = CV.get_tableros_repo();
-		/*for(int i=0; i<s.length; ++i) {
+		for(int i=0; i<s.length; ++i) {
 				listModel.addElement(s[i]);
-		}*/
+		}
 		final JList list = new JList(listModel);
 		
 		list.addMouseListener(new MouseAdapter() {
