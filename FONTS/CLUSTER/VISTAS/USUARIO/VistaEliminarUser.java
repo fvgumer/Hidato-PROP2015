@@ -19,6 +19,7 @@ public class VistaEliminarUser extends VistaUsuario {
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				
 				CV.eliminarUsuario(new String(passwordField.getPassword()));
 			}
 		});
