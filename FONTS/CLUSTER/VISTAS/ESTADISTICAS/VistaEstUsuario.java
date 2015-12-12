@@ -16,6 +16,7 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 public class VistaEstUsuario extends VistaPadreIniConBoton{
 	
 	private JTextField textField;
+	private String user;
 
 	/** 
 	 * Launch the application.
@@ -52,10 +53,14 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		
 		Botones B = new Botones("Consultar Estadisticas",129,269);
 		B.setLocation(129, 269);
+		
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarAMostrarEstadisticas();
-				Salir();
+				user = textField.getText();
+				if (!user.equals("")){
+					CV.entrarAMostrarEstadisticas();
+					Salir();
+				}
 			}
 		});
 		B.setSize(408, 46);
