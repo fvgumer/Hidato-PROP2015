@@ -13,7 +13,7 @@ public class VistaEstUsuario extends VistaPadreInicio{
 	
 	private JTextField textField;
 
-	/**
+	/** 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
