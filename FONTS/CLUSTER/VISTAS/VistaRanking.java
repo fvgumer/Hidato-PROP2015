@@ -7,13 +7,14 @@ import javax.swing.JTextField;
 
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
+import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class VistaRanking extends VistaPadreInicio{
+public class VistaRanking extends VistaPadreIniConBoton{
 	
 	private JTextField textField;
 

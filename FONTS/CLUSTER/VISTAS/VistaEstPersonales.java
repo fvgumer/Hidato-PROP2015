@@ -5,12 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
+import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import javax.swing.JList;
 
-public class VistaEstPersonales extends VistaPadreInicio{
+public class VistaEstPersonales extends VistaPadreIniConBoton{
 	private JTable table;
 
 	/**
