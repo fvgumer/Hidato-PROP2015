@@ -3,8 +3,8 @@ import CLUSTER.DOMINIO.CONTROLADORES.*;
 import CLUSTER.VISTAS.VistaInicial;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
-import CLUSTER.VISTAS.PARTIDA.VistaMenu;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
+import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.GTABLERO.*;
 
 import java.awt.EventQueue;
@@ -49,7 +49,7 @@ public class CtrlVista {
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
 			VGTValidar = new VistaValidar(this);
-			VBorrar = new VistaBorrar(this);
+			//VBorrar = new VistaBorrar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
 		}

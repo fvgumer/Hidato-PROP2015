@@ -14,7 +14,7 @@ public class Texto extends JTextPane {
 		public Texto (String texto, int x, int y, int mida) {
 			
 			setForeground(Color.WHITE);
-			this.setBounds(x, y, 163, 30);
+			this.setBounds(x, y, 240, 61);
 			this.setFont(new Font("Nirmala UI", Font.BOLD, mida));
 			this.setText(texto);
 			setEditable(false);

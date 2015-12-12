@@ -5,13 +5,9 @@ import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVistaPartida;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.JSlider;
 import javax.swing.JLabel;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
 
 public class VistaElegirCaracPatron2 extends VistaPadreIniConBoton {
 	private static final long serialVersionUID = 1L;
@@ -23,8 +19,6 @@ public class VistaElegirCaracPatron2 extends VistaPadreIniConBoton {
 	protected JLabel lblSinForma3;
 	protected String t1;
 	protected String t2;
-	protected Botones Siguiente;
-	
 	
 	public VistaElegirCaracPatron2 (final CtrlVista CV, CtrlVistaPartida CVPartida2, String t1,String t2) {
 
@@ -88,13 +82,5 @@ public class VistaElegirCaracPatron2 extends VistaPadreIniConBoton {
 		slider3 = new JSlider();
 		slider3.setBounds(162, 166, 160, 30);
 		getContentPane().add(slider3);
-		
-		
-		//Para Pasar a la siguiente Pagina
-		Siguiente = new Botones("Siguiente",150,200);
-		Siguiente.setLocation(150, 220);
-		getContentPane().add(Siguiente);		
-		
-		
 	}
 }

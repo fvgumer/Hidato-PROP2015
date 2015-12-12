@@ -20,46 +20,45 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 	
 	public void setdimensions(int d) {
 		this.dim = d;
+		max_forats = (dim*dim - 2);
 	}
 	
 	public void setforma(int f){
 		this.forma = f;
 	}
 	
-	
-	private int calcul_max_forats(int mida){
-		return (mida*mida-2);
-	}
-	
-	private int calcula_max_ninicials(int max_forats, int forats) {
-		return (max_forats-forats);
-	}
+
+
 
 	public VistaElegirCarac2(final CtrlVista CV, final CtrlVistaPartida CVPartida,String t1,String t2) {
 		super(CV,CVPartida,t1,t2);
 		
 		//ACCIONES FORATS ________________________________________________________
 		slider.setMinimum(0);
-		max_forats = calcul_max_forats(dim);
-		slider.setMaximum(max_forats);
+		/*Valores iniciales*/
+		slider.setValue(0);
+		lblSinForma.setText("0");
 		slider.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent arg0) {
+				slider.setMaximum(max_forats);
 				String In;
 				In = Integer.toString(slider.getValue());
 				lblSinForma.setText(In);
 				CVPartida.setinicials(slider.getValue());
-				max_ninicals = calcula_max_ninicials(max_forats, slider.getValue());
+				
+				max_ninicals = max_forats - slider.getValue();
 				slider2.setMaximum(max_ninicals);
 			}
 		});
 		//Actuacion si lo mueve por teclas
 		slider.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent arg0) {
+				slider.setMaximum(max_forats);
 				String In;
 				In = Integer.toString(slider.getValue());
 				lblSinForma.setText(In);
 				CVPartida.setinicials(slider.getValue());
-				max_ninicals = calcula_max_ninicials(max_forats, slider.getValue());
+				max_ninicals = max_forats - slider.getValue();
 				slider2.setMaximum(max_ninicals);
 			}
 		});
@@ -67,6 +66,8 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 		
 		//ACCIONES_n2_______________________________________________
 		slider2.setMinimum(0);
+		slider2.setValue(0);
+		lblSinForma2.setText("0");
 			//Actuacion si lo mueve el raton
 			slider2.addMouseListener(new MouseAdapter() {
 
