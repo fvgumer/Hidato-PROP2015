@@ -61,6 +61,7 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarAeliminarUser();
+				Salir();
 			}
 		});
 		

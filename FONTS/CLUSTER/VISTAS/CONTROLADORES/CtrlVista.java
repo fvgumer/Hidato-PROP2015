@@ -226,14 +226,17 @@ public class CtrlVista {
 		public boolean login(String nombre, String password){
 			return CDominio.ingresarUsuario(nombre, password);
 		}
+		public String nomactiu(){
+			return CDominio.nomActiu();
+		}
 		public boolean Jactivo(){
 			return CDominio.jugadoractivo();
 		}
 		public boolean crearUsuario(String nombre, String password){
 			return CDominio.crearUsuario(nombre,password);
 		}
-		public boolean eliminarUsuario(String password){
-			return CDominio.eliminarUsuario(password);
+		public boolean eliminarUsuario(String user, String password){
+			return CDominio.eliminarUsuario(user,password);
 		}
 		/**
 		 * Sobre Partida
