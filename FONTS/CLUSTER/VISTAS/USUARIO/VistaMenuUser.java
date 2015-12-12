@@ -37,10 +37,11 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 		setTextLayer("Menu Usuario");
 		getContentPane().setLayout(null);
 		Titulo t1 = new Titulo("Centro del Usuario", 182, 23);
-		t1.setSize(389, 50);
+		t1.setLocation(182, 23);
+		t1.setSize(493, 50);
 		
 		Botones b1 = new Botones("Crear Usuario",189,70);
-		b1.setBounds(216, 98, 260, 42);
+		b1.setBounds(239, 106, 370, 42);
 		b1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -50,7 +51,8 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 		});
 		
 		Botones b2 = new Botones("Eliminar Usuario",216, 183);
-		b2.setSize(260, 42);
+		b2.setLocation(239, 180);
+		b2.setSize(370, 42);
 		b2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -59,7 +61,8 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 		});
 		
 		Botones b3 = new Botones("Cambiar Contraseña",216, 269);
-		b3.setSize(260, 42);
+		b3.setLocation(239, 255);
+		b3.setSize(370, 42);
 		b3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
