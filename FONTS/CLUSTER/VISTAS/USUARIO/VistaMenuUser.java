@@ -27,28 +27,45 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 	 */
 	public VistaMenuUser(final CtrlVista CV) {
 		super();
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+		JB.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+						CV.entrarAMenu();
+						Salir();
+					}
+			});
 		setTextLayer("Menu Usuario");
 		getContentPane().setLayout(null);
 		Titulo t1 = new Titulo("Centro del Usuario", 182, 23);
 		t1.setSize(389, 50);
 		
 		Botones b1 = new Botones("Crear Usuario",189,70);
-		b1.setBounds(253, 98, 223, 42);
+		b1.setBounds(216, 98, 260, 42);
+		b1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarACrearUsuario();
+				Salir();
+			}
+		});
 		
-		Botones b2 = new Botones("Eliminar Usuario",253,183);
-		b2.setLocation(253, 183);
-		b2.setSize(223, 42);
+		Botones b2 = new Botones("Eliminar Usuario",216, 183);
+		b2.setSize(260, 42);
+		b2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		
-		Botones b3 = new Botones("Cambiar Contraseña",287,183);
-		b3.setSize(223, 42);
-		b3.setLocation(253, 269);
+		Botones b3 = new Botones("Cambiar Contraseña",216, 269);
+		b3.setSize(260, 42);
+		b3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarCambiarPass();
+			}
+		});
 		
 		getContentPane().add(t1);
 		getContentPane().add(b2);
@@ -56,3 +73,8 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 		getContentPane().add(b1);
 	}
 }
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	

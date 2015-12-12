@@ -13,6 +13,8 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VistaUsuario extends VistaPadreInicio{
 
@@ -50,12 +52,8 @@ public class VistaUsuario extends VistaPadreInicio{
 			}
 		});
 		getContentPane().add(B);
-		//Bsalir.setBounds(402, 261, 71, 23);
-		Bsalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		getContentPane().add(Bsalir);
+		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(162, 136, 141, 20);
 		getContentPane().add(passwordField);

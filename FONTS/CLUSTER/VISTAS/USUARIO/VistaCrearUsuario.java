@@ -29,19 +29,16 @@ public class VistaCrearUsuario extends VistaUsuario {
 	 */
 	public VistaCrearUsuario(final CtrlVista CV) {
 		super(null);
-		B.addMouseListener(new MouseAdapter() {
+		//Acciones
+		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				CV.entrarMenuUsuario();
+				Salir();
 			}
-		});
+		});	
 		
-		initialize();
-	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		Bsalir.setText("Atras");
 		B.set_name("Crear Usuario");
 	}

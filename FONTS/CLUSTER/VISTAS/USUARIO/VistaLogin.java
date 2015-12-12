@@ -27,6 +27,12 @@ public class VistaLogin extends VistaUsuario{
 	 */
 	public VistaLogin(final CtrlVista CV) {
 		super(null);
+		Bsalir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Salir();
+			}
+		});
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

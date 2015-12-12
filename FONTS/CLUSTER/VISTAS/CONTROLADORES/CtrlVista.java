@@ -92,8 +92,15 @@ public class CtrlVista {
 		}
 
 		public void entrarACrearUsuario(){
-			
+			VCrearUsuario.setVisible(true);
 		}
+		public void entrarMenuUsuario(){
+			VMenuUser.setVisible(true);
+		}
+		public void entrarCambiarPass(){
+			VNewPassword.setVisible(true);
+		}
+		
 		
 		public void entrarAMenuPartida(){
 			VMenuPartida.setVisible(true);
