@@ -51,7 +51,16 @@ public class CtrlDominio {
 		CTablero.cargar(id);
 		return CTablero.get_tablero();
 	}
+<<<<<<< HEAD
 	public boolean crearUsuario(String nombre, String password) {
 		return CJugador.crear_usuario(nombre, password);
 	}
+=======
+	
+	public void getRanking(String nTab, String nPos) {
+		int n = Integer.parseInt(nPos);
+		CRanking.getTop(nTab,n);
+	}
+
+>>>>>>> 23fb59e21f9f9e2e1665d81ec93ddcc335baa59b
 }

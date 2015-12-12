@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-public class VistaMostrarRanking extends VistaPadreIniConBoton{
+public class VistaMostrarEstadisticas extends VistaPadreIniConBoton{
 
 
 	/**
@@ -19,7 +19,7 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaMostrarRanking window = new VistaMostrarRanking(null);
+					VistaMostrarEstadisticas window = new VistaMostrarEstadisticas(null);
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,18 +31,14 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	/**
 	 * Create the application.
 	 */
-	public VistaMostrarRanking(final CtrlVista CV) {
-
-		super.setTextLayer("Ranking de tablero");
-		getContentPane().setName("Ranking de tablero");
+	public VistaMostrarEstadisticas(final CtrlVista CV) {
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarARanking();
+				CV.entrarAEstUsuario();
 				Salir();
 			}
 		});
 	}
-
 
 }
