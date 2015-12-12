@@ -18,21 +18,9 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 	 * Launch the application.
 	 */
 
-	private JTextField textField;
 
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaConsultaEst window = new VistaConsultaEst(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.

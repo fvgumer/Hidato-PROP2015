@@ -1,40 +1,35 @@
 package CLUSTER.VISTAS.USUARIO;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-public class VistaCrearUsuario extends VistaUsuario {
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class VistaNewPassword extends VistaUsuario{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-
 	/**
 	 * Launch the application.
 	 */
 
 
 	/**
-	 * Create the frame.
+	 * Create the application.
 	 */
-	public VistaCrearUsuario(final CtrlVista CV) {
+	public VistaNewPassword(final CtrlVista CV) {
 		super(null);
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		
 		initialize();
 	}
 
@@ -43,7 +38,8 @@ public class VistaCrearUsuario extends VistaUsuario {
 	 */
 	private void initialize() {
 		Bsalir.setText("Atras");
-		B.set_name("Crear Usuario");
+		B.set_name("Cambiar");
+		lblUsuario.setText("Vieja Contraseña");
+		lblContrasea.setText("Nueva Contraseña");
 	}
-
 }
