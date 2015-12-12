@@ -183,11 +183,15 @@ public class CtrlVista {
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION
 		 */
+		//USER
 		public boolean login(String nombre, String password){
 			return CDominio.ingresarUsuario(nombre, password);
 		}
 		public boolean Jactivo(){
 			return CDominio.jugadoractivo();
+		}
+		public boolean crearUsuario(String nombre, String password){
+			return CDominio.crearUsuario(nombre,password);
 		}
 		/**
 		 * Sobre Partida

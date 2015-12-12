@@ -51,6 +51,7 @@ public class CtrlDominio {
 		CTablero.cargar(id);
 		return CTablero.get_tablero();
 	}
-	
-
+	public boolean crearUsuario(String nombre, String password) {
+		return CJugador.crear_usuario(nombre, password);
+	}
 }
