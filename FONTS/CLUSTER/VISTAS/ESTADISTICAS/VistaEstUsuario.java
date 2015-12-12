@@ -1,6 +1,8 @@
 package CLUSTER.VISTAS.ESTADISTICAS;
 
 import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -46,10 +48,13 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		textField.setBounds(36, 81, 195, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarAConsultaEst();
+				Salir();
+			}
+		});
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
 
 }

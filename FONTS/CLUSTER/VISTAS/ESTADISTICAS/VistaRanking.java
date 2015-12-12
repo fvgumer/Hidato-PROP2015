@@ -67,6 +67,14 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		});
 		B.setSize(226, 42);
 		getContentPane().add(B);
+		
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarAConsultaEst();
+				Salir();
+			}
+		});
+		
 	}
 
 }
