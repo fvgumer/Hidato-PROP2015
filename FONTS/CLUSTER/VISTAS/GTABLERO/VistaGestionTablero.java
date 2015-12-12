@@ -39,7 +39,7 @@ public class VistaGestionTablero extends VistaPadreIniConBoton {
 		});
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarACrearMan();
+				CV.entrarAElegirCaracGT();
 				Salir();
 			}
 		});

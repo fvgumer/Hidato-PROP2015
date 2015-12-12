@@ -52,6 +52,15 @@ public class CtrlDominio {
 		return CTablero.get_tablero();
 	}
 
+<<<<<<< HEAD
+	public void guardar_tablero() {
+		CTablero.guardar();
+	}
+	
+	public void eliminar_tablero() {
+		CTablero.eliminar();
+	}
+=======
 	public boolean crearUsuario(String nombre, String password) {
 		return CJugador.crear_usuario(nombre, password);
 	}
@@ -62,4 +71,5 @@ public class CtrlDominio {
 		CRanking.getTop(nTab,n);
 	}
 
+>>>>>>> 9a1a44810b06864fd68eba1e6346c126d8d86154
 }
