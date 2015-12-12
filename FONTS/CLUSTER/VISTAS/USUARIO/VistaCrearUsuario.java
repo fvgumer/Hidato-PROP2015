@@ -21,9 +21,11 @@ public class VistaCrearUsuario extends VistaUsuario {
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(textField.getText()!= ""){
 				if(CV.crearUsuario(textField.getText(), new String(passwordField.getPassword()))){
 					if(CV.Jactivo()==false) CV.entrarAInicioSesion();
 					else CV.entrarMenuUsuario();
+					Salir();
 				}
 				else {
 					lblError.setText("El jugador " +textField.getText()+ " puede que ya exista");
@@ -31,15 +33,21 @@ public class VistaCrearUsuario extends VistaUsuario {
 					passwordField.setText("");
 				}
 			}
+			}
 		});
 		B.setBounds(116, 188, 279, 70);
 		//Acciones
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(CV.Jactivo())CV.entrarMenuUsuario();
-				else CV.run();
-				Salir();
+				if(CV.Jactivo()){
+					CV.entrarMenuUsuario();
+					Salir();
+				}
+				else {
+					CV.run();
+					Salir();
+				}
 			}
 		});	
 		
