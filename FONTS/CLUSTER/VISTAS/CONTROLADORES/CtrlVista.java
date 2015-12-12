@@ -219,6 +219,10 @@ public class CtrlVista {
 			CDominio.eliminar_tablero();
 		}
 		
+		public String[][] get_tab_txt(String name) {
+			return CDominio.get_tab_txt(name);
+		}
+		
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION
 		 */

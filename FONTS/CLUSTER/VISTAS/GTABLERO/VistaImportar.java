@@ -62,6 +62,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		btnCargar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String[][] aux = CV.get_tab_txt(textField.getName());
 				
 			}
 		});

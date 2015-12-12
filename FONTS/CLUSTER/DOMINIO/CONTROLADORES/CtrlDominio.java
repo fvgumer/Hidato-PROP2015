@@ -60,6 +60,11 @@ public class CtrlDominio {
 	public void eliminar_tablero() {
 		CTablero.eliminar();
 	}
+	
+	public String[][] get_tab_txt(String name) {
+		CTablero.cargar_txt(name);
+		return CTablero.get_tablero();
+	}
 
 	public boolean crearUsuario(String nombre, String password) {
 		return CJugador.crear_usuario(nombre, password);

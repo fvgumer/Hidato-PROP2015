@@ -335,6 +335,10 @@ public class CtrlTablero {
 		rnk.eliminarRanking(map.get_id());
 	}
 	
+	public void cargar_txt(String name) {
+		
+	}
+	
 	public void asignar_dificultad() {
 		map.calcular_dificultad();
 	}
