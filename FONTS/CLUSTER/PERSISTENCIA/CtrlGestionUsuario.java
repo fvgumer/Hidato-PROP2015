@@ -36,11 +36,11 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 */
 	public boolean crear_jugador(String nombre, String contrasenya){
 		ruta = ".."+ barras + "DATOS" + barras +"Jugadors"+barras;
-		File archiu = new File("Jugadors"+barras+nombre+".bin");
+		File archiu = new File(".."+ barras + "DATOS" + barras +"Jugadors"+barras+nombre+".bin");
 		File directory = new File(ruta);
 		directory.mkdir();
 		if(archiu.exists()){
-			System.out.println("El nom ja existeix, elegeix un altre");
+			//System.out.println("El nom ja existeix, elegeix un altre");
 			return false;
 		}
 		Jugador player = new Jugador(nombre,contrasenya);

@@ -38,6 +38,7 @@ public class VistaLogin extends VistaUsuario{
 			public void mouseClicked(MouseEvent e) {
 				if(CV.login(textField.getText(),new String(passwordField.getPassword()))){
 					CV.entrarAMenu();
+					Salir();
 				}
 				else{
 					lblError.setText("Error verifique el usuario o contraseña son correctos");
