@@ -44,12 +44,10 @@ public class VistaMenu extends VistaPadreInicio {
 		});
 		getContentPane().add(b3);
 		Botones b4 = new Botones("Estadisticas",250,180);
-<<<<<<< HEAD:FONTS/CLUSTER/VISTAS/PARTIDA/VistaMenu.java
-		b4.addMouseListener(new MouseAdapter() {
-=======
 		b4.setLocation(385, 231);
-		b1.addMouseListener(new MouseAdapter() {
->>>>>>> 4e6df634d15a52a801546c4022d29e8ed05ffbb2:FONTS/CLUSTER/VISTAS/BASES/VistaMenu.java
+	
+		b4.addMouseListener(new MouseAdapter() {
+
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAConsultaEst();
 				Salir();

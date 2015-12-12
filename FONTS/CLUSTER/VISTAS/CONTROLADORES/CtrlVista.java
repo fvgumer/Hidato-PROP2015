@@ -11,7 +11,6 @@ import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
 import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
-import CLUSTER.VISTAS.USUARIO.VistaUsuario;
 import CLUSTER.VISTAS.USUARIO.*;
 import CLUSTER.VISTAS.GTABLERO.*;
 
@@ -35,12 +34,11 @@ public class CtrlVista {
 	private VistaRanking VRank;
 	//Usuario
 	private VistaLogin VLogin;
-	/** Ho comentaritzo perque si no peta el controlador, perque
-	 * no compilen les clases 
+	
 	private VistaCrearUsuario VCrearUsuario;
 	private VistaMenuUser VMenuUser;
 	private VistaNewPassword VNewPassword;
-	*/
+	
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -77,11 +75,11 @@ public class CtrlVista {
 			VEstU = new VistaEstUsuario(this);
 			VRank = new VistaRanking(this);
 			VLogin = new VistaLogin(this);
-			/**
-			VCrearUsuario = new VistaUsuario(this);
+			
+			VCrearUsuario = new VistaCrearUsuario(this);
 			VNewPassword = new VistaNewPassword(this);
 			VMenuUser= new VistaMenuUser(this);
-			**/
+			
 		}
 
 		/**
