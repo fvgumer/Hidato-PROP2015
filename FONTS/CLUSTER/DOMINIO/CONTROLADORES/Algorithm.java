@@ -1,8 +1,8 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 
 import java.util.*;
-
 import CLUSTER.DOMINIO.CLASES.Tablero;
+import CLUSTER.DOMINIO.CLASES.Casilla;
 import CLUSTER.DOMINIO.CLASES.Temporizador;
 
 /**
@@ -14,6 +14,7 @@ import CLUSTER.DOMINIO.CLASES.Temporizador;
 public class Algorithm {
 
 	private Random rm;
+	private Casilla[][] sol;
 	
 	public Algorithm() {
 		rm = new Random();
@@ -37,8 +38,8 @@ public class Algorithm {
 			return false;
 		}
 		boolean result = false, predef = false;
-		if (value == map.get_final_num()) {
-			map.crea_solucion();
+		if (value == 16) {
+			crea_solucion(map);
 			return true;
 		}
 		else {
@@ -160,6 +161,20 @@ public class Algorithm {
 	private int random() {
 		int i = (int)(rm.nextInt(3)) - 1;
 		return i;
-	}	
+	}
+	
+	private void crea_solucion(Tablero map) {
+		int n = map.getMida();
+		sol = new Casilla[n][n];
+		for(int i=0; i<n; ++i) {
+			for(int j = 0; j<n; ++j) {
+				sol[i][j] = new Casilla(map.get_casilla(i, j).getValor());
+			}
+		}
+	}
+	
+	public Casilla[][] get_solucio() {
+		return sol;
+	}
 }
 

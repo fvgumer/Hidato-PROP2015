@@ -71,7 +71,11 @@ public class Tablero extends Tablero_comp implements Serializable{
 	 * del tablero
 	 */
 	public void set_solucio(Casilla[][] s){
-		solucio = s;
+		for(int i=0; i<mida; ++i) {
+			for(int j=0; j<mida; ++j) {
+				solucio[i][j] = new Casilla(s[i][j].getValor());
+			}
+		}
 	}
 	
 	
@@ -349,7 +353,6 @@ public class Tablero extends Tablero_comp implements Serializable{
 	public void crea_solucion() {
 		for(int i=0; i<mida; ++i) {
 			for (int j=0; j<mida; ++j) {
-				
 				int aux = tauler[i][j].getValor();
 				solucio[i][j] = new Casilla(aux);
 			}

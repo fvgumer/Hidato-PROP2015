@@ -31,6 +31,7 @@ public class CtrlTablero {
 	public CtrlTablero() {
 		rm = new Random();
 		a = new Algorithm();
+		c = new CtrlGestionTablero();
 	}
 	
 	/**
@@ -41,6 +42,7 @@ public class CtrlTablero {
 		rm = new Random();
 		a = new Algorithm();
 		this.map = map;
+		c = new CtrlGestionTablero();
 	}
 	
 	
@@ -143,6 +145,8 @@ public class CtrlTablero {
 		t.timer_max();
 		t.iniciar();
 		boolean b = a.solver(start[0], start[1], 1, map,t);
+		Casilla[][] aux = a.get_solucio();
+		map.set_solucio(aux);
 		return b;
 	}
 	
@@ -220,6 +224,44 @@ public class CtrlTablero {
 		return this.map;
 	}
 	
+	public void set_tablero(String[][] t, boolean unica) {
+		int n = t[0].length;
+		map = new Tablero(n);
+		int vacias = 0;
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				int aux = Integer.parseInt(t[i][j]);
+				if (aux == -1) map.setholes(1);
+				if (aux == 0) ++vacias;
+				map.setValorTauler(i, j, aux);
+			}
+		}
+		map.setn_predef((n*n)-map.getholes()-vacias);
+		map.setSolucion_unica(unica);
+	}
+	
+	public String[][] get_tablero() {
+		int n = map.getMida();
+		String[][] t = new String[n][n];
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				t[i][j] = Integer.toString(map.getValorTauler(i, j));
+			}
+		}
+		return t;
+	}
+	
+	public String[][] get_solucion() {
+		int n = map.getMida();
+		String[][] t = new String[n][n];
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				t[i][j] = Integer.toString(map.getValorSolucio(i, j));
+			}
+		}
+		return t;
+	}
+	
 	private String obten_id() {
 		String nom = "";
 		if (map.getMida() < 10) {
@@ -266,6 +308,11 @@ public class CtrlTablero {
 		for(int i = 0; i < s.length; ++i) {
 			System.out.println(s[i]);
 		}
+	}
+	
+	public String[] get_tableros_repositorio() {
+		String[] s = c.consultar_nomstableros();
+		return s;
 	}
 	
 	/**

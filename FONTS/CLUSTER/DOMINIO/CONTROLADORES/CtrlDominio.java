@@ -17,11 +17,29 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
-		
 	}
 	
 	public void ingresarUsuario(String nombre, String contrasenya){
 		CJugador.ingresarusuario(nombre, contrasenya);
+	}
+	
+	public void set_tablero(String[][] t) {
+		CTablero.set_tablero(t,false);
+	}
+	
+	public String[][] solucionar() {
+		CTablero.validar();
+		String[][] s = CTablero.get_solucion();
+		return s;
+	}
+	
+	public String[] get_tableros_repo() {
+		return CTablero.get_tableros_repositorio();
+	}
+	
+	public String[][] cargar_tab(String id) {
+		CTablero.cargar(id);
+		return CTablero.get_tablero();
 	}
 
 }
