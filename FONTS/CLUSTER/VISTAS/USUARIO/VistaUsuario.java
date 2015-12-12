@@ -38,6 +38,11 @@ public class VistaUsuario extends VistaPadreInicio{
 	/**
 	 * Create the application.
 	 */
+	protected void clear(){
+		textField.setText("");
+		passwordField.setText("");
+		lblError.setText("");
+	}
 	public VistaUsuario(final CtrlVista CV) {
 		
 		super.setTextLayer("User");
