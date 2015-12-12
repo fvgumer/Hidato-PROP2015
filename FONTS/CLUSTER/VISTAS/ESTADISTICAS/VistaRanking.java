@@ -22,9 +22,8 @@ public class VistaRanking extends VistaPadreIniConBoton{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField1, textField2;
-	private String nTab = "";
-	private String nPos = "";
+	private JTextField textField;
+	private String nTab, nPos;
 
 	/** 
 	 * Launch the application.
@@ -54,30 +53,37 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		n.setSize(313, 30);
 		getContentPane().add(n);
 		
-		textField1 = new JTextField();
-		textField1.setBounds(36, 81, 207, 34);
-		getContentPane().add(textField1);
-		textField1.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(36, 81, 207, 34);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		textField.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent ae){
+			      nTab = textField.getText();
+			   }
+			});
+
 
 		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,14);
 
 		p.setSize(402, 30);
 		getContentPane().add(p);
 		
-		textField2 = new JTextField();
-		textField2.setBounds(36, 175, 207, 34);
-		getContentPane().add(textField2);
-		textField2.setColumns(10);  
+		textField = new JTextField();
+		textField.setBounds(36, 175, 207, 34);
+		getContentPane().add(textField);
+		textField.setColumns(10);  
+
+		textField.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent ae){
+			      nPos = textField.getText();
+			   }
+			});
 		
 		Botones B = new Botones("Consultar Ranking",129,269);
-
-		while (textField1.getText().equals("") || textField2.getText().equals("")) B.setEnabled(false);
-		B.setEnabled(true);
-		
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				nTab = textField1.getText();
-				nPos = textField2.getText();
 				CV.entrarAMostrarRanking(nTab,nPos);
 				Salir();
 			}
