@@ -18,7 +18,18 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 	 * Launch the application.
 	 */
 
-
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VistaConsultaEst window = new VistaConsultaEst(null);
+					window.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 
 
@@ -57,7 +68,7 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 				Salir();
 			}
 		});
-		B3.setSize(272, 42); 
+		B3.setSize(272, 42);
 		getContentPane().add(B3);
 		
 		/*super.addMouseListener(new MouseAdapter() {
