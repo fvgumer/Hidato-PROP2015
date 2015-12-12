@@ -3,8 +3,15 @@ package CLUSTER.VISTAS;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JTable;
+
+import CLUSTER.VISTAS.BASES.VistaPadreInicio;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
+
+import javax.swing.JList;
 
 public class VistaEstPersonales extends VistaPadreInicio{
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -30,7 +37,6 @@ public class VistaEstPersonales extends VistaPadreInicio{
 		super.setTextLayer("Estadísticas personales");
 		getContentPane().setName("Estadísticas personales");
 		
+		
 	}
-
-
 }

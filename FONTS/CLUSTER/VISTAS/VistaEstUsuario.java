@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import CLUSTER.VISTAS.BASES.Texto;
+import CLUSTER.VISTAS.BASES.VistaPadreInicio;
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
+
 public class VistaEstUsuario extends VistaPadreInicio{
 	
 	private JTextField textField;
