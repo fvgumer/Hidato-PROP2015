@@ -36,6 +36,15 @@ public class VistaLogin extends VistaUsuario{
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(CV.login(textField.getText(),new String(passwordField.getPassword()))){
+					CV.entrarAMenu();
+				}
+				else{
+					lblError.setText("Error verifique el usuario o contraseña son correctos");
+					textField.setText("");
+					passwordField.setText("");
+					
+				}
 			}
 		});
 		initialize();
