@@ -56,12 +56,12 @@ public class CtrlGestionHidato<T> {
 			ruta = ".."+ barras + "DATOS" + barras +"Jugadors";
 			archivo = barras+J.consultar_nombre()+ ".bin";
 		}
-		else if(Onom.equals("ClassRanking")){
+		else if(Onom.equals("Ranking")){
 			Ranking R = (Ranking) objeto;
 			ruta =".."+ barras + "DATOS" + barras +"Rankings";
 			archivo= barras+R.getID()+".bin";
 		}
-		else if(Onom.equals("ClassEstadisticas")){
+		else if(Onom.equals("Estadisticas")){
 			Estadisticas E = (Estadisticas) objeto;
 			ruta = ".."+ barras + "DATOS" + barras +"Estadisticas";
 			archivo = barras+E.getName()+".bin";
