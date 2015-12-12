@@ -171,7 +171,7 @@ public class CtrlVista {
 		
 		public void guardar_tablero(String[][] t) {
 			CDominio.guardar_tablero();
-			VBorrar.setVisible(true);
+			entrarABorrarTablero();
 		}
 		
 		public void entrarABorrarConfirmar(String id) {
@@ -213,6 +213,10 @@ public class CtrlVista {
 		
 		public String[][] cargar_tab(String id) {
 			return CDominio.cargar_tab(id);
+		}
+		
+		public void eliminar_tablero(String id) {
+			CDominio.eliminar_tablero();
 		}
 		
 		/**
