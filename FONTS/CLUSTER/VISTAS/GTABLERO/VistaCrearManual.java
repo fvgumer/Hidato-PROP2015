@@ -21,6 +21,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	private int N, c_negras, c_vacias;
 	private JTextField[][] board;
 	private Container panel;
+	private String[][] aux;
 
 	public VistaCrearManual(final CtrlVista CV) {
 		//Config layer 
@@ -40,15 +41,23 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		btnValidar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				int n = board.length;
-				String[][] aux = new String[n][n];
-				for(int i=0; i<n; ++i) {
-					for(int j=0; j<n; ++j) {
-						aux[i][j] = board[i][j].getText();
+				if(comprovar_data()) {
+					//try {
+					for(int i=0; i<N; ++i) {
+						for(int j=0; j<N; ++j) {
+							System.out.println(aux[i][j]);
+						}
 					}
+					CV.entrarAValidar(aux);
+					Salir();
+					//}
+					/*catch (Exception e ){
+						System.out.println("por alguna parte l'has liao");
+					}*/
 				}
-				CV.entrarAValidar(aux);
-				Salir();
+				else {
+					System.out.println("Wrong data");
+				}
 			}
 		});
 		
@@ -77,5 +86,24 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	            panel.add(board[row][col]);
 	         }
 	     }
+	}
+	
+	private boolean comprovar_data() {
+		boolean b = true;
+		aux = new String[N][N];
+		for(int i=0; i<N; ++i) {
+			for(int j=0; j<N; ++j) {
+				aux[i][j] = board[i][j].getText();
+				int num = 0;
+				try {
+					num = Integer.parseInt(aux[i][j]);
+				}
+				catch (Exception e){
+					return false;
+				}
+				if (num > (N*N)-c_negras || num < -1) return false;
+			}
+		}
+		return b;
 	}
 }

@@ -34,6 +34,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 	         for (int col = 0; col < N; ++col) {
 	            board[row][col] = new JTextField();
 	            board[row][col].setText("0");
+	            board[row][col].setEditable(false);
 	            panel.add(board[row][col]);
 	         }
 	     }
