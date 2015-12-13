@@ -1,12 +1,16 @@
 package CLUSTER.VISTAS.CONTROLADORES;
+import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
 import CLUSTER.VISTAS.VistaInicial;
+//import CLUSTER.VISTAS.VistaRanking;
+import CLUSTER.VISTAS.PARTIDA.VEmergentInfo;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaEstPersonales;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarEstadisticas;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarRanking;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
+import CLUSTER.VISTAS.PARTIDA.VistaCargarPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
@@ -20,9 +24,13 @@ public class CtrlVista {
 	private VistaInicial VInicial; 
 	private CtrlDominio CDominio;
 	private VistaMenu VMenu;
+	//Partida
 	private VistaMenuPartida VMenuPartida;
 	private VistaElegirCarac1 VElegirC1;
 	private VistaElegirCarac2 VElegirC2;
+	private VEmergentInfo VEInfo;
+	private VistaCargarPartida VCargarPartida;
+	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
 	private VistaValidar VGTValidar;
@@ -35,6 +43,7 @@ public class CtrlVista {
 	private VistaEstUsuario VEstU;
 	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
+	
 	private VistaMostrarRanking VMRank;
 	private VistaMostrarEstadisticas VMEst;
 	//Usuario
@@ -55,8 +64,7 @@ public class CtrlVista {
 							//		-Controladors
 							//		-Totes Les Vistes
 							// TE TOTES LES FUNCIONS PER A CANVIAR DE VISTES
-							// IMPORTANT: LES FUNCIONS PER MANEJAR INFORMACIO 
-							// VAN ALS ALTRES CONTROLADOS.
+							// I ENVIAR LA INFO AL CONTROLADOR DOMINI
 			//Carregar Controladors 
 			CDominio = new CtrlDominio();
 			
@@ -69,6 +77,7 @@ public class CtrlVista {
 			VElegirC1 = new VistaElegirCarac1(this,"Forma","Dimensiones");
 			VElegirC2 = new VistaElegirCarac2(this,"Forats","Iniciales");
 			VMTipoTablero = new VistaMenuTipoTablero(this);
+			VCargarPartida = new VistaCargarPartida(this);
 			/*Sobre Tableros*/
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
@@ -120,9 +129,14 @@ public class CtrlVista {
 		public void entrarAeliminarUser(){
 			VEliminarUser.setVisible(true);
 		}
-		
+		/** Sobre Partida **/
 		public void entrarAMenuPartida(){
 			VMenuPartida.setVisible(true);
+		}
+		
+		public void entrarACargarPartida(){
+			//VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
+			VCargarPartida.setVisible(true);
 		}
 		
 		public void entrarAElegirForma(){
@@ -135,10 +149,40 @@ public class CtrlVista {
 			VElegirC2.setforma(forma);
 		}
 		
-		public void entrarAMenuElegirTablero() {
+		public void mirarDificultat(int dim, int f, int ini){
+			int dificultat = CDominio.get_dificultat_partida(dim, f, ini);
+			VEInfo = new VEmergentInfo(this, VElegirC2);
+			VEInfo.set_dificultat(dificultat);
+			VEInfo.run();
+			VEInfo.setVisible(true);
+			
 			
 		}
 		
+		public void entrarAMenuElegirTablero() {
+			VMTipoTablero.setVisible(true);
+		}
+		
+		public void elegirTaleatorio(){
+			
+		}
+		public void elegirTdisenado(){
+			
+		}
+		
+		public void previsualizarTablero(String id) {
+			VCargarPartida.setPrevisualizarTablero(getInfoTablero(id));
+		}
+		
+		private int[][] getInfoTablero(String id){
+			return CDominio.getInfoTablero(id);
+		}
+		
+		public void cargarParaJugar(int[][] Tablero, String id) {
+			CDominio.cargarPartida(id);
+		}
+		
+		/** Sobre Tablero **/ 
 		public void entrarAImportar(){
 			VImportar.setVisible(true);
 		}
@@ -203,7 +247,7 @@ public class CtrlVista {
 			int n = Integer.parseInt(nPos);
 			VMRank.setPos(n);
 			VMRank.setVisible(true);
-			//CDominio.getRanking(nTab,n);
+			CDominio.getRanking(nTab,n);
 		}
 
 		
@@ -217,6 +261,10 @@ public class CtrlVista {
 		
 		public void eliminar_tablero(String id) {
 			CDominio.eliminar_tablero();
+		}
+		
+		public String[][] get_tab_txt(String name) {
+			return CDominio.get_tab_txt(name);
 		}
 		
 		/**
@@ -241,6 +289,11 @@ public class CtrlVista {
 		/**
 		 * Sobre Partida
 		 */
+		public void setInfoPartida(int f, int m, int forats, int ini, int tipus) {
+			Jugador J = new Jugador("pepito","mec");
+			CDominio.setInforPartida(J,f,m,forats,ini,tipus);
+		}
+		
 
 }
 

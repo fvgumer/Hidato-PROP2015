@@ -34,6 +34,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 	         for (int col = 0; col < N; ++col) {
 	            board[row][col] = new JTextField();
 	            board[row][col].setText("0");
+	            board[row][col].setEditable(false);
 	            panel.add(board[row][col]);
 	         }
 	     }
@@ -62,6 +63,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		btnCargar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String[][] aux = CV.get_tab_txt(textField.getName());
 				
 			}
 		});

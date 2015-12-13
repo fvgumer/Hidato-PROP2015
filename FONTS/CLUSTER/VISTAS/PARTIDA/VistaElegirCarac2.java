@@ -27,9 +27,6 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 		this.forma = f;
 	}
 	
-
-
-
 	public VistaElegirCarac2(final CtrlVista CV,String t1,String t2) {
 		super(CV,t1,t2);
 		
@@ -85,8 +82,7 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 			//Para Pasara a la siguiente pagina
 			Siguiente.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
-					CV.entrarAMenuElegirTablero();
-					Salir();
+					CV.mirarDificultat(dim, slider.getValue() ,slider2.getValue());
 				}
 			});
 			

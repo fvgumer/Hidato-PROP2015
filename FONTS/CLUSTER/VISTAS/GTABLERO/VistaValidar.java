@@ -55,6 +55,7 @@ public class VistaValidar extends VistaPadreIniConBoton{
 			for(int j=0; j<N; ++j){
 				board[i][j] = new JTextField();
 				board[i][j].setText(t[i][j]);
+				board[i][j].setEditable(false);
 				panel.add(board[i][j]);
 			}
 		}

@@ -144,8 +144,10 @@ public class CtrlTablero {
 		Temporizador t = new Temporizador();
 		t.timer_max();
 		t.iniciar();
-		map.setfinal_num(map.getMida()*map.getMida()-map.getholes());
+		//map.setfinal_num(map.getMida()*map.getMida()-map.getholes());
+		System.out.println(map.get_final_num());
 		boolean b = a.solver(start[0], start[1], 1, map,t);
+		System.out.println(b);
 		Casilla[][] aux = a.get_solucio();
 		map.set_solucio(aux);
 		return b;
@@ -229,20 +231,18 @@ public class CtrlTablero {
 		int n = t[0].length;
 		this.map = new Tablero(n);
 		int vacias = 0;
-		
 		for(int i=0; i<n; ++i) {
 			for(int j=0; j<n; ++j) {
 				int aux = Integer.parseInt(t[i][j]);
 				if (aux == -1) map.setholes(1);
 				if (aux == 0) ++vacias;
+				if (aux == 1) map.setStart(i, j);
 				map.setValorTauler(i, j, aux);
 			}
 		}
 		map.setn_predef((n*n)-map.getholes()-vacias);
+		map.setfinal_num(n*n-map.getholes());
 		map.setSolucion_unica(unica);
-		System.out.println(map.getMida());
-		System.out.println(map.getholes());
-		System.out.println(map.getn_predef());
 	}
 	
 	public String[][] get_tablero() {
@@ -333,6 +333,10 @@ public class CtrlTablero {
 		c.eliminar(map);
 		CtrlRanking rnk = new CtrlRanking();
 		rnk.eliminarRanking(map.get_id());
+	}
+	
+	public void cargar_txt(String name) {
+		
 	}
 	
 	public void asignar_dificultad() {
