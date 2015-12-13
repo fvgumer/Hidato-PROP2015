@@ -65,8 +65,8 @@ public class VistaUsuario extends VistaPadreInicio{
 	}
 	
 	protected void clear(){
-		//textField.setText("");
-		//passwordField.setText("");
-		//lblError.setText("");
+		textField.setText("");
+		passwordField.setText("");
+		lblError.setText("");
 	}
 }

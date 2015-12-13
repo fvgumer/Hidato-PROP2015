@@ -25,7 +25,7 @@ public class VistaEliminarUser extends VistaUsuario {
 					clear();
 					Salir();
 				}
-				else lblError.setText("L'usuario solo puede eliminar el CV" + CV.nomactiu());
+				else lblError.setText("Solo puedes eliminar a tu usuario " + CV.nomactiu());
 			}
 		});
 		//Acciones

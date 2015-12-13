@@ -14,19 +14,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class VistaLogin extends VistaPadreInicio{
+public class VistaLogin extends VistaUsuario{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	protected JTextField textField;
-	protected JPasswordField passwordField;
-	protected Botones B = new Botones(null, 150, 188);
-	protected Botons Bsalir = new Botons(null);
-	protected JLabel lblUsuario = new JLabel("Usuario");
-	protected JLabel lblContrasea = new JLabel("Contrase\u00F1a");
-	protected JLabel lblError = new JLabel("");
+	
 	/**
 	 * Launch the application.
 	 */
@@ -37,25 +30,7 @@ public class VistaLogin extends VistaPadreInicio{
 	 * Create the application.
 	 */
 	public VistaLogin(final CtrlVista CV) {
-		setTextLayer("User");
-		getContentPane().setName("User");
-		lblContrasea.setBounds(34, 139, 123, 14);
-		getContentPane().add(lblContrasea);
-		textField = new JTextField();
-		textField.setBounds(162, 89, 141, 20);
-		textField.setColumns(10);
-		passwordField = new JPasswordField();
-		passwordField.setBounds(162, 136, 141, 20);
-		lblUsuario.setBounds(34, 92, 107, 14);
-		lblError.setBackground(Color.RED);
-		lblError.setHorizontalAlignment(SwingConstants.CENTER);
-		lblError.setBounds(66, 163, 409, 14);
-		getContentPane().add(textField);
-		getContentPane().add(B);
-		getContentPane().add(Bsalir);
-		getContentPane().add(passwordField);
-		getContentPane().add(lblUsuario);
-		getContentPane().add(lblError);
+	
 	
 		Bsalir.setText("Salir");
 		B.set_name("Login");
@@ -63,7 +38,7 @@ public class VistaLogin extends VistaPadreInicio{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(CV.Jactivo()==false) CV.run();
-				//clear();
+				clear();
 				Salir();
 			}
 		});
@@ -72,7 +47,7 @@ public class VistaLogin extends VistaPadreInicio{
 			public void mouseClicked(MouseEvent e) {
 				if(CV.login(textField.getText(),new String(passwordField.getPassword()))){
 					CV.entrarAMenu();
-					//clear();
+					clear();
 					Salir();
 				}
 				else{

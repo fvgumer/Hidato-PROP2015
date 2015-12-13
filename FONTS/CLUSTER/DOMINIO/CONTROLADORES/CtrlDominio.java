@@ -10,7 +10,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-	private Jugador Jactivo = new Jugador(null,null);
+	private Jugador Jactivo = null;
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -101,19 +101,31 @@ public class CtrlDominio {
 		return CJugador.crear_usuario(nombre, password);
 	}
 	public boolean eliminarUsuario(String user, String password){
-			if(CJugador.eliminar_usuario(user, password)){
+		if(password.equals(Jactivo.consultar_password())){
+			if(CJugador.eliminar_usuario(Jactivo.consultar_nombre(), Jactivo.consultar_password())){
 			Jactivo = null;
 			return true;
 			}
-			else return false;
+		}
+	return false;
 	}
 	
 	public String nomActiu(){
+		if(Jactivo!=null){
 		return Jactivo.consultar_nombre();
+		}
+		else return "";
 	}
 	
 	public void getRanking(String nTab, int nPos) {
 		CRanking.getTop(nTab,nPos);
 	}
 
+	public boolean cambiarPass(String oldPass, String newPass) {
+		if(CJugador.editarcontrasenya(oldPass, newPass)){
+			Jactivo.set_password(newPass);
+			return true;
+		}
+		else return false;
+	}
 }

@@ -1,5 +1,6 @@
 package CLUSTER.VISTAS.USUARIO;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -24,6 +25,21 @@ public class VistaNewPassword extends VistaUsuario{
 	 * Create the application.
 	 */
 	public VistaNewPassword(final CtrlVista CV) {
+		B.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(CV.cambiarPass(new String(passwordField.getPassword()),textField.getText())){
+					clear();
+					lblError.setForeground(Color.GREEN);
+					lblError.setText("Contrasenya cambiada correctamente");
+				}
+				else {
+					clear();
+					lblError.setForeground(Color.RED);
+					lblError.setText("Contraseña antigua incorrecta!");
+				}
+			}
+		});
 	
 		Bsalir.setText("Atras");
 		B.set_name("Cambiar");
@@ -34,6 +50,7 @@ public class VistaNewPassword extends VistaUsuario{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarMenuUsuario();
+				clear();
 				Salir();
 			}
 		});

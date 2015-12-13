@@ -288,13 +288,14 @@ public class CtrlVista {
 		public boolean eliminarUsuario(String user, String password){
 			return CDominio.eliminarUsuario(user,password);
 		}
+		public boolean cambiarPass(String NewPass, String OldPass) {
+			return CDominio.cambiarPass(OldPass,NewPass);
+		}
 		/**
 		 * Sobre Partida
 		 */
 		public void setInfoPartida(int f, int m, int forats, int ini, int tipus) {
 			CDominio.setInforPartida(f,m,forats,ini,tipus);
 		}
-		
-
 }
 
