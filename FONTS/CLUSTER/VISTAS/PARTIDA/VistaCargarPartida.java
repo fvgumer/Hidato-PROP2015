@@ -24,8 +24,10 @@ public class VistaCargarPartida extends VPBotonSiguiente {
 	JPanel tablero;
 	CtrlVista CV2;
 	JTextField[][] casilla;
+	private int[][] mapa;
+	private VEmergErrorClicar VError;
 
-	public VistaCargarPartida(CtrlVista CV) {
+	public VistaCargarPartida(final CtrlVista CV) {
 		CV2 = CV;
 		Titulo t = new Titulo("Elegir Partida", 30, 30);
 		t.setBounds(173, 39, 369, 76);
@@ -35,7 +37,7 @@ public class VistaCargarPartida extends VPBotonSiguiente {
 
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				previsualizar_Tablero(list.getSelectedValue(), CV2);
+					previsualizar_Tablero(list.getSelectedValue(), CV2);
 			}
 		});
 		list.setBounds(64, 126, 256,182);
@@ -48,7 +50,18 @@ public class VistaCargarPartida extends VPBotonSiguiente {
 		
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.cargarParaJugar(list.getSelectedValue());
+				if (!list.isSelectionEmpty()) 
+					CV.cargarParaJugar(mapa, list.getSelectedValue());
+				else {
+					VError = new VEmergErrorClicar();
+					VError.setVisible(true);
+				}
+			}
+		});
+		
+		JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.entrarAMenuPartida();
 			}
 		});
 		
@@ -63,6 +76,7 @@ public class VistaCargarPartida extends VPBotonSiguiente {
 	}
 	
 	public void setPrevisualizarTablero(int[][] T){
+		mapa = T;
 		int mida = T.length;
 		tablero.setLayout(new GridLayout(mida,mida));
 		casilla = new JTextField[mida][mida];
