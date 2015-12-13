@@ -178,6 +178,10 @@ public class CtrlVista {
 			return CDominio.getInfoTablero(id);
 		}
 		
+		public void cargarParaJugar(int[][] Tablero, String id) {
+			CDominio.cargarPartida(id);
+		}
+		
 		/** Sobre Tablero **/ 
 		public void entrarAImportar(){
 			VImportar.setVisible(true);

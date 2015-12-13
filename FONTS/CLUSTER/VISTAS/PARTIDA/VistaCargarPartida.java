@@ -2,6 +2,7 @@ package CLUSTER.VISTAS.PARTIDA;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,6 +14,8 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import javax.swing.JList;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -20,6 +23,7 @@ public class VistaCargarPartida extends VPBotonSiguiente {
 	JList<String> list;
 	JPanel tablero;
 	CtrlVista CV2;
+	JTextField[][] casilla;
 
 	public VistaCargarPartida(CtrlVista CV) {
 		CV2 = CV;
@@ -42,6 +46,12 @@ public class VistaCargarPartida extends VPBotonSiguiente {
 		tablero.setBounds(422, 126, 230, 195);
 		getContentPane().add(tablero);
 		
+		Siguiente.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.cargarParaJugar(list.getSelectedValue());
+			}
+		});
+		
 		}
 	
 	private void previsualizar_Tablero(String id, CtrlVista CV) {
@@ -53,8 +63,18 @@ public class VistaCargarPartida extends VPBotonSiguiente {
 	}
 	
 	public void setPrevisualizarTablero(int[][] T){
+		int mida = T.length;
+		tablero.setLayout(new GridLayout(mida,mida));
+		casilla = new JTextField[mida][mida];
 		
-	}
 	
-	
+		for (int i = 0; i < mida; ++i) {
+	         for (int j = 0; j < mida; ++j) {
+	        	 casilla[i][j] = new JTextField();
+	        	 casilla[i][j].setText(Integer.toString(T[i][j]));
+	            tablero.add(casilla[i][j]);
+	         }
+	     }
+	}		
 }
+

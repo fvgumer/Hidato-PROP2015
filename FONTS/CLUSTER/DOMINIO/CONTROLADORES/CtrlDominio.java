@@ -38,6 +38,10 @@ public class CtrlDominio {
 	public int[][] getInfoTablero(String id){
 		return CPartida.previsualizarTablero(Jactivo.consultar_nombre(),id);
 	}
+	
+	public void cargarPartida(String id) {
+		CPartida.Cargar_Partida_Hidato(Jactivo.consultar_nombre(),id);
+	}
 
 	//USUARIO
 	public boolean ingresarUsuario(String nombre, String contrasenya){

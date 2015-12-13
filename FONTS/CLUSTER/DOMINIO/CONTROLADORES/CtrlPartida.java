@@ -58,9 +58,9 @@ public class CtrlPartida {
 	 * @param id Entero valido que identifica a la partida
 	 * que se desea cargar
 	 */
-	public void Cargar_Partida_Hidato(String id){
+	public void Cargar_Partida_Hidato(String nom, String id){
 		int i = Integer.parseInt(id);
-		c.cargar(PH.getUsuario().consultar_nombre(), i);
+		c.cargar(nom, i);
 	}
 	
 	
