@@ -10,7 +10,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-	private Jugador Jactivo;
+	public Jugador Jactivo;
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -24,7 +24,9 @@ public class CtrlDominio {
 	//USUARIO
 	public boolean ingresarUsuario(String nombre, String contrasenya){
 		if(CJugador.ingresarusuario(nombre, contrasenya)){
+			System.out.println("llega aqui");
 			Jactivo.set_nombre(nombre);
+			System.out.println(Jactivo.consultar_nombre());
 			Jactivo.set_password(contrasenya);	
 			CJugador.J.set_nombre(nombre);
 			CJugador.J.set_password(contrasenya);

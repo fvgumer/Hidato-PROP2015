@@ -30,7 +30,7 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 	public VistaMenuUser(final CtrlVista CV) {
 		super();
 		
-		
+		//System.out.println(CV.nomactiu());
 		JB.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

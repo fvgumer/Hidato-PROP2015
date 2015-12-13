@@ -42,6 +42,7 @@ public class VistaLogin extends VistaUsuario{
 			public void mouseClicked(MouseEvent e) {
 				if(CV.login(textField.getText(),new String(passwordField.getPassword()))){
 					CV.entrarAMenu();
+					CV.nomactiu();
 					clear();
 					Salir();
 				}
