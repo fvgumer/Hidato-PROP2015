@@ -1,6 +1,7 @@
 package CLUSTER.VISTAS.CONTROLADORES;
 import java.util.ArrayList;
 
+import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
@@ -245,7 +246,10 @@ public class CtrlVista {
 			return CDominio.existsU(user);
 		}
 
-		public void entrarAMostrarEstadisticas() {
+		public void entrarAMostrarEstadisticas(String user) {
+			Estadisticas aux = new Estadisticas(null);
+			aux = CDominio.getEst(user);
+			VMEst.setE(aux);
 			VMEst.setVisible(true);
 		}
 		

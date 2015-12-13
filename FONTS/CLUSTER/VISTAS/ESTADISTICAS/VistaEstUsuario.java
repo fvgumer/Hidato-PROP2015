@@ -40,8 +40,8 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 	 */
 	public VistaEstUsuario(final CtrlVista CV) {
 
-		super.setTextLayer("Estadísticas de usuario");
-		getContentPane().setName("Estadísticas de usuario");
+		super.setTextLayer("Seleccionde estadisticas de usuario");
+		getContentPane().setName("Seleccion de estadisticas de usuario");
 		
 		Texto n = new Texto("Por favor, introduce el nombre del usuario.",36,46,15);
 		n.setSize(313, 30);
@@ -59,7 +59,7 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 			public void mouseClicked(MouseEvent e) {
 				user = textField.getText();
 				if (!user.equals("") && CV.existsU(user)){
-					CV.entrarAMostrarEstadisticas();
+					CV.entrarAMostrarEstadisticas(user);
 					Salir();
 				}
 				else if (!CV.existsU(user)) {
