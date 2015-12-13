@@ -19,7 +19,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class VistaUsuario extends VistaPadreIniConBoton{
+public class VistaUsuario extends VistaPadreInicio{
 
 	/**
 	 * 
@@ -39,38 +39,34 @@ public class VistaUsuario extends VistaPadreIniConBoton{
 	/**
 	 * Create the application.
 	 */
-	protected void clear(){
-		textField.setText("");
-		passwordField.setText("");
-		lblError.setText("");
-	}
+	
 	
 	public VistaUsuario() {
+		//super();
 		setTextLayer("User");
 		getContentPane().setName("User");
 		lblContrasea.setBounds(34, 139, 123, 14);
 		getContentPane().add(lblContrasea);
 		textField = new JTextField();
 		textField.setBounds(162, 89, 141, 20);
-		getContentPane().add(textField);
 		textField.setColumns(10);
-		B.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		getContentPane().add(B);
-		getContentPane().add(Bsalir);
-		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(162, 136, 141, 20);
-		getContentPane().add(passwordField);
-		
 		lblUsuario.setBounds(34, 92, 107, 14);
-		getContentPane().add(lblUsuario);
-		
 		lblError.setBackground(Color.RED);
 		lblError.setHorizontalAlignment(SwingConstants.CENTER);
 		lblError.setBounds(66, 163, 409, 14);
+		getContentPane().add(textField);
+		getContentPane().add(B);
+		getContentPane().add(Bsalir);
+		getContentPane().add(passwordField);
+		getContentPane().add(lblUsuario);
 		getContentPane().add(lblError);
+	}
+	
+	protected void clear(){
+		textField.setText("");
+		passwordField.setText("");
+		lblError.setText("");
 	}
 }

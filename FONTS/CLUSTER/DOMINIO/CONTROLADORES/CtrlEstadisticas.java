@@ -125,4 +125,9 @@ public class CtrlEstadisticas {
 		//E.mostrarTablerosCreados();
 		E.mostrarTablerosJugados();
 	}
+	
+	public Estadisticas getEst(String jugador){
+		E = GE.cargar(jugador);
+		return E;
+	}
 }

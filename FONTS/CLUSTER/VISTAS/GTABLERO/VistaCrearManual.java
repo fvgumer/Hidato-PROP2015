@@ -22,6 +22,8 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	private JTextField[][] board;
 	private Container panel;
 	private String[][] aux;
+	private JLabel lblError;
+	private JLabel lblvacias, lblNegras, lblFinalNum;; 
 
 	public VistaCrearManual(final CtrlVista CV) {
 		//Config layer 
@@ -37,27 +39,44 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		txtpnInstrucciones.setBounds(509, 13, 312, 132);
 		getContentPane().add(txtpnInstrucciones);
 		
+		lblError = new JLabel("El tablero creado contiene errores");
+		lblError.setBounds(509, 196, 262, 34);
+		lblError.setVisible(false);
+		getContentPane().add(lblError);
+		
 		JButton btnValidar = new JButton("Validar");
 		btnValidar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(comprovar_data()) {
-					//try {
+					try {
 					CV.entrarAValidar(aux);
 					Salir();
-					//}
-					/*catch (Exception e ){
+					}
+					catch (Exception e ){
 						System.out.println("por alguna parte l'has liao");
-					}*/
+					}
 				}
 				else {
-					System.out.println("Wrong data");
+					lblError.setVisible(true);
 				}
 			}
 		});
 		
-		btnValidar.setBounds(616, 211, 97, 25);
+		btnValidar.setBounds(509, 158, 97, 25);
 		getContentPane().add(btnValidar);
+		
+		lblNegras = new JLabel("");
+		lblNegras.setBounds(509, 243, 216, 16);
+		getContentPane().add(lblNegras);
+		
+		lblvacias = new JLabel("");
+		lblvacias.setBounds(509, 272, 216, 16);
+		getContentPane().add(lblvacias);
+		
+		lblFinalNum = new JLabel("");
+		lblFinalNum.setBounds(509, 301, 195, 16);
+		getContentPane().add(lblFinalNum);
 		
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
@@ -72,6 +91,10 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		this.N = n;
 		this.c_negras = c_negras;
 		this.c_vacias = c_vacias;
+		lblNegras.setText("Has decidido poner " + c_negras + " casillas negras.");
+		lblvacias.setText("Has decidido poner " + c_vacias + " casillas vacias.");
+		int aux = (N*N-c_negras);
+		lblFinalNum.setText("El ultimo numero a colocar es el " + aux + ".");
 		panel.setLayout(new GridLayout(N,N));
 		board = new JTextField[N][N];
 		for (int row = 0; row < N; ++row) {
@@ -84,14 +107,17 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	}
 	
 	private boolean comprovar_data() {
-		boolean b = true;
 		aux = new String[N][N];
+		int n = 0;
+		int v = 0;
 		for(int i=0; i<N; ++i) {
 			for(int j=0; j<N; ++j) {
 				aux[i][j] = board[i][j].getText();
 				int num = 0;
 				try {
 					num = Integer.parseInt(aux[i][j]);
+					if (num == -1) ++n;
+					if (num == 0) ++v;
 				}
 				catch (Exception e){
 					return false;
@@ -99,6 +125,8 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 				if (num > (N*N)-c_negras || num < -1) return false;
 			}
 		}
-		return b;
+		if (n != c_negras) return false;
+		if (v != c_vacias) return false;
+		return true;
 	}
 }

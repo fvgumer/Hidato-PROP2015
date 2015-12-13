@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+
+import org.apache.commons.io.FileUtils;
+
 import java.io.FilenameFilter;
 
 import CLUSTER.DOMINIO.CLASES.Tablero;
@@ -80,6 +83,16 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
        
         if(foundFiles==null) return 0;
         else return foundFiles.length;
-}
-	
+	}	
+
+
+	public String readtablerotxt(String name){
+		try {
+			return FileUtils.readFileToString(new File(".."+ barras + "DATOS" + barras +"Tableros"+  barras + name + ".txt"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return name;
+	}
 }

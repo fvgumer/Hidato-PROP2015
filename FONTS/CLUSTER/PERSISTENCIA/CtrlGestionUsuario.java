@@ -106,7 +106,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 * Post: El jugador con nombre = 'nombre' y contrasenya='contrasenya' ha sido eliminado
 	 * si existia o la contrasenya era la correcta.
 	 */
-	public void eliminar_jugador(String nombre, String contrasenya){
+	public boolean eliminar_jugador(String nombre, String contrasenya){
 		
 			String ruta = ".."+ barras + "DATOS" + barras +"Jugadors"+barras+nombre+".bin";
 			File archiu = new File(ruta);
@@ -120,8 +120,9 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 					e.printStackTrace();
 				}
 				}
+				return true;
 			}
-			else System.out.println("El jugador no existeix");
+			else return false;
 		
 }	
 	

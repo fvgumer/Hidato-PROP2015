@@ -1,5 +1,9 @@
 package CLUSTER.VISTAS.CONTROLADORES;
+import java.util.ArrayList;
+
+import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
 import CLUSTER.VISTAS.VistaInicial;
 //import CLUSTER.VISTAS.VistaRanking;
@@ -203,6 +207,7 @@ public class CtrlVista {
 			VImportar.setVisible(true);
 		}
 		public void entrarACrearMan(int n, int c_negras, int c_vacias){
+			VCrearTablero1 = new VistaCrearManual(this);
 			VCrearTablero1.set_data(n, c_negras, c_vacias);
 			VCrearTablero1.setVisible(true);
 		}
@@ -250,8 +255,15 @@ public class CtrlVista {
 		public void entrarAEstUsuario() {
 			VEstU.setVisible(true);
 		}
+		
+		public boolean existsU(String user) {
+			return CDominio.existsU(user);
+		}
 
-		public void entrarAMostrarEstadisticas() {
+		public void entrarAMostrarEstadisticas(String user) {
+			Estadisticas aux = new Estadisticas(null);
+			aux = CDominio.getEst(user);
+			VMEst.setE(aux);
 			VMEst.setVisible(true);
 		}
 		
@@ -259,13 +271,17 @@ public class CtrlVista {
 			VRank.setVisible(true);
 		}
 		
+		public boolean existsR(String nTab) {
+			return CDominio.existsR(nTab);
+		}
+		
 		public void entrarAMostrarRanking(String nTab, String nPos) {
 			int n = Integer.parseInt(nPos);
-			VMRank.setPos(n);
+			ArrayList<Resultado> aux = new ArrayList<Resultado>(n);
+			aux = CDominio.getRanking(nTab,n);
+			VMRank.setR(aux);
 			VMRank.setVisible(true);
-			CDominio.getRanking(nTab,n);
 		}
-
 		
 		public String[] get_tableros_repo() {
 			return CDominio.get_tableros_repo();
@@ -302,6 +318,9 @@ public class CtrlVista {
 		public boolean eliminarUsuario(String user, String password){
 			return CDominio.eliminarUsuario(user,password);
 		}
+		public boolean cambiarPass(String NewPass, String OldPass) {
+			return CDominio.cambiarPass(OldPass,NewPass);
+		}
 		/**
 		 * Sobre Partida
 		 */
@@ -313,7 +332,6 @@ public class CtrlVista {
 			CDominio.setModoPartida(modo);
 			
 		}
-		
 
 }
 
