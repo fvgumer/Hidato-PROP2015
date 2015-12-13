@@ -13,7 +13,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-	private Jugador Jactivo = new Jugador(null,null);
+	private Jugador Jactivo = null;
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -25,8 +25,8 @@ public class CtrlDominio {
 	}
 	
 	/** Sobre Partida **/
-	public void setInforPartida(Jugador J,int f, int m, int forats, int ini, int t) {
-		CPartida.anadir_carct_tablero(f,m, forats, ini);
+	public void setInforPartida(int dim, int forats, int ini, int forma) {
+		CPartida.anadir_carct_tablero(forma,dim, forats, ini);
 	}
 	
 	public int get_dificultat_partida(int dim, int abuj, int c_ini){
@@ -44,14 +44,22 @@ public class CtrlDominio {
 	public void cargarPartida(String id) {
 		CPartida.Cargar_Partida_Hidato(Jactivo.consultar_nombre(),id);
 	}
+	
+	public int[][] getTAleatorio(){
+		System.out.print("CDominio");
+		return CPartida.generar_Taleatorio();
+	}
+	
+	public void crear_Partida(){
+		CPartida.crear_partida(Jactivo);
+	}
 
 	//USUARIO
 	public boolean ingresarUsuario(String nombre, String contrasenya){
 		if(CJugador.ingresarusuario(nombre, contrasenya)){
+			Jactivo = new Jugador(null,null);
 			Jactivo.set_nombre(nombre);
-			System.out.println(Jactivo.consultar_nombre());
-			Jactivo.set_password(contrasenya);	
-			
+			Jactivo.set_password(contrasenya);
 			return true;
 		}
 		else return false;
@@ -96,17 +104,31 @@ public class CtrlDominio {
 		return CJugador.crear_usuario(nombre, password);
 	}
 	public boolean eliminarUsuario(String user, String password){
-			CJugador.eliminar_usuario(user, password);
+		if(password.equals(Jactivo.consultar_password())){
+			if(CJugador.eliminar_usuario(Jactivo.consultar_nombre(), Jactivo.consultar_password())){
 			Jactivo = null;
 			return true;
+			}
+		}
+	return false;
 	}
 	
 	public String nomActiu(){
+		if(Jactivo!=null){
 		return Jactivo.consultar_nombre();
+		}
+		else return "";
 	}
 	
 	public ArrayList<Resultado> getRanking(String nTab, int nPos) {
 		return CRanking.getRanking(nTab,nPos);
 	}
 
+	public boolean cambiarPass(String oldPass, String newPass) {
+		if(CJugador.editarcontrasenya(oldPass, newPass)){
+			Jactivo.set_password(newPass);
+			return true;
+		}
+		else return false;
+	}
 }

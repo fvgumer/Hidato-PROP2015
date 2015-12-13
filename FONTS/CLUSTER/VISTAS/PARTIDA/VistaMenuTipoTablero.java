@@ -27,6 +27,7 @@ public class VistaMenuTipoTablero extends VistaPadreIniConBoton {
 			public void mouseClicked(MouseEvent arg0) {
 				//Nueva Ventana
 				CV.elegirTaleatorio();
+				Salir();
 			}
 		});
 		getContentPane().add(b1);

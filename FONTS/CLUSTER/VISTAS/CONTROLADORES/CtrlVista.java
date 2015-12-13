@@ -18,6 +18,7 @@ import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
+import CLUSTER.VISTAS.PARTIDA.VistaTableroAleatorio;
 import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
 import CLUSTER.VISTAS.USUARIO.*;
@@ -33,6 +34,7 @@ public class CtrlVista {
 	private VistaElegirCarac2 VElegirC2;
 	private VEmergentInfo VEInfo;
 	private VistaCargarPartida VCargarPartida;
+	private VistaTableroAleatorio VTAleatorio;
 	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
@@ -81,6 +83,7 @@ public class CtrlVista {
 			VElegirC2 = new VistaElegirCarac2(this,"Forats","Iniciales");
 			VMTipoTablero = new VistaMenuTipoTablero(this);
 			VCargarPartida = new VistaCargarPartida(this);
+			VTAleatorio = new VistaTableroAleatorio(this);
 			/*Sobre Tableros*/
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
@@ -138,7 +141,7 @@ public class CtrlVista {
 		}
 		
 		public void entrarACargarPartida(){
-			//VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
+			VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
 			VCargarPartida.setVisible(true);
 		}
 		
@@ -158,8 +161,6 @@ public class CtrlVista {
 			VEInfo.set_dificultat(dificultat);
 			VEInfo.run();
 			VEInfo.setVisible(true);
-			
-			
 		}
 		
 		public void entrarAMenuElegirTablero() {
@@ -167,7 +168,8 @@ public class CtrlVista {
 		}
 		
 		public void elegirTaleatorio(){
-			
+			VTAleatorio.run(CDominio.getTAleatorio());
+			VTAleatorio.setVisible(true);
 		}
 		public void elegirTdisenado(){
 			
@@ -289,14 +291,14 @@ public class CtrlVista {
 		public boolean eliminarUsuario(String user, String password){
 			return CDominio.eliminarUsuario(user,password);
 		}
+		public boolean cambiarPass(String NewPass, String OldPass) {
+			return CDominio.cambiarPass(OldPass,NewPass);
+		}
 		/**
 		 * Sobre Partida
 		 */
-		public void setInfoPartida(int f, int m, int forats, int ini, int tipus) {
-			Jugador J = new Jugador("pepito","mec");
-			CDominio.setInforPartida(J,f,m,forats,ini,tipus);
+		public void setInfoPartida(int m, int forats, int ini, int forma) {
+			CDominio.setInforPartida(m,forats,ini,forma);
 		}
-		
-
 }
 
