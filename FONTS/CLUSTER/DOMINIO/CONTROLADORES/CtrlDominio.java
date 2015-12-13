@@ -1,6 +1,7 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 import java.util.ArrayList;
 
+import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.VISTAS.*;
@@ -118,6 +119,18 @@ public class CtrlDominio {
 		return Jactivo.consultar_nombre();
 		}
 		else return "";
+	}
+	
+	public boolean existsU(String user) {
+		return CEstadisticas.cargarEst(user);
+	}
+	
+	public Estadisticas getEst(String user) {
+		return CEstadisticas.getEst(user);
+	}
+	
+	public boolean existsR(String nTab) {
+		return CRanking.cargarRanking(nTab);
 	}
 	
 	public ArrayList<Resultado> getRanking(String nTab, int nPos) {

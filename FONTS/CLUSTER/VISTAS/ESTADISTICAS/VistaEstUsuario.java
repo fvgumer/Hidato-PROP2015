@@ -1,5 +1,6 @@
 package CLUSTER.VISTAS.ESTADISTICAS;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -39,8 +40,8 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 	 */
 	public VistaEstUsuario(final CtrlVista CV) {
 
-		super.setTextLayer("Estadísticas de usuario");
-		getContentPane().setName("Estadísticas de usuario");
+		super.setTextLayer("Seleccionde estadisticas de usuario");
+		getContentPane().setName("Seleccion de estadisticas de usuario");
 		
 		Texto n = new Texto("Por favor, introduce el nombre del usuario.",36,46,15);
 		n.setSize(313, 30);
@@ -57,9 +58,14 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				user = textField.getText();
-				if (!user.equals("")){
-					CV.entrarAMostrarEstadisticas();
+				if (!user.equals("") && CV.existsU(user)){
+					CV.entrarAMostrarEstadisticas(user);
 					Salir();
+				}
+				else if (!CV.existsU(user)) {
+					Texto t = new Texto("El usuario introducido no existe.",385, 88, 12);
+					t.setForeground(Color.RED);
+					getContentPane().add(t);
 				}
 			}
 		});

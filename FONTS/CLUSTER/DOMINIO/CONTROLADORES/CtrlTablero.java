@@ -334,7 +334,10 @@ public class CtrlTablero {
 	}
 	
 	public void cargar_txt(String name) {
-		
+		String tab = c.readtablerotxt("1");
+		tab.substring(1, tab.length());
+		System.out.print(tab);
+		String[] t = tab.split(" ");
 	}
 	
 	public void asignar_dificultad() {
