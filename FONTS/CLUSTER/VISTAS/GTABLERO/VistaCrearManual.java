@@ -42,13 +42,13 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(comprovar_data()) {
-					//try {
+					try {
 					CV.entrarAValidar(aux);
 					Salir();
-					//}
-					/*catch (Exception e ){
+					}
+					catch (Exception e ){
 						System.out.println("por alguna parte l'has liao");
-					}*/
+					}
 				}
 				else {
 					System.out.println("Wrong data");
@@ -84,14 +84,17 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	}
 	
 	private boolean comprovar_data() {
-		boolean b = true;
 		aux = new String[N][N];
+		int n = 0;
+		int v = 0;
 		for(int i=0; i<N; ++i) {
 			for(int j=0; j<N; ++j) {
 				aux[i][j] = board[i][j].getText();
 				int num = 0;
 				try {
 					num = Integer.parseInt(aux[i][j]);
+					if (num == -1) ++n;
+					if (num == 0) ++v;
 				}
 				catch (Exception e){
 					return false;
@@ -99,6 +102,8 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 				if (num > (N*N)-c_negras || num < -1) return false;
 			}
 		}
-		return b;
+		if (n != c_negras) return false;
+		if (v != c_vacias) return false;
+		return true;
 	}
 }

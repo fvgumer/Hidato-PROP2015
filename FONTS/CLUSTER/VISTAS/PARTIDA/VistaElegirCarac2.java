@@ -94,4 +94,8 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 				}
 			});
 	}
+	
+	public void setInfoPartida(CtrlVista CV){
+		CV.setInfoPartida(dim, slider.getValue(), slider2.getValue(), forma);
+	}
 }

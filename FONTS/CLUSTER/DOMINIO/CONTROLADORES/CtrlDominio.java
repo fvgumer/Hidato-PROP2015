@@ -22,9 +22,8 @@ public class CtrlDominio {
 	}
 	
 	/** Sobre Partida **/
-	public void setInforPartida(int f, int m, int forats, int ini, int t) {
-		CPartida.anadir_carct_tablero(f,m, forats, ini);
-		CPartida.crear_partida(Jactivo);
+	public void setInforPartida(int dim, int forats, int ini, int forma) {
+		CPartida.anadir_carct_tablero(forma,dim, forats, ini);
 	}
 	
 	public int get_dificultat_partida(int dim, int abuj, int c_ini){
@@ -44,6 +43,7 @@ public class CtrlDominio {
 	}
 	
 	public int[][] getTAleatorio(){
+		System.out.print("CDominio");
 		return CPartida.generar_Taleatorio();
 	}
 	
