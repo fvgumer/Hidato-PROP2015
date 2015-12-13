@@ -43,11 +43,6 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 			public void mouseClicked(MouseEvent arg0) {
 				if(comprovar_data()) {
 					//try {
-					for(int i=0; i<N; ++i) {
-						for(int j=0; j<N; ++j) {
-							System.out.println(aux[i][j]);
-						}
-					}
 					CV.entrarAValidar(aux);
 					Salir();
 					//}
