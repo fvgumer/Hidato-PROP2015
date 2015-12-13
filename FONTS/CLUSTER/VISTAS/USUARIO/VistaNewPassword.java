@@ -1,10 +1,6 @@
 package CLUSTER.VISTAS.USUARIO;
 
 import java.awt.Color;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.KeyAdapter;
@@ -27,6 +23,14 @@ public class VistaNewPassword extends VistaUsuario{
 	 * Create the application.
 	 */
 	public VistaNewPassword(final CtrlVista CV) {
+		contentPane.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+			}
+		});
+		
+		
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -70,6 +74,7 @@ public class VistaNewPassword extends VistaUsuario{
 		});
 	
 	}
+	
 	private void modificar(CtrlVista CV){
 		if(CV.cambiarPass(new String(passwordField.getPassword()),textField.getText())){
 			clear();
