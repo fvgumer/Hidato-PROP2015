@@ -22,7 +22,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	   */
 	private int dif;
 	private Casilla[][] solucio; 
-	private int holes, n_predef, final_num, forma;
+	private int holes, n_predef, final_num;
 	private int[] start, end;
 	private boolean[] posats;
 	private boolean solucion_unica;
@@ -44,7 +44,8 @@ public class Tablero extends Tablero_comp implements Serializable{
 			}
 		}
 		solucion_unica=false;
-		start = end = new int[2];	
+		start = end = new int[2];
+		
 	}
 	/**
 	   * Copia el objeto del parametro implicito
@@ -116,14 +117,6 @@ public class Tablero extends Tablero_comp implements Serializable{
 	   */
 	public String get_id() {
 		return id;
-	}
-	
-	public int get_forma(){
-		return forma;
-	}
-	
-	public void set_forma(int f){
-		forma = f;
 	}
 	
 	/**
