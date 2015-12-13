@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 	
@@ -16,11 +17,23 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 	private JTextField[][] board;
 	private CtrlVista CV;
 	private JPanel panel;
+	private String id;
 	
 	public VistaBorrarConfirmar(final CtrlVista CV) {
 		setTextLayer("Borrado de Tableros");
 		contentPane.setLayout(null);
 		this.CV = CV;
+		
+		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CV.eliminar_tablero(id);
+				CV.entrarABorrarTablero();
+			}
+		});
+		btnBorrar.setBounds(607, 283, 97, 25);
+		getContentPane().add(btnBorrar);
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarABorrarTablero();

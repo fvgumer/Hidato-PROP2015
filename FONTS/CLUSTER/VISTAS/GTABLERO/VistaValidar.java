@@ -10,41 +10,52 @@ import javax.swing.JLabel;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VistaValidar extends VistaPadreIniConBoton{
 	
-	private int N = 4;
-	private JTextField[][] board = new JTextField[N][N];
+	private int N;
+	private JTextField[][] board;
+	private JPanel panel;
 	
 	public VistaValidar(final CtrlVista CV) {
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 288, 276);
+		panel = new JPanel();
+		panel.setBounds(12, 13, 482, 430);
 		getContentPane().add(panel);
-		panel.setLayout(new GridLayout(N,N));
-		for (int row = 0; row < N; ++row) {
-	         for (int col = 0; col < N; ++col) {
-	            board[row][col] = new JTextField();
-	            board[row][col].setText("0");
-	            panel.add(board[row][col]);
-	         }
-	     }
-		
 		
 		JLabel lblNewLabel = new JLabel("Esta es la Solucion del tablero!");
-		lblNewLabel.setBounds(300, 13, 169, 59);
+		lblNewLabel.setBounds(506, 13, 198, 59);
 		getContentPane().add(lblNewLabel);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(300, 108, 97, 25);
+		btnGuardar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String[][] aux = new String[N][N];
+				for(int i=0; i<N; ++i) {
+					for(int j=0; j<N; ++j){
+						aux[i][j] = board[i][j].getText();
+					}
+				}
+				CV.guardar_tablero(aux);
+				Salir();
+			}
+		});
+		btnGuardar.setBounds(545, 85, 97, 25);
 		getContentPane().add(btnGuardar);
 	}
 	
 	public void set_tablero(String[][] t) {
-		int n = t[0].length;
-		for(int i=0; i<n; ++i) {
-			for(int j=0; j<n; ++j){
+		N = t[0].length;
+		panel.setLayout(new GridLayout(N,N));
+		board = new JTextField[N][N];
+		for(int i=0; i<N; ++i) {
+			for(int j=0; j<N; ++j){
+				board[i][j] = new JTextField();
 				board[i][j].setText(t[i][j]);
+				panel.add(board[i][j]);
 			}
 		}
 	}

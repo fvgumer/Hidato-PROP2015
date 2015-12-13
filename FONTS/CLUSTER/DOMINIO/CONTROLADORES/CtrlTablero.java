@@ -144,6 +144,7 @@ public class CtrlTablero {
 		Temporizador t = new Temporizador();
 		t.timer_max();
 		t.iniciar();
+		map.setfinal_num(map.getMida()*map.getMida()-map.getholes());
 		boolean b = a.solver(start[0], start[1], 1, map,t);
 		Casilla[][] aux = a.get_solucio();
 		map.set_solucio(aux);
@@ -226,8 +227,9 @@ public class CtrlTablero {
 	
 	public void set_tablero(String[][] t, boolean unica) {
 		int n = t[0].length;
-		map = new Tablero(n);
+		this.map = new Tablero(n);
 		int vacias = 0;
+		
 		for(int i=0; i<n; ++i) {
 			for(int j=0; j<n; ++j) {
 				int aux = Integer.parseInt(t[i][j]);
@@ -238,6 +240,9 @@ public class CtrlTablero {
 		}
 		map.setn_predef((n*n)-map.getholes()-vacias);
 		map.setSolucion_unica(unica);
+		System.out.println(map.getMida());
+		System.out.println(map.getholes());
+		System.out.println(map.getn_predef());
 	}
 	
 	public String[][] get_tablero() {
@@ -278,6 +283,11 @@ public class CtrlTablero {
 			nom = nom + "0";
 		}
 		nom = nom + String.valueOf(caselles_buides);
+		int n_tab = c.num_tableros(nom);
+		if (n_tab < 10) {
+			nom = nom + "0";
+		}
+		nom = nom + String.valueOf(n_tab);
 		return nom;
 	}
 	
@@ -285,8 +295,8 @@ public class CtrlTablero {
 		map.set_id(obten_id());
 		c.guardar(map);
 		System.out.println("Se le ha asignado el siguiente id: " + map.get_id());
-		CtrlRanking rnk = new CtrlRanking();
-		rnk.crearRanking(map.get_id());
+		//CtrlRanking rnk = new CtrlRanking();
+		//rnk.crearRanking(map.get_id());
 	}
 	
 	/**
@@ -296,7 +306,7 @@ public class CtrlTablero {
 	 */
 	public boolean cargar(String id) {
 		boolean b = true;
-		map = c.cargar(id,b);
+		this.map = c.cargar(id,b);
 		return b;
 	}
 	
@@ -323,6 +333,10 @@ public class CtrlTablero {
 		c.eliminar(map);
 		CtrlRanking rnk = new CtrlRanking();
 		rnk.eliminarRanking(map.get_id());
+	}
+	
+	public void cargar_txt(String name) {
+		
 	}
 	
 	public void asignar_dificultad() {

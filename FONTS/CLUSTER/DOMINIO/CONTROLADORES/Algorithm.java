@@ -38,7 +38,7 @@ public class Algorithm {
 			return false;
 		}
 		boolean result = false, predef = false;
-		if (value == 16) {
+		if (value == map.get_final_num()) {
 			crea_solucion(map);
 			return true;
 		}

@@ -18,7 +18,7 @@ public class VistaCrearTablero1 extends VistaPadreIniConBoton {
 		setTextLayer("Menu Gestion de Tableros");
 		contentPane.setLayout(null);
 		Titulo t = new Titulo("Que quieres hacer?",110,53);
-		t.setText("Escojer medidas:");
+		t.setText("Escoger medidas:");
 		t.setBounds(76, 13, 365, 50);
 		getContentPane().add(t);
 		

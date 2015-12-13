@@ -3,6 +3,7 @@ package CLUSTER.DOMINIO.CONTROLADORES.DRIVERS;
 import java.util.Scanner;
 
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.PERSISTENCIA.CtrlGestionTablero;
 
 public class SuperDriver {
 
@@ -16,6 +17,7 @@ public class SuperDriver {
 		DriverGestionUsuario gestorJ = new DriverGestionUsuario();
 		DriverEstadisticas est = new DriverEstadisticas();
 		Jugador Jactivo = null;
+		CtrlGestionTablero g = new CtrlGestionTablero();
 		boolean b = true;
 		int i;
 		while (b) {

@@ -1,16 +1,21 @@
 package CLUSTER.VISTAS.CONTROLADORES;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
-import CLUSTER.VISTAS.VistaEstPersonales;
-import CLUSTER.VISTAS.VistaEstUsuario;
 import CLUSTER.VISTAS.VistaInicial;
-import CLUSTER.VISTAS.VistaRanking;
+//import CLUSTER.VISTAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VEmergentInfo;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaEstPersonales;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarEstadisticas;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarRanking;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
 import CLUSTER.VISTAS.BASES.VistaMenu;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
 import CLUSTER.VISTAS.USUARIO.*;
 import CLUSTER.VISTAS.GTABLERO.*;
 
@@ -18,9 +23,12 @@ public class CtrlVista {
 	private VistaInicial VInicial; 
 	private CtrlDominio CDominio;
 	private VistaMenu VMenu;
+	//Partida
 	private VistaMenuPartida VMenuPartida;
 	private VistaElegirCarac1 VElegirC1;
 	private VistaElegirCarac2 VElegirC2;
+	private VEmergentInfo VEInfo;
+	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
 	private VistaValidar VGTValidar;
@@ -28,19 +36,22 @@ public class CtrlVista {
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
 	private VistaImportar VImportar;
 	private VistaMenuTipoTablero VMTipoTablero;
+	//Estadisticas
 	private VistaConsultaEst VEst;
 	private VistaEstUsuario VEstU;
 	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
-	private VEmergentInfo VEInfo;
+	
+	private VistaMostrarRanking VMRank;
+	private VistaMostrarEstadisticas VMEst;
 	//Usuario
 	private VistaLogin VLogin;
-	/** Ho comentaritzo perque si no peta el controlador, perque
-	 * no compilen les clases 
+	private VistaEliminarUser VEliminarUser;
 	private VistaCrearUsuario VCrearUsuario;
 	private VistaMenuUser VMenuUser;
 	private VistaNewPassword VNewPassword;
-	*/
+	private VistaCaracteristicasGT VCaracGT;
+	
 	private String[][] map;
 		//Funciones iniciales del controlador
 		/**
@@ -68,19 +79,23 @@ public class CtrlVista {
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
 			VGTValidar = new VistaValidar(this);
-			//VBorrar = new VistaBorrar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
+			/*Sobre Estadisticas*/
 			VEst = new VistaConsultaEst(this);
 			VEstP = new VistaEstPersonales(this);
 			VEstU = new VistaEstUsuario(this);
 			VRank = new VistaRanking(this);
+			VMRank = new VistaMostrarRanking(this);
+			VMEst = new VistaMostrarEstadisticas(this);
+			/*Sobre usuario*/
 			VLogin = new VistaLogin(this);
-			/**
-			VCrearUsuario = new VistaUsuario(this);
+			VEliminarUser = new VistaEliminarUser(this);
+			VCrearUsuario = new VistaCrearUsuario(this);
 			VNewPassword = new VistaNewPassword(this);
 			VMenuUser= new VistaMenuUser(this);
-			**/
+			VCaracGT = new VistaCaracteristicasGT(this);
+			
 		}
 
 		/**
@@ -100,7 +115,16 @@ public class CtrlVista {
 		}
 
 		public void entrarACrearUsuario(){
-			
+			VCrearUsuario.setVisible(true);
+		}
+		public void entrarMenuUsuario(){
+			VMenuUser.setVisible(true);
+		}
+		public void entrarCambiarPass(){
+			VNewPassword.setVisible(true);
+		}
+		public void entrarAeliminarUser(){
+			VEliminarUser.setVisible(true);
 		}
 		/** Sobre Partida **/
 		public void entrarAMenuPartida(){
@@ -142,10 +166,19 @@ public class CtrlVista {
 		public void entrarAImportar(){
 			VImportar.setVisible(true);
 		}
-		public void entrarACrearMan(){
+		public void entrarACrearMan(int n, int c_negras, int c_vacias){
+			VCrearTablero1.set_data(n, c_negras, c_vacias);
 			VCrearTablero1.setVisible(true);
 		}
+		
+		public void entrarAElegirCaracGT() {
+			VCaracGT.setVisible(true);
+		}
+		
 		public void entrarABorrarTablero(){
+			//De moment es una solucio funcional que permet tenir la llista actualitzadaa
+			VBorrar = new VistaBorrar(this);
+			VBorrar.actualitza_llista();
 			VBorrar.setVisible(true);
 		}
 		
@@ -158,6 +191,11 @@ public class CtrlVista {
 			String[][] s = CDominio.solucionar();
 			VGTValidar.set_tablero(s);
 			VGTValidar.setVisible(true);
+		}
+		
+		public void guardar_tablero(String[][] t) {
+			CDominio.guardar_tablero();
+			entrarABorrarTablero();
 		}
 		
 		public void entrarABorrarConfirmar(String id) {
@@ -177,9 +215,21 @@ public class CtrlVista {
 			VEstU.setVisible(true);
 		}
 
+		public void entrarAMostrarEstadisticas() {
+			VMEst.setVisible(true);
+		}
+		
 		public void entrarARanking() {
 			VRank.setVisible(true);
 		}
+		
+		public void entrarAMostrarRanking(String nTab, String nPos) {
+			int n = Integer.parseInt(nPos);
+			VMRank.setPos(n);
+			VMRank.setVisible(true);
+			CDominio.getRanking(nTab,n);
+		}
+
 		
 		public String[] get_tableros_repo() {
 			return CDominio.get_tableros_repo();
@@ -189,10 +239,33 @@ public class CtrlVista {
 			return CDominio.cargar_tab(id);
 		}
 		
+		public void eliminar_tablero(String id) {
+			CDominio.eliminar_tablero();
+		}
+		
+		public String[][] get_tab_txt(String name) {
+			return CDominio.get_tab_txt(name);
+		}
+		
 		/**
 		 * FUNCIONES DE RECOGIDA DE INFORMACION
 		 */
-		
+		//USER
+		public boolean login(String nombre, String password){
+			return CDominio.ingresarUsuario(nombre, password);
+		}
+		public String nomactiu(){
+			return CDominio.nomActiu();
+		}
+		public boolean Jactivo(){
+			return CDominio.jugadoractivo();
+		}
+		public boolean crearUsuario(String nombre, String password){
+			return CDominio.crearUsuario(nombre,password);
+		}
+		public boolean eliminarUsuario(String user, String password){
+			return CDominio.eliminarUsuario(user,password);
+		}
 		/**
 		 * Sobre Partida
 		 */

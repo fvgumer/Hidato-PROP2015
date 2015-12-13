@@ -27,20 +27,32 @@ public class VistaLogin extends VistaUsuario{
 	 */
 	public VistaLogin(final CtrlVista CV) {
 		super(null);
+		Bsalir.setText("Salir");
+		B.set_name("Login");
+		Bsalir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(CV.Jactivo()==false) CV.run();
+				clear();
+				Salir();
+			}
+		});
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(CV.login(textField.getText(),new String(passwordField.getPassword()))){
+					CV.entrarAMenu();
+					clear();
+					Salir();
+				}
+				else{
+					lblError.setText("Error verifique el usuario o contraseña son correctos");
+					textField.setText("");
+					passwordField.setText("");
+					
+				}
 			}
 		});
-		initialize();
+		
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		Bsalir.setText("Salir");
-		B.set_name("Login");
-	}
-
 }

@@ -19,7 +19,8 @@ public class VistaMenu extends VistaPadreInicio {
 		b1.setLocation(84, 128);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				//Nueva Ventana
+				CV.entrarMenuUsuario();
+				Salir();
 			}
 		});
 		getContentPane().add(b1);
@@ -44,7 +45,9 @@ public class VistaMenu extends VistaPadreInicio {
 		getContentPane().add(b3);
 		Botones b4 = new Botones("Estadisticas",250,180);
 		b4.setLocation(385, 231);
-		b1.addMouseListener(new MouseAdapter() {
+	
+		b4.addMouseListener(new MouseAdapter() {
+
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAConsultaEst();
 				Salir();

@@ -7,5 +7,4 @@ public class Main {
 		CtrlVista cv = new CtrlVista();
 		cv.run();
 	}
-
 }

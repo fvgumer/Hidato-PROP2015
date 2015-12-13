@@ -25,21 +25,18 @@ public class VistaNewPassword extends VistaUsuario{
 	 */
 	public VistaNewPassword(final CtrlVista CV) {
 		super(null);
-		B.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		Bsalir.setText("Atras");
 		B.set_name("Cambiar");
 		lblUsuario.setText("Vieja Contraseña");
 		lblContrasea.setText("Nueva Contraseña");
+		B.setBounds(93, 188, 250, 47);
+		Bsalir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarMenuUsuario();
+				Salir();
+			}
+		});
+	
 	}
 }

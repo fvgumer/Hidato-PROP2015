@@ -10,6 +10,10 @@ import java.awt.Button;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class VistaInicial extends VistaPadreInicio {
 
@@ -36,7 +40,7 @@ public class VistaInicial extends VistaPadreInicio {
 		b1.setLocation(84, 283);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAMenu();
+				CV.entrarAInicioSesion();
 				Salir();
 			}
 		});
@@ -46,6 +50,23 @@ public class VistaInicial extends VistaPadreInicio {
 		Botones b2 = new Botones("Salir",250,200);
 		b2.setLocation(372, 283);
 		getContentPane().add(b2);
+		
+		JButton btnNewButton = new JButton("Crear Nuevo Usuario");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CV.entrarACrearUsuario();
+				Salir();
+			}
+		});
+		btnNewButton.setBackground(Color.RED);
+		btnNewButton.setForeground(Color.PINK);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(222, 392, 245, 23);
+		getContentPane().add(btnNewButton);
 		b2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				Salir();

@@ -9,6 +9,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 //import org.apache.commons.io.*;
 
+import org.apache.commons.io.FileUtils;
+
 import CLUSTER.DOMINIO.CLASES.Jugador;
 
 /**
@@ -34,11 +36,11 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 	 */
 	public boolean crear_jugador(String nombre, String contrasenya){
 		ruta = ".."+ barras + "DATOS" + barras +"Jugadors"+barras;
-		File archiu = new File("Jugadors"+barras+nombre+".bin");
+		File archiu = new File(".."+ barras + "DATOS" + barras +"Jugadors"+barras+nombre+".bin");
 		File directory = new File(ruta);
 		directory.mkdir();
 		if(archiu.exists()){
-			System.out.println("El nom ja existeix, elegeix un altre");
+			//System.out.println("El nom ja existeix, elegeix un altre");
 			return false;
 		}
 		Jugador player = new Jugador(nombre,contrasenya);
@@ -110,14 +112,14 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 			File archiu = new File(ruta);
 			if(archiu.delete()) {
 				String rutapartida = ".."+ barras + "DATOS" + barras +"Partidas"+barras+nombre;
-				/*if(new File(rutapartida).exists()){
+				if(new File(rutapartida).exists()){
 				try {
 					FileUtils.deleteDirectory(new File(rutapartida));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				}*/
+				}
 			}
 			else System.out.println("El jugador no existeix");
 		
