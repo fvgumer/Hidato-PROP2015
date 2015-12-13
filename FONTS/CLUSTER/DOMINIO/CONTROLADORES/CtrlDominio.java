@@ -22,8 +22,9 @@ public class CtrlDominio {
 	}
 	
 	/** Sobre Partida **/
-	public void setInforPartida(Jugador J,int f, int m, int forats, int ini, int t) {
+	public void setInforPartida(int f, int m, int forats, int ini, int t) {
 		CPartida.anadir_carct_tablero(f,m, forats, ini);
+		CPartida.crear_partida(Jactivo);
 	}
 	
 	public int get_dificultat_partida(int dim, int abuj, int c_ini){
@@ -40,6 +41,14 @@ public class CtrlDominio {
 	
 	public void cargarPartida(String id) {
 		CPartida.Cargar_Partida_Hidato(Jactivo.consultar_nombre(),id);
+	}
+	
+	public int[][] getTAleatorio(){
+		return CPartida.generar_Taleatorio();
+	}
+	
+	public void crear_Partida(){
+		CPartida.crear_partida(Jactivo);
 	}
 
 	//USUARIO
