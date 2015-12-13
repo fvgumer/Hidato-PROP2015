@@ -3,9 +3,11 @@ package CLUSTER.VISTAS.ESTADISTICAS;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.List;
@@ -16,8 +18,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 
 public class VistaMostrarRanking extends VistaPadreIniConBoton{
+	
 	private JTable table;
-	private int n;
+	private ArrayList<Resultado> r;
 
 	/**
 	 * Launch the application.
@@ -34,17 +37,20 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 			}
 		});
 	}
-
-	public void setPos(int nPos){
-		n = nPos;
+	
+	public void setR(ArrayList<Resultado> aux) {
+		r = aux;
 	}
+	
 	/**
 	 * Create the application.
 	 */
 	public VistaMostrarRanking(final CtrlVista CV) {
+		r = new ArrayList<Resultado>();
 
 		super.setTextLayer("Ranking de tablero");
 		getContentPane().setName("Ranking de tablero");
+		
 		
 		table = new JTable();
 		table.setAutoCreateRowSorter(true);
@@ -54,10 +60,9 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 			{"Posicion","Jugador","Modo","Dificultad","Puntuacion"},
 			},new String[] {"a","b","c","d","e"}));
 		
-		for (int i = 0; i < n; ++i) {
-			
+		for (int i = 0; i < r.size() ; ++i) {
+			System.out.print(r.get(i));
 		}
-			
 		
 		getContentPane().add(table);
 		JB.addMouseListener(new MouseAdapter() {

@@ -26,6 +26,7 @@ public class Ranking implements Serializable {
 	 * Creadora por defecto del ranking.
 	 * @param tablero Nombre del tablero del cual queremos crear el ranking.
 	 */
+	
 	public Ranking(String tablero) {
 		this.tablero = tablero;
 		ranking = new ArrayList<Resultado>();	

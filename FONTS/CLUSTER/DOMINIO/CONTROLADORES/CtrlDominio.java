@@ -1,5 +1,8 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
+import java.util.ArrayList;
+
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.VISTAS.*;
 
 public class CtrlDominio {
@@ -102,8 +105,8 @@ public class CtrlDominio {
 		return Jactivo.consultar_nombre();
 	}
 	
-	public void getRanking(String nTab, int nPos) {
-		CRanking.getTop(nTab,nPos);
+	public ArrayList<Resultado> getRanking(String nTab, int nPos) {
+		return CRanking.getRanking(nTab,nPos);
 	}
 
 }

@@ -1,5 +1,8 @@
 package CLUSTER.VISTAS.CONTROLADORES;
+import java.util.ArrayList;
+
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
 import CLUSTER.VISTAS.VistaInicial;
 //import CLUSTER.VISTAS.VistaRanking;
@@ -245,11 +248,11 @@ public class CtrlVista {
 		
 		public void entrarAMostrarRanking(String nTab, String nPos) {
 			int n = Integer.parseInt(nPos);
-			VMRank.setPos(n);
+			ArrayList<Resultado> aux = new ArrayList<Resultado>(n);
+			aux = CDominio.getRanking(nTab,n);
+			VMRank.setR(aux);
 			VMRank.setVisible(true);
-			CDominio.getRanking(nTab,n);
 		}
-
 		
 		public String[] get_tableros_repo() {
 			return CDominio.get_tableros_repo();
