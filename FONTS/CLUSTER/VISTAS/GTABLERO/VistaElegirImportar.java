@@ -23,7 +23,7 @@ public class VistaElegirImportar extends VistaPadreIniConBoton {
 		btnCargar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String[][] tab = CV.get_tab_txt(textField.getText()); //enrecordat alex
+				String[][] tab = CV.get_tab_txt(textField.getText());
 				CV.entrarAImportar(tab);
 				Salir();
 			}
