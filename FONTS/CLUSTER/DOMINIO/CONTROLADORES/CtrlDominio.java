@@ -120,6 +120,10 @@ public class CtrlDominio {
 		else return "";
 	}
 	
+	public boolean existsU(String user) {
+		return CEstadisticas.cargarEst(user);
+	}
+	
 	public boolean existsR(String nTab) {
 		return CRanking.cargarRanking(nTab);
 	}

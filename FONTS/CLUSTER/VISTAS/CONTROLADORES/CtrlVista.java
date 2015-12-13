@@ -240,6 +240,10 @@ public class CtrlVista {
 		public void entrarAEstUsuario() {
 			VEstU.setVisible(true);
 		}
+		
+		public boolean existsU(String user) {
+			return CDominio.existsU(user);
+		}
 
 		public void entrarAMostrarEstadisticas() {
 			VMEst.setVisible(true);
