@@ -145,9 +145,7 @@ public class CtrlTablero {
 		t.timer_max();
 		t.iniciar();
 		//map.setfinal_num(map.getMida()*map.getMida()-map.getholes());
-		System.out.println(map.get_final_num());
 		boolean b = a.solver(start[0], start[1], 1, map,t);
-		System.out.println(b);
 		Casilla[][] aux = a.get_solucio();
 		map.set_solucio(aux);
 		return b;
@@ -295,8 +293,8 @@ public class CtrlTablero {
 		map.set_id(obten_id());
 		c.guardar(map);
 		System.out.println("Se le ha asignado el siguiente id: " + map.get_id());
-		//CtrlRanking rnk = new CtrlRanking();
-		//rnk.crearRanking(map.get_id());
+		CtrlRanking rnk = new CtrlRanking();
+		rnk.crearRanking(map.get_id());
 	}
 	
 	/**

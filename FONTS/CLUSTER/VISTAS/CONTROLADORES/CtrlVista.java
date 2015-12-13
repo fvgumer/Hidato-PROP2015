@@ -189,6 +189,7 @@ public class CtrlVista {
 			VImportar.setVisible(true);
 		}
 		public void entrarACrearMan(int n, int c_negras, int c_vacias){
+			VCrearTablero1 = new VistaCrearManual(this);
 			VCrearTablero1.set_data(n, c_negras, c_vacias);
 			VCrearTablero1.setVisible(true);
 		}

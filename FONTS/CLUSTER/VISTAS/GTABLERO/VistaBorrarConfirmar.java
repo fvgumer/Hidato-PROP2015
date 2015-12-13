@@ -37,6 +37,7 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 				mssgBorrar.setVisible(true);
 				CV.eliminar_tablero(id);
 				CV.entrarABorrarTablero();
+				Salir();
 			}
 		});
 		btnBorrar.setBounds(607, 283, 97, 25);
