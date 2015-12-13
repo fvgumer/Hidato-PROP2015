@@ -38,6 +38,8 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 		modo = 0;
 		puntuacion = 0;
 	}
+	public Partida_Hidato() {
+	}
 	/**
 	 * Introducir dificultad a la partida
 	 * @param dificultad Entero que indentifica la dificultad de la partida
@@ -167,5 +169,15 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	 */
 	public void set_tablero(Tablero T){
 		tableroP = T.copia_t();
+	}
+	
+	public int getMida(){
+		return tableroP.getMida();
+	}
+	public int getholes(){
+		return tableroP.getholes();
+	}
+	public int getn_predef(){
+		return tableroP.getn_predef();
 	}
 }

@@ -2,7 +2,6 @@ package CLUSTER.VISTAS.PARTIDA;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
-import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import javax.swing.JSlider;
 import javax.swing.JLabel;

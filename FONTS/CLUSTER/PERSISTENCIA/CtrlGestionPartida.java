@@ -79,6 +79,9 @@ public int consultar_numeropartidas(String NomJ){
 	}
 	else return directory.list().length;
 }
+
+
+
 /**
  * Consultora de los nombres de todas las partidas de un jugador
  * @param NomJ Nombre del jugador del cual queremos consultar todos los nombres de sus partidas.

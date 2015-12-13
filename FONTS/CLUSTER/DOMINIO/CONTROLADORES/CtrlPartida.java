@@ -12,6 +12,7 @@ public class CtrlPartida {
 	private Jugador J;
 	private CtrlGestionPartida c;
 	private String[] ids;
+	private int f;
 	
 	
 	/**
@@ -60,8 +61,6 @@ public class CtrlPartida {
 	public void Cargar_Partida_Hidato(String id){
 		int i = Integer.parseInt(id);
 		c.cargar(PH.getUsuario().consultar_nombre(), i);
-		
-		
 	}
 	
 	
@@ -92,6 +91,19 @@ public class CtrlPartida {
 			ids = c.lista_partidas(NomJ);
 		return ids;
 	}
+	
+	public int[][] previsualizarTablero(String NomJ ,String id) {
+		PH = new Partida_Hidato();
+		int m = Integer.parseInt(id);
+		PH = c.cargar(NomJ, m);
+		int[][] map = null;
+		for (int i = 0; i < PH.getMida(); ++i) {
+			for ( int j = 0; j < PH.getMida(); ++j){
+				map[i][j] = PH.getTablero().getValorTauler(i, j);
+			}
+		}
+		return map;
+	}
 
 	
 	/**
@@ -101,10 +113,11 @@ public class CtrlPartida {
 	 * @param n_ini Entero que indica el numero de casillas iniciales que contienen
 	 * un nÃºmero.
 	 */
-	public void anadir_carct_tablero(int dim, int forats, int n_ini){
+	public void anadir_carct_tablero(int form,int dim, int forats, int n_ini){
 		T = new Tablero(dim);
 		T.setholes(forats);
 		T.setn_predef(n_ini);
+		f = form;
 	}
 
 	/**
@@ -115,8 +128,11 @@ public class CtrlPartida {
 	 * @param forats Entero que indica el nÃƒÂºmero de casillas vacÃƒÂ­as del tablero
 	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
 	 */
-	public void generar_Taleatorio(int dim, int c_ini, int forats, int f){
+	public void generar_Taleatorio(int f){
 				CtrlTablero GT = new CtrlTablero();
+				int dim = PH.get_Tablero().getMida();
+				int forats = PH.get_Tablero().getholes();
+				int c_ini = PH.get_Tablero().getn_predef();
 				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), f);
 				T = GT.asociar_tablero();
 				T.print();
@@ -142,11 +158,11 @@ public class CtrlPartida {
 	  * @param dim Entero dentro de las dimensiones validas del tipo de tablero
 	  * @param abuj Entero valido que identifica el nÃºmero de casillas vacias
 	  * que contiene el tablero.
-	  * @param c_ini Entero valido que identifica el nÃºmero de casillas inciales
+	  * @param c_ini Entero valido que identifica el numero de casillas inciales
 	  * que contiene el tablero.
 	  * @return Retorna un entero que identifica la dificultad del tablero
 	  */
-	public int calcular_dificultad(int dim, int abuj,int c_ini) {
+	public int calcular_dificultad(int dim, int abuj, int c_ini) {
 		double p1,p2,p3;
 		//Segun dimension
 		if (dim > 2 && dim < 6) p1 = 5;
