@@ -15,7 +15,7 @@ public class VistaEliminarUser extends VistaUsuario {
 
 
 	public VistaEliminarUser(final CtrlVista CV) {
-		super(null);
+		super();
 		textField.setText(CV.nomactiu());
 		B.addMouseListener(new MouseAdapter() {
 			@Override
@@ -40,6 +40,7 @@ public class VistaEliminarUser extends VistaUsuario {
 		B.set_name("Eliminar");
 		lblUsuario.setText("Usuario a eliminar");
 		lblContrasea.setText("Contraseña");
+		lblError.setText(CV.nomactiu());
 	}
 
 }

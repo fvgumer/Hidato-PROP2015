@@ -8,6 +8,7 @@ public class VistaMenu extends VistaPadreInicio {
 
 	public VistaMenu(final CtrlVista CV) {
 		//Config layer 
+
 		setTextLayer("Menu Principal");
 		getContentPane().setLayout(null);
 		Titulo t = new Titulo("MENÚ PRINCIPAL",110,53);
@@ -19,6 +20,7 @@ public class VistaMenu extends VistaPadreInicio {
 		b1.setLocation(84, 128);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				System.out.println(CV.nomactiu());
 				CV.entrarMenuUsuario();
 				Salir();
 			}

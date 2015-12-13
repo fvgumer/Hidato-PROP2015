@@ -10,7 +10,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-	private Jugador Jactivo;
+	private Jugador Jactivo = new Jugador(null,null);
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -19,12 +19,12 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
-		Jactivo = new Jugador("Pepe",null);
 	}
 	
 	/** Sobre Partida **/
-	public void setInforPartida(Jugador J,int f, int m, int forats, int ini, int t) {
+	public void setInforPartida(int f, int m, int forats, int ini, int t) {
 		CPartida.anadir_carct_tablero(f,m, forats, ini);
+		CPartida.crear_partida(Jactivo);
 	}
 	
 	public int get_dificultat_partida(int dim, int abuj, int c_ini){
@@ -42,20 +42,28 @@ public class CtrlDominio {
 	public void cargarPartida(String id) {
 		CPartida.Cargar_Partida_Hidato(Jactivo.consultar_nombre(),id);
 	}
+	
+	public int[][] getTAleatorio(){
+		return CPartida.generar_Taleatorio();
+	}
+	
+	public void crear_Partida(){
+		CPartida.crear_partida(Jactivo);
+	}
 
 	//USUARIO
 	public boolean ingresarUsuario(String nombre, String contrasenya){
 		if(CJugador.ingresarusuario(nombre, contrasenya)){
 			Jactivo.set_nombre(nombre);
+			System.out.println(Jactivo.consultar_nombre());
 			Jactivo.set_password(contrasenya);	
-			CJugador.J.set_nombre(nombre);
-			CJugador.J.set_password(contrasenya);
+			
 			return true;
 		}
 		else return false;
 	}
 	public boolean jugadoractivo(){
-		return (Jactivo.consultar_nombre()!=null);
+		return (Jactivo!=null);
 	}
 	
 	public void set_tablero(String[][] t) {

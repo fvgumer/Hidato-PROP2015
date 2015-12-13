@@ -24,7 +24,7 @@ public class VistaNewPassword extends VistaUsuario{
 	 * Create the application.
 	 */
 	public VistaNewPassword(final CtrlVista CV) {
-		super(null);
+	
 		Bsalir.setText("Atras");
 		B.set_name("Cambiar");
 		lblUsuario.setText("Vieja Contraseña");

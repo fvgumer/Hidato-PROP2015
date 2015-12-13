@@ -9,10 +9,8 @@ public class CtrlPartida {
 	private Partida_Hidato PH;
 	private Partida_Hidato PH2; //SIN JUGAR
 	private Tablero T;
-	private Jugador J;
 	private CtrlGestionPartida c;
 	private String[] ids;
-	private int f;
 	
 	
 	/**
@@ -23,14 +21,19 @@ public class CtrlPartida {
 	 * @param dim Entero que hace referencia a las dimensiones del tablero 
 	 * de la partida.
 	 */
-	public void crear_partida(Jugador U, int dificultad,int modo, int dim){
+	public void crear_partida(Jugador U){
 		int ID = 0; //CALCULAR ID
 		PH = new Partida_Hidato(T,U,ID);
+		PH2 = new Partida_Hidato(T,U,ID);
+	}
+	
+	public void setModoJuego(int dificultad, int modo) {
 		PH.set_dificultad(dificultad);
 		PH.set_modo(modo);
-		PH2 = new Partida_Hidato(T,U,ID);
 		PH2.set_dificultad(dificultad);
+		PH2.set_modo(modo);PH2.set_dificultad(dificultad);
 		PH2.set_modo(modo);
+		
 	}
 	
 	/**
@@ -92,10 +95,7 @@ public class CtrlPartida {
 		return ids;
 	}
 	
-	public int[][] previsualizarTablero(String NomJ ,String id) {
-		PH = new Partida_Hidato();
-		int m = Integer.parseInt(id);
-		PH = c.cargar(NomJ, m);
+	private int[][] pasarAMapa(Tablero T) {
 		int[][] map = null;
 		for (int i = 0; i < PH.getMida(); ++i) {
 			for ( int j = 0; j < PH.getMida(); ++j){
@@ -103,6 +103,13 @@ public class CtrlPartida {
 			}
 		}
 		return map;
+	}
+	
+	public int[][] previsualizarTablero(String NomJ ,String id) {
+		PH = new Partida_Hidato();
+		int m = Integer.parseInt(id);
+		PH = c.cargar(NomJ, m);
+		return pasarAMapa(T);
 	}
 
 	
@@ -117,7 +124,7 @@ public class CtrlPartida {
 		T = new Tablero(dim);
 		T.setholes(forats);
 		T.setn_predef(n_ini);
-		f = form;
+		T.set_forma(form);
 	}
 
 	/**
@@ -128,14 +135,15 @@ public class CtrlPartida {
 	 * @param forats Entero que indica el nÃƒÂºmero de casillas vacÃƒÂ­as del tablero
 	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
 	 */
-	public void generar_Taleatorio(int f){
+	public int[][] generar_Taleatorio(){
 				CtrlTablero GT = new CtrlTablero();
-				int dim = PH.get_Tablero().getMida();
-				int forats = PH.get_Tablero().getholes();
-				int c_ini = PH.get_Tablero().getn_predef();
-				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), f);
+				int dim = T.getMida();
+				int forats = T.getholes();
+				int c_ini = T.getn_predef();
+				int forma = T.get_forma();
+				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), forma);
 				T = GT.asociar_tablero();
-				T.print();
+				return pasarAMapa(T);
 	}
 
 	/**
