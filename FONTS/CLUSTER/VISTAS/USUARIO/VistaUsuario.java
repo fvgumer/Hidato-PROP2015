@@ -1,21 +1,14 @@
 package CLUSTER.VISTAS.USUARIO;
 
-import java.awt.EventQueue;
-
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Botons;
-import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
@@ -43,6 +36,7 @@ public class VistaUsuario extends VistaPadreInicio{
 	
 	public VistaUsuario() {
 		//super();
+		
 		setTextLayer("User");
 		getContentPane().setName("User");
 		lblContrasea.setBounds(34, 139, 123, 14);

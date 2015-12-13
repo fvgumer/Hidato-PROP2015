@@ -1,9 +1,5 @@
 package CLUSTER.VISTAS.USUARIO;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
@@ -11,8 +7,6 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class VistaMenuUser extends VistaPadreIniConBoton{
 
@@ -28,7 +22,7 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 	 * Create the application.
 	 */
 	public VistaMenuUser(final CtrlVista CV) {
-		//super();
+		
 		JB.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -58,7 +52,6 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 		b2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println(CV.nomactiu());
 				CV.entrarAeliminarUser();
 				Salir();
 			}

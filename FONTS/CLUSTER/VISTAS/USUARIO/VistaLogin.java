@@ -1,20 +1,11 @@
 package CLUSTER.VISTAS.USUARIO;
 
-import CLUSTER.VISTAS.BASES.Botones;
-import CLUSTER.VISTAS.BASES.Botons;
-import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 public class VistaLogin extends VistaUsuario{
 
@@ -27,6 +18,11 @@ public class VistaLogin extends VistaUsuario{
 	 */
 	
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Create the application.

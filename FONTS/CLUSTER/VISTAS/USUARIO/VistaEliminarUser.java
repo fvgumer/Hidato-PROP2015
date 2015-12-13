@@ -25,6 +25,7 @@ public class VistaEliminarUser extends VistaUsuario {
 				eliminar(CV);
 			}
 		});
+		
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {

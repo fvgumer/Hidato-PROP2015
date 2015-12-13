@@ -3,8 +3,6 @@ package CLUSTER.VISTAS.USUARIO;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.Spring;
-
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -19,6 +17,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 
 
 	public VistaCrearUsuario(final CtrlVista CV) {
+		
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -31,6 +30,8 @@ public class VistaCrearUsuario extends VistaUsuario {
 				}
 			}
 		});
+		
+		
 		passwordField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
