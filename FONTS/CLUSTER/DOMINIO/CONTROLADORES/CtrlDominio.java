@@ -30,6 +30,14 @@ public class CtrlDominio {
 	public int get_dificultat_partida(int dim, int abuj, int c_ini){
 		return CPartida.calcular_dificultad(dim, abuj, c_ini);
 	}
+	
+	public String[] conseguir_partidas_para_Cargar(){
+		return CPartida.conseguir_partidas_enproceso(Jactivo.consultar_nombre());
+	}
+	
+	public int[][] getInfoTablero(String id){
+		return CPartida.previsualizarTablero(Jactivo.consultar_nombre(),id);
+	}
 
 	//USUARIO
 	public boolean ingresarUsuario(String nombre, String contrasenya){

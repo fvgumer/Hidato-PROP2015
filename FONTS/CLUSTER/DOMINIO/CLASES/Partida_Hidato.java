@@ -38,6 +38,8 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 		modo = 0;
 		puntuacion = 0;
 	}
+	public Partida_Hidato() {
+	}
 	/**
 	 * Introducir dificultad a la partida
 	 * @param dificultad Entero que indentifica la dificultad de la partida

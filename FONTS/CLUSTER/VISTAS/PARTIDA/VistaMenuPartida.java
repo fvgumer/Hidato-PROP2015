@@ -9,6 +9,11 @@ import java.awt.event.MouseEvent;
 public class VistaMenuPartida extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static void main(String[] args){
+		CtrlVista CV = new CtrlVista();
+		CV.entrarAMenuPartida();
+	}
 
 	public VistaMenuPartida(final CtrlVista CV) {
 		//Config layer 
@@ -25,7 +30,7 @@ public class VistaMenuPartida extends VistaPadreIniConBoton {
 		b1.setLocation(159, 166);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				//Nueva Ventana
+				CV.entrarACargarPartida();
 			}
 		});
 		getContentPane().add(b1);

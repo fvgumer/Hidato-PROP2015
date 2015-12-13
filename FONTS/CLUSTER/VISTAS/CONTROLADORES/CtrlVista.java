@@ -10,6 +10,7 @@ import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarEstadisticas;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarRanking;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
+import CLUSTER.VISTAS.PARTIDA.VistaCargarPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
@@ -28,6 +29,7 @@ public class CtrlVista {
 	private VistaElegirCarac1 VElegirC1;
 	private VistaElegirCarac2 VElegirC2;
 	private VEmergentInfo VEInfo;
+	private VistaCargarPartida VCargarPartida;
 	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
@@ -75,6 +77,7 @@ public class CtrlVista {
 			VElegirC1 = new VistaElegirCarac1(this,"Forma","Dimensiones");
 			VElegirC2 = new VistaElegirCarac2(this,"Forats","Iniciales");
 			VMTipoTablero = new VistaMenuTipoTablero(this);
+			VCargarPartida = new VistaCargarPartida(this);
 			/*Sobre Tableros*/
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
@@ -131,6 +134,11 @@ public class CtrlVista {
 			VMenuPartida.setVisible(true);
 		}
 		
+		public void entrarACargarPartida(){
+			//VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
+			VCargarPartida.setVisible(true);
+		}
+		
 		public void entrarAElegirForma(){
 			VElegirC1.setVisible(true);
 		}
@@ -143,7 +151,6 @@ public class CtrlVista {
 		
 		public void mirarDificultat(int dim, int f, int ini){
 			int dificultat = CDominio.get_dificultat_partida(dim, f, ini);
-			System.out.println(dificultat);
 			VEInfo = new VEmergentInfo(this);
 			VEInfo.set_dificultat(dificultat);
 			VEInfo.run();
@@ -162,6 +169,15 @@ public class CtrlVista {
 		public void elegirTdisenado(){
 			
 		}
+		
+		public void previsualizarTablero(String id) {
+			VCargarPartida.setPrevisualizarTablero(getInfoTablero(id));
+		}
+		
+		private int[][] getInfoTablero(String id){
+			return CDominio.getInfoTablero(id);
+		}
+		
 		/** Sobre Tablero **/ 
 		public void entrarAImportar(){
 			VImportar.setVisible(true);

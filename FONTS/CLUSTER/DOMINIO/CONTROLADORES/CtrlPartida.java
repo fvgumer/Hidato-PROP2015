@@ -61,8 +61,6 @@ public class CtrlPartida {
 	public void Cargar_Partida_Hidato(String id){
 		int i = Integer.parseInt(id);
 		c.cargar(PH.getUsuario().consultar_nombre(), i);
-		
-		
 	}
 	
 	
@@ -92,6 +90,19 @@ public class CtrlPartida {
 	public String[] conseguir_partidas_enproceso(String NomJ) {
 			ids = c.lista_partidas(NomJ);
 		return ids;
+	}
+	
+	public int[][] previsualizarTablero(String NomJ ,String id) {
+		PH = new Partida_Hidato();
+		int m = Integer.parseInt(id);
+		PH = c.cargar(NomJ, m);
+		int[][] map = null;
+		for (int i = 0; i < PH.getMida(); ++i) {
+			for ( int j = 0; j < PH.getMida(); ++j){
+				map[i][j] = PH.getTablero().getValorTauler(i, j);
+			}
+		}
+		return map;
 	}
 
 	
@@ -152,7 +163,6 @@ public class CtrlPartida {
 	  * @return Retorna un entero que identifica la dificultad del tablero
 	  */
 	public int calcular_dificultad(int dim, int abuj, int c_ini) {
-		System.out.println(dim+" "+abuj+" "+" "+c_ini);
 		double p1,p2,p3;
 		//Segun dimension
 		if (dim > 2 && dim < 6) p1 = 5;

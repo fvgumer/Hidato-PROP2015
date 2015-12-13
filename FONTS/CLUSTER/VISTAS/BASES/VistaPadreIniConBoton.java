@@ -2,14 +2,13 @@ package CLUSTER.VISTAS.BASES;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
+
 
 public class VistaPadreIniConBoton extends VistaPadreInicio {
 	private static final long serialVersionUID = 1L;
-		protected JButton JB;
-
-	/**
-	 * Create the frame.
-	 */
+		protected JButton JB;		
+		
 	public VistaPadreIniConBoton() {
 		super();
 		JB = new JButton();
