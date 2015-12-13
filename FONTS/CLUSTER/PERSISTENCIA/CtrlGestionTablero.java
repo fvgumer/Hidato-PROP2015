@@ -86,7 +86,13 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	}	
 
 
-	public String readtablerotxt(String name) throws IOException{
-		return FileUtils.readFileToString(new File(".."+ barras + "DATOS" + barras +"Tableros"+  barras + name + ".txt"));
+	public String readtablerotxt(String name){
+		try {
+			return FileUtils.readFileToString(new File(".."+ barras + "DATOS" + barras +"Tableros"+  barras + name + ".txt"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return name;
 	}
 }
