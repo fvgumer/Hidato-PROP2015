@@ -13,8 +13,10 @@ import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaCargarPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
+import CLUSTER.VISTAS.PARTIDA.VistaElegirModoPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
+import CLUSTER.VISTAS.PARTIDA.VistaNoPartidasParaCargar;
 import CLUSTER.VISTAS.PARTIDA.VistaTableroAleatorio;
 import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
@@ -32,6 +34,8 @@ public class CtrlVista {
 	private VEmergentInfo VEInfo;
 	private VistaCargarPartida VCargarPartida;
 	private VistaTableroAleatorio VTAleatorio;
+	private VistaElegirModoPartida VModoPartida;
+	private VistaNoPartidasParaCargar VNoPartidas;
 	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
@@ -81,6 +85,8 @@ public class CtrlVista {
 			VMTipoTablero = new VistaMenuTipoTablero(this);
 			VCargarPartida = new VistaCargarPartida(this);
 			VTAleatorio = new VistaTableroAleatorio(this);
+			VModoPartida = new VistaElegirModoPartida(this);
+			VNoPartidas = new  VistaNoPartidasParaCargar(this);
 			/*Sobre Tableros*/
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
@@ -138,8 +144,12 @@ public class CtrlVista {
 		}
 		
 		public void entrarACargarPartida(){
-			VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
-			VCargarPartida.setVisible(true);
+			if (CDominio.existenPartidasEnProceso()){
+				VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
+				VCargarPartida.setVisible(true);
+			}
+			else VNoPartidas.setVisible(true);
+			
 		}
 		
 		public void entrarAElegirForma(){
@@ -182,6 +192,10 @@ public class CtrlVista {
 		
 		public void cargarParaJugar(int[][] Tablero, String id) {
 			CDominio.cargarPartida(id);
+		}
+		
+		public void comenzarPartida(){
+			CDominio.comenzarPartida();
 		}
 		
 		/** Sobre Tablero **/ 
@@ -293,6 +307,11 @@ public class CtrlVista {
 		 */
 		public void setInfoPartida(int m, int forats, int ini, int forma) {
 			CDominio.setInforPartida(m,forats,ini,forma);
+		}
+		
+		public void setInfoModoPartida(int modo) {
+			CDominio.setModoPartida(modo);
+			
 		}
 		
 

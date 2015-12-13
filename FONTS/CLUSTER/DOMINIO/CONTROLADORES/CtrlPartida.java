@@ -27,13 +27,14 @@ public class CtrlPartida {
 		PH2 = new Partida_Hidato(T,U,ID);
 	}
 	
-	public void setModoJuego(int dificultad, int modo) {
-		PH.set_dificultad(dificultad);
+	public void setModoJuego(int modo) {
 		PH.set_modo(modo);
-		PH2.set_dificultad(dificultad);
-		PH2.set_modo(modo);PH2.set_dificultad(dificultad);
-		PH2.set_modo(modo);
-		
+		PH2.set_modo(modo);		
+	}
+	
+	public void setDificultadJuego(int dif){
+		PH.set_dificultad(dif);
+		PH2.set_dificultad(dif);
 	}
 	
 	/**
@@ -144,8 +145,9 @@ public class CtrlPartida {
 				int forma = T.get_forma();
 				System.out.print("CPartida");
 				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), forma);
-				T = GT.asociar_tablero();
 				System.out.print("CPartida");
+				T = GT.asociar_tablero();
+				
 				return pasarAMapa(T);
 	}
 
