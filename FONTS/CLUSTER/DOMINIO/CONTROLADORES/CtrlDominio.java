@@ -38,6 +38,12 @@ public class CtrlDominio {
 		return CPartida.conseguir_partidas_enproceso(Jactivo.consultar_nombre());
 	}
 	
+	public boolean existenPartidasEnProceso(){
+		int i = CPartida.n_partidasproceso(Jactivo.consultar_nombre());
+		if (i > 0) return true;
+		return false;
+	}
+	
 	public int[][] getInfoTablero(String id){
 		return CPartida.previsualizarTablero(Jactivo.consultar_nombre(),id);
 	}
@@ -52,6 +58,14 @@ public class CtrlDominio {
 	}
 	
 	public void crear_Partida(){
+		CPartida.crear_partida(Jactivo);
+	}
+	
+	public void setModoPartida(int modo) {
+		CPartida.setModoJuego(modo);
+	}
+	
+	public void comenzarPartida(){
 		CPartida.crear_partida(Jactivo);
 	}
 
