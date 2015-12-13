@@ -27,9 +27,6 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 		this.forma = f;
 	}
 	
-
-
-
 	public VistaElegirCarac2(final CtrlVista CV,String t1,String t2) {
 		super(CV,t1,t2);
 		
