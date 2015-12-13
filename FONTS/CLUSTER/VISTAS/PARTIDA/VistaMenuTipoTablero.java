@@ -15,7 +15,7 @@ public class VistaMenuTipoTablero extends VistaPadreIniConBoton {
 		setTextLayer("Elegir Tablero");
 		getContentPane().setLayout(null);
 		Titulo t = new Titulo("Elegir Tablero",110,53);
-		t.setSize(363, 75);
+		t.setSize(442, 75);
 		t.setLocation(179, 52);
 		getContentPane().add(t);
 		
@@ -26,6 +26,7 @@ public class VistaMenuTipoTablero extends VistaPadreIniConBoton {
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				//Nueva Ventana
+				CV.elegirTaleatorio();
 			}
 		});
 		getContentPane().add(b1);
@@ -34,7 +35,7 @@ public class VistaMenuTipoTablero extends VistaPadreIniConBoton {
 		b2.setLocation(159, 271);
 		b2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAElegirForma();
+				CV.elegirTdisenado();
 				Salir();
 			}
 		});

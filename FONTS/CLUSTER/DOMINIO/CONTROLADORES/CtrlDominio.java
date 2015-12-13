@@ -1,5 +1,5 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
-import CLUSTER.VISTAS.*;
+import CLUSTER.DOMINIO.CLASES.Jugador;
 
 public class CtrlDominio {
 	
@@ -17,6 +17,15 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
+	}
+	
+	/** Sobre Partida **/
+	public void setInforPartida(Jugador J,int f, int m, int forats, int ini, int t) {
+		CPartida.anadir_carct_tablero(f,m, forats, ini);
+	}
+	
+	public int get_dificultat_partida(int dim, int abuj, int c_ini){
+		return CPartida.calcular_dificultad(dim, abuj, c_ini);
 	}
 	
 	public void ingresarUsuario(String nombre, String contrasenya){

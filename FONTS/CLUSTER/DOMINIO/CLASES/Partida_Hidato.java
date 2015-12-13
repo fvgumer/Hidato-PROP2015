@@ -168,4 +168,14 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	public void set_tablero(Tablero T){
 		tableroP = T.copia_t();
 	}
+	
+	public int getMida(){
+		return tableroP.getMida();
+	}
+	public int getholes(){
+		return tableroP.getholes();
+	}
+	public int getn_predef(){
+		return tableroP.getn_predef();
+	}
 }

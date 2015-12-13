@@ -1,16 +1,16 @@
 package CLUSTER.VISTAS.CONTROLADORES;
+import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
 import CLUSTER.VISTAS.VistaEstPersonales;
 import CLUSTER.VISTAS.VistaEstUsuario;
 import CLUSTER.VISTAS.VistaInicial;
 import CLUSTER.VISTAS.VistaRanking;
+import CLUSTER.VISTAS.PARTIDA.VEmergentInfo;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
 import CLUSTER.VISTAS.BASES.VistaMenu;
-import CLUSTER.VISTAS.USUARIO.VistaConsultaEst;
-import CLUSTER.VISTAS.USUARIO.VistaUsuario;
 import CLUSTER.VISTAS.USUARIO.*;
 import CLUSTER.VISTAS.GTABLERO.*;
 
@@ -32,6 +32,7 @@ public class CtrlVista {
 	private VistaEstUsuario VEstU;
 	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
+	private VEmergentInfo VEInfo;
 	//Usuario
 	private VistaLogin VLogin;
 	/** Ho comentaritzo perque si no peta el controlador, perque
@@ -50,8 +51,7 @@ public class CtrlVista {
 							//		-Controladors
 							//		-Totes Les Vistes
 							// TE TOTES LES FUNCIONS PER A CANVIAR DE VISTES
-							// IMPORTANT: LES FUNCIONS PER MANEJAR INFORMACIO 
-							// VAN ALS ALTRES CONTROLADOS.
+							// I ENVIAR LA INFO AL CONTROLADOR DOMINI
 			//Carregar Controladors 
 			CDominio = new CtrlDominio();
 			
@@ -102,7 +102,7 @@ public class CtrlVista {
 		public void entrarACrearUsuario(){
 			
 		}
-		
+		/** Sobre Partida **/
 		public void entrarAMenuPartida(){
 			VMenuPartida.setVisible(true);
 		}
@@ -117,10 +117,28 @@ public class CtrlVista {
 			VElegirC2.setforma(forma);
 		}
 		
-		public void entrarAMenuElegirTablero() {
+		public void mirarDificultat(int dim, int f, int ini){
+			int dificultat = CDominio.get_dificultat_partida(dim, f, ini);
+			System.out.println(dificultat);
+			VEInfo = new VEmergentInfo(this);
+			VEInfo.set_dificultat(dificultat);
+			VEInfo.run();
+			VEInfo.setVisible(true);
+			
 			
 		}
 		
+		public void entrarAMenuElegirTablero() {
+			VMTipoTablero.setVisible(true);
+		}
+		
+		public void elegirTaleatorio(){
+			
+		}
+		public void elegirTdisenado(){
+			
+		}
+		/** Sobre Tablero **/ 
 		public void entrarAImportar(){
 			VImportar.setVisible(true);
 		}
@@ -178,6 +196,11 @@ public class CtrlVista {
 		/**
 		 * Sobre Partida
 		 */
+		public void setInfoPartida(int f, int m, int forats, int ini, int tipus) {
+			Jugador J = new Jugador("pepito","mec");
+			CDominio.setInforPartida(J,f,m,forats,ini,tipus);
+		}
+		
 
 }
 

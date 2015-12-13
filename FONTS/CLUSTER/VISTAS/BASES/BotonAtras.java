@@ -1,7 +1,5 @@
 package CLUSTER.VISTAS.BASES;
 
-
-import java.awt.Font;
 import javax.swing.JButton;
 
 import javax.swing.ImageIcon;
