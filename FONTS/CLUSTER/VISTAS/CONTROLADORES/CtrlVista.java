@@ -248,6 +248,10 @@ public class CtrlVista {
 			VRank.setVisible(true);
 		}
 		
+		public boolean existsR(String nTab) {
+			return CDominio.existsR(nTab);
+		}
+		
 		public void entrarAMostrarRanking(String nTab, String nPos) {
 			int n = Integer.parseInt(nPos);
 			ArrayList<Resultado> aux = new ArrayList<Resultado>(n);

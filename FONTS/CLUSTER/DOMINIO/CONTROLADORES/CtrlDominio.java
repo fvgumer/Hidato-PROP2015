@@ -120,6 +120,10 @@ public class CtrlDominio {
 		else return "";
 	}
 	
+	public boolean existsR(String nTab) {
+		return CRanking.cargarRanking(nTab);
+	}
+	
 	public ArrayList<Resultado> getRanking(String nTab, int nPos) {
 		return CRanking.getRanking(nTab,nPos);
 	}
