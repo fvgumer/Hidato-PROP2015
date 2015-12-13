@@ -4,6 +4,8 @@ import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.PERSISTENCIA.CtrlGestionRanking;
 
+import java.util.*;
+
 /**
  * Esta clase implementa las operaciones necesarias para gestionar, 
  * actualizar y mostrar el ranking de partidas de un tablero.
@@ -26,6 +28,7 @@ public class CtrlRanking {
 	 */
 	public CtrlRanking() {
 		GP = new CtrlGestionRanking();
+		R = new Ranking(null);
 	}
 	
 	/**
@@ -76,6 +79,16 @@ public class CtrlRanking {
 			System.out.format("%d. ",i+1);
 			R.mostrarPosicion(i);
 		}
+	}
+	
+	public ArrayList<Resultado> getRanking(String nTab, int nPos) {
+		R = GP.cargar(nTab);
+		if (R.size() < nPos) nPos = R.size();
+		ArrayList<Resultado> aux = new ArrayList<Resultado>(nPos);
+		for (int i = 0; i < nPos; ++i){
+			aux.add(R.getPosicion(i));
+		}
+		return aux;
 	}
 	
 	/**
