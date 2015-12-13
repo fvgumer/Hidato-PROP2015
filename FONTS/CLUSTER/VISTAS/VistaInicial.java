@@ -75,4 +75,5 @@ public class VistaInicial extends VistaPadreInicio {
 		
 
 	}
+	
 }

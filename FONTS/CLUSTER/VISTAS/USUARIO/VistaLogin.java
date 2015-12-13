@@ -53,9 +53,7 @@ public class VistaLogin extends VistaUsuario{
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(CV.Jactivo()==false) CV.run();
-				clear();
-				Salir();
+				/*if(CV.Jactivo()==false)*/ atras(CV);
 			}
 		});
 		
@@ -91,4 +89,10 @@ public class VistaLogin extends VistaUsuario{
 			
 		}
 	}
+
+	protected void atras(CtrlVista CV){
+	CV.run();
+	clear();
+	Salir();
+}
 }

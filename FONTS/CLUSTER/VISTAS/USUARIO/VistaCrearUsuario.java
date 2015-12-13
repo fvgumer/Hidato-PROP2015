@@ -52,14 +52,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(CV.Jactivo()){
-					CV.entrarMenuUsuario();	
-				}
-				else {
-					CV.run();	
-				}
-				clear();
-				Salir();
+				atras(CV);
 			}
 		});	
 		
@@ -82,5 +75,16 @@ public class VistaCrearUsuario extends VistaUsuario {
 			}
 		}
 	}
-}
 
+	protected void atras(CtrlVista CV){
+		if(CV.Jactivo()){
+			CV.entrarMenuUsuario();	
+		}
+		else {
+			CV.run();	
+		}
+		clear();
+		Salir();
+	}
+
+}
