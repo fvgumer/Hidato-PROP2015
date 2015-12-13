@@ -338,11 +338,20 @@ public class CtrlTablero {
 		rnk.eliminarRanking(map.get_id());
 	}
 	
-	public void cargar_txt(String name) {
-		String tab = c.readtablerotxt("1");
-		tab.substring(1, tab.length());
-		System.out.print(tab);
+	public String[][] cargar_txt(String name) {
+		String tab = c.readtablerotxt(name);
+		int n = Character.getNumericValue(tab.charAt(0));
+		tab = tab.substring(2, tab.length());
 		String[] t = tab.split(" ");
+		String t2[][] = new String[n][n];
+		int index = 0;
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				t2[i][j] = t[index];
+				++index;
+			}
+		}
+		return t2;
 	}
 	
 	public void asignar_dificultad() {

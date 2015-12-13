@@ -46,6 +46,7 @@ public class CtrlVista {
 	private VistaValidar VGTValidar;
 	private VistaBorrar VBorrar;
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
+	private VistaElegirImportar VElegirImportar;
 	private VistaImportar VImportar;
 	private VistaMenuTipoTablero VMTipoTablero;
 	//Estadisticas
@@ -97,6 +98,7 @@ public class CtrlVista {
 			VGTValidar = new VistaValidar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
+			VElegirImportar = new VistaElegirImportar(this);
 			/*Sobre Estadisticas*/
 			VEst = new VistaConsultaEst(this);
 			VEstP = new VistaEstPersonales(this);
@@ -203,9 +205,15 @@ public class CtrlVista {
 		}
 		
 		/** Sobre Tablero **/ 
-		public void entrarAImportar(){
+		public void entrarAImportar(String[][] tab){
+			VImportar.set_tablero(tab);
 			VImportar.setVisible(true);
 		}
+		
+		public void entrarAElegirImportar() {
+			VElegirImportar.setVisible(true);
+		}
+		
 		public void entrarACrearMan(int n, int c_negras, int c_vacias){
 			VCrearTablero1 = new VistaCrearManual(this);
 			VCrearTablero1.set_data(n, c_negras, c_vacias);
@@ -230,6 +238,7 @@ public class CtrlVista {
 		public void entrarAValidar(String[][] t) {
 			CDominio.set_tablero(t);
 			String[][] s = CDominio.solucionar();
+			VGTValidar = new VistaValidar(this);
 			VGTValidar.set_tablero(s);
 			VGTValidar.setVisible(true);
 		}

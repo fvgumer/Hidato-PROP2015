@@ -111,7 +111,8 @@ public class CtrlDominio {
 	}
 	
 	public String[][] get_tab_txt(String name) {
-		CTablero.cargar_txt(name);
+		String t[][] = CTablero.cargar_txt(name);
+		CTablero.set_tablero(t, false);
 		return CTablero.get_tablero();
 	}
 
