@@ -151,7 +151,7 @@ public class CtrlVista {
 		
 		public void mirarDificultat(int dim, int f, int ini){
 			int dificultat = CDominio.get_dificultat_partida(dim, f, ini);
-			VEInfo = new VEmergentInfo(this);
+			VEInfo = new VEmergentInfo(this, VElegirC2);
 			VEInfo.set_dificultat(dificultat);
 			VEInfo.run();
 			VEInfo.setVisible(true);

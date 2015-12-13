@@ -31,7 +31,7 @@ public class VEmergentInfo extends VistaError {
 		getContentPane().add(t);
 	}
 
-		public VEmergentInfo (final CtrlVista CV) {
+		public VEmergentInfo (final CtrlVista CV, final VistaElegirCarac2 V2) {
 			Texto T = new Texto("La dificultad de",58,11,20);
 			T.setLocation(59, 11);
 			T.setSize(167, 33);
@@ -62,6 +62,7 @@ public class VEmergentInfo extends VistaError {
 			J1.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.entrarAMenuElegirTablero();
+					V2.setVisible(false);
 					Salir();
 				}
 			});
@@ -70,6 +71,7 @@ public class VEmergentInfo extends VistaError {
 			J2.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.entrarAElegirForma();
+					V2.setVisible(false);
 					Salir();
 				}
 			});
