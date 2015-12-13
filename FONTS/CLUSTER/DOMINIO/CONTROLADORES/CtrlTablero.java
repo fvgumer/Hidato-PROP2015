@@ -47,7 +47,7 @@ public class CtrlTablero {
 	
 	
 	public Tablero get_Tablero(){
-		return map;
+		return this.map;
 	}
 	
 	/**
@@ -73,6 +73,8 @@ public class CtrlTablero {
 		map = new Tablero(n);
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras);
+		System.out.println(map.getholes());
+		System.out.println(map.get_final_num());
 		if (f > 0) {
 			if (f == 1) map.pinta_esfera();
 			if (f == 2) map.pinta_diagonal();
@@ -80,6 +82,7 @@ public class CtrlTablero {
 		omplir_forats_alea(c_negras);
 		setStart_alea();
 		int[] start = map.getStart();
+		
 		boolean b = a.generador(map, start[0], start[1],1);
 		while (b == false) {
 			map.a_zero(f);
@@ -97,6 +100,7 @@ public class CtrlTablero {
 		System.out.println("HOLAAAAA5");
 		generar_buits_alea(c_vacias);
 		System.out.println("HOLAAAAA3");
+		map.print();
 		map.inicialitzar_caselles(); //El tema de los holes con formas no esta arreglado del todo
 		System.out.println("HOLAAAAA4");
 	}

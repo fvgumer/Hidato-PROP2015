@@ -94,7 +94,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		lblNegras.setText("Has decidido poner " + c_negras + " casillas negras.");
 		lblvacias.setText("Has decidido poner " + c_vacias + " casillas vacias.");
 		int aux = (N*N-c_negras);
-		lblFinalNum.setText("El ultimo numero a colocar es el " + aux + ".");
+		lblFinalNum.setText(aux + " es el ultimo numero.");
 		panel.setLayout(new GridLayout(N,N));
 		board = new JTextField[N][N];
 		for (int row = 0; row < N; ++row) {
@@ -110,6 +110,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		aux = new String[N][N];
 		int n = 0;
 		int v = 0;
+		boolean primer = false, ultim = false;
 		for(int i=0; i<N; ++i) {
 			for(int j=0; j<N; ++j) {
 				aux[i][j] = board[i][j].getText();
@@ -123,10 +124,14 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 					return false;
 				}
 				if (num > (N*N)-c_negras || num < -1) return false;
+				if(num == 1) primer = true;
+				if(num == (N*N)-c_negras) ultim = true;
 			}
 		}
 		if (n != c_negras) return false;
 		if (v != c_vacias) return false;
+		if(!primer) return false;
+		if(!ultim) return false;
 		return true;
 	}
 }

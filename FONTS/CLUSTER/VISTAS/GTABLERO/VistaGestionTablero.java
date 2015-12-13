@@ -20,15 +20,15 @@ public class VistaGestionTablero extends VistaPadreIniConBoton {
 		getContentPane().add(t);
 		
 		Botones b2 = new Botones("Borrar",250,120);
-		b2.setBounds(425, 168, 176, 42);
+		b2.setBounds(391, 168, 181, 82);
 		getContentPane().add(b2);
 		
 		Botones b1 = new Botones("Crear",50,120);
-		b1.setBounds(165, 168, 176, 42);
+		b1.setBounds(177, 168, 189, 82);
 		getContentPane().add(b1);
 		
 		Botones b3 = new Botones("Importar",250,120);
-		b3.setBounds(282, 238, 213, 42);
+		b3.setBounds(282, 292, 189, 82);
 		getContentPane().add(b3);
 		
 		b3.addMouseListener(new MouseAdapter() {
