@@ -17,7 +17,8 @@ public class VistaCrearUsuario extends VistaUsuario {
 
 
 	public VistaCrearUsuario(final CtrlVista CV) {
-		super(null);
+
+		textField.setText(CV.nomactiu());
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -52,7 +53,6 @@ public class VistaCrearUsuario extends VistaUsuario {
 			}
 		});	
 		
-
 		Bsalir.setText("Atras");
 		B.set_name("Crear");
 	}

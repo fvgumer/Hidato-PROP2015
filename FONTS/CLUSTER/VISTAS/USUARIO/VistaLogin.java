@@ -1,10 +1,5 @@
 package CLUSTER.VISTAS.USUARIO;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.MouseAdapter;
@@ -26,7 +21,7 @@ public class VistaLogin extends VistaUsuario{
 	 * Create the application.
 	 */
 	public VistaLogin(final CtrlVista CV) {
-		super(null);
+	
 		Bsalir.setText("Salir");
 		B.set_name("Login");
 		Bsalir.addMouseListener(new MouseAdapter() {

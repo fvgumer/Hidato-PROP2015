@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Botons;
+import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
@@ -18,7 +19,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class VistaUsuario extends VistaPadreInicio{
+public class VistaUsuario extends VistaPadreIniConBoton{
 
 	/**
 	 * 
@@ -43,11 +44,10 @@ public class VistaUsuario extends VistaPadreInicio{
 		passwordField.setText("");
 		lblError.setText("");
 	}
-	public VistaUsuario(final CtrlVista CV) {
-		
-		super.setTextLayer("User");
+	
+	public VistaUsuario() {
+		setTextLayer("User");
 		getContentPane().setName("User");
-		
 		lblContrasea.setBounds(34, 139, 123, 14);
 		getContentPane().add(lblContrasea);
 		textField = new JTextField();
@@ -59,7 +59,6 @@ public class VistaUsuario extends VistaPadreInicio{
 			}
 		});
 		getContentPane().add(B);
-		
 		getContentPane().add(Bsalir);
 		
 		passwordField = new JPasswordField();
@@ -68,7 +67,6 @@ public class VistaUsuario extends VistaPadreInicio{
 		
 		lblUsuario.setBounds(34, 92, 107, 14);
 		getContentPane().add(lblUsuario);
-		
 		
 		lblError.setBackground(Color.RED);
 		lblError.setHorizontalAlignment(SwingConstants.CENTER);
