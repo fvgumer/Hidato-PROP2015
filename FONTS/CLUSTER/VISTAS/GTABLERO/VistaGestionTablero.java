@@ -33,7 +33,7 @@ public class VistaGestionTablero extends VistaPadreIniConBoton {
 		
 		b3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAImportar();
+				CV.entrarAElegirImportar();
 				Salir();
 			}
 		});
