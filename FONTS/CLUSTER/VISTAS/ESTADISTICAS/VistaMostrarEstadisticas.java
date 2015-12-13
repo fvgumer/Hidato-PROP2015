@@ -6,12 +6,19 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 
+import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 public class VistaMostrarEstadisticas extends VistaPadreIniConBoton{
 
+	Estadisticas est;
 
+	
+	public void setE(Estadisticas aux) {
+		this.est = aux;
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -32,6 +39,11 @@ public class VistaMostrarEstadisticas extends VistaPadreIniConBoton{
 	 * Create the application.
 	 */
 	public VistaMostrarEstadisticas(final CtrlVista CV) {
+		
+		super.setTextLayer("Estadisticas de usuario");
+		getContentPane().setName("Estadisticas de usuario");
+		
+		
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {

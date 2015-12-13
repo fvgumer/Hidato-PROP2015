@@ -69,6 +69,7 @@ public class CtrlTablero {
 	   *@param f Indica la forma del tablero. La forma sera dada segun la colocacion estrategica de casillas negras "forats"
 	   */
 	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias, int f) {
+		System.out.println("HOLAAAAAA");
 		map = new Tablero(n);
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras);
@@ -88,12 +89,16 @@ public class CtrlTablero {
 			setStart_alea();
 			start = map.getStart();
 			b = a.generador(map, start[0], start[1],1);
+			System.out.println("HOLAAAAA2");
 		}
 		map.crea_solucion();
 		int holes = map.getholes();
 		map.setn_predef((n*n)-holes-c_vacias);
+		System.out.println("HOLAAAAA5");
 		generar_buits_alea(c_vacias);
+		System.out.println("HOLAAAAA3");
 		map.inicialitzar_caselles(); //El tema de los holes con formas no esta arreglado del todo
+		System.out.println("HOLAAAAA4");
 	}
 	
 	/**

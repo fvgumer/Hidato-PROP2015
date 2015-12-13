@@ -1,6 +1,7 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 import java.util.ArrayList;
 
+import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.VISTAS.*;
@@ -37,6 +38,12 @@ public class CtrlDominio {
 		return CPartida.conseguir_partidas_enproceso(Jactivo.consultar_nombre());
 	}
 	
+	public boolean existenPartidasEnProceso(){
+		int i = CPartida.n_partidasproceso(Jactivo.consultar_nombre());
+		if (i > 0) return true;
+		return false;
+	}
+	
 	public int[][] getInfoTablero(String id){
 		return CPartida.previsualizarTablero(Jactivo.consultar_nombre(),id);
 	}
@@ -51,6 +58,14 @@ public class CtrlDominio {
 	}
 	
 	public void crear_Partida(){
+		CPartida.crear_partida(Jactivo);
+	}
+	
+	public void setModoPartida(int modo) {
+		CPartida.setModoJuego(modo);
+	}
+	
+	public void comenzarPartida(){
 		CPartida.crear_partida(Jactivo);
 	}
 
@@ -119,6 +134,18 @@ public class CtrlDominio {
 		return Jactivo.consultar_nombre();
 		}
 		else return "";
+	}
+	
+	public boolean existsU(String user) {
+		return CEstadisticas.cargarEst(user);
+	}
+	
+	public Estadisticas getEst(String user) {
+		return CEstadisticas.getEst(user);
+	}
+	
+	public boolean existsR(String nTab) {
+		return CRanking.cargarRanking(nTab);
 	}
 	
 	public ArrayList<Resultado> getRanking(String nTab, int nPos) {

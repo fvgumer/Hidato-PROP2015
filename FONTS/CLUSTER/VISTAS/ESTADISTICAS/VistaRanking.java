@@ -1,5 +1,6 @@
 package CLUSTER.VISTAS.ESTADISTICAS;
  
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -25,6 +26,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 	private JTextField textField1, textField2;
 	private String nTab = "";
 	private String nPos = "";
+	private JTextField textField;
 
 	/** 
 	 * Launch the application.
@@ -59,7 +61,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		getContentPane().add(textField1);
 		textField1.setColumns(10);
 
-		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,14);
+		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,15);
 
 		p.setSize(402, 30);
 		getContentPane().add(p);
@@ -75,9 +77,14 @@ public class VistaRanking extends VistaPadreIniConBoton{
 			public void mouseClicked(MouseEvent e) {
 				nTab = textField1.getText();
 				nPos = textField2.getText();
-				if (!(nTab.equals("") && nPos.equals(""))) {
+				if (!(nTab.equals("") && nPos.equals(""))&& CV.existsR(nTab)) {
 					CV.entrarAMostrarRanking(nTab,nPos);
 					Salir();
+				}
+				else if (!CV.existsR(nTab)) {
+					Texto t = new Texto("El tablero introducido no existe.",385, 88, 12);
+					t.setForeground(Color.RED);
+					getContentPane().add(t);
 				}
 			}
 		});
@@ -92,5 +99,4 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		});
 		
 	}
-
 }

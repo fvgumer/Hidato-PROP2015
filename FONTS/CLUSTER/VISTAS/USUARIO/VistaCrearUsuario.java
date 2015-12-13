@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.Spring;
 
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class VistaCrearUsuario extends VistaUsuario {
 
@@ -17,23 +19,32 @@ public class VistaCrearUsuario extends VistaUsuario {
 
 
 	public VistaCrearUsuario(final CtrlVista CV) {
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				int key = e.getKeyCode();
+				if(key==KeyEvent.VK_ENTER){
+					if(new String(passwordField.getPassword()).equals("")){
+						passwordField.grabFocus();
+					}
+					else crear(CV);
+				}
+			}
+		});
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				int key = e.getKeyCode();
+				if(key==KeyEvent.VK_ENTER){
+					crear(CV);
+				}
+			}
+		});
 		textField.setText(CV.nomactiu());
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(textField.getText()!= ""){
-				if(CV.crearUsuario(textField.getText(), new String(passwordField.getPassword()))){
-					if(CV.Jactivo()==false) CV.entrarAInicioSesion();
-					else CV.entrarMenuUsuario();
-					clear();
-					Salir();
-				}
-				else {
-					lblError.setText("El jugador " +textField.getText()+ " puede que ya exista");
-					textField.setText("");
-					passwordField.setText("");
-				}
-			}
+				crear(CV);
 			}
 		});
 		B.setBounds(116, 188, 279, 70);
@@ -41,19 +52,39 @@ public class VistaCrearUsuario extends VistaUsuario {
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(CV.Jactivo()){
-					CV.entrarMenuUsuario();	
-				}
-				else {
-					CV.run();	
-				}
-				clear();
-				Salir();
+				atras(CV);
 			}
 		});	
 		
 		Bsalir.setText("Atras");
 		B.set_name("Crear");
+	}
+
+	private void crear(CtrlVista CV){
+		if(textField.getText()!= ""){
+			if(CV.crearUsuario(textField.getText(), new String(passwordField.getPassword()))){
+				if(CV.Jactivo()==false) CV.entrarAInicioSesion();
+				else CV.entrarMenuUsuario();
+				clear();
+				Salir();
+			}
+			else {
+				lblError.setText("El jugador " +textField.getText()+ " puede que ya exista");
+				textField.setText("");
+				passwordField.setText("");
+			}
+		}
+	}
+
+	protected void atras(CtrlVista CV){
+		if(CV.Jactivo()){
+			CV.entrarMenuUsuario();	
+		}
+		else {
+			CV.run();	
+		}
+		clear();
+		Salir();
 	}
 
 }
