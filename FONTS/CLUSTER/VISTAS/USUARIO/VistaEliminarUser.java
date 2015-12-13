@@ -20,10 +20,12 @@ public class VistaEliminarUser extends VistaUsuario {
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				CV.eliminarUsuario(textField.getText(), new String(passwordField.getPassword()));
-				CV.entrarAInicioSesion();
-				clear();
-				Salir();
+				if(CV.eliminarUsuario(textField.getText(), new String(passwordField.getPassword()))){
+					CV.entrarAInicioSesion();
+					clear();
+					Salir();
+				}
+				else lblError.setText("L'usuario solo puede eliminar el CV" + CV.nomactiu());
 			}
 		});
 		//Acciones
@@ -40,7 +42,7 @@ public class VistaEliminarUser extends VistaUsuario {
 		B.set_name("Eliminar");
 		lblUsuario.setText("Usuario a eliminar");
 		lblContrasea.setText("Contraseña");
-		lblError.setText(CV.nomactiu());
+		//lblError.setText(CV.nomactiu());
 	}
 
 }

@@ -17,7 +17,6 @@ public class VistaCrearUsuario extends VistaUsuario {
 
 
 	public VistaCrearUsuario(final CtrlVista CV) {
-
 		textField.setText(CV.nomactiu());
 		B.addMouseListener(new MouseAdapter() {
 			@Override

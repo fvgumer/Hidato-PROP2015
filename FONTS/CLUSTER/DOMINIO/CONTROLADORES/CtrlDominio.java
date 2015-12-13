@@ -45,10 +45,9 @@ public class CtrlDominio {
 	//USUARIO
 	public boolean ingresarUsuario(String nombre, String contrasenya){
 		if(CJugador.ingresarusuario(nombre, contrasenya)){
+			Jactivo = new Jugador(null,null);
 			Jactivo.set_nombre(nombre);
-			System.out.println(Jactivo.consultar_nombre());
-			Jactivo.set_password(contrasenya);	
-			
+			Jactivo.set_password(contrasenya);
 			return true;
 		}
 		else return false;
@@ -93,9 +92,11 @@ public class CtrlDominio {
 		return CJugador.crear_usuario(nombre, password);
 	}
 	public boolean eliminarUsuario(String user, String password){
-			CJugador.eliminar_usuario(user, password);
+			if(CJugador.eliminar_usuario(user, password)){
 			Jactivo = null;
 			return true;
+			}
+			else return false;
 	}
 	
 	public String nomActiu(){
