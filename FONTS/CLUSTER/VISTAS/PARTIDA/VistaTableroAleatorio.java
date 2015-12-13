@@ -48,6 +48,7 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 	
 	public void run(int [][] map){
 			int mida = map[0].length;
+			System.out.print("HOLAAA");
 			taula.setLayout(new GridLayout(mida,mida));
 			casilla = new JTextField[mida][mida];
 			for(int i=0; i<mida; ++i) {

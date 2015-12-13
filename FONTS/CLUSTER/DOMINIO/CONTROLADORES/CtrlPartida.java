@@ -97,9 +97,9 @@ public class CtrlPartida {
 	
 	private int[][] pasarAMapa(Tablero T) {
 		int[][] map = null;
-		for (int i = 0; i < PH.getMida(); ++i) {
-			for ( int j = 0; j < PH.getMida(); ++j){
-				map[i][j] = PH.getTablero().getValorTauler(i, j);
+		for (int i = 0; i < T.getMida(); ++i) {
+			for (int j = 0; j < T.getMida(); ++j){
+				map[i][j] = T.getValorTauler(i, j);
 			}
 		}
 		return map;
@@ -109,7 +109,7 @@ public class CtrlPartida {
 		PH = new Partida_Hidato();
 		int m = Integer.parseInt(id);
 		PH = c.cargar(NomJ, m);
-		return pasarAMapa(T);
+		return pasarAMapa(PH.get_Tablero());
 	}
 
 	
@@ -121,6 +121,7 @@ public class CtrlPartida {
 	 * un nÃºmero.
 	 */
 	public void anadir_carct_tablero(int form,int dim, int forats, int n_ini){
+		//Hasta Aqu� Va Bien
 		T = new Tablero(dim);
 		T.setholes(forats);
 		T.setn_predef(n_ini);
@@ -141,8 +142,10 @@ public class CtrlPartida {
 				int forats = T.getholes();
 				int c_ini = T.getn_predef();
 				int forma = T.get_forma();
+				System.out.print("CPartida");
 				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), forma);
 				T = GT.asociar_tablero();
+				System.out.print("CPartida");
 				return pasarAMapa(T);
 	}
 

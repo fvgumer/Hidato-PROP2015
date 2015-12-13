@@ -62,6 +62,7 @@ public class VEmergentInfo extends VistaError {
 			J1.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.entrarAMenuElegirTablero();
+					V2.setInfoPartida(CV);
 					V2.setVisible(false);
 					Salir();
 				}

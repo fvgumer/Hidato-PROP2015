@@ -138,7 +138,7 @@ public class CtrlVista {
 		}
 		
 		public void entrarACargarPartida(){
-			//VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
+			VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
 			VCargarPartida.setVisible(true);
 		}
 		
@@ -165,7 +165,7 @@ public class CtrlVista {
 		}
 		
 		public void elegirTaleatorio(){
-			//VTAleatorio.run(CDominio.getTAleatorio());
+			VTAleatorio.run(CDominio.getTAleatorio());
 			VTAleatorio.setVisible(true);
 		}
 		public void elegirTdisenado(){
@@ -291,8 +291,8 @@ public class CtrlVista {
 		/**
 		 * Sobre Partida
 		 */
-		public void setInfoPartida(int f, int m, int forats, int ini, int tipus) {
-			CDominio.setInforPartida(f,m,forats,ini,tipus);
+		public void setInfoPartida(int m, int forats, int ini, int forma) {
+			CDominio.setInforPartida(m,forats,ini,forma);
 		}
 		
 
