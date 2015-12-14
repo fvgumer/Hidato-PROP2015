@@ -69,12 +69,9 @@ public class CtrlTablero {
 	   *@param f Indica la forma del tablero. La forma sera dada segun la colocacion estrategica de casillas negras "forats"
 	   */
 	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias, int f) {
-		System.out.println("HOLAAAAAA");
 		map = new Tablero(n);
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras);
-		System.out.println(map.getholes());
-		System.out.println(map.get_final_num());
 		if (f > 0) {
 			if (f == 1) map.pinta_esfera();
 			if (f == 2) map.pinta_diagonal();
@@ -92,17 +89,12 @@ public class CtrlTablero {
 			setStart_alea();
 			start = map.getStart();
 			b = a.generador(map, start[0], start[1],1);
-			System.out.println("HOLAAAAA2");
 		}
 		map.crea_solucion();
 		int holes = map.getholes();
 		map.setn_predef((n*n)-holes-c_vacias);
-		System.out.println("HOLAAAAA5");
 		generar_buits_alea(c_vacias);
-		System.out.println("HOLAAAAA3");
-		map.print();
 		map.inicialitzar_caselles(); //El tema de los holes con formas no esta arreglado del todo
-		System.out.println("HOLAAAAA4");
 	}
 	
 	/**
@@ -385,7 +377,6 @@ public class CtrlTablero {
 		int[] pos;
 		int i = 0;
 		int mida = map.getMida();
-		System.out.print(mida);
 		while (i < n) {
 			pos = getRandom(mida);
 			while(bona_pos_buits(pos[0], pos[1]) == false) {
@@ -404,10 +395,24 @@ public class CtrlTablero {
 	   *@return Retorna true en caso de que se pueda quitar un numero en la posicion (x,y) del
 	   *tablero. Al quitar un numero de una casilla la casilla queda vacia.
 	   */
+	/*
 	private boolean bona_pos_buits(int x, int y) {
 		if (map.enable_pos(x, y) == false) return false;
 		int value = map.getValorTauler(x,y);
-		if (value == 1 || map.getValorTauler(x, y) == 0 || value == map.get_final_num()) return false;
+		if (value == 1 || map.getValorTauler(x,y) == 0 ||value == map.get_final_num()) {
+			return false;
+		}
+		return true;
+	}
+	*/
+	
+	// AQUI ESTA LA VERSIO QUE HE CANVIAT I EM FA FERHO FUNCIONAR
+	private boolean bona_pos_buits(int x, int y) {
+		if (map.enable_pos(x, y) == false) return false;
+		int value = map.getValorTauler(x,y);
+		if (value == 1 || value == map.get_final_num()) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -419,11 +424,14 @@ public class CtrlTablero {
 	   */
 	private int[] getRandom(int n) {
 		int[] pos = new int[2];
-		int x = rm.nextInt(n);
-		int y = rm.nextInt(n);
+		pos[0] = 0;
+		pos[1] = 0;
+		int x = rm.nextInt()%n;
+		int y = rm.nextInt()%n;
 		while (map.enable_pos(x, y) == false) {
-			x = rm.nextInt(n);
-			y = rm.nextInt(n);
+			x = rm.nextInt()%n;
+			y = rm.nextInt()%n;
+			
 	}
 		pos[0] = x; pos[1] = y;
 		return pos;

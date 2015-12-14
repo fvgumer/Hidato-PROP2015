@@ -21,6 +21,8 @@ import CLUSTER.VISTAS.PARTIDA.VistaElegirModoPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
 import CLUSTER.VISTAS.PARTIDA.VistaNoPartidasParaCargar;
+import CLUSTER.VISTAS.PARTIDA.VistaPartidaEnJuego;
+import CLUSTER.VISTAS.PARTIDA.VistaPreparadoParaJugar;
 import CLUSTER.VISTAS.PARTIDA.VistaTDisenado;
 import CLUSTER.VISTAS.PARTIDA.VistaTableroAleatorio;
 import CLUSTER.VISTAS.BASES.VistaMenu;
@@ -42,6 +44,8 @@ public class CtrlVista {
 	private VistaElegirModoPartida VModoPartida;
 	private VistaNoPartidasParaCargar VNoPartidas;
 	private VistaTDisenado VTDisenado;
+	private VistaPreparadoParaJugar VPreparadoParaJugar;
+	private VistaPartidaEnJuego VPartidaEnJuego;
 	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
@@ -205,7 +209,22 @@ public class CtrlVista {
 		
 		public void comenzarPartida(){
 			CDominio.comenzarPartida();
+			VPartidaEnJuego = new VistaPartidaEnJuego(this);
+			VPartidaEnJuego.setVisible(true);
 		}
+		
+		public void entrarAModoPartida() {
+			VModoPartida = new VistaElegirModoPartida(this);
+			VModoPartida.setVisible(true);
+		}
+		
+		public void entrarAPreparadoParaJugar(){
+			VPreparadoParaJugar = new VistaPreparadoParaJugar(this);
+			VPreparadoParaJugar.setVisible(true);
+		}
+		
+		
+		
 		
 		/** Sobre Tablero **/ 
 		public void entrarAImportar(String[][] tab){
@@ -339,6 +358,9 @@ public class CtrlVista {
 		public void setInfoPartida(int m, int forats, int ini, int forma) {
 			CDominio.setInforPartida(m,forats,ini,forma);
 		}
+		public void setCrearPartida() {
+			CDominio.crear_Partida();
+		}
 		
 		public void setInfoModoPartida(int modo) {
 			CDominio.setModoPartida(modo);
@@ -346,6 +368,14 @@ public class CtrlVista {
 		
 		public String[] listarTableros(){
 			return CDominio.listarTableros();
+		}
+		
+		public int[][] getMapaActual(){
+			return CDominio.getMapaActual();
+		}
+		
+		public int getValorTableroActual(int x, int y){
+			return CDominio.getValorTableroActual(x, y);
 		}
 
 }

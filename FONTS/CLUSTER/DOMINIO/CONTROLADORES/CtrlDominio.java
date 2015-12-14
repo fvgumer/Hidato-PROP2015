@@ -53,7 +53,6 @@ public class CtrlDominio {
 	}
 	
 	public int[][] getTAleatorio(){
-		System.out.print("CDominio");
 		return CPartida.generar_Taleatorio();
 	}
 	
@@ -71,6 +70,14 @@ public class CtrlDominio {
 	
 	public String[] listarTableros() {
 		return CPartida.listarTableros();
+	}
+	
+	public int[][] getMapaActual(){
+		return CPartida.getMapaActual();
+	}
+	
+	public int getValorTableroActual(int x, int y){
+		return CPartida.getValorTableroActual(x,y);
 	}
 
 	//USUARIO
