@@ -9,7 +9,7 @@ import java.awt.Font;
 
 public class VistaMenu extends VistaPadreInicio {
 	private static final long serialVersionUID = 1L;
-	JLabel usuarioActual = new JLabel("");
+	private JLabel usuarioActual = new JLabel("");
 	public VistaMenu(final CtrlVista CV) {
 		//Config layer 
 
