@@ -301,9 +301,8 @@ public class CtrlVista {
 		
 		public void setR(String nTab, String nPos) {
 			int n = Integer.parseInt(nPos);
-			Ranking aux = new Ranking(nTab);
-			aux = CDominio.getRanking(nTab,n);
-			VMRank.setR(aux,nTab);
+			ArrayList aux = CDominio.getRanking(nTab);
+			VMRank.setR(aux,nTab,n);
 		}
 		
 		public void entrarARanking() {

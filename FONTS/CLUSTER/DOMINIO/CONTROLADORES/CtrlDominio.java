@@ -168,8 +168,8 @@ public class CtrlDominio {
 		CRanking.anadirResultado(t,j,m,d,p);
 	}
 	
-	public Ranking getRanking(String nTab, int nPos) {
-		return CRanking.getRanking(nTab,nPos);
+	public ArrayList getRanking(String nTab) {
+		return CRanking.getRanking(nTab);
 	}
 
 	public boolean cambiarPass(String oldPass, String newPass) {
