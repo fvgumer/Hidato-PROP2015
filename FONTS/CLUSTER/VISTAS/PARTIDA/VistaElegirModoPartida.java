@@ -56,6 +56,8 @@ public class VistaElegirModoPartida extends VistaPadreIniConBoton {
 	
 	private void setInfoModoPartida(CtrlVista CV){
 		CV.setInfoModoPartida(modo_partida);
+		CV.entrarAPreparadoParaJugar();
+		Salir();
 	}
 
 }

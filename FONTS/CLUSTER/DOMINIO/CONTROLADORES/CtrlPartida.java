@@ -98,13 +98,23 @@ public class CtrlPartida {
 	}
 	
 	private int[][] pasarAMapa(Tablero T) {
-		int[][] map = null;
+		int[][] map= new int[T.getMida()][T.getMida()];
 		for (int i = 0; i < T.getMida(); ++i) {
 			for (int j = 0; j < T.getMida(); ++j){
-				map[i][j] = T.getValorTauler(i, j);
+				if (T.enable_pos(i, j)) {
+					map[i][j] = T.getValorTauler(i, j);
+				}
 			}
 		}
 		return map;
+	}
+	
+	public int[][] getMapaActual() {
+		return pasarAMapa(PH.get_Tablero());
+	}
+	
+	public int getValorTableroActual(int x, int y) {
+		return PH.get_Tablero().getValorTauler(x, y);
 	}
 	
 	public int[][] previsualizarTablero(String NomJ ,String id) {
@@ -171,6 +181,7 @@ public class CtrlPartida {
 				System.out.println("araprintejo el de partida:");
 				T.print();
 				return pasarAMapa(T);
+				
 	}
 
 	/**
