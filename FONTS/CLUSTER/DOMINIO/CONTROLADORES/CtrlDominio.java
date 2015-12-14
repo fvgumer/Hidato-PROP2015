@@ -154,8 +154,12 @@ public class CtrlDominio {
 		return CEstadisticas.cargarEst(user);
 	}
 	
-	public Estadisticas getEst(String user) {
+	public int[] getEst(String user) {
 		return CEstadisticas.getEst(user);
+	}
+	
+	public ArrayList<String> getTabJ(String user) {
+		return CEstadisticas.getTabJ(user);
 	}
 	
 	public String getNomEst(Estadisticas E) {

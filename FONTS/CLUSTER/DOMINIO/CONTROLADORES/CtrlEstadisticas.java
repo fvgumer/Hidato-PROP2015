@@ -1,5 +1,7 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 
+import java.util.ArrayList;
+
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.PERSISTENCIA.CtrlGestionEstadisticas;
 
@@ -24,6 +26,7 @@ public class CtrlEstadisticas {
 	 * Creadora por defecto de la clase.
 	 */
 	public CtrlEstadisticas(){
+		E = new Estadisticas(null);
 		GE = new CtrlGestionEstadisticas();
 		
 	}
@@ -83,7 +86,6 @@ public class CtrlEstadisticas {
 		E = GE.cargar(jugador);
 		E.incrementarTiempo(s);
 		E.incrementarPuntuacion(p);
-		E.actualizarPuntuacion(p);
 		E.anadirTableroJ(tablero);
 		
 		GE.guardar(E);
@@ -125,13 +127,24 @@ public class CtrlEstadisticas {
 		System.out.format("Estadisticas del usuario %s:\n",jugador);
 		E.mostrarTiempoJugado();
 		E.mostrarPuntuacionTotal();
-		E.mostrarMejorPuntuacion();
 		//E.mostrarTablerosCreados();
 		E.mostrarTablerosJugados();
 	}
 	
-	public Estadisticas getEst(String jugador){
+	public int[] getEst(String jugador){
+		int[] i = new int[5];
 		E = GE.cargar(jugador);
-		return E;
+		i[0] = E.tablerosJugados();
+		i[1] = E.getHoras();
+		i[2] = E.getMin();
+		i[3] = E.getSeg();
+		i[4] = E.getPuntuacion();
+		
+		return i;
+	}
+	
+	public ArrayList<String> getTabJ(String jugador) {
+		E = GE.cargar(jugador);
+		return E.getTabJ();
 	}
 }

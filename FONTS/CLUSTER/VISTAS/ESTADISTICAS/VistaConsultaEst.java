@@ -29,7 +29,7 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 		B1.setLocation(130, 83);
 		B1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAEstPersonales();
+				CV.entrarAVistaEstadisticas();
 				Salir();
 			}
 		});

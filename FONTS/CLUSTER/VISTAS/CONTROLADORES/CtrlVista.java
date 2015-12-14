@@ -13,9 +13,8 @@ import CLUSTER.VISTAS.VistaInicial;
 //import CLUSTER.VISTAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VEmergentInfo;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
-import CLUSTER.VISTAS.ESTADISTICAS.VistaEstPersonales;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
-import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarEstadisticas;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaEstadisticas;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarRanking;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaCargarPartida;
@@ -60,13 +59,11 @@ public class CtrlVista {
 	private VistaImportar VImportar;
 	private VistaMenuTipoTablero VMTipoTablero;
 	//Estadisticas
-	private VistaConsultaEst VEst;
+	private VistaConsultaEst VCEst;
+	private VistaEstadisticas VEst;
 	private VistaEstUsuario VEstU;
-	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
-	
 	private VistaMostrarRanking VMRank;
-	private VistaMostrarEstadisticas VMEst;
 	//Usuario
 	private VistaLogin VLogin;
 	private VistaEliminarUser VEliminarUser;
@@ -111,12 +108,11 @@ public class CtrlVista {
 			VImportar = new VistaImportar(this);
 			VElegirImportar = new VistaElegirImportar(this);
 			/*Sobre Estadisticas*/
-			VEst = new VistaConsultaEst(this);
-			VEstP = new VistaEstPersonales(this);
+			VCEst = new VistaConsultaEst(this);
+			VEst = new VistaEstadisticas(this);
 			VEstU = new VistaEstUsuario(this);
 			VRank = new VistaRanking(this);
 			VMRank = new VistaMostrarRanking(this);
-			VMEst = new VistaMostrarEstadisticas(this);
 			/*Sobre usuario*/
 			VLogin = new VistaLogin(this);
 			VEliminarUser = new VistaEliminarUser(this);
@@ -280,11 +276,20 @@ public class CtrlVista {
 		}
 		
 		public void entrarAConsultaEst() {
-			VEst.setVisible(true);
+			VCEst.setVisible(true);
 		}
 		
-		public void entrarAEstPersonales() {
-			VEstP.setVisible(true);
+		public void entrarAVistaEstadisticas() {
+			int[] s = new int[5];
+			s = CDominio.getEst(nomactiu());
+			ArrayList<String> tabJ = new ArrayList<String>();
+			tabJ = CDominio.getTabJ(nomactiu());
+			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
+			VEst.setTabJ(tabJ);
+			VEst.setTitle(nomactiu());
+			VEst.displayEst();
+			VEst.displayTab();
+			VEst.setVisible(true);
 		}
 
 		public void entrarAEstUsuario() {
@@ -295,11 +300,17 @@ public class CtrlVista {
 			return CDominio.existsU(user);
 		}
 
-		public void entrarAMostrarEstadisticas(String user) {
-			Estadisticas aux = new Estadisticas(null);
-			aux = CDominio.getEst(user);
-			VMEst.setE(aux,user);
-			VMEst.setVisible(true);
+		public void entrarAVistaEstadisticas(String user) {
+			int[] s = new int[5];
+			s = CDominio.getEst(user);
+			ArrayList<String> tabJ = new ArrayList<String>();
+			tabJ = CDominio.getTabJ(user);
+			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
+			VEst.setTabJ(tabJ);
+			VEst.setTitle(user);
+			VEst.displayEst();
+			VEst.displayTab();
+			VEst.setVisible(true);
 		}
 		
 		public void setR(String nTab, String nPos) {
@@ -391,6 +402,7 @@ public class CtrlVista {
 		public int getValorTableroActual(int x, int y){
 			return CDominio.getValorTableroActual(x, y);
 		}
+
 
 }
 

@@ -49,8 +49,8 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				user = textField.getText();
-				if (!user.equals("") && CV.existsU(user)){
-					CV.entrarAMostrarEstadisticas(user);
+				if (!user.equals("") && CV.existsU(user)){System.out.print("vistaestusuario :"+user);
+					CV.entrarAVistaEstadisticas(user);
 					Salir();
 				}
 				else if (!user.equals("") && !CV.existsU(user)) {
@@ -69,7 +69,7 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 				int key = e.getKeyCode();
 				if(key==KeyEvent.VK_ENTER){
 					user = textField.getText();
-					CV.entrarAMostrarEstadisticas(user);
+					CV.entrarAVistaEstadisticas(user);
 					Salir();
 				}
 			}
