@@ -298,6 +298,13 @@ public class CtrlVista {
 			VMEst.setVisible(true);
 		}
 		
+		public void setR(String nTab, String nPos) {
+			int n = Integer.parseInt(nPos);
+			ArrayList<Resultado> aux = new ArrayList<Resultado>(n);
+			aux = CDominio.getRanking(nTab,n);
+			VMRank.setR(aux,nTab);
+		}
+		
 		public void entrarARanking() {
 			VRank.setVisible(true);
 		}
@@ -310,11 +317,7 @@ public class CtrlVista {
 			CDominio.anadirResultado(t,j,m,d,p);
 		}
 		
-		public void entrarAMostrarRanking(String nTab, String nPos) {
-			int n = Integer.parseInt(nPos);
-			ArrayList<Resultado> aux = new ArrayList<Resultado>(n);
-			aux = CDominio.getRanking(nTab,n);
-			VMRank.setR(aux);
+		public void entrarAMostrarRanking() {
 			VMRank.setVisible(true);
 		}
 		

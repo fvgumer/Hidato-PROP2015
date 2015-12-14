@@ -14,6 +14,8 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -62,8 +64,8 @@ public class VistaRanking extends VistaPadreIniConBoton{
 				nTab = textField1.getText();
 				nPos = textField2.getText();
 				if (!(nTab.equals("") && nPos.equals(""))&& CV.existsR(nTab)) {
-					CV.anadirResultado(nTab, "mec", "3", "dificil", 98);
-					CV.entrarAMostrarRanking(nTab,nPos);
+					CV.setR(nTab,nPos);
+					CV.entrarAMostrarRanking();
 					Salir();
 				}
 				else if (!(nTab.equals("") && nPos.equals("")) && !CV.existsR(nTab)) {
@@ -73,6 +75,18 @@ public class VistaRanking extends VistaPadreIniConBoton{
 				}
 			}
 		});
+		
+		textField2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				int key = e.getKeyCode();
+				if(key==KeyEvent.VK_ENTER){
+					CV.entrarAMostrarRanking();
+					Salir();
+				}
+			}
+		});
+		
 		B.setSize(368, 46);
 		getContentPane().add(B);
 		
