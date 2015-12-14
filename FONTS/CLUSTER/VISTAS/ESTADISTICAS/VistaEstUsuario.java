@@ -49,11 +49,13 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				user = textField.getText();
-				if (!user.equals("") && CV.existsU(user)){System.out.print("vistaestusuario :"+user);
+				if (!user.equals("") && CV.existsU(user)){
+					textField.setText("");
 					CV.entrarAVistaEstadisticas(user);
 					Salir();
 				}
 				else if (!user.equals("") && !CV.existsU(user)) {
+					textField.setText("");
 					Texto t = new Texto("El usuario introducido no existe.",385, 88, 12);
 					t.setForeground(Color.RED);
 					getContentPane().add(t);
@@ -68,15 +70,24 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 			public void keyReleased(KeyEvent e) {
 				int key = e.getKeyCode();
 				if(key==KeyEvent.VK_ENTER){
-					user = textField.getText();
-					CV.entrarAVistaEstadisticas(user);
-					Salir();
+					user = textField.getText();if (!user.equals("") && CV.existsU(user)){
+						textField.setText("");
+						CV.entrarAVistaEstadisticas(user);
+						Salir();
+					}
+					else if (!user.equals("") && !CV.existsU(user)) {
+						textField.setText("");
+						Texto t = new Texto("El usuario introducido no existe.",385, 88, 12);
+						t.setForeground(Color.RED);
+						getContentPane().add(t);
+					}
 				}
 			}
 		});
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				textField.setText("");
 				CV.entrarAConsultaEst();
 				Salir();
 			}

@@ -323,10 +323,9 @@ public class CtrlVista {
 			VEst.setVisible(true);
 		}
 		
-		public void setR(String nTab, String nPos) {
-			int n = Integer.parseInt(nPos);
+		public void setR(String nTab, int nPos) {
 			ArrayList aux = CDominio.getRanking(nTab);
-			VMRank.setR(aux,nTab,n);
+			VMRank.setR(aux,nTab,nPos);
 		}
 		
 		public void entrarARanking() {
