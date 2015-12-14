@@ -17,10 +17,11 @@ public class VistaMenu extends VistaPadreInicio {
 		getContentPane().setLayout(null);
 		usuarioActual.setForeground(Color.RED);
 		usuarioActual.setHorizontalAlignment(SwingConstants.CENTER);
-		usuarioActual.setBounds(613, 39, 134, 28);
+		usuarioActual.setBounds(523, 39, 224, 28);
 		usuarioActual.setFont(new Font("Lucida Sans", Font.BOLD, 20));
 		getContentPane().add(usuarioActual);
 		Titulo t = new Titulo("MENÚ PRINCIPAL",110,53);
+		t.setSize(153, 50);
 		t.setLocation(277, 39);
 		getContentPane().add(t);
 		
