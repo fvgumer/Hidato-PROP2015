@@ -4,6 +4,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Font;
 
 public class VistaMenu extends VistaPadreInicio {
 	private static final long serialVersionUID = 1L;
@@ -67,14 +69,15 @@ public class VistaMenu extends VistaPadreInicio {
 			}
 		});
 		getContentPane().add(b5);
-		
+		usuarioActual.setForeground(Color.RED);
 		usuarioActual.setHorizontalAlignment(SwingConstants.CENTER);
-		usuarioActual.setBounds(611, 23, 115, 17);
+		usuarioActual.setBounds(502, 23, 245, 35);
+		usuarioActual.setFont(new Font("Lucida Sans", Font.BOLD, 20));
 		getContentPane().add(usuarioActual);
 		
 	}
 	
 	public void UserActual(String name){
-		this.usuarioActual.setText("Hola  " + name);
+		this.usuarioActual.setText("HOLA  " + name);
 	}
 }
