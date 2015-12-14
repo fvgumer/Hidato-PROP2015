@@ -2,10 +2,12 @@ package CLUSTER.VISTAS.BASES;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class VistaMenu extends VistaPadreInicio {
 	private static final long serialVersionUID = 1L;
-
+	JLabel usuarioActual = new JLabel("");
 	public VistaMenu(final CtrlVista CV) {
 		//Config layer 
 
@@ -20,7 +22,6 @@ public class VistaMenu extends VistaPadreInicio {
 		b1.setLocation(84, 128);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				System.out.println(CV.nomactiu());
 				CV.entrarMenuUsuario();
 				Salir();
 			}
@@ -66,6 +67,14 @@ public class VistaMenu extends VistaPadreInicio {
 			}
 		});
 		getContentPane().add(b5);
-
+		
+		usuarioActual.setHorizontalAlignment(SwingConstants.CENTER);
+		usuarioActual.setBounds(611, 23, 115, 17);
+		getContentPane().add(usuarioActual);
+		
+	}
+	
+	public void UserActual(String name){
+		this.usuarioActual.setText("Hola  " + name);
 	}
 }

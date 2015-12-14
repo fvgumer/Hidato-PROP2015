@@ -140,6 +140,7 @@ public class CtrlVista {
 		}
 		
 		public void entrarAMenu(){
+			VMenu.UserActual(this.nomactiu());
 			VMenu.setVisible(true);
 		}
 

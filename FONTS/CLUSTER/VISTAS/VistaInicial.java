@@ -45,6 +45,7 @@ public class VistaInicial extends VistaPadreInicio {
 				Salir();
 			}
 		});
+		
 		getContentPane().add(b1);
 		
 		//Declarar Boton "Salir" y su funcion
