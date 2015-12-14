@@ -81,6 +81,9 @@ public class VistaRanking extends VistaPadreIniConBoton{
 			public void keyReleased(KeyEvent e) {
 				int key = e.getKeyCode();
 				if(key==KeyEvent.VK_ENTER){
+					nTab = textField1.getText();
+					nPos = textField2.getText();
+					CV.setR(nTab,nPos);
 					CV.entrarAMostrarRanking();
 					Salir();
 				}

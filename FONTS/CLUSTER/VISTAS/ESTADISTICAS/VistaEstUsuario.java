@@ -2,6 +2,8 @@ package CLUSTER.VISTAS.ESTADISTICAS;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -60,6 +62,18 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		});
 		B.setSize(408, 46);
 		getContentPane().add(B);
+		
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				int key = e.getKeyCode();
+				if(key==KeyEvent.VK_ENTER){
+					user = textField.getText();
+					CV.entrarAMostrarEstadisticas(user);
+					Salir();
+				}
+			}
+		});
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
