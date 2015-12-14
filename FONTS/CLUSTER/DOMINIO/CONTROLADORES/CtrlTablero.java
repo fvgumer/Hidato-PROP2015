@@ -395,22 +395,10 @@ public class CtrlTablero {
 	   *@return Retorna true en caso de que se pueda quitar un numero en la posicion (x,y) del
 	   *tablero. Al quitar un numero de una casilla la casilla queda vacia.
 	   */
-	/*
 	private boolean bona_pos_buits(int x, int y) {
 		if (map.enable_pos(x, y) == false) return false;
 		int value = map.getValorTauler(x,y);
 		if (value == 1 || map.getValorTauler(x,y) == 0 ||value == map.get_final_num()) {
-			return false;
-		}
-		return true;
-	}
-	*/
-	
-	// AQUI ESTA LA VERSIO QUE HE CANVIAT I EM FA FERHO FUNCIONAR
-	private boolean bona_pos_buits(int x, int y) {
-		if (map.enable_pos(x, y) == false) return false;
-		int value = map.getValorTauler(x,y);
-		if (value == 1 || value == map.get_final_num()) {
 			return false;
 		}
 		return true;

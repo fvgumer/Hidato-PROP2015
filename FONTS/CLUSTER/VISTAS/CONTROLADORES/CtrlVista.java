@@ -356,7 +356,7 @@ public class CtrlVista {
 		 * Sobre Partida
 		 */
 		public void setInfoPartida(int m, int forats, int ini, int forma) {
-			CDominio.setInforPartida(m,forats,ini,forma);
+			CDominio.setInforPartida(m,forats,ini+2,forma);
 		}
 		public void setCrearPartida() {
 			CDominio.crear_Partida();
