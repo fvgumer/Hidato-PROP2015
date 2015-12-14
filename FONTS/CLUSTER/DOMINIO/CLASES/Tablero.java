@@ -118,10 +118,18 @@ public class Tablero extends Tablero_comp implements Serializable{
 		return id;
 	}
 	
+	/**
+	 * 
+	 * @return Retorna la forma del tablero
+	 */
 	public int get_forma(){
 		return forma;
 	}
 	
+	/**
+	 * 
+	 * @param f determina la forma qe se asociara al tablero
+	 */
 	public void set_forma(int f){
 		forma = f;
 	}

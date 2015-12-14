@@ -23,7 +23,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 
 	public VistaImportar(final CtrlVista CV) {
 		//Config layer 
-		setTextLayer("Menu de Importación de Tableros");
+		setTextLayer("Consulta de estadisticas");
 		contentPane.setLayout(null);
 		
 		JLabel lblEscribeElNombre = new JLabel("Este es el tablero importado");

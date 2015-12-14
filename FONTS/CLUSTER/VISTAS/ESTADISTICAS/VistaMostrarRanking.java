@@ -42,8 +42,8 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	public VistaMostrarRanking(final CtrlVista CV) {
 		r = new ArrayList<String[]>();
 
-		super.setTextLayer("Ranking de tablero");
-		getContentPane().setName("Ranking de tablero");
+		super.setTextLayer("Estadisticas de usuario");
+		getContentPane().setName("Estadisticas de usuario");
 		
 
 		String titulo = String.format("Ranking del tablero %s",nTab);
@@ -70,7 +70,7 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		getContentPane().add(table);
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarARanking();
+				CV.entrarAConsultaEst();
 				Salir();
 			}
 		});
