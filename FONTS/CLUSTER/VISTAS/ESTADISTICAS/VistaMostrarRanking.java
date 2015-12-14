@@ -59,7 +59,7 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		
 		for (int i = 0; i < r.size() ; ++i) {
 			table.setModel(new DefaultTableModel(new Object[][] {
-				{i,r.get(i).getjug(),"Modo","Dificultad","Puntuacion"},
+				//{i,r.get(i).getjug(),"Modo","Dificultad","Puntuacion"},
 				},new String[] {"a","b","c","d","e"}));
 		}
 		
