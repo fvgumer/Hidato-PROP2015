@@ -15,10 +15,13 @@ public class VistaCaracteristicasGT extends VistaElegirCaracPatron2{
 		
 		
 		lblCarac1.setText("0"); lblCarac2.setText("0"); lblCarac3.setText("0");
+		slider.setValue(3); slider2.setValue(0); slider3.setValue(0);
 		slider.setMaximum(8);
 		slider.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent arg0) {
 				slider2.setMaximum(slider.getValue()*slider.getValue()-3);
+				slider3.setMaximum(slider.getValue()*slider.getValue()-3
+						-slider2.getValue());
 				slider2.setValue(0);
 				slider3.setValue(0);
 				actualitza_lbl();

@@ -23,7 +23,8 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	private Container panel;
 	private String[][] aux;
 	private JLabel lblError;
-	private JLabel lblvacias, lblNegras, lblFinalNum;; 
+	private JLabel lblvacias, lblNegras, lblFinalNum, lblId;
+	private String id;
 
 	public VistaCrearManual(final CtrlVista CV) {
 		//Config layer 
@@ -36,7 +37,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		
 		JTextPane txtpnInstrucciones = new JTextPane();
 		txtpnInstrucciones.setText("Instrucciones:\r\n-Se deben colocar principio y final\r\n\r\n-Para colocar una casilla negra,\r\nintroduzca -1 en la casilla que se desee");
-		txtpnInstrucciones.setBounds(509, 13, 312, 132);
+		txtpnInstrucciones.setBounds(509, 13, 242, 132);
 		getContentPane().add(txtpnInstrucciones);
 		
 		lblError = new JLabel("El tablero creado contiene errores");
@@ -91,6 +92,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		this.N = n;
 		this.c_negras = c_negras;
 		this.c_vacias = c_vacias;
+		get_id();
 		lblNegras.setText("Has decidido poner " + c_negras + " casillas negras.");
 		lblvacias.setText("Has decidido poner " + c_vacias + " casillas vacias.");
 		int aux = (N*N-c_negras);
@@ -104,6 +106,9 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	            panel.add(board[row][col]);
 	         }
 	     }
+		lblId = new JLabel("El id sera: " + id);
+		lblId.setBounds(509, 330, 195, 16);
+		getContentPane().add(lblId);
 	}
 	
 	private boolean comprovar_data() {
@@ -134,4 +139,23 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		if(!ultim) return false;
 		return true;
 	}
+	
+	private void get_id() {
+		String nom = "";
+		if (N < 10) {
+			nom = nom + "0";
+		}
+		nom = nom + String.valueOf(N);
+		if (c_negras < 10) {
+			nom = nom + "0";
+		}
+		nom = nom + String.valueOf(c_negras);
+		if (c_vacias < 10) {
+			nom = nom + "0";
+		}
+		nom = nom + String.valueOf(c_vacias);
+		nom = nom + "XX.bin";
+		this.id = nom;
+	}
+	
 }

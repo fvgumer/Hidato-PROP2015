@@ -1,9 +1,6 @@
 package CLUSTER.VISTAS.GTABLERO;
 
-import CLUSTER.VISTAS.BASES.Titulo;
-
-import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
-import CLUSTER.VISTAS.BASES.Botones;
+import CLUSTER.VISTAS.BASES.*;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.GridLayout;
@@ -13,6 +10,9 @@ import javax.swing.JList;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
 
 public class VistaBorrar extends VistaPadreIniConBoton {
 
@@ -20,6 +20,7 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 	private DefaultListModel listModel;
 	private CtrlVista CV;
 	private JList list;
+	private JTextField textField;
 	
 	public VistaBorrar(final CtrlVista CV) {
 		//Config layer 
@@ -27,6 +28,11 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 		contentPane.setLayout(null);
 		
 		this.CV = CV;
+		
+		JLabel Ins = new JLabel("Elige el tablero que quieres borrar:");
+		Ins.setBounds(12, 40, 248, 43);
+		getContentPane().add(Ins);
+
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAGTableros();
@@ -40,7 +46,9 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 		listModel = new DefaultListModel();
 		String[] s = CV.get_tableros_repo();
 		for(int i=0; i < s.length; ++i) {
+			if (!s[i].contains(".txt")) {
 				listModel.addElement(s[i]);
+			}
 		}
 		list = new JList(listModel);
 		getContentPane().add(list);
@@ -49,14 +57,14 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 		list.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String id = "";
-				try {
+				if (list.getSelectedValue() != null) {
+					String id = "";
 					id = list.getSelectedValue().toString().substring(0, 8);
+					CV.entrarABorrarConfirmar(id);
+					Salir();
 				}
-				catch (Exception ex) {}
-				CV.entrarABorrarConfirmar(id);
-				Salir();
 			}
 		});
+
 	}
 }
