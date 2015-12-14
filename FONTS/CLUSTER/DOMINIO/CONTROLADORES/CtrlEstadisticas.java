@@ -51,6 +51,10 @@ public class CtrlEstadisticas {
 		else return true;
 	}
 	
+	String getName(Estadisticas E) {
+		return E.getName();
+	}
+	
 	/**
 	 * Metodo que, dado un nombre de jugador, elimina sus estadisticas de la 
 	 * base de datos asi como todas las posiciones que ocupa dicho jugador en los

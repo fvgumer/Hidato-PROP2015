@@ -37,8 +37,8 @@ public class VistaEstPersonales extends VistaPadreIniConBoton{
 	 */
 	public VistaEstPersonales(final CtrlVista CV) {
 		
-		super.setTextLayer("Estadísticas personales");
-		getContentPane().setName("Estadísticas personales");
+		super.setTextLayer("Estadisticas personales");
+		getContentPane().setName("Estadisticas personales");
 		
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {

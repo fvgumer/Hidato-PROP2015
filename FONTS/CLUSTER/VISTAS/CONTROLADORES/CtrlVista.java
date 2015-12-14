@@ -307,6 +307,10 @@ public class CtrlVista {
 		public boolean cambiarPass(String NewPass, String OldPass) {
 			return CDominio.cambiarPass(OldPass,NewPass);
 		}
+		
+		public String getNomEst(Estadisticas E) {
+			return CDominio.getNomEst(E);
+		}
 		/**
 		 * Sobre Partida
 		 */

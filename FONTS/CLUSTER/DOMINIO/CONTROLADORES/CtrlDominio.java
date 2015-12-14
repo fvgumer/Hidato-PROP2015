@@ -129,6 +129,10 @@ public class CtrlDominio {
 		return CEstadisticas.getEst(user);
 	}
 	
+	public String getNomEst(Estadisticas E) {
+		return CEstadisticas.getName(E);
+	}
+	
 	public boolean existsR(String nTab) {
 		return CRanking.cargarRanking(nTab);
 	}
