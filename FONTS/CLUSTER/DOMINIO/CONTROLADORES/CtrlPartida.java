@@ -97,27 +97,54 @@ public class CtrlPartida {
 		return ids;
 	}
 	
-	private int[][] pasarAMapa(Tablero T) {
-		int[][] map= new int[T.getMida()][T.getMida()];
+	private String[][] pasarAMapa(Tablero T) {
+		String[][] map= new String[T.getMida()][T.getMida()];
 		for (int i = 0; i < T.getMida(); ++i) {
 			for (int j = 0; j < T.getMida(); ++j){
-				if (T.enable_pos(i, j)) {
-					map[i][j] = T.getValorTauler(i, j);
-				}
+					int c = T.getValorTauler(i, j);
+					if (c == -1) map[i][j] = "X";
+					else if (c > 0) map[i][j] = Integer.toString(c);
+					else map[i][j] = " ";
 			}
 		}
 		return map;
 	}
 	
-	public int[][] getMapaActual() {
+	public String[][] getMapaActual() {
 		return pasarAMapa(PH.get_Tablero());
+	}
+	
+	public String[][] getSolucion(){
+		return PH.get_Tablero().getSolucion();
 	}
 	
 	public int getValorTableroActual(int x, int y) {
 		return PH.get_Tablero().getValorTauler(x, y);
 	}
 	
-	public int[][] previsualizarTablero(String NomJ ,String id) {
+	public boolean setValorTablero(int x, int y, int valor){
+		if (PH.get_Tablero().enable_pos(x, y)){
+			PH.get_Tablero().setValorTauler(x, y, valor);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean esCasillaJugable(int x, int y) {
+		if (PH.get_Tablero().enable_pos(x, y)) {
+			if (!PH.get_Tablero().get_casilla(x, y).isPor_defecto()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean esCasillaValida(int x, int y){
+		if (PH.get_Tablero().get_casilla(x, y).isPor_defecto()) return false;
+		if (!PH.get_Tablero().enable_pos(x, y)) return false;
+		return true;
+	}
+	public String[][] previsualizarTablero(String NomJ ,String id) {
 		PH = new Partida_Hidato();
 		int m = Integer.parseInt(id);
 		PH = c.cargar(NomJ, m);
@@ -155,7 +182,6 @@ public class CtrlPartida {
 	 * un nÃºmero.
 	 */
 	public void anadir_carct_tablero(int form,int dim, int forats, int n_ini){
-		//Hasta Aqu� Va Bien
 		T = new Tablero(dim);
 		T.setholes(forats);
 		T.setn_predef(n_ini);
@@ -170,7 +196,7 @@ public class CtrlPartida {
 	 * @param forats Entero que indica el nÃƒÂºmero de casillas vacÃƒÂ­as del tablero
 	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
 	 */
-	public int[][] generar_Taleatorio(){
+	public String[][] generar_Taleatorio(){
 				CtrlTablero GT = new CtrlTablero();
 				int dim = T.getMida();
 				int forats = T.getholes();
@@ -178,8 +204,6 @@ public class CtrlPartida {
 				int forma = T.get_forma();
 				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), forma);
 				T = GT.asociar_tablero();
-				System.out.println("araprintejo el de partida:");
-				T.print();
 				return pasarAMapa(T);
 				
 	}
