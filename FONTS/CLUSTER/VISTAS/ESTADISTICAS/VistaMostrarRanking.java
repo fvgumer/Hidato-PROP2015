@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
+import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.List;
@@ -19,49 +21,50 @@ import java.awt.Color;
 
 public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	
-	private JTable table;
-	private ArrayList<Resultado> r;
-
 	/**
-	 * Launch the application.
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaMostrarRanking window = new VistaMostrarRanking(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private static final long serialVersionUID = 1L;
+	private JTable table;
+	private ArrayList<String[]> r;
+	String nTab;
+	int nPos;
 	
-	public void setR(ArrayList<Resultado> aux) {
+	public void setR(ArrayList<String[]> aux, String nTab,int nPos) {
 		r = aux;
+		this.nTab = nTab;
+		this.nPos = nPos;
 	}
 	
 	/**
 	 * Create the application.
 	 */
 	public VistaMostrarRanking(final CtrlVista CV) {
-		r = new ArrayList<Resultado>();
+		r = new ArrayList<String[]>();
 
 		super.setTextLayer("Ranking de tablero");
 		getContentPane().setName("Ranking de tablero");
 		
+
+		String titulo = String.format("Ranking del tablero %s",nTab);
+		Texto t = new Texto(titulo,38,26,15);
+		t.setSize(535, 37);
+		getContentPane().add(t);
 		
 		table = new JTable();
 		table.setAutoCreateRowSorter(true);
 		table.setBorder(new LineBorder(new Color(0, 0, 153), 2));
-		table.setBounds(110, 58, 495, 303);
+		table.setBounds(108, 74, 495, 303);
 		table.setModel(new DefaultTableModel(new Object[][] {
 			{"Posicion","Jugador","Modo","Dificultad","Puntuacion"},
 			},new String[] {"a","b","c","d","e"}));
 		
-		for (int i = 0; i < r.size() ; ++i) {
-			System.out.print(r.get(i));
+		if (r.size() < nPos) nPos = r.size();
+		
+		for (int i = 0; i < nPos ; ++i) {
+			table.setModel(new DefaultTableModel(new Object[][] {
+				{i+1,r.get(i)[0],r.get(i)[1],r.get(i)[2],r.get(i)[3]},
+				},new String[] {"a","b","c","d","e"}));
 		}
 		
 		getContentPane().add(table);

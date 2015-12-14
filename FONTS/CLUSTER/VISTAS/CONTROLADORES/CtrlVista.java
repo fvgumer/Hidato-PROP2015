@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
 import CLUSTER.VISTAS.VistaInicial;
@@ -222,8 +223,7 @@ public class CtrlVista {
 			VPreparadoParaJugar = new VistaPreparadoParaJugar(this);
 			VPreparadoParaJugar.setVisible(true);
 		}
-		
-		
+	
 		
 		
 		/** Sobre Tablero **/ 
@@ -295,7 +295,14 @@ public class CtrlVista {
 			Estadisticas aux = new Estadisticas(null);
 			aux = CDominio.getEst(user);
 			VMEst.setE(aux);
+			VMEst.setU(user);
 			VMEst.setVisible(true);
+		}
+		
+		public void setR(String nTab, String nPos) {
+			int n = Integer.parseInt(nPos);
+			ArrayList aux = CDominio.getRanking(nTab);
+			VMRank.setR(aux,nTab,n);
 		}
 		
 		public void entrarARanking() {
@@ -306,11 +313,11 @@ public class CtrlVista {
 			return CDominio.existsR(nTab);
 		}
 		
-		public void entrarAMostrarRanking(String nTab, String nPos) {
-			int n = Integer.parseInt(nPos);
-			ArrayList<Resultado> aux = new ArrayList<Resultado>(n);
-			aux = CDominio.getRanking(nTab,n);
-			VMRank.setR(aux);
+		public void anadirResultado(String t, String j, String m, String d, int p){
+			CDominio.anadirResultado(t,j,m,d,p);
+		}
+		
+		public void entrarAMostrarRanking() {
 			VMRank.setVisible(true);
 		}
 		

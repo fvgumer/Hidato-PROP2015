@@ -55,6 +55,10 @@ public class Resultado implements Serializable {
 		return puntuacion;
 	}
 	
+	public String getModo() {
+		return modo;
+	}
+	
 	/**
 	 * Metodo que muestra por pantalla el resultado.
 	 */

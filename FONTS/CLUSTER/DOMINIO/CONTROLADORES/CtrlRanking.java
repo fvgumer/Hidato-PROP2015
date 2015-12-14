@@ -81,14 +81,9 @@ public class CtrlRanking {
 		}
 	}
 	
-	public ArrayList<Resultado> getRanking(String nTab, int nPos) {
+	public ArrayList getRanking(String nTab) {
 		R = GP.cargar(nTab);
-		if (R.size() < nPos) nPos = R.size();
-		ArrayList<Resultado> aux = new ArrayList<Resultado>(nPos);
-		for (int i = 0; i < nPos; ++i){
-			aux.add(R.getPosicion(i));
-		}
-		return aux;
+		return R.getRanking();
 	}
 	
 	/**

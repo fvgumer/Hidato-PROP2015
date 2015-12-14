@@ -14,6 +14,8 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -27,22 +29,6 @@ public class VistaRanking extends VistaPadreIniConBoton{
 	private String nTab = "";
 	private String nPos = "";
 	private JTextField textField;
-
-	/** 
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaRanking window = new VistaRanking(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -78,16 +64,29 @@ public class VistaRanking extends VistaPadreIniConBoton{
 				nTab = textField1.getText();
 				nPos = textField2.getText();
 				if (!(nTab.equals("") && nPos.equals(""))&& CV.existsR(nTab)) {
-					CV.entrarAMostrarRanking(nTab,nPos);
+					CV.setR(nTab,nPos);
+					CV.entrarAMostrarRanking();
 					Salir();
 				}
-				else if (!CV.existsR(nTab)) {
+				else if (!(nTab.equals("") && nPos.equals("")) && !CV.existsR(nTab)) {
 					Texto t = new Texto("El tablero introducido no existe.",385, 88, 12);
 					t.setForeground(Color.RED);
 					getContentPane().add(t);
 				}
 			}
 		});
+		
+		textField2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				int key = e.getKeyCode();
+				if(key==KeyEvent.VK_ENTER){
+					CV.entrarAMostrarRanking();
+					Salir();
+				}
+			}
+		});
+		
 		B.setSize(368, 46);
 		getContentPane().add(B);
 		

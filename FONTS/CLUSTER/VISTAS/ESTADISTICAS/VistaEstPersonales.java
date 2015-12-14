@@ -7,30 +7,19 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
+import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import javax.swing.JList;
  
-public class VistaEstPersonales extends VistaPadreIniConBoton{
-	private JTable table;
-
+public class VistaEstPersonales extends VistaEstadisticas{
 	/**
-	 * Launch the application. 
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaEstPersonales window = new VistaEstPersonales(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private static final long serialVersionUID = 1L;
+	private JTable table;
 
 	/**
 	 * Create the application.
@@ -40,19 +29,13 @@ public class VistaEstPersonales extends VistaPadreIniConBoton{
 		super.setTextLayer("Estadisticas personales");
 		getContentPane().setName("Estadisticas personales");
 		
-		super.JB.addMouseListener(new MouseAdapter() {
+		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarAConsultaEst();
-				Salir();
+				atras(CV);
 			}
 		});
 		
-		JB.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				CV.entrarAConsultaEst();
-				Salir();
-			}
-		});
+		
 		
 		
 	}

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 
 public class CtrlDominio {
@@ -13,7 +14,11 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
+<<<<<<< HEAD
 	private Jugador Jactivo;
+=======
+	private Jugador Jactivo = null;
+>>>>>>> f9bc7efd86c6e0e376665e848dbf21ab44b6f659
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -163,8 +168,12 @@ public class CtrlDominio {
 		return CRanking.cargarRanking(nTab);
 	}
 	
-	public ArrayList<Resultado> getRanking(String nTab, int nPos) {
-		return CRanking.getRanking(nTab,nPos);
+	public void anadirResultado(String t, String j, String m, String d, int p){
+		CRanking.anadirResultado(t,j,m,d,p);
+	}
+	
+	public ArrayList getRanking(String nTab) {
+		return CRanking.getRanking(nTab);
 	}
 
 	public boolean cambiarPass(String oldPass, String newPass) {
