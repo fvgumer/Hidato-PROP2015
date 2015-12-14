@@ -8,11 +8,7 @@ import java.io.ObjectOutputStream;
 
 //import org.apache.commons.io.*;
 
-import CLUSTER.DOMINIO.CLASES.Estadisticas;
-import CLUSTER.DOMINIO.CLASES.Ranking;
-import CLUSTER.DOMINIO.CLASES.Jugador;
-import CLUSTER.DOMINIO.CLASES.Partida_Hidato;
-import CLUSTER.DOMINIO.CLASES.Tablero;
+import CLUSTER.DOMINIO.CLASES.*;
 
 /**
  * Esta clase contiene las operaciones de la super clase de control de gestion. Es una clase generica que 

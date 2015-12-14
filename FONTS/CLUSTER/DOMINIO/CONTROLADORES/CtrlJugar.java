@@ -15,6 +15,7 @@ public class CtrlJugar {
 	private CtrlRanking CR;
 	private CtrlEstadisticas CE;
 	private Partida_Hidato PH;
+	private int error; 
 	public static int PAUSE = 0;
 	public static int GAME = 1;
 	public static int ACABADO = 2;
@@ -110,12 +111,6 @@ public class CtrlJugar {
 			PH.set_estado(PAUSE);
 			//Tapar PANTALLA
 			T1.detenerse();
-			for (int i =0; i < PH.get_Tablero().getMida(); ++i) {
-				for (int j = 0; j < PH.get_Tablero().getMida(); ++j) {
-					System.out.print("X");
-				}
-				System.out.println();
-			}	
 		}
 	}
 	/**
@@ -128,8 +123,6 @@ public class CtrlJugar {
 			PH.set_estado(GAME);
 			T1.reiniciar();
 		}
-		//Si esta en juego no hace nada
-		else System.out.println("PARTIDA YA EN JUEGO");
 	}
 	
 	/**
@@ -211,11 +204,7 @@ public class CtrlJugar {
 	 */
 	public void rendirse(){
 		PH.set_puntuacion(0);
-		//NO GUARDAR PARTIDA 
-		//Sacamos solucion
-		PH.get_Tablero().mostra_solucio();
 		PH.set_estado(ACABADO);
-		T1.detenerse();
 	}
 	
 	/**
@@ -241,25 +230,31 @@ public class CtrlJugar {
 	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implícito
 	 * si la posición es valida.
 	 */
-	public void introducirCasilla(int x, int y,int valor){
-		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
+	public boolean introducirCasilla(int x, int y,int valor){
 			if (PH.casilla_posible(x,y)) {
 				//1. INTRODUCIR CASILLA
 				int v = PH.get_Tablero().getValorTauler(x, y);
-				if (v == -1) System.out.println("Posicion Invalida");
-				else if (PH.get_Tablero().getNumPosat(valor)) System.out.println("Este numero ya esta en el tablero");
+				if (v == -1) {
+					error = 1; //FORAT
+					return false;
+				}
+				else if (PH.get_Tablero().getNumPosat(valor)) {
+					error = 2; //EL NUM YA ESTA EN EL TABLERO
+					return false;
+				}
 				else {
+					modificar_puntuacion(15);
 					PH.get_Tablero().setValorTauler(x, y,valor);
 					PH.get_Tablero().setNumPosat(valor,true);
 					--casillas_faltan;
-					System.out.println("Se ha introducido el valor: "+valor+" en la posicion ("+x+","+y+")");
+					return true;
 				}
-				//2. CALCULAR PUNTUACION 
-				modificar_puntuacion(15);
+				
 			}
-			else System.out.println("Posicion Invalida");
-		}
-		else System.out.println("NO PUEDES JUGAR");
+			else {
+				error = 3; //POSICION INVALIDA
+				return false;
+			}
 	}
 	
 	/**
@@ -267,24 +262,27 @@ public class CtrlJugar {
 	 * @param x,y Enteros que hacen referencia a una posicion del parametros implocito
 	 * Se extrae el valor de la posicion del tablero (x,y) si es una posicion valida
 	 */
-	public void quitar_casilla(int x, int y){
-		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
+	public boolean quitar_casilla(int x, int y){
 			if (PH.casilla_posible(x,y)) {
 				//1. QUITAR CASILLA
 				int valor = 0;
 				PH.get_Tablero().setValorTauler(x, y, valor);
-				if (valor == -1 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) System.out.println("Posicion incorrecta");
+				if (valor == -1 || valor == 0 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) {
+					error = 1; //VALOR INICIAL
+					return false;
+				}
 				else {
+					modificar_puntuacion(-3);//2. CALCULAR PUNTUACION 
 					PH.get_Tablero().setNumPosat(valor,true);
 					System.out.println("Se ha quitado la casilla: ("+x+","+y+")");
 					++casillas_faltan;
+					return true;
+					
 				}
-				//2. CALCULAR PUNTUACION 
-				modificar_puntuacion(-3);
+				
+				
 			}
-			else System.out.println("Posicion Incorrecta");
-		}
-		else System.out.println("NO PUEDES JUGAR");
+			else return false;
 	}
 	
 	/**
@@ -293,18 +291,15 @@ public class CtrlJugar {
 	 *que debe apuntar a una casilla que previamente hemos introducido un valor en el juego.
 	 *Nos introduce por pantalla si en esa posicion hemos introducido el valor correcto o no
 	 */
-	public void comprobar_casilla(int x, int y){
-		if (PH.get_estado() == GAME && !T1.inicializar_tablero()) {
+	public boolean comprobar_casilla(int x, int y){
 			if (PH.casilla_posible(x,y)) {
 				modificar_puntuacion(-3);
 				if (PH.get_Tablero().getValorTauler(x, y) == PH.get_Tablero().getValorSolucio(x, y)){
-					System.out.println("CORRECTO");
+					return true;
 				}
-				else System.out.println("INCORRECTO");
+				else return false;
 			}
-			else System.out.println("Posicion Incorrecta");
-		}
-		else System.out.println("NO PUEDES JUGAR");
+			else return false;
 	}
 	/**
 	 * Imprimir tablero
@@ -439,6 +434,11 @@ public class CtrlJugar {
 	 */
 	public Temporizador get_timer(){
 		return T1;
+	}
+	
+
+	public int getValorPosible(int pos) {
+		return PH.get_Tablero().getValorPosible(pos);
 	}
 }
 

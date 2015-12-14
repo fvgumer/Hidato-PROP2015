@@ -56,7 +56,7 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 		});
 	}
 	
-	public void run(int [][] map){
+	public void run(String [][] map){
 			int mida = map.length;
 			JPanel taula = new JPanel();
 			taula.setBounds(191, 121, 357, 205);
@@ -66,7 +66,7 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 			for(int i=0; i<mida; ++i) {
 				for(int j=0; j<mida; ++j){
 					casilla[i][j] = new JTextField();
-					casilla[i][j].setText(Integer.toString(map[i][j]));
+					casilla[i][j].setText(map[i][j]);
 					casilla[i][j].setEditable(false);
 					taula.add(casilla[i][j]);
 				}

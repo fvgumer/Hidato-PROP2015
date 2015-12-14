@@ -45,7 +45,10 @@ public class CtrlTablero {
 		c = new CtrlGestionTablero();
 	}
 	
-	
+	/**
+	 * Getter del tablero
+	 * @return retorna el tablero asociado a la clase
+	 */
 	public Tablero get_Tablero(){
 		return this.map;
 	}
@@ -97,6 +100,7 @@ public class CtrlTablero {
 		generar_buits_alea(c_vacias);
 		map.print();
 		map.inicialitzar_caselles(); //El tema de los holes con formas no esta arreglado del todo
+		map.calcular_dificultad();
 	}
 	
 	/**
@@ -172,14 +176,14 @@ public class CtrlTablero {
 	}
 	
 	/**
-	 * Se muestra el mapa por pantalla
+	 * Se muestra el mapa por pantalla (consola)
 	 */
 	public void muestra_mapa() {
 		map.print();
 	}
 	
 	/**
-	 * Se muestra la solucion del tablero de la clase por pantalla
+	 * Se muestra la solucion del tablero de la clase por pantalla (consola)
 	 */
 	public void mostra_solu(){
 		map.mostra_solucio();
@@ -244,8 +248,13 @@ public class CtrlTablero {
 		map.setn_predef((n*n)-map.getholes()-vacias);
 		map.setfinal_num(n*n-map.getholes());
 		map.setSolucion_unica(unica);
+		map.calcular_dificultad();
 	}
 	
+	/**
+	 * Se obtiene el tablero en formato String[][]
+	 * @return retorna el tablero en formato String[][]
+	 */
 	public String[][] get_tablero() {
 		int n = map.getMida();
 		String[][] t = new String[n][n];
@@ -257,6 +266,10 @@ public class CtrlTablero {
 		return t;
 	}
 	
+	/**
+	 * Se obtiene la solucion del tablero en formato String[][]
+	 * @return retorna solucion del tablero en formato String[][]
+	 */
 	public String[][] get_solucion() {
 		int n = map.getMida();
 		String[][] t = new String[n][n];
@@ -268,6 +281,13 @@ public class CtrlTablero {
 		return t;
 	}
 	
+	/**
+	 * Funcion encargada de calcular el identificador del tablero. Los dos primeros chars del identificador indican la
+	 * medida del tablero, los dos siguientes las casillas negras, los dos siguientes las casillas vacias. Los dos ultimos
+	 * caracteres se utilizan para diferenciar tableros guardados en el repositorio con las mismas caracteristicas mencionadas
+	 * anteriores.
+	 * @return Retorna el identificador calculado
+	 */
 	private String obten_id() {
 		String nom = "";
 		if (map.getMida() < 10) {
@@ -292,10 +312,12 @@ public class CtrlTablero {
 		return nom;
 	}
 	
+	/**
+	 * Se guarda el tablero asociado a la clase en la base de datos
+	 */
 	public void guardar() {
 		map.set_id(obten_id());
 		c.guardar(map);
-		System.out.println("Se le ha asignado el siguiente id: " + map.get_id());
 		CtrlRanking rnk = new CtrlRanking();
 		rnk.crearRanking(map.get_id());
 	}
@@ -312,7 +334,7 @@ public class CtrlTablero {
 	}
 	
 	/**
-	 * Se muestran por pantalla el nombre de todos los tableros mostrados por pantalla
+	 * Se muestran por pantalla el nombre de todos los tableros mostrados por pantalla (consola)
 	 */
 	public void muestra_repo_tab() {
 		String[] s = c.consultar_nomstableros();
@@ -321,6 +343,10 @@ public class CtrlTablero {
 		}
 	}
 	
+	/**
+	 * Funcion encargada de retornas el nombre de los tableros guardados en el repositorio
+	 * @return Retorna los nombres de los tableros en formato String[]
+	 */
 	public String[] get_tableros_repositorio() {
 		String[] s = c.consultar_nomstableros();
 		return s;
@@ -336,6 +362,11 @@ public class CtrlTablero {
 		rnk.eliminarRanking(map.get_id());
 	}
 	
+	/**
+	 * Retorna en formato String[][] el tablero guardado en formato .txt en la base de datos
+	 * @param name Indica el nombre del tablero guardado
+	 * @return Retorna el tablero guardado en formato .txt en formato String[][]
+	 */
 	public String[][] cargar_txt(String name) {
 		String tab = c.readtablerotxt(name);
 		int n = Character.getNumericValue(tab.charAt(0));
@@ -352,6 +383,9 @@ public class CtrlTablero {
 		return t2;
 	}
 	
+	/**
+	 * Asigna la dificultad del tablero asociado a la clase
+	 */
 	public void asignar_dificultad() {
 		map.calcular_dificultad();
 	}

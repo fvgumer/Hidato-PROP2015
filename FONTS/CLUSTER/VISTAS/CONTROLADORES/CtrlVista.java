@@ -17,17 +17,7 @@ import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaEstadisticas;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarRanking;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
-import CLUSTER.VISTAS.PARTIDA.VistaCargarPartida;
-import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
-import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
-import CLUSTER.VISTAS.PARTIDA.VistaElegirModoPartida;
-import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
-import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
-import CLUSTER.VISTAS.PARTIDA.VistaNoPartidasParaCargar;
-import CLUSTER.VISTAS.PARTIDA.VistaPartidaEnJuego;
-import CLUSTER.VISTAS.PARTIDA.VistaPreparadoParaJugar;
-import CLUSTER.VISTAS.PARTIDA.VistaTDisenado;
-import CLUSTER.VISTAS.PARTIDA.VistaTableroAleatorio;
+import CLUSTER.VISTAS.PARTIDA.*;
 import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
 import CLUSTER.VISTAS.USUARIO.*;
@@ -49,6 +39,8 @@ public class CtrlVista {
 	private VistaTDisenado VTDisenado;
 	private VistaPreparadoParaJugar VPreparadoParaJugar;
 	private VistaPartidaEnJuego VPartidaEnJuego;
+	private VistaEnPausa VPausa;
+
 	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
@@ -200,11 +192,11 @@ public class CtrlVista {
 			VCargarPartida.setPrevisualizarTablero(getInfoTablero(id));
 		}
 		
-		private int[][] getInfoTablero(String id){
+		private String[][] getInfoTablero(String id){
 			return CDominio.getInfoTablero(id);
 		}
 		
-		public void cargarParaJugar(int[][] Tablero, String id) {
+		public void cargarParaJugar(String[][] Tablero, String id) {
 			CDominio.cargarPartida(id);
 		}
 		
@@ -222,6 +214,24 @@ public class CtrlVista {
 		public void entrarAPreparadoParaJugar(){
 			VPreparadoParaJugar = new VistaPreparadoParaJugar(this);
 			VPreparadoParaJugar.setVisible(true);
+		}
+		
+		public void entrarEnPausa() {
+			VPausa = new VistaEnPausa(this);
+			VPausa.setVisible(true);
+			VPartidaEnJuego.setEnabled(false);
+		}
+		
+		public void reanudar(){
+			VPartidaEnJuego.setEnabled(true);
+		}
+		
+		public String[][] rendirse(){
+			return CDominio.rendirse();
+		}
+		
+		public void setCasilla(int v, int x,int y){
+			CDominio.setCasilla(v,x,y);
 		}
 	
 		
@@ -395,13 +405,47 @@ public class CtrlVista {
 			return CDominio.listarTableros();
 		}
 		
-		public int[][] getMapaActual(){
+		public String[][] getMapaActual(){
 			return CDominio.getMapaActual();
 		}
 		
 		public int getValorTableroActual(int x, int y){
 			return CDominio.getValorTableroActual(x, y);
 		}
+		
+		public void setCasillaClicada(int x, int y) {
+			if (CDominio.esCasillaJugable(x,y)) {
+				if(!VPartidaEnJuego.esClicat(x,y))
+				VPartidaEnJuego.setCasillaClicada(x,y);
+				else VPartidaEnJuego.desclicar(x,y);
+			}
+		}
+		
+		public boolean setIntroducirCasilla(int x, int y, int valor){
+			return CDominio.setIntroducirCasilla(x,y,valor);
+		}
+		
+		public boolean setQuitarCasilla(int x, int y){
+			return CDominio.setQuitarCasilla(x,y);
+		}
+		
+		public boolean esCasillaValida(int x, int y){
+			return CDominio.esCasillaValida(x,y);
+		}
+
+		public void GuardarPartida(){
+			CDominio.guardarPartida();
+		}
+		
+		public int getFaltanCasillas(){
+			return CDominio.getFaltanCasillas();
+		}
+		
+		public int getValorPosible(int pos){
+			return CDominio.getValorPosible(pos);
+		}
+
+
 
 
 }

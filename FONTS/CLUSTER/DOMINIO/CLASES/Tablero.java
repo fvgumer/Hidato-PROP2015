@@ -118,10 +118,18 @@ public class Tablero extends Tablero_comp implements Serializable{
 		return id;
 	}
 	
+	/**
+	 * 
+	 * @return Retorna la forma del tablero
+	 */
 	public int get_forma(){
 		return forma;
 	}
 	
+	/**
+	 * 
+	 * @param f determina la forma qe se asociara al tablero
+	 */
 	public void set_forma(int f){
 		forma = f;
 	}
@@ -415,5 +423,30 @@ public class Tablero extends Tablero_comp implements Serializable{
 	public void setMida(int n) {
 		mida = n;
 	}
+	
+	public String[][] getSolucion(){
+		String[][] sol = new String[mida][mida];
+		for(int i=0; i < mida; ++i) {
+			for(int j = 0; j < mida; ++j) {
+				int value = solucio[i][j].getValor();
+				if (value == -1) sol[i][j] = "X";
+				else if (value == 0) sol[i][j] = " ";
+				else sol[i][j] = Integer.toString(value);
+			}
+		}
+		return sol;
+	}
+	
+	
+	public int getValorPosible(int pos){
+		int i = 0;
+		int j = 0;
+		while(i <= pos) {
+			if(!posats[j]) ++i;
+		++j;	
+		}
+		return j;
+	}
+
 
 }

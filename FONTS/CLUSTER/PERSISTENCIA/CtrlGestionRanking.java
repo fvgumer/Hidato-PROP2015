@@ -1,12 +1,13 @@
 package CLUSTER.PERSISTENCIA;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import CLUSTER.DOMINIO.CLASES.Ranking;
+import CLUSTER.DOMINIO.CLASES.*;
 
 /**
  * Esta clase hereda las operaciones  de la super clase de control de gestion, CtrlGestionHidato

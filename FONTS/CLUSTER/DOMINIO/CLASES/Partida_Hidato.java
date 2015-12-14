@@ -180,4 +180,5 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	public int getn_predef(){
 		return tableroP.getn_predef();
 	}
+	
 }
