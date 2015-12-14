@@ -14,11 +14,9 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-<<<<<<< HEAD
+
 	private Jugador Jactivo;
-=======
-	private Jugador Jactivo = null;
->>>>>>> f9bc7efd86c6e0e376665e848dbf21ab44b6f659
+
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();

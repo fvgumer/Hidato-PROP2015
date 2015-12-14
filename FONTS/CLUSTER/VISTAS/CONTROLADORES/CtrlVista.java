@@ -1,6 +1,9 @@
 package CLUSTER.VISTAS.CONTROLADORES;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CLASES.Ranking;

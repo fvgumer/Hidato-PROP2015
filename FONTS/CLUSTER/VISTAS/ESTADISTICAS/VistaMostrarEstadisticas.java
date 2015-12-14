@@ -28,7 +28,7 @@ public class VistaMostrarEstadisticas extends VistaEstadisticas{
 	public VistaMostrarEstadisticas(final CtrlVista CV) {
 		est = new Estadisticas(null);
 		
-		super.setTextLayer("Estadisticas de usuario");
+		super.setTextLayer("Login");
 		getContentPane().setName("Estadisticas de usuario");
 		
 		JB.addMouseListener(new MouseAdapter() {
