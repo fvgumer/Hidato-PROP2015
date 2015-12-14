@@ -10,6 +10,7 @@ public class CtrlPartida {
 	private Partida_Hidato PH2; //SIN JUGAR
 	private Tablero T;
 	private CtrlGestionPartida c;
+	private CtrlGestionTablero CT;
 	private String[] ids;
 	
 	
@@ -112,7 +113,29 @@ public class CtrlPartida {
 		PH = c.cargar(NomJ, m);
 		return pasarAMapa(PH.get_Tablero());
 	}
-
+	
+	public String[] listarTableros(){
+		CT = new CtrlGestionTablero();
+		String[] validos = null;
+		String[] lista = CT.consultar_nomstableros();
+		if (lista.length == 0) return lista;
+		else{
+			int mida = T.getMida();
+			int nini = T.getn_predef();
+			int forats = T.getholes();
+			for (int i = 0; i < lista.length; ++i) {
+				 if(lista[i].regionMatches(0, Integer.toString(mida), 7, 2)) {
+					 if(lista[i].regionMatches(0, Integer.toString(forats), 5, 2)) {
+						 if (lista[i].regionMatches(0, Integer.toString(nini), 3, 2)) {
+							 validos[i].concat(lista[i]);
+						 }
+					 }
+				 }
+			}
+			return validos;
+		}
+	}
+	
 	
 	/**
 	 * AÃ±adir caracteristicas de la partida
@@ -143,11 +166,8 @@ public class CtrlPartida {
 				int forats = T.getholes();
 				int c_ini = T.getn_predef();
 				int forma = T.get_forma();
-				System.out.print("CPartida");
 				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), forma);
-				System.out.print("CPartida");
 				T = GT.asociar_tablero();
-				
 				return pasarAMapa(T);
 	}
 

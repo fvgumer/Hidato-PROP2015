@@ -385,6 +385,7 @@ public class CtrlTablero {
 		int[] pos;
 		int i = 0;
 		int mida = map.getMida();
+		System.out.print(mida);
 		while (i < n) {
 			pos = getRandom(mida);
 			while(bona_pos_buits(pos[0], pos[1]) == false) {

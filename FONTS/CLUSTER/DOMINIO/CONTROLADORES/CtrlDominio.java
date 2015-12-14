@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CLASES.Resultado;
-import CLUSTER.VISTAS.*;
 
 public class CtrlDominio {
 	
@@ -14,7 +13,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-	private Jugador Jactivo = null;
+	private Jugador Jactivo = new Jugador("mec",null);
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -23,6 +22,7 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
+		
 	}
 	
 	/** Sobre Partida **/
@@ -67,6 +67,10 @@ public class CtrlDominio {
 	
 	public void comenzarPartida(){
 		CPartida.crear_partida(Jactivo);
+	}
+	
+	public String[] listarTableros() {
+		return CPartida.listarTableros();
 	}
 
 	//USUARIO

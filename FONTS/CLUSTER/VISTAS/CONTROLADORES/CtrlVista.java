@@ -21,6 +21,7 @@ import CLUSTER.VISTAS.PARTIDA.VistaElegirModoPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
 import CLUSTER.VISTAS.PARTIDA.VistaNoPartidasParaCargar;
+import CLUSTER.VISTAS.PARTIDA.VistaTDisenado;
 import CLUSTER.VISTAS.PARTIDA.VistaTableroAleatorio;
 import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
@@ -40,6 +41,7 @@ public class CtrlVista {
 	private VistaTableroAleatorio VTAleatorio;
 	private VistaElegirModoPartida VModoPartida;
 	private VistaNoPartidasParaCargar VNoPartidas;
+	private VistaTDisenado VTDisenado;
 	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
@@ -92,6 +94,7 @@ public class CtrlVista {
 			VTAleatorio = new VistaTableroAleatorio(this);
 			VModoPartida = new VistaElegirModoPartida(this);
 			VNoPartidas = new  VistaNoPartidasParaCargar(this);
+			VTDisenado = new VistaTDisenado(this);
 			/*Sobre Tableros*/
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
@@ -339,7 +342,10 @@ public class CtrlVista {
 		
 		public void setInfoModoPartida(int modo) {
 			CDominio.setModoPartida(modo);
-			
+		}
+		
+		public String[] listarTableros(){
+			return CDominio.listarTableros();
 		}
 
 }
