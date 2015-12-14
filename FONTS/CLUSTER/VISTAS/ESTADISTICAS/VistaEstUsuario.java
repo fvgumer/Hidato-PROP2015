@@ -31,8 +31,8 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 	 */
 	public VistaEstUsuario(final CtrlVista CV) {
 
-		super.setTextLayer("Seleccionde estadisticas de usuario");
-		getContentPane().setName("Seleccion de estadisticas de usuario");
+		super.setTextLayer("Seleccion de ranking de tablero");
+		getContentPane().setName("Seleccion de ranking de tablero");
 		
 		Texto n = new Texto("Por favor, introduce el nombre del usuario.",36,46,15);
 		n.setSize(313, 30);
