@@ -294,8 +294,7 @@ public class CtrlVista {
 		public void entrarAMostrarEstadisticas(String user) {
 			Estadisticas aux = new Estadisticas(null);
 			aux = CDominio.getEst(user);
-			VMEst.setE(aux);
-			VMEst.setU(user);
+			VMEst.setE(aux,user);
 			VMEst.setVisible(true);
 		}
 		
