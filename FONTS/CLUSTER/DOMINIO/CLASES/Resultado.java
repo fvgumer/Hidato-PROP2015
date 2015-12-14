@@ -55,7 +55,7 @@ public class Resultado implements Serializable {
 		return puntuacion;
 	}
 	
-	public int getModo() {
+	public String getModo() {
 		return modo;
 	}
 	

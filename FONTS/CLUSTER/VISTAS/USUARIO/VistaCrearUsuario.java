@@ -17,7 +17,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 
 
 	public VistaCrearUsuario(final CtrlVista CV) {
-		
+		super.setTextLayer("Modificar Contrasenya");
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {

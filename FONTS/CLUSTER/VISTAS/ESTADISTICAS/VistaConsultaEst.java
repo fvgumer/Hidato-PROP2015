@@ -22,8 +22,8 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 	 */
 	public VistaConsultaEst(final CtrlVista CV) {
 		
-		super.setTextLayer("Consulta Estadisticas");
-		getContentPane().setName("Consulta Estadisticas");
+		super.setTextLayer("Estadisticas personales");
+		getContentPane().setName("Estadisticas personales");
 		
 		Botones B1 = new Botones("Estadisticas personales", 100, 60);
 		B1.setLocation(130, 83);

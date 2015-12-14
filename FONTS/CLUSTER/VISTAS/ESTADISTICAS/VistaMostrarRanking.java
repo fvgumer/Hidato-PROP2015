@@ -26,22 +26,24 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table;
-	private Ranking r;
+	private ArrayList<String[]> r;
 	String nTab;
+	int nPos;
 	
-	public void setR(Ranking aux, String nTab) {
+	public void setR(ArrayList<String[]> aux, String nTab,int nPos) {
 		r = aux;
 		this.nTab = nTab;
+		this.nPos = nPos;
 	}
 	
 	/**
 	 * Create the application.
 	 */
 	public VistaMostrarRanking(final CtrlVista CV) {
-		r = new Ranking(null);
+		r = new ArrayList<String[]>();
 
-		super.setTextLayer("Ranking de tablero");
-		getContentPane().setName("Ranking de tablero");
+		super.setTextLayer("Estadisticas de usuario");
+		getContentPane().setName("Estadisticas de usuario");
 		
 
 		String titulo = String.format("Ranking del tablero %s",nTab);
@@ -57,16 +59,18 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 			{"Posicion","Jugador","Modo","Dificultad","Puntuacion"},
 			},new String[] {"a","b","c","d","e"}));
 		
-		for (int i = 0; i < r.size() ; ++i) {
+		if (r.size() < nPos) nPos = r.size();
+		
+		for (int i = 0; i < nPos ; ++i) {
 			table.setModel(new DefaultTableModel(new Object[][] {
-				//{i,r.get(i).getjug(),"Modo","Dificultad","Puntuacion"},
+				{i+1,r.get(i)[0],r.get(i)[1],r.get(i)[2],r.get(i)[3]},
 				},new String[] {"a","b","c","d","e"}));
 		}
 		
 		getContentPane().add(table);
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarARanking();
+				CV.entrarAConsultaEst();
 				Salir();
 			}
 		});

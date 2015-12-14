@@ -1,6 +1,9 @@
 package CLUSTER.VISTAS.CONTROLADORES;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CLASES.Ranking;
@@ -137,6 +140,7 @@ public class CtrlVista {
 		}
 		
 		public void entrarAMenu(){
+			VMenu.UserActual(this.nomactiu());
 			VMenu.setVisible(true);
 		}
 
@@ -294,16 +298,14 @@ public class CtrlVista {
 		public void entrarAMostrarEstadisticas(String user) {
 			Estadisticas aux = new Estadisticas(null);
 			aux = CDominio.getEst(user);
-			VMEst.setE(aux);
-			VMEst.setU(user);
+			VMEst.setE(aux,user);
 			VMEst.setVisible(true);
 		}
 		
 		public void setR(String nTab, String nPos) {
 			int n = Integer.parseInt(nPos);
-			Ranking aux = new Ranking(nTab);
-			aux = CDominio.getRanking(nTab,n);
-			VMRank.setR(aux,nTab);
+			ArrayList aux = CDominio.getRanking(nTab);
+			VMRank.setR(aux,nTab,n);
 		}
 		
 		public void entrarARanking() {

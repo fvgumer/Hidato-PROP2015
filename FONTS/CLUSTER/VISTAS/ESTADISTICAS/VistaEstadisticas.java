@@ -20,11 +20,8 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 	Estadisticas est;
 	String user;
 
-	public void setE(Estadisticas aux) {
+	public void setE(Estadisticas aux, String user) {
 		this.est = aux;
-	}
-	
-	public void setU(String user) {
 		this.user = user;
 	}
 	

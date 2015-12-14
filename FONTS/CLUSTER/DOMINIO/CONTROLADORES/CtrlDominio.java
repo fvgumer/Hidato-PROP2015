@@ -14,7 +14,9 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-	private Jugador Jactivo = null;
+
+	private Jugador Jactivo;
+
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -168,8 +170,8 @@ public class CtrlDominio {
 		CRanking.anadirResultado(t,j,m,d,p);
 	}
 	
-	public Ranking getRanking(String nTab, int nPos) {
-		return CRanking.getRanking(nTab,nPos);
+	public ArrayList getRanking(String nTab) {
+		return CRanking.getRanking(nTab);
 	}
 
 	public boolean cambiarPass(String oldPass, String newPass) {

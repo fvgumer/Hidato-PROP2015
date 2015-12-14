@@ -35,8 +35,8 @@ public class VistaRanking extends VistaPadreIniConBoton{
 	 */
 	public VistaRanking(final CtrlVista CV) {
 		
-		super.setTextLayer("Seleccion de ranking de tablero");
-		getContentPane().setName("Seleccion de ranking de tablero");
+		super.setTextLayer("Ranking de tablero");
+		getContentPane().setName("Ranking de tablero");
 		
 		Texto n = new Texto("Por favor, introduce el nombre del tablero.",36,46,15);
 		n.setSize(313, 30);
@@ -81,6 +81,9 @@ public class VistaRanking extends VistaPadreIniConBoton{
 			public void keyReleased(KeyEvent e) {
 				int key = e.getKeyCode();
 				if(key==KeyEvent.VK_ENTER){
+					nTab = textField1.getText();
+					nPos = textField2.getText();
+					CV.setR(nTab,nPos);
 					CV.entrarAMostrarRanking();
 					Salir();
 				}

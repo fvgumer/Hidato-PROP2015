@@ -26,8 +26,8 @@ public class VistaEstPersonales extends VistaEstadisticas{
 	 */
 	public VistaEstPersonales(final CtrlVista CV) {
 		
-		super.setTextLayer("Estadisticas personales");
-		getContentPane().setName("Estadisticas personales");
+		super.setTextLayer("Seleccion de estadisticas de usuario");
+		getContentPane().setName("Seleccion de estadisticas de usuario");
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {

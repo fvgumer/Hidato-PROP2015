@@ -58,6 +58,10 @@ public class Ranking implements Serializable {
 		return ranking.get(pos);
 	}
 	
+	public ArrayList getRanking() {
+		return ranking;
+	}
+	
 	/**
 	 * Metodo que, dado un resultado de una partida y un entero n, anade
 	 * dicho resultado en la posicion n del ranking.
