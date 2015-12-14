@@ -340,7 +340,9 @@ public class CtrlVista {
 			CDominio.anadirResultado(t,j,m,d,p);
 		}
 		
-		public void entrarAMostrarRanking() {
+		public void entrarAMostrarRanking(String nTab) {
+			VMRank.setTitle(nTab);
+			VMRank.displayRank();
 			VMRank.setVisible(true);
 		}
 		

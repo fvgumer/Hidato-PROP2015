@@ -68,7 +68,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 				if (!nTab.equals("")&& CV.existsR(nTab)) {
 					textField.setText("");
 					CV.setR(nTab,nPos);
-					CV.entrarAMostrarRanking();
+					CV.entrarAMostrarRanking(nTab);
 					Salir();
 				}
 				else if (!nTab.equals("") && !CV.existsR(nTab)) {

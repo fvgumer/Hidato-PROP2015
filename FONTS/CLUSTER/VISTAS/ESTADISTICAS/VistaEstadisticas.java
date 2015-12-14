@@ -81,7 +81,7 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 		
 		String sAux = new String();
 		for (int i = 0; i < 30; ++i) {
-			sAux = String.format(sAux+"%d- %s\n", i+1, "holi");
+			sAux = String.format(sAux+"%d- %s\n", i+1, tablerosJugados.get(i));
 		}
 		
 		txtY = new JTextField();
