@@ -40,10 +40,12 @@ public class VistaInicial extends VistaPadreInicio {
 		b1.setLocation(84, 283);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				
 				CV.entrarAInicioSesion();
 				Salir();
 			}
 		});
+		
 		getContentPane().add(b1);
 		
 		//Declarar Boton "Salir" y su funcion

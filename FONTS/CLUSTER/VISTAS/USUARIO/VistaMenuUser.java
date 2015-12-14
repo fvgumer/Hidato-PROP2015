@@ -30,7 +30,7 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 						Salir();
 					}
 			});
-		setTextLayer("Menu Usuario");
+		setTextLayer("Crear Tablero");
 		getContentPane().setLayout(null);
 		Titulo t1 = new Titulo("Centro del Usuario", 182, 23);
 		t1.setLocation(182, 23);

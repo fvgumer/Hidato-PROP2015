@@ -17,8 +17,8 @@ public class VistaEliminarUser extends VistaUsuario {
 
 
 	public VistaEliminarUser(final CtrlVista CV) {
-		super();
-		textField.setText(CV.nomactiu());
+		//super();
+		super.settextlayer("Crear Usuario");
 		B.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -60,7 +60,7 @@ public class VistaEliminarUser extends VistaUsuario {
 		B.set_name("Eliminar");
 		lblUsuario.setText("Usuario a eliminar");
 		lblContrasea.setText("Contraseña");
-		//lblError.setText(CV.nomactiu());
+		
 	}
 	private void eliminar(CtrlVista CV){
 		if(CV.eliminarUsuario(textField.getText(), new String(passwordField.getPassword()))){

@@ -63,6 +63,9 @@ public class VistaUsuario extends VistaPadreInicio{
 		passwordField.setText("");
 		lblError.setText("");
 	}
+	protected void settextlayer(String name){
+		super.setTextLayer(name);
+	}
 	
 	protected void atras(CtrlVista CV){
 		CV.entrarMenuUsuario();

@@ -7,6 +7,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 public class VistaLogin extends VistaUsuario{
 
 	/**
@@ -28,6 +31,9 @@ public class VistaLogin extends VistaUsuario{
 	 * Create the application.
 	 */
 	public VistaLogin(final CtrlVista CV) {
+		super.settextlayer("Eliminar");
+		JLabel myLabel = new JLabel("Login", SwingConstants.CENTER);
+		getContentPane().add(myLabel);
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -83,6 +89,7 @@ public class VistaLogin extends VistaUsuario{
 			textField.setText("");
 			passwordField.setText("");
 			textField.grabFocus();
+
 		}
 	}
 
@@ -90,5 +97,5 @@ public class VistaLogin extends VistaUsuario{
 	CV.run();
 	clear();
 	Salir();
-}
+	}
 }
