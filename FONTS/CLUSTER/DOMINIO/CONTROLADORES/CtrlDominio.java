@@ -47,7 +47,7 @@ public class CtrlDominio {
 		return false;
 	}
 	
-	public int[][] getInfoTablero(String id){
+	public String[][] getInfoTablero(String id){
 		return CPartida.previsualizarTablero(Jactivo.consultar_nombre(),id);
 	}
 	
@@ -55,7 +55,7 @@ public class CtrlDominio {
 		CPartida.Cargar_Partida_Hidato(Jactivo.consultar_nombre(),id);
 	}
 	
-	public int[][] getTAleatorio(){
+	public String[][] getTAleatorio(){
 		return CPartida.generar_Taleatorio();
 	}
 	
@@ -69,19 +69,61 @@ public class CtrlDominio {
 	
 	public void comenzarPartida(){
 		CPartida.crear_partida(Jactivo);
+		CJugar.comenzar_partida(CPartida);
 	}
 	
 	public String[] listarTableros() {
 		return CPartida.listarTableros();
 	}
 	
-	public int[][] getMapaActual(){
+	public String[][] getMapaActual(){
 		return CPartida.getMapaActual();
 	}
 	
 	public int getValorTableroActual(int x, int y){
 		return CPartida.getValorTableroActual(x,y);
 	}
+	
+	public void enPausa() {
+		CJugar.pausar();
+	}
+	
+	public String[][] rendirse(){
+		CJugar.rendirse();
+		return CPartida.getSolucion();
+	}
+	
+	public void setCasilla(int v, int x, int y) {
+		CJugar.introducirCasilla(x, y, v);
+	}
+	
+	public boolean setIntroducirCasilla(int x, int y, int valor){
+		return CJugar.introducirCasilla(x, y, valor);
+	}
+	public boolean setQuitarCasilla(int x, int y){
+		return CJugar.quitar_casilla(x, y);
+	}
+	
+	public boolean esCasillaJugable(int x, int y){
+		return CPartida.esCasillaJugable(x, y);
+	}
+	
+	public boolean esCasillaValida(int x, int y) {
+		return CPartida.esCasillaValida(x, y);
+	}
+	
+	public void guardarPartida(){
+		CJugar.guardar_partida();
+	}
+	
+	public int getFaltanCasillas(){
+		return CJugar.getFaltanCasillas();
+	}
+	public int getValorPosible(int pos) {
+		return CJugar.getValorPosible(pos);
+	}
+
+
 
 	//USUARIO
 	public boolean ingresarUsuario(String nombre, String contrasenya){

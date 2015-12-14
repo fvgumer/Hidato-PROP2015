@@ -23,7 +23,7 @@ public class VistaPrevisualizarTableroPadre extends VPBotonSiguiente {
 	CtrlVista CV2;
 	String txt;
 	JTextField[][] casilla;
-	protected int[][] mapa;
+	protected String[][] mapa;
 
 	public VistaPrevisualizarTableroPadre(final CtrlVista CV) {
 		CV2 = CV;
@@ -45,7 +45,7 @@ public class VistaPrevisualizarTableroPadre extends VPBotonSiguiente {
 		list.setListData(J);
 	}
 	
-	public void setPrevisualizarTablero(int[][] T){
+	public void setPrevisualizarTablero(String[][] T){
 		mapa = T;
 		int mida = T.length;
 		tablero.setLayout(new GridLayout(mida,mida));
@@ -55,7 +55,7 @@ public class VistaPrevisualizarTableroPadre extends VPBotonSiguiente {
 		for (int i = 0; i < mida; ++i) {
 	         for (int j = 0; j < mida; ++j) {
 	        	 casilla[i][j] = new JTextField();
-	        	 casilla[i][j].setText(Integer.toString(T[i][j]));
+	        	 casilla[i][j].setText(T[i][j]);
 	            tablero.add(casilla[i][j]);
 	         }
 	     }
