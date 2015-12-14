@@ -47,7 +47,7 @@ public class CtrlTablero {
 	
 	
 	public Tablero get_Tablero(){
-		return map;
+		return this.map;
 	}
 	
 	/**
@@ -79,6 +79,7 @@ public class CtrlTablero {
 		omplir_forats_alea(c_negras);
 		setStart_alea();
 		int[] start = map.getStart();
+		
 		boolean b = a.generador(map, start[0], start[1],1);
 		while (b == false) {
 			map.a_zero(f);
@@ -333,11 +334,20 @@ public class CtrlTablero {
 		rnk.eliminarRanking(map.get_id());
 	}
 	
-	public void cargar_txt(String name) {
-		String tab = c.readtablerotxt("1");
-		tab.substring(1, tab.length());
-		System.out.print(tab);
+	public String[][] cargar_txt(String name) {
+		String tab = c.readtablerotxt(name);
+		int n = Character.getNumericValue(tab.charAt(0));
+		tab = tab.substring(2, tab.length());
 		String[] t = tab.split(" ");
+		String t2[][] = new String[n][n];
+		int index = 0;
+		for(int i=0; i<n; ++i) {
+			for(int j=0; j<n; ++j) {
+				t2[i][j] = t[index];
+				++index;
+			}
+		}
+		return t2;
 	}
 	
 	public void asignar_dificultad() {
@@ -388,7 +398,9 @@ public class CtrlTablero {
 	private boolean bona_pos_buits(int x, int y) {
 		if (map.enable_pos(x, y) == false) return false;
 		int value = map.getValorTauler(x,y);
-		if (value == 1 || map.getValorTauler(x, y) == 0 || value == map.get_final_num()) return false;
+		if (value == 1 || map.getValorTauler(x,y) == 0 ||value == map.get_final_num()) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -400,11 +412,14 @@ public class CtrlTablero {
 	   */
 	private int[] getRandom(int n) {
 		int[] pos = new int[2];
-		int x = rm.nextInt(n);
-		int y = rm.nextInt(n);
+		pos[0] = 0;
+		pos[1] = 0;
+		int x = rm.nextInt()%n;
+		int y = rm.nextInt()%n;
 		while (map.enable_pos(x, y) == false) {
-			x = rm.nextInt(n);
-			y = rm.nextInt(n);
+			x = rm.nextInt()%n;
+			y = rm.nextInt()%n;
+			
 	}
 		pos[0] = x; pos[1] = y;
 		return pos;

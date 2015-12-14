@@ -49,7 +49,11 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 		list.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String id = list.getSelectedValue().toString().substring(0, 8);
+				String id = "";
+				try {
+					id = list.getSelectedValue().toString().substring(0, 8);
+				}
+				catch (Exception ex) {}
 				CV.entrarABorrarConfirmar(id);
 				Salir();
 			}

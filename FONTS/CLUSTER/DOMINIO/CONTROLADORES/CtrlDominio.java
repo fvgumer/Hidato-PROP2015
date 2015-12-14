@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
 import CLUSTER.DOMINIO.CLASES.Resultado;
-import CLUSTER.VISTAS.*;
 
 public class CtrlDominio {
 	
@@ -14,7 +13,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-	private Jugador Jactivo = null;
+	private Jugador Jactivo = new Jugador("mec",null);
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();
@@ -23,6 +22,7 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
+		
 	}
 	
 	/** Sobre Partida **/
@@ -38,6 +38,12 @@ public class CtrlDominio {
 		return CPartida.conseguir_partidas_enproceso(Jactivo.consultar_nombre());
 	}
 	
+	public boolean existenPartidasEnProceso(){
+		int i = CPartida.n_partidasproceso(Jactivo.consultar_nombre());
+		if (i > 0) return true;
+		return false;
+	}
+	
 	public int[][] getInfoTablero(String id){
 		return CPartida.previsualizarTablero(Jactivo.consultar_nombre(),id);
 	}
@@ -47,12 +53,31 @@ public class CtrlDominio {
 	}
 	
 	public int[][] getTAleatorio(){
-		System.out.print("CDominio");
 		return CPartida.generar_Taleatorio();
 	}
 	
 	public void crear_Partida(){
 		CPartida.crear_partida(Jactivo);
+	}
+	
+	public void setModoPartida(int modo) {
+		CPartida.setModoJuego(modo);
+	}
+	
+	public void comenzarPartida(){
+		CPartida.crear_partida(Jactivo);
+	}
+	
+	public String[] listarTableros() {
+		return CPartida.listarTableros();
+	}
+	
+	public int[][] getMapaActual(){
+		return CPartida.getMapaActual();
+	}
+	
+	public int getValorTableroActual(int x, int y){
+		return CPartida.getValorTableroActual(x,y);
 	}
 
 	//USUARIO
@@ -97,7 +122,8 @@ public class CtrlDominio {
 	}
 	
 	public String[][] get_tab_txt(String name) {
-		CTablero.cargar_txt(name);
+		String t[][] = CTablero.cargar_txt(name);
+		CTablero.set_tablero(t, false);
 		return CTablero.get_tablero();
 	}
 

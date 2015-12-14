@@ -17,8 +17,13 @@ import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VistaCargarPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
 import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
+import CLUSTER.VISTAS.PARTIDA.VistaElegirModoPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
 import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
+import CLUSTER.VISTAS.PARTIDA.VistaNoPartidasParaCargar;
+import CLUSTER.VISTAS.PARTIDA.VistaPartidaEnJuego;
+import CLUSTER.VISTAS.PARTIDA.VistaPreparadoParaJugar;
+import CLUSTER.VISTAS.PARTIDA.VistaTDisenado;
 import CLUSTER.VISTAS.PARTIDA.VistaTableroAleatorio;
 import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
@@ -36,12 +41,18 @@ public class CtrlVista {
 	private VEmergentInfo VEInfo;
 	private VistaCargarPartida VCargarPartida;
 	private VistaTableroAleatorio VTAleatorio;
+	private VistaElegirModoPartida VModoPartida;
+	private VistaNoPartidasParaCargar VNoPartidas;
+	private VistaTDisenado VTDisenado;
+	private VistaPreparadoParaJugar VPreparadoParaJugar;
+	private VistaPartidaEnJuego VPartidaEnJuego;
 	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
 	private VistaValidar VGTValidar;
 	private VistaBorrar VBorrar;
 	private VistaBorrarConfirmar VGTBorrarConfirmar;
+	private VistaElegirImportar VElegirImportar;
 	private VistaImportar VImportar;
 	private VistaMenuTipoTablero VMTipoTablero;
 	//Estadisticas
@@ -85,12 +96,16 @@ public class CtrlVista {
 			VMTipoTablero = new VistaMenuTipoTablero(this);
 			VCargarPartida = new VistaCargarPartida(this);
 			VTAleatorio = new VistaTableroAleatorio(this);
+			VModoPartida = new VistaElegirModoPartida(this);
+			VNoPartidas = new  VistaNoPartidasParaCargar(this);
+			VTDisenado = new VistaTDisenado(this);
 			/*Sobre Tableros*/
 			VGTableros = new VistaGestionTablero(this);
 			VCrearTablero1 = new VistaCrearManual(this);
 			VGTValidar = new VistaValidar(this);
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
+			VElegirImportar = new VistaElegirImportar(this);
 			/*Sobre Estadisticas*/
 			VEst = new VistaConsultaEst(this);
 			VEstP = new VistaEstPersonales(this);
@@ -142,8 +157,12 @@ public class CtrlVista {
 		}
 		
 		public void entrarACargarPartida(){
-			VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
-			VCargarPartida.setVisible(true);
+			if (CDominio.existenPartidasEnProceso()){
+				VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
+				VCargarPartida.setVisible(true);
+			}
+			else VNoPartidas.setVisible(true);
+			
 		}
 		
 		public void entrarAElegirForma(){
@@ -188,10 +207,35 @@ public class CtrlVista {
 			CDominio.cargarPartida(id);
 		}
 		
+		public void comenzarPartida(){
+			CDominio.comenzarPartida();
+			VPartidaEnJuego = new VistaPartidaEnJuego(this);
+			VPartidaEnJuego.setVisible(true);
+		}
+		
+		public void entrarAModoPartida() {
+			VModoPartida = new VistaElegirModoPartida(this);
+			VModoPartida.setVisible(true);
+		}
+		
+		public void entrarAPreparadoParaJugar(){
+			VPreparadoParaJugar = new VistaPreparadoParaJugar(this);
+			VPreparadoParaJugar.setVisible(true);
+		}
+		
+		
+		
+		
 		/** Sobre Tablero **/ 
-		public void entrarAImportar(){
+		public void entrarAImportar(String[][] tab){
+			VImportar.set_tablero(tab);
 			VImportar.setVisible(true);
 		}
+		
+		public void entrarAElegirImportar() {
+			VElegirImportar.setVisible(true);
+		}
+		
 		public void entrarACrearMan(int n, int c_negras, int c_vacias){
 			VCrearTablero1 = new VistaCrearManual(this);
 			VCrearTablero1.set_data(n, c_negras, c_vacias);
@@ -216,6 +260,7 @@ public class CtrlVista {
 		public void entrarAValidar(String[][] t) {
 			CDominio.set_tablero(t);
 			String[][] s = CDominio.solucionar();
+			VGTValidar = new VistaValidar(this);
 			VGTValidar.set_tablero(s);
 			VGTValidar.setVisible(true);
 		}
@@ -315,7 +360,27 @@ public class CtrlVista {
 		 * Sobre Partida
 		 */
 		public void setInfoPartida(int m, int forats, int ini, int forma) {
-			CDominio.setInforPartida(m,forats,ini,forma);
+			CDominio.setInforPartida(m,forats,ini+2,forma);
 		}
+		public void setCrearPartida() {
+			CDominio.crear_Partida();
+		}
+		
+		public void setInfoModoPartida(int modo) {
+			CDominio.setModoPartida(modo);
+		}
+		
+		public String[] listarTableros(){
+			return CDominio.listarTableros();
+		}
+		
+		public int[][] getMapaActual(){
+			return CDominio.getMapaActual();
+		}
+		
+		public int getValorTableroActual(int x, int y){
+			return CDominio.getValorTableroActual(x, y);
+		}
+
 }
 
