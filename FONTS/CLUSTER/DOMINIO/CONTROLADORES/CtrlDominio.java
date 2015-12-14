@@ -13,7 +13,7 @@ public class CtrlDominio {
 	private CtrlPartida CPartida;
 	private CtrlRanking CRanking;
 	private CtrlTablero CTablero;
-	private Jugador Jactivo = new Jugador("mec",null);
+	private Jugador Jactivo;
 	
 	public CtrlDominio() {
 		CEstadisticas = new CtrlEstadisticas();

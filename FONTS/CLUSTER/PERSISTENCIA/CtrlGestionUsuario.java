@@ -38,7 +38,7 @@ public class CtrlGestionUsuario extends CtrlGestionHidato<Object>{
 		ruta = ".."+ barras + "DATOS" + barras +"Jugadors"+barras;
 		File archiu = new File(".."+ barras + "DATOS" + barras +"Jugadors"+barras+nombre+".bin");
 		File directory = new File(ruta);
-		directory.mkdir();
+		directory.mkdirs();
 		if(archiu.exists()){
 			//System.out.println("El nom ja existeix, elegeix un altre");
 			return false;

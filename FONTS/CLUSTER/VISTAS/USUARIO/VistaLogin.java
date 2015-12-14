@@ -82,6 +82,7 @@ public class VistaLogin extends VistaUsuario{
 			lblError.setText("Error verifique el usuario o contraseña son correctos");
 			textField.setText("");
 			passwordField.setText("");
+			textField.grabFocus();
 			
 		}
 	}
