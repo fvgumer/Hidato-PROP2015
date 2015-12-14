@@ -15,6 +15,11 @@ public class VistaMenu extends VistaPadreInicio {
 
 		setTextLayer("Menu Principal");
 		getContentPane().setLayout(null);
+		usuarioActual.setForeground(Color.RED);
+		usuarioActual.setHorizontalAlignment(SwingConstants.CENTER);
+		usuarioActual.setBounds(502, 23, 245, 50);
+		usuarioActual.setFont(new Font("Lucida Sans", Font.BOLD, 20));
+		getContentPane().add(usuarioActual);
 		Titulo t = new Titulo("MENÚ PRINCIPAL",110,53);
 		t.setLocation(277, 39);
 		getContentPane().add(t);
@@ -69,11 +74,6 @@ public class VistaMenu extends VistaPadreInicio {
 			}
 		});
 		getContentPane().add(b5);
-		usuarioActual.setForeground(Color.RED);
-		usuarioActual.setHorizontalAlignment(SwingConstants.CENTER);
-		usuarioActual.setBounds(502, 23, 245, 35);
-		usuarioActual.setFont(new Font("Lucida Sans", Font.BOLD, 20));
-		getContentPane().add(usuarioActual);
 		
 	}
 	
