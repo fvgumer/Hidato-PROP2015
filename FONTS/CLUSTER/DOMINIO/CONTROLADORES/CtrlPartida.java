@@ -168,6 +168,8 @@ public class CtrlPartida {
 				int forma = T.get_forma();
 				GT.crear_tablero_aleatorio(dim, forats, ((dim*dim)-forats-c_ini), forma);
 				T = GT.asociar_tablero();
+				System.out.println("araprintejo el de partida:");
+				T.print();
 				return pasarAMapa(T);
 	}
 
