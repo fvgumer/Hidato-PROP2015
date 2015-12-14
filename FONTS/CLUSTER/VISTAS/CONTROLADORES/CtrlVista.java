@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.DOMINIO.CONTROLADORES.*;
 import CLUSTER.VISTAS.VistaInicial;
@@ -300,7 +301,7 @@ public class CtrlVista {
 		
 		public void setR(String nTab, String nPos) {
 			int n = Integer.parseInt(nPos);
-			ArrayList<Resultado> aux = new ArrayList<Resultado>(n);
+			Ranking aux = new Ranking(nTab);
 			aux = CDominio.getRanking(nTab,n);
 			VMRank.setR(aux,nTab);
 		}

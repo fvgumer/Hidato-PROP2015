@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
@@ -25,10 +26,10 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table;
-	private ArrayList<Resultado> r;
+	private Ranking r;
 	String nTab;
 	
-	public void setR(ArrayList<Resultado> aux, String nTab) {
+	public void setR(Ranking aux, String nTab) {
 		r = aux;
 		this.nTab = nTab;
 	}
@@ -37,7 +38,7 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	 * Create the application.
 	 */
 	public VistaMostrarRanking(final CtrlVista CV) {
-		r = new ArrayList<Resultado>();
+		r = new Ranking(null);
 
 		super.setTextLayer("Ranking de tablero");
 		getContentPane().setName("Ranking de tablero");
@@ -57,7 +58,9 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 			},new String[] {"a","b","c","d","e"}));
 		
 		for (int i = 0; i < r.size() ; ++i) {
-			
+			table.setModel(new DefaultTableModel(new Object[][] {
+				{i,r.get(i).getjug(),"Modo","Dificultad","Puntuacion"},
+				},new String[] {"a","b","c","d","e"}));
 		}
 		
 		getContentPane().add(table);

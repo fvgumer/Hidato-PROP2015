@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import CLUSTER.DOMINIO.CLASES.Estadisticas;
 import CLUSTER.DOMINIO.CLASES.Jugador;
+import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
 
 public class CtrlDominio {
@@ -167,7 +168,7 @@ public class CtrlDominio {
 		CRanking.anadirResultado(t,j,m,d,p);
 	}
 	
-	public ArrayList<Resultado> getRanking(String nTab, int nPos) {
+	public Ranking getRanking(String nTab, int nPos) {
 		return CRanking.getRanking(nTab,nPos);
 	}
 
