@@ -16,24 +16,13 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
  
 public class VistaEstUsuario extends VistaPadreIniConBoton{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private String user;
 
-	/** 
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaEstUsuario window = new VistaEstUsuario(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -62,7 +51,7 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 					CV.entrarAMostrarEstadisticas(user);
 					Salir();
 				}
-				else if (!CV.existsU(user)) {
+				else if (!user.equals("") && !CV.existsU(user)) {
 					Texto t = new Texto("El usuario introducido no existe.",385, 88, 12);
 					t.setForeground(Color.RED);
 					getContentPane().add(t);

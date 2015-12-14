@@ -222,8 +222,7 @@ public class CtrlVista {
 			VPreparadoParaJugar = new VistaPreparadoParaJugar(this);
 			VPreparadoParaJugar.setVisible(true);
 		}
-		
-		
+	
 		
 		
 		/** Sobre Tablero **/ 
@@ -295,6 +294,7 @@ public class CtrlVista {
 			Estadisticas aux = new Estadisticas(null);
 			aux = CDominio.getEst(user);
 			VMEst.setE(aux);
+			VMEst.setU(user);
 			VMEst.setVisible(true);
 		}
 		
@@ -304,6 +304,10 @@ public class CtrlVista {
 		
 		public boolean existsR(String nTab) {
 			return CDominio.existsR(nTab);
+		}
+		
+		public void anadirResultado(String t, String j, String m, String d, int p){
+			CDominio.anadirResultado(t,j,m,d,p);
 		}
 		
 		public void entrarAMostrarRanking(String nTab, String nPos) {

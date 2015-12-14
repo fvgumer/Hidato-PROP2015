@@ -14,22 +14,6 @@ import javax.swing.JTextField;
 public class VistaConsultaEst extends VistaPadreIniConBoton{
 
 	private static final long serialVersionUID = 1L;
-	/**
-	 * Launch the application.
-	 */
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaConsultaEst window = new VistaConsultaEst(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 
 

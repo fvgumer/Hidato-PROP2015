@@ -19,24 +19,12 @@ import java.awt.Color;
 
 public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTable table;
 	private ArrayList<Resultado> r;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaMostrarRanking window = new VistaMostrarRanking(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	public void setR(ArrayList<Resultado> aux) {
 		r = aux;
@@ -61,7 +49,7 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 			},new String[] {"a","b","c","d","e"}));
 		
 		for (int i = 0; i < r.size() ; ++i) {
-			System.out.print(r.get(i));
+			System.out.format("linea %d",r.get(i));
 		}
 		
 		getContentPane().add(table);

@@ -163,6 +163,10 @@ public class CtrlDominio {
 		return CRanking.cargarRanking(nTab);
 	}
 	
+	public void anadirResultado(String t, String j, String m, String d, int p){
+		CRanking.anadirResultado(t,j,m,d,p);
+	}
+	
 	public ArrayList<Resultado> getRanking(String nTab, int nPos) {
 		return CRanking.getRanking(nTab,nPos);
 	}

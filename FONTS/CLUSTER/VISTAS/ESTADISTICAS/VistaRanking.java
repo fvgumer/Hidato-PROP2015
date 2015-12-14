@@ -28,22 +28,6 @@ public class VistaRanking extends VistaPadreIniConBoton{
 	private String nPos = "";
 	private JTextField textField;
 
-	/** 
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaRanking window = new VistaRanking(null);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
@@ -78,10 +62,11 @@ public class VistaRanking extends VistaPadreIniConBoton{
 				nTab = textField1.getText();
 				nPos = textField2.getText();
 				if (!(nTab.equals("") && nPos.equals(""))&& CV.existsR(nTab)) {
+					CV.anadirResultado(nTab, "mec", "3", "dificil", 98);
 					CV.entrarAMostrarRanking(nTab,nPos);
 					Salir();
 				}
-				else if (!CV.existsR(nTab)) {
+				else if (!(nTab.equals("") && nPos.equals("")) && !CV.existsR(nTab)) {
 					Texto t = new Texto("El tablero introducido no existe.",385, 88, 12);
 					t.setForeground(Color.RED);
 					getContentPane().add(t);
