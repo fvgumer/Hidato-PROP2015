@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextPane;
 
 /**
  * Esta vista muesta el tablero elegido anteriormente en VistaBorrar y
@@ -32,23 +33,23 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 		contentPane.setLayout(null);
 		this.CV = CV;
 		
-		final JLabel mssgBorrar = new JLabel("Tu tablero se ha eliminado");
-		mssgBorrar.setBounds(558, 224, 158, 46);
-		mssgBorrar.setVisible(false);
-		getContentPane().add(mssgBorrar);
-		
 		JButton btnBorrar = new JButton("Borrar");
 		btnBorrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				mssgBorrar.setVisible(true);
 				CV.eliminar_tablero(id);
 				CV.entrarABorrarTablero();
 				Salir();
 			}
 		});
-		btnBorrar.setBounds(607, 283, 97, 25);
+		btnBorrar.setBounds(563, 331, 143, 74);
 		getContentPane().add(btnBorrar);
+		
+		JTextPane Instr = new JTextPane();
+		Instr.setEditable(false);
+		Instr.setText("Este es el tablero seleccionado. \r\nSeguro que quieres borrarlo?");
+		Instr.setBounds(563, 264, 180, 54);
+		getContentPane().add(Instr);
 		
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
@@ -60,7 +61,7 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 	
 	public void set_tablero(String id) {
 		panel = new JPanel();
-		panel.setBounds(0, 0, 536, 370);
+		panel.setBounds(12, 13, 475, 364);
 		getContentPane().add(panel);
 		String[][] tab = CV.cargar_tab(id);
 		N = Integer.parseInt(id.substring(0, 2));

@@ -24,7 +24,7 @@ public class Algorithm {
 	/**
 	 * Se soluciona el tablero map mediante recusividad. La forma de funcionar del algoritmo
 	 * es parecia al backtracking. Si el algoritmo no encuentra una solucion posible en menos
-	 * de lo que marca el temporizador (20 segundos) se retorna false.
+	 * de lo que marca el temporizador (30 segundos) se retorna false.
 	 * 
 	 * El algoritmo determina si existe solucion y la crea. Puede haber mas de una solucion.
 	 * @param x Indica la fila actual
@@ -70,6 +70,12 @@ public class Algorithm {
 		return result;
 	}
 	
+	/**
+	 * Se asocia el timer dado por el timer de la clase. Tambien se inicializa y
+	 * comienza la cuenta atras. Tambien se define la timertask (indicar mediante
+	 * el booleano "cabat" la finalizacion del tiempo)
+	 * @param timer Es el timer que se asociara
+	 */
 	public void asociarTimer(Timer timer) {
 		acabat = true;
 		this.t = timer;

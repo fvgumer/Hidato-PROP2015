@@ -33,7 +33,7 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		getContentPane().add(panel);
 		
 		JLabel lblNewLabel = new JLabel("Esta es la Solucion del tablero!");
-		lblNewLabel.setBounds(506, 13, 198, 59);
+		lblNewLabel.setBounds(545, 38, 198, 59);
 		getContentPane().add(lblNewLabel);
 		
 		JButton btnGuardar = new JButton("Guardar");
@@ -50,7 +50,7 @@ public class VistaValidar extends VistaPadreIniConBoton{
 				Salir();
 			}
 		});
-		btnGuardar.setBounds(545, 85, 97, 25);
+		btnGuardar.setBounds(569, 110, 137, 65);
 		getContentPane().add(btnGuardar);
 	}
 	
