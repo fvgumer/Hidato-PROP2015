@@ -27,7 +27,7 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	 * @param J Jugador que se ha identificado previamente y desea comenzar 
 	 * una partida con el tablero T
 	 * @param ID Identificador de la nueva partida
-	 * @param dim dimensiones del tableroP
+	 * 
 	 */
 	public Partida_Hidato(Tablero T, Jugador J, int ID){
 		super (T,J,ID);
@@ -88,7 +88,7 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	
 	/** 
 	 * Introducir puntuacion de la partida
-	 * @param estado Introduce un entero mayor a 0 que corresponde a la
+	 * @param puntuacion Introduce un entero mayor a 0 que corresponde a la
 	 * puntuacion de la partida
 	 * 
 	 */

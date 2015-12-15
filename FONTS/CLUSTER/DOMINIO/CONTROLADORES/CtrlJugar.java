@@ -88,9 +88,7 @@ public class CtrlJugar {
 	    }
 	
 	/** Pre:
-	 * @param x son dos enteros que hacen referencia a unas coordenadas validas del tablero 
-	 * del parametro implicito.
-	 * @param forats Entero que indica el numero de                                                                                                                                                                
+	 *                                                                                                                                                               
 	 * */
 	private void modificar_puntuacion(int punt) {
 		int p = PH.get_puntuacion();
@@ -227,9 +225,9 @@ public class CtrlJugar {
 	/**
 	 * Introducir Casilla
 	 * @param x Enteros que hacen referencia a una posicion del parametros implicito
-	 * @param valor Entero tal que 1 <= valor <= dim*dim
+	 * @param valor Entero tal que valor esta entre (1, dim*dim]
 	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implicito
-	 * si la posición es valida.
+	 * si la posicion es valida.
 	 */
 	public boolean introducirCasilla(int x, int y,int valor){
 			if (PH.casilla_posible(x,y)) {

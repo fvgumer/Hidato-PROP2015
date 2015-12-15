@@ -67,7 +67,7 @@ public class Estadisticas implements Serializable{
 	
 	/**
 	 * Consultora del numero total de tableros jugados.
-	 * @returnEl Numero de tableros jugados
+	 * @return El Numero de tableros jugados
 	 */
 	public int tablerosJugados() {
 		return tablerosJugados.size();
