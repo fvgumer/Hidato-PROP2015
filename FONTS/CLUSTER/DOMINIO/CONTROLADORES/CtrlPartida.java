@@ -17,10 +17,7 @@ public class CtrlPartida {
 	/**
 	 * Crear Partida
 	 * @param U Jugador previamente identificado
-	 * @param dificultad Entero que identifica la dificultad de la partida.
-	 * @param modo Entero que identifica el modo de juego de la partida.
-	 * @param dim Entero que hace referencia a las dimensiones del tablero 
-	 * de la partida.
+	 * 
 	 */
 	public void crear_partida(Jugador U){
 		int ID = 0; //CALCULAR ID
@@ -72,7 +69,7 @@ public class CtrlPartida {
 	
 	/**
 	 * Consulta de ID
-	 * @param id Entero > 0
+	 * @param id Entero mayor que 0
 	 * @return Devuelve cierto si existe una partida que se identifica con
 	 * id guardado en el disco.
 	 */

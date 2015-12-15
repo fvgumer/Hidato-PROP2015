@@ -21,7 +21,7 @@ public class DriverJugarPartida {
 	/**
 	 * Control de error
 	 * @param c1 y c2: Enteros que quieren ser comparados
-	 * @return Devoldera cierto si c1 <= a c2 y falso en el caso contrario 
+	 * @return Devoldera cierto si c1 es menor o igual a c2 y falso en el caso contrario 
 	 */
 	private boolean control_error(int c1, int c2) {
 		if (c1 > c2) {

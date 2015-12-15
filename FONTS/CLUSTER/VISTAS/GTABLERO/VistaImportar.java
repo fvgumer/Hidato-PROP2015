@@ -63,6 +63,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		SinSol.setVisible(false);
 		getContentPane().add(SinSol);
 		
+		JB.setText("Menu");
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAGTableros();
@@ -82,7 +83,12 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		for(int i=0; i<N; ++i) {
 			for(int j=0; j<N; ++j) {
 				board[i][j] = new JTextField();
-				board[i][j].setText(tab[i][j]);
+				if(tab[i][j].equals("-1")) {
+					board[i][j].setText("X");
+				}
+				else {
+					board[i][j].setText(tab[i][j]);
+				}
 				board[i][j].setHorizontalAlignment(JTextField.CENTER);
 	            board[i][j].setFont(new Font("Nyala", Font.PLAIN, 25));
 				board[i][j].setEditable(false);

@@ -44,7 +44,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		
 		JTextPane txtpnInstrucciones = new JTextPane();
 		txtpnInstrucciones.setText("Instrucciones:\r\n-Se deben colocar principio y final\r\n\r\n-Para colocar una casilla negra,\r\nintroduzca -1 en la casilla que se desee");
-		txtpnInstrucciones.setBounds(509, 13, 242, 132);
+		txtpnInstrucciones.setBounds(509, 13, 312, 132);
 		getContentPane().add(txtpnInstrucciones);
 		
 		lblError = new JLabel("El tablero creado contiene errores");

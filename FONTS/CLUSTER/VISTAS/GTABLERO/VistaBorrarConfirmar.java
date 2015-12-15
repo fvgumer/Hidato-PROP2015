@@ -48,7 +48,7 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 		JTextPane Instr = new JTextPane();
 		Instr.setEditable(false);
 		Instr.setText("Este es el tablero seleccionado. \r\nSeguro que quieres borrarlo?");
-		Instr.setBounds(563, 264, 180, 54);
+		Instr.setBounds(563, 190, 180, 128);
 		getContentPane().add(Instr);
 		
 		super.JB.addMouseListener(new MouseAdapter() {
@@ -70,7 +70,12 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 		for(int i=0; i<N; ++i) {
 			for(int j=0; j<N; ++j) {
 				board[i][j] = new JTextField();
-				board[i][j].setText(tab[i][j]);
+				if(tab[i][j].equals("-1")) {
+					board[i][j].setText("X");
+				}
+				else {
+					board[i][j].setText(tab[i][j]);
+				}
 				board[i][j].setHorizontalAlignment(JTextField.CENTER);
 				board[i][j].setFont(new Font("Nyala", Font.PLAIN, 25));
 				board[i][j].setEditable(false);
