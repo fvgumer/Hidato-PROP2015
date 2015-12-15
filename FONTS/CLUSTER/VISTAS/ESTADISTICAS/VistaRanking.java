@@ -70,8 +70,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 					textField.setText("");
 					txtError = new Texto("",385, 88, 12);
 					getContentPane().add(txtError);
-					CV.setR(nTab,nPos);
-					CV.entrarAMostrarRanking(nTab);
+					CV.entrarAMostrarRanking(nTab,nPos);
 					Salir();
 				}
 				else if (!nTab.equals("") && !CV.existsR(nTab)) {
@@ -95,8 +94,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 						textField.setText("");
 						txtError = new Texto("",385, 88, 12);
 						getContentPane().add(txtError);
-						CV.setR(nTab,nPos);
-						CV.entrarAMostrarRanking(nTab);
+						CV.entrarAMostrarRanking(nTab,nPos);
 						Salir();
 					}
 					else if (!nTab.equals("") && !CV.existsR(nTab)) {

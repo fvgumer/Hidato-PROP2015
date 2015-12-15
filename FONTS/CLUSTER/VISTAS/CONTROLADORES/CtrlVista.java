@@ -384,10 +384,6 @@ public class CtrlVista {
 			CDominio.partidaTerminada(jugador,s,p,tablero,modo);
 		}
 		
-		public void setR(String nTab, int nPos) {
-			ArrayList aux = CDominio.getRanking(nTab);
-			VMRank.setR(aux,nTab,nPos);
-		}
 		
 		public void entrarARanking() {
 			VRank.setVisible(true);
@@ -402,8 +398,10 @@ public class CtrlVista {
 			CDominio.anadirResultado(t,j,m,d,p);
 		}
 		
-		public void entrarAMostrarRanking(String nTab) {
+		public void entrarAMostrarRanking(String nTab,int nPos) {
 			VMRank.setTitle(nTab);
+			ArrayList aux = CDominio.getRanking(nTab);
+			VMRank.setR(aux,nTab,nPos);
 			VMRank.displayRank();
 			VMRank.setVisible(true);
 		}
