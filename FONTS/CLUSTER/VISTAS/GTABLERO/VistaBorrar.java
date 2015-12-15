@@ -44,7 +44,7 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 		
 		Instruc = new JTextPane();
 		Instruc.setText("Aqui se muestran los tableros guardados.\r\nLos nombres indican lo siguiente:\r\n-Las dos primeras cifras la medida del tablero\r\n-Las dos siguientes el numero de casillas negras\r\n-Las dos siguientes el numero de casillas vacias\r\n-Las dos ultimas se utilizan para diferenciar tableros\r\ncon las mismas caracter\u00EDsticas");
-		Instruc.setBounds(12, 93, 255, 206);
+		Instruc.setBounds(12, 93, 274, 247);
 		getContentPane().add(Instruc);
 
 		super.JB.addMouseListener(new MouseAdapter() {

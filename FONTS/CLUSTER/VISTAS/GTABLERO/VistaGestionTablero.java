@@ -34,7 +34,7 @@ public class VistaGestionTablero extends VistaPadreIniConBoton {
 		getContentPane().add(b1);
 		
 		Botones b3 = new Botones("Importar",250,120);
-		b3.setBounds(282, 292, 189, 82);
+		b3.setBounds(271, 289, 270, 82);
 		getContentPane().add(b3);
 		
 		b3.addMouseListener(new MouseAdapter() {

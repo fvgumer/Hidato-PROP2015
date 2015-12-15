@@ -36,6 +36,13 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		lblNewLabel.setBounds(545, 38, 198, 59);
 		getContentPane().add(lblNewLabel);
 		
+		super.JB.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.entrarAGTableros();
+				Salir();
+			}
+		});
+		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override

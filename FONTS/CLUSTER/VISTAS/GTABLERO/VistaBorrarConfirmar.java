@@ -48,7 +48,7 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 		JTextPane Instr = new JTextPane();
 		Instr.setEditable(false);
 		Instr.setText("Este es el tablero seleccionado. \r\nSeguro que quieres borrarlo?");
-		Instr.setBounds(563, 264, 180, 54);
+		Instr.setBounds(563, 190, 180, 128);
 		getContentPane().add(Instr);
 		
 		super.JB.addMouseListener(new MouseAdapter() {

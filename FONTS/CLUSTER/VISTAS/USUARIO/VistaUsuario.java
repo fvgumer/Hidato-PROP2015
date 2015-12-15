@@ -39,19 +39,21 @@ public class VistaUsuario extends VistaPadreInicio{
 		
 		setTextLayer("User");
 		getContentPane().setName("User");
-		lblContrasea.setBounds(34, 139, 123, 14);
+		lblContrasea.setBounds(142, 202, 123, 14);
 		getContentPane().add(lblContrasea);
 		textField = new JTextField();
-		textField.setBounds(162, 89, 141, 20);
+		textField.setBounds(262, 166, 141, 20);
 		textField.setColumns(10);
 		passwordField = new JPasswordField();
-		passwordField.setBounds(162, 136, 141, 20);
-		lblUsuario.setBounds(34, 92, 107, 14);
+		passwordField.setBounds(262, 199, 141, 20);
+		lblUsuario.setBounds(142, 169, 107, 14);
 		lblError.setBackground(Color.RED);
 		lblError.setHorizontalAlignment(SwingConstants.CENTER);
-		lblError.setBounds(66, 163, 409, 14);
+		lblError.setBounds(142, 226, 409, 14);
 		getContentPane().add(textField);
+		B.setLocation(307, 253);
 		getContentPane().add(B);
+		Bsalir.setLocation(570, 352);
 		getContentPane().add(Bsalir);
 		getContentPane().add(passwordField);
 		getContentPane().add(lblUsuario);

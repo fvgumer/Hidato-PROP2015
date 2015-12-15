@@ -63,6 +63,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		SinSol.setVisible(false);
 		getContentPane().add(SinSol);
 		
+		JB.setText("Menu");
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAGTableros();
