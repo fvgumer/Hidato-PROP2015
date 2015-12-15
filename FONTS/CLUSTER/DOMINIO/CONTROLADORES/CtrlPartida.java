@@ -110,6 +110,16 @@ public class CtrlPartida {
 		return map;
 	}
 	
+	public int casillasFaltan(String[][] m){
+		int faltan = 0;
+		for (int i = 0; i < m.length; ++i) {
+			for(int j = 0; j < m.length; ++j) {
+				if (m[i][j]== " ") ++faltan;
+			}
+		}
+		return faltan;
+	}
+	
 	public String[][] getMapaActual() {
 		return pasarAMapa(PH.get_Tablero());
 	}

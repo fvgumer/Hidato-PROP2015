@@ -70,6 +70,13 @@ public class CtrlDominio {
 	public void comenzarPartida(){
 		CPartida.crear_partida(Jactivo);
 		CJugar.comenzar_partida(CPartida);
+		CJugar.setCasillasFaltan(CPartida.casillasFaltan(CPartida.getMapaActual()));
+		
+	}
+	
+	public void iniciar_tiempo(int i){
+		if (CPartida.get_partida().get_modo() == 0) CJugar.iniciar_tiempo(1);
+		else CJugar.iniciar_tiempo(i);
 	}
 	
 	public String[] listarTableros() {
@@ -86,6 +93,10 @@ public class CtrlDominio {
 	
 	public void enPausa() {
 		CJugar.pausar();
+	}
+	
+	public void SalirJuego(){
+		CJugar.get_PartidaHidato().set_estado(2);
 	}
 	
 	public String[][] rendirse(){
@@ -121,6 +132,10 @@ public class CtrlDominio {
 	}
 	public int getValorPosible(int pos) {
 		return CJugar.getValorPosible(pos);
+	}
+	
+	public int getPuntuacion(){
+		return CJugar.get_PartidaHidato().get_puntuacion();
 	}
 
 

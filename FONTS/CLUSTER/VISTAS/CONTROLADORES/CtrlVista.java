@@ -40,6 +40,8 @@ public class CtrlVista {
 	private VistaPreparadoParaJugar VPreparadoParaJugar;
 	private VistaPartidaEnJuego VPartidaEnJuego;
 	private VistaEnPausa VPausa;
+	private VistaElegirTiempo VTiempo;
+	private VistaSeguroSalir VSalir;
 
 	//Tablero
 	private VistaGestionTablero VGTableros;
@@ -180,6 +182,8 @@ public class CtrlVista {
 			VMTipoTablero.setVisible(true);
 		}
 		
+		
+		
 		public void elegirTaleatorio(){
 			VTAleatorio.run(CDominio.getTAleatorio());
 			VTAleatorio.setVisible(true);
@@ -202,6 +206,9 @@ public class CtrlVista {
 		
 		public void comenzarPartida(){
 			CDominio.comenzarPartida();
+			int i = 0;
+			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
+			CDominio.iniciar_tiempo(i);
 			VPartidaEnJuego = new VistaPartidaEnJuego(this);
 			VPartidaEnJuego.setVisible(true);
 		}
@@ -209,6 +216,11 @@ public class CtrlVista {
 		public void entrarAModoPartida() {
 			VModoPartida = new VistaElegirModoPartida(this);
 			VModoPartida.setVisible(true);
+			VTiempo = new VistaElegirTiempo(this);
+		}
+		
+		public void entrarAElegirTiempo() {
+			VTiempo.setVisible(true);
 		}
 		
 		public void entrarAPreparadoParaJugar(){
@@ -232,6 +244,17 @@ public class CtrlVista {
 		
 		public void setCasilla(int v, int x,int y){
 			CDominio.setCasilla(v,x,y);
+		}
+		
+		public void PreguntarSalir(){
+			VSalir = new VistaSeguroSalir(this);
+			VSalir.setVisible(true);
+		}
+		
+		public void SalirJuego(){
+			CDominio.SalirJuego();
+			VPartidaEnJuego.setVisible(false);
+			VMenu.setVisible(true);
 		}
 	
 		
@@ -445,6 +468,13 @@ public class CtrlVista {
 		public int getValorPosible(int pos){
 			return CDominio.getValorPosible(pos);
 		}
+		
+		public String getPuntuacion(){
+			return Integer.toString(CDominio.getPuntuacion());
+		}
+		
+		
+
 
 
 

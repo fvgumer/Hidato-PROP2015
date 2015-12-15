@@ -15,7 +15,7 @@ public class VPBotonSiguiente extends VistaPadreIniConBoton {
 		
 		//Para Pasar a la siguiente Pagina
 		Siguiente = new Botones("Siguiente",150,200);
-		Siguiente.setLocation(236, 329);
+		Siguiente.setLocation(236, 391);
 		getContentPane().add(Siguiente);
 		
 	}

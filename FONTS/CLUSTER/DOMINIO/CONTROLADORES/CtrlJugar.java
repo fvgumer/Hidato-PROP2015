@@ -34,8 +34,10 @@ public class CtrlJugar {
 	 */
 	public void comenzar_partida(CtrlPartida P) {
 		PH = P.get_partida();
-		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
-				- PH.get_Tablero().getn_predef();
+	}
+	
+	public void setCasillasFaltan(int c){
+		casillas_faltan = c;
 	}
 	
 	/** Pre: Busqueda de candidatos
@@ -263,26 +265,13 @@ public class CtrlJugar {
 	 * Se extrae el valor de la posicion del tablero (x,y) si es una posicion valida
 	 */
 	public boolean quitar_casilla(int x, int y){
-			if (PH.casilla_posible(x,y)) {
 				//1. QUITAR CASILLA
-				int valor = 0;
-				PH.get_Tablero().setValorTauler(x, y, valor);
-				if (valor == -1 || valor == 0 || PH.get_Tablero().get_casilla(x,y).isPor_defecto()) {
-					error = 1; //VALOR INICIAL
-					return false;
-				}
-				else {
-					modificar_puntuacion(-3);//2. CALCULAR PUNTUACION 
-					PH.get_Tablero().setNumPosat(valor,true);
-					System.out.println("Se ha quitado la casilla: ("+x+","+y+")");
-					++casillas_faltan;
-					return true;
-					
-				}
-				
-				
-			}
-			else return false;
+				int valor = PH.get_Tablero().getValorTauler(x, y);
+				PH.get_Tablero().setValorTauler(x, y, 0);
+				modificar_puntuacion(-3);//2. CALCULAR PUNTUACION 
+				PH.get_Tablero().setNumPosat(valor,false);
+				++casillas_faltan;
+				return true;
 	}
 	
 	/**
@@ -329,8 +318,6 @@ public class CtrlJugar {
 	 */
 	public void reestart(CtrlPartida P) {
 		PH = P.get_partida_inicial();
-		casillas_faltan = (PH.get_Tablero().getMida()*PH.get_Tablero().getMida()) -PH.get_Tablero().getholes()
-				- PH.get_Tablero().getn_predef();
 		
 	}
 	/**

@@ -440,12 +440,13 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	public int getValorPosible(int pos){
 		int i = 0;
-		int j = 0;
-		while(i <= pos) {
-			if(!posats[j]) ++i;
-		++j;	
+		int candidat = 0;
+		while(candidat < pos) {
+			if(!posats[i]) ++candidat;
+		if (i < posats.length) ++i;	
 		}
-		return j;
+		System.out.println(i);
+		return i;
 	}
 
 
