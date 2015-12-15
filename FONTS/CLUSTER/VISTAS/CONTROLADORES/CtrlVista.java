@@ -369,7 +369,7 @@ public class CtrlVista {
 			int[] s = new int[5];
 			s = CDominio.getEst(user);
 			ArrayList<String> tabJ = new ArrayList<String>();
-			tabJ = CDominio.getTabJ(user);
+			tabJ = CDominio.getTabJ(user);			
 			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
 			VEst.setTabJ(tabJ);
 			String modo = CDominio.getModoMasJugado(nomactiu());

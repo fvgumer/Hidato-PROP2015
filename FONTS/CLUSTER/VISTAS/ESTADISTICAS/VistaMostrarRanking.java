@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
@@ -48,22 +49,27 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		table = new JTable();
 		table.setAutoCreateRowSorter(true);
 		table.setBorder(new LineBorder(new Color(0, 0, 153), 2));
-		table.setBounds(108, 74, 495, 303);
+		table.setBounds(108, 74, 495, 16);
 		table.setModel(new DefaultTableModel(new Object[][] {
 			{"Posicion","Jugador","Modo","Dificultad","Puntuacion"},
 			},new String[] {"a","b","c","d","e"}));
 		
-		if (r.size() < nPos) nPos = r.size();
+		//if (r.size() < nPos) nPos = r.size();
 
-		DefaultTableModel model= (DefaultTableModel) table.getModel();
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		
+		int y = 32;
 		for (int i = 0; i < nPos ; ++i) {
 			model.addRow(new Object[][] {
-				{i+1,nPos,nPos,nPos,nPos},});
+				{"Posicion","Jugador","Modo","Dificultad","Puntuacion"},});
+			table.setBounds(108, 74, 495, y);
+			y += 16;
 		}
 		
 		getContentPane().add(table);
 	}
+	
+	public void displayDemoRank() {}
 	
 	/**
 	 * Create the application.
@@ -75,6 +81,7 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				table.setBounds(108, 74, 495, 16);
 				CV.entrarAConsultaEst();
 				Salir();
 			}
