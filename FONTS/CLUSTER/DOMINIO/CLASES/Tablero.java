@@ -273,7 +273,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	/**
 	 * Determinar un valor como colocado o no en el tablero
-	 * @param valor Entero tal que 0 < valor <= mida*mida-holes
+	 * @param valor Entero tal que esta entre (0, mida*mida-holes]
 	 * @param b boleano
 	 * Se coloca en el vector de valores puestos el boleano 
 	 * del parametro de entrada. Si es cierto, significara
@@ -286,7 +286,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	/**
 	 * Consulta si un valor esta colocado en el tablero
-	 * @param valor Entero tal que 0 < valor <= mida*mida-holes
+	 * @param valor Entero tal que esta entre (0, mida*mida-holes]
 	 * @return Sera cierto si el valor introducido esta colocado en el tablero
 	 * sera falso en el caso contrario
 	 */

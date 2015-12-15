@@ -59,7 +59,7 @@ public class Temporizador implements ActionListener,Serializable {
 		 }
 		 /**
 		 * Introduce los minutos iniciales
-		 * @param seg entero que hace referencia a los minutos
+		 * @param min entero que hace referencia a los minutos
 		 * en que queremos que comienze el timer
 		 */
 		public void estMinuto(int min){ 

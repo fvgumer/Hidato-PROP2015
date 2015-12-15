@@ -90,7 +90,7 @@ public class CtrlJugar {
 	/** Pre:
 	 * @param x son dos enteros que hacen referencia a unas coordenadas validas del tablero 
 	 * del parametro implicito.
-	 * @forats Entero que indica el numero de                                                                                                                                                                
+	 * @param forats Entero que indica el numero de                                                                                                                                                                
 	 * */
 	private void modificar_puntuacion(int punt) {
 		int p = PH.get_puntuacion();

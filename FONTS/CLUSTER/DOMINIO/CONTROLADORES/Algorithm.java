@@ -127,18 +127,17 @@ public class Algorithm {
 	
 	/**
 	 * El algoritmo determina si la solucion del tablero map es unica. El funcionamento es muy
-	 * parecido al solver.
+	 * parecido al solver. Tiene un tiempo maximo de 25 segundos.
 	 * @param x Indica la fila actual
 	 * @param y Indica la columna actual
 	 * @param value Indica el valor actual
 	 * @param map Tablero sobre el qual se ejecuta el algoritmo
-	 * @param t Se utiliza para conocer el tiempo de ejecucion del timer
 	 * @return Retorna true si el tablero map tiene solucion unica. Retorna false si hay mas de
 	 * una solucion
 	 */
-	public int unica_solucion(int x, int y, Tablero map, int value, Temporizador t) {
-		if (!t.estaCorriendo()) {
-			System.out.println("timer funciona"); return 3;
+	public int unica_solucion(int x, int y, Tablero map, int value) {
+		if (acabat == false) {
+			return 3;
 		}
 		boolean predef = false; 
 		int result = 0;
@@ -157,10 +156,10 @@ public class Algorithm {
 		    		if (map.enable_pos(x+i,y+j)) {
 		    			c_value = map.getValorTauler(x+i,y+j);
 		    			if (c_value == value) {
-		    				result = result + unica_solucion(x+i,y+j,map,value,t);
+		    				result = result + unica_solucion(x+i,y+j,map,value);
 		    			}
 		    			else if (c_value == 0){
-		    				result = result + unica_solucion(x+i,y+j,map,value,t);
+		    				result = result + unica_solucion(x+i,y+j,map,value);
 		    			}
 		    		}
 		    		++j;
@@ -181,6 +180,10 @@ public class Algorithm {
 		return i;
 	}
 	
+	/**
+	 * Guarda a la clase la solucion del mapa encontrada.
+	 * @param map es el tablero que contiene la solucion.
+	 */
 	private void crea_solucion(Tablero map) {
 		int n = map.getMida();
 		sol = new Casilla[n][n];
@@ -191,6 +194,10 @@ public class Algorithm {
 		}
 	}
 	
+	/**
+	 * Devuelve la solucion del mapa que anteriormente se ha resuelto mediante el solver
+	 * @return Devuelve la solucion del ultimo mapa resuelto mediante el solver
+	 */
 	public Casilla[][] get_solucio() {
 		return sol;
 	}

@@ -164,10 +164,9 @@ public class CtrlTablero {
 	public boolean solucion_unica() {
 		int[] start;
 		start = map.getStart();
-		Temporizador t = new Temporizador();
-		t.timer_max();
-		t.iniciar();
-		int aux = a.unica_solucion(start[0], start[1], map, 1, t);
+		Timer t = new Timer();
+		a.asociarTimer(t);
+		int aux = a.unica_solucion(start[0], start[1], map, 1);
 		if(aux == 1) map.setSolucion_unica(true);
 		else map.setSolucion_unica(false);
 		return (aux == 1);
