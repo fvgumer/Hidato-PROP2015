@@ -142,7 +142,7 @@ public class CtrlDominio {
 	}
 	
 	public boolean resolverPartida(){
-		return !CJugar.resolver_partida();
+		return CJugar.resolver_partida();
 	}
 	
 	public void reiniciar(){

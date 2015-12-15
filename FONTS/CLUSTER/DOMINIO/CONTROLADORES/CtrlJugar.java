@@ -23,6 +23,7 @@ public class CtrlJugar {
 	private int casillas_faltan;
 	boolean parar;
 	private int max_nombre;
+	private int nx, ny;
 	int num_p;
 	Temporizador T1;
 	CtrlGestionPartida c;
@@ -327,71 +328,77 @@ public class CtrlJugar {
 	private boolean estaAlLado(Tablero T, int x, int y, int valor) {
 		boolean alLado = false;
 		
+		
 		if(T.enable_pos(x+1, y) && alLado == false) {
 			if (PH.get_Tablero().getValorTauler(x+1, y) == valor) {
 				alLado = true;
-				x= x+1;
+				nx = x+1;
+				ny = y;
 			}
 		}
 		if(T.enable_pos(x+1, y+1) && alLado == false) {
 			if (PH.get_Tablero().getValorTauler(x+1, y+1) == valor) {
 				alLado = true;
-				x= x+1;
-				y = y+1;
+				nx = x+1;
+				ny = y+1;
 			}
 		}
 		if(T.enable_pos(x+1, y-1) && alLado == false) {
 			if (PH.get_Tablero().getValorTauler(x+1, y-1) == valor) {
 				alLado = true;
-				x= x+1;
-				y = y-1;
+				nx = x+1;
+				ny = y-1;
 			}
 		}
 		if(T.enable_pos(x-1, y) && alLado == false) {
 			if (PH.get_Tablero().getValorTauler(x-1, y) == valor) {
 				alLado = true;
-				x= x-1;
+				nx = x-1;
+				ny = y;
 			}
 		}
 		if(T.enable_pos(x-1, y-1) && alLado == false) {
 			if (PH.get_Tablero().getValorTauler(x-1, y-1) == valor) {
 				alLado = true;
-				x= x-1;
-				y = y -1;
+				nx = x-1;
+				ny = y-1;
 			}
 		}
 		if(T.enable_pos(x-1, y+1) && alLado == false) {
 			if (PH.get_Tablero().getValorTauler(x-1, y+1) == valor) {
 				alLado = true;
-				x= x-1;
-				y = y +1;
+				nx = x-1;
+				ny = y+1;
 			}
 		}
 		if(T.enable_pos(x, y-1) && alLado == false) {
 			if (PH.get_Tablero().getValorTauler(x, y-1) == valor) {
 				alLado = true;
-				y = y -1;
+				nx = x;
+				ny = y-1;
 			}
 		}
-		if(T.enable_pos(x, y-1) && alLado == false) {
+		if(T.enable_pos(x, y+1) && alLado == false) {
 			if (PH.get_Tablero().getValorTauler(x, y+1) == valor) {
 				alLado = true;
-				y = y +1;
+				nx = x;
+				ny = y+1;
 			}
 		}
+	
 		return alLado;
 	}
 	
-	private void backtracking_resolucion(int casillastotales, int casillasMiradas, int x, int y, boolean incorrecto) {
-		if (casillasMiradas < casillastotales && incorrecto == false) {
+	private boolean backtracking_resolucion(int casillastotales, int casillasMiradas, int x, int y) {
+		if (casillasMiradas < casillastotales) {
 			if (estaAlLado(PH.get_Tablero(),x, y,casillasMiradas)) {
 				System.out.println(casillasMiradas);
 				++casillasMiradas;
-				backtracking_resolucion(casillastotales,casillasMiradas,x,y,incorrecto);
+				return backtracking_resolucion(casillastotales,casillasMiradas,nx,ny);
 			}
-			else incorrecto = true;
+			else return true;
 		}
-		if (casillasMiradas == casillastotales) incorrecto = false;
+		else return false;
 	}
 	/**
 	 * Resolver partida
@@ -417,18 +424,29 @@ public class CtrlJugar {
 				}
 		}
 		else {
-			int pos[] = PH.get_Tablero().getStart();
+			int pos[] = getPrimero(PH.get_Tablero());
 			int casillastotales = PH.getMida()*PH.getMida() - PH.getholes();
-			incorrecto = false;
-			backtracking_resolucion(casillastotales, 2, pos[0], pos[1],incorrecto);
+			incorrecto = backtracking_resolucion(casillastotales, 2, pos[0], pos[1]);
 		}
 		if (!incorrecto) {
 			PH.set_estado(ACABADO);
-			/*
-			//GUARDAR PUNTUACION PARA RANKING
-			*/
 		}
-		return incorrecto;
+		return !incorrecto;
+	}
+	
+	private int[] getPrimero(Tablero T){
+		int [] pos = new int[2];
+		boolean stop = false;
+		for(int i = 0; i < T.getMida() && !stop; ++i) {
+			for (int j = 0; j < T.getMida() && !stop; ++j) {
+				if(T.getValorTauler(i, j) == 1) {
+					stop = true;
+					pos[0] = i;
+					pos[1] = j;
+				}
+			}
+		}
+		return pos;
 	}
 	
 	public void GuardarPuntuacion(){

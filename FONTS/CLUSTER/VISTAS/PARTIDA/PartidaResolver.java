@@ -27,7 +27,7 @@ public class PartidaResolver extends VistaPatronInfo {
 		}
 		else txt = "NO Resuelta";
 		Titulo t = new Titulo(txt,50,50);
-		t.setBounds(34, 51, 427, 74);
+		t.setBounds(75, 51, 386, 74);
 		getContentPane().add(t);
 		
 		String txt1;
@@ -46,20 +46,33 @@ public class PartidaResolver extends VistaPatronInfo {
 		t1.setAlignmentX(CENTER_ALIGNMENT);
 		getContentPane().add(t1);
 		Texto t2 = new Texto(txt2,50,50,24);
-		t2.setLocation(100, 250);
+		t2.setLocation(132, 249);
 		getContentPane().add(t2);
 		
 		Botones b1 = new Botones(null,50,50);
-		b1.setSize(191, 51);
-		b1.setLocation(34, 347);
+		b1.setSize(279, 51);
+		b1.setLocation(100, 326);
 		getContentPane().add(b1);
 		Botones b2 = new Botones(null,50,50);
-		b2.setBounds(247, 347, 197, 51);
+		b2.setBounds(100, 399, 279, 51);
 		getContentPane().add(b2);
 		
 		if(correcto) {
 			b1.setText("Ranking");
 			b2.setText("Menu Principal");
+			b1.setText("Volver");
+			b1.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent arg0) {
+					CV.dejarJugar();
+					Salir();
+				}
+			});
+			b2.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent arg0) {
+					CV.entrarAMenu();
+					Salir();
+				}
+			});
 		}
 		else {
 			b1.setText("Volver");
