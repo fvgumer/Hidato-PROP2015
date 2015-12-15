@@ -5,6 +5,7 @@ import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -34,11 +35,11 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		contentPane.setLayout(null);
 		
 		JLabel lblEscribeElNombre = new JLabel("Este es el tablero importado");
-		lblEscribeElNombre.setBounds(539, 68, 165, 16);
+		lblEscribeElNombre.setBounds(563, 162, 165, 16);
 		getContentPane().add(lblEscribeElNombre);
 		
 		JLabel max_t = new JLabel("El tiempo de espera al validar es de 30seg");
-		max_t.setBounds(51, 408, 284, 16);
+		max_t.setBounds(61, 427, 284, 16);
 		getContentPane().add(max_t);
 		
 		JButton btnValidar = new JButton("Validar");
@@ -54,11 +55,11 @@ public class VistaImportar extends VistaPadreIniConBoton {
 				}
 			}
 		});
-		btnValidar.setBounds(539, 246, 97, 25);
+		btnValidar.setBounds(598, 356, 106, 53);
 		getContentPane().add(btnValidar);
 		
 		SinSol = new JLabel("No encuentro una solucion al tablero.");
-		SinSol.setBounds(51, 428, 246, 16);
+		SinSol.setBounds(61, 444, 246, 16);
 		SinSol.setVisible(false);
 		getContentPane().add(SinSol);
 		
@@ -73,7 +74,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 	public void set_tablero(String[][] tab) {
 		this.tab = tab;
 		panel = new JPanel();
-		panel.setBounds(0, 0, 536, 370);
+		panel.setBounds(12, 13, 475, 364);
 		getContentPane().add(panel);
 		N = tab[0].length;
 		panel.setLayout(new GridLayout(N,N));
@@ -82,6 +83,8 @@ public class VistaImportar extends VistaPadreIniConBoton {
 			for(int j=0; j<N; ++j) {
 				board[i][j] = new JTextField();
 				board[i][j].setText(tab[i][j]);
+				board[i][j].setHorizontalAlignment(JTextField.CENTER);
+	            board[i][j].setFont(new Font("Nyala", Font.PLAIN, 25));
 				board[i][j].setEditable(false);
 				panel.add(board[i][j]);
 			}
