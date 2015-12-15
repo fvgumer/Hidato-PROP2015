@@ -17,5 +17,7 @@ public class Titulo extends JTextPane {
 			this.setFont(new Font("Lucida Sans", Font.BOLD, 50));
 			this.setText(texto);
 			this.setBackground(null);
+			this.setAlignmentX(CENTER_ALIGNMENT);
+			this.setAlignmentY(CENTER_ALIGNMENT);
 		}
 }

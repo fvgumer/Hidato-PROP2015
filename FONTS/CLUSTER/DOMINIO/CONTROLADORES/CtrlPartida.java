@@ -110,6 +110,16 @@ public class CtrlPartida {
 		return map;
 	}
 	
+	public int casillasFaltan(String[][] m){
+		int faltan = 0;
+		for (int i = 0; i < m.length; ++i) {
+			for(int j = 0; j < m.length; ++j) {
+				if (m[i][j]== " ") ++faltan;
+			}
+		}
+		return faltan;
+	}
+	
 	public String[][] getMapaActual() {
 		return pasarAMapa(PH.get_Tablero());
 	}
@@ -190,11 +200,6 @@ public class CtrlPartida {
 
 	/**
 	 * Generar tablero aleatorio
-	 * @param dim Entero que indica las dimensiones del tablero de la partida.
-	 * @param c_ini Entero que indica el nÃƒÂºmero de casillas iniciales que contienen
-	 * un nÃƒÂºmero.
-	 * @param forats Entero que indica el nÃƒÂºmero de casillas vacÃƒÂ­as del tablero
-	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
 	 */
 	public String[][] generar_Taleatorio(){
 				CtrlTablero GT = new CtrlTablero();
@@ -251,6 +256,10 @@ public class CtrlPartida {
 		if (p1 <= 5) return 0;
 		else if (p1 <= 10) return 1;
 		else return 2;
+	}
+
+	public boolean esSolcionUnica() {
+		return T.getSolucion_unica();
 	}
 	
 	

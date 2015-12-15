@@ -21,8 +21,13 @@ public class Temporizador implements ActionListener,Serializable {
 	      }
 	  };
 	  
+	  
+	  public int get_delay() {
+		  return timer.getDelay();
+	  }
+	  
 	  public void timer_max(){
-		  timer = new Timer(20000,temps_maxim);
+		  timer = new Timer(5000,temps_maxim);
 	  }
 	  
 	  public Temporizador(){

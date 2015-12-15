@@ -3,6 +3,7 @@ package CLUSTER.VISTAS.GTABLERO;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,6 +13,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+/**
+ * Esta vista muesta el tablero elegido anteriormente en VistaBorrar y
+ * le da la opcion al usuario de borrarlo.
+ * @author Alex
+ *
+ */
 public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 	
 	private int N;
@@ -63,6 +70,8 @@ public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 			for(int j=0; j<N; ++j) {
 				board[i][j] = new JTextField();
 				board[i][j].setText(tab[i][j]);
+				board[i][j].setHorizontalAlignment(JTextField.CENTER);
+				board[i][j].setFont(new Font("Nyala", Font.PLAIN, 25));
 				board[i][j].setEditable(false);
 				panel.add(board[i][j]);
 			}

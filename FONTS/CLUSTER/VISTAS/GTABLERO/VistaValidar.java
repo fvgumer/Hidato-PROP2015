@@ -7,12 +7,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * En esta vista se muestra la solucion del tablero. Se da la opcion de guardar
+ * el tablero al usuario.
+ * @author Alex
+ *
+ */
 public class VistaValidar extends VistaPadreIniConBoton{
 	
 	private int N;
@@ -55,6 +62,8 @@ public class VistaValidar extends VistaPadreIniConBoton{
 			for(int j=0; j<N; ++j){
 				board[i][j] = new JTextField();
 				board[i][j].setText(t[i][j]);
+				board[i][j].setHorizontalAlignment(JTextField.CENTER);
+				board[i][j].setFont(new Font("Nyala", Font.PLAIN, 25));
 				board[i][j].setEditable(false);
 				panel.add(board[i][j]);
 			}

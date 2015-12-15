@@ -38,18 +38,23 @@ public class VistaElegirModoPartida extends VistaPadreIniConBoton {
 			public void mouseClicked(MouseEvent arg0) {
 				modo_partida = 0;
 				setInfoModoPartida(CV);
+				Salir();
 			}
 		});
-		b.addMouseListener(new MouseAdapter() {
+		b2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				modo_partida = 1;
 				setInfoModoPartida(CV);
+				CV.entrarAElegirTiempo();
+				Salir();
 			}
 		});
-		b.addMouseListener(new MouseAdapter() {
+		b3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				modo_partida = 2;
 				setInfoModoPartida(CV);
+				CV.entrarAElegirTiempo();
+				Salir();
 			}
 		});
 	}

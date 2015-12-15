@@ -56,7 +56,7 @@ public class CtrlRanking {
 	/**
 	 * Metodo que, dado un nombre de tablero, elimina su ranking de la 
 	 * base de datos. Esta funcion solo se debe llamar al eliminar un tablero.
-	 * @param jugador Nombre del tablero del cual queremos cargar el ranking.
+	 * @param tablero Nombre del tablero del cual queremos cargar el ranking.
 	 */
 	public void eliminarRanking(String tablero) {
 		R = GP.cargar(tablero);

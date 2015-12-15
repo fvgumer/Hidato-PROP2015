@@ -14,6 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import java.awt.Font;
 
+/**
+ * En esta vista el usuario puede escribir el nombre del tablero guardado en formato
+ * .txt en el repositorio. Al elegirlo el tablero sera mostrado y validado.
+ * @author Alex
+ *
+ */
 public class VistaElegirImportar extends VPBotonSiguiente {
 	
 	private JTextField textField;

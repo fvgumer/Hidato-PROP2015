@@ -8,6 +8,12 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
+/**
+ * Esta vista permite al usuario determinar las pincipales caracteristicas del
+ * tablero que quiere crear manualmente.
+ * @author Alex
+ *
+ */
 public class VistaCaracteristicasGT extends VistaElegirCaracPatron2{
 
 	public VistaCaracteristicasGT (final CtrlVista CV) {

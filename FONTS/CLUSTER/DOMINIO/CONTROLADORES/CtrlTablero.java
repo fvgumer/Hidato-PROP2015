@@ -1,6 +1,6 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 import java.util.Random;
-
+import java.util.*;
 import CLUSTER.DOMINIO.CLASES.*;
 import CLUSTER.PERSISTENCIA.*;
 
@@ -73,7 +73,6 @@ public class CtrlTablero {
 	   */
 	public void crear_tablero_aleatorio(int n, int c_negras, int c_vacias, int f) {
 		map = new Tablero(n);
-		System.out.println(n); System.out.println(c_negras); System.out.println(c_vacias); System.out.println(f);
 		map.setholes(c_negras);
 		map.setfinal_num((n*n)-c_negras);
 		if (f > 0) {
@@ -98,7 +97,6 @@ public class CtrlTablero {
 		int holes = map.getholes();
 		map.setn_predef((n*n)-holes-c_vacias);
 		generar_buits_alea(c_vacias);
-		map.print();
 		map.inicialitzar_caselles(); //El tema de los holes con formas no esta arreglado del todo
 		map.calcular_dificultad();
 	}
@@ -118,7 +116,7 @@ public class CtrlTablero {
 	
 	/**
 	 * Este metodo inicializa el ctrl de persistencia para poder guardar/cargar/eliminar tableros
-	 * @return Retorna el id de los tableros en el sistema de ficheros mas grande
+	 * 
 	 */
 	public void ini_guarda_carga() {
 		c = new CtrlGestionTablero();
@@ -148,13 +146,13 @@ public class CtrlTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		Temporizador t = new Temporizador();
-		t.timer_max();
-		t.iniciar();
-		//map.setfinal_num(map.getMida()*map.getMida()-map.getholes());
-		boolean b = a.solver(start[0], start[1], 1, map,t);
-		Casilla[][] aux = a.get_solucio();
-		map.set_solucio(aux);
+		Timer t = new Timer();
+		a.asociarTimer(t);
+		boolean b = a.solver(start[0], start[1], 1, map);
+		if(b) {
+			Casilla[][] aux = a.get_solucio();
+			map.set_solucio(aux);
+		}
 		return b;
 	}
 	
@@ -324,7 +322,7 @@ public class CtrlTablero {
 	
 	/**
 	 * Se copia el tablero con el id=n del sistema de ficheros al tablero de la clase
-	 * @param n Indica el id del tablero que se quiere cargar
+	 * @param id Indica el id del tablero que se quiere cargar
 	 * @return Retorna true si la carga se ha realizado con exito. False en caso contrario.
 	 */
 	public boolean cargar(String id) {

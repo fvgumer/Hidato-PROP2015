@@ -10,11 +10,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
-
+/**
+ * Esta es la vista en la que el usuario puede crear manualmente un tablero
+ * hidato. Se le proporciona la informacion necesaria para la correcta creacion
+ * del tablero.
+ * @author Alex
+ *
+ */
 public class VistaCrearManual extends VistaPadreIniConBoton{
 
 	private static final long serialVersionUID = 1L;
@@ -22,8 +29,8 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	private JTextField[][] board;
 	private Container panel;
 	private String[][] aux;
-	private JLabel lblError;
-	private JLabel lblvacias, lblNegras, lblFinalNum, lblId;
+	private JLabel lblError, espera;
+	private JLabel lblvacias, lblNegras, lblFinalNum, lblId, lblSinSol;
 	private String id;
 
 	public VistaCrearManual(final CtrlVista CV) {
@@ -45,17 +52,29 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		lblError.setVisible(false);
 		getContentPane().add(lblError);
 		
+		lblSinSol = new JLabel("El tablero no tiene solucion");
+		lblSinSol.setBounds(509, 196, 262, 34);
+		lblSinSol.setVisible(false);
+		getContentPane().add(lblSinSol);
+		
+		espera = new JLabel();
+		espera.setText("Tiempo de espera maximo al validar: 30seg");
+		espera.setBounds(12, 392, 315, 38);
+		getContentPane().add(espera);
+		
 		JButton btnValidar = new JButton("Validar");
 		btnValidar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				lblSinSol.setVisible(false);
+				lblError.setVisible(false);
 				if(comprovar_data()) {
 					try {
 					CV.entrarAValidar(aux);
 					Salir();
 					}
 					catch (Exception e ){
-						System.out.println("por alguna parte l'has liao");
+						lblSinSol.setVisible(true);
 					}
 				}
 				else {
@@ -102,6 +121,8 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		for (int row = 0; row < N; ++row) {
 	         for (int col = 0; col < N; ++col) {
 	            board[row][col] = new JTextField();
+	            board[row][col].setHorizontalAlignment(JTextField.CENTER);
+	            board[row][col].setFont(new Font("Nyala", Font.PLAIN, 25));
 	            board[row][col].setText("0");
 	            panel.add(board[row][col]);
 	         }
@@ -157,5 +178,4 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		nom = nom + "XX.bin";
 		this.id = nom;
 	}
-	
 }
