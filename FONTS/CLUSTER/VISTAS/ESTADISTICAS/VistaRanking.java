@@ -58,7 +58,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		
 
 		final JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), new Integer(20), new Integer(1)));
 		spinner.setBounds(36, 179, 35, 30);
 		getContentPane().add(spinner);
 		
@@ -70,6 +70,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 				nPos = (Integer) spinner.getValue();
 				if (!nTab.equals("")&& CV.existsR(nTab)) {
 					textField.setText("");
+					spinner.setValue(0);
 					txtError = new Texto("",385, 88, 12);
 					getContentPane().add(txtError);
 					CV.entrarAMostrarRanking(nTab,nPos);
@@ -94,6 +95,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 					nPos = (Integer) spinner.getValue();
 					if (!nTab.equals("")&& CV.existsR(nTab)) {
 						textField.setText("");
+						spinner.setValue(0);
 						txtError = new Texto("",385, 88, 12);
 						getContentPane().add(txtError);
 						CV.entrarAMostrarRanking(nTab,nPos);
