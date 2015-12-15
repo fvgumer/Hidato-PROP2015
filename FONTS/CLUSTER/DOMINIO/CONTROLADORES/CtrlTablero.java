@@ -1,6 +1,6 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 import java.util.Random;
-
+import java.util.*;
 import CLUSTER.DOMINIO.CLASES.*;
 import CLUSTER.PERSISTENCIA.*;
 
@@ -146,13 +146,13 @@ public class CtrlTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		Temporizador t = new Temporizador();
-		t.timer_max();
-		t.iniciar();
-		//map.setfinal_num(map.getMida()*map.getMida()-map.getholes());
-		boolean b = a.solver(start[0], start[1], 1, map,t);
-		Casilla[][] aux = a.get_solucio();
-		map.set_solucio(aux);
+		Timer t = new Timer();
+		a.asociarTimer(t);
+		boolean b = a.solver(start[0], start[1], 1, map);
+		if(b) {
+			Casilla[][] aux = a.get_solucio();
+			map.set_solucio(aux);
+		}
 		return b;
 	}
 	

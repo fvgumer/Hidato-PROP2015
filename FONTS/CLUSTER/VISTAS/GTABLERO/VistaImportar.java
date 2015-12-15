@@ -20,6 +20,7 @@ public class VistaImportar extends VistaPadreIniConBoton {
 	private JTextField[][] board;
 	private JPanel panel;
 	private String[][] tab;
+	JLabel SinSol;
 
 	public VistaImportar(final CtrlVista CV) {
 		//Config layer 
@@ -30,16 +31,30 @@ public class VistaImportar extends VistaPadreIniConBoton {
 		lblEscribeElNombre.setBounds(539, 68, 165, 16);
 		getContentPane().add(lblEscribeElNombre);
 		
+		JLabel max_t = new JLabel("El tiempo de espera al validar es de 30seg");
+		max_t.setBounds(51, 408, 284, 16);
+		getContentPane().add(max_t);
+		
 		JButton btnValidar = new JButton("Validar");
 		btnValidar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				try {
 				CV.entrarAValidar(tab);
 				Salir();
+				}
+				catch(Exception e1) {
+					SinSol.setVisible(true);
+				}
 			}
 		});
 		btnValidar.setBounds(539, 246, 97, 25);
 		getContentPane().add(btnValidar);
+		
+		SinSol = new JLabel("No encuentro una solucion al tablero.");
+		SinSol.setBounds(51, 428, 246, 16);
+		SinSol.setVisible(false);
+		getContentPane().add(SinSol);
 		
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {

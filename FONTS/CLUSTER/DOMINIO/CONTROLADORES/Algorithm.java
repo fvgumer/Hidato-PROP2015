@@ -15,6 +15,8 @@ public class Algorithm {
 
 	private Random rm;
 	private Casilla[][] sol;
+	public Timer t;
+	private boolean acabat;
 	
 	public Algorithm() {
 		rm = new Random();
@@ -33,8 +35,8 @@ public class Algorithm {
 	 * @return Retorna true si el tablero map tiene al menos una solucion posible. False si no tiene 
 	 * ninguna solucion.
 	 */
-	public boolean solver(int x, int y, int value, Tablero map, Temporizador t) {
-		if(!t.estaCorriendo()) {
+	public boolean solver(int x, int y, int value, Tablero map) {
+		if(acabat == false) {
 			return false;
 		}
 		boolean result = false, predef = false;
@@ -54,10 +56,10 @@ public class Algorithm {
 		    		if (map.enable_pos(x+i,y+j)) {
 		    			c_value = map.getValorTauler(x+i,y+j);
 		    			if (c_value == value) {
-		    				result = solver(x+i,y+j,value,map,t);
+		    				result = solver(x+i,y+j,value,map);
 		    			}
 		    			else if (c_value == 0){
-		    				result = solver(x+i,y+j,value,map,t);
+		    				result = solver(x+i,y+j,value,map);
 		    			}
 		    		}
 		    		++j;
@@ -67,6 +69,17 @@ public class Algorithm {
 		}
 		if (!predef) map.setValorTauler(x,y,0);
 		return result;
+	}
+	
+	public void asociarTimer(Timer timer) {
+		acabat = true;
+		this.t = timer;
+		t.schedule(new TimerTask() {
+			  @Override
+			  public void run() {
+			    acabat = false;
+			  }
+			}, 25000);
 	}
 
 	/**

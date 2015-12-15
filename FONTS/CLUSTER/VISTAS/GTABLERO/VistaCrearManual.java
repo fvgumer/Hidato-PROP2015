@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
@@ -22,7 +23,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	private JTextField[][] board;
 	private Container panel;
 	private String[][] aux;
-	private JLabel lblError;
+	private JLabel lblError, espera;
 	private JLabel lblvacias, lblNegras, lblFinalNum, lblId, lblSinSol;
 	private String id;
 
@@ -50,10 +51,17 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		lblSinSol.setVisible(false);
 		getContentPane().add(lblSinSol);
 		
+		espera = new JLabel();
+		espera.setText("Tiempo de espera maximo al validar: 30seg");
+		espera.setBounds(12, 392, 315, 38);
+		getContentPane().add(espera);
+		
 		JButton btnValidar = new JButton("Validar");
 		btnValidar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				lblSinSol.setVisible(false);
+				lblError.setVisible(false);
 				if(comprovar_data()) {
 					try {
 					CV.entrarAValidar(aux);
@@ -107,6 +115,8 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		for (int row = 0; row < N; ++row) {
 	         for (int col = 0; col < N; ++col) {
 	            board[row][col] = new JTextField();
+	            board[row][col].setHorizontalAlignment(JTextField.CENTER);
+	            board[row][col].setFont(new Font("Nyala", Font.PLAIN, 25));
 	            board[row][col].setText("0");
 	            panel.add(board[row][col]);
 	         }
@@ -162,5 +172,4 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		nom = nom + "XX.bin";
 		this.id = nom;
 	}
-	
 }
