@@ -399,9 +399,9 @@ public class CtrlVista {
 		}
 		
 		public void entrarAMostrarRanking(String nTab,int nPos) {
-			VMRank.setTitle(nTab);
 			ArrayList aux = CDominio.getRanking(nTab);
 			VMRank.setR(aux,nTab,nPos);
+			VMRank.setTitle();
 			VMRank.displayRank();
 			VMRank.setVisible(true);
 		}

@@ -20,6 +20,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JToolBar;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class VistaRanking extends VistaPadreIniConBoton{
 	
@@ -57,6 +58,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		
 
 		final JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinner.setBounds(36, 179, 35, 30);
 		getContentPane().add(spinner);
 		
