@@ -349,7 +349,7 @@ public class CtrlVista {
 			tabJ = CDominio.getTabJ(nomactiu());
 			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
 			VEst.setTabJ(tabJ);
-			String modo = CDominio.getModoMasJugado(nomactiu());
+			int modo = CDominio.getModoMasJugado(nomactiu());
 			VEst.setModoMasJugado(modo);
 			VEst.setTitle(nomactiu());
 			VEst.displayEst();
@@ -372,7 +372,7 @@ public class CtrlVista {
 			tabJ = CDominio.getTabJ(user);			
 			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
 			VEst.setTabJ(tabJ);
-			String modo = CDominio.getModoMasJugado(nomactiu());
+			int modo = CDominio.getModoMasJugado(nomactiu());
 			VEst.setModoMasJugado(modo);
 			VEst.setTitle(user);
 			VEst.displayEst();
@@ -380,7 +380,7 @@ public class CtrlVista {
 			VEst.setVisible(true);
 		}
 		
-		public void partidaTerminada(String jugador, int s, int p, String tablero, String modo) {
+		public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
 			CDominio.partidaTerminada(jugador,s,p,tablero,modo);
 		}
 		

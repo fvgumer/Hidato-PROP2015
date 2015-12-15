@@ -89,15 +89,15 @@ public class Estadisticas implements Serializable{
 		return puntuacionTotal;
 	}
 	
-	public String getModoMasJugado() {
+	public int getModoMasJugado() {
 		int m = modos[0];
 		if (modos[1] > m) m = modos[1];
 		if (modos[2] > m )m = modos[2];
 		
-		if (m == 0) return "ninguno";
-		if (m == modos[0]) return "clasico";
-		if (m == modos[1]) return "contrarreloj";
-		return "extremo";
+		if (m == 0) return -1;
+		if (m == modos[0]) return 0;
+		if (m == modos[1]) return 1;
+		return 2;
 	}
 	
 	
@@ -117,10 +117,8 @@ public class Estadisticas implements Serializable{
 		puntuacionTotal += p;
 	}
 
-	public void incModo(String modo) {
-		if (modo == "clasico") ++modos[0];
-		else if (modo == "contrarreloj") ++modos[1];
-		else if (modo == "extremo") ++modos[2];
+	public void incModo(int modo) {
+		if (modo >= 0 && modo < 3) ++modos[modo];
 	}
 	
 	/**

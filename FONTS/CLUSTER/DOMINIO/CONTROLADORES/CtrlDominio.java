@@ -230,7 +230,7 @@ public class CtrlDominio {
 		return CEstadisticas.getEst(user);
 	}
 	
-	public String  getModoMasJugado(String jugador) {
+	public int getModoMasJugado(String jugador) {
 		return CEstadisticas.getModoMasJugado(jugador);
 	}
 	
@@ -242,7 +242,7 @@ public class CtrlDominio {
 		return CEstadisticas.getName(E);
 	}
 	
-	public void partidaTerminada(String jugador, int s, int p, String tablero, String modo) {
+	public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
 		CEstadisticas.partidaTerminada(jugador, s, p, tablero,modo);
 	}
 	

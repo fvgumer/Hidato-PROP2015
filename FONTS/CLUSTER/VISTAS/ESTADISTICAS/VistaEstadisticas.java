@@ -47,8 +47,11 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 		tablerosJugados = tabJ;
 	}
 	
-	public void setModoMasJugado(String modo) {
-		this.modo = modo;
+	public void setModoMasJugado(int modo) {
+		if (modo == 0) this.modo = "clasico";
+		else if (modo == 1) this.modo = "contrarreloj";
+		else if (modo == 2)this.modo = "extremo";
+		else this.modo = "ninguno";
 	}
 	
 	public void setTitle(String user){
