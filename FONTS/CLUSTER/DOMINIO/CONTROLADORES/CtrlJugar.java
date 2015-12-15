@@ -457,11 +457,11 @@ public class CtrlJugar {
 		else d1 = "Dificil";
 		
 		String idd = String.valueOf(PH.get_Tablero().get_id());
-		//CR = new CtrlRanking();
+		CR = new CtrlRanking();
 		CE = new CtrlEstadisticas();
-		//CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
+		CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
 		CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
-		//CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd);
+		CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd,PH.get_modo());
 	}
 	/**
 	 * Consulta del tiempo

@@ -54,19 +54,29 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 			{"Posicion","Jugador","Modo","Dificultad","Puntuacion"},
 			},new String[] {"a","b","c","d","e"}));
 		
-		//if (r.size() < nPos) nPos = r.size();
+		if (r.size() < nPos) nPos = r.size();
 
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		
 		int y = 32;
-		for (int i = 0; i < nPos ; ++i) {
-			model.addRow(new Object[][] {
-				{"Posicion","Jugador","Modo","Dificultad","Puntuacion"},});
+		for(int i = 0; i < nPos ; ++i) {
+			model.addRow(concatenar(i+1,r.get(i)));
 			table.setBounds(108, 74, 495, y);
 			y += 16;
 		}
 		
 		getContentPane().add(table);
+	}
+	
+	private String[] concatenar(int i, String[] s) {
+		String y = ""+i;
+		String[] concat = new String[5];
+		concat[0] = y;
+		for (int j = 0; j < 4; ++j){
+			concat[j+1] = s[j];
+		}
+		return concat;
+		
 	}
 	
 	public void displayDemoRank() {}
@@ -78,6 +88,7 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 
 		super.setTextLayer("Estadisticas de usuario");
 		getContentPane().setName("Estadisticas de usuario");
+		
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
