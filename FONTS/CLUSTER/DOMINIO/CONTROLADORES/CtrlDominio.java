@@ -169,33 +169,61 @@ public class CtrlDominio {
 		return (Jactivo!=null);
 	}
 	
+	/**
+	 * Asigna el tablero t al controlador de tablero de la clase
+	 * @param t el tablero que se quiere asignar
+	 */
 	public void set_tablero(String[][] t) {
 		CTablero.set_tablero(t,false);
 	}
 	
+	/**
+	 * Se resuelve y se devuelve una solucion del tablero
+	 * @return Retorna la solucion del tablero
+	 */
 	public String[][] solucionar() {
 		CTablero.validar();
 		String[][] s = CTablero.get_solucion();
 		return s;
 	}
 	
+	/**
+	 * Operacion que retorna los nombres de los tableros del repositorio
+	 * @return Retorna los nombres de los tableros guardados
+	 */
 	public String[] get_tableros_repo() {
 		return CTablero.get_tableros_repositorio();
 	}
 	
+	/**
+	 * Carga y devuelve el tablero identificado por el id.
+	 * @param id Indica el identificador del tablero
+	 * @return Retorna el tablero cargado
+	 */
 	public String[][] cargar_tab(String id) {
 		CTablero.cargar(id);
 		return CTablero.get_tablero();
 	}
 
+	/**
+	 * Operacion encargada de guardar a persistencia el tablero cargado en el CtrlTablero
+	 */
 	public void guardar_tablero() {
 		CTablero.guardar();
 	}
 	
+	/**
+	 * Elimina de la persistencia el tablero cargado en el ctrlTablero
+	 */
 	public void eliminar_tablero() {
 		CTablero.eliminar();
 	}
 	
+	/**
+	 * Operacion que retorna el tablero guardado en formato .txt
+	 * @param name Indica el nombre del archivo .txt
+	 * @return El tablero contenido en el .txt
+	 */
 	public String[][] get_tab_txt(String name) {
 		String t[][] = CTablero.cargar_txt(name);
 		CTablero.set_tablero(t, false);

@@ -23,6 +23,15 @@ import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
 import CLUSTER.VISTAS.USUARIO.*;
 import CLUSTER.VISTAS.GTABLERO.*;
 
+/**
+ * Esta vista se encarga de la gestion de las pantallas visibles durante el juego.
+ * Basicamente las operaciones que encontraremos son las de entrar a una vista determinada y en
+ * ocasiones comunicarle una serie de datos a la vista antes de hacerla visible.
+ * 
+ * Esta clase tambien contiene las operaciones que comunican las vistas con el ctrl de dominio.
+ *
+ *
+ */
 public class CtrlVista {
 	private VistaInicial VInicial; 
 	private CtrlDominio CDominio;
