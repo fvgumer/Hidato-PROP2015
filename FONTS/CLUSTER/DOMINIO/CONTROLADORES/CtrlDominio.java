@@ -230,12 +230,20 @@ public class CtrlDominio {
 		return CEstadisticas.getEst(user);
 	}
 	
+	public String  getModoMasJugado(String jugador) {
+		return CEstadisticas.getModoMasJugado(jugador);
+	}
+	
 	public ArrayList<String> getTabJ(String user) {
 		return CEstadisticas.getTabJ(user);
 	}
 	
 	public String getNomEst(Estadisticas E) {
 		return CEstadisticas.getName(E);
+	}
+	
+	public void partidaTerminada(String jugador, int s, int p, String tablero, String modo) {
+		CEstadisticas.partidaTerminada(jugador, s, p, tablero,modo);
 	}
 	
 	public boolean existsR(String nTab) {

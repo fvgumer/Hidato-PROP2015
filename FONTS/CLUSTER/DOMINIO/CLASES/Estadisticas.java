@@ -22,6 +22,7 @@ public class Estadisticas implements Serializable{
 	private int puntuacionTotal;
 	//Suma de todos los puntos obtenidos en las partidas jugadas.
 	
+	private int modos[];
 	//private ArrayList<String> tablerosCreados;
 	//Listado de todos los tableros creados por un usuario.
 
@@ -37,6 +38,8 @@ public class Estadisticas implements Serializable{
 	public Estadisticas(String user){
 		this.user = user;
 		segundosJugados = puntuacionTotal = 0;
+		modos = new int[3];
+		modos[0] = modos[1] = modos[2] = 0;
 		//tablerosCreados = new ArrayList<String>();
 		tablerosJugados = new ArrayList<String>();
 	}
@@ -70,6 +73,34 @@ public class Estadisticas implements Serializable{
 		return tablerosJugados.size();
 	}
 	
+	public int getHoras() {
+		return segundosJugados/3600;
+	}
+	
+	public int getMin(){
+		return (segundosJugados%3600)/60;
+	}
+	
+	public int getSeg(){
+		return (segundosJugados%3600)%60;
+	}
+	
+	public int getPuntuacion() {
+		return puntuacionTotal;
+	}
+	
+	public String getModoMasJugado() {
+		int m = modos[0];
+		if (modos[1] > m) m = modos[1];
+		if (modos[2] > m )m = modos[2];
+		
+		if (m == 0) return "ninguno";
+		if (m == modos[0]) return "clasico";
+		if (m == modos[1]) return "contrarreloj";
+		return "extremo";
+	}
+	
+	
 	/**
 	 * Modificadora del contador del tiempo total jugado.
 	 * @param s Segundos en que queremos incrementar el contador.
@@ -86,6 +117,12 @@ public class Estadisticas implements Serializable{
 		puntuacionTotal += p;
 	}
 
+	public void incModo(String modo) {
+		if (modo == "clasico") ++modos[0];
+		else if (modo == "contrarreloj") ++modos[1];
+		else if (modo == "extremo") ++modos[2];
+	}
+	
 	/**
 	 * Metodo que anade un tablero a la lista de tableros creados.
 	 * @param t Tablero que queremos anadir.
@@ -107,23 +144,7 @@ public class Estadisticas implements Serializable{
 		}
 		if (b) tablerosJugados.add(t);
 	}
-	
-	public int getHoras() {
-		return segundosJugados/3600;
-	}
-	
-	public int getMin(){
-		return (segundosJugados%3600)/60;
-	}
-	
-	public int getSeg(){
-		return (segundosJugados%3600)%60;
-	}
-	
-	public int getPuntuacion() {
-		return puntuacionTotal;
-	}
-	
+
 	/**
 	 * Metodo que muestra por pantalla el tiempo total jugado en
 	 * formato de horas, minutos y segundos.

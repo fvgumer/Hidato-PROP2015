@@ -82,11 +82,12 @@ public class CtrlEstadisticas {
 	 * @param p Puntuacion obtenida en la partida.
 	 * @param tablero Nombre del tablero jugado en la partida.
 	 */
-	public void partidaTerminada(String jugador, int s, int p, String tablero) {
+	public void partidaTerminada(String jugador, int s, int p, String tablero, String modo) {
 		E = GE.cargar(jugador);
 		E.incrementarTiempo(s);
 		E.incrementarPuntuacion(p);
 		E.anadirTableroJ(tablero);
+		E.incModo(modo);
 		
 		GE.guardar(E);
 	}
@@ -141,6 +142,11 @@ public class CtrlEstadisticas {
 		i[4] = E.getPuntuacion();
 		
 		return i;
+	}
+	
+	public String getModoMasJugado(String jugador) {
+		E = GE.cargar(jugador);
+		return E.getModoMasJugado();
 	}
 	
 	public ArrayList<String> getTabJ(String jugador) {

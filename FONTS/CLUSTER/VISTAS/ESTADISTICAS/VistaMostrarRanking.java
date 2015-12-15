@@ -37,8 +37,8 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	}
 	
 
-	public void setTitle(String nTab) {
-		String titulo = String.format("Ranking del tablero %s",nTab);
+	public void setTitle() {
+		String titulo = String.format("Top %d del tablero %s",nPos,nTab);
 		Texto t = new Texto(titulo,38,26,15);
 		t.setSize(535, 37);
 		getContentPane().add(t);
@@ -54,11 +54,12 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 			},new String[] {"a","b","c","d","e"}));
 		
 		if (r.size() < nPos) nPos = r.size();
+
+		DefaultTableModel model= (DefaultTableModel) table.getModel();
 		
 		for (int i = 0; i < nPos ; ++i) {
-			table.setModel(new DefaultTableModel(new Object[][] {
-				{i+1,r.get(i)[0],r.get(i)[1],r.get(i)[2],r.get(i)[3]},
-				},new String[] {"a","b","c","d","e"}));
+			model.addRow(new Object[][] {
+				{i+1,nPos,nPos,nPos,nPos},});
 		}
 		
 		getContentPane().add(table);
