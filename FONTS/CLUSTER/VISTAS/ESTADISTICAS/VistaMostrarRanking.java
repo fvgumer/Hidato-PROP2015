@@ -36,21 +36,15 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		this.nPos = nPos;
 	}
 	
-	/**
-	 * Create the application.
-	 */
-	public VistaMostrarRanking(final CtrlVista CV) {
-		r = new ArrayList<String[]>();
 
-		super.setTextLayer("Estadisticas de usuario");
-		getContentPane().setName("Estadisticas de usuario");
-		
-
+	public void setTitle(String nTab) {
 		String titulo = String.format("Ranking del tablero %s",nTab);
 		Texto t = new Texto(titulo,38,26,15);
 		t.setSize(535, 37);
 		getContentPane().add(t);
-		
+	}
+	
+	public void displayRank() {
 		table = new JTable();
 		table.setAutoCreateRowSorter(true);
 		table.setBorder(new LineBorder(new Color(0, 0, 153), 2));
@@ -68,6 +62,16 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		}
 		
 		getContentPane().add(table);
+	}
+	
+	/**
+	 * Create the application.
+	 */
+	public VistaMostrarRanking(final CtrlVista CV) {
+
+		super.setTextLayer("Estadisticas de usuario");
+		getContentPane().setName("Estadisticas de usuario");
+		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarAConsultaEst();

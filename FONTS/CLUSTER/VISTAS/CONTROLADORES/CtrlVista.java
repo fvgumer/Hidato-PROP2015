@@ -13,22 +13,11 @@ import CLUSTER.VISTAS.VistaInicial;
 //import CLUSTER.VISTAS.VistaRanking;
 import CLUSTER.VISTAS.PARTIDA.VEmergentInfo;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
-import CLUSTER.VISTAS.ESTADISTICAS.VistaEstPersonales;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaEstUsuario;
-import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarEstadisticas;
+import CLUSTER.VISTAS.ESTADISTICAS.VistaEstadisticas;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaMostrarRanking;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaRanking;
-import CLUSTER.VISTAS.PARTIDA.VistaCargarPartida;
-import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac1;
-import CLUSTER.VISTAS.PARTIDA.VistaElegirCarac2;
-import CLUSTER.VISTAS.PARTIDA.VistaElegirModoPartida;
-import CLUSTER.VISTAS.PARTIDA.VistaMenuPartida;
-import CLUSTER.VISTAS.PARTIDA.VistaMenuTipoTablero;
-import CLUSTER.VISTAS.PARTIDA.VistaNoPartidasParaCargar;
-import CLUSTER.VISTAS.PARTIDA.VistaPartidaEnJuego;
-import CLUSTER.VISTAS.PARTIDA.VistaPreparadoParaJugar;
-import CLUSTER.VISTAS.PARTIDA.VistaTDisenado;
-import CLUSTER.VISTAS.PARTIDA.VistaTableroAleatorio;
+import CLUSTER.VISTAS.PARTIDA.*;
 import CLUSTER.VISTAS.BASES.VistaMenu;
 import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
 import CLUSTER.VISTAS.USUARIO.*;
@@ -50,6 +39,11 @@ public class CtrlVista {
 	private VistaTDisenado VTDisenado;
 	private VistaPreparadoParaJugar VPreparadoParaJugar;
 	private VistaPartidaEnJuego VPartidaEnJuego;
+	private VistaEnPausa VPausa;
+	private VistaElegirTiempo VTiempo;
+	private VistaSeguroSalir VSalir;
+	private PartidaResolver VResolver;
+
 	//Tablero
 	private VistaGestionTablero VGTableros;
 	private VistaCrearManual VCrearTablero1;
@@ -60,13 +54,11 @@ public class CtrlVista {
 	private VistaImportar VImportar;
 	private VistaMenuTipoTablero VMTipoTablero;
 	//Estadisticas
-	private VistaConsultaEst VEst;
+	private VistaConsultaEst VCEst;
+	private VistaEstadisticas VEst;
 	private VistaEstUsuario VEstU;
-	private VistaEstPersonales VEstP;
 	private VistaRanking VRank;
-	
 	private VistaMostrarRanking VMRank;
-	private VistaMostrarEstadisticas VMEst;
 	//Usuario
 	private VistaLogin VLogin;
 	private VistaEliminarUser VEliminarUser;
@@ -111,12 +103,11 @@ public class CtrlVista {
 			VImportar = new VistaImportar(this);
 			VElegirImportar = new VistaElegirImportar(this);
 			/*Sobre Estadisticas*/
-			VEst = new VistaConsultaEst(this);
-			VEstP = new VistaEstPersonales(this);
+			VCEst = new VistaConsultaEst(this);
+			VEst = new VistaEstadisticas(this);
 			VEstU = new VistaEstUsuario(this);
 			VRank = new VistaRanking(this);
 			VMRank = new VistaMostrarRanking(this);
-			VMEst = new VistaMostrarEstadisticas(this);
 			/*Sobre usuario*/
 			VLogin = new VistaLogin(this);
 			VEliminarUser = new VistaEliminarUser(this);
@@ -192,8 +183,11 @@ public class CtrlVista {
 			VMTipoTablero.setVisible(true);
 		}
 		
+		
+		
 		public void elegirTaleatorio(){
-			VTAleatorio.run(CDominio.getTAleatorio());
+			String [][] map = CDominio.getTAleatorio();
+			VTAleatorio.run(map, CDominio.esSolucionUnica());
 			VTAleatorio.setVisible(true);
 		}
 		public void elegirTdisenado(){
@@ -204,16 +198,19 @@ public class CtrlVista {
 			VCargarPartida.setPrevisualizarTablero(getInfoTablero(id));
 		}
 		
-		private int[][] getInfoTablero(String id){
+		private String[][] getInfoTablero(String id){
 			return CDominio.getInfoTablero(id);
 		}
 		
-		public void cargarParaJugar(int[][] Tablero, String id) {
+		public void cargarParaJugar(String[][] Tablero, String id) {
 			CDominio.cargarPartida(id);
 		}
 		
 		public void comenzarPartida(){
 			CDominio.comenzarPartida();
+			int i = 0;
+			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
+			CDominio.iniciar_tiempo(i);
 			VPartidaEnJuego = new VistaPartidaEnJuego(this);
 			VPartidaEnJuego.setVisible(true);
 		}
@@ -221,11 +218,73 @@ public class CtrlVista {
 		public void entrarAModoPartida() {
 			VModoPartida = new VistaElegirModoPartida(this);
 			VModoPartida.setVisible(true);
+			VTiempo = new VistaElegirTiempo(this);
+		}
+		
+		public void entrarAElegirTiempo() {
+			VTiempo.setVisible(true);
 		}
 		
 		public void entrarAPreparadoParaJugar(){
 			VPreparadoParaJugar = new VistaPreparadoParaJugar(this);
 			VPreparadoParaJugar.setVisible(true);
+		}
+		
+		public void entrarEnPausa() {
+			VPausa = new VistaEnPausa(this);
+			VPausa.setVisible(true);
+			VPartidaEnJuego.setEnabled(false);
+		}
+		
+		public void reanudar(){
+			VPartidaEnJuego.setEnabled(true);
+		}
+		
+		public String[][] rendirse(){
+			return CDominio.rendirse();
+		}
+		
+		public void setCasilla(int v, int x,int y){
+			CDominio.setCasilla(v,x,y);
+		}
+		
+		public void PreguntarSalir(){
+			VSalir = new VistaSeguroSalir(this);
+			VSalir.setVisible(true);
+		}
+		
+		public void SalirJuego(){
+			CDominio.SalirJuego();
+			VPartidaEnJuego.setVisible(false);
+			VMenu.setVisible(true);
+		}
+		
+		public void resolverPartida(){
+			boolean resuelta;
+			if (CDominio.resolverPartida()) {
+				//CDominio.GuardarPuntuacion();
+				resuelta = true;
+			}
+			else resuelta = false;
+			VResolver = new PartidaResolver(this,resuelta);
+			VResolver.setVisible(true);
+			VPartidaEnJuego.setEnabled(false);
+		}
+		
+		public void reiniciar(){
+			CDominio.reiniciar();
+			VPartidaEnJuego.setVisible(true);
+			VPartidaEnJuego.setEnabled(true);
+			//Reiniciar Tiempo
+			int i = 0;
+			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
+			CDominio.iniciar_tiempo(i);
+			VPartidaEnJuego.reiniciarTablero(CDominio.getMapaActual(), this);
+		}
+		
+		public void dejarJugar(){
+			VPartidaEnJuego.setVisible(true);
+			VPartidaEnJuego.setEnabled(true);
 		}
 	
 		
@@ -280,11 +339,20 @@ public class CtrlVista {
 		}
 		
 		public void entrarAConsultaEst() {
-			VEst.setVisible(true);
+			VCEst.setVisible(true);
 		}
 		
-		public void entrarAEstPersonales() {
-			VEstP.setVisible(true);
+		public void entrarAVistaEstadisticas() {
+			int[] s = new int[5];
+			s = CDominio.getEst(nomactiu());
+			ArrayList<String> tabJ = new ArrayList<String>();
+			tabJ = CDominio.getTabJ(nomactiu());
+			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
+			VEst.setTabJ(tabJ);
+			VEst.setTitle(nomactiu());
+			VEst.displayEst();
+			VEst.displayTab();
+			VEst.setVisible(true);
 		}
 
 		public void entrarAEstUsuario() {
@@ -295,17 +363,22 @@ public class CtrlVista {
 			return CDominio.existsU(user);
 		}
 
-		public void entrarAMostrarEstadisticas(String user) {
-			Estadisticas aux = new Estadisticas(null);
-			aux = CDominio.getEst(user);
-			VMEst.setE(aux,user);
-			VMEst.setVisible(true);
+		public void entrarAVistaEstadisticas(String user) {
+			int[] s = new int[5];
+			s = CDominio.getEst(user);
+			ArrayList<String> tabJ = new ArrayList<String>();
+			tabJ = CDominio.getTabJ(user);
+			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
+			VEst.setTabJ(tabJ);
+			VEst.setTitle(user);
+			VEst.displayEst();
+			VEst.displayTab();
+			VEst.setVisible(true);
 		}
 		
-		public void setR(String nTab, String nPos) {
-			int n = Integer.parseInt(nPos);
+		public void setR(String nTab, int nPos) {
 			ArrayList aux = CDominio.getRanking(nTab);
-			VMRank.setR(aux,nTab,n);
+			VMRank.setR(aux,nTab,nPos);
 		}
 		
 		public void entrarARanking() {
@@ -320,7 +393,9 @@ public class CtrlVista {
 			CDominio.anadirResultado(t,j,m,d,p);
 		}
 		
-		public void entrarAMostrarRanking() {
+		public void entrarAMostrarRanking(String nTab) {
+			VMRank.setTitle(nTab);
+			VMRank.displayRank();
 			VMRank.setVisible(true);
 		}
 		
@@ -384,13 +459,55 @@ public class CtrlVista {
 			return CDominio.listarTableros();
 		}
 		
-		public int[][] getMapaActual(){
+		public String[][] getMapaActual(){
 			return CDominio.getMapaActual();
 		}
 		
 		public int getValorTableroActual(int x, int y){
 			return CDominio.getValorTableroActual(x, y);
 		}
+		
+		public void setCasillaClicada(int x, int y) {
+			if (CDominio.esCasillaJugable(x,y)) {
+				if(!VPartidaEnJuego.esClicat(x,y))
+				VPartidaEnJuego.setCasillaClicada(x,y);
+				else VPartidaEnJuego.desclicar(x,y);
+			}
+		}
+		
+		public boolean setIntroducirCasilla(int x, int y, int valor){
+			return CDominio.setIntroducirCasilla(x,y,valor);
+		}
+		
+		public boolean setQuitarCasilla(int x, int y){
+			return CDominio.setQuitarCasilla(x,y);
+		}
+		
+		public boolean esCasillaValida(int x, int y){
+			return CDominio.esCasillaValida(x,y);
+		}
+
+		public void GuardarPartida(){
+			CDominio.guardarPartida();
+		}
+		
+		public int getFaltanCasillas(){
+			return CDominio.getFaltanCasillas();
+		}
+		
+		public int getValorPosible(int pos){
+			return CDominio.getValorPosible(pos);
+		}
+		
+		public String getPuntuacion(){
+			return Integer.toString(CDominio.getPuntuacion());
+		}
+		
+		
+
+
+
+
 
 }
 

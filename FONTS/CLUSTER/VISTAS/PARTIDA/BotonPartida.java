@@ -19,6 +19,7 @@ public class BotonPartida extends JButton {
 		setFont(new Font("Segoe UI Emoji", Font.BOLD, 15));
 		setBackground(new Color(176, 196, 222));
 		setSize(40,60);
+		setBorderPainted(false);
 		
 	}
 

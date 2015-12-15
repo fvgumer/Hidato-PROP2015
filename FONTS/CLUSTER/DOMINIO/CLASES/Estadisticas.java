@@ -22,9 +22,6 @@ public class Estadisticas implements Serializable{
 	private int puntuacionTotal;
 	//Suma de todos los puntos obtenidos en las partidas jugadas.
 	
-	private int mejorPuntuacion;
-	//Mejor puntuacion obtenida en una partida.
-	
 	//private ArrayList<String> tablerosCreados;
 	//Listado de todos los tableros creados por un usuario.
 
@@ -39,7 +36,7 @@ public class Estadisticas implements Serializable{
 	 */
 	public Estadisticas(String user){
 		this.user = user;
-		segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
+		segundosJugados = puntuacionTotal = 0;
 		//tablerosCreados = new ArrayList<String>();
 		tablerosJugados = new ArrayList<String>();
 	}
@@ -59,6 +56,10 @@ public class Estadisticas implements Serializable{
 	 */
 	public String getTableroJ(int n) {
 		return tablerosJugados.get(n);
+	}
+	
+	public ArrayList<String> getTabJ() {
+		return tablerosJugados;
 	}
 	
 	/**
@@ -84,16 +85,6 @@ public class Estadisticas implements Serializable{
 	public void incrementarPuntuacion(int p) {
 		puntuacionTotal += p;
 	}
-	
-	/**
-	 * Actualizadora de la mejor puntuacion obtenida. Dada una puntuacion,
-	 * comprueba si es mayor que la mejor puntuacion hasta el momento. 
-	 * En caso afirmativo, actualiza este campo.
-	 * @param p Puntuacion a la que queremos actualizar el parametro.
-	 */
-	public void actualizarPuntuacion(int p){
-		if (p > mejorPuntuacion) mejorPuntuacion = p;
-	}
 
 	/**
 	 * Metodo que anade un tablero a la lista de tableros creados.
@@ -117,6 +108,22 @@ public class Estadisticas implements Serializable{
 		if (b) tablerosJugados.add(t);
 	}
 	
+	public int getHoras() {
+		return segundosJugados/3600;
+	}
+	
+	public int getMin(){
+		return (segundosJugados%3600)/60;
+	}
+	
+	public int getSeg(){
+		return (segundosJugados%3600)%60;
+	}
+	
+	public int getPuntuacion() {
+		return puntuacionTotal;
+	}
+	
 	/**
 	 * Metodo que muestra por pantalla el tiempo total jugado en
 	 * formato de horas, minutos y segundos.
@@ -133,13 +140,6 @@ public class Estadisticas implements Serializable{
 	 */
 	public void mostrarPuntuacionTotal() {
 		System.out.format("Puntuacion total obtenida: %d\n",puntuacionTotal);
-	}
-
-	/**
-	 * Metodo que muestra por pantalla la mejor puntuacion obtenida.
-	 */
-	public void mostrarMejorPuntuacion() {
-		System.out.format("Mejor puntuacion obtenida: %d\n", mejorPuntuacion);
 	}
 	
 	/**

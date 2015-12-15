@@ -2,6 +2,7 @@ package CLUSTER.VISTAS.PARTIDA;
 
 
 import CLUSTER.VISTAS.BASES.Botones;
+import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
@@ -17,6 +18,7 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 
 	private JPanel taula;
 	private JTextField[][] casilla;
+	private Texto txt;
 	
 	public VistaTableroAleatorio(final CtrlVista CV) {
 		
@@ -47,6 +49,10 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 			}
 		});
 		
+		txt = new Texto(null, 150, 50,20);
+		txt.setSize(303, 61);
+		txt.setLocation(245, 424);
+		getContentPane().add(txt);
 		
 		
 		JB.addMouseListener(new MouseAdapter() {
@@ -56,7 +62,7 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 		});
 	}
 	
-	public void run(int [][] map){
+	public void run(String [][] map, boolean unico){
 			int mida = map.length;
 			JPanel taula = new JPanel();
 			taula.setBounds(191, 121, 357, 205);
@@ -66,10 +72,14 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 			for(int i=0; i<mida; ++i) {
 				for(int j=0; j<mida; ++j){
 					casilla[i][j] = new JTextField();
-					casilla[i][j].setText(Integer.toString(map[i][j]));
+					casilla[i][j].setText(map[i][j]);
 					casilla[i][j].setEditable(false);
 					taula.add(casilla[i][j]);
 				}
-		}
+			}
+			String tt;
+			if (unico)tt = "Tablero CON Solucion Unica";
+			else tt = "Tablero SIN Solucion Unica";
+			txt.setText(tt);
 		}
 }
