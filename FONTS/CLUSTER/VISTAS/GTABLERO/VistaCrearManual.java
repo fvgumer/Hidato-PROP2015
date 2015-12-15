@@ -23,7 +23,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 	private Container panel;
 	private String[][] aux;
 	private JLabel lblError;
-	private JLabel lblvacias, lblNegras, lblFinalNum, lblId;
+	private JLabel lblvacias, lblNegras, lblFinalNum, lblId, lblSinSol;
 	private String id;
 
 	public VistaCrearManual(final CtrlVista CV) {
@@ -45,6 +45,11 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 		lblError.setVisible(false);
 		getContentPane().add(lblError);
 		
+		lblSinSol = new JLabel("El tablero no tiene solucion");
+		lblSinSol.setBounds(509, 196, 262, 34);
+		lblSinSol.setVisible(false);
+		getContentPane().add(lblSinSol);
+		
 		JButton btnValidar = new JButton("Validar");
 		btnValidar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -55,7 +60,7 @@ public class VistaCrearManual extends VistaPadreIniConBoton{
 					Salir();
 					}
 					catch (Exception e ){
-						System.out.println("por alguna parte l'has liao");
+						lblSinSol.setVisible(true);
 					}
 				}
 				else {
