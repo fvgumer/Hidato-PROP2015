@@ -14,6 +14,12 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 
+/**
+ * Esta vista permite al usuario elegir un tablero guardado en persistencia para
+ * verlo y eliminarlo si se desea.
+ * @author Alex
+ *
+ */
 public class VistaBorrar extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;

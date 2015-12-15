@@ -163,7 +163,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	/**
 	   * Se configura el identificador del tablero segun el valor de n
-	   * @param n Indica el valor del nuevo identificador del tablero
+	   * @param s Indica el valor del nuevo identificador del tablero
 	   */
 	public void set_id(String s) {
 		id = s;

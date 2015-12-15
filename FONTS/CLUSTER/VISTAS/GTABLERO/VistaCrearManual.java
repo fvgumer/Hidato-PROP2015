@@ -15,7 +15,13 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
-
+/**
+ * Esta es la vista en la que el usuario puede crear manualmente un tablero
+ * hidato. Se le proporciona la informacion necesaria para la correcta creacion
+ * del tablero.
+ * @author Alex
+ *
+ */
 public class VistaCrearManual extends VistaPadreIniConBoton{
 
 	private static final long serialVersionUID = 1L;

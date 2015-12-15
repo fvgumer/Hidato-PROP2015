@@ -13,6 +13,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+/**
+ * Esta vista muesta el tablero elegido anteriormente en VistaBorrar y
+ * le da la opcion al usuario de borrarlo.
+ * @author Alex
+ *
+ */
 public class VistaBorrarConfirmar extends VistaPadreIniConBoton {
 	
 	private int N;

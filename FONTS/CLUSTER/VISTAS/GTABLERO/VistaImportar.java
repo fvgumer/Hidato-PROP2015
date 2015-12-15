@@ -13,6 +13,12 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+/**
+ * En esta vista se muestra el tablero importado por el usuario mediante
+ * la vista ElegirImportar. Se da la opción de validar el tablero importado.
+ * @author Alex
+ *
+ */
 public class VistaImportar extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;

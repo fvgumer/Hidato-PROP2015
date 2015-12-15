@@ -116,7 +116,7 @@ public class CtrlTablero {
 	
 	/**
 	 * Este metodo inicializa el ctrl de persistencia para poder guardar/cargar/eliminar tableros
-	 * @return Retorna el id de los tableros en el sistema de ficheros mas grande
+	 * 
 	 */
 	public void ini_guarda_carga() {
 		c = new CtrlGestionTablero();
@@ -322,7 +322,7 @@ public class CtrlTablero {
 	
 	/**
 	 * Se copia el tablero con el id=n del sistema de ficheros al tablero de la clase
-	 * @param n Indica el id del tablero que se quiere cargar
+	 * @param id Indica el id del tablero que se quiere cargar
 	 * @return Retorna true si la carga se ha realizado con exito. False en caso contrario.
 	 */
 	public boolean cargar(String id) {

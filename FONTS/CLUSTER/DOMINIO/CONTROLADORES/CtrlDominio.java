@@ -28,7 +28,7 @@ public class CtrlDominio {
 		
 	}
 	
-	/** Sobre Partida **/
+	//Sobre partida
 	public void setInforPartida(int dim, int forats, int ini, int forma) {
 		CPartida.anadir_carct_tablero(forma,dim, forats, ini);
 	}

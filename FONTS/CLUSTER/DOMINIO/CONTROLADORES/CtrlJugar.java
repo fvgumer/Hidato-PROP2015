@@ -45,7 +45,7 @@ public class CtrlJugar {
 	/** Pre: Busqueda de candidatos
 	 * @param x,y son dos enteros que hacen referencia a unas coordenadas validas del tablero 
 	 * del parametro impicito.
-	 * @forats Entero que indica el numero de                                                                                                                                                                
+	 * @param forats Entero que indica el numero de                                                                                                                                                                
 	 * */
 	public ArrayList<Integer> bus_cantidats(int x, int y, int forats, boolean[] posats){
 		Algorithm a = new Algorithm();
@@ -88,7 +88,7 @@ public class CtrlJugar {
 	    }
 	
 	/** Pre:
-	 * @param x,y son dos enteros que hacen referencia a unas coordenadas validas del tablero 
+	 * @param x son dos enteros que hacen referencia a unas coordenadas validas del tablero 
 	 * del parametro implicito.
 	 * @forats Entero que indica el numero de                                                                                                                                                                
 	 * */
@@ -226,9 +226,9 @@ public class CtrlJugar {
 
 	/**
 	 * Introducir Casilla
-	 * @param x,y Enteros que hacen referencia a una posición del parametros implícito
+	 * @param x Enteros que hacen referencia a una posicion del parametros implicito
 	 * @param valor Entero tal que 1 <= valor <= dim*dim
-	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implícito
+	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implicito
 	 * si la posición es valida.
 	 */
 	public boolean introducirCasilla(int x, int y,int valor){
@@ -465,7 +465,7 @@ public class CtrlJugar {
 	}
 	/**
 	 * Consulta del tiempo
-	 * @return Nos retorna los segundo en los que estamos en la partida
+	 * Nos retorna los segundo en los que estamos en la partida
 	 */
 	public void get_tiempo() {
 		int min = T1.obtMinuto();

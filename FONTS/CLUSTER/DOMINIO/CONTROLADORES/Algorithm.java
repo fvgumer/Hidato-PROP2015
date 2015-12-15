@@ -31,7 +31,6 @@ public class Algorithm {
 	 * @param y Indica la columna actual
 	 * @param value Indica el valor actual
 	 * @param map Tablero sobre el qual se ejecuta el solver
-	 * @param t Indica el tiempo de ejecucion del algoritmo
 	 * @return Retorna true si el tablero map tiene al menos una solucion posible. False si no tiene 
 	 * ninguna solucion.
 	 */

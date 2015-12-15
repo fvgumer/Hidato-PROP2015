@@ -200,11 +200,6 @@ public class CtrlPartida {
 
 	/**
 	 * Generar tablero aleatorio
-	 * @param dim Entero que indica las dimensiones del tablero de la partida.
-	 * @param c_ini Entero que indica el nÃƒÂºmero de casillas iniciales que contienen
-	 * un nÃƒÂºmero.
-	 * @param forats Entero que indica el nÃƒÂºmero de casillas vacÃƒÂ­as del tablero
-	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
 	 */
 	public String[][] generar_Taleatorio(){
 				CtrlTablero GT = new CtrlTablero();
