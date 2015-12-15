@@ -23,6 +23,7 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
+	private Texto txtError;
 	private String user;
 
 
@@ -51,14 +52,16 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 				user = textField.getText();
 				if (!user.equals("") && CV.existsU(user)){
 					textField.setText("");
+					txtError = new Texto("",385, 88, 12);
+					getContentPane().add(txtError);
 					CV.entrarAVistaEstadisticas(user);
 					Salir();
 				}
 				else if (!user.equals("") && !CV.existsU(user)) {
 					textField.setText("");
-					Texto t = new Texto("El usuario introducido no existe.",385, 88, 12);
-					t.setForeground(Color.RED);
-					getContentPane().add(t);
+					txtError = new Texto("El usuario introducido no existe.",385, 88, 12);
+					txtError.setForeground(Color.RED);
+					getContentPane().add(txtError);
 				}
 			}
 		});
@@ -72,14 +75,16 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 				if(key==KeyEvent.VK_ENTER){
 					user = textField.getText();if (!user.equals("") && CV.existsU(user)){
 						textField.setText("");
+						txtError = new Texto("",385, 88, 12);
+						getContentPane().add(txtError);
 						CV.entrarAVistaEstadisticas(user);
 						Salir();
 					}
 					else if (!user.equals("") && !CV.existsU(user)) {
 						textField.setText("");
-						Texto t = new Texto("El usuario introducido no existe.",385, 88, 12);
-						t.setForeground(Color.RED);
-						getContentPane().add(t);
+						txtError = new Texto("El usuario introducido no existe.",385, 88, 12);
+						txtError.setForeground(Color.RED);
+						getContentPane().add(txtError);
 					}
 				}
 			}
@@ -88,6 +93,8 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				textField.setText("");
+				txtError = new Texto("",385, 88, 12);
+				getContentPane().add(txtError);
 				CV.entrarAConsultaEst();
 				Salir();
 			}

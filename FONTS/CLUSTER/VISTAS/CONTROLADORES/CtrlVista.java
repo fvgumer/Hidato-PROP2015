@@ -296,6 +296,8 @@ public class CtrlVista {
 			tabJ = CDominio.getTabJ(nomactiu());
 			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
 			VEst.setTabJ(tabJ);
+			String modo = CDominio.getModoMasJugado(nomactiu());
+			VEst.setModoMasJugado(modo);
 			VEst.setTitle(nomactiu());
 			VEst.displayEst();
 			VEst.displayTab();
@@ -317,10 +319,16 @@ public class CtrlVista {
 			tabJ = CDominio.getTabJ(user);
 			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
 			VEst.setTabJ(tabJ);
+			String modo = CDominio.getModoMasJugado(nomactiu());
+			VEst.setModoMasJugado(modo);
 			VEst.setTitle(user);
 			VEst.displayEst();
 			VEst.displayTab();
 			VEst.setVisible(true);
+		}
+		
+		public void partidaTerminada(String jugador, int s, int p, String tablero, String modo) {
+			CDominio.partidaTerminada(jugador,s,p,tablero,modo);
 		}
 		
 		public void setR(String nTab, int nPos) {
@@ -336,6 +344,7 @@ public class CtrlVista {
 			return CDominio.existsR(nTab);
 		}
 		
+		//tablero,jugador,modo,dificultad,puntuacion
 		public void anadirResultado(String t, String j, String m, String d, int p){
 			CDominio.anadirResultado(t,j,m,d,p);
 		}
