@@ -142,6 +142,11 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		bResolver = new BotonPartida("RESOLVER");
 		bResolver.setBounds(583, 286, 125, 36);
 		getContentPane().add(bResolver);
+		bResolver.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.resolverPartida();
+			}
+		});
 		
 		/** BOTON GUARDAR **/
 		bGuardar = new BotonPartida("GUARDAR");
@@ -246,13 +251,12 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	}
 	
 	public void setCasillaClicada(int x, int y){
-		if (capClicat()) {
-			iClicat = x;
-			jClicat = y;
-			capClicat=false;
-			casilla[x][y].setBackground(new Color(250, 128, 114));
-		}
-		//SI NO ERROR
+		if (!capClicat())
+			casilla[iClicat][jClicat].setBackground(new Color(255, 250, 240));
+		iClicat = x;
+		jClicat = y;
+		capClicat=false;
+		casilla[x][y].setBackground(new Color(250, 128, 114));
 	}
 	
 	private void setIntroducirCasilla(CtrlVista CV) {
@@ -309,5 +313,15 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		int v = CV.getValorPosible(posLabel);
 		lbl.setText(Integer.toString(v));
 		
+	}
+	
+	public void reiniciarTablero(String[][] map, CtrlVista CV) {
+		for(int i=0; i<mida; ++i) {
+			for(int j=0; j<mida; ++j){
+				if(CV.esCasillaValida(i, j))
+					casilla[i][j].setText(map[i][j]);
+			}
+		}
+		lbl2.setText(CV.getPuntuacion());
 	}
 }

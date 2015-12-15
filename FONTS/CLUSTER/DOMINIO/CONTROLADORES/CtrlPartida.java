@@ -262,6 +262,10 @@ public class CtrlPartida {
 		else if (p1 <= 10) return 1;
 		else return 2;
 	}
+
+	public boolean esSolcionUnica() {
+		return T.getSolucion_unica();
+	}
 	
 	
 

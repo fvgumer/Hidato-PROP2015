@@ -42,6 +42,7 @@ public class CtrlVista {
 	private VistaEnPausa VPausa;
 	private VistaElegirTiempo VTiempo;
 	private VistaSeguroSalir VSalir;
+	private PartidaResolver VResolver;
 
 	//Tablero
 	private VistaGestionTablero VGTableros;
@@ -185,7 +186,8 @@ public class CtrlVista {
 		
 		
 		public void elegirTaleatorio(){
-			VTAleatorio.run(CDominio.getTAleatorio());
+			String [][] map = CDominio.getTAleatorio();
+			VTAleatorio.run(map, CDominio.esSolucionUnica());
 			VTAleatorio.setVisible(true);
 		}
 		public void elegirTdisenado(){
@@ -255,6 +257,34 @@ public class CtrlVista {
 			CDominio.SalirJuego();
 			VPartidaEnJuego.setVisible(false);
 			VMenu.setVisible(true);
+		}
+		
+		public void resolverPartida(){
+			boolean resuelta;
+			if (CDominio.resolverPartida()) {
+				//CDominio.GuardarPuntuacion();
+				resuelta = true;
+			}
+			else resuelta = false;
+			VResolver = new PartidaResolver(this,resuelta);
+			VResolver.setVisible(true);
+			VPartidaEnJuego.setEnabled(false);
+		}
+		
+		public void reiniciar(){
+			CDominio.reiniciar();
+			VPartidaEnJuego.setVisible(true);
+			VPartidaEnJuego.setEnabled(true);
+			//Reiniciar Tiempo
+			int i = 0;
+			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
+			CDominio.iniciar_tiempo(i);
+			VPartidaEnJuego.reiniciarTablero(CDominio.getMapaActual(), this);
+		}
+		
+		public void dejarJugar(){
+			VPartidaEnJuego.setVisible(true);
+			VPartidaEnJuego.setEnabled(true);
 		}
 	
 		

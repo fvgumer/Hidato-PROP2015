@@ -25,6 +25,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 	private int holes, n_predef, final_num, forma;
 	private int[] start, end;
 	private boolean[] posats;
+	private boolean[] posats_ini;
 	private boolean solucion_unica;
 	private String id;
 	
@@ -85,11 +86,13 @@ public class Tablero extends Tablero_comp implements Serializable{
 	 */
 	public void inicialitzar_caselles() {
 		posats = new boolean[mida*mida-holes];
+		posats_ini = posats; 
 		for(int i=0; i<mida; ++i) {
 			for(int j=0; j<mida; ++j) {
 				if (tauler[i][j].getValor() > 0) {
 					tauler[i][j].setPor_defecto(true);
 					posats[tauler[i][j].getValor()-1] = true;
+					posats_ini[tauler[i][j].getValor()-1] = true;
 				}
 			}
 		}
@@ -420,6 +423,8 @@ public class Tablero extends Tablero_comp implements Serializable{
 		System.out.println();
 	}
 	
+	// TE HE PUESTO TODO ESTO ALEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEX //
+	
 	public void setMida(int n) {
 		mida = n;
 	}
@@ -448,6 +453,12 @@ public class Tablero extends Tablero_comp implements Serializable{
 		System.out.println(i);
 		return i;
 	}
-
-
+	
+	public int getCasillasmax(){
+		return posats.length;
+	}
+	
+	public void reiniciar_posats(){
+		posats = posats_ini;
+	}
 }

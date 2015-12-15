@@ -59,6 +59,10 @@ public class CtrlDominio {
 		return CPartida.generar_Taleatorio();
 	}
 	
+	public boolean esSolucionUnica(){
+		return CPartida.esSolcionUnica();
+	}
+	
 	public void crear_Partida(){
 		CPartida.crear_partida(Jactivo);
 	}
@@ -71,7 +75,6 @@ public class CtrlDominio {
 		CPartida.crear_partida(Jactivo);
 		CJugar.comenzar_partida(CPartida);
 		CJugar.setCasillasFaltan(CPartida.casillasFaltan(CPartida.getMapaActual()));
-		
 	}
 	
 	public void iniciar_tiempo(int i){
@@ -136,6 +139,18 @@ public class CtrlDominio {
 	
 	public int getPuntuacion(){
 		return CJugar.get_PartidaHidato().get_puntuacion();
+	}
+	
+	public boolean resolverPartida(){
+		return !CJugar.resolver_partida();
+	}
+	
+	public void reiniciar(){
+		CJugar.reestart(CPartida);
+	}
+	
+	public void GuardarPuntuacion(){
+		CJugar.GuardarPuntuacion();
 	}
 
 

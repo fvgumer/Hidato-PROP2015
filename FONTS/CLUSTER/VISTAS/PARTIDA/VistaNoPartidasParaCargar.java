@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 public class VistaNoPartidasParaCargar extends VistaPatronInfo {
 
 	public VistaNoPartidasParaCargar(final CtrlVista CV) {
-		super(CV);
+		super(CV, "Cargar Partida");
 		super.run("Cargar Partida", "No tienes ninguna", "en proceso.", "Atras");
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
@@ -18,7 +18,6 @@ public class VistaNoPartidasParaCargar extends VistaPatronInfo {
 			}
 		});
 
-		
 		
 	}
 

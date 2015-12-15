@@ -14,8 +14,8 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 public class VistaEnPausa extends VistaPatronInfo {
 
 	public VistaEnPausa(final CtrlVista CV) {
-		super(CV);
-		super.run("En Pausa", "Haz click", "para", "Reanudar");
+		super(CV, "Partida En Pausa");
+		super.run("    En Pausa", "     Haz click para", "   ", "Reanudar");
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.reanudar();
