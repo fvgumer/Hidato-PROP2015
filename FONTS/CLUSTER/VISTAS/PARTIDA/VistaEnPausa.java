@@ -13,6 +13,13 @@ import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
+/**
+ * Vista Emergente que se hace visible cuando el jugador tiene la partida en juego 
+ * y clica en el boton de Pausa. Esta nos indica que la partida esta en pausa
+ * y nos da la opcion de reanudar la partida.
+ * @author Elena
+ *
+ */
 public class VistaEnPausa extends VistaPatronInfo {
 
 	public VistaEnPausa(final CtrlVista CV) {

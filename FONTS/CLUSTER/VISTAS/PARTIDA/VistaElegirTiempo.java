@@ -13,7 +13,13 @@ import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Vista que se hace visible cuando el jugador esta creando una nueva partida y elige
+ * el modo de Contrareloj o Extremo. En esta vista debera seleccionar el tiempo preferente 
+ * para poder pasar a la siguiente vista y terminar de configurar la nueva partida.
+ * @author Elena R
+ *
+ */
 public class VistaElegirTiempo extends VistaPadreIniConBoton {
 	private int tiempo;
 	

@@ -8,7 +8,14 @@ import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaError;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Vista de confirmacion para guardar el juego
+ * Es una vista emergente que se hace visible en el momento de la partida en
+ * el que el jugador ha clicado el boton de guardar. En esta, el jugador puede confirmar 
+ * si de verdad quiere guardar la partida o no.
+ * @author Elena
+ *
+ */
 public class VistaSeguroGuardar extends VistaError{
 
 	

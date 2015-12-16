@@ -10,27 +10,19 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+/**
+ * Esta vista permite al usuario iniciar sesion en el juego. Subclase de la clase VistaUsuario. 
+ * @author Joel
+ *
+ */
 public class VistaLogin extends VistaUsuario{
 
-	/**
-	 * 
-	 */
-	
-	/**
-	 * Launch the application.
-	 */
-	
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the application.
-	 */
+	
 	public VistaLogin(final CtrlVista CV) {
+		textField.grabFocus();
 		super.settextlayer("Eliminar");
 		JLabel myLabel = new JLabel("Login", SwingConstants.CENTER);
 		getContentPane().add(myLabel);

@@ -7,7 +7,12 @@ import java.awt.event.MouseEvent;
 
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-
+/**
+ * Vista de confguracion  de una nueva partida Parte 2
+ * En esta se configura los forats y numeros iniciales del nuevo tablero
+ * @author Elena
+ *
+ */
 public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 	private static final long serialVersionUID = 1L;
 	private int max_forats;

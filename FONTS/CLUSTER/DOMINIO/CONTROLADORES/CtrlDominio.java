@@ -547,7 +547,7 @@ public class CtrlDominio {
 	 * @param jugador Nombre de dicho jugador
 	 * @param s Segundos jugados
 	 * @param p Punos obtenidos
-	 * @param tableroNombre tablero
+	 * @param tablero Nombre tablero
 	 * @param modo Modo de juego
 	 */
 	public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {

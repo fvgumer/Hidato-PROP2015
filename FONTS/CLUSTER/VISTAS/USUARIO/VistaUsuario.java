@@ -12,11 +12,15 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
+/**
+ * Esta vista es la superclase de la que cuelgan el resto de vistas del usuario excepto MunuUser aprovechando
+ * la semejanza entre ellas. Subclase de la clase VistaPadreInicio. 
+ * @author Joel
+ *
+ */
 public class VistaUsuario extends VistaPadreInicio{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	protected JTextField textField;
 	protected JPasswordField passwordField;
@@ -25,17 +29,11 @@ public class VistaUsuario extends VistaPadreInicio{
 	protected JLabel lblUsuario = new JLabel("Usuario");
 	protected JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 	protected JLabel lblError = new JLabel("");
-	/**
-	 * Launch the application.
-	 */
-
-	/**
-	 * Create the application.
-	 */
+	
+	
 	
 	
 	public VistaUsuario() {
-		//super();
 		
 		setTextLayer("User");
 		getContentPane().setName("User");
@@ -64,6 +62,7 @@ public class VistaUsuario extends VistaPadreInicio{
 		textField.setText("");
 		passwordField.setText("");
 		lblError.setText("");
+		textField.grabFocus();
 	}
 	protected void settextlayer(String name){
 		super.setTextLayer(name);

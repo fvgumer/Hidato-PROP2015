@@ -1,5 +1,9 @@
 package CLUSTER.VISTAS.PARTIDA;
-
+/**
+ * Vista emergente  en la que nos indica que no existe ningun tablero
+ * diseñado al que poder cargar
+ * @author Elena
+ */
 
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.Titulo;
@@ -7,7 +11,6 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.Box;
 
 public class VistaNoTableroCargar extends VistaPatronInfo {
 

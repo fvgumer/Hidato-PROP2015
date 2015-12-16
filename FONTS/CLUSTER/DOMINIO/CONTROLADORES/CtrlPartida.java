@@ -24,7 +24,7 @@ public class CtrlPartida {
 	private CtrlGestionUsuario CU;
 	private String[] ids;
 	
-	private String quitarBin(String cad) {
+	public String quitarBin(String cad) {
 		int mida = cad.length();
 		String t = cad.substring(0, mida-4);
 		return t;
@@ -40,8 +40,11 @@ public class CtrlPartida {
 	private int calculoID(Jugador U){
 		c = new CtrlGestionPartida();
 		String[] lis = c.lista_partidas(U.consultar_nombre());
-		int ultimo = lis.length-1;
-		int id = Integer.parseInt(quitarBin(lis[ultimo]))+1;
+		int id = 1;
+		if (lis.length > 0) {
+			int ultimo = lis.length-1;
+			id = Integer.parseInt(quitarBin(lis[ultimo]))+1;
+		}
 		return id;
 	}
 	
@@ -52,7 +55,10 @@ public class CtrlPartida {
 	 * 
 	 */
 	public void crear_partida(Jugador U){
-		int ID = calculoID(U);
+		int ID= 1;
+		if (n_partidasproceso(U.consultar_nombre()) > 0){
+			ID = calculoID(U);
+		}
 		PH = new Partida_Hidato(T,U,ID);
 		PH2 = new Partida_Hidato(T,U,ID);
 		PH.set_ID(ID);
@@ -196,6 +202,7 @@ public class CtrlPartida {
 		CT = new CtrlGestionTablero();
 		String[] validos = null;
 		String[] lista = CT.consultar_nomstableros();
+		for(int i=0; i<lista.length; ++i) System.out.println(lista[i]);
 			int mida = T.getMida();
 			int nini = T.getn_predef();
 			int forats = T.getholes();
@@ -248,7 +255,7 @@ public class CtrlPartida {
 	 */
 
 	public void cargarTablero(String t){
-		T = CT.cargar(t, false,true);
+		T = CT.cargar(quitarBin(t), false,true);
 	}
 
 
@@ -257,11 +264,6 @@ public class CtrlPartida {
 	  * Calcular dificultad del tablero
 	  * A partir de los parametros de entrada se hace un calculo para estimar la 
 	  * dificultad del tablero.
-	  * @param dim Entero dentro de las dimensiones validas del tipo de tablero
-	  * @param abuj Entero valido que identifica el nÃºmero de casillas vacias
-	  * que contiene el tablero.
-	  * @param c_ini Entero valido que identifica el numero de casillas inciales
-	  * que contiene el tablero.
 	  * @return Retorna un entero que identifica la dificultad del tablero
 	  */
 	public int calcular_dificultad() {
