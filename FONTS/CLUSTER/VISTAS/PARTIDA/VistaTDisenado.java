@@ -4,6 +4,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
+/**
+ * Esta vista se encarga de listar todos los identificadores de los tableros guardados en disco,
+ * previsualizarlos y que el jugador elija con cual de ellos quieres jugar.
+ * @author Elena
+ */
 
 public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 	private VEmergErrorClicar VError;
@@ -36,11 +41,18 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 			}
 		});	
 	}
-	
+	/** 
+	 * Enviar la infor del Tablero que queremos previsualizar
+	 * @param id ID del tablero a previsualizar
+	 * @param CV CtrlVista al que enviamos la informacio
+	 * Post: Se ha enviado la informacion a CV
+	 */
 	private void previsualizar_Tablero(String id, CtrlVista CV) {
 		CV.cargar_tab(id);
 	}
-	
+	/**
+	 * Introducimos el listado de tableros que podemos cargar
+	 */
 	public void run(String[] J){
 		list.setListData(J);
 	}

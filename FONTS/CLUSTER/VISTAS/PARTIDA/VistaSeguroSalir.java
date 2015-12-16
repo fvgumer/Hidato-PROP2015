@@ -6,7 +6,14 @@ import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaError;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Vista de confirmacion de la salida del juego
+ * Es una vista emergente que se hace visible en el momento de la partida en
+ * el que el jugador ha clicado el boton de salir. En esta, el jugador puede confirmar 
+ * si de verdad quiere salir o no
+ * @author Elena
+ *
+ */
 public class VistaSeguroSalir extends VistaError{
 
 	

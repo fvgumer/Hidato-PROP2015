@@ -7,7 +7,12 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Vista emergente  en la que nos indica que no existe ninguna partida
+ * anteriormente guardada a la que poder cargar
+ * @author Elena
+ *
+ */
 public class VistaNoPartidasParaCargar extends VistaPatronInfo {
 
 	public VistaNoPartidasParaCargar(final CtrlVista CV) {

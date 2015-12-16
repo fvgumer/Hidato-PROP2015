@@ -1,4 +1,10 @@
 package CLUSTER.VISTAS.PARTIDA;
+/**
+ * Vista emergente  en la que nos indica que no existe ningun tablero
+ * diseñado al que poder cargar
+ * @author Elena
+ *
+ */
 
 
 import CLUSTER.VISTAS.BASES.Texto;

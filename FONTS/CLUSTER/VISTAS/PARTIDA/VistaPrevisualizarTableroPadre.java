@@ -15,7 +15,12 @@ import javax.swing.border.EmptyBorder;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VPBotonSiguiente;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Vista Base para alguna de las vistas que tienen elemenotos en comun en las
+ * que se visualizan tableros
+ * @author Elena R
+ *
+ */
 public class VistaPrevisualizarTableroPadre extends VPBotonSiguiente {
 
 	JList<String> list;

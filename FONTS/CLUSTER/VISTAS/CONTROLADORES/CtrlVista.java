@@ -747,11 +747,6 @@ public class CtrlVista {
 			return CDominio.getMapaVacio();
 		}
 		
-		
-
-
-
-
 
 }
 

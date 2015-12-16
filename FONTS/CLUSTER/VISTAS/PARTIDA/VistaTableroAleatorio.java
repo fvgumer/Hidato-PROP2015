@@ -1,6 +1,4 @@
 package CLUSTER.VISTAS.PARTIDA;
-
-
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.Titulo;
@@ -13,6 +11,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+/**
+ * Esta vista se encarga de mostrar por pantalla el tablero aleatorio generado a partir
+ * de la configuracion que ha introducido el usuario. En esta el usuario puede elegir
+ * si quedarse con ese tablero o volver a generar uno de nuevo con las mismas carcterisiticas
+ * @author Elena
+ */
 
 public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 
@@ -61,7 +66,12 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 			}
 		});
 	}
-	
+	/**
+	 * Sacar por pantalla el tablero generado
+	 * @param map Mapa de string con el contenido del tablero
+	 * @param unico Booleano que nos indica si este tablero
+	 * tiene solucion unica o no
+	 */
 	public void run(String [][] map, boolean unico){
 			int mida = map.length;
 			JPanel taula = new JPanel();
