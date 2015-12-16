@@ -503,7 +503,7 @@ public class CtrlJugar {
 		return pos;
 	}
 	
-	/*public void GuardarPuntuacion(){
+	public void GuardarPuntuacion(){
 		String m;
 		if (PH.get_modo() == 0) m = "Clasico";
 		else if(PH.get_modo() == 1) m = "Contrareloj";
@@ -519,7 +519,7 @@ public class CtrlJugar {
 		CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
 		CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
 		CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd,PH.get_modo());
-	}*/
+	}
 
 	/**
 	 * Consulta estado de la partida
