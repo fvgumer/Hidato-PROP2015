@@ -120,7 +120,7 @@ public class DriverJugarPartida {
 							abuj = sn.nextInt();
 						}
 						
-						dificultad= CP.calcular_dificultad(dim,abuj,c_ini);
+						//dificultad= CP.calcular_dificultad(dim,abuj,c_ini);
 						String d;
 						if (dificultad == 0) d = "Facil";
 						else if (dificultad == 1) d = "Medio";
@@ -150,7 +150,7 @@ public class DriverJugarPartida {
 								if (modo == 0) escogido = true;
 							}
 						}
-						else if (modo == 1) CP.elegir_tdisenado(); // [[NO IMPLEMENTADO]]
+						//else if (modo == 1) CP.elegir_tdisenado(); // [[NO IMPLEMENTADO]]
 						else if (incorrecto)
 							System.out.println("DATO MAL INTRODUCIDO");
 						//3. Elegir parametros de la partida
@@ -202,7 +202,7 @@ public class DriverJugarPartida {
 						delay = 1;
 			}
 			else delay = 0;
-			CJ.iniciar_tiempo(delay);
+			//CJ.iniciar_tiempo(delay);
 			int x,y;
 			System.out.println("Opciones partida:");
 			System.out.println("0.Pausa");
@@ -246,10 +246,10 @@ public class DriverJugarPartida {
 							x = sn.nextInt();
 							System.out.println("Introduce y:");
 							y = sn.nextInt();
-							if (modo == 0)CJ.pista1(x,y); 
-							else CJ.pista2(x, y);
+							//if (modo == 0)CJ.pista1(x,y); 
+							//else CJ.pista2(x, y);
 						}
-						else if (modo == 2) CJ.pista3(dim,abuj);
+						//else if (modo == 2) CJ.pista3(dim,abuj);
 						else System.out.println("Valor Incorrecto");
 						break;
 				case 4: //SALIR
@@ -328,7 +328,7 @@ public class DriverJugarPartida {
 						
 				case 12: //REESTART
 						CJ.reestart(CP);
-						CJ.iniciar_tiempo(delay);
+						//CJ.iniciar_tiempo(delay);
 						CJ.print();
 						break;
 				}

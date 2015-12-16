@@ -69,8 +69,8 @@ public class VistaNewPassword extends VistaUsuario{
 		
 		Bsalir.setText("Atras");
 		B.set_name("Cambiar");
-		lblUsuario.setText("Vieja Contraseña");
-		lblContrasea.setText("Nueva Contraseña");
+		lblUsuario.setText("Vieja Contrasenya");
+		lblContrasea.setText("Nueva Contrasenya");
 		//B.setBounds(93, 188, 250, 47);
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override
@@ -90,7 +90,7 @@ public class VistaNewPassword extends VistaUsuario{
 		else {
 			clear();
 			lblError.setForeground(Color.RED);
-			lblError.setText("Contraseña antigua incorrecta!");
+			lblError.setText("Contrasenya antigua incorrecta!");
 		}
 	}
 

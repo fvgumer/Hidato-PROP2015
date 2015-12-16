@@ -19,7 +19,7 @@ public class VistaMenu extends VistaPadreInicio {
 		//Config layer 
 		setTextLayer("Menu Principal");
 		getContentPane().setLayout(null);
-		Titulo t = new Titulo("MENÚ PRINCIPAL",110,53);
+		Titulo t = new Titulo("MENu PRINCIPAL",110,53);
 		getContentPane().add(t);
 		
 		//Declaración Boton "Entrar" y su funcion

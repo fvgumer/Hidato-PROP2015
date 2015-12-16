@@ -29,10 +29,6 @@ public class VistaPatronInfo extends JFrame {
 		setSize(500,500);
 		super.setLocation(210, 120);
 		getContentPane().setLayout(null);
-		
-		
-		
-		
 	}
 	
 	public void Salir(){

@@ -36,7 +36,7 @@ public class VistaElegirModoPartida extends VistaPadreIniConBoton {
 		b3.setSize(273, 70);
 		getContentPane().add(b);
 		getContentPane().add(b2);
-		getContentPane().add(b3);
+		//getContentPane().add(b3);
 		
 		b.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {

@@ -18,7 +18,7 @@ public class VistaSeguroSalir extends VistaError{
 
 	
 	public VistaSeguroSalir(final CtrlVista CV) {
-		Texto t = new Texto("¿Seguro que", 50,50,18);
+		Texto t = new Texto("Seguro que", 50,50,18);
 		t.setBounds(50, 11, 125, 31);
 		getContentPane().add(t);
 		Texto t2 = new Texto("quieres salir?", 50,50,18);

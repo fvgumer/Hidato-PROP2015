@@ -548,7 +548,7 @@ public class CtrlDominio {
 	}
 	
 	/**
-	 * Operación que actualiza las estadisticas de un jugador tras una partida
+	 * Operacion que actualiza las estadisticas de un jugador tras una partida
 	 * @param jugador Nombre de dicho jugador
 	 * @param s Segundos jugados
 	 * @param p Punos obtenidos
@@ -569,7 +569,7 @@ public class CtrlDominio {
 	}
 	
 	/**
-	 * Operación que actualiza el ranking de un tablero tras una partida
+	 * Operacion que actualiza el ranking de un tablero tras una partida
 	 * @param t Nombre de dicho tablero
 	 * @param j Nombre del jugador
 	 * @param m Modo de juego

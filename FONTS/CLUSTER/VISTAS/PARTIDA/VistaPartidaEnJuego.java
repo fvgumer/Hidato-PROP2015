@@ -71,7 +71,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	 * Desclicar Casilla
 	 * @param x Posicion x del tablero
 	 * @param y Posicion y del tablero
-	 * Desclica la casilla indicada, ya que es una posición que sabemos
+	 * Desclica la casilla indicada, ya que es una posicion que sabemos
 	 * que en ese momento esta clicada.
 	 */
 	public void desclicar(int x, int y){
@@ -117,7 +117,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		CV2 = CV;
 		//Coje Mapa Actual
 		String[][] tablero = CV.getMapaActual();
-		Texto t = new Texto("Puntuación: ",60,60,25);
+		Texto t = new Texto("Puntuacion: ",60,60,25);
 		t.setBounds(445, 163, 152, 40);
 		getContentPane().add(t);
 		modoJ = modo;
@@ -208,7 +208,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		});
 		
 		/**BOTON ANADIR CASILLA **/
-		pSetC = new BotonPartida("AÑADIR CASILLA");
+		pSetC = new BotonPartida("ANADIR CASILLA");
 		pSetC.setBounds(510, 52, 198, 36);
 		getContentPane().add(pSetC);
 		pSetC.addMouseListener(new MouseAdapter() {
