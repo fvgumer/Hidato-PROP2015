@@ -26,7 +26,7 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 	public void setdimensions(int d) {
 		this.dim = d;
 		if(forma == 1) max_forats = dim*2;
-		else max_forats = (dim*dim - 2);
+		else max_forats = (dim*dim - 3);
 	}
 	
 	public void setforma(int f){
