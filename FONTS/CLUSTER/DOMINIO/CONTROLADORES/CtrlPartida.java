@@ -196,6 +196,7 @@ public class CtrlPartida {
 		CT = new CtrlGestionTablero();
 		String[] validos = null;
 		String[] lista = CT.consultar_nomstableros();
+		for(int i=0; i<lista.length; ++i) System.out.println(lista[i]);
 			int mida = T.getMida();
 			int nini = T.getn_predef();
 			int forats = T.getholes();

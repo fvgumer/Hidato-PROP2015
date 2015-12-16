@@ -17,10 +17,7 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 
 	private VEmergErrorClicar VError1;
-
-	private DefaultListModel listModel;
 	private CtrlVista CV;
-	private JList list;
 	
 
 	private VEmergErrorClicar VError;
