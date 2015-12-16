@@ -256,7 +256,6 @@ public class CtrlDominio {
 	 * @param y Posicion y del tablero
 	 * @param y Valor que queremos introducir en la posicion
 	 * (x,y) del tablero
-
 	 */
 	public boolean setIntroducirCasilla(int x, int y, int valor){
 		return CJugar.introducirCasilla(x, y, valor);
