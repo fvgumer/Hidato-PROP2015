@@ -24,7 +24,7 @@ public class CtrlPartida {
 	private CtrlGestionUsuario CU;
 	private String[] ids;
 	
-	private String quitarBin(String cad) {
+	public String quitarBin(String cad) {
 		int mida = cad.length();
 		String t = cad.substring(0, mida-4);
 		return t;
@@ -247,7 +247,7 @@ public class CtrlPartida {
 	 */
 
 	public void cargarTablero(String t){
-		T = CT.cargar(t, false,true);
+		T = CT.cargar(quitarBin(t), false,true);
 	}
 
 

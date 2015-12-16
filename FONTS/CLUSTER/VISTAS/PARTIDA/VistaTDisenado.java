@@ -2,6 +2,10 @@ package CLUSTER.VISTAS.PARTIDA;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 /**
@@ -11,12 +15,22 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
  */
 
 public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
+
+	private VEmergErrorClicar VError1;
+
+	private DefaultListModel listModel;
+	private CtrlVista CV;
+	private JList list;
+	
+
 	private VEmergErrorClicar VError;
+
 	public VistaTDisenado(final CtrlVista CV) {
 		super(CV);
+		this.CV = CV;
 		txt = "Elegir Tablero Diseñado";
-		VError = new VEmergErrorClicar();
-		
+		VError1 = new VEmergErrorClicar();
+
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 					//FUNCION
@@ -27,14 +41,14 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				if (!list.isSelectionEmpty()) 
-					CV.cargarTablero(list.getSelectedValue());
+					CV.cargarTablero((String)list.getSelectedValue());
 				else {
-					VError = new VEmergErrorClicar();
-					VError.setVisible(true);
+					VError1 = new VEmergErrorClicar();
+					VError1.setVisible(true);
 				}
 			}
 		});
-		
+
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAElegirForma();
@@ -55,6 +69,7 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 	 */
 	public void run(String[] J){
 		list.setListData(J);
+
 	}
 
 }

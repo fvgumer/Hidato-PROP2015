@@ -137,25 +137,40 @@ public class CtrlVista {
 			VInicial.setVisible(true);
 		}
 		
-		//Funciones para cambiar las vistas
+		/**
+		 * Hace visible la vista de inicio de sesion
+		 */
 		public void entrarAInicioSesion(){
 			VLogin.setVisible(true);
 		}
-		
+		/**
+		 * Hace visible la vista del menu principal
+		 */
 		public void entrarAMenu(){
 			VMenu.UserActual(this.nomactiu());
 			VMenu.setVisible(true);
 		}
-
+		/**
+		 * Hace visible la vista de crear usuario
+		 */
 		public void entrarACrearUsuario(){
 			VCrearUsuario.setVisible(true);
 		}
+		/**
+		 * Hace visible la vista de menu de usuario
+		 */
 		public void entrarMenuUsuario(){
 			VMenuUser.setVisible(true);
 		}
+		/**
+		 * Hace visible la vista de cambiar el password
+		 */
 		public void entrarCambiarPass(){
 			VNewPassword.setVisible(true);
 		}
+		/**
+		 * Hace visible la vista de eliminar usuario
+		 */
 		public void entrarAeliminarUser(){
 			VEliminarUser.setVisible(true);
 		}
@@ -567,25 +582,66 @@ public class CtrlVista {
 		 * FUNCIONES DE RECOGIDA DE INFORMACION
 		 */
 		//USER
+		
+		/**
+		 * Funcion que se comunica con el inicio de sesion del controlador dominio
+		 * @param nombre Nombre del jugador que queremos iniciar sesion
+		 * @param password Contrasenya del jugador que queremos iniciar sesion
+		 * @return Cierto si el inicio de sesion ha sido satisfactorio y el usuario existia y la contrasenya era 
+		 * la correcta. Falso otherwise.
+		 */
 		public boolean login(String nombre, String password){
 			return CDominio.ingresarUsuario(nombre, password);
 		}
+		/**
+		 * Funcion que consulta el nombre del jugador que ha entrado a jugar
+		 * Post: Nos devuelve el nombre del jugador activo.
+		 */
 		public String nomactiu(){
 			return CDominio.nomActiu();
 		}
+		/**
+		 * Funcion que consulta si hay un usuario activo que ha ingresado para jugar.
+		 * @return Cierto si hay un usuario logueado, falso otherwise
+		 */
 		public boolean Jactivo(){
 			return CDominio.jugadoractivo();
 		}
+		/**
+		 * Funcion que llama a la funcion creadora del controlador dominio
+		 * @param nombre Nombre del jugador que queremos crear
+		 * @param password Contrasenya del usuario que queremos crear
+		 * @return Cierto si se ha podido crear el usuario en las capas inferiores. Falso si no. 
+		 */
 		public boolean crearUsuario(String nombre, String password){
 			return CDominio.crearUsuario(nombre,password);
 		}
+		/**
+		 * Funcion que llama a la funcion de eliminar usuario del controlador de dominio. 
+		 * @param user Nombre del usuario que queremos eliminar
+		 * @param password Contrasenya del usuario que queremos eliminar
+		 * @return	Cierto si el usuario se ha eliminado correctamente, falso si no se ha eliminado ya fuera por que
+		 * no existia o por que la contrasenya no era la correcta.
+		 */
 		public boolean eliminarUsuario(String user, String password){
 			return CDominio.eliminarUsuario(user,password);
 		}
+		/**
+		 * Funcion que llama a la funcion de cambiar el password del controlador de dominio.
+		 * @param NewPass 	Es la nueva contrasenya que queremos poner
+		 * @param OldPass   Contrasenya que queremos cambiar
+		 * @return  Cierto si se ha cambiado correctamente, falso si la contrasenya vieja no era la correcta o no se 
+		 * ha podido cambiar en las capas inferiores
+		 */
 		public boolean cambiarPass(String NewPass, String OldPass) {
 			return CDominio.cambiarPass(OldPass,NewPass);
 		}
 		
+		/**
+		 * Funcion que llama a la funcion de consultar nombre de la estadistica de dominio
+		 * @param E	Estadisticas que queremos consultar el nombre
+		 * @return	Retorna el nombre de las estadisticas E
+		 */
 		public String getNomEst(Estadisticas E) {
 			return CDominio.getNomEst(E);
 		}

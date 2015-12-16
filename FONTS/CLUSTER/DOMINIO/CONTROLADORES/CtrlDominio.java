@@ -362,6 +362,13 @@ public class CtrlDominio {
 
 
 	//USUARIO
+	
+	/**
+	 * Funcion que se comunica con la funcion del controlador jugador de ingresar usuario
+	 * @param nombre Nombre del usuario que queremos ingresar
+	 * @param contrasenya  Contrasenya del usuario que queremos ingresar
+	 * @return Si la funcion de controlador jugador se ha ejecutado satisfactoriamente, sino falso
+	 */
 	public boolean ingresarUsuario(String nombre, String contrasenya){
 		if(CJugador.ingresarusuario(nombre, contrasenya)){
 			Jactivo = new Jugador(null,null);
@@ -371,6 +378,10 @@ public class CtrlDominio {
 		}
 		else return false;
 	}
+	/**
+	 * Consultora de si hay un jugador logueado
+	 * @return 'El jugador activo no es null (Logueado)'
+	 */
 	public boolean jugadoractivo(){
 		return (Jactivo!=null);
 	}
@@ -435,10 +446,21 @@ public class CtrlDominio {
 		CTablero.set_tablero(t, false);
 		return CTablero.get_tablero();
 	}
-
+	/**
+	 * Crear un usuario con nombre = 'nombre' y contrasenya = 'password'
+	 * @param nombre del jugador que queremos crear
+	 * @param password contrasenya del usuario que queremos crear
+	 * @return '(El jugador se ha creado en la capa inferior de persistencia)'
+	 */
 	public boolean crearUsuario(String nombre, String password) {
 		return CJugador.crear_usuario(nombre, password);
 	}
+	/**
+	 * Funcion que elimina un usuario con nombre = 'nombre' y contrasenya = 'password'
+	 * @param user Nombre del usuario que queremos eliminar
+	 * @param password	Contrasenya del usuario que queremos eliminar
+	 * @return '(El usuario se ha eliminado correctamente de la capa de persistencia)'
+	 */
 	public boolean eliminarUsuario(String user, String password){
 		if(password.equals(Jactivo.consultar_password())){
 			if(CJugador.eliminar_usuario(Jactivo.consultar_nombre(), Jactivo.consultar_password())){
@@ -448,7 +470,12 @@ public class CtrlDominio {
 		}
 	return false;
 	}
-	
+	/**
+	 * Funcion que cambia el password del usuario que ha iniciado sesion
+	 * @param oldPass Contrasenya que queremos cambiar
+	 * @param newPass Contrasenya que sustituira a la vieja 
+	 * @return La contrasenya se ha cambiado satisfactoriamente
+	 */
 	public boolean cambiarPass(String oldPass, String newPass) {
 		if(CJugador.editarcontrasenya(oldPass, newPass)){
 			Jactivo.set_password(newPass);
@@ -457,6 +484,10 @@ public class CtrlDominio {
 		else return false;
 	}
 	
+	/**
+	 * Funcion consultora del nombre del usuario activo
+	 * @return Retorna el nombre del usuario activo
+	 */
 	public String nomActiu(){
 		if(Jactivo!=null){
 		return Jactivo.consultar_nombre();
