@@ -41,7 +41,6 @@ public class CtrlPartida {
 		String[] lis = c.lista_partidas(U.consultar_nombre());
 		int ultimo = lis.length-1;
 		int id = Integer.parseInt(quitarBin(lis[ultimo]))+1;
-		System.out.println(id+"UF");
 		return id;
 	}
 	
@@ -269,7 +268,6 @@ public class CtrlPartida {
 		int puntos = T.get_dificultad()/3;
 		if (T.getMida() < 4) puntos = puntos - 4;
 		else if (T.getMida() < 7) puntos = puntos - 1;
-		System.out.println(puntos);
 		int d;
 		if (puntos < 5) d = 0;
 		else if (puntos < 10) d = 1;

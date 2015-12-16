@@ -129,7 +129,6 @@ public class CtrlJugar {
 	 */
 	private void assignar_candidat(int x, int y, Tablero T) {
 		int valor = T.getValorTauler(x, y); //Agafa el valor de la casella
-		System.out.println("TINC EL VALOR "+valor);
 		if (valor > 0) { //SI TE VALOR AQUESTA CASELLA
 			int valor_major, valor_menor;
 			valor_major = valor_menor = 0;
@@ -137,8 +136,6 @@ public class CtrlJugar {
 			if (valor > 2) valor_menor = valor - 1;
 			//Maxim valor_major pendra el valor num_final - 1
 			if (valor < T.getCasillasmax() - 1) valor_major = valor + 1;
-			System.out.println("TINC EL VALOR.m "+valor_menor);
-			System.out.println("TINC EL VALOR.M "+valor_major);
 			int i = 0;
 			int mirar = valor_major;
 			while(i < 2) {
@@ -178,9 +175,9 @@ public class CtrlJugar {
 	public void Sabercandidats(int x, int y) {
 		if(PH.get_Tablero().enable_pos(x, y)) {
 			boolean[] candidats = PH.get_Tablero().get_casilla(x, y).getCandidatos();
+			System.out.println("CANDIDATS DE ("+ x+","+y+")");
 			for (int i = 0; i < candidats.length; ++i) {
-				System.out.print((i+1)+" ");
-				if (candidats[i]) System.out.println("SI");
+					if(candidats[i])System.out.println(i+1);
 			}
 		}
 	}
@@ -207,13 +204,11 @@ public class CtrlJugar {
 		for(int i = 0; i < PH.getMida(); ++i) {
 			for(int j = 0; j < PH.getMida(); ++j){
 				if (PH.get_Tablero().enable_pos(i, j)){
-					System.out.println("IT("+i+","+j+")");
 					assignar_candidat(i,j,PH.get_Tablero());
 				}
 				
 			}
 		}
-		Sabercandidats(0,0);
 	}
 	/**Rendirse
 	 * 
