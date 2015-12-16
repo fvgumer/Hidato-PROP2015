@@ -48,7 +48,7 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 	}
 	
 	public void setModoMasJugado(int modo) {
-		if (modo == 0) this.modo = "clasico";
+		if (modo == 0) this.modo= "clasico";
 		else if (modo == 1) this.modo = "contrarreloj";
 		else if (modo == 2)this.modo = "extremo";
 		else this.modo = "ninguno";

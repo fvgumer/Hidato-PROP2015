@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
-import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
  
 public class VistaEstUsuario extends VistaPadreIniConBoton{

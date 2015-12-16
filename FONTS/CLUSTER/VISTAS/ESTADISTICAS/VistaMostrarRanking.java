@@ -78,9 +78,6 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		return concat;
 		
 	}
-	
-	public void displayDemoRank() {}
-	
 	/**
 	 * Create the application.
 	 */

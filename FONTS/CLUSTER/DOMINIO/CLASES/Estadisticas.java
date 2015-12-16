@@ -90,7 +90,8 @@ public class Estadisticas implements Serializable{
 	}
 	
 	public int getModoMasJugado() {
-		int m = modos[0];
+		int
+		m = modos[0];
 		if (modos[1] > m) m = modos[1];
 		if (modos[2] > m )m = modos[2];
 		
