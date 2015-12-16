@@ -227,8 +227,9 @@ public class CtrlVista {
 		 */
 		public void elegirTdisenado(){
 			VTDisenado = new VistaTDisenado(this);
+			VTDisenado.actualitza_llista();
 			VTDisenado.setVisible(true);
-			VTDisenado.run(listarTableros());
+			//VTDisenado.run(listarTableros());
 		}
 		/**
 		 * Cargar Tablero Elegido

@@ -31,9 +31,8 @@ public class VistaPrevisualizarTableroPadre extends VPBotonSiguiente {
 		t.setBounds(173, 39, 369, 76);
 		getContentPane().add(t);
 		
-		list = new JList<String>();
-		list.setBounds(64, 126, 256,182);
-		getContentPane().add(list);
+		//list = new JList<String>();
+		
 		
 		//Previsualicacion del tablero
 		tablero = new JPanel();
