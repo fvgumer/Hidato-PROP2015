@@ -26,7 +26,7 @@ public CtrlGestionPartida(){
 /**
  * Metodo que carga la partida_hidato del jugador = 'NomJ' y ID = 'IDs'
  * @param NomJ Nombre del jugador que tiene la partida guardada
- * @param IDs Identificador de la partida
+ * @param ID Identificador de la partida
  * @return Devuelve una instancia de la clase Partida_Hidato, si no existia devuelve null
  */
 public Partida_Hidato cargar(String NomJ, String ID){

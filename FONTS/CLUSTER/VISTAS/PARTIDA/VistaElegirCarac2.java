@@ -47,9 +47,9 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 				String In;
 				In = Integer.toString(slider.getValue());
 				lblSinForma.setText(In);
-				max_ninicals = max_forats - slider.getValue() - 2;
+				max_ninicals = max_forats - slider.getValue();
 				slider2.setMaximum(max_ninicals);
-				slider2.setMinimum(2);
+				slider2.setMinimum(0);
 			}
 		});
 		//Actuacion si lo mueve por teclas
@@ -66,7 +66,7 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 		
 		
 		//ACCIONES_n2_______________________________________________
-		slider2.setMinimum(2);
+		slider2.setMinimum(0);
 		slider2.setMaximum(0); //Fins que no es movi forats no pots
 		slider2.setValue(0);
 		lblSinForma2.setText("0");
