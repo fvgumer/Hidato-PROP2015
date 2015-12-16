@@ -40,8 +40,11 @@ public class CtrlPartida {
 	private int calculoID(Jugador U){
 		c = new CtrlGestionPartida();
 		String[] lis = c.lista_partidas(U.consultar_nombre());
-		int ultimo = lis.length-1;
-		int id = Integer.parseInt(quitarBin(lis[ultimo]))+1;
+		int id = 1;
+		if (lis.length > 0) {
+			int ultimo = lis.length-1;
+			id = Integer.parseInt(quitarBin(lis[ultimo]))+1;
+		}
 		return id;
 	}
 	
@@ -52,7 +55,10 @@ public class CtrlPartida {
 	 * 
 	 */
 	public void crear_partida(Jugador U){
-		int ID = calculoID(U);
+		int ID= 1;
+		if (n_partidasproceso(U.consultar_nombre()) > 0){
+			ID = calculoID(U);
+		}
 		PH = new Partida_Hidato(T,U,ID);
 		PH2 = new Partida_Hidato(T,U,ID);
 		PH.set_ID(ID);
