@@ -35,7 +35,6 @@ public Partida_Hidato cargar(String NomJ, String ID){
 	System.out.println(ruta);
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
-		System.out.println("La partida no existeix");
 		return null;
 	}
 	else{
