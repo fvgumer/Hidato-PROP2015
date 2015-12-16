@@ -6,11 +6,14 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JSpinner;
@@ -19,18 +22,25 @@ import javax.swing.JLabel;
 import java.awt.List;
 import java.awt.Canvas;
 import java.awt.Label;
+import javax.swing.JCheckBoxMenuItem;
 
 
 public class VistaPartidaEnJuego extends VistaPadreInicio {
-	protected JPanel taula;
-	protected CasillaTablero[][] casilla;
-	protected int mida, iClicat, jClicat;
-	protected boolean capClicat;
-	protected String v;
-	protected int posLabel;
-	protected BotonPartida bPausa,bGuardar,bSalir,bResolver,
+	private Timer timer;
+	private JLabel Jmin;
+	private JLabel Jseg;
+	private JPanel taula;
+	private  CasillaTablero[][] casilla;
+	private  int mida, iClicat, jClicat;
+	private  boolean capClicat;
+	private  String v;
+	private  int modoJ;
+	private  int posLabel;
+	private  BotonPartida bPausa,bGuardar,bSalir,bResolver,
 	bRendirse, bPista, pBorrowC, pSetC;
-	protected Label lbl2,lbl;
+	private Label lbl2,lbl;
+	private CtrlVista CV2;
+	private boolean stop;
 	
 
 	/**
@@ -76,18 +86,29 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		pBorrowC.setEnabled(false);
 		pSetC.setEnabled(false);
 	}
+	
+	public void DejarClicar(){
+		bPausa.setEnabled(true);
+		bGuardar.setEnabled(true);
+		bResolver.setEnabled(true);
+		bRendirse.setEnabled(true);
+		bPista.setEnabled(true);
+		pBorrowC.setEnabled(true);
+		pSetC.setEnabled(true);
+	}
 
 	/**
 	 * Creadora Vista
 	 * @param CV Controlador de la interfaz grafica
 	 */
-	public VistaPartidaEnJuego(final CtrlVista CV) {
+	public VistaPartidaEnJuego(final CtrlVista CV, int modo) {
+		CV2 = CV;
 		//Coje Mapa Actual
 		String[][] tablero = CV.getMapaActual();
 		Texto t = new Texto("Puntuación: ",60,60,25);
 		t.setBounds(445, 163, 152, 40);
 		getContentPane().add(t);
-		
+		modoJ = modo;
 		//Creacion layer de debajo del tablero
 		taula = new JPanel();
 		taula.setBounds(29, 27, 406, 355);
@@ -131,9 +152,12 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(bRendirse);
 		bRendirse.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				setMapa(CV.rendirse());
-				lbl2.setText(CV.getPuntuacion());
-				noDejarClicar();
+				if(bResolver.isEnabled()) {
+					setMapa(CV.rendirse());
+					lbl2.setText(CV.getPuntuacion());
+					noDejarClicar();
+			}
+					
 				
 			}
 		});
@@ -144,6 +168,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(bResolver);
 		bResolver.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				if(bResolver.isEnabled())
 				CV.resolverPartida();
 			}
 		});
@@ -154,14 +179,15 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(bGuardar);
 		bGuardar.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.GuardarPartida();
+				if(bGuardar.isEnabled())
+				CV.entrarASeguroGuardar();
 			}
 		});
 		
 		/** BOTON SALIR **/ 
 		bSalir = new BotonPartida("SALIR");
 		bSalir.setBackground(new Color(255, 51, 51));
-		bSalir.setBounds(445, 330, 125, 36);
+		bSalir.setBounds(583, 430, 125, 36);
 		getContentPane().add(bSalir);
 		bSalir.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
@@ -175,6 +201,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(pSetC);
 		pSetC.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				if(pSetC.isEnabled())
 				setIntroducirCasilla(CV);
 			}
 		});
@@ -185,7 +212,8 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(pBorrowC);
 		pBorrowC.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				setQuitarCasilla(CV);
+				if(pBorrowC.isEnabled())
+					setQuitarCasilla(CV);
 			}
 		});
 		
@@ -217,6 +245,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 			public void mouseClicked(MouseEvent arg0) {
 				if (posLabel+1 <= CV.getFaltanCasillas())
 					clicEnElLabel(CV,1);
+
 			}
 		});
 		
@@ -239,7 +268,70 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		lbl2.setAlignment(Label.RIGHT);
 		lbl2.setFont(new Font("Arial Black", Font.PLAIN, 21));
 		getContentPane().add(lbl2);
+		
+		BotonPartida botonPartida = new BotonPartida("CANDIDATOS");
+		botonPartida.setBounds(445, 334, 125, 36);
+		getContentPane().add(botonPartida);
+		
+		Texto jt = new Texto("Llevas:",400,400,20);
+		jt.setBounds(100, 424, 98, 33);
+		getContentPane().add(jt);
+		Texto jt2 = new Texto("min y",400,400,20);
+		jt2.setBounds(248, 424, 62, 33);
+		getContentPane().add(jt2);
+		Texto jt3 = new Texto("seg(s)",400,400,20);
+		jt3.setBounds(372, 424, 98, 33);
+		getContentPane().add(jt3);
+		
+		Jmin = new JLabel("0");
+		Jmin.setBounds(212, 424, 42, 33);
+		Jmin.setForeground(new Color(25, 25, 112));
+		Jmin.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Jmin.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(Jmin);
+		Jseg = new JLabel("0");
+		Jseg.setBounds(320, 424, 42, 33);
+		Jseg.setForeground(new Color(25, 25, 112));
+		Jseg.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Jseg.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(Jseg);
+		
+		if(modo == 1 || modo == 0){
+			stop = false;
+			timer = new Timer(1000,temps_maxim);
+			timer.start();
+		}
+		else if (modo == 2) {
+			timer = new Timer(1000,temps_maxim2);
+			timer.start();
+			noDejarClicar();
+		}
 	}
+	
+	ActionListener temps_maxim = new ActionListener() {
+	      public void actionPerformed(ActionEvent evt) {
+	    	  if(modoJ == 1 && CV2.obtMinutos() == -2 && stop)  {
+	    		  stop = true;
+	    		  noDejarClicar();
+	    	  }
+	    	  else {
+	    	  Jmin.setText(Integer.toString(CV2.obtMinutos()));
+	    	  Jseg.setText(Integer.toString(CV2.obtSegundos()));
+	    	  }
+	      }
+	  };
+	  
+	  ActionListener temps_maxim2 = new ActionListener() {
+	      public void actionPerformed(ActionEvent evt) {
+	    	  if(CV2.obtMinutos() == -2 && !stop)  {
+	    		  DejarClicar();
+	    		  setMapa(CV2.getMapaVacio());
+	    		  stop = true;
+	    	  }
+	    	  Jmin.setText(Integer.toString(CV2.obtMinutos()));
+	    	  Jseg.setText(Integer.toString(CV2.obtSegundos()));
+	      }
+	  };
 	
 	private void setMapa(String[][] Map) {
 		for(int i=0; i<mida; ++i) {

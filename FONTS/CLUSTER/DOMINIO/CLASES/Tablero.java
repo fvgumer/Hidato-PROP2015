@@ -150,9 +150,9 @@ public class Tablero extends Tablero_comp implements Serializable{
 		if(holes < aux) dif += 15;
 		else if (holes < 2*aux) dif += 10;
 		else dif += 5;
-		if(n_predef < aux) dif += 15;
+		if(n_predef < aux) dif += 5;
 		else if (n_predef < 2*aux) dif += 10;
-		else dif += 5;
+		else dif += 15;
 	}
 	
 	/**
@@ -460,5 +460,9 @@ public class Tablero extends Tablero_comp implements Serializable{
 	
 	public void reiniciar_posats(){
 		posats = posats_ini;
+	}
+	
+	public boolean[] getPosats(){
+		return posats;
 	}
 }

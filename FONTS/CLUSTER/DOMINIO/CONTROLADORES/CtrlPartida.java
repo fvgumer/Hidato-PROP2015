@@ -11,8 +11,17 @@ public class CtrlPartida {
 	private Tablero T;
 	private CtrlGestionPartida c;
 	private CtrlGestionTablero CT;
+	private CtrlGestionUsuario CU;
 	private String[] ids;
 	
+	
+	private int calculoID(Jugador U){
+		c = new CtrlGestionPartida();
+		int i = c.consultar_numeropartidas("Pepe");
+		System.out.println(i);
+		++i;
+		return i;
+	}
 	
 	/**
 	 * Crear Partida
@@ -23,7 +32,7 @@ public class CtrlPartida {
 	 * de la partida.
 	 */
 	public void crear_partida(Jugador U){
-		int ID = 0; //CALCULAR ID
+		int ID = calculoID(U);
 		PH = new Partida_Hidato(T,U,ID);
 		PH2 = new Partida_Hidato(T,U,ID);
 	}
@@ -64,8 +73,7 @@ public class CtrlPartida {
 	 * que se desea cargar
 	 */
 	public void Cargar_Partida_Hidato(String nom, String id){
-		int i = Integer.parseInt(id);
-		c.cargar(nom, i);
+		c.cargar(nom, id);
 	}
 	
 	
@@ -156,8 +164,7 @@ public class CtrlPartida {
 	}
 	public String[][] previsualizarTablero(String NomJ ,String id) {
 		PH = new Partida_Hidato();
-		int m = Integer.parseInt(id);
-		PH = c.cargar(NomJ, m);
+		PH = c.cargar(NomJ, id);
 		return pasarAMapa(PH.get_Tablero());
 	}
 	
@@ -223,9 +230,10 @@ public class CtrlPartida {
 	 * A partir de los parametros impÃƒÂ­citos del objeto partida se substraen
 	 * de los ficheros los tableros que se ajustan mas a la peticiÃƒÂ³n del jugador
 	 */
-	/*__________NO_IMPLEMENTADO_________________*/
+
 	public void elegir_tdisenado(){
 		//Sacar TOP5 de los mas parecidos
+		
 		
 	}
 
@@ -242,31 +250,27 @@ public class CtrlPartida {
 	  * que contiene el tablero.
 	  * @return Retorna un entero que identifica la dificultad del tablero
 	  */
-	public int calcular_dificultad(int dim, int abuj, int c_ini) {
-		double p1,p2,p3;
-		//Segun dimension
-		if (dim > 2 && dim < 6) p1 = 5;
-		else if (dim > 5 && dim < 9) p1 = 10;
-		else p1 = 15;
-		//Segun forats
-		if (abuj >= 0 && abuj <= (double)(dim*dim)/3) p2 = 15;
-		else if (abuj > (double)(dim*dim)/3 && abuj <= (double)(dim*dim*2)/3) p2 = 10;
-		else p2 = 5;
-		//Segun casillas iniciales
-		if (c_ini >= 0 && c_ini <= (double)(dim*dim)/3) p3 = 15;
-		else if (c_ini > (double)(dim*dim)/3 && c_ini <= (double)(dim*dim*2)/3) p3 = 10;
-		else p3 = 5;
-		
-		p1 = (p1*0.2+p2*0.3+p3*0.5);
-		if (p1 <= 5) return 0;
-		else if (p1 <= 10) return 1;
-		else return 2;
+	public int calcular_dificultad() {
+		T.calcular_dificultad();
+		int puntos = T.get_dificultad()/3;
+		if (T.getMida() < 4) puntos = puntos - 4;
+		else if (T.getMida() < 7) puntos = puntos - 1;
+		System.out.println(puntos);
+		int d;
+		if (puntos < 5) d = 0;
+		else if (puntos < 10) d = 1;
+		else d = 2;
+		return d;
 	}
 
 	public boolean esSolcionUnica() {
 		return T.getSolucion_unica();
 	}
 	
+	public String[][] getMapaVacio(){
+		return pasarAMapa(PH.getTsinnumeros());
+	}
+
 	
 
 

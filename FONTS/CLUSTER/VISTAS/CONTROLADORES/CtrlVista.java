@@ -43,6 +43,8 @@ public class CtrlVista {
 	private VistaElegirTiempo VTiempo;
 	private VistaSeguroSalir VSalir;
 	private PartidaResolver VResolver;
+	private VistaSeguroGuardar VGuardar;
+	private int modoJ;
 
 	//Tablero
 	private VistaGestionTablero VGTableros;
@@ -158,7 +160,6 @@ public class CtrlVista {
 				VCargarPartida.setVisible(true);
 			}
 			else VNoPartidas.setVisible(true);
-			
 		}
 		
 		public void entrarAElegirForma(){
@@ -171,8 +172,8 @@ public class CtrlVista {
 			VElegirC2.setforma(forma);
 		}
 		
-		public void mirarDificultat(int dim, int f, int ini){
-			int dificultat = CDominio.get_dificultat_partida(dim, f, ini);
+		public void mirarDificultat(){
+			int dificultat = CDominio.get_dificultat_partida();
 			VEInfo = new VEmergentInfo(this, VElegirC2);
 			VEInfo.set_dificultat(dificultat);
 			VEInfo.run();
@@ -191,7 +192,8 @@ public class CtrlVista {
 			VTAleatorio.setVisible(true);
 		}
 		public void elegirTdisenado(){
-			
+			VTDisenado = new VistaTDisenado(this);
+			VTDisenado.setVisible(true);
 		}
 		
 		public void previsualizarTablero(String id) {
@@ -210,9 +212,10 @@ public class CtrlVista {
 			CDominio.comenzarPartida();
 			int i = 0;
 			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
-			CDominio.iniciar_tiempo(i);
-			VPartidaEnJuego = new VistaPartidaEnJuego(this);
+			CDominio.iniciar_tiempo(i,modoJ);
+			VPartidaEnJuego = new VistaPartidaEnJuego(this,modoJ);
 			VPartidaEnJuego.setVisible(true);
+			CDominio.inicialitzarCandidats();
 		}
 		
 		public void entrarAModoPartida() {
@@ -234,10 +237,12 @@ public class CtrlVista {
 			VPausa = new VistaEnPausa(this);
 			VPausa.setVisible(true);
 			VPartidaEnJuego.setEnabled(false);
+			CDominio.enPausa();
 		}
 		
 		public void reanudar(){
 			VPartidaEnJuego.setEnabled(true);
+			CDominio.reanudar();
 		}
 		
 		public String[][] rendirse(){
@@ -278,13 +283,19 @@ public class CtrlVista {
 			//Reiniciar Tiempo
 			int i = 0;
 			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
-			CDominio.iniciar_tiempo(i);
+			CDominio.iniciar_tiempo(i,modoJ);
 			VPartidaEnJuego.reiniciarTablero(CDominio.getMapaActual(), this);
 		}
 		
 		public void dejarJugar(){
 			VPartidaEnJuego.setVisible(true);
 			VPartidaEnJuego.setEnabled(true);
+		}
+		
+		public void entrarASeguroGuardar(){
+			VGuardar = new VistaSeguroGuardar(this);
+			VGuardar.setVisible(true);
+			VPartidaEnJuego.setEnabled(false);
 		}
 	
 		
@@ -452,6 +463,7 @@ public class CtrlVista {
 		}
 		
 		public void setInfoModoPartida(int modo) {
+			modoJ = modo;
 			CDominio.setModoPartida(modo);
 		}
 		
@@ -489,6 +501,7 @@ public class CtrlVista {
 
 		public void GuardarPartida(){
 			CDominio.guardarPartida();
+			VPartidaEnJuego.setEnabled(true);
 		}
 		
 		public int getFaltanCasillas(){
@@ -501,6 +514,17 @@ public class CtrlVista {
 		
 		public String getPuntuacion(){
 			return Integer.toString(CDominio.getPuntuacion());
+		}
+		
+		public int obtMinutos(){
+			return CDominio.obtMinutos();
+		}
+		public int obtSegundos(){
+			return CDominio.obtSegundos();
+		}
+		
+		public String[][]getMapaVacio(){
+			return CDominio.getMapaVacio();
 		}
 		
 		

@@ -25,7 +25,6 @@ public class CtrlDominio {
 		CPartida = new CtrlPartida();
 		CRanking = new CtrlRanking();
 		CTablero = new CtrlTablero();
-		
 	}
 	
 	/** Sobre Partida **/
@@ -33,9 +32,14 @@ public class CtrlDominio {
 		CPartida.anadir_carct_tablero(forma,dim, forats, ini);
 	}
 	
-	public int get_dificultat_partida(int dim, int abuj, int c_ini){
-		return CPartida.calcular_dificultad(dim, abuj, c_ini);
+	public int get_dificultat_partida(){
+		return CPartida.calcular_dificultad();
 	}
+	
+	public int getModo(){
+		return CPartida.get_partida().get_modo();
+	}
+	
 	
 	public String[] conseguir_partidas_para_Cargar(){
 		return CPartida.conseguir_partidas_enproceso(Jactivo.consultar_nombre());
@@ -52,7 +56,7 @@ public class CtrlDominio {
 	}
 	
 	public void cargarPartida(String id) {
-		CPartida.Cargar_Partida_Hidato(Jactivo.consultar_nombre(),id);
+		CPartida.Cargar_Partida_Hidato(Jactivo.consultar_nombre(), id);
 	}
 	
 	public String[][] getTAleatorio(){
@@ -71,15 +75,23 @@ public class CtrlDominio {
 		CPartida.setModoJuego(modo);
 	}
 	
+	
 	public void comenzarPartida(){
 		CPartida.crear_partida(Jactivo);
 		CJugar.comenzar_partida(CPartida);
 		CJugar.setCasillasFaltan(CPartida.casillasFaltan(CPartida.getMapaActual()));
 	}
 	
-	public void iniciar_tiempo(int i){
-		if (CPartida.get_partida().get_modo() == 0) CJugar.iniciar_tiempo(1);
-		else CJugar.iniciar_tiempo(i);
+	public void iniciar_tiempo(int i,int modoJ){
+		if (modoJ == 0) CJugar.iniciar_tiempo(1,0);
+		else CJugar.iniciar_tiempo(i,modoJ);
+	}
+	
+	public int obtMinutos(){
+		return CJugar.obtMinutos();
+	}
+	public int obtSegundos(){
+		return CJugar.obtSegundos();
 	}
 	
 	public String[] listarTableros() {
@@ -90,12 +102,19 @@ public class CtrlDominio {
 		return CPartida.getMapaActual();
 	}
 	
+	public void inicialitzarCandidats(){
+		CJugar.inicialitzarCandidats();
+	}
+	
 	public int getValorTableroActual(int x, int y){
 		return CPartida.getValorTableroActual(x,y);
 	}
 	
 	public void enPausa() {
 		CJugar.pausar();
+	}
+	public void reanudar() {
+		CJugar.reanudar();
 	}
 	
 	public void SalirJuego(){
@@ -151,6 +170,10 @@ public class CtrlDominio {
 	
 	public void GuardarPuntuacion(){
 		CJugar.GuardarPuntuacion();
+	}
+	
+	public String[][] getMapaVacio(){
+		return CPartida.getMapaVacio();
 	}
 
 

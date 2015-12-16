@@ -129,7 +129,7 @@ public class Temporizador implements ActionListener,Serializable {
 		 * principalmente contar o decrementar los segundos
 		 */
 		public void actionPerformed(ActionEvent e) {
-			if (modo == 0 || modo > 1) { //MODO CLASICO Y EXTREMO
+			if (modo == 0 || modo == 1) { //MODO CLASICO Y EXTREMO
 				if (!congelado){
 					segundos++;
 					if (segundos == 60) {
