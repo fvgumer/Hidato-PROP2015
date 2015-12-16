@@ -794,6 +794,10 @@ public class CtrlVista {
 			return CDominio.getMapaVacio();
 		}
 		
+		public void guardarPuntuacion(){
+			CDominio.guardarPuntuacion();
+		}
+		
 
 }
 

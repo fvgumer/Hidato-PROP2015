@@ -23,6 +23,7 @@ public class PartidaResolver extends VistaPatronInfo {
 		String txt;
 		if (correcto == true) {
 			getContentPane().setBackground(new Color(60, 179, 113));
+			CV.guardarPuntuacion();
 			txt = "Resuelta";
 		}
 		else txt = "NO Resuelta";

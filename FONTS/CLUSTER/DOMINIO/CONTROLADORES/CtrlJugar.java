@@ -504,6 +504,7 @@ public class CtrlJugar {
 	}
 	
 	public void GuardarPuntuacion(){
+		T1.acabar();
 		String m;
 		if (PH.get_modo() == 0) m = "Clasico";
 		else if(PH.get_modo() == 1) m = "Contrareloj";

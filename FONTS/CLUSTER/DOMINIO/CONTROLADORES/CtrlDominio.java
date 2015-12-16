@@ -341,9 +341,9 @@ public class CtrlDominio {
 		CJugar.reestart(CPartida);
 	}
 	
-	/*public void GuardarPuntuacion(){
+	public void guardarPuntuacion(){
 		CJugar.GuardarPuntuacion();
-	}*/
+	}
 	/**
 	 * Consultar Mapa Sin numeros
 	 * @return Devuelve un Mapa de String de las
