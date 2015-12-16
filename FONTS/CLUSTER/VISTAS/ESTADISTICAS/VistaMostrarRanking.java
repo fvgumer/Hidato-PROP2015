@@ -20,6 +20,14 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
 
+/**
+ * En esta vista se muestran las posiciones indicadas del ranking del tablero
+ * previamente introducido.
+ * 
+ * @author Belen San Martin
+ *
+ */
+
 public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	
 	/**

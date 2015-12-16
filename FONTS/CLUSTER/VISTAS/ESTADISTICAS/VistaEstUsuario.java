@@ -1,20 +1,26 @@
 package CLUSTER.VISTAS.ESTADISTICAS;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
- 
+
+/**
+ * En esta vista el jugador debe introducir el nombre del usuario del cual 
+ * desea consultar las estadisticas.
+ * 
+ * @author Belen San Martin
+ *
+ */
+
 public class VistaEstUsuario extends VistaPadreIniConBoton{
 	
 	/**

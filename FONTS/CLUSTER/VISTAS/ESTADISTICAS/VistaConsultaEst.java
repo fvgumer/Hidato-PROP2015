@@ -11,6 +11,15 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTextField;
 
+
+/**
+ * En esta vista el jugador puede elegir entre consultar sus estadisticas, las de otro usuario
+ * o el ranking de un tablero
+ * 
+ * @author Belen San Martin
+ *
+ */
+
 public class VistaConsultaEst extends VistaPadreIniConBoton{
 
 	private static final long serialVersionUID = 1L;

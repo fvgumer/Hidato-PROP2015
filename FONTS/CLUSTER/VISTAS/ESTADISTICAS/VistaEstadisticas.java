@@ -18,6 +18,14 @@ import javax.swing.JEditorPane;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 
+/**
+ * En esta vista se muestran las estadisticas del jugador activo o bien del jugador
+ * previamente seleccionado en la vista VistaConsultaEst.
+ * 
+ * @author Belen San Martin
+ *
+ */
+
 public class VistaEstadisticas extends VistaPadreIniConBoton {
 
 	/**

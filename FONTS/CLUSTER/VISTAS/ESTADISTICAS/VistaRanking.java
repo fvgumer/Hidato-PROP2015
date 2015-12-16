@@ -22,6 +22,14 @@ import javax.swing.JToolBar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+/**
+ * En esta vista el jugador debe introducir el nombre del tablero del cual desea
+ * consultar el ranking y el número de posiciones que quiere ver, con un máximo de 20.
+ * 
+ * @author Belen San Martin
+ *
+ */
+
 public class VistaRanking extends VistaPadreIniConBoton{
 	
 	/**
@@ -58,7 +66,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		
 
 		final JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), new Integer(20), new Integer(1)));
+		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(1), new Integer(20), new Integer(1)));
 		spinner.setBounds(36, 179, 35, 30);
 		getContentPane().add(spinner);
 		
