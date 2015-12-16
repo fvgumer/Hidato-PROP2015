@@ -229,6 +229,12 @@ public class CtrlTablero {
 		return this.map;
 	}
 	
+	/**
+	 * Operacion encargada de la conversion de un tablero en formato String[][] a un tablero contenido
+	 * en la clase Tablero. El tablero creado se asocia al tablero de la clase.
+	 * @param t El tablero en formato String[][]
+	 * @param unica Indica si la solucion del tablero es unica
+	 */
 	public void set_tablero(String[][] t, boolean unica) {
 		int n = t[0].length;
 		this.map = new Tablero(n);
