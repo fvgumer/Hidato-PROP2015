@@ -34,7 +34,6 @@ public Ranking cargar(String NomR){
 	ruta = ".."+ barras + "DATOS" + barras +"Rankings"+  barras + NomR+ ".bin";
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {
-		//System.out.println("No existeeeee       " + NomR);
 		return null;
 	}
 	else{
