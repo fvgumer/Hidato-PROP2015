@@ -35,6 +35,7 @@ public class CtrlPartida {
 	 * Calcular el ID de la partida
 	 * @param U 
 	 * @return
+	 * 
 	 */
 	private int calculoID(Jugador U){
 		c = new CtrlGestionPartida();

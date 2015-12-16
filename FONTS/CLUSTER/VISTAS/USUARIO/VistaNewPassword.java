@@ -8,6 +8,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Esta vista permite al usuario cambiar la contrasenya de su jugador, avisando de errores en caso de que 
+ * la contrasenya no sea correcta. Subclase de la clase VistaUsuario. 
+ * @author Joel
+ *
+ */
 public class VistaNewPassword extends VistaUsuario{
 
 	/**

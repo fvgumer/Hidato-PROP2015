@@ -8,6 +8,13 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Esta vista permite al usuario elegir entre las diferentes opciones de gestion de usuario: Crear, eliminar el propio o 
+ * modificar la contrasenya. Subclase de la clase VistaPadreIniConBoton. 
+ * @author Joel
+ *
+ */
+
 public class VistaMenuUser extends VistaPadreIniConBoton{
 
 	/**
