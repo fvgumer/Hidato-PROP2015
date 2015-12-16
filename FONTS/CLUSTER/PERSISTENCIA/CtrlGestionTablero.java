@@ -74,6 +74,12 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 		return llista_noms;
 	}
 	
+	/**
+	 * Funcion que devuelve el numero de tableros con un indice indice
+	 * @param indice de los tableros que queremos contar
+	 * @return	Numero de tableros con indice, indice. 
+	 */
+	
 	public int num_tableros(final String indice){
 		String ruta2 = ".."+ barras + "DATOS" + barras +"Tableros"+  barras;
 		File dir = new File(ruta2);
@@ -87,7 +93,11 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
         else return foundFiles.length;
 	}	
 
-
+/**
+ * Funcion que lee un fichero txt y lo pasa a un string. 
+ * @param name Nombre del fichero que queremos transformar
+ * @return	String con el contenido del fichero .txt
+ */
 	public String readtablerotxt(String name){
 		try {
 			return FileUtils.readFileToString(new File(".."+ barras + "DATOS" + barras +"Tableros"+  barras + name + ".txt"));
