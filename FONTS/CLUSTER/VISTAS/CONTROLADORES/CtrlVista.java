@@ -442,6 +442,10 @@ public class CtrlVista {
 			VTCargar = new VistaNoTableroCargar(this);
 			VTCargar.setVisible(true);
 		}
+		
+		public void salirDeCarac2(){
+			VElegirC2.setVisible(false);
+		}
 	
 		
 		

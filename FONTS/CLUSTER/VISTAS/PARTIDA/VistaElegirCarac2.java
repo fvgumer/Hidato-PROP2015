@@ -92,7 +92,6 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 				public void mouseClicked(MouseEvent arg0) {
 					setInfoPartida(CV);
 					CV.mirarDificultat();
-					Salir();
 				}
 			});
 			
