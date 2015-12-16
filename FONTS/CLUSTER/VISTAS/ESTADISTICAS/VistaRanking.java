@@ -61,7 +61,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 
 		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,15);
 
-		p.setSize(402, 30);
+		p.setSize(450, 30);
 		getContentPane().add(p);
 		
 
