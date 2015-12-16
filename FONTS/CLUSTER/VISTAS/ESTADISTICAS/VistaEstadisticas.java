@@ -71,11 +71,11 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 	}
 	
 	public void displayEst() {
-		String s = String.format("El usuario %s ha jugado un total de %d partidas "
+		String s = String.format("El usuario %s ha jugado un total de %d tableros diferentes "
 				+ "en un total de %d horas, %d minutos y %d segundos, obteniendo una"
 				+ " puntuación de %d.\n\n",user,part,h,m,seg,punt);
 		if (modo != "ninguno") s = String.format(s+ "El modo de juego preferido por este"
-				+ " usuario es el %s",modo);
+				+ " usuario es el %s.",modo);
 		Texto t = new Texto(s,40,89,14);
 		t.setSize(535,86);
 		t.setForeground(new Color(153, 0, 0));

@@ -479,6 +479,8 @@ public class CtrlJugar {
 		if (!incorrecto) {
 			PH.set_estado(ACABADO);
 		}
+		//if (!incorrecto) GuardarPuntuacion();
+		System.out.print("2");
 		return !incorrecto;
 	}
 	
@@ -513,8 +515,8 @@ public class CtrlJugar {
 		if (PH.get_dificultad() == 0) d1 = "Facil";
 		else if(PH.get_dificultad() == 1) d1 = "Medio";
 		else d1 = "Dificil";
-		
-		String idd = String.valueOf(PH.get_Tablero().get_id());
+		System.out.println(PH.get_Tablero().getMida());
+		String idd = PH.get_Tablero().get_id();
 		CR = new CtrlRanking();
 		CE = new CtrlEstadisticas();
 		CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());

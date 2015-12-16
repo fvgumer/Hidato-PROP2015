@@ -331,7 +331,11 @@ public class CtrlDominio {
 	 * la partida, falso si lo contrario
 	 */
 	public boolean resolverPartida(){
-		return CJugar.resolver_partida();
+		if(CJugar.resolver_partida()){
+			CJugar.GuardarPuntuacion();
+			return true;
+		}
+		else return false;
 	}
 	/**
 	 * Reiniciar

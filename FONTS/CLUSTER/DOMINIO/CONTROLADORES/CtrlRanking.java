@@ -106,13 +106,16 @@ public class CtrlRanking {
 		Resultado r = new Resultado(j,m,d,p);
 		int found = 0;
 		int i = 0;
+		if(R == null)System.out.println(t+" este es el nombre");
 		while (i < R.size() && found == 0) {
 			if (R.getPosicion(i).getPuntuacion() < r.getPuntuacion()) {
 				R.anadirResultado(i,r);
 				found = 1;
 			}
+		
 			++i;
 		}
+		
 		GP.guardar(R);
 	}
 
