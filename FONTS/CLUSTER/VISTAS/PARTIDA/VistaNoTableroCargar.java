@@ -26,7 +26,6 @@ public class VistaNoTableroCargar extends VistaPatronInfo {
 		super.run("Atras");
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAMenuPartida();
 				Salir();
 			}
 		});

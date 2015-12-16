@@ -63,6 +63,7 @@ public class VEmergentInfo extends VistaError {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.entrarAMenuElegirTablero();
 					V2.setVisible(false);
+					CV.salirDeCarac2();
 					Salir();
 				}
 			});
@@ -71,6 +72,7 @@ public class VEmergentInfo extends VistaError {
 			J2.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.entrarAElegirForma();
+					CV.salirDeCarac2();
 					V2.setVisible(false);
 					Salir();
 				}

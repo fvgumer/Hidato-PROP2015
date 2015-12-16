@@ -345,9 +345,9 @@ public class CtrlDominio {
 		CJugar.reestart(CPartida);
 	}
 	
-	/*public void GuardarPuntuacion(){
+	public void guardarPuntuacion(){
 		CJugar.GuardarPuntuacion();
-	}*/
+	}
 	/**
 	 * Consultar Mapa Sin numeros
 	 * @return Devuelve un Mapa de String de las
@@ -361,7 +361,8 @@ public class CtrlDominio {
 	 * @param id Identificador del tablero que queremos cargar
 	 */
 	public void cargarTableroSinBIN(String id){
-		CPartida.cargarTablero(id);
+		CTablero.cargar(id.substring(0, 8));
+		CPartida.setT(CTablero);
 	}
 
 

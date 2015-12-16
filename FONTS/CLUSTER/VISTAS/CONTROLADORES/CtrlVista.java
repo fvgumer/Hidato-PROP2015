@@ -243,7 +243,7 @@ public class CtrlVista {
 		public void elegirTdisenado(){
 			VTDisenado = new VistaTDisenado(this);
 			VTDisenado.setVisible(true);
-			VTDisenado.run(listarTableros());
+			VTDisenado.run(CDominio.listarTableros());
 		}
 		/**
 		 * Cargar Tablero Elegido
@@ -441,6 +441,10 @@ public class CtrlVista {
 		public void entrarANoTablero(){
 			VTCargar = new VistaNoTableroCargar(this);
 			VTCargar.setVisible(true);
+		}
+		
+		public void salirDeCarac2(){
+			VElegirC2.setVisible(false);
 		}
 	
 		
@@ -677,15 +681,6 @@ public class CtrlVista {
 		}
 		
 		/**
-		 * Listar Tableros
-		 * @return Recorna un vector de Strings con todos los ids de
-		 * todos los tableros que estan guardados en disco
-		 */
-		public String[] listarTableros(){
-			return CDominio.listarTableros();
-		}
-		
-		/**
 		 * Consultar contenido del tablero actual
 		 * @return Retorna mapa de Strings que contienen
 		 * el valor de todas las  casillas en ese momento
@@ -801,6 +796,10 @@ public class CtrlVista {
 		 */
 		public String[][]getMapaVacio(){
 			return CDominio.getMapaVacio();
+		}
+		
+		public void guardarPuntuacion(){
+			CDominio.guardarPuntuacion();
 		}
 		
 

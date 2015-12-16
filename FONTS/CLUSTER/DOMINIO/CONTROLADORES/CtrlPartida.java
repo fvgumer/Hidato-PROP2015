@@ -202,25 +202,26 @@ public class CtrlPartida {
 		CT = new CtrlGestionTablero();
 		String[] validos = null;
 		String[] lista = CT.consultar_nomstableros();
-		for(int i=0; i<lista.length; ++i) System.out.println(lista[i]);
 			int mida = T.getMida();
 			int nini = T.getn_predef();
 			int forats = T.getholes();
-			for (int i = 0; i < lista.length; ++i) {
-				if(lista[i].length() == 12) {
-				 if(lista[i].regionMatches(0, Integer.toString(mida), 0, 1)) {
-					 if(lista[i].regionMatches(0, Integer.toString(forats), 2, 3)) {
-						 if (lista[i].regionMatches(0, Integer.toString(nini), 4, 5)) {
-							 validos[i].concat(lista[i]);
+			if (lista != null) {
+				for (int i = 0; i < lista.length; ++i) {
+					if(lista[i].length() == 12) {
+					 if(lista[i].regionMatches(0, Integer.toString(mida), 1, 1)) {
+						 if(lista[i].regionMatches(0, Integer.toString(forats), 3, 3)) {
+							 if (lista[i].regionMatches(0, Integer.toString(nini), 5, 5)) {
+								 validos[i].concat(lista[i]);
+							 }
 						 }
 					 }
-				 }
+					}
 				}
 			}
 			return validos;
 		}
 	
-	
+
 	/**
 	 * Anadir caracteristicas de la partida
 	 * @param dim Entero que indica las dimensiones del tablero de la partida.
@@ -251,17 +252,15 @@ public class CtrlPartida {
 	}
 
 	/**
-	 * Elegir tablero diseÃƒÂ±ado
-	 * A partir de los parametros impÃƒÂ­citos del objeto partida se substraen
-	 * de los ficheros los tableros que se ajustan mas a la peticiÃƒÂ³n del jugador
+	 * Elegir tablero diseenado
+	 * A partir de los parametros implicitos del objeto partida se substraen
+	 * de los ficheros los tableros que se ajustan mas a la peticion del jugador
 	 */
 
 	public void cargarTablero(String t){
 		T = CT.cargar(quitarBin(t), false,true);
 	}
 
-
-	
 	 /**
 	  * Calcular dificultad del tablero
 	  * A partir de los parametros de entrada se hace un calculo para estimar la 
@@ -287,7 +286,9 @@ public class CtrlPartida {
 	public String[][] getMapaVacio(){
 		return pasarAMapa(PH.getTsinnumeros());
 	}
-
+	public void setT(CtrlTablero CCT){
+		T = CCT.asociar_tablero();
+	}
 	
 
 

@@ -36,8 +36,15 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				if (!list.isSelectionEmpty()) 
+				if (!list.isSelectionEmpty())  {
+					try {
 					CV.cargarTablero((String)list.getSelectedValue());
+					CV.setCrearPartida();
+					CV.entrarAModoPartida();
+					Salir();
+					}
+					catch(Exception e){}
+				}
 				else {
 					VError1 = new VEmergErrorClicar();
 					VError1.setVisible(true);
@@ -64,7 +71,19 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 	 * Introducimos el listado de tableros que podemos cargar
 	 */
 	public void run(String[] J){
-		list.setListData(J);
+		if (J != null) {
+			list.setListData(J);
+		}
+		else{
+			VistaNoTableroCargar VT = new VistaNoTableroCargar(CV);
+			VT.setVisible(true);
+			String[] l = CV.get_tableros_repo();
+			if (l != null) {
+				list.setListData(l);
+			}
+			else System.out.println("NO EXISTEN TABLEROS");
+			
+		}
 
 	}
 
