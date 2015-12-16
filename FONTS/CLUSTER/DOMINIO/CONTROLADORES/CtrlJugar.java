@@ -40,6 +40,7 @@ public class CtrlJugar {
 	public void comenzar_PartidaCargada(CtrlPartida P) {
 		comenzar_partida(P);
 		T1.reempezar(PH.getTiempo(),PH.get_modo(), PH.getTmax());
+		T1.iniciar();
 	}
 	
 	public void setCasillasFaltan(int c){
