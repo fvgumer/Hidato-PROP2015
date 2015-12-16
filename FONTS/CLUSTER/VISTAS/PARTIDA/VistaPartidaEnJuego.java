@@ -201,7 +201,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(pSetC);
 		pSetC.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				if(pSetC.isEnabled())
+				if(pSetC.isEnabled() && capClicat == false)
 				setIntroducirCasilla(CV);
 			}
 		});
@@ -212,7 +212,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(pBorrowC);
 		pBorrowC.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				if(pBorrowC.isEnabled())
+				if(pBorrowC.isEnabled() && capClicat == false)
 					setQuitarCasilla(CV);
 			}
 		});
@@ -310,7 +310,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	
 	ActionListener temps_maxim = new ActionListener() {
 	      public void actionPerformed(ActionEvent evt) {
-	    	  if(modoJ == 1 && CV2.obtMinutos() == -2 && stop)  {
+	    	  if(modoJ == 1 && CV2.obtMinutos() == 1 && stop)  {
 	    		  stop = true;
 	    		  noDejarClicar();
 	    	  }
@@ -323,7 +323,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	  
 	  ActionListener temps_maxim2 = new ActionListener() {
 	      public void actionPerformed(ActionEvent evt) {
-	    	  if(CV2.obtMinutos() == -2 && !stop)  {
+	    	  if(CV2.obtMinutos() == 1 && !stop)  {
 	    		  DejarClicar();
 	    		  setMapa(CV2.getMapaVacio());
 	    		  stop = true;

@@ -6,25 +6,27 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 
 public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
-
+	private VEmergErrorClicar VError;
 	public VistaTDisenado(final CtrlVista CV) {
 		super(CV);
 		txt = "Elegir Tablero Diseñado";
+		VError = new VEmergErrorClicar();
 		
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 					//FUNCION
-				CV.listarTableros();
+				
 			}
 		});
 
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				/*if (!list.isSelectionEmpty()) 
-					//FUNCION
+				if (!list.isSelectionEmpty()) 
+					CV.cargarTablero(list.getSelectedValue());
 				else {
-					//FUNCION
-				}*/
+					VError = new VEmergErrorClicar();
+					VError.setVisible(true);
+				}
 			}
 		});
 		
@@ -33,6 +35,14 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 				CV.entrarAElegirForma();
 			}
 		});	
+	}
+	
+	private void previsualizar_Tablero(String id, CtrlVista CV) {
+		CV.cargar_tab(id);
+	}
+	
+	public void run(String[] J){
+		list.setListData(J);
 	}
 
 }

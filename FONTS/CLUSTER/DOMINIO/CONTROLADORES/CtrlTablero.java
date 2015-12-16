@@ -332,7 +332,7 @@ public class CtrlTablero {
 	 */
 	public boolean cargar(String id) {
 		boolean b = true;
-		this.map = c.cargar(id,b);
+		this.map = c.cargar(id,b,false);
 		return b;
 	}
 	

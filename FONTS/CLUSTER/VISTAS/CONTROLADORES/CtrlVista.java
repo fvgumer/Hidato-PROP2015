@@ -54,6 +54,7 @@ public class CtrlVista {
 	private PartidaResolver VResolver;
 	private VistaSeguroGuardar VGuardar;
 	private int modoJ;
+	private VistaNoTableroCargar VTCargar; 
 
 	//Tablero
 	private VistaGestionTablero VGTableros;
@@ -203,6 +204,11 @@ public class CtrlVista {
 		public void elegirTdisenado(){
 			VTDisenado = new VistaTDisenado(this);
 			VTDisenado.setVisible(true);
+			VTDisenado.run(listarTableros());
+		}
+		
+		public void cargarTablero(String id){
+			CDominio.cargarTableroSinBIN(id);
 		}
 		
 		public void previsualizarTablero(String id) {
@@ -213,8 +219,16 @@ public class CtrlVista {
 			return CDominio.getInfoTablero(id);
 		}
 		
-		public void cargarParaJugar(String[][] Tablero, String id) {
+		public void cargarParaJugar(String id) {
 			CDominio.cargarPartida(id);
+			comenzarPartidaCargada();
+		}
+		
+		public void comenzarPartidaCargada(){
+			CDominio.comenzarPartidaCargada();
+			CDominio.reiniciar();
+			VPartidaEnJuego = new VistaPartidaEnJuego(this,modoJ);
+			VPartidaEnJuego.setVisible(true);
 		}
 		
 		public void comenzarPartida(){
@@ -305,6 +319,11 @@ public class CtrlVista {
 			VGuardar = new VistaSeguroGuardar(this);
 			VGuardar.setVisible(true);
 			VPartidaEnJuego.setEnabled(false);
+		}
+		
+		public void entrarANoTablero(){
+			VTCargar = new VistaNoTableroCargar(this);
+			VTCargar.setVisible(true);
 		}
 	
 		

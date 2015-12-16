@@ -31,7 +31,7 @@ public CtrlGestionPartida(){
  */
 public Partida_Hidato cargar(String NomJ, String ID){
 	Partida_Hidato P;
-	ruta = ".."+ barras + "DATOS" + barras +"Partidas"+  barras + NomJ+ barras + ID + ".bin";
+	ruta = ".."+ barras + "DATOS" + barras +"Partidas"+  barras + NomJ+ barras + ID ;
 	System.out.println(ruta);
 	File archiu = new File(ruta);
 	if(archiu.exists()==false) {

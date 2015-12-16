@@ -37,6 +37,11 @@ public class CtrlJugar {
 		PH = P.get_partida();
 	}
 	
+	public void comenzar_PartidaCargada(CtrlPartida P) {
+		comenzar_partida(P);
+		T1.reempezar(PH.getTiempo(),PH.get_modo(), PH.getTmax());
+	}
+	
 	public void setCasillasFaltan(int c){
 		casillas_faltan = c;
 	}
@@ -86,9 +91,10 @@ public class CtrlJugar {
 			return posibles;
 	    }
 	
-	/** Pre:
-	 *                                                                                                                                                               
-	 * */
+	/**
+	 * Modificar puntuacion
+	 * @param punt Entero a modificar respecto el actual
+	 */
 	private void modificar_puntuacion(int punt) {
 		int p = PH.get_puntuacion();
 		if (punt < 0) {
@@ -117,10 +123,9 @@ public class CtrlJugar {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param T
+	 * Asigna los candidatos de la posicion entrada
+	 * @param x,y posicion (x,y) del Tablero
+	 * Assigna a las casillas de la al lado los valores que puede tener
 	 */
 	private void assignar_candidat(int x, int y, Tablero T) {
 		int valor = T.getValorTauler(x, y); //Agafa el valor de la casella
@@ -179,7 +184,10 @@ public class CtrlJugar {
 			}
 		}
 	}
-	
+	/**
+	 * Inicialitza los candidatos de todas las casillas a partir
+	 * del tablero inicial
+	 */
 	public void inicialitzarCandidats(){
 		boolean[] posats = PH.get_Tablero().getPosats();
 		boolean[] candidats = new boolean[posats.length];
@@ -231,22 +239,17 @@ public class CtrlJugar {
 			max_nombre = max_nombre + 1;
 			PH.set_ID(max_nombre);
 		}
+		PH.setTiempo(T1.obtMinuto(), T1.obtSegundo());
 		c.guardar(PH);
 	}
 
 	/**
 	 * Introducir Casilla
-<<<<<<< HEAD
-	 * @param x,y Enteros que hacen referencia a una posicion del parametros implicito
-	 * @param valor Entero tal que [1,dim*dim]
-	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implicito
-	 * si la posiciin es valida.
-=======
+
 	 * @param x Enteros que hacen referencia a una posicion del parametros implicito
 	 * @param valor Entero tal que valor esta entre (1, dim*dim]
 	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implicito
 	 * si la posicion es valida.
->>>>>>> origin/master
 	 */
 	public boolean introducirCasilla(int x, int y,int valor){
 			if (PH.casilla_posible(x,y)) {
@@ -275,7 +278,8 @@ public class CtrlJugar {
 	/**
 	 * Quitar Casilla
 	 * @param x,y Enteros que hacen referencia a una posicion del parametros implocito
-	 * Se extrae el valor de la posicion del tablero (x,y) si es una posicion valida
+	 * de una casilla valida.
+	 * Se extrae el valor de la posicion del tablero (x,y).
 	 */
 	public boolean quitar_casilla(int x, int y){
 				//1. QUITAR CASILLA
@@ -290,7 +294,8 @@ public class CtrlJugar {
 	/**
 	 * Comprobar Casilla
 	 *@param x,y Enteros que hacen referencia a una posicion del parametros implicito
-	 *que debe apuntar a una casilla que previamente hemos introducido un valor en el juego.
+	 *que debe apuntar a una casilla que previamente hemos introducido un valor en el juego,
+	 *por tanto una casilla vaila.
 	 *Nos introduce por pantalla si en esa posicion hemos introducido el valor correcto o no
 	 */
 	public boolean comprobar_casilla(int x, int y){
@@ -482,6 +487,12 @@ public class CtrlJugar {
 		return !incorrecto;
 	}
 	
+	/**
+	 * Posicion del tablero en que se encuentra en numero 1
+	 * @param T Tablero en el que queremos buscar esa posicion
+	 * @return Retorna un vector de enteros los que se encuentra
+	 * la posicion (x,y) del tablero
+	 */
 	private int[] getPrimero(Tablero T){
 		int [] pos = new int[2];
 		boolean stop = false;
@@ -497,7 +508,7 @@ public class CtrlJugar {
 		return pos;
 	}
 	
-	public void GuardarPuntuacion(){
+	/*public void GuardarPuntuacion(){
 		String m;
 		if (PH.get_modo() == 0) m = "Clasico";
 		else if(PH.get_modo() == 1) m = "Contrareloj";
@@ -513,16 +524,8 @@ public class CtrlJugar {
 		CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
 		CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
 		CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd,PH.get_modo());
-	}
-	/**
-	 * Consulta del tiempo
-	 * Nos retorna los segundo en los que estamos en la partida
-	 */
-	public void get_tiempo() {
-		int min = T1.obtMinuto();
-		int seg = T1.obtSegundo();
-		System.out.println("Llevas "+min+"min(s) y "+seg+"seg(s).");
-	}
+	}*/
+
 	/**
 	 * Consulta estado de la partida
 	 * @return Nos retorna un entero que identifica el estado en el 
@@ -575,7 +578,11 @@ public class CtrlJugar {
 		return T1;
 	}
 	
-
+	/** Consulta el Valor posible
+	 * 
+	 * @param pos Posicion del vector de los enteros que aun podemos utilizar
+	 * @return Retorna el entero que esta en la posicion pos.
+	 */
 	public int getValorPosible(int pos) {
 		return PH.get_Tablero().getValorPosible(pos);
 	}

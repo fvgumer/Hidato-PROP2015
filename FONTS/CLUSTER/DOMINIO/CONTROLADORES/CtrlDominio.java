@@ -82,6 +82,11 @@ public class CtrlDominio {
 		CJugar.setCasillasFaltan(CPartida.casillasFaltan(CPartida.getMapaActual()));
 	}
 	
+	public void comenzarPartidaCargada(){
+		CJugar.comenzar_PartidaCargada(CPartida);
+		CJugar.setCasillasFaltan(CPartida.casillasFaltan(CPartida.getMapaActual()));
+	}
+	
 	public void iniciar_tiempo(int i,int modoJ){
 		if (modoJ == 0) CJugar.iniciar_tiempo(1,0);
 		else CJugar.iniciar_tiempo(i,modoJ);
@@ -168,14 +173,17 @@ public class CtrlDominio {
 		CJugar.reestart(CPartida);
 	}
 	
-	public void GuardarPuntuacion(){
+	/*public void GuardarPuntuacion(){
 		CJugar.GuardarPuntuacion();
-	}
+	}*/
 	
 	public String[][] getMapaVacio(){
 		return CPartida.getMapaVacio();
 	}
-
+	
+	public void cargarTableroSinBIN(String id){
+		CPartida.cargarTablero(id);
+	}
 
 
 	//USUARIO

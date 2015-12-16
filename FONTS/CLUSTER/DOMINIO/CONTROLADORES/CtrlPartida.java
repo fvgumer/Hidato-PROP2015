@@ -70,7 +70,8 @@ public class CtrlPartida {
 	 * que se desea cargar
 	 */
 	public void Cargar_Partida_Hidato(String nom, String id){
-		c.cargar(nom, id);
+		PH = c.cargar(nom, id);
+		PH2 = PH;
 	}
 	
 	
@@ -98,7 +99,8 @@ public class CtrlPartida {
 	}
 	
 	public String[] conseguir_partidas_enproceso(String NomJ) {
-			ids = c.lista_partidas(NomJ);
+		c = new CtrlGestionPartida();
+		ids = c.lista_partidas(NomJ);
 		return ids;
 	}
 	
@@ -169,8 +171,6 @@ public class CtrlPartida {
 		CT = new CtrlGestionTablero();
 		String[] validos = null;
 		String[] lista = CT.consultar_nomstableros();
-		if (lista.length == 0) return lista;
-		else{
 			int mida = T.getMida();
 			int nini = T.getn_predef();
 			int forats = T.getholes();
@@ -185,15 +185,14 @@ public class CtrlPartida {
 			}
 			return validos;
 		}
-	}
 	
 	
 	/**
-	 * AÃ±adir caracteristicas de la partida
+	 * Anadir caracteristicas de la partida
 	 * @param dim Entero que indica las dimensiones del tablero de la partida.
 	 * @param forats Entero que indica el numero de casillas vacias del tablero.
 	 * @param n_ini Entero que indica el numero de casillas iniciales que contienen
-	 * un nÃºmero.
+	 * un numero.
 	 */
 	public void anadir_carct_tablero(int form,int dim, int forats, int n_ini){
 		T = new Tablero(dim);
@@ -223,10 +222,8 @@ public class CtrlPartida {
 	 * de los ficheros los tableros que se ajustan mas a la peticiÃƒÂ³n del jugador
 	 */
 
-	public void elegir_tdisenado(){
-		//Sacar TOP5 de los mas parecidos
-		
-		
+	public void cargarTablero(String t){
+		T = CT.cargar(t, false,true);
 	}
 
 
