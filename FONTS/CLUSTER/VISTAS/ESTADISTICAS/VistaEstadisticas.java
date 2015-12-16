@@ -77,7 +77,7 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 		if (modo != "ninguno") s = String.format(s+ "El modo de juego preferido por este"
 				+ " usuario es el %s",modo);
 		Texto t = new Texto(s,40,89,14);
-		t.setSize(535,61);
+		t.setSize(535,86);
 		t.setForeground(new Color(153, 0, 0));
 		getContentPane().add(t);
 	}
