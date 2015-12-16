@@ -4,6 +4,16 @@ import java.io.File;
 import CLUSTER.DOMINIO.CLASES.*;
 import CLUSTER.PERSISTENCIA.*;
 
+/**
+ * Este controlador contiene los parametros principales para poder crear una partida que son, la clase Partida_Hidato y una copia
+ * de ella para saber los parametros iniciales. Ademas antes de crear una partida, la creacion del tablero se gestiona en un objeto
+ * aparte antes de introducirlo en la partida. Tambien cuenta con los controladores de persistencia de Tablero y Partida para poder
+ * pargar y guardar las partidas deseadas.Ademas cuenta con la conexion de los controladores de GestionPartida y Ranking para poder llevar y traer todos
+ * los datos de las partidas a disco.
+ * @author Elena
+ *
+ */ 
+
 public class CtrlPartida {
 	//CONSTANTES
 	private Partida_Hidato PH;
@@ -14,15 +24,28 @@ public class CtrlPartida {
 	private CtrlGestionUsuario CU;
 	private String[] ids;
 	
-	
-	private int calculoID(Jugador U){
-		c = new CtrlGestionPartida();
-		int i = c.consultar_numeropartidas("Pepe");
-		System.out.println(i);
-		++i;
-		return i;
+	private String quitarBin(String cad) {
+		int mida = cad.length();
+		String t = cad.substring(0, mida-4);
+		return t;
 	}
 	
+
+	/**
+	 * Calcular el ID de la partida
+	 * @param U 
+	 * @return
+	 */
+	private int calculoID(Jugador U){
+		c = new CtrlGestionPartida();
+		String[] lis = c.lista_partidas(U.consultar_nombre());
+		int ultimo = lis.length-1;
+		int id = Integer.parseInt(quitarBin(lis[ultimo]))+1;
+		System.out.println(id+"UF");
+		return id;
+	}
+	
+
 	/**
 	 * Crear Partida
 	 * @param U Jugador previamente identificado
@@ -32,6 +55,8 @@ public class CtrlPartida {
 		int ID = calculoID(U);
 		PH = new Partida_Hidato(T,U,ID);
 		PH2 = new Partida_Hidato(T,U,ID);
+		PH.set_ID(ID);
+		PH2.set_ID(ID);
 	}
 	
 	public void setModoJuego(int modo) {
