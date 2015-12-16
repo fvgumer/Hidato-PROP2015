@@ -36,8 +36,12 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				if (!list.isSelectionEmpty()) 
+				if (!list.isSelectionEmpty())  {
 					CV.cargarTablero((String)list.getSelectedValue());
+					CV.setCrearPartida();
+					CV.entrarAModoPartida();
+					Salir();
+				}
 				else {
 					VError1 = new VEmergErrorClicar();
 					VError1.setVisible(true);
@@ -70,6 +74,12 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 		else{
 			VistaNoTableroCargar VT = new VistaNoTableroCargar(CV);
 			VT.setVisible(true);
+			String[] l = CV.get_tableros_repo();
+			if (l != null) {
+				list.setListData(l);
+			}
+			else System.out.println("NO EXISTEN TABLEROS");
+			
 		}
 
 	}

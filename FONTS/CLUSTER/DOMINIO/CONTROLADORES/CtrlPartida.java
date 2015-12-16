@@ -208,9 +208,9 @@ public class CtrlPartida {
 			if (lista != null) {
 				for (int i = 0; i < lista.length; ++i) {
 					if(lista[i].length() == 12) {
-					 if(lista[i].regionMatches(0, Integer.toString(mida), 0, 1)) {
-						 if(lista[i].regionMatches(0, Integer.toString(forats), 2, 3)) {
-							 if (lista[i].regionMatches(0, Integer.toString(nini), 4, 5)) {
+					 if(lista[i].regionMatches(0, Integer.toString(mida), 1, 1)) {
+						 if(lista[i].regionMatches(0, Integer.toString(forats), 3, 3)) {
+							 if (lista[i].regionMatches(0, Integer.toString(nini), 5, 5)) {
 								 validos[i].concat(lista[i]);
 							 }
 						 }
@@ -252,17 +252,15 @@ public class CtrlPartida {
 	}
 
 	/**
-	 * Elegir tablero diseÃƒÂ±ado
-	 * A partir de los parametros impÃƒÂ­citos del objeto partida se substraen
-	 * de los ficheros los tableros que se ajustan mas a la peticiÃƒÂ³n del jugador
+	 * Elegir tablero diseenado
+	 * A partir de los parametros implicitos del objeto partida se substraen
+	 * de los ficheros los tableros que se ajustan mas a la peticion del jugador
 	 */
 
 	public void cargarTablero(String t){
 		T = CT.cargar(quitarBin(t), false,true);
 	}
 
-
-	
 	 /**
 	  * Calcular dificultad del tablero
 	  * A partir de los parametros de entrada se hace un calculo para estimar la 
