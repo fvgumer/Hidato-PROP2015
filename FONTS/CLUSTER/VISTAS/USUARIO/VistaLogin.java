@@ -22,6 +22,7 @@ public class VistaLogin extends VistaUsuario{
 
 	
 	public VistaLogin(final CtrlVista CV) {
+		textField.grabFocus();
 		super.settextlayer("Eliminar");
 		JLabel myLabel = new JLabel("Login", SwingConstants.CENTER);
 		getContentPane().add(myLabel);
