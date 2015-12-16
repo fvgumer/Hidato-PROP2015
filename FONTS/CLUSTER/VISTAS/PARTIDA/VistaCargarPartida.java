@@ -16,6 +16,13 @@ public class VistaCargarPartida extends VistaPrevisualizarTableroPadre {
 		Titulo t = new Titulo("Elegir Partida", 30, 30);
 		t.setBounds(173, 39, 369, 76);
 		getContentPane().add(t);
+		
+
+		list.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+					//previsualizar_tablero(list.getSelectedValue(), CV);
+			}
+		});
 
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {

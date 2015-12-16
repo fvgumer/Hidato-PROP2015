@@ -65,7 +65,6 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 			}
 		}
 		list = new JList(listModel);
-		list.setBounds(64, 126, 256,182);
 		getContentPane().add(list);
 		
 		list.setBounds(349,42,239,392);
