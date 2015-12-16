@@ -286,7 +286,9 @@ public class CtrlPartida {
 	public String[][] getMapaVacio(){
 		return pasarAMapa(PH.getTsinnumeros());
 	}
-
+	public void setT(CtrlTablero CCT){
+		T = CCT.asociar_tablero();
+	}
 	
 
 

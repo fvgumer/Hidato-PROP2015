@@ -473,4 +473,6 @@ public class CtrlTablero {
 		pos = getRandom(mida);
 		map.setStart(pos[0],pos[1]);
 	}
+	
+
 }
