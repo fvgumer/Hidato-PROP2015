@@ -203,9 +203,9 @@ public class CtrlVista {
 		 * de la partida que estamos creando
 		 */
 		public void entrarAElegirForats(int dimensions, int forma){
-			VElegirC2.setVisible(true);
-			VElegirC2.setdimensions(dimensions);
+			VElegirC2.setVisible(true);	
 			VElegirC2.setforma(forma);
+			VElegirC2.setdimensions(dimensions);
 		}
 		/**
 		 * Consultar dificultad de la partida previamente configurda

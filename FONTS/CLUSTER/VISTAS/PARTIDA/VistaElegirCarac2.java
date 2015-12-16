@@ -25,7 +25,8 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 	
 	public void setdimensions(int d) {
 		this.dim = d;
-		max_forats = (dim*dim - 2);
+		if(forma == 1) max_forats = dim*2;
+		else max_forats = (dim*dim - 2);
 	}
 	
 	public void setforma(int f){
@@ -46,8 +47,9 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 				String In;
 				In = Integer.toString(slider.getValue());
 				lblSinForma.setText(In);
-				max_ninicals = max_forats - slider.getValue();
+				max_ninicals = max_forats - slider.getValue()-2;
 				slider2.setMaximum(max_ninicals);
+				slider2.setMinimum(2);
 			}
 		});
 		//Actuacion si lo mueve por teclas
@@ -64,7 +66,7 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 		
 		
 		//ACCIONES_n2_______________________________________________
-		slider2.setMinimum(0);
+		slider2.setMinimum(2);
 		slider2.setMaximum(0); //Fins que no es movi forats no pots
 		slider2.setValue(0);
 		lblSinForma2.setText("0");
@@ -90,6 +92,7 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 				public void mouseClicked(MouseEvent arg0) {
 					setInfoPartida(CV);
 					CV.mirarDificultat();
+					Salir();
 				}
 			});
 			
