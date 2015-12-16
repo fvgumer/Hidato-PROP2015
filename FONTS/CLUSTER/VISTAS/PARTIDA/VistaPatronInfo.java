@@ -10,7 +10,12 @@ import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.Color;
-
+/**
+ * Tablero Base para alguna de las vistas que tienen elementos en comun en las
+ * que se muestra una informacion importante durante el juego.
+ * @author Elena R
+ *
+ */
 public class VistaPatronInfo extends JFrame {
 	protected Botones b1;
 

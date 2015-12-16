@@ -23,7 +23,11 @@ import java.awt.List;
 import java.awt.Canvas;
 import java.awt.Label;
 import javax.swing.JCheckBoxMenuItem;
-
+/**
+ * Vista en la que se controla todos los movimientos del juego y toda su usabilidad
+ * @author Elena
+ *
+ */
 
 public class VistaPartidaEnJuego extends VistaPadreInicio {
 	private Timer timer;
@@ -76,7 +80,11 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		jClicat = -1;
 		capClicat = true;
 	}
-	
+	/**
+	 * No dejar clicar
+	 * Post: Bloquea todos los botones de la vista
+	 * para que el jugador no pueda usar ninguno
+	 */
 	public void noDejarClicar(){
 		bPausa.setEnabled(false);
 		bGuardar.setEnabled(false);
@@ -86,7 +94,11 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		pBorrowC.setEnabled(false);
 		pSetC.setEnabled(false);
 	}
-	
+	/**
+	 * Dejar clicar
+	 * Post:  Desbloquea todos los botones de la vista
+	 * para que el jugador pueda usarlos.
+	 */
 	public void DejarClicar(){
 		bPausa.setEnabled(true);
 		bGuardar.setEnabled(true);
@@ -333,6 +345,11 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	      }
 	  };
 	
+	/**
+	 * Introducir Mapa
+	 * @param Map Mapa de Strings que contiene los
+	 * valores de las casillas del tablero
+	 */
 	private void setMapa(String[][] Map) {
 		for(int i=0; i<mida; ++i) {
 			for(int j=0; j<mida; ++j){
@@ -341,7 +358,9 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 			}
 		}
 	}
-	
+	/**
+	 * Marcar casilla como clicada
+	 */
 	public void setCasillaClicada(int x, int y){
 		if (!capClicat())
 			casilla[iClicat][jClicat].setBackground(new Color(255, 250, 240));
@@ -350,7 +369,13 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		capClicat=false;
 		casilla[x][y].setBackground(new Color(250, 128, 114));
 	}
-	
+	/**
+	 * Introducir casilla
+	 * @param CV CtrlVista al que enviamos la informacion
+	 * de que casilla queremos introducir i con que valor
+	 * Post: La casilla deja de ser como marcada e introducimo el valor
+	 * indicador en la casilla marcada
+	 */
 	private void setIntroducirCasilla(CtrlVista CV) {
 		//EN DATOS
 		int valor = Integer.parseInt(lbl.getText());
@@ -375,7 +400,13 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		}
 		
 	}
-	
+	/**
+	 * Quitarcasilla
+	 * @param CV CtrlVista al que enviamos la informacion
+	 * de que casilla queremos quitar
+	 * Post: La casilla deja de ser como marcada e quitamos el valor
+	 * que contenia la casilla marcada
+	 */
 	private void setQuitarCasilla(CtrlVista CV) {
 		//EN DATOS
 		if (CV.setQuitarCasilla(iClicat,jClicat)) {
@@ -399,14 +430,24 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		}
 		
 	}
-	
+	/**
+	 * Cambiar valor del vector de posibles valores
+	 * para introducir
+	 * @param i Valor que nos indica cuantas posiciones
+	 * ha cambiado.
+	 */
 	private void clicEnElLabel(CtrlVista CV,int i) {
 		posLabel+= i;
 		int v = CV.getValorPosible(posLabel);
 		lbl.setText(Integer.toString(v));
 		
 	}
-	
+	/**
+	 * Reiniciar Tablero
+	 * @param map Mapa de Strings que muestra el tablero inicial de la partida
+	 * @param CV Ctrl al que le enviamos esa informacion
+	 * Post: Escribimos el mapa que nos ha enviado CV que sera el inicial
+	 */
 	public void reiniciarTablero(String[][] map, CtrlVista CV) {
 		for(int i=0; i<mida; ++i) {
 			for(int j=0; j<mida; ++j){

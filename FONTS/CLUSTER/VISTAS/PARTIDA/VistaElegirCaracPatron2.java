@@ -6,7 +6,12 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import javax.swing.JSlider;
 import javax.swing.JLabel;
 
-
+/**
+ *Vista Base que implementan otras vistas que necesitan configurar 3 parametros
+ *de un tablero
+ * @author Elena
+ *
+ */
 public class VistaElegirCaracPatron2 extends VistaPadreIniConBoton {
 	private static final long serialVersionUID = 1L;
 	protected JSlider slider;

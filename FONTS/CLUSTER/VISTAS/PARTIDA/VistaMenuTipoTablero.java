@@ -6,6 +6,12 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Vista de menu para que el jugador pueda elegir el tipo de tablero que quiere elegir
+ * para poder crear una partida
+ * @author Elena
+ *
+ */
 public class VistaMenuTipoTablero extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;
