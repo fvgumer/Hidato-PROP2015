@@ -66,7 +66,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		
 
 		final JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(1), new Integer(20), new Integer(1)));
+		spinner.setModel(new SpinnerNumberModel(1, 1, 20, 1));
 		spinner.setBounds(36, 179, 35, 30);
 		getContentPane().add(spinner);
 		
