@@ -26,10 +26,7 @@ public class CtrlPartida {
 	/**
 	 * Crear Partida
 	 * @param U Jugador previamente identificado
-	 * @param dificultad Entero que identifica la dificultad de la partida.
-	 * @param modo Entero que identifica el modo de juego de la partida.
-	 * @param dim Entero que hace referencia a las dimensiones del tablero 
-	 * de la partida.
+	 * 
 	 */
 	public void crear_partida(Jugador U){
 		int ID = calculoID(U);
@@ -80,7 +77,7 @@ public class CtrlPartida {
 	
 	/**
 	 * Consulta de ID
-	 * @param id Entero > 0
+	 * @param id Entero mayor que 0
 	 * @return Devuelve cierto si existe una partida que se identifica con
 	 * id guardado en el disco.
 	 */
@@ -207,11 +204,6 @@ public class CtrlPartida {
 
 	/**
 	 * Generar tablero aleatorio
-	 * @param dim Entero que indica las dimensiones del tablero de la partida.
-	 * @param c_ini Entero que indica el nÃƒÂºmero de casillas iniciales que contienen
-	 * un nÃƒÂºmero.
-	 * @param forats Entero que indica el nÃƒÂºmero de casillas vacÃƒÂ­as del tablero
-	 * @param f Entero que identifica la forma que tendra el tablero de la partida.
 	 */
 	public String[][] generar_Taleatorio(){
 				CtrlTablero GT = new CtrlTablero();

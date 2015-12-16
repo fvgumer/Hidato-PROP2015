@@ -1,6 +1,6 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 import java.util.Random;
-
+import java.util.*;
 import CLUSTER.DOMINIO.CLASES.*;
 import CLUSTER.PERSISTENCIA.*;
 
@@ -116,7 +116,7 @@ public class CtrlTablero {
 	
 	/**
 	 * Este metodo inicializa el ctrl de persistencia para poder guardar/cargar/eliminar tableros
-	 * @return Retorna el id de los tableros en el sistema de ficheros mas grande
+	 * 
 	 */
 	public void ini_guarda_carga() {
 		c = new CtrlGestionTablero();
@@ -146,13 +146,13 @@ public class CtrlTablero {
 	public boolean validar() {
 		int[] start;
 		start = map.getStart();
-		Temporizador t = new Temporizador();
-		t.timer_max();
-		t.iniciar();
-		//map.setfinal_num(map.getMida()*map.getMida()-map.getholes());
-		boolean b = a.solver(start[0], start[1], 1, map,t);
-		Casilla[][] aux = a.get_solucio();
-		map.set_solucio(aux);
+		Timer t = new Timer();
+		a.asociarTimer(t);
+		boolean b = a.solver(start[0], start[1], 1, map);
+		if(b) {
+			Casilla[][] aux = a.get_solucio();
+			map.set_solucio(aux);
+		}
 		return b;
 	}
 	
@@ -164,10 +164,9 @@ public class CtrlTablero {
 	public boolean solucion_unica() {
 		int[] start;
 		start = map.getStart();
-		Temporizador t = new Temporizador();
-		t.timer_max();
-		t.iniciar();
-		int aux = a.unica_solucion(start[0], start[1], map, 1, t);
+		Timer t = new Timer();
+		a.asociarTimer(t);
+		int aux = a.unica_solucion(start[0], start[1], map, 1);
 		if(aux == 1) map.setSolucion_unica(true);
 		else map.setSolucion_unica(false);
 		return (aux == 1);
@@ -230,6 +229,12 @@ public class CtrlTablero {
 		return this.map;
 	}
 	
+	/**
+	 * Operacion encargada de la conversion de un tablero en formato String[][] a un tablero contenido
+	 * en la clase Tablero. El tablero creado se asocia al tablero de la clase.
+	 * @param t El tablero en formato String[][]
+	 * @param unica Indica si la solucion del tablero es unica
+	 */
 	public void set_tablero(String[][] t, boolean unica) {
 		int n = t[0].length;
 		this.map = new Tablero(n);
@@ -322,7 +327,7 @@ public class CtrlTablero {
 	
 	/**
 	 * Se copia el tablero con el id=n del sistema de ficheros al tablero de la clase
-	 * @param n Indica el id del tablero que se quiere cargar
+	 * @param id Indica el id del tablero que se quiere cargar
 	 * @return Retorna true si la carga se ha realizado con exito. False en caso contrario.
 	 */
 	public boolean cargar(String id) {

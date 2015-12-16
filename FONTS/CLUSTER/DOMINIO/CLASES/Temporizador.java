@@ -21,8 +21,13 @@ public class Temporizador implements ActionListener,Serializable {
 	      }
 	  };
 	  
+	  
+	  public int get_delay() {
+		  return timer.getDelay();
+	  }
+	  
 	  public void timer_max(){
-		  timer = new Timer(20000,temps_maxim);
+		  timer = new Timer(5000,temps_maxim);
 	  }
 	  
 	  public Temporizador(){
@@ -54,7 +59,7 @@ public class Temporizador implements ActionListener,Serializable {
 		 }
 		 /**
 		 * Introduce los minutos iniciales
-		 * @param seg entero que hace referencia a los minutos
+		 * @param min entero que hace referencia a los minutos
 		 * en que queremos que comienze el timer
 		 */
 		public void estMinuto(int min){ 

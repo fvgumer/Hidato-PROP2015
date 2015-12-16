@@ -12,7 +12,7 @@ public class VistaPadreIniConBoton extends VistaPadreInicio {
 		super();
 		JB = new Botones("Atras",617,396);
 		JB.setFont(new Font("Candara", Font.BOLD, 31));
-		JB.setBounds(596, 441, 109, 40);
+		JB.setBounds(569, 423, 162, 56);
 		getContentPane().add(JB);
 	}
 

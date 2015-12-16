@@ -23,6 +23,15 @@ import CLUSTER.VISTAS.ESTADISTICAS.VistaConsultaEst;
 import CLUSTER.VISTAS.USUARIO.*;
 import CLUSTER.VISTAS.GTABLERO.*;
 
+/**
+ * Esta vista se encarga de la gestion de las pantallas visibles durante el juego.
+ * Basicamente las operaciones que encontraremos son las de entrar a una vista determinada y en
+ * ocasiones comunicarle una serie de datos a la vista antes de hacerla visible.
+ * 
+ * Esta clase tambien contiene las operaciones que comunican las vistas con el ctrl de dominio.
+ *
+ *
+ */
 public class CtrlVista {
 	private VistaInicial VInicial; 
 	private CtrlDominio CDominio;
@@ -104,7 +113,7 @@ public class CtrlVista {
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
 			VElegirImportar = new VistaElegirImportar(this);
-			/*Sobre Estadisticas*/
+			/*Sobre Estadisticas y Ranking*/
 			VCEst = new VistaConsultaEst(this);
 			VEst = new VistaEstadisticas(this);
 			VEstU = new VistaEstUsuario(this);
@@ -360,6 +369,8 @@ public class CtrlVista {
 			tabJ = CDominio.getTabJ(nomactiu());
 			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
 			VEst.setTabJ(tabJ);
+			int modo = CDominio.getModoMasJugado(nomactiu());
+			VEst.setModoMasJugado(modo);
 			VEst.setTitle(nomactiu());
 			VEst.displayEst();
 			VEst.displayTab();
@@ -378,19 +389,21 @@ public class CtrlVista {
 			int[] s = new int[5];
 			s = CDominio.getEst(user);
 			ArrayList<String> tabJ = new ArrayList<String>();
-			tabJ = CDominio.getTabJ(user);
+			tabJ = CDominio.getTabJ(user);			
 			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
 			VEst.setTabJ(tabJ);
+			int modo = CDominio.getModoMasJugado(nomactiu());
+			VEst.setModoMasJugado(modo);
 			VEst.setTitle(user);
 			VEst.displayEst();
 			VEst.displayTab();
 			VEst.setVisible(true);
 		}
 		
-		public void setR(String nTab, int nPos) {
-			ArrayList aux = CDominio.getRanking(nTab);
-			VMRank.setR(aux,nTab,nPos);
+		public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
+			CDominio.partidaTerminada(jugador,s,p,tablero,modo);
 		}
+		
 		
 		public void entrarARanking() {
 			VRank.setVisible(true);
@@ -400,12 +413,15 @@ public class CtrlVista {
 			return CDominio.existsR(nTab);
 		}
 		
+		//tablero,jugador,modo,dificultad,puntuacion
 		public void anadirResultado(String t, String j, String m, String d, int p){
 			CDominio.anadirResultado(t,j,m,d,p);
 		}
 		
-		public void entrarAMostrarRanking(String nTab) {
-			VMRank.setTitle(nTab);
+		public void entrarAMostrarRanking(String nTab,int nPos) {
+			ArrayList aux = CDominio.getRanking(nTab);
+			VMRank.setR(aux,nTab,nPos);
+			VMRank.setTitle();
 			VMRank.displayRank();
 			VMRank.setVisible(true);
 		}

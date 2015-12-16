@@ -44,7 +44,7 @@ public class CtrlJugar {
 	/** Pre: Busqueda de candidatos
 	 * @param x,y son dos enteros que hacen referencia a unas coordenadas validas del tablero 
 	 * del parametro impicito.
-	 * @forats Entero que indica el numero de                                                                                                                                                                
+	 * @param forats Entero que indica el numero de                                                                                                                                                                
 	 * */
 	public ArrayList<Integer> bus_cantidats(int x, int y, int forats, boolean[] posats){
 		Algorithm a = new Algorithm();
@@ -55,10 +55,7 @@ public class CtrlJugar {
 				T_aux.setValorTauler(x,y,i+1);
 				int[] start;
 				start = T_aux.getStart();
-				Temporizador t = new Temporizador();
-				t.timer_max();
-				t.iniciar();
-				boolean p = a.solver(start[0], start[1], 1,T_aux,t);
+				boolean p = a.solver(start[0], start[1], 1,T_aux);
 				if (p) {
 					Posibles.add(i+1);
 				}
@@ -90,9 +87,7 @@ public class CtrlJugar {
 	    }
 	
 	/** Pre:
-	 * @param x,y son dos enteros que hacen referencia a unas coordenadas validas del tablero 
-	 * del parametro implicito.
-	 * @forats Entero que indica el numero de                                                                                                                                                                
+	 *                                                                                                                                                               
 	 * */
 	private void modificar_puntuacion(int punt) {
 		int p = PH.get_puntuacion();
@@ -241,10 +236,17 @@ public class CtrlJugar {
 
 	/**
 	 * Introducir Casilla
+<<<<<<< HEAD
 	 * @param x,y Enteros que hacen referencia a una posicion del parametros implicito
 	 * @param valor Entero tal que [1,dim*dim]
 	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implicito
 	 * si la posiciin es valida.
+=======
+	 * @param x Enteros que hacen referencia a una posicion del parametros implicito
+	 * @param valor Entero tal que valor esta entre (1, dim*dim]
+	 * Se introduce el valor "valor" en la posicion (x,y) del tablero del parametro implicito
+	 * si la posicion es valida.
+>>>>>>> origin/master
 	 */
 	public boolean introducirCasilla(int x, int y,int valor){
 			if (PH.casilla_posible(x,y)) {
@@ -506,15 +508,15 @@ public class CtrlJugar {
 		else d1 = "Dificil";
 		
 		String idd = String.valueOf(PH.get_Tablero().get_id());
-		//CR = new CtrlRanking();
+		CR = new CtrlRanking();
 		CE = new CtrlEstadisticas();
-		//CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
+		CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
 		CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
-		CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd);
+		CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd,PH.get_modo());
 	}
 	/**
 	 * Consulta del tiempo
-	 * @return Nos retorna los segundo en los que estamos en la partida
+	 * Nos retorna los segundo en los que estamos en la partida
 	 */
 	public void get_tiempo() {
 		int min = T1.obtMinuto();

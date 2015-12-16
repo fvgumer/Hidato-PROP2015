@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 import CLUSTER.DOMINIO.CLASES.Ranking;
 import CLUSTER.DOMINIO.CLASES.Resultado;
@@ -18,6 +19,14 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
+
+/**
+ * En esta vista se muestran las posiciones indicadas del ranking del tablero
+ * previamente introducido.
+ * 
+ * @author Belen San Martin
+ *
+ */
 
 public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	
@@ -37,8 +46,8 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	}
 	
 
-	public void setTitle(String nTab) {
-		String titulo = String.format("Ranking del tablero %s",nTab);
+	public void setTitle() {
+		String titulo = String.format("Top %d del tablero %s",nPos,nTab);
 		Texto t = new Texto(titulo,38,26,15);
 		t.setSize(535, 37);
 		getContentPane().add(t);
@@ -48,22 +57,35 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		table = new JTable();
 		table.setAutoCreateRowSorter(true);
 		table.setBorder(new LineBorder(new Color(0, 0, 153), 2));
-		table.setBounds(108, 74, 495, 303);
+		table.setBounds(108, 74, 495, 16);
 		table.setModel(new DefaultTableModel(new Object[][] {
 			{"Posicion","Jugador","Modo","Dificultad","Puntuacion"},
 			},new String[] {"a","b","c","d","e"}));
 		
 		if (r.size() < nPos) nPos = r.size();
+
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		
-		for (int i = 0; i < nPos ; ++i) {
-			table.setModel(new DefaultTableModel(new Object[][] {
-				{i+1,r.get(i)[0],r.get(i)[1],r.get(i)[2],r.get(i)[3]},
-				},new String[] {"a","b","c","d","e"}));
+		int y = 32;
+		for(int i = 0; i < nPos ; ++i) {
+			model.addRow(concatenar(i+1,r.get(i)));
+			table.setBounds(108, 74, 495, y);
+			y += 16;
 		}
 		
 		getContentPane().add(table);
 	}
 	
+	private String[] concatenar(int i, String[] s) {
+		String y = ""+i;
+		String[] concat = new String[5];
+		concat[0] = y;
+		for (int j = 0; j < 4; ++j){
+			concat[j+1] = s[j];
+		}
+		return concat;
+		
+	}
 	/**
 	 * Create the application.
 	 */
@@ -72,8 +94,10 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		super.setTextLayer("Estadisticas de usuario");
 		getContentPane().setName("Estadisticas de usuario");
 		
+		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				table.setBounds(108, 74, 495, 16);
 				CV.entrarAConsultaEst();
 				Salir();
 			}

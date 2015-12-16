@@ -20,6 +20,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JToolBar;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+
+/**
+ * En esta vista el jugador debe introducir el nombre del tablero del cual desea
+ * consultar el ranking y el número de posiciones que quiere ver, con un máximo de 20.
+ * 
+ * @author Belen San Martin
+ *
+ */
 
 public class VistaRanking extends VistaPadreIniConBoton{
 	
@@ -27,15 +36,16 @@ public class VistaRanking extends VistaPadreIniConBoton{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField1;
 	private String nTab = "";
 	private int nPos = 0;
 	private JTextField textField;
+	private Texto txtError;
 
 	/**
 	 * Create the application.
 	 */
 	public VistaRanking(final CtrlVista CV) {
+		txtError = new Texto("",385, 88, 12);
 		
 		super.setTextLayer("Ranking de tablero");
 		getContentPane().setName("Ranking de tablero");
@@ -56,6 +66,7 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		
 
 		final JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(1, 1, 20, 1));
 		spinner.setBounds(36, 179, 35, 30);
 		getContentPane().add(spinner);
 		
@@ -67,25 +78,57 @@ public class VistaRanking extends VistaPadreIniConBoton{
 				nPos = (Integer) spinner.getValue();
 				if (!nTab.equals("")&& CV.existsR(nTab)) {
 					textField.setText("");
-					CV.setR(nTab,nPos);
-					CV.entrarAMostrarRanking(nTab);
+					spinner.setValue(0);
+					txtError = new Texto("",385, 88, 12);
+					getContentPane().add(txtError);
+					CV.entrarAMostrarRanking(nTab,nPos);
 					Salir();
 				}
 				else if (!nTab.equals("") && !CV.existsR(nTab)) {
 					textField.setText("");
 					spinner.setValue(0);
-					Texto t = new Texto("El tablero introducido no existe.",385, 88, 12);
-					t.setForeground(Color.RED);
-					getContentPane().add(t);
+					txtError = new Texto("El tablero introducido no existe.",385, 88, 12);
+					txtError.setForeground(Color.RED);
+					getContentPane().add(txtError);
 				}
 			}
 		});
+
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				int key = e.getKeyCode();
+				if(key==KeyEvent.VK_ENTER){
+					nTab = textField.getText();
+					nPos = (Integer) spinner.getValue();
+					if (!nTab.equals("")&& CV.existsR(nTab)) {
+						textField.setText("");
+						spinner.setValue(0);
+						txtError = new Texto("",385, 88, 12);
+						getContentPane().add(txtError);
+						CV.entrarAMostrarRanking(nTab,nPos);
+						Salir();
+					}
+					else if (!nTab.equals("") && !CV.existsR(nTab)) {
+						textField.setText("");
+						spinner.setValue(0);
+						txtError = new Texto("El tablero introducido no existe.",385, 88, 12);
+						txtError.setForeground(Color.RED);
+						getContentPane().add(txtError);
+					}
+				
+				}
+			}
+		});
+		
 		
 		B.setSize(368, 46);
 		getContentPane().add(B);
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				txtError = new Texto("",385, 88, 12);
+				getContentPane().add(txtError);
 				CV.entrarAConsultaEst();
 				Salir();
 			}

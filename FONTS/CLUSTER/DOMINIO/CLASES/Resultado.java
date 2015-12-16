@@ -55,6 +55,10 @@ public class Resultado implements Serializable {
 		return puntuacion;
 	}
 	
+	/**
+	 * Consultora del modo de juego de la partida.
+	 * @return Dicho modo de juego
+	 */
 	public String getModo() {
 		return modo;
 	}

@@ -18,6 +18,14 @@ import javax.swing.JEditorPane;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 
+/**
+ * En esta vista se muestran las estadisticas del jugador activo o bien del jugador
+ * previamente seleccionado en la vista VistaConsultaEst.
+ * 
+ * @author Belen San Martin
+ *
+ */
+
 public class VistaEstadisticas extends VistaPadreIniConBoton {
 
 	/**
@@ -30,6 +38,7 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 	private int m;
 	private int seg;
 	private int punt;
+	String modo;
 	private JTextField txtTablerosJugados;
 	private JTextField txtY;
 	private ArrayList<String> tablerosJugados;
@@ -46,6 +55,13 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 		tablerosJugados = tabJ;
 	}
 	
+	public void setModoMasJugado(int modo) {
+		if (modo == 0) this.modo= "clasico";
+		else if (modo == 1) this.modo = "contrarreloj";
+		else if (modo == 2)this.modo = "extremo";
+		else this.modo = "ninguno";
+	}
+	
 	public void setTitle(String user){
 		this.user = user;
 		String titulo = String.format("Estadísticas de juego del usuario %s", user);
@@ -55,9 +71,11 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 	}
 	
 	public void displayEst() {
-		String s = String.format("El usuario %s ha jugado un total de %d partidas, "
+		String s = String.format("El usuario %s ha jugado un total de %d partidas "
 				+ "en un total de %d horas, %d minutos y %d segundos, obteniendo una"
-				+ " puntuación de %d", user,part,h,m,seg,punt);
+				+ " puntuación de %d.\n\n",user,part,h,m,seg,punt);
+		if (modo != "ninguno") s = String.format(s+ "El modo de juego preferido por este"
+				+ " usuario es el %s",modo);
 		Texto t = new Texto(s,40,89,14);
 		t.setSize(535,61);
 		t.setForeground(new Color(153, 0, 0));
@@ -80,7 +98,7 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 		txtTablerosJugados.setColumns(10);
 		
 		String sAux = new String();
-		for (int i = 0; i < 30; ++i) {
+		for (int i = 0; i < tablerosJugados.size(); ++i) {
 			sAux = String.format(sAux+"%d- %s\n", i+1, tablerosJugados.get(i));
 		}
 		

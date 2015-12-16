@@ -54,6 +54,11 @@ public class CtrlEstadisticas {
 		else return true;
 	}
 	
+	/**
+	 * Consultora del nombre del usuario asociado a unas estadisticas
+	 * @param E Dichas estadisticas
+	 * @return Nombre del usuario
+	 */
 	String getName(Estadisticas E) {
 		return E.getName();
 	}
@@ -81,28 +86,18 @@ public class CtrlEstadisticas {
 	 * @param s Segundos que ha durado la partida.
 	 * @param p Puntuacion obtenida en la partida.
 	 * @param tablero Nombre del tablero jugado en la partida.
+	 * @param modo Modo de juego.
 	 */
-	public void partidaTerminada(String jugador, int s, int p, String tablero) {
+	public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
 		E = GE.cargar(jugador);
 		E.incrementarTiempo(s);
 		E.incrementarPuntuacion(p);
 		E.anadirTableroJ(tablero);
+		E.incModo(modo);
 		
 		GE.guardar(E);
 	}
 	
-	/**
-	 * Metodo que, dado un nombre de jugador y un nombre de tablero,
-	 * actualiza las estadisticas de dicho jugador con el tablero creado.
-	 * @param jugador  Nombre del jugador que ha creado el tablero.
-	 * @param t Tablero creado por el jugador.
-	 */
-	/* public void tableroCreado(String jugador, String t) {
-		E = GE.cargar(jugador);
-		E.anadirTableroC(t);
-		
-		GE.guardar(E);
-	} */
 	
 	/**
 	 * Metodo que, dado un nombre de jugador y un nombre de tablero,
@@ -131,6 +126,11 @@ public class CtrlEstadisticas {
 		E.mostrarTablerosJugados();
 	}
 	
+	/**
+	 * Consultora de las estadisticas de un usuario
+	 * @param jugador Dicho usuario
+	 * @return Estadisticas de juego de dicho usuario
+	 */
 	public int[] getEst(String jugador){
 		int[] i = new int[5];
 		E = GE.cargar(jugador);
@@ -142,7 +142,22 @@ public class CtrlEstadisticas {
 		
 		return i;
 	}
+
+	/**
+	 * Consultora del modo de juego mas elegido por un jugador
+	 * @param jugador Dicho jugador
+	 * @return -1=nunca ha jugado, 0=clasico, 1=contrarreloj o 2=extremo
+	 */
+	public int getModoMasJugado(String jugador) {
+		E = GE.cargar(jugador);
+		return E.getModoMasJugado();
+	}
 	
+	/**
+	 * Consultora de los taberos jugados por un usuario
+	 * @param jugador Dicho usuario
+	 * @return Listado de los tableros jugados
+	 */
 	public ArrayList<String> getTabJ(String jugador) {
 		E = GE.cargar(jugador);
 		return E.getTabJ();

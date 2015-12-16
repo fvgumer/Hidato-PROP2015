@@ -21,7 +21,7 @@ public class DriverJugarPartida {
 	/**
 	 * Control de error
 	 * @param c1 y c2: Enteros que quieren ser comparados
-	 * @return Devoldera cierto si c1 <= a c2 y falso en el caso contrario 
+	 * @return Devoldera cierto si c1 es menor o igual a c2 y falso en el caso contrario 
 	 */
 	private boolean control_error(int c1, int c2) {
 		if (c1 > c2) {
@@ -71,7 +71,7 @@ public class DriverJugarPartida {
 						System.out.println("Introduce el id de la partida que deseas jugar");
 						String s = sn.next();
 						while(!CP.existe_id(s)) s = sn.next(); 
-						CP.Cargar_Partida_Hidato(s);
+						//CP.Cargar_Partida_Hidato(s);
 						incorrecto = false;
 					}
 					break;
@@ -133,7 +133,7 @@ public class DriverJugarPartida {
 						if (modo == 0) elegido = true;
 					}
 						//____________________________________________________________________________________________
-						CP.anadir_carct_tablero(dim,abuj,c_ini);
+						//CP.anadir_carct_tablero(dim,abuj,c_ini);
 						//2. Elegir tipo tablero
 						System.out.println("Introduce el tipo de tablero para jugar:");
 						System.out.println("0.Tablero Aleatorio");
@@ -142,7 +142,7 @@ public class DriverJugarPartida {
 						if (modo == 0) {
 							boolean escogido = false;
 							while (!escogido) {
-								CP.generar_Taleatorio(dim,c_ini,abuj,f);
+								//CP.generar_Taleatorio(dim,c_ini,abuj,f);
 								System.out.println("Deseas escogerlo?");
 								System.out.println("0. Si");
 								System.out.println("1. No");
@@ -167,7 +167,7 @@ public class DriverJugarPartida {
 						}
 						//_____________________________________________________________________________________________
 						//CREACION PARTIDA
-						CP.crear_partida(J,dificultad,modo,dim);
+						//CP.crear_partida(J,dificultad,modo,dim);
 						break;
 			case 2: incorrecto = false; //Salir
 			}
