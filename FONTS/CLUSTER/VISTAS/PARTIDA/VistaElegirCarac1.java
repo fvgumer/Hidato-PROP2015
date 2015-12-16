@@ -20,8 +20,8 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 
 	
 	private int getnumMaxTablero(){
-		if (form == 0) return 15;
-		else if (form == 1) return 7;
+		if (form == 0) return 7;
+		else if (form == 1) return 15;
 		return 5;
 	}	
 
@@ -33,7 +33,7 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 		 */
 		//VALORES POR DEFECTO
 		slider.setMinimum(0);
-		slider.setMaximum(2);
+		slider.setMaximum(1);
 		/*Valores Iniciales */
 		slider.setValue(0);
 		lblSinForma.setText("SIN FORMA");
