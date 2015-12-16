@@ -81,6 +81,11 @@ public class CtrlRanking {
 		}
 	}
 	
+	/**
+	 * Consultora del ranking deun tablero
+	 * @param nTab Nombre de dicho tablero
+	 * @return Ranking del tablero
+	 */
 	public ArrayList getRanking(String nTab) {
 		R = GP.cargar(nTab);
 		return R.getRanking();

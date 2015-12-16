@@ -58,6 +58,10 @@ public class Ranking implements Serializable {
 		return ranking.get(pos);
 	}
 	
+	/**
+	 * Consultora del ranking completo
+	 * @return Listado con todas las posiciones de un ranking
+	 */
 	public ArrayList getRanking() {
 		return ranking;
 	}

@@ -111,7 +111,7 @@ public class CtrlVista {
 			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VImportar = new VistaImportar(this);
 			VElegirImportar = new VistaElegirImportar(this);
-			/*Sobre Estadisticas*/
+			/*Sobre Estadisticas y Ranking*/
 			VCEst = new VistaConsultaEst(this);
 			VEst = new VistaEstadisticas(this);
 			VEstU = new VistaEstUsuario(this);
