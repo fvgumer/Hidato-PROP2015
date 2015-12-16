@@ -62,6 +62,7 @@ public class VistaUsuario extends VistaPadreInicio{
 		textField.setText("");
 		passwordField.setText("");
 		lblError.setText("");
+		textField.grabFocus();
 	}
 	protected void settextlayer(String name){
 		super.setTextLayer(name);

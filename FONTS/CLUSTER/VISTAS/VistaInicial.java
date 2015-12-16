@@ -26,11 +26,7 @@ public class VistaInicial extends VistaPadreInicio {
 
 	
 	private static final long serialVersionUID = 1L;
-	private Button b1;
-	private Button b2;
-
-
-
+	
 	public VistaInicial(final CtrlVista CV) {
 		//Config layer 
 		setTextLayer("Inicio");
