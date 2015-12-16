@@ -3,8 +3,7 @@ package CLUSTER.VISTAS.PARTIDA;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
+
 
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
