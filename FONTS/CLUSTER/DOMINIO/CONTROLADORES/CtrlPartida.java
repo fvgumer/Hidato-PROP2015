@@ -207,13 +207,15 @@ public class CtrlPartida {
 			int nini = T.getn_predef();
 			int forats = T.getholes();
 			for (int i = 0; i < lista.length; ++i) {
-				 if(lista[i].regionMatches(0, Integer.toString(mida), 7, 2)) {
-					 if(lista[i].regionMatches(0, Integer.toString(forats), 5, 2)) {
-						 if (lista[i].regionMatches(0, Integer.toString(nini), 3, 2)) {
+				if(lista[i].length() == 12) {
+				 if(lista[i].regionMatches(0, Integer.toString(mida), 0, 1)) {
+					 if(lista[i].regionMatches(0, Integer.toString(forats), 2, 3)) {
+						 if (lista[i].regionMatches(0, Integer.toString(nini), 4, 5)) {
 							 validos[i].concat(lista[i]);
 						 }
 					 }
 				 }
+				}
 			}
 			return validos;
 		}
