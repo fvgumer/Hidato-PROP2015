@@ -71,6 +71,7 @@ public class VistaCrearUsuario extends VistaUsuario {
 				lblError.setText("El jugador " +textField.getText()+ " puede que ya exista");
 				textField.setText("");
 				passwordField.setText("");
+				textField.grabFocus();
 			}
 		}
 	}
