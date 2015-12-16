@@ -243,7 +243,7 @@ public class CtrlVista {
 		public void elegirTdisenado(){
 			VTDisenado = new VistaTDisenado(this);
 			VTDisenado.setVisible(true);
-			VTDisenado.run(listarTableros());
+			VTDisenado.run(get_tableros_repo());
 		}
 		/**
 		 * Cargar Tablero Elegido
@@ -674,15 +674,6 @@ public class CtrlVista {
 		public void setInfoModoPartida(int modo) {
 			modoJ = modo;
 			CDominio.setModoPartida(modo);
-		}
-		
-		/**
-		 * Listar Tableros
-		 * @return Recorna un vector de Strings con todos los ids de
-		 * todos los tableros que estan guardados en disco
-		 */
-		public String[] listarTableros(){
-			return CDominio.listarTableros();
 		}
 		
 		/**

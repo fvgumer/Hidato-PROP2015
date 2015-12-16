@@ -43,8 +43,7 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 			public void mouseReleased(MouseEvent arg0) {
 				String In;
 				if (slider.getValue() == 0) In = "SIN FORMA";
-				else if (slider.getValue() == 1) In = "REDONDA";
-				else In = "TRIANGULO";
+				else In = "REDONDA";
 				lblSinForma.setText(In);
 				form = slider.getValue();
 				slider2.setMaximum(getnumMaxTablero());

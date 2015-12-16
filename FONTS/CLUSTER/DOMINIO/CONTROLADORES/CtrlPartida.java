@@ -197,30 +197,31 @@ public class CtrlPartida {
 		PH = c.cargar(NomJ, id);
 		return pasarAMapa(PH.get_Tablero());
 	}
-	
+	/*
 	public String[] listarTableros(){
 		CT = new CtrlGestionTablero();
 		String[] validos = null;
 		String[] lista = CT.consultar_nomstableros();
-		for(int i=0; i<lista.length; ++i) System.out.println(lista[i]);
 			int mida = T.getMida();
 			int nini = T.getn_predef();
 			int forats = T.getholes();
-			for (int i = 0; i < lista.length; ++i) {
-				if(lista[i].length() == 12) {
-				 if(lista[i].regionMatches(0, Integer.toString(mida), 0, 1)) {
-					 if(lista[i].regionMatches(0, Integer.toString(forats), 2, 3)) {
-						 if (lista[i].regionMatches(0, Integer.toString(nini), 4, 5)) {
-							 validos[i].concat(lista[i]);
+			int num = (int)lista.length;
+				for (int i = 0; i < num; ++i) {
+					if(lista[i].length() == 12) {
+					 if(lista[i].regionMatches(0, Integer.toString(mida), 0, 1)) {
+						 if(lista[i].regionMatches(0, Integer.toString(forats), 2, 3)) {
+							 if (lista[i].regionMatches(0, Integer.toString(nini), 4, 5)) {
+								 validos[i].concat(lista[i]);
+							 }
 						 }
 					 }
-				 }
+					}
 				}
 			}
 			return validos;
 		}
 	
-	
+	*/
 	/**
 	 * Anadir caracteristicas de la partida
 	 * @param dim Entero que indica las dimensiones del tablero de la partida.
