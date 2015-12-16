@@ -90,7 +90,7 @@ public class DriverGestionUsuario {
 				System.out.println("Ingresar la contrasenya del usuario que queremos eliminar: ");
 				String contrasenya1 = s.nextLine();
 				if(jug.ingresarusuario(nombre1, contrasenya1)) {
-					jug.eliminar_usuario();
+					//jug.eliminar_usuario();
 					System.out.println("El jugador " +nombre1+ " ha sido eliminado ");
 					}
 				else System.out.println("Error al eliminar el jugador, por favor introduzca los datos correctos");

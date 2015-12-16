@@ -6,7 +6,13 @@ import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Esta es la vista inicial en referencia a la gestion de tableros. En ella el
+ * usuario puede escojer si crear un tablero manualmente, importar uno en formato
+ * .txt o bien eliminar un tablero guardado en persistencia.
+ * @author Alex
+ *
+ */
 public class VistaGestionTablero extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +34,7 @@ public class VistaGestionTablero extends VistaPadreIniConBoton {
 		getContentPane().add(b1);
 		
 		Botones b3 = new Botones("Importar",250,120);
-		b3.setBounds(282, 292, 189, 82);
+		b3.setBounds(271, 289, 270, 82);
 		getContentPane().add(b3);
 		
 		b3.addMouseListener(new MouseAdapter() {

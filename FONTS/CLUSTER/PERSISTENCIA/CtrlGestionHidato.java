@@ -42,7 +42,7 @@ public class CtrlGestionHidato<T> {
 		String Onom = objeto.getClass().getSimpleName();
 		if(Onom.equals("Partida_Hidato")){
 			 Partida_Hidato P = (Partida_Hidato) objeto;
-			 String ID = String.valueOf(P.getID());
+			 String ID = String.valueOf(P.get_ID());
 			 String Player = P.getUsuario().consultar_nombre();
 			 ruta = ".."+ barras + "DATOS" + barras +"Partidas"+barras +Player;
 			 archivo = barras + ID + ".bin";

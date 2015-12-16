@@ -15,6 +15,8 @@ public class Algorithm {
 
 	private Random rm;
 	private Casilla[][] sol;
+	public Timer t;
+	private boolean acabat;
 	
 	public Algorithm() {
 		rm = new Random();
@@ -22,19 +24,18 @@ public class Algorithm {
 	/**
 	 * Se soluciona el tablero map mediante recusividad. La forma de funcionar del algoritmo
 	 * es parecia al backtracking. Si el algoritmo no encuentra una solucion posible en menos
-	 * de lo que marca el temporizador (20 segundos) se retorna false.
+	 * de lo que marca el temporizador (30 segundos) se retorna false.
 	 * 
 	 * El algoritmo determina si existe solucion y la crea. Puede haber mas de una solucion.
 	 * @param x Indica la fila actual
 	 * @param y Indica la columna actual
 	 * @param value Indica el valor actual
 	 * @param map Tablero sobre el qual se ejecuta el solver
-	 * @param t Indica el tiempo de ejecucion del algoritmo
 	 * @return Retorna true si el tablero map tiene al menos una solucion posible. False si no tiene 
 	 * ninguna solucion.
 	 */
-	public boolean solver(int x, int y, int value, Tablero map, Temporizador t) {
-		if(!t.estaCorriendo()) {
+	public boolean solver(int x, int y, int value, Tablero map) {
+		if(acabat == false) {
 			return false;
 		}
 		boolean result = false, predef = false;
@@ -54,10 +55,10 @@ public class Algorithm {
 		    		if (map.enable_pos(x+i,y+j)) {
 		    			c_value = map.getValorTauler(x+i,y+j);
 		    			if (c_value == value) {
-		    				result = solver(x+i,y+j,value,map,t);
+		    				result = solver(x+i,y+j,value,map);
 		    			}
 		    			else if (c_value == 0){
-		    				result = solver(x+i,y+j,value,map,t);
+		    				result = solver(x+i,y+j,value,map);
 		    			}
 		    		}
 		    		++j;
@@ -67,6 +68,23 @@ public class Algorithm {
 		}
 		if (!predef) map.setValorTauler(x,y,0);
 		return result;
+	}
+	
+	/**
+	 * Se asocia el timer dado por el timer de la clase. Tambien se inicializa y
+	 * comienza la cuenta atras. Tambien se define la timertask (indicar mediante
+	 * el booleano "cabat" la finalizacion del tiempo)
+	 * @param timer Es el timer que se asociara
+	 */
+	public void asociarTimer(Timer timer) {
+		acabat = true;
+		this.t = timer;
+		t.schedule(new TimerTask() {
+			  @Override
+			  public void run() {
+			    acabat = false;
+			  }
+			}, 25000);
 	}
 
 	/**
@@ -109,18 +127,17 @@ public class Algorithm {
 	
 	/**
 	 * El algoritmo determina si la solucion del tablero map es unica. El funcionamento es muy
-	 * parecido al solver.
+	 * parecido al solver. Tiene un tiempo maximo de 25 segundos.
 	 * @param x Indica la fila actual
 	 * @param y Indica la columna actual
 	 * @param value Indica el valor actual
 	 * @param map Tablero sobre el qual se ejecuta el algoritmo
-	 * @param t Se utiliza para conocer el tiempo de ejecucion del timer
 	 * @return Retorna true si el tablero map tiene solucion unica. Retorna false si hay mas de
 	 * una solucion
 	 */
-	public int unica_solucion(int x, int y, Tablero map, int value, Temporizador t) {
-		if (!t.estaCorriendo()) {
-			System.out.println("timer funciona"); return 3;
+	public int unica_solucion(int x, int y, Tablero map, int value) {
+		if (acabat == false) {
+			return 3;
 		}
 		boolean predef = false; 
 		int result = 0;
@@ -139,10 +156,10 @@ public class Algorithm {
 		    		if (map.enable_pos(x+i,y+j)) {
 		    			c_value = map.getValorTauler(x+i,y+j);
 		    			if (c_value == value) {
-		    				result = result + unica_solucion(x+i,y+j,map,value,t);
+		    				result = result + unica_solucion(x+i,y+j,map,value);
 		    			}
 		    			else if (c_value == 0){
-		    				result = result + unica_solucion(x+i,y+j,map,value,t);
+		    				result = result + unica_solucion(x+i,y+j,map,value);
 		    			}
 		    		}
 		    		++j;
@@ -163,6 +180,10 @@ public class Algorithm {
 		return i;
 	}
 	
+	/**
+	 * Guarda a la clase la solucion del mapa encontrada.
+	 * @param map es el tablero que contiene la solucion.
+	 */
 	private void crea_solucion(Tablero map) {
 		int n = map.getMida();
 		sol = new Casilla[n][n];
@@ -173,6 +194,10 @@ public class Algorithm {
 		}
 	}
 	
+	/**
+	 * Devuelve la solucion del mapa que anteriormente se ha resuelto mediante el solver
+	 * @return Devuelve la solucion del ultimo mapa resuelto mediante el solver
+	 */
 	public Casilla[][] get_solucio() {
 		return sol;
 	}

@@ -19,5 +19,7 @@ public class Texto extends JTextPane {
 			this.setText(texto);
 			setEditable(false);
 			this.setBackground(null);
+			this.setAlignmentX(CENTER_ALIGNMENT);
+			this.setAlignmentY(CENTER_ALIGNMENT);
 		}
 }

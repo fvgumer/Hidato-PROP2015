@@ -34,9 +34,11 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	 * @return Una instancia de la clase Tablero
 	 * Post: Si no se ha cargado correctamente, devuelve un tablero null.
 	 */
-	public Tablero cargar(String ID, boolean b){
+	public Tablero cargar(String ID, boolean b, boolean b2){
 		Tablero T = null;
-		ruta = ".."+ barras + "DATOS" + barras +"Tableros"+  barras + ID + ".bin";
+		if (b2 == false)
+			ruta = ".."+ barras + "DATOS" + barras +"Tableros"+  barras + ID + ".bin";
+		else ruta = ".."+ barras + "DATOS" + barras +"Tableros"+  barras + ID;
 		File archiu = new File(ruta);
 		if(archiu.exists()==false) {
 			b = false;
@@ -68,7 +70,7 @@ public class CtrlGestionTablero extends CtrlGestionHidato<Object> {
 	public String[] consultar_nomstableros() {
 		ruta = ".."+ barras + "DATOS" + barras +"Tableros"+  barras;
 		File directory = new File(ruta);
-		String[] llista_noms=directory.list();
+		String[] llista_noms = directory.list();
 		return llista_noms;
 	}
 	

@@ -22,11 +22,8 @@ public class Estadisticas implements Serializable{
 	private int puntuacionTotal;
 	//Suma de todos los puntos obtenidos en las partidas jugadas.
 	
-	private int mejorPuntuacion;
-	//Mejor puntuacion obtenida en una partida.
-	
-	//private ArrayList<String> tablerosCreados;
-	//Listado de todos los tableros creados por un usuario.
+	private int modos[];
+	//Veces que se ha jugado en cada modo. Indices del vector: 0=clasico, 1=contrarreloj, 2=extremo
 
 	private ArrayList<String> tablerosJugados;
 	//Listado de todos los tableros jugados por un usuario.
@@ -39,7 +36,9 @@ public class Estadisticas implements Serializable{
 	 */
 	public Estadisticas(String user){
 		this.user = user;
-		segundosJugados = puntuacionTotal = mejorPuntuacion = 0;
+		segundosJugados = puntuacionTotal = 0;
+		modos = new int[3];
+		modos[0] = modos[1] = modos[2] = 0;
 		//tablerosCreados = new ArrayList<String>();
 		tablerosJugados = new ArrayList<String>();
 	}
@@ -61,13 +60,70 @@ public class Estadisticas implements Serializable{
 		return tablerosJugados.get(n);
 	}
 	
+	/**Consultora de los tableros jugados.
+	 * 
+	 * @return Listado de tableros jugados.
+	 */
+	public ArrayList<String> getTabJ() {
+		return tablerosJugados;
+	}
+	
 	/**
 	 * Consultora del numero total de tableros jugados.
-	 * @returnEl Numero de tableros jugados
+	 * @return El Numero de tableros jugados
 	 */
 	public int tablerosJugados() {
 		return tablerosJugados.size();
 	}
+	
+	/**
+	 * Consultora de las horas enteras jugadas
+	 * @return Horas jugadas en total (sin contar minutos ni segundos)
+	 */
+	public int getHoras() {
+		return segundosJugados/3600;
+	}
+	
+	/**
+	 * Consultora de los minutos enteros jugados
+	 * @return Minutos jugados (sin contar horas ni segudnos)
+	 */
+	public int getMin(){
+		return (segundosJugados%3600)/60;
+	}
+	
+	/**
+	 * Consultora de los segundos jugados
+	 * @return Segundos jugados (sin contar horas ni minutos)
+	 */
+	public int getSeg(){
+		return (segundosJugados%3600)%60;
+	}
+	
+	/**
+	 * Consultora de la puntuación total.
+	 * @return Puntuación total obtenida
+	 */
+	public int getPuntuacion() {
+		return puntuacionTotal;
+	}
+	
+	/**
+	 * Consultora del modo más jugado
+	 * @return Modo de juego más elegido
+	 */
+	public int getModoMasJugado() {
+		int
+		m = modos[0];
+		if (modos[1] > m) m = modos[1];
+		if (modos[2] > m )m = modos[2];
+		
+		if (m == 0) return -1;
+		if (m == modos[0]) return 0;
+		if (m == modos[1]) return 1;
+		return 2;
+	}
+	
 	
 	/**
 	 * Modificadora del contador del tiempo total jugado.
@@ -84,24 +140,14 @@ public class Estadisticas implements Serializable{
 	public void incrementarPuntuacion(int p) {
 		puntuacionTotal += p;
 	}
-	
-	/**
-	 * Actualizadora de la mejor puntuacion obtenida. Dada una puntuacion,
-	 * comprueba si es mayor que la mejor puntuacion hasta el momento. 
-	 * En caso afirmativo, actualiza este campo.
-	 * @param p Puntuacion a la que queremos actualizar el parametro.
-	 */
-	public void actualizarPuntuacion(int p){
-		if (p > mejorPuntuacion) mejorPuntuacion = p;
-	}
 
 	/**
-	 * Metodo que anade un tablero a la lista de tableros creados.
-	 * @param t Tablero que queremos anadir.
+	 * Modificadora del contador de modos jugados
+	 * @param modo Modo de juego que se quiere incrementar
 	 */
-	/* public void anadirTableroC(String t) {
-		tablerosCreados.add(t);
-	} */
+	public void incModo(int modo) {
+		if (modo >= 0 && modo < 3) ++modos[modo];
+	}
 	
 	/**
 	 * Metodo que anade un tablero a la lista de tableros jugados si este no estaba en ella.
@@ -116,7 +162,7 @@ public class Estadisticas implements Serializable{
 		}
 		if (b) tablerosJugados.add(t);
 	}
-	
+
 	/**
 	 * Metodo que muestra por pantalla el tiempo total jugado en
 	 * formato de horas, minutos y segundos.
@@ -134,13 +180,6 @@ public class Estadisticas implements Serializable{
 	public void mostrarPuntuacionTotal() {
 		System.out.format("Puntuacion total obtenida: %d\n",puntuacionTotal);
 	}
-
-	/**
-	 * Metodo que muestra por pantalla la mejor puntuacion obtenida.
-	 */
-	public void mostrarMejorPuntuacion() {
-		System.out.format("Mejor puntuacion obtenida: %d\n", mejorPuntuacion);
-	}
 	
 	/**
 	 * Metodo que muestra por pantalla el listado de tableros jugados.
@@ -151,12 +190,4 @@ public class Estadisticas implements Serializable{
 			System.out.format("%d\n",tablerosJugados.get(i));
 	}
 	
-	/**
-	 * Metodo que muestra por pantalla el listado de tableros jugados.
-	 */
-	/* public void mostrarTablerosCreados() {
-		System.out.format("%d tableros creados:\n",tablerosCreados.size());
-		for (int i = 0; i < tablerosCreados.size(); ++i) 
-			System.out.format("%d\n",tablerosCreados.get(i));
-	} */
 }

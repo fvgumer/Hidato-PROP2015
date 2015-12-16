@@ -9,13 +9,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import CLUSTER.VISTAS.BASES.Texto;
+import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 public class VistaEnPausa extends VistaPatronInfo {
 
 	public VistaEnPausa(final CtrlVista CV) {
-		super(CV);
-		super.run("En Pausa", "Haz click", "para", "Reanudar");
+		super(CV, "Partida En Pausa");
+		super.run( "Reanudar");
+		Titulo t = new Titulo("En Pausa",150,250);
+		Texto t2 = new Texto("Haz Click para",150,450,30);
+		t2.setBounds(130, 261, 217, 47);
+		t.setBounds(104, 116, 256, 70);
+		getContentPane().add(t);
+		getContentPane().add(t2);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.reanudar();

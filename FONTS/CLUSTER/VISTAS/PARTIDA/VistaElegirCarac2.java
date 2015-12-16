@@ -60,6 +60,7 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 		
 		//ACCIONES_n2_______________________________________________
 		slider2.setMinimum(0);
+		slider2.setMaximum(0); //Fins que no es movi forats no pots
 		slider2.setValue(0);
 		lblSinForma2.setText("0");
 			//Actuacion si lo mueve el raton
@@ -82,7 +83,8 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 			//Para Pasara a la siguiente pagina
 			Siguiente.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
-					CV.mirarDificultat(dim, slider.getValue() ,slider2.getValue());
+					setInfoPartida(CV);
+					CV.mirarDificultat();
 				}
 			});
 			

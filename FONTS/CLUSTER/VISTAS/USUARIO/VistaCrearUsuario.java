@@ -48,7 +48,6 @@ public class VistaCrearUsuario extends VistaUsuario {
 				crear(CV);
 			}
 		});
-		B.setBounds(116, 188, 279, 70);
 		//Acciones
 		Bsalir.addMouseListener(new MouseAdapter() {
 			@Override

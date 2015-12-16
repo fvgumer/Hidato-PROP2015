@@ -18,6 +18,17 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JToolBar;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+
+/**
+ * En esta vista el jugador debe introducir el nombre del tablero del cual desea
+ * consultar el ranking y el número de posiciones que quiere ver, con un máximo de 20.
+ * 
+ * @author Belen San Martin
+ *
+ */
 
 public class VistaRanking extends VistaPadreIniConBoton{
 	
@@ -25,15 +36,16 @@ public class VistaRanking extends VistaPadreIniConBoton{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField1, textField2;
 	private String nTab = "";
-	private String nPos = "";
+	private int nPos = 0;
 	private JTextField textField;
+	private Texto txtError;
 
 	/**
 	 * Create the application.
 	 */
 	public VistaRanking(final CtrlVista CV) {
+		txtError = new Texto("",385, 88, 12);
 		
 		super.setTextLayer("Ranking de tablero");
 		getContentPane().setName("Ranking de tablero");
@@ -42,59 +54,81 @@ public class VistaRanking extends VistaPadreIniConBoton{
 		n.setSize(313, 30);
 		getContentPane().add(n);
 		
-		textField1 = new JTextField();
-		textField1.setBounds(36, 81, 207, 34);
-		getContentPane().add(textField1);
-		textField1.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(36, 81, 207, 34);
+		getContentPane().add(textField);
+		textField.setColumns(10);
 
 		Texto p = new Texto("Ahora introduce el numero de posiciones que deseas ver.",36,138,15);
 
 		p.setSize(402, 30);
 		getContentPane().add(p);
 		
-		textField2 = new JTextField();
-		textField2.setBounds(36, 175, 207, 34);
-		getContentPane().add(textField2);
-		textField2.setColumns(10);  
+
+		final JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(1, 1, 20, 1));
+		spinner.setBounds(36, 179, 35, 30);
+		getContentPane().add(spinner);
 		
 		Botones B = new Botones("Consultar Ranking",129,269);
 		
 		B.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				nTab = textField1.getText();
-				nPos = textField2.getText();
-				if (!(nTab.equals("") && nPos.equals(""))&& CV.existsR(nTab)) {
-					CV.setR(nTab,nPos);
-					CV.entrarAMostrarRanking();
+				nTab = textField.getText();
+				nPos = (Integer) spinner.getValue();
+				if (!nTab.equals("")&& CV.existsR(nTab)) {
+					textField.setText("");
+					spinner.setValue(0);
+					txtError = new Texto("",385, 88, 12);
+					getContentPane().add(txtError);
+					CV.entrarAMostrarRanking(nTab,nPos);
 					Salir();
 				}
-				else if (!(nTab.equals("") && nPos.equals("")) && !CV.existsR(nTab)) {
-					Texto t = new Texto("El tablero introducido no existe.",385, 88, 12);
-					t.setForeground(Color.RED);
-					getContentPane().add(t);
+				else if (!nTab.equals("") && !CV.existsR(nTab)) {
+					textField.setText("");
+					spinner.setValue(0);
+					txtError = new Texto("El tablero introducido no existe.",385, 88, 12);
+					txtError.setForeground(Color.RED);
+					getContentPane().add(txtError);
 				}
 			}
 		});
-		
-		textField2.addKeyListener(new KeyAdapter() {
+
+		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				int key = e.getKeyCode();
 				if(key==KeyEvent.VK_ENTER){
-					nTab = textField1.getText();
-					nPos = textField2.getText();
-					CV.setR(nTab,nPos);
-					CV.entrarAMostrarRanking();
-					Salir();
+					nTab = textField.getText();
+					nPos = (Integer) spinner.getValue();
+					if (!nTab.equals("")&& CV.existsR(nTab)) {
+						textField.setText("");
+						spinner.setValue(0);
+						txtError = new Texto("",385, 88, 12);
+						getContentPane().add(txtError);
+						CV.entrarAMostrarRanking(nTab,nPos);
+						Salir();
+					}
+					else if (!nTab.equals("") && !CV.existsR(nTab)) {
+						textField.setText("");
+						spinner.setValue(0);
+						txtError = new Texto("El tablero introducido no existe.",385, 88, 12);
+						txtError.setForeground(Color.RED);
+						getContentPane().add(txtError);
+					}
+				
 				}
 			}
 		});
+		
 		
 		B.setSize(368, 46);
 		getContentPane().add(B);
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				txtError = new Texto("",385, 88, 12);
+				getContentPane().add(txtError);
 				CV.entrarAConsultaEst();
 				Salir();
 			}

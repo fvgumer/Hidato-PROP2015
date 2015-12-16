@@ -46,7 +46,7 @@ public class VistaMenuTipoTablero extends VistaPadreIniConBoton {
 		//Declarar Boton "Salir" y su funcion
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAMenu();
+				CV.entrarAElegirForma();
 				Salir();
 			}
 		});

@@ -21,8 +21,13 @@ public class Temporizador implements ActionListener,Serializable {
 	      }
 	  };
 	  
+	  
+	  public int get_delay() {
+		  return timer.getDelay();
+	  }
+	  
 	  public void timer_max(){
-		  timer = new Timer(20000,temps_maxim);
+		  timer = new Timer(5000,temps_maxim);
 	  }
 	  
 	  public Temporizador(){
@@ -40,6 +45,18 @@ public class Temporizador implements ActionListener,Serializable {
 		  segundos = 0;
 		  if (modo == 1) estMinuto(min); 
 	  }
+	  
+	  public void reempezar(int[] t, int modo, int min){
+		  timer = new Timer(1000,this);
+		  min_max = min;
+		  this.modo = modo;
+		  inicializar_tablero = false;
+		  acabar = false;
+		  congelado = false;
+		  minutos = t[0];
+		  segundos = t[1];
+		  if (modo == 1) estMinuto(min);
+	  }
 		  
 		 public boolean inicializar_tablero() {
 			 return inicializar_tablero;
@@ -54,7 +71,7 @@ public class Temporizador implements ActionListener,Serializable {
 		 }
 		 /**
 		 * Introduce los minutos iniciales
-		 * @param seg entero que hace referencia a los minutos
+		 * @param min entero que hace referencia a los minutos
 		 * en que queremos que comienze el timer
 		 */
 		public void estMinuto(int min){ 
@@ -129,7 +146,7 @@ public class Temporizador implements ActionListener,Serializable {
 		 * principalmente contar o decrementar los segundos
 		 */
 		public void actionPerformed(ActionEvent e) {
-			if (modo == 0 || modo > 1) { //MODO CLASICO Y EXTREMO
+			if (modo == 0 || modo == 1) { //MODO CLASICO Y EXTREMO
 				if (!congelado){
 					segundos++;
 					if (segundos == 60) {

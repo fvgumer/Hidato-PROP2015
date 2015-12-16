@@ -20,14 +20,16 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	private int modo;
 	private int puntuacion;
 	private Tablero tableroP;
-	
+	private int min;
+	private int seg;
+	private int tmax;
 	/**
 	 * Contructora del objeto Partida_Hidato
 	 * @param T Tablero no vacio 
 	 * @param J Jugador que se ha identificado previamente y desea comenzar 
 	 * una partida con el tablero T
 	 * @param ID Identificador de la nueva partida
-	 * @param dim dimensiones del tableroP
+	 * 
 	 */
 	public Partida_Hidato(Tablero T, Jugador J, int ID){
 		super (T,J,ID);
@@ -88,7 +90,7 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	
 	/** 
 	 * Introducir puntuacion de la partida
-	 * @param estado Introduce un entero mayor a 0 que corresponde a la
+	 * @param puntuacion Introduce un entero mayor a 0 que corresponde a la
 	 * puntuacion de la partida
 	 * 
 	 */
@@ -180,5 +182,30 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	public int getn_predef(){
 		return tableroP.getn_predef();
 	}
+	
+	public int[] getTiempo(){
+		int[] t = new int[2];
+		t[0] = min;
+		t[1] = seg;
+		return t;
+	}
+	
+	public void setTiempo(int m, int s){
+		min = m;
+		seg = s;
+	}
+	public void setTmax(int t){
+		tmax = t;
+	}
+	
+	public int getTmax(){
+		return tmax;
+	}
+	
+	
+	
+	
+	
+	
 	
 }

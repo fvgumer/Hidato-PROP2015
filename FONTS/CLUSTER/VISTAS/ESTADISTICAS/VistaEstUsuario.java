@@ -1,21 +1,26 @@
 package CLUSTER.VISTAS.ESTADISTICAS;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
-import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
- 
+
+/**
+ * En esta vista el jugador debe introducir el nombre del usuario del cual 
+ * desea consultar las estadisticas.
+ * 
+ * @author Belen San Martin
+ *
+ */
+
 public class VistaEstUsuario extends VistaPadreIniConBoton{
 	
 	/**
@@ -23,6 +28,7 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
+	private Texto txtError;
 	private String user;
 
 
@@ -50,13 +56,17 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 			public void mouseClicked(MouseEvent e) {
 				user = textField.getText();
 				if (!user.equals("") && CV.existsU(user)){
-					CV.entrarAMostrarEstadisticas(user);
+					textField.setText("");
+					txtError = new Texto("",385, 88, 12);
+					getContentPane().add(txtError);
+					CV.entrarAVistaEstadisticas(user);
 					Salir();
 				}
 				else if (!user.equals("") && !CV.existsU(user)) {
-					Texto t = new Texto("El usuario introducido no existe.",385, 88, 12);
-					t.setForeground(Color.RED);
-					getContentPane().add(t);
+					textField.setText("");
+					txtError = new Texto("El usuario introducido no existe.",385, 88, 12);
+					txtError.setForeground(Color.RED);
+					getContentPane().add(txtError);
 				}
 			}
 		});
@@ -68,15 +78,28 @@ public class VistaEstUsuario extends VistaPadreIniConBoton{
 			public void keyReleased(KeyEvent e) {
 				int key = e.getKeyCode();
 				if(key==KeyEvent.VK_ENTER){
-					user = textField.getText();
-					CV.entrarAMostrarEstadisticas(user);
-					Salir();
+					user = textField.getText();if (!user.equals("") && CV.existsU(user)){
+						textField.setText("");
+						txtError = new Texto("",385, 88, 12);
+						getContentPane().add(txtError);
+						CV.entrarAVistaEstadisticas(user);
+						Salir();
+					}
+					else if (!user.equals("") && !CV.existsU(user)) {
+						textField.setText("");
+						txtError = new Texto("El usuario introducido no existe.",385, 88, 12);
+						txtError.setForeground(Color.RED);
+						getContentPane().add(txtError);
+					}
 				}
 			}
 		});
 		
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				textField.setText("");
+				txtError = new Texto("",385, 88, 12);
+				getContentPane().add(txtError);
 				CV.entrarAConsultaEst();
 				Salir();
 			}

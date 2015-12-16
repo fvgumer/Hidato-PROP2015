@@ -11,11 +11,22 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTextField;
 
+
+/**
+ * En esta vista el jugador puede elegir entre consultar sus estadisticas, las de otro usuario
+ * o el ranking de un tablero
+ * 
+ * @author Belen San Martin
+ *
+ */
+
 public class VistaConsultaEst extends VistaPadreIniConBoton{
 
 	private static final long serialVersionUID = 1L;
-	
 
+	private Botones B1;
+	private Botones B2;
+	private Botones B3;
 
 	/**
 	 * Create the application.
@@ -25,29 +36,29 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 		super.setTextLayer("Estadisticas personales");
 		getContentPane().setName("Estadisticas personales");
 		
-		Botones B1 = new Botones("Estadisticas personales", 100, 60);
-		B1.setLocation(130, 83);
+		B1 = new Botones("Estadisticas personales", 100, 60);
+		B1.setLocation(130, 70);
 		B1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.entrarAEstPersonales();
+				CV.entrarAVistaEstadisticas();
 				Salir();
 			}
 		});
-		B1.setSize(448, 42);
+		B1.setSize(448, 49);
 		getContentPane().add(B1);
 		
-		Botones B2 = new Botones("Estadisticas de usuario", 100, 130);
-		B2.setLocation(130, 167);
+		B2 = new Botones("Estadisticas de usuario", 100, 130);
+		B2.setLocation(130, 154);
 		B2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				CV.entrarAEstUsuario();
 				Salir();
 			}
 		});
-		B2.setSize(448, 42);
+		B2.setSize(448, 49);
 		getContentPane().add(B2);
 		
-		Botones B3 = new Botones("Ranking de tablero", 100, 200);
+		B3 = new Botones("Ranking de tablero", 100, 200);
 		B3.setLocation(130, 251);
 		B3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -55,7 +66,7 @@ public class VistaConsultaEst extends VistaPadreIniConBoton{
 				Salir();
 			}
 		});
-		B3.setSize(448, 42);
+		B3.setSize(448, 49);
 		getContentPane().add(B3);
 		
 		JB.addMouseListener(new MouseAdapter() {

@@ -1,6 +1,7 @@
 package CLUSTER.VISTAS.GTABLERO;
 
 import CLUSTER.VISTAS.BASES.*;
+
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.GridLayout;
@@ -13,7 +14,14 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import javax.swing.JTextPane;
 
+/**
+ * Esta vista permite al usuario elegir un tablero guardado en persistencia para
+ * verlo y eliminarlo si se desea.
+ * @author Alex
+ *
+ */
 public class VistaBorrar extends VistaPadreIniConBoton {
 
 	private static final long serialVersionUID = 1L;
@@ -21,6 +29,7 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 	private CtrlVista CV;
 	private JList list;
 	private JTextField textField;
+	private JTextPane Instruc;
 	
 	public VistaBorrar(final CtrlVista CV) {
 		//Config layer 
@@ -32,6 +41,11 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 		JLabel Ins = new JLabel("Elige el tablero que quieres borrar:");
 		Ins.setBounds(12, 40, 248, 43);
 		getContentPane().add(Ins);
+		
+		Instruc = new JTextPane();
+		Instruc.setText("Aqui se muestran los tableros guardados.\r\nLos nombres indican lo siguiente:\r\n-Las dos primeras cifras la medida del tablero\r\n-Las dos siguientes el numero de casillas negras\r\n-Las dos siguientes el numero de casillas vacias\r\n-Las dos ultimas se utilizan para diferenciar tableros\r\ncon las mismas caracter\u00EDsticas");
+		Instruc.setBounds(12, 93, 274, 247);
+		getContentPane().add(Instruc);
 
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
@@ -53,7 +67,7 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 		list = new JList(listModel);
 		getContentPane().add(list);
 		
-		list.setBounds(262, 33, 144, 371);
+		list.setBounds(349,42,239,392);
 		list.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
