@@ -10,23 +10,22 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 
 public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
-<<<<<<< HEAD
+
+	private VEmergErrorClicar VError1;
 
 	private DefaultListModel listModel;
 	private CtrlVista CV;
 	private JList list;
 	
-=======
+
 	private VEmergErrorClicar VError;
->>>>>>> 6af5412943da0fa9b084617bdad185df246eb376
+
 	public VistaTDisenado(final CtrlVista CV) {
 		super(CV);
 		this.CV = CV;
 		txt = "Elegir Tablero Diseñado";
-		VError = new VEmergErrorClicar();
-		
-<<<<<<< HEAD
-=======
+		VError1 = new VEmergErrorClicar();
+
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 					//FUNCION
@@ -39,21 +38,19 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 				if (!list.isSelectionEmpty()) 
 					CV.cargarTablero(list.getSelectedValue());
 				else {
-					VError = new VEmergErrorClicar();
-					VError.setVisible(true);
+					VError1 = new VEmergErrorClicar();
+					VError1.setVisible(true);
 				}
 			}
 		});
-		
->>>>>>> 6af5412943da0fa9b084617bdad185df246eb376
+
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarAElegirForma();
 			}
 		});	
 	}
-	
-<<<<<<< HEAD
+
 	public void actualitza_llista() {
 		listModel = new DefaultListModel();
 		String[] s = CV.get_tableros_repo();
@@ -77,15 +74,15 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 				}
 			}
 		});
+	}
 
-=======
 	private void previsualizar_Tablero(String id, CtrlVista CV) {
 		CV.cargar_tab(id);
 	}
 	
 	public void run(String[] J){
 		list.setListData(J);
->>>>>>> 6af5412943da0fa9b084617bdad185df246eb376
+
 	}
 
 }
