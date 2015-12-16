@@ -256,11 +256,6 @@ public class CtrlPartida {
 	  * Calcular dificultad del tablero
 	  * A partir de los parametros de entrada se hace un calculo para estimar la 
 	  * dificultad del tablero.
-	  * @param dim Entero dentro de las dimensiones validas del tipo de tablero
-	  * @param abuj Entero valido que identifica el nÃºmero de casillas vacias
-	  * que contiene el tablero.
-	  * @param c_ini Entero valido que identifica el numero de casillas inciales
-	  * que contiene el tablero.
 	  * @return Retorna un entero que identifica la dificultad del tablero
 	  */
 	public int calcular_dificultad() {
