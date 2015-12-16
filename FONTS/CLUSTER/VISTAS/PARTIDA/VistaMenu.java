@@ -6,6 +6,12 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Tablero Base para alguna de las vistas que tienen elementos en comun sobre menus
+ * @author Elena R
+ *
+ */
+
 public class VistaMenu extends VistaPadreInicio {
 	private static final long serialVersionUID = 1L;
 

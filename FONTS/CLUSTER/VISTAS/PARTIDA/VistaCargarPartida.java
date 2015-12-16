@@ -1,6 +1,10 @@
 package CLUSTER.VISTAS.PARTIDA;
 
-
+/**
+ * Esta vista se encarga de listar todos los identificadores de las partidas cargadas anteriormente
+ * previsualizarlos y que el jugador elija con cual de ellos quieres jugar.
+ * @author Elena
+ */
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.MouseAdapter;

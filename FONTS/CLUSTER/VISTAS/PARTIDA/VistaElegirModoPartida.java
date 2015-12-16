@@ -13,13 +13,17 @@ import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Elegir el modo de la partida
+ * Vista que se hace visible en el momento de configurar una nueva partida. En esta
+ * vista el jugador elige el modo de juego que puede escoger entre Clasico, Extreme o Contrareloj.
+ * @author Elena
+ *
+ */
 public class VistaElegirModoPartida extends VistaPadreIniConBoton {
 	private int modo_partida;
 
-	/**
-	 * Create the frame.
-	 */
+
 	public VistaElegirModoPartida(final CtrlVista CV) {
 		Titulo T = new Titulo("Elegir Modo Partida",40,60);
 		T.setBounds(102, 52, 520, 69);

@@ -7,7 +7,12 @@ import java.awt.event.MouseEvent;
 
 import CLUSTER.VISTAS.BASES.VistaError;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Vista de confguracion  de una nueva partida Parte 1
+ * En esta se configura la forma y dimension del nuevo tablero
+ * @author Elena
+ *
+ */
 public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 	private static final long serialVersionUID = 1L;
 	private int dim;
