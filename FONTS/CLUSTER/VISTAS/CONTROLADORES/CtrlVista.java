@@ -52,6 +52,9 @@ public class CtrlVista {
 	private VistaElegirTiempo VTiempo;
 	private VistaSeguroSalir VSalir;
 	private PartidaResolver VResolver;
+	private VistaSeguroGuardar VGuardar;
+	private int modoJ;
+	private VistaNoTableroCargar VTCargar; 
 
 	//Tablero
 	private VistaGestionTablero VGTableros;
@@ -157,117 +160,224 @@ public class CtrlVista {
 			VEliminarUser.setVisible(true);
 		}
 		/** Sobre Partida **/
+		/**
+		 * Entrar Al Menu de la partida
+		 */
 		public void entrarAMenuPartida(){
 			VMenuPartida.setVisible(true);
 		}
-		
+		/**
+		 * Entrar en la vista para cargar la partida
+		 */
 		public void entrarACargarPartida(){
 			if (CDominio.existenPartidasEnProceso()){
 				VCargarPartida.run(CDominio.conseguir_partidas_para_Cargar());
 				VCargarPartida.setVisible(true);
 			}
 			else VNoPartidas.setVisible(true);
-			
 		}
-		
+		/**
+		 * Entrar en la vista para elegir carcartisicas
+		 * de la partida que estamos creando
+		 */
 		public void entrarAElegirForma(){
 			VElegirC1.setVisible(true);
 		}
-		
+		/**
+		 * Entrar en la vista para elegir carcartisicas
+		 * de la partida que estamos creando
+		 */
 		public void entrarAElegirForats(int dimensions, int forma){
 			VElegirC2.setVisible(true);
 			VElegirC2.setdimensions(dimensions);
 			VElegirC2.setforma(forma);
 		}
-		
-		public void mirarDificultat(int dim, int f, int ini){
-			int dificultat = CDominio.get_dificultat_partida(dim, f, ini);
+		/**
+		 * Consultar dificultad de la partida previamente configurda
+		 * Post: Se abre una nueva vista que nos muestra esa informacion
+		 */
+		public void mirarDificultat(){
+			int dificultat = CDominio.get_dificultat_partida();
 			VEInfo = new VEmergentInfo(this, VElegirC2);
 			VEInfo.set_dificultat(dificultat);
 			VEInfo.run();
 			VEInfo.setVisible(true);
 		}
-		
+		/**
+		 * Entrar en Menu para Elegir un Tablero
+		 * a la hora de estar creando la partida
+		 */
 		public void entrarAMenuElegirTablero() {
 			VMTipoTablero.setVisible(true);
 		}
 		
 		
-		
+		/**
+		 * Generar Tablero aleatorio
+		 * Post: Se genera un tablero aleatorio y
+		 * se muestra por pantalla en la nueva vista que se abre
+		 */
 		public void elegirTaleatorio(){
 			String [][] map = CDominio.getTAleatorio();
 			VTAleatorio.run(map, CDominio.esSolucionUnica());
 			VTAleatorio.setVisible(true);
 		}
+		/**
+		 * Listado de tablero diseñados para elegir
+		 */
 		public void elegirTdisenado(){
-			
+			VTDisenado = new VistaTDisenado(this);
+			VTDisenado.setVisible(true);
+			VTDisenado.run(listarTableros());
 		}
-		
+		/**
+		 * Cargar Tablero Elegido
+		 * @param id Identificador del tablero que
+		 * queremos cargar
+		 */
+		public void cargarTablero(String id){
+			CDominio.cargarTableroSinBIN(id);
+		}
+		/**
+		 * Previsualizar Tablero Consultado
+		 * @param id Identificador del Tablero que queremos
+		 * previsualizar
+		 * Post: Envia a la vista visible el mapa de Strings
+		 * que muestra el contenido del tablero referenciado
+		 */
 		public void previsualizarTablero(String id) {
 			VCargarPartida.setPrevisualizarTablero(getInfoTablero(id));
 		}
-		
+		/**
+		 * Consultar contenido tablero
+		 * @param id Identificador del tablero
+		 * @return mapa de Strings
+		 * que muestra el contenido del tablero referenciado
+		 */
 		private String[][] getInfoTablero(String id){
 			return CDominio.getInfoTablero(id);
 		}
-		
-		public void cargarParaJugar(String[][] Tablero, String id) {
+		/**
+		 * Cargar Partida que ha seleccionado el jugador
+		 * @param id Identificador de la partida
+		 */
+		public void cargarParaJugar(String id) {
 			CDominio.cargarPartida(id);
+			comenzarPartidaCargada();
 		}
-		
+		/**
+		 * Comenzar Partida Cargada
+		 * Post: Reinicia los parametros de la partida
+		 * que se necesitan para volver a comenzar la 
+		 * partida cargada, y llama a la vista para
+		 * poder comenzar a jugar la partida
+		 */
+		public void comenzarPartidaCargada(){
+			CDominio.comenzarPartidaCargada();
+			CDominio.reiniciar();
+			VPartidaEnJuego = new VistaPartidaEnJuego(this,modoJ);
+			VPartidaEnJuego.setVisible(true);
+		}
+		/**
+		 * Comenzar la partida
+		 * Post: Inicia el temporizado y hace visible
+		 * la vista de juego.
+		 */
 		public void comenzarPartida(){
 			CDominio.comenzarPartida();
 			int i = 0;
 			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
-			CDominio.iniciar_tiempo(i);
-			VPartidaEnJuego = new VistaPartidaEnJuego(this);
+			CDominio.iniciar_tiempo(i,modoJ);
+			VPartidaEnJuego = new VistaPartidaEnJuego(this,modoJ);
 			VPartidaEnJuego.setVisible(true);
+			CDominio.inicialitzarCandidats();
 		}
-		
+		/**
+		 * Entrar al Menu de elegir Modo Partida
+		 */
 		public void entrarAModoPartida() {
 			VModoPartida = new VistaElegirModoPartida(this);
 			VModoPartida.setVisible(true);
 			VTiempo = new VistaElegirTiempo(this);
 		}
-		
+		/**
+		 * Entra al menu para poder elegir el tiempo
+		 * de la partida
+		 */
 		public void entrarAElegirTiempo() {
 			VTiempo.setVisible(true);
 		}
-		
+		/**
+		 * Entrar a vista despues de crear la partida
+		 */
 		public void entrarAPreparadoParaJugar(){
 			VPreparadoParaJugar = new VistaPreparadoParaJugar(this);
 			VPreparadoParaJugar.setVisible(true);
 		}
-		
+		/**
+		 * Pausar Partida
+		 * Post: Pausa la partida y hace visible la vista que nos
+		 * indica que la partida esta en pausa
+		 */
 		public void entrarEnPausa() {
 			VPausa = new VistaEnPausa(this);
 			VPausa.setVisible(true);
 			VPartidaEnJuego.setEnabled(false);
+			CDominio.enPausa();
 		}
-		
+		/**
+		 * Reanudar partida
+		 * Post: Reanuda la partida y vuelva a la vista donde se
+		 * juega la partida
+		 */
 		public void reanudar(){
 			VPartidaEnJuego.setEnabled(true);
+			CDominio.reanudar();
 		}
-		
+		/**
+		 * Rendirse
+		 * @return Mapa de Strings que nos muestra una posible
+		 * solucion del tablero y termina la partida
+		 */
 		public String[][] rendirse(){
 			return CDominio.rendirse();
 		}
-		
+		/**
+		 * Introducir Casilla
+		 * @param v Entero que indica el valor de la casilla
+		 * que queremos introducir
+		 * @param x, y Posicion (x,y) del tablero
+		 * en el que se esta jugando
+		 */
 		public void setCasilla(int v, int x,int y){
-			CDominio.setCasilla(v,x,y);
+			CDominio.setIntroducirCasilla(x, y, v);
 		}
-		
+		/**
+		 * Saber si el usuario de verdad quiere salir
+		 * Post: Hace visible una vista en la que le pregunta
+		 * al usuario la conficacion de la salida de la partida
+		 * en juego.
+		 */
 		public void PreguntarSalir(){
 			VSalir = new VistaSeguroSalir(this);
 			VSalir.setVisible(true);
 		}
-		
+		/**
+		 * Salir del Juego
+		 * Post: Se termina la partida y se rediridige al
+		 * menu principal
+		 */
 		public void SalirJuego(){
 			CDominio.SalirJuego();
 			VPartidaEnJuego.setVisible(false);
 			VMenu.setVisible(true);
 		}
-		
+		/** Resolver Partida
+		 * Post: Consulta al dominio si la partida esta bien resuelta.
+		 * En caso afirmativo hace visible una vista que nos dice
+		 * que la partida esta bien resuelta. En caso contrario hace visible
+		 * una vista que nos indica que la partida aun no esta bien resuelta
+		 */
 		public void resolverPartida(){
 			boolean resuelta;
 			if (CDominio.resolverPartida()) {
@@ -279,7 +389,10 @@ public class CtrlVista {
 			VResolver.setVisible(true);
 			VPartidaEnJuego.setEnabled(false);
 		}
-		
+		/**
+		 * Reiniciar Partida
+		 * Post: Reinicia la partida a como estaba des de el principio
+		 */
 		public void reiniciar(){
 			CDominio.reiniciar();
 			VPartidaEnJuego.setVisible(true);
@@ -287,13 +400,32 @@ public class CtrlVista {
 			//Reiniciar Tiempo
 			int i = 0;
 			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
-			CDominio.iniciar_tiempo(i);
+			CDominio.iniciar_tiempo(i,modoJ);
 			VPartidaEnJuego.reiniciarTablero(CDominio.getMapaActual(), this);
 		}
-		
+		/**
+		 * Ir a la pantalla donde se juega
+		 */
 		public void dejarJugar(){
 			VPartidaEnJuego.setVisible(true);
 			VPartidaEnJuego.setEnabled(true);
+		}
+		/**
+		 * Asegurarse de que el usuario quiere guardar la partida
+		 * Hace visible una vista para que el usuario confirme que
+		 * quiere guardar la partida
+		 */
+		public void entrarASeguroGuardar(){
+			VGuardar = new VistaSeguroGuardar(this);
+			VGuardar.setVisible(true);
+			VPartidaEnJuego.setEnabled(false);
+		}
+		/**
+		 * Informa que no hay tablero para cargar
+		 */
+		public void entrarANoTablero(){
+			VTCargar = new VistaNoTableroCargar(this);
+			VTCargar.setVisible(true);
 		}
 	
 		
@@ -460,29 +592,65 @@ public class CtrlVista {
 		/**
 		 * Sobre Partida
 		 */
+		/**
+		 * Se info de la partida al dominio
+		 * @param m Dimension tablero
+		 * @param forats Abujero del tablero
+		 * @param ini Numeros iniciales
+		 * @param forma Forma del Tablero
+		 */
 		public void setInfoPartida(int m, int forats, int ini, int forma) {
 			CDominio.setInforPartida(m,forats,ini+2,forma);
 		}
+		/**
+		 * Crear Partida
+		 * Post: Se crea la partida con los datos que contienen sus 
+		 * controladores que se han introducido anteriormente
+		 */
 		public void setCrearPartida() {
 			CDominio.crear_Partida();
 		}
 		
+		/** 
+		 * Set modo partida
+		 * @param modo Entero que identifica el modo de la partida
+		 */
 		public void setInfoModoPartida(int modo) {
+			modoJ = modo;
 			CDominio.setModoPartida(modo);
 		}
 		
+		/**
+		 * Listar Tableros
+		 * @return Recorna un vector de Strings con todos los ids de
+		 * todos los tableros que estan guardados en disco
+		 */
 		public String[] listarTableros(){
 			return CDominio.listarTableros();
 		}
 		
+		/**
+		 * Consultar contenido del tablero actual
+		 * @return Retorna mapa de Strings que contienen
+		 * el valor de todas las  casillas en ese momento
+		 */
 		public String[][] getMapaActual(){
 			return CDominio.getMapaActual();
 		}
-		
+		/**
+		 * Consultar valor del tablero Actual
+		 * @param x Posicion x del tablero
+		 * @param y Posicion y del tablero
+		 * @return Retorna el numero que contiene la casilla (x,y)
+		 */
 		public int getValorTableroActual(int x, int y){
 			return CDominio.getValorTableroActual(x, y);
 		}
-		
+		/**
+		 * Clicar casilla
+		 * Se cambia de color la casilla que esta en la posicicon
+		 * (x,y) y de desclica otra casilla si estava clicada anteriormente
+		 */
 		public void setCasillaClicada(int x, int y) {
 			if (CDominio.esCasillaJugable(x,y)) {
 				if(!VPartidaEnJuego.esClicat(x,y))
@@ -490,33 +658,93 @@ public class CtrlVista {
 				else VPartidaEnJuego.desclicar(x,y);
 			}
 		}
-		
+		/**
+		 * Introducir casilla
+		 * @param x Posicion x del tablero
+		 * @param y Posicion y del tablero
+		 * @param y Valor que queremos introducir en la posicion
+		 * (x,y) del tablero
+		 */
 		public boolean setIntroducirCasilla(int x, int y, int valor){
 			return CDominio.setIntroducirCasilla(x,y,valor);
 		}
 		
+		/**
+		 * Introducir casilla
+		 * @param x Posicion x del tablero
+		 * @param y Posicion y del tablero
+		 * @return Retorna cierto si se ha quitado el valor
+		 * de la casilla en la posicion (x,y), falso si lo contrario
+		 */
 		public boolean setQuitarCasilla(int x, int y){
 			return CDominio.setQuitarCasilla(x,y);
 		}
-		
+		/**
+		 * Consultar si se puede introducir un valor en esa casillas
+		 * @param x Posicion x del tablero
+		 * @param y Posicion y del tablero
+		 * @return Retorna cierto si la posicion (x,y) en el tablero
+		 * es valida, no contiene abujeros o no se encuentra un numero inicial,
+		 * retorna falso si lo contrario
+		 */
 		public boolean esCasillaValida(int x, int y){
 			return CDominio.esCasillaValida(x,y);
 		}
-
+		/**
+		 * Guardar Partida
+		 * Post: Guarda la partida que estabamos jugando en el disco
+		 */
 		public void GuardarPartida(){
 			CDominio.guardarPartida();
+			VPartidaEnJuego.setEnabled(true);
 		}
-		
+		/**
+		 * Consulta cuantas casillas faltan
+		 * @return Retorna un entero que nos indica las casillas
+		 * que nos faltan por introducir en el tablero para llenarlo
+		 * por completo
+		 */
 		public int getFaltanCasillas(){
 			return CDominio.getFaltanCasillas();
 		}
-		
+		/**
+		 * Consulta Valor posible
+		 * @param pos Posicion de un vector
+		 * en los que se encuentra los valores que
+		 * quedan por introducir en el tablero
+		 * @return El valor del tablero
+		 */
 		public int getValorPosible(int pos){
 			return CDominio.getValorPosible(pos);
 		}
-		
+		/**
+		 * Consulta Puntuacion de la Partida 
+		 * @return Retorna los puntos de la partida
+		 */
 		public String getPuntuacion(){
 			return Integer.toString(CDominio.getPuntuacion());
+		}
+		/**
+		 * Consulta los minutos
+		 * @return Retorna los minutos en que se encuentra la partida
+		 */
+		public int obtMinutos(){
+			return CDominio.obtMinutos();
+		}
+		/**
+		 * Consulta los segundos
+		 * @return Retorna los segundos en que se encuentra la partida
+		 */
+		public int obtSegundos(){
+			return CDominio.obtSegundos();
+		}
+		/**
+		 * Consultar Mapa Sin numeros
+		 * @return Devuelve un Mapa de String de las
+		 * dimensiones de la partida sin numeros
+		 */
+		public String[][]getMapaVacio(){
+			return CDominio.getMapaVacio();
 		}
 		
 		

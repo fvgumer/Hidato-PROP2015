@@ -20,14 +20,14 @@ public class VistaCargarPartida extends VistaPrevisualizarTableroPadre {
 
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-					previsualizar_Tablero(list.getSelectedValue(), CV2);
+					//previsualizar_tablero(list.getSelectedValue(), CV);
 			}
 		});
 
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				if (!list.isSelectionEmpty()) 
-					CV.cargarParaJugar(mapa, list.getSelectedValue());
+					CV.cargarParaJugar(list.getSelectedValue());
 				else {
 					VError = new VEmergErrorClicar();
 					VError.setVisible(true);

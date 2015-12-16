@@ -4,6 +4,16 @@ import java.io.File;
 import CLUSTER.DOMINIO.CLASES.*;
 import CLUSTER.PERSISTENCIA.*;
 
+/**
+ * Este controlador contiene los parametros principales para poder crear una partida que son, la clase Partida_Hidato y una copia
+ * de ella para saber los parametros iniciales. Ademas antes de crear una partida, la creacion del tablero se gestiona en un objeto
+ * aparte antes de introducirlo en la partida. Tambien cuenta con los controladores de persistencia de Tablero y Partida para poder
+ * pargar y guardar las partidas deseadas.Ademas cuenta con la conexion de los controladores de GestionPartida y Ranking para poder llevar y traer todos
+ * los datos de las partidas a disco.
+ * @author Elena
+ *
+ */ 
+
 public class CtrlPartida {
 	//CONSTANTES
 	private Partida_Hidato PH;
@@ -11,18 +21,41 @@ public class CtrlPartida {
 	private Tablero T;
 	private CtrlGestionPartida c;
 	private CtrlGestionTablero CT;
+	private CtrlGestionUsuario CU;
 	private String[] ids;
 	
+	private String quitarBin(String cad) {
+		int mida = cad.length();
+		String t = cad.substring(0, mida-4);
+		return t;
+	}
 	
+
+	/**
+	 * Calcular el ID de la partida
+	 * @param U 
+	 * @return
+	 */
+	private int calculoID(Jugador U){
+		c = new CtrlGestionPartida();
+		String[] lis = c.lista_partidas(U.consultar_nombre());
+		int ultimo = lis.length-1;
+		int id = Integer.parseInt(quitarBin(lis[ultimo]))+1;
+		return id;
+	}
+	
+
 	/**
 	 * Crear Partida
 	 * @param U Jugador previamente identificado
 	 * 
 	 */
 	public void crear_partida(Jugador U){
-		int ID = 0; //CALCULAR ID
+		int ID = calculoID(U);
 		PH = new Partida_Hidato(T,U,ID);
 		PH2 = new Partida_Hidato(T,U,ID);
+		PH.set_ID(ID);
+		PH2.set_ID(ID);
 	}
 	
 	public void setModoJuego(int modo) {
@@ -61,8 +94,8 @@ public class CtrlPartida {
 	 * que se desea cargar
 	 */
 	public void Cargar_Partida_Hidato(String nom, String id){
-		int i = Integer.parseInt(id);
-		c.cargar(nom, i);
+		PH = c.cargar(nom, id);
+		PH2 = PH;
 	}
 	
 	
@@ -90,7 +123,8 @@ public class CtrlPartida {
 	}
 	
 	public String[] conseguir_partidas_enproceso(String NomJ) {
-			ids = c.lista_partidas(NomJ);
+		c = new CtrlGestionPartida();
+		ids = c.lista_partidas(NomJ);
 		return ids;
 	}
 	
@@ -153,8 +187,7 @@ public class CtrlPartida {
 	}
 	public String[][] previsualizarTablero(String NomJ ,String id) {
 		PH = new Partida_Hidato();
-		int m = Integer.parseInt(id);
-		PH = c.cargar(NomJ, m);
+		PH = c.cargar(NomJ, id);
 		return pasarAMapa(PH.get_Tablero());
 	}
 	
@@ -162,8 +195,6 @@ public class CtrlPartida {
 		CT = new CtrlGestionTablero();
 		String[] validos = null;
 		String[] lista = CT.consultar_nomstableros();
-		if (lista.length == 0) return lista;
-		else{
 			int mida = T.getMida();
 			int nini = T.getn_predef();
 			int forats = T.getholes();
@@ -178,15 +209,14 @@ public class CtrlPartida {
 			}
 			return validos;
 		}
-	}
 	
 	
 	/**
-	 * AÃ±adir caracteristicas de la partida
+	 * Anadir caracteristicas de la partida
 	 * @param dim Entero que indica las dimensiones del tablero de la partida.
 	 * @param forats Entero que indica el numero de casillas vacias del tablero.
 	 * @param n_ini Entero que indica el numero de casillas iniciales que contienen
-	 * un nÃºmero.
+	 * un numero.
 	 */
 	public void anadir_carct_tablero(int form,int dim, int forats, int n_ini){
 		T = new Tablero(dim);
@@ -215,10 +245,9 @@ public class CtrlPartida {
 	 * A partir de los parametros impÃƒÂ­citos del objeto partida se substraen
 	 * de los ficheros los tableros que se ajustan mas a la peticiÃƒÂ³n del jugador
 	 */
-	/*__________NO_IMPLEMENTADO_________________*/
-	public void elegir_tdisenado(){
-		//Sacar TOP5 de los mas parecidos
-		
+
+	public void cargarTablero(String t){
+		T = CT.cargar(t, false,true);
 	}
 
 
@@ -234,31 +263,26 @@ public class CtrlPartida {
 	  * que contiene el tablero.
 	  * @return Retorna un entero que identifica la dificultad del tablero
 	  */
-	public int calcular_dificultad(int dim, int abuj, int c_ini) {
-		double p1,p2,p3;
-		//Segun dimension
-		if (dim > 2 && dim < 6) p1 = 5;
-		else if (dim > 5 && dim < 9) p1 = 10;
-		else p1 = 15;
-		//Segun forats
-		if (abuj >= 0 && abuj <= (double)(dim*dim)/3) p2 = 15;
-		else if (abuj > (double)(dim*dim)/3 && abuj <= (double)(dim*dim*2)/3) p2 = 10;
-		else p2 = 5;
-		//Segun casillas iniciales
-		if (c_ini >= 0 && c_ini <= (double)(dim*dim)/3) p3 = 15;
-		else if (c_ini > (double)(dim*dim)/3 && c_ini <= (double)(dim*dim*2)/3) p3 = 10;
-		else p3 = 5;
-		
-		p1 = (p1*0.2+p2*0.3+p3*0.5);
-		if (p1 <= 5) return 0;
-		else if (p1 <= 10) return 1;
-		else return 2;
+	public int calcular_dificultad() {
+		T.calcular_dificultad();
+		int puntos = T.get_dificultad()/3;
+		if (T.getMida() < 4) puntos = puntos - 4;
+		else if (T.getMida() < 7) puntos = puntos - 1;
+		int d;
+		if (puntos < 5) d = 0;
+		else if (puntos < 10) d = 1;
+		else d = 2;
+		return d;
 	}
 
 	public boolean esSolcionUnica() {
 		return T.getSolucion_unica();
 	}
 	
+	public String[][] getMapaVacio(){
+		return pasarAMapa(PH.getTsinnumeros());
+	}
+
 	
 
 

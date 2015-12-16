@@ -1,5 +1,7 @@
 package CLUSTER.VISTAS.PARTIDA;
 
+import java.awt.BorderLayout;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import CLUSTER.VISTAS.BASES.Botones;
@@ -7,14 +9,14 @@ import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.VistaError;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
-public class VistaSeguroSalir extends VistaError{
+public class VistaSeguroGuardar extends VistaError{
 
 	
-	public VistaSeguroSalir(final CtrlVista CV) {
+	public VistaSeguroGuardar(final CtrlVista CV) {
 		Texto t = new Texto("¿Seguro que", 50,50,18);
 		t.setBounds(50, 11, 125, 31);
 		getContentPane().add(t);
-		Texto t2 = new Texto("quieres salir?", 50,50,18);
+		Texto t2 = new Texto("quieres guardar?", 50,50,18);
 		t2.setBounds(109, 42, 165, 46);
 		getContentPane().add(t2);
 		
@@ -25,7 +27,7 @@ public class VistaSeguroSalir extends VistaError{
 		getContentPane().add(b);
 		b.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				CV.SalirJuego();
+				CV.GuardarPartida();
 				Salir();
 			}
 		});
