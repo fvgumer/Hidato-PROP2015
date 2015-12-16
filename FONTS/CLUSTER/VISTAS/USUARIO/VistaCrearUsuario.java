@@ -7,14 +7,14 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * Esta vista permite al usuario crear un jugador cualquiera. Subclase de la clase VistaUsuario. 
+ * @author Joel
+ *
+ */
 public class VistaCrearUsuario extends VistaUsuario {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
-
 
 	public VistaCrearUsuario(final CtrlVista CV) {
 		super.setTextLayer("Modificar Contrasenya");
@@ -30,7 +30,6 @@ public class VistaCrearUsuario extends VistaUsuario {
 				}
 			}
 		});
-		
 		
 		passwordField.addKeyListener(new KeyAdapter() {
 			@Override

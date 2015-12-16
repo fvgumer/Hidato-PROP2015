@@ -3,6 +3,12 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
 
+/**
+ * Subclase de la clase JButton que implementa un boton de salida o atras.
+ * @author Joel
+ *
+ */
+
 public class Botons extends JButton {
 	private static final long serialVersionUID = 1L;
 

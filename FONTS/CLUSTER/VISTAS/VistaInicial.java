@@ -15,11 +15,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+/**
+ * Esta vista es la vista que se muestra al usuario al entrar al juego. Te da la opcion de crear un jugador,
+ * iniciar sesion con uno ya existente o salir del juego. Subclase de la clase VistaPadreInicio. 
+ * @author Joel
+ *
+ */
+
 public class VistaInicial extends VistaPadreInicio {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private Button b1;
 	private Button b2;

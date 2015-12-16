@@ -7,6 +7,13 @@ import java.awt.event.MouseEvent;
 
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
+/**
+ * Esta vista permite al usuario eliminar exclusivamente su jugador introduciendo su nickname y password
+ * . Subclase de la clase VistaUsuario. 
+ * @author Joel
+ *
+ */
+
 public class VistaEliminarUser extends VistaUsuario {
 
 	/**
@@ -17,7 +24,6 @@ public class VistaEliminarUser extends VistaUsuario {
 
 
 	public VistaEliminarUser(final CtrlVista CV) {
-		//super();
 		super.settextlayer("Crear Usuario");
 		B.addMouseListener(new MouseAdapter() {
 			@Override
