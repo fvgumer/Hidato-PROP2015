@@ -18,9 +18,8 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 
 	private VEmergErrorClicar VError1;
 
-	private DefaultListModel listModel;
 	private CtrlVista CV;
-	private JList list;
+	private JList<String> list;
 	
 
 	private VEmergErrorClicar VError;
@@ -30,7 +29,7 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 		this.CV = CV;
 		txt = "Elegir Tablero Diseñado";
 		VError1 = new VEmergErrorClicar();
-
+		list = new JList<String>();
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 					//FUNCION
