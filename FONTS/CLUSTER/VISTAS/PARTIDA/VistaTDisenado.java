@@ -64,7 +64,13 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 	 * Introducimos el listado de tableros que podemos cargar
 	 */
 	public void run(String[] J){
-		list.setListData(J);
+		if (J != null) {
+			list.setListData(J);
+		}
+		else{
+			VistaNoTableroCargar VT = new VistaNoTableroCargar(CV);
+			VT.setVisible(true);
+		}
 
 	}
 

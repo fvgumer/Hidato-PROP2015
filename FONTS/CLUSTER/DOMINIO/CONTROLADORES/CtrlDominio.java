@@ -185,9 +185,9 @@ public class CtrlDominio {
 	 * @return Retorna una cadena de String que contiene en cada 
 	 * posicion los ids de todos los tableros guardados
 	 */
-	/*public String[] listarTableros() {
+	public String[] listarTableros() {
 		return CPartida.listarTableros();
-	}*/
+	}
 	
 	/**
 	 * Consultar tablero Actual

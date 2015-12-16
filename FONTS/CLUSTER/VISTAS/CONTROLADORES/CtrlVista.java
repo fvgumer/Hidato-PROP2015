@@ -243,7 +243,7 @@ public class CtrlVista {
 		public void elegirTdisenado(){
 			VTDisenado = new VistaTDisenado(this);
 			VTDisenado.setVisible(true);
-			VTDisenado.run(get_tableros_repo());
+			VTDisenado.run(CDominio.listarTableros());
 		}
 		/**
 		 * Cargar Tablero Elegido
