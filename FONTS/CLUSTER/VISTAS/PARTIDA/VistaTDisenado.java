@@ -37,10 +37,13 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				if (!list.isSelectionEmpty())  {
+					try {
 					CV.cargarTablero((String)list.getSelectedValue());
 					CV.setCrearPartida();
 					CV.entrarAModoPartida();
 					Salir();
+					}
+					catch(Exception e){}
 				}
 				else {
 					VError1 = new VEmergErrorClicar();

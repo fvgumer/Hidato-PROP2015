@@ -62,6 +62,7 @@ public class Tablero extends Tablero_comp implements Serializable{
 		}
 		T2.inicialitzar_caselles();
 		T2.setSolucion_unica(solucion_unica);
+		T2.set_id(this.id);
 		return T2;
 	}
 	/**
