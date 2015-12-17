@@ -65,6 +65,7 @@ public class Estadisticas implements Serializable{
 	 * @return Listado de tableros jugados.
 	 */
 	public ArrayList<String> getTabJ() {
+		
 		return tablerosJugados;
 	}
 	
@@ -154,10 +155,10 @@ public class Estadisticas implements Serializable{
 	 * @param t Tablero que queremos anadir.
 	 */
 	public void anadirTableroJ(String t) {
-		boolean b = false;
+		boolean b = true;
 		int i = 0;
-		while (i < tablerosJugados.size()) {
-			if (tablerosJugados.get(i) == t) b = false;
+		while (i < tablerosJugados.size() && b) {
+			if (tablerosJugados.get(i).equals(t)) b = false;
 			++i;
 		}
 		if (b) tablerosJugados.add(t);

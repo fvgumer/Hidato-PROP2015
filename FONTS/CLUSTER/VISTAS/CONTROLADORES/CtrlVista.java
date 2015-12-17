@@ -548,10 +548,6 @@ public class CtrlVista {
 			VEst.setVisible(true);
 		}
 		
-		public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
-			CDominio.partidaTerminada(jugador,s,p,tablero,modo);
-		}
-		
 		
 		public void entrarARanking() {
 			VRank.setVisible(true);
