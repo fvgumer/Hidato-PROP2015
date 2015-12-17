@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 
 /**
  * En esta vista se muestra la solucion del tablero. Se da la opcion de guardar
- * el tablero al usuario. El usuario debe antes comprovar si la solución del tablero
+ * el tablero al usuario. El usuario debe antes comprovar si la solucion del tablero
  * es unica.
  * @author Alex
  *

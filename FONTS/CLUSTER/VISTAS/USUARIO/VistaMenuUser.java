@@ -64,7 +64,7 @@ public class VistaMenuUser extends VistaPadreIniConBoton{
 			}
 		});
 		
-		Botones b3 = new Botones("Cambiar Contraseña",216, 269);
+		Botones b3 = new Botones("Cambiar Contrasena",216, 269);
 		b3.setLocation(235, 278);
 		b3.setSize(370, 42);
 		b3.addMouseListener(new MouseAdapter() {

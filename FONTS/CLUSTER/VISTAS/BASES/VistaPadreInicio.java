@@ -28,7 +28,7 @@ public class VistaPadreInicio extends JFrame {
 		super("Partida Hidato - "+textLayer);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 546);
-		//COSAS EN COMÚN CON SUS HIJOS
+		//COSAS EN COMuN CON SUS HIJOS
 		//Fondo
 		contentPane = new JPanel();
 		contentPane.setLayout(null);

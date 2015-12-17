@@ -20,12 +20,12 @@ public class VistaMenu extends VistaPadreInicio {
 		usuarioActual.setBounds(454, 39, 293, 62);
 		usuarioActual.setFont(new Font("Lucida Sans", Font.BOLD, 20));
 		getContentPane().add(usuarioActual);
-		Titulo t = new Titulo("MENÚ PRINCIPAL",110,53);
+		Titulo t = new Titulo("MENu PRINCIPAL",110,53);
 		t.setSize(153, 50);
 		t.setLocation(277, 39);
 		getContentPane().add(t);
 		
-		//Declaración Boton "Entrar" y su funcion
+		//Declaracion Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Usuario",50,120);
 		b1.setLocation(84, 128);
 		b1.addMouseListener(new MouseAdapter() {

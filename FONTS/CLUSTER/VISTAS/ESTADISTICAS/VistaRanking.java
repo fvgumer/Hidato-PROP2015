@@ -24,7 +24,7 @@ import javax.swing.SpinnerNumberModel;
 
 /**
  * En esta vista el jugador debe introducir el nombre del tablero del cual desea
- * consultar el ranking y el número de posiciones que quiere ver, con un máximo de 20.
+ * consultar el ranking y el numero de posiciones que quiere ver, con un maximo de 20.
  * 
  * @author Belen San Martin
  *

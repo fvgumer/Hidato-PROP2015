@@ -2,15 +2,15 @@
 2		//Centro de gestion de usuario
 1		//Creamos un usuario
 Joel		//nombre
-Codina		//Contraseña
+Codina		//Contrasena
 1		//Comprovaremos que si existe, no crea uno nuevo.
 Joel
 Codina			//Nos sale error
 2		//Error si no estamos logueados, no podemos cambiar password
 3		//Intentaremos eliminar a un jugador introduciendo una password incorrecta
 Joel
-Pepito		//Error! Contraseña incorrecta
-3		//Ahora lo eliminamos con la contraseña correcta
+Pepito		//Error! Contrasena incorrecta
+3		//Ahora lo eliminamos con la contrasena correcta
 Joel
 Codina		//Exito!
 1		Creamos un nuevo usuario Borja
@@ -19,14 +19,14 @@ lsi123
 4		//Atras
 1		//Login
 Borja		//Usuario
-lsi123		//Contraseña
+lsi123		//Contrasena
 2		//Menu de gestion
 2		//Modificar 
 lsi1999    //Error Password incorrecta
 cs123     
-2		//Modificar contraseña
-lsi123      //contraseña correcta
-cs123       //nueva contraseña cambiada
+2		//Modificar contrasena
+lsi123      //contrasena correcta
+cs123       //nueva contrasena cambiada
 4	//Atras
 3    //Menu principal
 

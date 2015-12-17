@@ -24,7 +24,7 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 	public VistaTDisenado(final CtrlVista CV) {
 		super(CV);
 		this.CV = CV;
-		txt = "Elegir Tablero Diseñado";
+		txt = "Elegir Tablero Disenado";
 		VError1 = new VEmergErrorClicar();
 
 		list.addMouseListener(new MouseAdapter() {

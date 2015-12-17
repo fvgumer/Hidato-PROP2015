@@ -25,7 +25,7 @@ public class VistaMenuTipoTablero extends VistaPadreIniConBoton {
 		t.setLocation(179, 52);
 		getContentPane().add(t);
 		
-		//Declaración Boton "Entrar" y su funcion
+		//Declaracion Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Tablero Aleatorio",50,120);
 		b1.setSize(400, 61);
 		b1.setLocation(159, 166);
@@ -37,7 +37,7 @@ public class VistaMenuTipoTablero extends VistaPadreIniConBoton {
 			}
 		});
 		getContentPane().add(b1);
-		Botones b2 = new Botones("Tablero Diseñado",250,120);
+		Botones b2 = new Botones("Tablero Disenado",250,120);
 		b2.setSize(399, 61);
 		b2.setLocation(159, 271);
 		b2.addMouseListener(new MouseAdapter() {

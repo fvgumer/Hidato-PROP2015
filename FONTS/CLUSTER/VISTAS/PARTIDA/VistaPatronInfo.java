@@ -23,7 +23,7 @@ public class VistaPatronInfo extends JFrame {
 		super("Partida Hidato - "+textLayer);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 546);
-		//COSAS EN COMÚN CON SUS HIJOS
+		//COSAS EN COMuN CON SUS HIJOS
 		//Fondo
 		getContentPane().setBackground(new Color(205, 92, 92));
 		setSize(500,500);
