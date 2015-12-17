@@ -65,7 +65,7 @@ public class PartidaResolver extends VistaPatronInfo {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.dejarJugar();
 					Salir();
-					CV.guardarPuntuacion();
+					//CV.guardarPuntuacion();
 					
 				}
 			});
@@ -73,7 +73,7 @@ public class PartidaResolver extends VistaPatronInfo {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.entrarAMenu();
 					Salir();
-					CV.guardarPuntuacion();
+					//CV.guardarPuntuacion();
 					
 				}
 			});

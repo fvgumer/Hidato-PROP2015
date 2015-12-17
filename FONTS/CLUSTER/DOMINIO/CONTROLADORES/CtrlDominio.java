@@ -332,7 +332,7 @@ public class CtrlDominio {
 	 */
 	public boolean resolverPartida(){
 		if(CJugar.resolver_partida()){
-			CJugar.GuardarPuntuacion();
+			//CJugar.GuardarPuntuacion();
 			return true;
 		}
 		else return false;
@@ -572,6 +572,7 @@ public class CtrlDominio {
 	 * @param modo Modo de juego
 	 */
 	public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
+		System.out.print("esto es el cdominio");
 		CEstadisticas.partidaTerminada(jugador, s, p, tablero,modo);
 	}
 	
