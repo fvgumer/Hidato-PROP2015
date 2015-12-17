@@ -26,6 +26,7 @@ public class VistaValidar extends VistaPadreIniConBoton{
 	private JTextField[][] board;
 	private JPanel panel;
 	private String[][]tab;
+	private boolean unica;
 	
 	public VistaValidar(final CtrlVista CV) {
 		
@@ -36,6 +37,12 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		JLabel lblNewLabel = new JLabel("Esta es la Solucion del tablero!");
 		lblNewLabel.setBounds(545, 38, 198, 59);
 		getContentPane().add(lblNewLabel);
+		unica = false;
+		
+		final JLabel lblpregunica = new JLabel("Comprueva solucion unica");
+		lblpregunica.setBounds(506, 188, 237, 16);
+		getContentPane().add(lblpregunica);
+		lblpregunica.setVisible(false);
 		
 		super.JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
@@ -48,8 +55,11 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				CV.guardar_tablero(tab);
-				Salir();
+				if(unica) {
+					CV.guardar_tablero(tab);
+					Salir();
+				}
+				else lblpregunica.setVisible(true);
 			}
 		});
 		btnGuardar.setBounds(569, 110, 137, 65);
@@ -61,7 +71,7 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		getContentPane().add(lblUnica);
 		
 		final JLabel lclnounica = new JLabel("El tablero NO tiene solucion unica");
-		lclnounica.setBounds(506, 334, 200, 42);
+		lclnounica.setBounds(506, 334, 237, 42);
 		lclnounica.setVisible(false);
 		getContentPane().add(lclnounica);
 		
@@ -71,9 +81,11 @@ public class VistaValidar extends VistaPadreIniConBoton{
 			public void mouseClicked(MouseEvent arg0) {
 				if (CV.es_unica()) lblUnica.setVisible(true);
 				else lclnounica.setVisible(true);
+				unica = true;
+				lblpregunica.setVisible(false);
 			}
 		});
-		btnUnica.setBounds(569, 206, 137, 65);
+		btnUnica.setBounds(569, 219, 137, 65);
 		getContentPane().add(btnUnica);
 	}
 	
