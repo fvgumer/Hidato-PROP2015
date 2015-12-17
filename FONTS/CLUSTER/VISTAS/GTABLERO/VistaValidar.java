@@ -54,6 +54,27 @@ public class VistaValidar extends VistaPadreIniConBoton{
 		});
 		btnGuardar.setBounds(569, 110, 137, 65);
 		getContentPane().add(btnGuardar);
+		
+		final JLabel lblUnica = new JLabel("El tablero tiene solucion unica");
+		lblUnica.setBounds(506, 284, 237, 48);
+		lblUnica.setVisible(false);
+		getContentPane().add(lblUnica);
+		
+		final JLabel lclnounica = new JLabel("El tablero NO tiene solucion unica");
+		lclnounica.setBounds(506, 334, 200, 42);
+		lclnounica.setVisible(false);
+		getContentPane().add(lclnounica);
+		
+		JButton btnUnica = new JButton("Solucion Unica");
+		btnUnica.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (CV.es_unica()) lblUnica.setVisible(true);
+				else lclnounica.setVisible(true);
+			}
+		});
+		btnUnica.setBounds(569, 206, 137, 65);
+		getContentPane().add(btnUnica);
 	}
 	
 	public void set_tablero(String[][] t) {

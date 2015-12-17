@@ -410,6 +410,14 @@ public class CtrlDominio {
 	}
 	
 	/**
+	 * En el ctrlTablero esta cargado el tablero que queremos comprovar
+	 * @return Retorna si la solucion del tablero es unica.
+	 */
+	public boolean solucion_unica() {
+		return CTablero.solucion_unica();
+	}
+	
+	/**
 	 * Operacion que retorna los nombres de los tableros del repositorio
 	 * @return Retorna los nombres de los tableros guardados
 	 */

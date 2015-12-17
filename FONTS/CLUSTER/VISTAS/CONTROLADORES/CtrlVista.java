@@ -488,6 +488,14 @@ public class CtrlVista {
 			VGTValidar.setVisible(true);
 		}
 		
+		/**
+		 * Se calcula si el tablero actual en las vistas y en el ctrlTablero tiene solucion unica
+		 * @return Retorna true si la solucion al tablero es unica
+		 */
+		public boolean es_unica() {
+			return CDominio.solucion_unica();
+		}
+		
 		public void guardar_tablero(String[][] t) {
 			CDominio.guardar_tablero();
 			entrarABorrarTablero();

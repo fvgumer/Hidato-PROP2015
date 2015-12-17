@@ -15,6 +15,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 
 /**
  * Esta vista permite al usuario elegir un tablero guardado en persistencia para
@@ -53,7 +54,6 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 				Salir();
 			}
 		});
-		
 	}
 	
 	public void actualitza_llista() {
@@ -65,9 +65,8 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 			}
 		}
 		list = new JList(listModel);
-		getContentPane().add(list);
-		
-		list.setBounds(349,42,239,392);
+		//getContentPane().add(list);
+		//list.setBounds(349,42,239,392);
 		list.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -79,6 +78,9 @@ public class VistaBorrar extends VistaPadreIniConBoton {
 				}
 			}
 		});
-
+		JScrollPane scroll = new JScrollPane();
+		scroll.setViewportView(list);
+		scroll.setBounds(349,42,239,392);
+		getContentPane().add(scroll);
 	}
 }

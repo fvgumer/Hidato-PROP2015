@@ -99,6 +99,7 @@ public class CtrlTablero {
 		generar_buits_alea(c_vacias);
 		map.inicialitzar_caselles(); //El tema de los holes con formas no esta arreglado del todo
 		map.calcular_dificultad();
+		if(map.getMida() <= 6) solucion_unica();
 		guardar();
 	}
 	
@@ -141,7 +142,6 @@ public class CtrlTablero {
 	
 	/**
 	 * Se determina si el tablero map tiene solucion.
-	 * solucion, si la solucion es unica
 	 * @return Se retorna true si el mapa de la clase tiene como minimo una solucion
 	 */
 	public boolean validar() {
