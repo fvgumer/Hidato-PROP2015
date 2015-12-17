@@ -61,28 +61,25 @@ public class CtrlJugar {
 	 * @return
 	 */
 	private int[] alCostat(int x, int y, int[][][] ant, int[] ini) {
-		boolean acabat = true;
+		boolean acabat = false;
+		System.out.println("HE VINGUT PER2: "+x+" "+y);
 		int[]seg = new int[2];
-		int x2,y2;
-		x2 = ant[x][y][0];
-		y2 = ant[x][y][1];
 		while(!acabat){
-			if(ant[x2][y2][0] == ini[0] && ant[x2][y2][1]== ini[1]) acabat = true;
+			if(ant[x][y][0] == ini[0] && ant[x][y][1]== ini[1]) acabat = true;
 			else {
-				x2= ant[x2][y2][0];
-				y2= ant[x2][y2][1];
+				x= ant[x][y][0];
+				y= ant[x][y][1];
 			}
 		}
-		seg[0] = x2;
-		seg[1] = y2;
-		System.out.println("HE VINGUT PER: "+x2+" "+y2);
+		seg[0] = x;
+		seg[1] = y;
+		System.out.println("HE VINGUT PER: "+x+" "+y);
 		return seg;
 	}
 	 
 	 
 	
-	private int[] posicionConProbabilidad(int[] ini, int[] seg, int valor) {
-		ArrayList<int[]> L = new ArrayList<int[]>();
+	private int[] posicionConProbabilidad(int[] ini, int[] seg, int valor, boolean[] posats) {
 		Queue<int[]> q = new LinkedList<int[]>();
 		int[][][] ant = new int[PH.getMida()][PH.getMida()][2];
 		boolean[][] visitar = new boolean[PH.getMida()][PH.getMida()];
@@ -92,21 +89,20 @@ public class CtrlJugar {
 			}
 		}
 		//TRATAR EL PRIMERO
+		int m = PH.getMida();
 		int[] pos = ini;
 		q.add(pos); //Anadimos a la cola
 		visitar[ini[0]][ini[1]] = true;
-		boolean trobat = true;
 		int i = 0;
 		int j = 0;
 		//COMENZAR A TRATAR LOS OTROS
-		while(!q.isEmpty() && !trobat) {
+		while(!q.isEmpty()) {
 			int[] pos2 = q.poll();
 			i = pos2[0];
 			j = pos2[1];
-			L.add(pos2);
-			if(i == seg[0] && j == seg[1]) trobat = true; //SI LO HEMOS ENCONTRADO PARAMOS
+			if(i == seg[0] && j == seg[1]) break; //SI LO HEMOS ENCONTRADO PARAMOS
 			else { //SI NO SEGUIMOS MIRANDO
-				if(PH.get_Tablero().enable_pos(i+1, j) && !visitar[i+1][j] ) {
+				if(PH.get_Tablero().enable_pos(i+1, j) && !visitar[i+1][j] && !posats[(i+1)*m+j]) {
 					visitar[i+1][j] = true;
 					int[] pos_aux = new int[2];
 					ant[i+1][j][0] = i;
@@ -115,7 +111,7 @@ public class CtrlJugar {
 					pos_aux[1] = j;
 					q.add(pos_aux);
 				}
-				if(PH.get_Tablero().enable_pos(i+1, j+1) && !visitar[i+1][j+1] ) {
+				if(PH.get_Tablero().enable_pos(i+1, j+1) && !visitar[i+1][j+1] && !posats[(i+1)*m+j+1] ) {
 					visitar[i+1][j+1] = true;
 					int[] pos_aux = new int[2];
 					ant[i+1][j+1][0] = i;
@@ -124,7 +120,7 @@ public class CtrlJugar {
 					pos_aux[1] = j+1;
 					q.add(pos_aux);
 				}
-				if(PH.get_Tablero().enable_pos(i+1, j-1) && !visitar[i+1][j-1] ) {
+				if(PH.get_Tablero().enable_pos(i+1, j-1) && !visitar[i+1][j-1]&& !posats[(i+1)*m+j-1] ) {
 					visitar[i+1][j-1] = true;
 					int[] pos_aux = new int[2];
 					ant[i+1][j-1][0] = i;
@@ -133,7 +129,7 @@ public class CtrlJugar {
 					pos_aux[1] = j-1;
 					q.add(pos_aux);
 				}
-				if(PH.get_Tablero().enable_pos(i, j-1) && !visitar[i][j-1] ) {
+				if(PH.get_Tablero().enable_pos(i, j-1) && !visitar[i][j-1] && !posats[(i)*m+j-1] ) {
 					visitar[i][j-1] = true;
 					int[] pos_aux = new int[2];
 					ant[i][j-1][0] = i;
@@ -142,7 +138,7 @@ public class CtrlJugar {
 					pos_aux[1] = j-1;
 					q.add(pos_aux);
 				}
-				if(PH.get_Tablero().enable_pos(i, j+1) && !visitar[i][j+1] ) {
+				if(PH.get_Tablero().enable_pos(i, j+1) && !visitar[i][j+1] && !posats[(i)*m+j+1]) {
 					visitar[i][j+1] = true;
 					int[] pos_aux = new int[2];
 					ant[i][j+1][0] = i;
@@ -151,7 +147,7 @@ public class CtrlJugar {
 					pos_aux[1] = j+1;
 					q.add(pos_aux);
 				}
-				if(PH.get_Tablero().enable_pos(i-1, j) && !visitar[i-1][j] ) {
+				if(PH.get_Tablero().enable_pos(i-1, j) && !visitar[i-1][j] && !posats[(i-1)*m+j]) {
 					visitar[i-1][j] = true;
 					int[] pos_aux = new int[2];
 					ant[i-1][j][0] = i;
@@ -160,7 +156,7 @@ public class CtrlJugar {
 					pos_aux[1] = j;
 					q.add(pos_aux);
 				}
-				if(PH.get_Tablero().enable_pos(i-1, j+1) && !visitar[i-1][j+1] ) {
+				if(PH.get_Tablero().enable_pos(i-1, j+1) && !visitar[i-1][j+1] && !posats[(i-1)*m+j+1]) {
 					visitar[i-1][j+1] = true;
 					int[] pos_aux = new int[2];
 					ant[i-1][j+1][0] = i;
@@ -169,7 +165,7 @@ public class CtrlJugar {
 					pos_aux[1] = j+1;
 					q.add(pos_aux);
 				}
-				if(PH.get_Tablero().enable_pos(i-1, j-1) && !visitar[i-1][j-1] ) {
+				if(PH.get_Tablero().enable_pos(i-1, j-1) && !visitar[i-1][j-1] && !posats[(i-1)*m+j-1] ) {
 					visitar[i-1][j-1] = true;
 					int[] pos_aux = new int[2];
 					ant[i-1][j-1][0] = i;
@@ -206,6 +202,16 @@ public class CtrlJugar {
 		return pos;
 	}
 	
+	
+	
+	/*
+	private LinkedList<int[]> camints(Tablero T, int[] ini, int[] fin) {
+	}
+	*/
+	
+	
+	
+	
 	private int[] elmasLejos(int[]fin, int[]ini){
 		int[] pos = new int[2];
 		return pos;
@@ -225,7 +231,7 @@ public class CtrlJugar {
 			pos_ini[1] = y;
 			int[] pos_sig = buscar_posicion(valor_inicial);
 			if((PH.get_Tablero().getValorTauler(pos_sig[0], pos_sig[1]) - valor_inicial) <= 3){
-				pos = posicionConProbabilidad(pos_ini,pos_sig, valor_inicial);
+				pos = posicionConProbabilidad(pos_ini,pos_sig, valor_inicial, PH.get_Tablero().getPosats());
 			}
 			else{
 				pos = elmasLejos(pos_sig,pos_ini);
