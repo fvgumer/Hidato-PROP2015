@@ -1,8 +1,10 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Vector;
+import java.util.*;
 
 import CLUSTER.DOMINIO.CLASES.*;
 import CLUSTER.PERSISTENCIA.*;
@@ -260,6 +262,8 @@ public class CtrlJugar {
 			for(int i = 0; i < visitat.length; ++i) visitat[i] = false;
 			*/
 			System.out.println("POS1: "+pos[0]+" "+pos[1]);
+			Timer timer = new Timer();
+			A.asociarTimer(timer);
 			if (A.solver(pos[0], pos[1], 1, T)){
 				System.out.println("VAS BIEN");
 				return true;
