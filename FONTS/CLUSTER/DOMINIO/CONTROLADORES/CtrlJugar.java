@@ -1,5 +1,8 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Vector;
 
 import CLUSTER.DOMINIO.CLASES.*;
 import CLUSTER.PERSISTENCIA.*;
@@ -45,6 +48,227 @@ public class CtrlJugar {
 	
 	public void setCasillasFaltan(int c){
 		casillas_faltan = c;
+	}
+	
+	/**
+	 * Retorna la primera casilla por donde ha venido
+	 * @param x
+	 * @param y
+	 * @param ant
+	 * @param ini
+	 * @return
+	 */
+	private int[] alCostat(int x, int y, int[][][] ant, int[] ini) {
+		boolean acabat = true;
+		int[]seg = new int[2];
+		int x2,y2;
+		x2 = ant[x][y][0];
+		y2 = ant[x][y][1];
+		while(!acabat){
+			if(ant[x2][y2][0] == ini[0] && ant[x2][y2][1]== ini[1]) acabat = true;
+			else {
+				x2= ant[x2][y2][0];
+				y2= ant[x2][y2][1];
+			}
+		}
+		seg[0] = x2;
+		seg[1] = y2;
+		System.out.println("HE VINGUT PER: "+x2+" "+y2);
+		return seg;
+	}
+	 
+	 
+	
+	private int[] posicionConProbabilidad(int[] ini, int[] seg, int valor) {
+		ArrayList<int[]> L = new ArrayList<int[]>();
+		Queue<int[]> q = new LinkedList<int[]>();
+		int[][][] ant = new int[PH.getMida()][PH.getMida()][2];
+		boolean[][] visitar = new boolean[PH.getMida()][PH.getMida()];
+		for(int i = 0; i < PH.getMida(); ++i) {
+			for(int j = 0; j < PH.getMida(); ++j) {
+				visitar[i][j] = false;
+			}
+		}
+		//TRATAR EL PRIMERO
+		int[] pos = ini;
+		q.add(pos); //Anadimos a la cola
+		visitar[ini[0]][ini[1]] = true;
+		boolean trobat = true;
+		int i = 0;
+		int j = 0;
+		//COMENZAR A TRATAR LOS OTROS
+		while(!q.isEmpty() && !trobat) {
+			int[] pos2 = q.poll();
+			i = pos2[0];
+			j = pos2[1];
+			L.add(pos2);
+			if(i == seg[0] && j == seg[1]) trobat = true; //SI LO HEMOS ENCONTRADO PARAMOS
+			else { //SI NO SEGUIMOS MIRANDO
+				if(PH.get_Tablero().enable_pos(i+1, j) && !visitar[i+1][j] ) {
+					visitar[i+1][j] = true;
+					int[] pos_aux = new int[2];
+					ant[i+1][j][0] = i;
+					ant[i+1][j][1] = j;
+					pos_aux[0] = i+1;
+					pos_aux[1] = j;
+					q.add(pos_aux);
+				}
+				if(PH.get_Tablero().enable_pos(i+1, j+1) && !visitar[i+1][j+1] ) {
+					visitar[i+1][j+1] = true;
+					int[] pos_aux = new int[2];
+					ant[i+1][j+1][0] = i;
+					ant[i+1][j+1][1] = j;
+					pos_aux[0] = i+1;
+					pos_aux[1] = j+1;
+					q.add(pos_aux);
+				}
+				if(PH.get_Tablero().enable_pos(i+1, j-1) && !visitar[i+1][j-1] ) {
+					visitar[i+1][j-1] = true;
+					int[] pos_aux = new int[2];
+					ant[i+1][j-1][0] = i;
+					ant[i+1][j-1][1] = j;
+					pos_aux[0] = i+1;
+					pos_aux[1] = j-1;
+					q.add(pos_aux);
+				}
+				if(PH.get_Tablero().enable_pos(i, j-1) && !visitar[i][j-1] ) {
+					visitar[i][j-1] = true;
+					int[] pos_aux = new int[2];
+					ant[i][j-1][0] = i;
+					ant[i][j-1][1] = j;
+					pos_aux[0] = i;
+					pos_aux[1] = j-1;
+					q.add(pos_aux);
+				}
+				if(PH.get_Tablero().enable_pos(i, j+1) && !visitar[i][j+1] ) {
+					visitar[i][j+1] = true;
+					int[] pos_aux = new int[2];
+					ant[i][j+1][0] = i;
+					ant[i][j+1][1] = j;
+					pos_aux[0] = i;
+					pos_aux[1] = j+1;
+					q.add(pos_aux);
+				}
+				if(PH.get_Tablero().enable_pos(i-1, j) && !visitar[i-1][j] ) {
+					visitar[i-1][j] = true;
+					int[] pos_aux = new int[2];
+					ant[i-1][j][0] = i;
+					ant[i-1][j][1] = j;
+					pos_aux[0] = i-1;
+					pos_aux[1] = j;
+					q.add(pos_aux);
+				}
+				if(PH.get_Tablero().enable_pos(i-1, j+1) && !visitar[i-1][j+1] ) {
+					visitar[i-1][j+1] = true;
+					int[] pos_aux = new int[2];
+					ant[i-1][j+1][0] = i;
+					ant[i-1][j+1][1] = j;
+					pos_aux[0] = i-1;
+					pos_aux[1] = j+1;
+					q.add(pos_aux);
+				}
+				if(PH.get_Tablero().enable_pos(i-1, j-1) && !visitar[i-1][j-1] ) {
+					visitar[i-1][j-1] = true;
+					int[] pos_aux = new int[2];
+					ant[i-1][j-1][0] = i;
+					ant[i-1][j-1][1] = j;
+					pos_aux[0] = i-1;
+					pos_aux[1] = j-1;
+					q.add(pos_aux);
+				}
+			}
+		}
+		return alCostat(i,j,ant,ini);
+		
+	}
+	
+	private boolean posValida(int x, int y) {
+		if (x >= 0 && y >= 0 && x < PH.getMida() && y < PH.getMida()) return true;
+		return false;
+	}
+	
+	//FUNCION QUE FUNCIONA
+	private int[] buscar_posicion(int valor) {
+		int[] pos = new int[2];
+		int min = PH.getMida()*PH.getMida();
+		for(int i = 0;  i < PH.getMida(); ++i) {
+			for(int j = 0; j < PH.getMida(); ++j){
+				int actual = PH.get_Tablero().getValorTauler(i, j);
+				if (actual <= min && actual > valor){
+					min = actual;
+					pos[0] = i;
+					pos[1] = j;
+				}
+			}
+		}
+		return pos;
+	}
+	
+	private int[] elmasLejos(int[]fin, int[]ini){
+		int[] pos = new int[2];
+		return pos;
+		
+	}
+	
+	public int[]posSeguent(int x,int y){
+		if(PH.get_Tablero().getSolucion_unica()) {
+			return posSeguent(x,y);
+		}
+		else {
+			int[] pos = new int[2];
+			int valor_inicial = PH.get_Tablero().getValorTauler(x, y);
+			System.out.println("VALOR INICIAL: "+valor_inicial);
+			int[] pos_ini = pos;
+			pos_ini[0] = x;
+			pos_ini[1] = y;
+			int[] pos_sig = buscar_posicion(valor_inicial);
+			if((PH.get_Tablero().getValorTauler(pos_sig[0], pos_sig[1]) - valor_inicial) <= 3){
+				pos = posicionConProbabilidad(pos_ini,pos_sig, valor_inicial);
+			}
+			else{
+				pos = elmasLejos(pos_sig,pos_ini);
+				System.out.println("HOLA");
+			}
+			System.out.println("POS SEGUENT: "+pos[0]+" "+pos[1]);
+			return pos;
+		}
+	}
+	
+	
+	public boolean vasBien(){
+		if(PH.get_Tablero().getSolucion_unica()){
+			for(int i = 0; i < PH.getMida(); ++i){
+				for(int j = 0; j < PH.getMida(); ++j){
+					if(PH.get_Tablero().getValorTauler(i, j) > 0){
+						if(PH.get_Tablero().getValorTauler(i, j) != PH.get_Tablero().getValorSolucio(i, j)){
+							System.out.println("VAS MAL");
+							return false;
+						}
+					}
+				}
+			}
+			System.out.println("VAS BIEN");
+			return true;
+		}
+		else {
+			Algorithm A = new Algorithm();
+			int pos[] = buscar_posicion(0);
+			Tablero T = PH.get_Tablero().copia_t();
+			/*boolean[] posats = PH.get_Tablero().getPosats();
+			boolean[] visitat = new boolean[PH.getMida()*PH.getMida()-PH.get_Tablero().getholes()];
+			visitat[0] = true;
+			for(int i = 0; i < visitat.length; ++i) visitat[i] = false;
+			*/
+			System.out.println("POS1: "+pos[0]+" "+pos[1]);
+			if (A.solver(pos[0], pos[1], 1, T)){
+				System.out.println("VAS BIEN");
+				return true;
+			}
+			else{
+				System.out.println("VAS MAL");
+				return false;
+			}
+		}
 	}
 	
 	/** Pre: Busqueda de candidatos

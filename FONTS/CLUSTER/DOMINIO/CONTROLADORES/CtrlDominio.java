@@ -364,6 +364,14 @@ public class CtrlDominio {
 		CTablero.cargar(id.substring(0, 8));
 		CPartida.setT(CTablero);
 	}
+	
+	public void setPista(int x, int y, int valor){
+		int[] pos = CJugar.posSeguent(x, y);
+	}
+	
+	public void vasBien(){
+		CJugar.vasBien();
+	}
 
 
 	//USUARIO

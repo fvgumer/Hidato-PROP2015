@@ -810,6 +810,13 @@ public class CtrlVista {
 			CDominio.guardarPuntuacion();
 		}
 		
+		public void setPista(int x, int y, int valor){
+			CDominio.setPista(x,y,valor);
+		}
+		
+		public void vasBien(){
+			CDominio.vasBien();
+		}
 
 }
 
