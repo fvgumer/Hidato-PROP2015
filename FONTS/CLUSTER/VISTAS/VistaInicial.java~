@@ -36,7 +36,7 @@ public class VistaInicial extends VistaPadreInicio {
 		t.setLocation(162, 119);
 		getContentPane().add(t);
 		
-		//DeclaraciÃ³n Boton "Entrar" y su funcion
+		//Declaración Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Entrar",50,200);
 		b1.setLocation(84, 283);
 		b1.addMouseListener(new MouseAdapter() {

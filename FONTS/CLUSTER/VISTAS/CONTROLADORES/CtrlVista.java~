@@ -238,7 +238,7 @@ public class CtrlVista {
 			VTAleatorio.setVisible(true);
 		}
 		/**
-		 * Listado de tablero diseÃ±ados para elegir
+		 * Listado de tablero diseñados para elegir
 		 */
 		public void elegirTdisenado(){
 			VTDisenado = new VistaTDisenado(this);

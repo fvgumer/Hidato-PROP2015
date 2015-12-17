@@ -157,12 +157,6 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		bPista = new BotonPartida("PISTA");
 		bPista.setBounds(583, 243, 125, 36);
 		getContentPane().add(bPista);
-		bPista.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				if(pSetC.isEnabled() && capClicat == false)
-					setPista(CV);
-			}
-		});
 		
 		/** BOTON RENDIRSE **/
 		bRendirse = new BotonPartida("RENDIRSE");
@@ -287,14 +281,9 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		lbl2.setFont(new Font("Arial Black", Font.PLAIN, 21));
 		getContentPane().add(lbl2);
 		
-		BotonPartida pCan = new BotonPartida("CANDIDATOS");
-		pCan.setBounds(445, 334, 125, 36);
-		getContentPane().add(pCan);
-		pCan.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				CV.vasBien();
-			}
-		});
+		BotonPartida botonPartida = new BotonPartida("CANDIDATOS");
+		botonPartida.setBounds(445, 334, 125, 36);
+		getContentPane().add(botonPartida);
 		
 		Texto jt = new Texto("Llevas:",400,400,20);
 		jt.setBounds(100, 424, 98, 33);
@@ -411,13 +400,6 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		}
 		
 	}
-	
-	private void setPista(CtrlVista CV){
-		//EN DATOS
-		int valor = Integer.parseInt(lbl.getText());
-		CV.setPista(iClicat,jClicat,valor);
-	}
-	
 	/**
 	 * Quitarcasilla
 	 * @param CV CtrlVista al que enviamos la informacion
