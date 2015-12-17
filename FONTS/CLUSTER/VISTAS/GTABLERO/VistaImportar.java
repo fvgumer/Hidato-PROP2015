@@ -16,7 +16,7 @@ import javax.swing.JButton;
 
 /**
  * En esta vista se muestra el tablero importado por el usuario mediante
- * la vista ElegirImportar. Se da la opciÃ³n de validar el tablero importado.
+ * la vista ElegirImportar. Se da la opción de validar el tablero importado.
  * @author Alex
  *
  */

@@ -30,7 +30,7 @@ public class VistaMenuPartida extends VistaPadreIniConBoton {
 		t.setLocation(179, 52);
 		getContentPane().add(t);
 		
-		//DeclaraciÃ³n Boton "Entrar" y su funcion
+		//Declaración Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Cargar Partida",50,120);
 		b1.setSize(400, 61);
 		b1.setLocation(159, 166);
