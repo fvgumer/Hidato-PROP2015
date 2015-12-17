@@ -101,16 +101,16 @@ public class Estadisticas implements Serializable{
 	}
 	
 	/**
-	 * Consultora de la puntuación total.
-	 * @return Puntuación total obtenida
+	 * Consultora de la puntuacion total.
+	 * @return Puntuacion total obtenida
 	 */
 	public int getPuntuacion() {
 		return puntuacionTotal;
 	}
 	
 	/**
-	 * Consultora del modo más jugado
-	 * @return Modo de juego más elegido
+	 * Consultora del modo mas jugado
+	 * @return Modo de juego mas elegido
 	 */
 	public int getModoMasJugado() {
 		int

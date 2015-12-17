@@ -364,6 +364,14 @@ public class CtrlDominio {
 		CTablero.cargar(id.substring(0, 8));
 		CPartida.setT(CTablero);
 	}
+	
+	public void setPista(int x, int y, int valor){
+		int[] pos = CJugar.posSeguent(x, y);
+	}
+	
+	public void vasBien(){
+		CJugar.vasBien();
+	}
 
 
 	//USUARIO
@@ -407,6 +415,14 @@ public class CtrlDominio {
 		CTablero.validar();
 		String[][] s = CTablero.get_solucion();
 		return s;
+	}
+	
+	/**
+	 * En el ctrlTablero esta cargado el tablero que queremos comprovar
+	 * @return Retorna si la solucion del tablero es unica.
+	 */
+	public boolean solucion_unica() {
+		return CTablero.solucion_unica();
 	}
 	
 	/**
@@ -548,7 +564,7 @@ public class CtrlDominio {
 	}
 	
 	/**
-	 * Operación que actualiza las estadisticas de un jugador tras una partida
+	 * Operacion que actualiza las estadisticas de un jugador tras una partida
 	 * @param jugador Nombre de dicho jugador
 	 * @param s Segundos jugados
 	 * @param p Punos obtenidos
@@ -569,7 +585,7 @@ public class CtrlDominio {
 	}
 	
 	/**
-	 * Operación que actualiza el ranking de un tablero tras una partida
+	 * Operacion que actualiza el ranking de un tablero tras una partida
 	 * @param t Nombre de dicho tablero
 	 * @param j Nombre del jugador
 	 * @param m Modo de juego

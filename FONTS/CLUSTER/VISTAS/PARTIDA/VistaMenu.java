@@ -22,7 +22,7 @@ public class VistaMenu extends VistaPadreInicio {
 		Titulo t = new Titulo("MENu PRINCIPAL",110,53);
 		getContentPane().add(t);
 		
-		//DeclaraciÃ³n Boton "Entrar" y su funcion
+		//Declaración Boton "Entrar" y su funcion
 		Botones b1 = new Botones("Usuario",50,120);
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {

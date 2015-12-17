@@ -238,7 +238,7 @@ public class CtrlVista {
 			VTAleatorio.setVisible(true);
 		}
 		/**
-		 * Listado de tablero diseÃ±ados para elegir
+		 * Listado de tablero diseñados para elegir
 		 */
 		public void elegirTdisenado(){
 			VTDisenado = new VistaTDisenado(this);
@@ -486,6 +486,14 @@ public class CtrlVista {
 			VGTValidar = new VistaValidar(this);
 			VGTValidar.set_tablero(s);
 			VGTValidar.setVisible(true);
+		}
+		
+		/**
+		 * Se calcula si el tablero actual en las vistas y en el ctrlTablero tiene solucion unica
+		 * @return Retorna true si la solucion al tablero es unica
+		 */
+		public boolean es_unica() {
+			return CDominio.solucion_unica();
 		}
 		
 		public void guardar_tablero(String[][] t) {
@@ -802,6 +810,13 @@ public class CtrlVista {
 			CDominio.guardarPuntuacion();
 		}
 		
+		public void setPista(int x, int y, int valor){
+			CDominio.setPista(x,y,valor);
+		}
+		
+		public void vasBien(){
+			CDominio.vasBien();
+		}
 
 }
 
