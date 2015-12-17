@@ -4,7 +4,7 @@ import java.io.Serializable;
 import G45.Tablero_comp;
 
 /**
- * Esta clase hereda las funcionalidades de Tablero_comp. AÃ¯Â� Â½adimos nuevos parametros y metodos
+ * Esta clase hereda las funcionalidades de Tablero_comp. anyadimos nuevos parametros y metodos
  * en la clase por tal de que el tablero se adapte a un tablero del juego Hidato.
  * @author Alex
  *

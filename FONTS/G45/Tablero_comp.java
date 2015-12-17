@@ -81,7 +81,7 @@ public class Tablero_comp implements Serializable {
        
         /**
          * Esborra n dels candidats de la casella que hi
-         * ha a la posiciï� ½ x,y del tauler
+         * ha a la posicion x,y del tauler
          */
         public void esborrarCandidatTauler(int x, int y, int n)
         {
