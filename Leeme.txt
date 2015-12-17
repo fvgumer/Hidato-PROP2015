@@ -1,1 +1,8 @@
-Es importante que antes de ejecutar el programa, en la carpeta del ejecutable exista una carpeta nombrada "Tableros" aunque este vacia.
+Para ejecutar:
+-make all
+-make libExtract
+-cd ./classes
+-java CLUSTER.VISTAS.Main
+
+Para borrar:
+-Make clean
