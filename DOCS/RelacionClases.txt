@@ -1,5 +1,7 @@
 Entre todos:
 - SuperDriver.java
+- CtrlDominio.java
+- CtrlVista.java
 
 Alex Catala:
 - Casilla.java
@@ -7,6 +9,14 @@ Alex Catala:
 - Tablero.java
 - CtrlTablero.java
 - Driver_ctrl_tablero.java
+- VistaBorrar.java
+- VistaBorrarConfirmar.java
+- VistaCaracteristicasGT.java
+- VistaCrearManual.java
+- VistaElegirImportar.java
+- VistaGestionTablero.java
+- VistaImportar.java
+- VistaValidar.java
 
 Joel Codina:
 - Usuario_comp.java
