@@ -64,17 +64,15 @@ public class PartidaResolver extends VistaPatronInfo {
 			b1.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.dejarJugar();
-					Salir();
 					CV.guardarPuntuacion();
-					
+					Salir();
 				}
 			});
 			b2.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.entrarAMenu();
-					Salir();
 					CV.guardarPuntuacion();
-					
+					Salir();
 				}
 			});
 		}

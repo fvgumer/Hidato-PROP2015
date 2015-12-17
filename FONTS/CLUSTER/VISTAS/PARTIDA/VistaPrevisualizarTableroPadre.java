@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -29,7 +28,6 @@ public class VistaPrevisualizarTableroPadre extends VPBotonSiguiente {
 	CtrlVista CV2;
 	String txt;
 	JTextField[][] casilla;
-	JScrollPane scroll;
 	protected String[][] mapa;
 
 	public VistaPrevisualizarTableroPadre(final CtrlVista CV) {
@@ -39,13 +37,8 @@ public class VistaPrevisualizarTableroPadre extends VPBotonSiguiente {
 		getContentPane().add(t);
 		
 		list = new JList<String>();
-		//list.setBounds(64, 126, 256,182);
-		//getContentPane().add(list);
-		
-		scroll = new JScrollPane();
-		scroll.setViewportView(list);
-		scroll.setBounds(64, 126, 256,182);
-		getContentPane().add(scroll);
+		list.setBounds(64, 126, 256,182);
+		getContentPane().add(list);
 		
 		//Previsualicacion del tablero
 		tablero = new JPanel();

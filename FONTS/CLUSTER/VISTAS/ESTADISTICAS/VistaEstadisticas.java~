@@ -64,7 +64,7 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 	
 	public void setTitle(String user){
 		this.user = user;
-		String titulo = String.format("EstadÃ­sticas de juego del usuario %s", user);
+		String titulo = String.format("Estadísticas de juego del usuario %s", user);
 		Texto t = new Texto(titulo,40,43,15);
 		t.setSize(535, 37);
 		getContentPane().add(t);
@@ -73,7 +73,7 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 	public void displayEst() {
 		String s = String.format("El usuario %s ha jugado un total de %d tableros diferentes "
 				+ "en un total de %d horas, %d minutos y %d segundos, obteniendo una"
-				+ " puntuaciÃ³n de %d.\n\n",user,part,h,m,seg,punt);
+				+ " puntuación de %d.\n\n",user,part,h,m,seg,punt);
 		if (modo != "ninguno") s = String.format(s+ "El modo de juego preferido por este"
 				+ " usuario es el %s.",modo);
 		Texto t = new Texto(s,40,89,14);

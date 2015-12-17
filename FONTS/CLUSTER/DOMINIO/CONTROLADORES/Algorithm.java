@@ -1,7 +1,6 @@
 package CLUSTER.DOMINIO.CONTROLADORES;
 
 import java.util.*;
-
 import CLUSTER.DOMINIO.CLASES.Tablero;
 import CLUSTER.DOMINIO.CLASES.Casilla;
 import CLUSTER.DOMINIO.CLASES.Temporizador;
