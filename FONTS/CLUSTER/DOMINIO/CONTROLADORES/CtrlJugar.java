@@ -714,8 +714,7 @@ public class CtrlJugar {
 		if (!incorrecto) {
 			PH.set_estado(ACABADO);
 		}
-		if (!incorrecto) {GuardarPuntuacion(); 
-		System.out.print("hola soy ctrljugar/resolver y estoy llamando a GuardarPuntuacion adios byee\n");}
+		if (!incorrecto) GuardarPuntuacion();
 		
 		return !incorrecto;
 	}
@@ -758,7 +757,6 @@ public class CtrlJugar {
 		CR.anadirResultado(idd,PH.getUsuario().consultar_nombre(), m, d1, PH.get_puntuacion());
 		CE.tableroJugado(PH.getUsuario().consultar_nombre(),idd);
 
-		System.out.print("hola soy ctrljugar y estoy llamando a Ctrlestadisticas adiooos");
 		CE.partidaTerminada(PH.getUsuario().consultar_nombre(),T1.obtMinuto()*60+T1.obtSegundo(),PH.get_puntuacion(),idd,PH.get_modo());
 	}
 

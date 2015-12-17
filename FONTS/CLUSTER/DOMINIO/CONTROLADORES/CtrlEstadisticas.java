@@ -89,7 +89,6 @@ public class CtrlEstadisticas {
 	 * @param modo Modo de juego.
 	 */
 	public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
-		System.out.print("jugador: " + jugador +"segundos: "+s+"puntuac: "+p+"tablero: " +tablero+"modo: "+modo);
 		E = GE.cargar(jugador);
 		E.incrementarTiempo(s);
 		E.incrementarPuntuacion(p);
