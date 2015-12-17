@@ -269,7 +269,7 @@ public class CtrlVista {
 		 * @return mapa de Strings
 		 * que muestra el contenido del tablero referenciado
 		 */
-		private String[][] getInfoTablero(String id){
+		private String[][] getInfoTablero(String id) {
 			return CDominio.getInfoTablero(id);
 		}
 		/**
