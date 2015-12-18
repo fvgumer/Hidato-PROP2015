@@ -1,0 +1,4 @@
+Me he dado cuenta de un error que solo me pasa en el ubuntu de mi portatil, realmente es raro ya que utilizo el mismo metodo para varias vistas.
+El caso es que al importar varios tableros en una misma ejecucion del programa, a la vista en que se muestra el tablero importado siempre se muestra
+el primero importado. Ahora bien, si le das a validar veras que el tablero que querias importar es el correcto y se mostrara su solucion.
+Este error no me pasa ni en windows ni tampoco paso el otro dia en tu despacho, asi que espero que no ocurra ahora ;)
