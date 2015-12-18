@@ -135,7 +135,7 @@ public class CtrlPartida {
 		return ids;
 	}
 	
-	private String[][] pasarAMapa(Tablero T) {
+	public String[][] pasarAMapa(Tablero T) {
 		String[][] map= new String[T.getMida()][T.getMida()];
 		for (int i = 0; i < T.getMida(); ++i) {
 			for (int j = 0; j < T.getMida(); ++j){
@@ -147,6 +147,20 @@ public class CtrlPartida {
 		}
 		return map;
 	}
+	
+	public String[][] pasarAMapaNum(Tablero T) {
+		String[][] map= new String[T.getMida()][T.getMida()];
+		for (int i = 0; i < T.getMida(); ++i) {
+			for (int j = 0; j < T.getMida(); ++j){
+					int c = T.getValorTauler(i, j);
+					if (c == -1) map[i][j] = "-1";
+					else if (c > 0) map[i][j] = Integer.toString(c);
+					else map[i][j] = "0";
+			}
+		}
+		return map;
+	}
+	
 	
 	public int casillasFaltan(String[][] m){
 		int faltan = 0;
@@ -180,9 +194,7 @@ public class CtrlPartida {
 	
 	public boolean esCasillaJugable(int x, int y) {
 		if (PH.get_Tablero().enable_pos(x, y)) {
-			if (!PH.get_Tablero().get_casilla(x, y).isPor_defecto()) {
 				return true;
-			}
 		}
 		return false;
 	}
@@ -284,6 +296,7 @@ public class CtrlPartida {
 	}
 	
 	public String[][] getMapaVacio(){
+		PH.getTsinnumeros().print();
 		return pasarAMapa(PH.getTsinnumeros());
 	}
 	public void setT(CtrlTablero CCT){

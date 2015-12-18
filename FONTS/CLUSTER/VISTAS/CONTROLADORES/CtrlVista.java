@@ -300,12 +300,10 @@ public class CtrlVista {
 		 */
 		public void comenzarPartida(){
 			CDominio.comenzarPartida();
-			int i = 0;
-			if (VTiempo.isVisible()) i = VTiempo.getTiempo();
+			int i = VTiempo.getTiempo();
 			CDominio.iniciar_tiempo(i,modoJ);
 			VPartidaEnJuego = new VistaPartidaEnJuego(this,modoJ);
 			VPartidaEnJuego.setVisible(true);
-			CDominio.inicialitzarCandidats();
 		}
 		/**
 		 * Entrar al Menu de elegir Modo Partida
@@ -713,7 +711,7 @@ public class CtrlVista {
 		public void setCasillaClicada(int x, int y) {
 			if (CDominio.esCasillaJugable(x,y)) {
 				if(!VPartidaEnJuego.esClicat(x,y))
-				VPartidaEnJuego.setCasillaClicada(x,y);
+				VPartidaEnJuego.setCasillaClicada(x,y,this);
 				else VPartidaEnJuego.desclicar(x,y);
 			}
 		}
@@ -810,12 +808,24 @@ public class CtrlVista {
 			CDominio.guardarPuntuacion();
 		}
 		
-		public void setPista(int x, int y, int valor){
-			CDominio.setPista(x,y,valor);
+		public void setPista(int x, int y){
+			int[] pos = CDominio.setPista(x,y);
+			if(pos == null) System.out.println("NO HAY POSIBILIDAD DE SEGUIR");
+			VPartidaEnJuego.setCasillaPista(pos);
 		}
 		
 		public void vasBien(){
-			CDominio.vasBien();
+			VistaExisteSolucion VExisteSolucion= new VistaExisteSolucion(this,CDominio.vasBien());
+			VExisteSolucion.setVisible(true);
+
+		}
+		
+		public int getTiempoMax(){
+			return VTiempo.getTiempo();
+		}
+		
+		public boolean tiempoAcabado(){
+			return CDominio.tiempoAcabado();
 		}
 
 }

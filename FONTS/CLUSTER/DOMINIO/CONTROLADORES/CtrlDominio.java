@@ -180,6 +180,10 @@ public class CtrlDominio {
 		return CJugar.obtSegundos();
 	}
 	
+	public boolean tiempoAcabado(){
+		return CJugar.tiempoAcabado();
+	}
+	
 	/**
 	 * Lista Tableros de todos los usuarios
 	 * @return Retorna una cadena de String que contiene en cada 
@@ -197,16 +201,7 @@ public class CtrlDominio {
 	public String[][] getMapaActual(){
 		return CPartida.getMapaActual();
 	}
-	
-	/**
-	 * Inicializar Canidatos
-	 * Post: Se inicializan los candidatos del tablero en que
-	 * se esta jugando
-	 */
-	public void inicialitzarCandidats(){
-		CJugar.inicialitzarCandidats();
-	}
-	
+
 	/**
 	 * Consultar valor del tablero Actual
 	 * @param x Posicion x del tablero
@@ -365,12 +360,12 @@ public class CtrlDominio {
 		CPartida.setT(CTablero);
 	}
 	
-	public void setPista(int x, int y, int valor){
-		int[] pos = CJugar.posSeguent(x, y);
+	public int[] setPista(int x, int y){
+		return CJugar.posSeguent(x, y);
 	}
 	
-	public void vasBien(){
-		CJugar.vasBien();
+	public boolean vasBien(){
+		return CJugar.vasBien();
 	}
 
 

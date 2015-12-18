@@ -39,6 +39,7 @@ public class VistaElegirTiempo extends VistaPadreIniConBoton {
 			b1.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					tiempo = 1;
+					CV.entrarAPreparadoParaJugar();
 					Salir();
 				}
 			});
@@ -50,6 +51,7 @@ public class VistaElegirTiempo extends VistaPadreIniConBoton {
 			b2.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					tiempo = 2;
+					CV.entrarAPreparadoParaJugar();
 					Salir();
 				}
 			});
@@ -61,6 +63,7 @@ public class VistaElegirTiempo extends VistaPadreIniConBoton {
 			b3.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					tiempo = 3;
+					CV.entrarAPreparadoParaJugar();
 					Salir();
 				}
 			});
@@ -72,6 +75,7 @@ public class VistaElegirTiempo extends VistaPadreIniConBoton {
 			b4.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					tiempo = 4;
+					CV.entrarAPreparadoParaJugar();
 					Salir();
 				}
 			});

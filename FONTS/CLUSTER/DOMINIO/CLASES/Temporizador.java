@@ -146,7 +146,7 @@ public class Temporizador implements ActionListener,Serializable {
 		 * principalmente contar o decrementar los segundos
 		 */
 		public void actionPerformed(ActionEvent e) {
-			if (modo == 0 || modo == 1) { //MODO CLASICO Y EXTREMO
+			if (modo == 0 || modo == 2) { //MODO CLASICO Y EXTREMO
 				if (!congelado){
 					segundos++;
 					if (segundos == 60) {
@@ -155,7 +155,7 @@ public class Temporizador implements ActionListener,Serializable {
 					}
 					//MODO EXTREMO
 		    	  	if (modo == 2 && min_max == minutos && segundos ==0) {
-		    	  		inicializar_tablero = true;
+		    	  		acabar = true;
 		    	  	}
 		    	  	if (modo == 3 && minutos == 0 && segundos == 30) {
 		    	  		timer.stop();
@@ -166,13 +166,15 @@ public class Temporizador implements ActionListener,Serializable {
 			else {
 				if (!congelado){
 					segundos--;
+					if (minutos == 0 && segundos == 0) { //TIEMPO ACABADO
+		    	  		acabar = true;
+		    	  		timer.stop();
+		    	  	}
 					if (segundos <= 0) {
 							minutos--; 
 							segundos=59;  
 					}
-		    	  	if (minutos == 0 && segundos == 0) { //TIEMPO ACABADO
-		    	  		acabar = true;
-		    	  	}
+		    	  	
 				}
 			}
 			

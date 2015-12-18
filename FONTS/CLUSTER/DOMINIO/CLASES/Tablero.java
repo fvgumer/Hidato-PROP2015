@@ -466,4 +466,8 @@ public class Tablero extends Tablero_comp implements Serializable{
 	public boolean[] getPosats(){
 		return posats;
 	}
+	
+	public Casilla[][] getSol(){
+		return solucio;
+	}
 }

@@ -45,145 +45,12 @@ public class CtrlJugar {
 	public void comenzar_PartidaCargada(CtrlPartida P) {
 		comenzar_partida(P);
 		T1.reempezar(PH.getTiempo(),PH.get_modo(), PH.getTmax());
-		T1.iniciar();
 	}
 	
 	public void setCasillasFaltan(int c){
 		casillas_faltan = c;
 	}
 	
-	/**
-	 * Retorna la primera casilla por donde ha venido
-	 * @param x
-	 * @param y
-	 * @param ant
-	 * @param ini
-	 * @return
-	 */
-	private int[] alCostat(int x, int y, int[][][] ant, int[] ini) {
-		boolean acabat = false;
-		System.out.println("HE VINGUT PER2: "+x+" "+y);
-		int[]seg = new int[2];
-		while(!acabat){
-			if(ant[x][y][0] == ini[0] && ant[x][y][1]== ini[1]) acabat = true;
-			else {
-				x= ant[x][y][0];
-				y= ant[x][y][1];
-			}
-		}
-		seg[0] = x;
-		seg[1] = y;
-		System.out.println("HE VINGUT PER: "+x+" "+y);
-		return seg;
-	}
-	 
-	 
-	
-	private int[] posicionConProbabilidad(int[] ini, int[] seg, int valor, boolean[] posats) {
-		Queue<int[]> q = new LinkedList<int[]>();
-		int[][][] ant = new int[PH.getMida()][PH.getMida()][2];
-		boolean[][] visitar = new boolean[PH.getMida()][PH.getMida()];
-		for(int i = 0; i < PH.getMida(); ++i) {
-			for(int j = 0; j < PH.getMida(); ++j) {
-				visitar[i][j] = false;
-			}
-		}
-		//TRATAR EL PRIMERO
-		int m = PH.getMida();
-		int[] pos = ini;
-		q.add(pos); //Anadimos a la cola
-		visitar[ini[0]][ini[1]] = true;
-		int i = 0;
-		int j = 0;
-		//COMENZAR A TRATAR LOS OTROS
-		while(!q.isEmpty()) {
-			int[] pos2 = q.poll();
-			i = pos2[0];
-			j = pos2[1];
-			if(i == seg[0] && j == seg[1]) break; //SI LO HEMOS ENCONTRADO PARAMOS
-			else { //SI NO SEGUIMOS MIRANDO
-				if(PH.get_Tablero().enable_pos(i+1, j) && !visitar[i+1][j] && !posats[(i+1)*m+j]) {
-					visitar[i+1][j] = true;
-					int[] pos_aux = new int[2];
-					ant[i+1][j][0] = i;
-					ant[i+1][j][1] = j;
-					pos_aux[0] = i+1;
-					pos_aux[1] = j;
-					q.add(pos_aux);
-				}
-				if(PH.get_Tablero().enable_pos(i+1, j+1) && !visitar[i+1][j+1] && !posats[(i+1)*m+j+1] ) {
-					visitar[i+1][j+1] = true;
-					int[] pos_aux = new int[2];
-					ant[i+1][j+1][0] = i;
-					ant[i+1][j+1][1] = j;
-					pos_aux[0] = i+1;
-					pos_aux[1] = j+1;
-					q.add(pos_aux);
-				}
-				if(PH.get_Tablero().enable_pos(i+1, j-1) && !visitar[i+1][j-1]&& !posats[(i+1)*m+j-1] ) {
-					visitar[i+1][j-1] = true;
-					int[] pos_aux = new int[2];
-					ant[i+1][j-1][0] = i;
-					ant[i+1][j-1][1] = j;
-					pos_aux[0] = i+1;
-					pos_aux[1] = j-1;
-					q.add(pos_aux);
-				}
-				if(PH.get_Tablero().enable_pos(i, j-1) && !visitar[i][j-1] && !posats[(i)*m+j-1] ) {
-					visitar[i][j-1] = true;
-					int[] pos_aux = new int[2];
-					ant[i][j-1][0] = i;
-					ant[i][j-1][1] = j;
-					pos_aux[0] = i;
-					pos_aux[1] = j-1;
-					q.add(pos_aux);
-				}
-				if(PH.get_Tablero().enable_pos(i, j+1) && !visitar[i][j+1] && !posats[(i)*m+j+1]) {
-					visitar[i][j+1] = true;
-					int[] pos_aux = new int[2];
-					ant[i][j+1][0] = i;
-					ant[i][j+1][1] = j;
-					pos_aux[0] = i;
-					pos_aux[1] = j+1;
-					q.add(pos_aux);
-				}
-				if(PH.get_Tablero().enable_pos(i-1, j) && !visitar[i-1][j] && !posats[(i-1)*m+j]) {
-					visitar[i-1][j] = true;
-					int[] pos_aux = new int[2];
-					ant[i-1][j][0] = i;
-					ant[i-1][j][1] = j;
-					pos_aux[0] = i-1;
-					pos_aux[1] = j;
-					q.add(pos_aux);
-				}
-				if(PH.get_Tablero().enable_pos(i-1, j+1) && !visitar[i-1][j+1] && !posats[(i-1)*m+j+1]) {
-					visitar[i-1][j+1] = true;
-					int[] pos_aux = new int[2];
-					ant[i-1][j+1][0] = i;
-					ant[i-1][j+1][1] = j;
-					pos_aux[0] = i-1;
-					pos_aux[1] = j+1;
-					q.add(pos_aux);
-				}
-				if(PH.get_Tablero().enable_pos(i-1, j-1) && !visitar[i-1][j-1] && !posats[(i-1)*m+j-1] ) {
-					visitar[i-1][j-1] = true;
-					int[] pos_aux = new int[2];
-					ant[i-1][j-1][0] = i;
-					ant[i-1][j-1][1] = j;
-					pos_aux[0] = i-1;
-					pos_aux[1] = j-1;
-					q.add(pos_aux);
-				}
-			}
-		}
-		return alCostat(i,j,ant,ini);
-		
-	}
-	
-	private boolean posValida(int x, int y) {
-		if (x >= 0 && y >= 0 && x < PH.getMida() && y < PH.getMida()) return true;
-		return false;
-	}
 	
 	//FUNCION QUE FUNCIONA
 	private int[] buscar_posicion(int valor) {
@@ -202,80 +69,96 @@ public class CtrlJugar {
 		return pos;
 	}
 	
-	
-	
-	/*
-	private LinkedList<int[]> camints(Tablero T, int[] ini, int[] fin) {
+	public boolean posValida(int x,int y){
+		if(x>=0 && y >= 0 && x < PH.getMida() && y < PH.getMida()) {
+			return true;
+		}
+		return false;
 	}
-	*/
 	
 	
+	public int[] posSeg(String[][] TSol, int x, int y, int valor){
+		int[] posSeg = new int[2];
+		++valor;
 	
-	
-	private int[] elmasLejos(int[]fin, int[]ini){
-		int[] pos = new int[2];
-		return pos;
+		String v = Integer.toString(valor);
+		if(posValida(x+1,y) && TSol[x+1][y].equals(v)) {
+			++x;
+		}
+		else if (posValida(x+1,y+1) && TSol[x+1][y+1].equals(v)){
+			++x;
+			++y;
+		}
+		else if (posValida(x+1,y-1) && TSol[x+1][y-1].equals(v)){
+			++x;--y;
+		}
+		else if (posValida(x,y+1) && TSol[x][y+1].equals(v)){
+			++y;
+		}
+		else if (posValida(x,y-1) && TSol[x][y-1].equals(v)){
+			--y;
+		}
+		else if (posValida(x-1,y-1) && TSol[x-1][y-1].equals(v)){
+			--x;--y;
+		}
+		else if (posValida(x-1,y+1) && TSol[x-1][y+1].equals(v)){
+			--x;++y;
+		}
+
+		else if (posValida(x-1,y) && TSol[x-1][y].equals(v)){
+			--x;
+		}
+		posSeg[0] = x;
+		posSeg[1] = y;
+		return posSeg;
 		
 	}
 	
 	public int[]posSeguent(int x,int y){
+		CtrlPartida CP = new CtrlPartida();
+		int valor = PH.get_Tablero().getValorTauler(x, y);
 		if(PH.get_Tablero().getSolucion_unica()) {
-			return posSeguent(x,y);
+			return posSeg(PH.get_Tablero().getSolucion(),x,y,valor);
 		}
 		else {
-			int[] pos = new int[2];
-			int valor_inicial = PH.get_Tablero().getValorTauler(x, y);
-			System.out.println("VALOR INICIAL: "+valor_inicial);
-			int[] pos_ini = pos;
-			pos_ini[0] = x;
-			pos_ini[1] = y;
-			int[] pos_sig = buscar_posicion(valor_inicial);
-			if((PH.get_Tablero().getValorTauler(pos_sig[0], pos_sig[1]) - valor_inicial) <= 3){
-				pos = posicionConProbabilidad(pos_ini,pos_sig, valor_inicial, PH.get_Tablero().getPosats());
+
+			Tablero T = PH.get_Tablero().copia_t();
+			String[][] map = CP.pasarAMapaNum(T);
+			CtrlTablero CT = new CtrlTablero();
+			CT.set_tablero(map, false);
+			if(CT.validar()){
+				PH.get_Tablero().set_solucio(CT.getSol());
+				return posSeg(PH.get_Tablero().getSolucion(),x,y,valor);
 			}
-			else{
-				pos = elmasLejos(pos_sig,pos_ini);
-				System.out.println("HOLA");
-			}
-			System.out.println("POS SEGUENT: "+pos[0]+" "+pos[1]);
-			return pos;
+			return null;
 		}
 	}
-	
-	
+
 	public boolean vasBien(){
 		if(PH.get_Tablero().getSolucion_unica()){
 			for(int i = 0; i < PH.getMida(); ++i){
 				for(int j = 0; j < PH.getMida(); ++j){
 					if(PH.get_Tablero().getValorTauler(i, j) > 0){
 						if(PH.get_Tablero().getValorTauler(i, j) != PH.get_Tablero().getValorSolucio(i, j)){
-							System.out.println("VAS MAL");
 							return false;
 						}
 					}
 				}
 			}
-			System.out.println("VAS BIEN");
 			return true;
 		}
 		else {
-			Algorithm A = new Algorithm();
-			int pos[] = buscar_posicion(0);
 			Tablero T = PH.get_Tablero().copia_t();
-			/*boolean[] posats = PH.get_Tablero().getPosats();
-			boolean[] visitat = new boolean[PH.getMida()*PH.getMida()-PH.get_Tablero().getholes()];
-			visitat[0] = true;
-			for(int i = 0; i < visitat.length; ++i) visitat[i] = false;
-			*/
-			System.out.println("POS1: "+pos[0]+" "+pos[1]);
-			Timer timer = new Timer();
-			A.asociarTimer(timer);
-			if (A.solver(pos[0], pos[1], 1, T)){
-				System.out.println("VAS BIEN");
+			CtrlPartida CP = new CtrlPartida();
+			
+			String[][] map = CP.pasarAMapaNum(T);
+			CtrlTablero CT = new CtrlTablero();
+			CT.set_tablero(map, false);
+			if(CT.validar()){
+				PH.get_Tablero().set_solucio(CT.getSol());
 				return true;
 			}
 			else{
-				System.out.println("VAS MAL");
 				return false;
 			}
 		}
@@ -407,44 +290,6 @@ public class CtrlJugar {
 		}
 	}
 	
-	public void Sabercandidats(int x, int y) {
-		if(PH.get_Tablero().enable_pos(x, y)) {
-			boolean[] candidats = PH.get_Tablero().get_casilla(x, y).getCandidatos();
-			System.out.println("CANDIDATS DE ("+ x+","+y+")");
-			for (int i = 0; i < candidats.length; ++i) {
-					if(candidats[i])System.out.println(i+1);
-			}
-		}
-	}
-	/**
-	 * Inicialitza los candidatos de todas las casillas a partir
-	 * del tablero inicial
-	 */
-	public void inicialitzarCandidats(){
-		boolean[] posats = PH.get_Tablero().getPosats();
-		boolean[] candidats = new boolean[posats.length];
-		//NO ES POT CAP
-		for(int i = 0; i < posats.length; ++i) {
-			if(!posats[i]) candidats[i] = true;
-			else
-				candidats[i] = false;
-		}
-		
-		//INICIALIZA TODO A FALSE
-		for(int i = 0; i < PH.getMida(); ++i) {
-			for(int j = 0; j < PH.getMida(); ++j){
-				PH.get_Tablero().get_casilla(i, j).setCandidatos(candidats);
-			}
-		}
-		for(int i = 0; i < PH.getMida(); ++i) {
-			for(int j = 0; j < PH.getMida(); ++j){
-				if (PH.get_Tablero().enable_pos(i, j)){
-					assignar_candidat(i,j,PH.get_Tablero());
-				}
-				
-			}
-		}
-	}
 	/**Rendirse
 	 * 
 	 * Se acaba la partida, se puestra la solucion por pantalla 
@@ -554,8 +399,8 @@ public class CtrlJugar {
 	public void iniciar_tiempo(int min, int m) {
 		T1 = new Temporizador();
 		T1.inicializar(min,m);
-		T1.iniciar();
 		PH.set_estado(GAME);
+		T1.iniciar();
 		parar = false;
 	}
 	
@@ -576,6 +421,9 @@ public class CtrlJugar {
 		return T1.obtSegundo();
 	}
 	
+	public boolean tiempoAcabado(){
+		return T1.acabar();
+	}
 	
 	/**Reiniciar la partida
 	 * Se reinicia el tablero, el temporizador y su puntuacion para poder volver a comenzar
@@ -672,6 +520,7 @@ public class CtrlJugar {
 	 */
 	private boolean resolucion(int casillastotales, int casillasMiradas, int x, int y) {
 		if (casillasMiradas <= casillastotales) {
+			CtrlPartida CT = new CtrlPartida();
 			if (estaAlLado(PH.get_Tablero(),x, y,casillasMiradas)) {
 				++casillasMiradas;
 				return resolucion(casillastotales,casillasMiradas,nx,ny);
@@ -707,9 +556,7 @@ public class CtrlJugar {
 				}
 		}
 		else {
-			int pos[] = getPrimero(PH.get_Tablero());
-			int casillastotales = PH.getMida()*PH.getMida() - PH.getholes();
-			incorrecto = resolucion(casillastotales, 2, pos[0], pos[1]);
+			incorrecto = resolverTablero(PH.get_Tablero());
 		}
 		if (!incorrecto) {
 			PH.set_estado(ACABADO);
@@ -718,6 +565,13 @@ public class CtrlJugar {
 		
 		return !incorrecto;
 	}
+	
+	public boolean resolverTablero(Tablero T) {
+		int pos[] = getPrimero(T);
+		int casillastotales = T.getMida()*T.getMida() - T.getholes();
+		return resolucion(casillastotales, 2, pos[0], pos[1]);
+	}
+		
 	
 	/**
 	 * Posicion del tablero en que se encuentra en numero 1

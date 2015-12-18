@@ -36,12 +36,14 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	private JPanel taula;
 	private  CasillaTablero[][] casilla;
 	private  int mida, iClicat, jClicat;
+	private int iVerd,jVerd;
+	private boolean enVerd;
 	private  boolean capClicat;
 	private  String v;
 	private  int modoJ;
 	private  int posLabel;
 	private  BotonPartida bPausa,bGuardar,bSalir,bResolver,
-	bRendirse, bPista, pBorrowC, pSetC;
+	bRendirse, bPista, pBorrowC, pSetC, pCan;
 	private Label lbl2,lbl;
 	private CtrlVista CV2;
 	private boolean stop;
@@ -93,6 +95,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		bPista.setEnabled(false);
 		pBorrowC.setEnabled(false);
 		pSetC.setEnabled(false);
+		pCan.setEnabled(false);
 	}
 	/**
 	 * Dejar clicar
@@ -107,6 +110,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		bPista.setEnabled(true);
 		pBorrowC.setEnabled(true);
 		pSetC.setEnabled(true);
+		pCan.setEnabled(true);
 	}
 
 	/**
@@ -135,7 +139,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 				casilla[i][j].setText(tablero[i][j]);
 				casilla[i][j].setEditable(false);
 				//Si forat o inicial, no se podra jugar
-				if (!CV.esCasillaValida(i, j)) casilla[i][j].setEnabled(false);
+				if (!CV.esCasillaValida(i, j)) casilla[i][j].setForeground(new Color(60, 179, 113));
 				taula.add(casilla[i][j]);
 			}
 		}
@@ -159,7 +163,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(bPista);
 		bPista.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				if(pSetC.isEnabled() && capClicat == false)
+				if(pSetC.getText() != " " && pSetC.getText() != "X" && !enVerd)
 					setPista(CV);
 			}
 		});
@@ -219,7 +223,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		getContentPane().add(pSetC);
 		pSetC.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				if(pSetC.isEnabled() && capClicat == false)
+				if(capClicat == false)
 				setIntroducirCasilla(CV);
 			}
 		});
@@ -250,8 +254,15 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 			}
 		});
 		
-
-		
+		/** BOTON SI EXISTE SOLUCION **/
+		pCan = new BotonPartida("SOLUCION?");
+		pCan.setBounds(445, 334, 125, 36);
+		getContentPane().add(pCan);
+		pCan.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				CV.vasBien();
+			}
+		});
 
 		Label up= new Label("^");
 		up.setFont(new Font("Century Gothic", Font.BOLD, 26));
@@ -287,14 +298,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 		lbl2.setFont(new Font("Arial Black", Font.PLAIN, 21));
 		getContentPane().add(lbl2);
 		
-		BotonPartida pCan = new BotonPartida("CANDIDATOS");
-		pCan.setBounds(445, 334, 125, 36);
-		getContentPane().add(pCan);
-		pCan.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				CV.vasBien();
-			}
-		});
+		
 		
 		Texto jt = new Texto("Llevas:",400,400,20);
 		jt.setBounds(100, 424, 98, 33);
@@ -325,6 +329,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 			timer.start();
 		}
 		else if (modo == 2) {
+			stop = false;
 			timer = new Timer(1000,temps_maxim2);
 			timer.start();
 			noDejarClicar();
@@ -333,9 +338,10 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	
 	ActionListener temps_maxim = new ActionListener() {
 	      public void actionPerformed(ActionEvent evt) {
-	    	  if(modoJ == 1 && CV2.obtMinutos() == 1 && stop)  {
+	    	  if(modoJ == 1  && CV2.tiempoAcabado())  {
 	    		  stop = true;
 	    		  noDejarClicar();
+	    		  CV2.rendirse();
 	    	  }
 	    	  else {
 	    	  Jmin.setText(Integer.toString(CV2.obtMinutos()));
@@ -346,7 +352,7 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	  
 	  ActionListener temps_maxim2 = new ActionListener() {
 	      public void actionPerformed(ActionEvent evt) {
-	    	  if(CV2.obtMinutos() == 1 && !stop)  {
+	    	  if(CV2.tiempoAcabado() && !stop)  {
 	    		  DejarClicar();
 	    		  setMapa(CV2.getMapaVacio());
 	    		  stop = true;
@@ -372,13 +378,13 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	/**
 	 * Marcar casilla como clicada
 	 */
-	public void setCasillaClicada(int x, int y){
-		if (!capClicat())
-			casilla[iClicat][jClicat].setBackground(new Color(255, 250, 240));
-		iClicat = x;
-		jClicat = y;
-		capClicat=false;
-		casilla[x][y].setBackground(new Color(250, 128, 114));
+	public void setCasillaClicada(int x, int y,CtrlVista CV){
+			if (!capClicat())
+				casilla[iClicat][jClicat].setBackground(new Color(255, 250, 240));
+			iClicat = x;
+			jClicat = y;
+			capClicat=false;
+			casilla[x][y].setBackground(new Color(250, 128, 114));
 	}
 	/**
 	 * Introducir casilla
@@ -389,33 +395,57 @@ public class VistaPartidaEnJuego extends VistaPadreInicio {
 	 */
 	private void setIntroducirCasilla(CtrlVista CV) {
 		//EN DATOS
-		int valor = Integer.parseInt(lbl.getText());
-		if (CV.setIntroducirCasilla(iClicat,jClicat,valor)) {
-		//EN INTERFAZ
-			casilla[iClicat][jClicat].setText(Integer.toString(valor));
-			casilla[iClicat][jClicat].setBackground(new Color(255, 250, 240));
-			capClicat = true;
-			iClicat = -1;
-			jClicat = -1;
-			lbl2.setText(CV.getPuntuacion());
-			if(posLabel <= CV.getFaltanCasillas()){
-				int v = CV.getValorPosible(posLabel);
-				lbl.setText(Integer.toString(v));
+		if(CV.esCasillaValida(iClicat, jClicat)) {
+			int valor = Integer.parseInt(lbl.getText());
+			if (CV.setIntroducirCasilla(iClicat,jClicat,valor)) {
+			//EN INTERFAZ
+				if(enVerd && iClicat == iVerd && jClicat == jVerd) enVerd=false;
+				casilla[iClicat][jClicat].setText(Integer.toString(valor));
+				casilla[iClicat][jClicat].setBackground(new Color(255, 250, 240));
+				capClicat = true;
+				iClicat = -1;
+				jClicat = -1;
+				lbl2.setText(CV.getPuntuacion());
+				if(posLabel <= CV.getFaltanCasillas()){
+					int v = CV.getValorPosible(posLabel);
+					lbl.setText(Integer.toString(v));
+				}
+				else if(posLabel >1){
+					--posLabel;
+					int v = CV.getValorPosible(posLabel);
+					lbl.setText(Integer.toString(v));
+				}
+				else lbl.setText(" ");
 			}
-			else if(posLabel >1){
-				--posLabel;
-				int v = CV.getValorPosible(posLabel);
-				lbl.setText(Integer.toString(v));
-			}
-			else lbl.setText(" ");
 		}
 		
 	}
 	
 	private void setPista(CtrlVista CV){
 		//EN DATOS
-		int valor = Integer.parseInt(lbl.getText());
-		CV.setPista(iClicat,jClicat,valor);
+		CV.setPista(iClicat,jClicat);
+		
+	}
+	
+	public void setCasillaPista(int[] pos){
+		//EN DATOS
+		if(enVerd) {
+			enVerd = false;
+			this.desclicar(iVerd, jVerd);
+		}
+		if(pos != null){
+			if( !(pos[0] == iClicat && pos[1] == jClicat)) {
+			casilla[pos[0]][pos[1]].setBackground(new Color(60, 179, 113));
+			//EN INTERFAZ 
+			enVerd = true;
+			iVerd= pos[0];
+			jVerd = pos[1];
+			}
+			else {
+				System.out.println("ES EL NUMERO MAS GRANDE");
+			}
+		}
+			
 	}
 	
 	/**

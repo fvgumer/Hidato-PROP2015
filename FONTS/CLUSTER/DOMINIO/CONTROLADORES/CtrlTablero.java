@@ -285,6 +285,10 @@ public class CtrlTablero {
 		return t;
 	}
 	
+	public Casilla[][] getSol(){
+		return map.getSol();
+	}
+	
 	/**
 	 * Funcion encargada de calcular el identificador del tablero. Los dos primeros chars del identificador indican la
 	 * medida del tablero, los dos siguientes las casillas negras, los dos siguientes las casillas vacias. Los dos ultimos

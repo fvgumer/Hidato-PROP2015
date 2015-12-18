@@ -6,11 +6,13 @@ import CLUSTER.VISTAS.BASES.VistaPadreIniConBoton;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  * Esta vista se encarga de mostrar por pantalla el tablero aleatorio generado a partir
@@ -82,6 +84,9 @@ public class VistaTableroAleatorio extends VistaPadreIniConBoton {
 			for(int i=0; i<mida; ++i) {
 				for(int j=0; j<mida; ++j){
 					casilla[i][j] = new JTextField();
+					casilla[i][j].setHorizontalAlignment(SwingConstants.CENTER);
+					casilla[i][j].setFont(new Font("Tahoma", Font.BOLD, 22));
+					casilla[i][j].setBackground(new Color(255, 250, 240));
 					casilla[i][j].setText(map[i][j]);
 					casilla[i][j].setEditable(false);
 					taula.add(casilla[i][j]);
