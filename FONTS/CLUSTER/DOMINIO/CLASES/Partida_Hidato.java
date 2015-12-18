@@ -69,8 +69,7 @@ public class Partida_Hidato extends Partida_comp implements Serializable{
 	 * @return Devuelve un entero que identifica el modo de juego de la partida
 	 */
 	public int get_modo(){
-		int m = modo;
-		return m;
+		return modo;
 	}
 	/** 
 	 * Introducir estado de la partida

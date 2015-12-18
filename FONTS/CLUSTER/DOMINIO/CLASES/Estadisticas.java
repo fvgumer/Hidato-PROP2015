@@ -37,8 +37,8 @@ public class Estadisticas implements Serializable{
 	public Estadisticas(String user){
 		this.user = user;
 		segundosJugados = puntuacionTotal = 0;
-		modos = new int[3];
-		modos[0] = modos[1] = modos[2] = 0;
+		modos = new int[2];
+		modos[0] = modos[1] = 0;
 		//tablerosCreados = new ArrayList<String>();
 		tablerosJugados = new ArrayList<String>();
 	}
@@ -117,12 +117,10 @@ public class Estadisticas implements Serializable{
 		int
 		m = modos[0];
 		if (modos[1] > m) m = modos[1];
-		if (modos[2] > m )m = modos[2];
 		
 		if (m == 0) return -1;
 		if (m == modos[0]) return 0;
-		if (m == modos[1]) return 1;
-		return 2;
+		return 1;
 	}
 	
 	
@@ -147,7 +145,7 @@ public class Estadisticas implements Serializable{
 	 * @param modo Modo de juego que se quiere incrementar
 	 */
 	public void incModo(int modo) {
-		if (modo >= 0 && modo < 3) ++modos[modo];
+		if (modo >= 0 && modo < 2) ++modos[modo];
 	}
 	
 	/**

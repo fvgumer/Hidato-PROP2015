@@ -115,7 +115,7 @@ public class VistaEstadisticas extends VistaPadreIniConBoton {
 
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				CV.entrarAConsultaEst();
+				CV.entrarAMenu();
 				Salir();
 			}
 		});
