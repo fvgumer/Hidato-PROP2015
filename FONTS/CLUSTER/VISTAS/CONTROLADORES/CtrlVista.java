@@ -496,6 +496,7 @@ public class CtrlVista {
 		}
 		
 		public void entrarABorrarConfirmar(String id) {
+			VGTBorrarConfirmar = new VistaBorrarConfirmar(this);
 			VGTBorrarConfirmar.set_tablero(id);
 			VGTBorrarConfirmar.setVisible(true);
 		}
