@@ -540,7 +540,7 @@ public class CtrlVista {
 			tabJ = CDominio.getTabJ(user);			
 			VEst.setE(s[0],s[1],s[2],s[3],s[4]);
 			VEst.setTabJ(tabJ);
-			int modo = CDominio.getModoMasJugado(nomactiu());
+			int modo = CDominio.getModoMasJugado(user);
 			VEst.setModoMasJugado(modo);
 			VEst.setTitle(user);
 			VEst.displayEst();

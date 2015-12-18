@@ -101,7 +101,7 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		JB.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				table.setBounds(108, 74, 495, 16);
-				CV.entrarAConsultaEst();
+				CV.entrarAMenu();
 				Salir();
 			}
 		});
