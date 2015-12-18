@@ -99,7 +99,7 @@ public class CtrlTablero {
 		generar_buits_alea(c_vacias);
 		map.inicialitzar_caselles(); //El tema de los holes con formas no esta arreglado del todo
 		map.calcular_dificultad();
-		if(map.getMida() <= 6) solucion_unica();
+		solucion_unica();
 		guardar();
 	}
 	

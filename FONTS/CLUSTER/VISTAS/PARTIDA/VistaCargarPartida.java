@@ -59,7 +59,6 @@ public class VistaCargarPartida extends VistaPrevisualizarTableroPadre {
 
 	/** 
 	 * Enviar la infor del Tablero que queremos previsualizar
-	 * @param id ID del tablero a previsualizar
 	 * @param CV CtrlVista al que enviamos la informacio
 	 * Post: Se ha enviado la informacion a CV
 	 */

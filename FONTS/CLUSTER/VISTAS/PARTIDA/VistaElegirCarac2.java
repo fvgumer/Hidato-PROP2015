@@ -47,7 +47,7 @@ public class VistaElegirCarac2 extends VistaElegirCaracPatron {
 				String In;
 				In = Integer.toString(slider.getValue());
 				lblSinForma.setText(In);
-				max_ninicals = max_forats - slider.getValue();
+				max_ninicals = max_forats - slider.getValue()-1;
 				slider2.setMaximum(max_ninicals);
 				slider2.setMinimum(0);
 			}

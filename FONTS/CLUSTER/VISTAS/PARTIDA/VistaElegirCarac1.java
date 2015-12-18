@@ -33,7 +33,7 @@ public class VistaElegirCarac1 extends VistaElegirCaracPatron {
 		 */
 		//VALORES POR DEFECTO
 		slider.setMinimum(0);
-		slider.setMaximum(1);
+		slider.setMaximum(0);
 		/*Valores Iniciales */
 		slider.setValue(0);
 		lblSinForma.setText("SIN FORMA");
