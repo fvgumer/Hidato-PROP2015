@@ -69,7 +69,10 @@ public class CtrlPartida {
 		PH.set_modo(modo);
 		PH2.set_modo(modo);		
 	}
-	
+	/**
+	 * Introducir dificultad al Juego
+	 * @param dif Entero que define la dificultad del juego
+	 */
 	public void setDificultadJuego(int dif){
 		PH.set_dificultad(dif);
 		PH2.set_dificultad(dif);
@@ -122,19 +125,33 @@ public class CtrlPartida {
 		return false;
 	}
 	
-	
+	/**
+	 * Consulta de las partidas en proceso
+	 * @param NomJ Nombre del usuario identificado
+	 * @return Retorna el numero de partidas que el usuario
+	 * ha guardado anteriormente
+	 */
 	public int n_partidasproceso(String NomJ){
 		c = new CtrlGestionPartida();
 		int num = c.consultar_numeropartidas(NomJ);
 		return num;
 	}
-	
+	/**
+	 * Consultas de los ids partidas en proceso
+	 * @param NomJ Nombre del usuario identificado
+	 * @return Retorna el listado de todas las partidas
+	 * que ha guardado el usuario anteriormente
+	 */
 	public String[] conseguir_partidas_enproceso(String NomJ) {
 		c = new CtrlGestionPartida();
 		ids = c.lista_partidas(NomJ);
 		return ids;
 	}
-	
+	/**
+	 * Pasar Tablero a mapa de Strings con letras
+	 * @param T
+	 * @return
+	 */
 	public String[][] pasarAMapa(Tablero T) {
 		String[][] map= new String[T.getMida()][T.getMida()];
 		for (int i = 0; i < T.getMida(); ++i) {
@@ -147,7 +164,9 @@ public class CtrlPartida {
 		}
 		return map;
 	}
-	
+	/**
+	 * Pasar Tablero A Mapa de String con numeros
+	 */
 	public String[][] pasarAMapaNum(Tablero T) {
 		String[][] map= new String[T.getMida()][T.getMida()];
 		for (int i = 0; i < T.getMida(); ++i) {
@@ -161,7 +180,12 @@ public class CtrlPartida {
 		return map;
 	}
 	
-	
+	/**
+	 * Consulta casillas que faltar
+	 * @return Retorna un entero que no dice cuantas
+	 * casillas nos faltan por introducir para acabar de 
+	 * llenar el tablero
+	 */
 	public int casillasFaltan(String[][] m){
 		int faltan = 0;
 		for (int i = 0; i < m.length; ++i) {
@@ -171,19 +195,36 @@ public class CtrlPartida {
 		}
 		return faltan;
 	}
-	
+	/**
+	 * Consulta tablero actual
+	 * @return Retorna el contenido del tablero de la solucion en un mapa de Strings
+	 */
 	public String[][] getMapaActual() {
 		return pasarAMapa(PH.get_Tablero());
 	}
-	
+	/**
+	 * Consulta del tablero solucion
+	 * @return Retorna el contenido del tablero de la solucion en un mapa de Strings
+	 */
 	public String[][] getSolucion(){
 		return PH.get_Tablero().getSolucion();
 	}
-	
+	/**
+	 * Consulta Tablero Actual
+	 * @param x, y Coordenadas del tablero
+	 * @return Retorna el contenido del tablero en un mapa de Strings
+	 */
 	public int getValorTableroActual(int x, int y) {
 		return PH.get_Tablero().getValorTauler(x, y);
 	}
-	
+	/**
+	 * Introducir valor tablero
+	 * @param x, y Coordenadas del tablero
+	 * @param valor Entero que id el valor de la casilla que queremos
+	 * introducir
+	 * @return Retorna cierto si se ha podido introducir, falso si es una
+	 * casilla invalida
+	 */
 	public boolean setValorTablero(int x, int y, int valor){
 		if (PH.get_Tablero().enable_pos(x, y)){
 			PH.get_Tablero().setValorTauler(x, y, valor);
@@ -191,7 +232,12 @@ public class CtrlPartida {
 		}
 		return false;
 	}
-	
+	/**
+	 * Consulta si la casilla es jugable
+	 * @param x, y Coordenadas del tablero
+	 * @return Retorna cierto si esta dentro de los limites del tablero
+	 * y no hay un forat.
+	 */
 	public boolean esCasillaJugable(int x, int y) {
 		if (PH.get_Tablero().enable_pos(x, y)) {
 				return true;
@@ -199,18 +245,37 @@ public class CtrlPartida {
 		return false;
 	}
 	
+	/**
+	 * Consulta si la casilla es valida
+	 * @param x, y Coordenadas del tablero
+	 * @return Retorna cierto si la casilla esta dentro de los
+	 * limites del tablero y son posiciones o vacias o no iniciales
+	 */
 	public boolean esCasillaValida(int x, int y){
 		if (PH.get_Tablero().get_casilla(x, y).isPor_defecto()) return false;
 		if (!PH.get_Tablero().enable_pos(x, y)) return false;
 		return true;
 	}
+	
+	/**
+	 * Consulta de tablero al cargarlo de disco
+	 * @param NomJ Usuario identificado
+	 * @param id Id del tablero que queremos previsualizar
+	 * @return Retorna el contenido del tablero en un mapa de Strings
+	 */
 	public String[][] previsualizarTablero(String NomJ ,String id) {
 		PH = new Partida_Hidato();
 		PH = c.cargar(NomJ, id);
 		return pasarAMapa(PH.get_Tablero());
 	}
 	
-	
+	/**
+	 * Consulta la informacion princial sobre el
+	 * tablero en configuracion
+	 * @return Retorna un vector de enteros
+	 * que contiene en cada posicion, la dimension, forats i num
+	 * iniciales respectivamente
+	 */
 	public int[] getInfo() {
 		int[] info = new int[3];
 		info[0] = T.getMida();
@@ -276,19 +341,35 @@ public class CtrlPartida {
 		else d = 2;
 		return d;
 	}
-
+	/**
+	 * Consultar tablero es solucion unica
+	 * @return Retorna cierto, si el tablero tiene solucion unica
+	 * retorna falso si lo contrario
+	 */
 	public boolean esSolcionUnica() {
 		return T.getSolucion_unica();
 	}
-	
+	/**
+	 * Consulta del mapa de la partida sin numeros
+	 * @return Retorna un mapa de Strings que corresponde al
+	 * tablero de la partida que se esta jugando, sin numeros
+	 */
 	public String[][] getMapaVacio(){
 		PH.getTsinnumeros().print();
 		return pasarAMapa(PH.getTsinnumeros());
 	}
+	/**
+	 * Asociar Tablero al controlador
+	 */
 	public void setT(CtrlTablero CCT){
 		T = CCT.asociar_tablero();
 	}
 	
+	/**
+	 * Consultar mapa cargado
+	 * @return Retorna en mapa de Strings el tablero
+	 * que hemos cargado anteriormente
+	 */
 	public String[][] getMapaCarga(){
 		return pasarAMapa(T);
 	}

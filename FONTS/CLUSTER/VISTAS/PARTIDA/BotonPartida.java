@@ -1,5 +1,10 @@
 package CLUSTER.VISTAS.PARTIDA;
 
+/**
+ * Configuracion general de todos los botones que estan en la vista de partida
+ * @author Elena
+ */
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 

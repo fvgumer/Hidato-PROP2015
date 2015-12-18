@@ -424,12 +424,19 @@ public class Tablero extends Tablero_comp implements Serializable{
 		System.out.println();
 	}
 	
-	// TE HE PUESTO TODO ESTO ALEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEX //
-	
+
+	/**
+	 * Definir dimension del tablero
+	 * @param n entero que identifica la dimension
+	 */
 	public void setMida(int n) {
 		mida = n;
 	}
-	
+	/**
+	 * Consultar mapa de solucion 
+	 * @return Retorna una matriz de Strings que representa el contenido
+	 * de la solucion del tablero del parametro implicito
+	 */
 	public String[][] getSolucion(){
 		String[][] sol = new String[mida][mida];
 		for(int i=0; i < mida; ++i) {
@@ -443,7 +450,12 @@ public class Tablero extends Tablero_comp implements Serializable{
 		return sol;
 	}
 	
-	
+	/**
+	 * Consultar valor posible
+	 * @param pos posicion de numeros no puestos
+	 * @return Retorna el numero pos de los que aun
+	 * no se han introducido en el tablero
+	 */
 	public int getValorPosible(int pos){
 		int i = 0;
 		int candidat = 0;
@@ -454,19 +466,35 @@ public class Tablero extends Tablero_comp implements Serializable{
 		System.out.println(i);
 		return i;
 	}
-	
+	/**
+	 * Consulta las casillas maximas
+	 * @return Retorna el numerode casillas maximas
+	 * de numeros que habran en el tablero
+	 */
 	public int getCasillasmax(){
 		return posats.length;
 	}
-	
+	/**
+	 * Reinicia el vector de numeros puestos en el tablero
+	 */
 	public void reiniciar_posats(){
 		posats = posats_ini;
 	}
 	
+	/**
+	 * Consulta el vertor de numeros puestos en el tablero
+	 * @return El vector de booleanos donde las posiciones
+	 * donde son ciertas significa que el valor igual a la
+	 * posicion +1 esta introducida en el tablero del parametro
+	 * impicito.
+	 */
 	public boolean[] getPosats(){
 		return posats;
 	}
-	
+	/**
+	 * Consulta del mapa de solucion
+	 * @return Retorna el mapa de solucion
+	 */
 	public Casilla[][] getSol(){
 		return solucio;
 	}

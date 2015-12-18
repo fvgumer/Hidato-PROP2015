@@ -15,6 +15,12 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+/**
+ * Configuracion general en estilo y acciones de las casillas del tablero de la vista donde se juega la partida
+ * @author Elena
+ *
+ */
+
 public class CasillaTablero extends JTextField {
 	private int x;
 	private int y;

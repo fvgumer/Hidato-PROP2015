@@ -15,7 +15,12 @@ import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.BASES.VistaPadreInicio;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Vista emergente que se hace visible cuando el jugador ha clicado el boton resolver de la partida para saber si ha resuelto correctamente 
+ * el tablero. En esta puede haber dos opciones, que salga en modo bien resuelta la partida o en modo que no.
+ * @author Elena
+ *
+ */
 public class PartidaResolver extends VistaPatronInfo {
 
 	public PartidaResolver(final CtrlVista CV, boolean correcto) {

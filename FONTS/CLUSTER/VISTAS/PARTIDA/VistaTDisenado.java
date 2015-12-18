@@ -109,7 +109,6 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 				VistaNoTableroCargar VT = new VistaNoTableroCargar(CV);
 				VT.setVisible(true);
 				for (int i = 0; i < lista.length; ++i) {
-					System.out.println(lista[i]);
 					if(lista[i].length() == 12) {
 					 if(Integer.parseInt(lista[i].substring(1,2)) == info[0]) {
 							s.add(lista[i]);
@@ -142,7 +141,6 @@ public class VistaTDisenado extends VistaPrevisualizarTableroPadre {
 	private String[] pasarAString(ArrayList<String> s){
 		String[] J = new String[s.size()];
 		for(int i = 0; i < s.size(); ++i) {
-			System.out.println(s.get(i));
 			J[i] = s.get(i);
 		}
 		return J;

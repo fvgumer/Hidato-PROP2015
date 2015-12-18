@@ -42,17 +42,30 @@ public class CtrlJugar {
 		PH = P.get_partida();
 	}
 	
+	/**
+	 * Comenzar Partida Cargada
+	 * @param P Ctrl que tiene asociada la partida cargada
+	 */
 	public void comenzar_PartidaCargada(CtrlPartida P) {
 		comenzar_partida(P);
 		T1.reempezar(PH.getTiempo(),PH.get_modo(), PH.getTmax());
 	}
-	
+	/**
+	 * Introducir casillas que faltan
+	 * @param c Entero que identifica el numero de casillas
+	 * que faltan para completar el tablero
+	 */
 	public void setCasillasFaltan(int c){
 		casillas_faltan = c;
 	}
 	
 	
-	//FUNCION QUE FUNCIONA
+	/**
+	 * Buscar posicion del valor indicado
+	 * @param valor que esta introducido en el tablero
+	 * @return Retorna la posicion en donde esta el valor
+	 * del parametro implicito
+	 */
 	private int[] buscar_posicion(int valor) {
 		int[] pos = new int[2];
 		int min = PH.getMida()*PH.getMida();
@@ -68,7 +81,12 @@ public class CtrlJugar {
 		}
 		return pos;
 	}
-	
+	/**
+	 * Consultar si es una posicion valida
+	 * @param x, Coordenadas del tablero
+	 * @return Retorna cierto si las coordenadas x,y estan
+	 * contenidas en el tablero del contrlador.
+	 */
 	public boolean posValida(int x,int y){
 		if(x>=0 && y >= 0 && x < PH.getMida() && y < PH.getMida()) {
 			return true;
@@ -76,7 +94,14 @@ public class CtrlJugar {
 		return false;
 	}
 	
-	
+	/**
+	 * Consultar Posicion del siguiente
+	 * @param TSol Mapa de Strings que identifica el tablero al que
+	 * esta jugando el usuario
+	 * @param x,y Coordenadas del tablero validas
+	 * @param valor Valor que hay en las coordenadas x,y
+	 * @return Retorna la posicion donde se encuentra el valor+1
+	 */
 	public int[] posSeg(String[][] TSol, int x, int y, int valor){
 		int[] posSeg = new int[2];
 		++valor;
@@ -113,7 +138,12 @@ public class CtrlJugar {
 		return posSeg;
 		
 	}
-	
+	/**
+	 * Consultar la posicion del siguiente
+	 * @param x,y Coordenadas validas del tablero
+	 * @return Retorna una posicion si existe en el tablero
+	 * el valor siguiente al contenido en la posicion (x,y)
+	 */
 	public int[]posSeguent(int x,int y){
 		CtrlPartida CP = new CtrlPartida();
 		int valor = PH.get_Tablero().getValorTauler(x, y);
@@ -133,7 +163,11 @@ public class CtrlJugar {
 			return null;
 		}
 	}
-
+	/**
+	 * Consultar si se esta resolviendo bien
+	 * @return Retorna cierto si existe almenos una solucion
+	 * en el tablero de la partida, falso si lo contrario.
+	 */
 	public boolean vasBien(){
 		if(PH.get_Tablero().getSolucion_unica()){
 			for(int i = 0; i < PH.getMida(); ++i){
@@ -420,7 +454,11 @@ public class CtrlJugar {
 	public int obtSegundos(){
 		return T1.obtSegundo();
 	}
-	
+	/**
+	 * Consultar si tiempo acabado
+	 * @return Retorna cierto si se ha acabado el tiempo de espera o
+	 * de juego
+	 */
 	public boolean tiempoAcabado(){
 		return T1.acabar();
 	}
@@ -593,7 +631,10 @@ public class CtrlJugar {
 		}
 		return pos;
 	}
-	
+	/**
+	 * Guardar Puntuacion
+	 * Se guarda la puntuacion una vez acabada la partida
+	 */
 	public void GuardarPuntuacion(){
 		T1.acabar();
 		String m;

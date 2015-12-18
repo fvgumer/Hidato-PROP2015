@@ -10,6 +10,11 @@ import CLUSTER.VISTAS.BASES.VistaError;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import javax.swing.JButton;
 
+/**
+ * Vista que se hace visible cuando el usuario intenta pasar de pantalla sin antes cumplir los requisitos de recogida de informacion
+ * @author Elena
+ *
+ */
 
 
 public class VEmergErrorClicar extends VistaError {

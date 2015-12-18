@@ -11,7 +11,12 @@ import CLUSTER.VISTAS.BASES.VistaError;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
 import javax.swing.JButton;
 
-
+/** 
+ * Ventana emergente que se hace visible cuando el usuario ha configurado los parametros del tablero que esta
+ * creando y le informa de la dificultad de este
+ * @author Elena
+ *
+ */
 
 public class VEmergentInfo extends VistaError {
 	private static final long serialVersionUID = 1L;
