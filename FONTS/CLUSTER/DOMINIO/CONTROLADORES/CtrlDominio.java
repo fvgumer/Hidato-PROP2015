@@ -185,15 +185,6 @@ public class CtrlDominio {
 	}
 	
 	/**
-	 * Lista Tableros de todos los usuarios
-	 * @return Retorna una cadena de String que contiene en cada 
-	 * posicion los ids de todos los tableros guardados
-	 */
-	public String[] listarTableros() {
-		return CPartida.listarTableros();
-	}
-	
-	/**
 	 * Consultar tablero Actual
 	 * @return Un mapa de Strings que contiene los valores de las
 	 * casillas del tablero en el momento de la llamada
@@ -201,7 +192,17 @@ public class CtrlDominio {
 	public String[][] getMapaActual(){
 		return CPartida.getMapaActual();
 	}
-
+	
+	public String[][] getMapaCarga(){
+		 return CPartida.getMapaCarga();
+	
+		
+	}
+	
+	public String getnTab() {
+		return CPartida.get_partida().get_Tablero().get_id();
+	}
+	
 	/**
 	 * Consultar valor del tablero Actual
 	 * @param x Posicion x del tablero
@@ -327,7 +328,7 @@ public class CtrlDominio {
 	 */
 	public boolean resolverPartida(){
 		if(CJugar.resolver_partida()){
-			CJugar.GuardarPuntuacion();
+			//CJugar.GuardarPuntuacion();
 			return true;
 		}
 		else return false;
@@ -366,6 +367,10 @@ public class CtrlDominio {
 	
 	public boolean vasBien(){
 		return CJugar.vasBien();
+	}
+	
+	public int[] getInfo() {
+		return CPartida.getInfo();
 	}
 
 
@@ -567,6 +572,7 @@ public class CtrlDominio {
 	 * @param modo Modo de juego
 	 */
 	public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
+		System.out.print("esto es el cdominio");
 		CEstadisticas.partidaTerminada(jugador, s, p, tablero,modo);
 	}
 	

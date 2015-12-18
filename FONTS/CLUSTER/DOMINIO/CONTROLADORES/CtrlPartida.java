@@ -210,28 +210,14 @@ public class CtrlPartida {
 		return pasarAMapa(PH.get_Tablero());
 	}
 	
-	public String[] listarTableros(){
-		CT = new CtrlGestionTablero();
-		String[] validos = null;
-		String[] lista = CT.consultar_nomstableros();
-			int mida = T.getMida();
-			int nini = T.getn_predef();
-			int forats = T.getholes();
-			if (lista != null) {
-				for (int i = 0; i < lista.length; ++i) {
-					if(lista[i].length() == 12) {
-					 if(lista[i].regionMatches(0, Integer.toString(mida), 1, 1)) {
-						 if(lista[i].regionMatches(0, Integer.toString(forats), 3, 3)) {
-							 if (lista[i].regionMatches(0, Integer.toString(nini), 5, 5)) {
-								 validos[i].concat(lista[i]);
-							 }
-						 }
-					 }
-					}
-				}
-			}
-			return validos;
-		}
+	
+	public int[] getInfo() {
+		int[] info = new int[3];
+		info[0] = T.getMida();
+		info[1] = T.getholes();
+		info[2] = T.getn_predef();
+		return info;
+	}
 	
 
 	/**
@@ -303,6 +289,9 @@ public class CtrlPartida {
 		T = CCT.asociar_tablero();
 	}
 	
+	public String[][] getMapaCarga(){
+		return pasarAMapa(T);
+	}
 
 
 }

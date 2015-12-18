@@ -13,6 +13,8 @@ import java.awt.event.MouseEvent;
 public class VistaCargarPartida extends VistaPrevisualizarTableroPadre {
 	
 	private VEmergErrorClicar VError;
+	private VistaPrevisualizacion VT;
+	
 
 	public VistaCargarPartida(final CtrlVista CV) {
 		super(CV);
@@ -22,16 +24,24 @@ public class VistaCargarPartida extends VistaPrevisualizarTableroPadre {
 		getContentPane().add(t);
 		
 
+		txt = "Elegir Tablero Disenado";
+		VError = new VEmergErrorClicar();
+
+
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-					//previsualizar_tablero(list.getSelectedValue(), CV);
+					//FUNCION
+					previsualizar(CV);
 			}
 		});
 
+
 		Siguiente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				if (!list.isSelectionEmpty()) 
+				if (!list.isSelectionEmpty()) {
 					CV.cargarParaJugar(list.getSelectedValue());
+					Salir();
+			}
 				else {
 					VError = new VEmergErrorClicar();
 					VError.setVisible(true);
@@ -46,12 +56,24 @@ public class VistaCargarPartida extends VistaPrevisualizarTableroPadre {
 		});	
 	}
 	
-	private void previsualizar_Tablero(String id, CtrlVista CV) {
-		CV.cargar_tab(id);
+
+	/** 
+	 * Enviar la infor del Tablero que queremos previsualizar
+	 * @param id ID del tablero a previsualizar
+	 * @param CV CtrlVista al que enviamos la informacio
+	 * Post: Se ha enviado la informacion a CV
+	 */
+	private void previsualizar(CtrlVista CV) {
+		CV.cargarParaVerTablero(list.getSelectedValue());
+		setPrevisualizarTablero(CV,CV.getMapaActual());
 	}
 	
 	public void run(String[] J){
 		list.setListData(J);
+	}
+	public void setPrevisualizarTablero(CtrlVista CV, String[][] T){
+		VT = new VistaPrevisualizacion(CV,T);
+		VT.setVisible(true);
 	}
 }
 

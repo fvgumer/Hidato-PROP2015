@@ -30,47 +30,21 @@ public class VistaPrevisualizarTableroPadre extends VPBotonSiguiente {
 	String txt;
 	JTextField[][] casilla;
 	JScrollPane scroll;
-	protected String[][] mapa;
 
 	public VistaPrevisualizarTableroPadre(final CtrlVista CV) {
 		CV2 = CV;
-		Titulo t = new Titulo(txt, 30, 30);
-		t.setBounds(173, 39, 369, 76);
-		getContentPane().add(t);
-		
+
 		list = new JList<String>();
-		//list.setBounds(64, 126, 256,182);
-		//getContentPane().add(list);
 		
 		scroll = new JScrollPane();
 		scroll.setViewportView(list);
-		scroll.setBounds(64, 126, 256,182);
+		scroll.setBounds(113, 126, 531,212);
 		getContentPane().add(scroll);
 		
-		//Previsualicacion del tablero
-		tablero = new JPanel();
-		tablero.setBounds(422, 126, 230, 195);
-		getContentPane().add(tablero);
 	}
 		
 	public void run(String[] J){
 		list.setListData(J);
-	}
-	
-	public void setPrevisualizarTablero(String[][] T){
-		mapa = T;
-		int mida = T.length;
-		tablero.setLayout(new GridLayout(mida,mida));
-		casilla = new JTextField[mida][mida];
-		
-	
-		for (int i = 0; i < mida; ++i) {
-	         for (int j = 0; j < mida; ++j) {
-	        	 casilla[i][j] = new JTextField();
-	        	 casilla[i][j].setText(T[i][j]);
-	            tablero.add(casilla[i][j]);
-	         }
-	     }
-	}		
+	}	
 
 }

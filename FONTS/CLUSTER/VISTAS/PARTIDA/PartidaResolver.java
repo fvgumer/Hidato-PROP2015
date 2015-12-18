@@ -60,12 +60,12 @@ public class PartidaResolver extends VistaPatronInfo {
 		if(correcto) {
 			b1.setText("Ranking");
 			b2.setText("Menu Principal");
-			b1.setText("Volver");
+			b1.setText("Ver Top 5");
 			b1.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
-					CV.dejarJugar();
+					CV.entrarAMostrarRanking(CV.getnTab(),5);
 					Salir();
-					CV.guardarPuntuacion();
+					//CV.guardarPuntuacion();
 					
 				}
 			});
@@ -73,7 +73,7 @@ public class PartidaResolver extends VistaPatronInfo {
 				public void mouseClicked(MouseEvent arg0) {
 					CV.entrarAMenu();
 					Salir();
-					CV.guardarPuntuacion();
+					//CV.guardarPuntuacion();
 					
 				}
 			});

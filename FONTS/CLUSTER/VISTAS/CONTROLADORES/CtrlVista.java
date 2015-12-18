@@ -84,12 +84,7 @@ public class CtrlVista {
 		/**
 		 * Creadora del CtrlVista
 		 */
-		public CtrlVista(){ //FIXEHO-VOS EN EL QUE FA AQUESTA CLASSE
-							// DEFINEIX : 
-							//		-Controladors
-							//		-Totes Les Vistes
-							// TE TOTES LES FUNCIONS PER A CANVIAR DE VISTES
-							// I ENVIAR LA INFO AL CONTROLADOR DOMINI
+		public CtrlVista(){ 
 			//Carregar Controladors 
 			CDominio = new CtrlDominio();
 			
@@ -243,7 +238,7 @@ public class CtrlVista {
 		public void elegirTdisenado(){
 			VTDisenado = new VistaTDisenado(this);
 			VTDisenado.setVisible(true);
-			VTDisenado.run(CDominio.listarTableros());
+			VTDisenado.run(CDominio.get_tableros_repo());
 		}
 		/**
 		 * Cargar Tablero Elegido
@@ -253,23 +248,14 @@ public class CtrlVista {
 		public void cargarTablero(String id){
 			CDominio.cargarTableroSinBIN(id);
 		}
-		/**
-		 * Previsualizar Tablero Consultado
-		 * @param id Identificador del Tablero que queremos
-		 * previsualizar
-		 * Post: Envia a la vista visible el mapa de Strings
-		 * que muestra el contenido del tablero referenciado
-		 */
-		public void previsualizarTablero(String id) {
-			VCargarPartida.setPrevisualizarTablero(getInfoTablero(id));
-		}
+
 		/**
 		 * Consultar contenido tablero
 		 * @param id Identificador del tablero
 		 * @return mapa de Strings
 		 * que muestra el contenido del tablero referenciado
 		 */
-		private String[][] getInfoTablero(String id){
+		private String[][] getInfoTablero(String id) {
 			return CDominio.getInfoTablero(id);
 		}
 		/**
@@ -279,6 +265,13 @@ public class CtrlVista {
 		public void cargarParaJugar(String id) {
 			CDominio.cargarPartida(id);
 			comenzarPartidaCargada();
+		}
+		/**
+		 * Cargar Tablero de una partida solo para poder previsualizarla
+		 * @param id Identificador del tablero
+		 */
+		public void cargarParaVerTablero(String id){
+			CDominio.cargarPartida(id);
 		}
 		/**
 		 * Comenzar Partida Cargada
@@ -440,7 +433,10 @@ public class CtrlVista {
 			VTCargar = new VistaNoTableroCargar(this);
 			VTCargar.setVisible(true);
 		}
-		
+		/**
+		 * Salir de la segunda pantalla para elegir la
+		 * configuracion de un tablero
+		 */
 		public void salirDeCarac2(){
 			VElegirC2.setVisible(false);
 		}
@@ -546,10 +542,6 @@ public class CtrlVista {
 			VEst.setVisible(true);
 		}
 		
-		public void partidaTerminada(String jugador, int s, int p, String tablero, int modo) {
-			CDominio.partidaTerminada(jugador,s,p,tablero,modo);
-		}
-		
 		
 		public void entrarARanking() {
 			VRank.setVisible(true);
@@ -570,6 +562,10 @@ public class CtrlVista {
 			VMRank.setTitle();
 			VMRank.displayRank();
 			VMRank.setVisible(true);
+		}
+		
+		public String getnTab() {
+			return CDominio.getnTab();
 		}
 		
 		public String[] get_tableros_repo() {
@@ -695,6 +691,14 @@ public class CtrlVista {
 			return CDominio.getMapaActual();
 		}
 		/**
+		 * Consultar contenido del tablero de disco
+		 * @return Retorna mapa de Strings que contienen
+		 * el valor de todas las  casillas en ese momento
+		 */
+		public String[][] getMapaCarga(){
+			return CDominio.getMapaCarga();
+		}
+		/**
 		 * Consultar valor del tablero Actual
 		 * @param x Posicion x del tablero
 		 * @param y Posicion y del tablero
@@ -804,28 +808,55 @@ public class CtrlVista {
 			return CDominio.getMapaVacio();
 		}
 		
+		/**
+		 * Guarda la puntuacion de la partida cuando
+		 * esta termina
+		 */
 		public void guardarPuntuacion(){
 			CDominio.guardarPuntuacion();
 		}
 		
+		/**
+		 * Introcudir casilla de la pista
+		 * @param x Posicion x del tablero
+		 * @param y Posicion y del tablero
+		 */
 		public void setPista(int x, int y){
 			int[] pos = CDominio.setPista(x,y);
 			if(pos == null) System.out.println("NO HAY POSIBILIDAD DE SEGUIR");
 			VPartidaEnJuego.setCasillaPista(pos);
 		}
 		
+		/**
+		 * Nos abre una pantalla si el usuario
+		 * a clicado la opcion de saber si su jugada aun
+		 * tiene una solucion
+		 */
 		public void vasBien(){
 			VistaExisteSolucion VExisteSolucion= new VistaExisteSolucion(this,CDominio.vasBien());
 			VExisteSolucion.setVisible(true);
 
 		}
-		
+		/**
+		 * Retorna el tiempo maximo en el modo
+		 * 3 de la partida
+		 * @return Retorna los minutos maximos para
+		 * poder ver el tablero
+		 */
 		public int getTiempoMax(){
 			return VTiempo.getTiempo();
 		}
-		
+		/**
+		 * Saber si se ha acabado el tiempo
+		 * @return Nos retorna cierto si el tiempo
+		 * del modo de partida 2 se ha acabado, falso si lo contrario
+		 */
 		public boolean tiempoAcabado(){
 			return CDominio.tiempoAcabado();
+		}
+		
+		public int[] getInfo() {
+			return CDominio.getInfo();
 		}
 
 }

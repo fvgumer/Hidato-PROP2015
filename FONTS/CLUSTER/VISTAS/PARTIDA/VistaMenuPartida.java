@@ -37,6 +37,7 @@ public class VistaMenuPartida extends VistaPadreIniConBoton {
 		b1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				CV.entrarACargarPartida();
+				Salir();
 			}
 		});
 		getContentPane().add(b1);
