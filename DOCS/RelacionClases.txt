@@ -2,6 +2,7 @@ Entre todos:
 - SuperDriver.java
 - CtrlDominio.java
 - CtrlVista.java
+- Main.java
 
 Alex Catala:
 - Casilla.java
@@ -9,14 +10,7 @@ Alex Catala:
 - Tablero.java
 - CtrlTablero.java
 - Driver_ctrl_tablero.java
-- VistaBorrar.java
-- VistaBorrarConfirmar.java
-- VistaCaracteristicasGT.java
-- VistaCrearManual.java
-- VistaElegirImportar.java
-- VistaGestionTablero.java
-- VistaImportar.java
-- VistaValidar.java
+- Todas las vistas del package "CLUSTER.VISTAS.GTABLERO"
 
 Joel Codina:
 - Usuario_comp.java
@@ -29,6 +23,7 @@ Joel Codina:
 - CtrlGestionTablero.java
 - CtrlGestionUsuario.java
 - DriverGestionUsuario.java
+- Todas las vistas del package "CLUSTER.VISTAS.USUARIO"
 
 Elena Ruiz:
 - CtrlJugar.java
@@ -36,11 +31,14 @@ Elena Ruiz:
 - CtrlPartida.java
 - Temporizador.java
 - DriverJugarPartida.java
+- Todas las vistas del package "CLUSTER.VISTAS.PARTIDA"
+- Todas las vistas del package "CLUSTER.VISTAS.BASES"
 
 Belen San Martin:
-- ClassEstadisticas.java
+- Estadisticas.java
 - CtrlEstadisticas.java
-- ClassRanking.java
+- Ranking.java
 - CtrlRanking.java
 - ClassResultado.java
+- Todas las vistas del package "CLUSTER.VISTAS.ESTADISTICAS"
 - DriverEstadisticas.java
