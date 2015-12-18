@@ -9,7 +9,11 @@ import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Texto;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Vista emergente que se hace visible cuando el jugador esta realizando la partida y desea saber si aun se puede resolver su partida
+ * @author Elena
+ *
+ */
 public class VistaExisteSolucion extends VistaPatronInfo {
 
 	public VistaExisteSolucion(final CtrlVista CV, boolean correcto) {

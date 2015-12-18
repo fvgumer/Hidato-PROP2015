@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 /**
  * Vista que nos muestra que hemos introducido valores incorrectos a la hora de configuar
  * la dimension de un nuevo tablero
- * @author Elena R
+ * @author Elena
  *
  */
 public class VistaErrorDimension extends VistaError {

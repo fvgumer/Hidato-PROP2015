@@ -17,7 +17,11 @@ import javax.swing.border.EmptyBorder;
 import CLUSTER.VISTAS.BASES.Botones;
 import CLUSTER.VISTAS.BASES.Titulo;
 import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
-
+/**
+ * Vista de previsualizacion de un tablero antes de cargar un tablero o una partida
+ * @author Elena
+ *
+ */
 public class VistaPrevisualizacion extends VistaPatronInfo {
 	
 		public VistaPrevisualizacion(final CtrlVista CV, String[][] tablero) {

@@ -17,7 +17,7 @@ import CLUSTER.VISTAS.CONTROLADORES.CtrlVista;
  * Vista que se hace visible cuando el jugador esta creando una nueva partida y elige
  * el modo de Contrareloj o Extremo. En esta vista debera seleccionar el tiempo preferente 
  * para poder pasar a la siguiente vista y terminar de configurar la nueva partida.
- * @author Elena R
+ * @author Elena
  *
  */
 public class VistaElegirTiempo extends VistaPadreIniConBoton {
