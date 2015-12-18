@@ -104,16 +104,18 @@ public class CtrlRanking {
 	public void anadirResultado(String t, String j, String m, String d, int p) {
 		R = GP.cargar(t);
 		Resultado r = new Resultado(j,m,d,p);
-		int found = 0;
-		int i = 0;
-		if(R == null)System.out.println(t+" este es el nombre");
-		while (i < R.size() && found == 0) {
-			if (R.getPosicion(i).getPuntuacion() < r.getPuntuacion()) {
-				R.anadirResultado(i,r);
-				found = 1;
-			}
+		if (R.size() == 0) R.anadirResultado(0,r);
+		else {
+			boolean found = false;
+			int i = 0;
+			while (i < R.size() && !found ) {
+				if (R.getPosicion(i).getPuntuacion() <= r.getPuntuacion()) {
+					R.anadirResultado(i,r);
+					found = true;
+				}
 		
-			++i;
+				++i;
+			}
 		}
 		
 		GP.guardar(R);

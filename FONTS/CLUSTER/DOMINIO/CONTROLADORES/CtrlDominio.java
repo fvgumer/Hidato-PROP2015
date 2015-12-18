@@ -198,6 +198,10 @@ public class CtrlDominio {
 		return CPartida.getMapaActual();
 	}
 	
+	public String getnTab() {
+		return CPartida.get_partida().get_Tablero().get_id();
+	}
+	
 	/**
 	 * Inicializar Canidatos
 	 * Post: Se inicializan los candidatos del tablero en que

@@ -35,11 +35,11 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table;
-	private ArrayList<String[]> r;
+	private ArrayList<Resultado> r;
 	String nTab;
 	int nPos;
 	
-	public void setR(ArrayList<String[]> aux, String nTab,int nPos) {
+	public void setR(ArrayList<Resultado> aux, String nTab,int nPos) {
 		r = aux;
 		this.nTab = nTab;
 		this.nPos = nPos;
@@ -68,6 +68,8 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		
 		int y = 32;
 		for(int i = 0; i < nPos ; ++i) {
+			String[] s = new String[1];
+			s[0]= String.format("%d", i+1);
 			model.addRow(concatenar(i+1,r.get(i)));
 			table.setBounds(108, 74, 495, y);
 			y += 16;
@@ -76,13 +78,14 @@ public class VistaMostrarRanking extends VistaPadreIniConBoton{
 		getContentPane().add(table);
 	}
 	
-	private String[] concatenar(int i, String[] s) {
+	private String[] concatenar(int i, Resultado s) {
 		String y = ""+i;
 		String[] concat = new String[5];
 		concat[0] = y;
-		for (int j = 0; j < 4; ++j){
-			concat[j+1] = s[j];
-		}
+		concat[1] = s.getJugador();
+		concat[2] = s.getModo();
+		concat[3] = s.getDific();
+		concat[4] = String.format("%d",s.getPuntuacion());
 		return concat;
 		
 	}

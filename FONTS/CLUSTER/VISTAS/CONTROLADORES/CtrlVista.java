@@ -570,6 +570,10 @@ public class CtrlVista {
 			VMRank.setVisible(true);
 		}
 		
+		public String getnTab() {
+			return CDominio.getnTab();
+		}
+		
 		public String[] get_tableros_repo() {
 			return CDominio.get_tableros_repo();
 		}

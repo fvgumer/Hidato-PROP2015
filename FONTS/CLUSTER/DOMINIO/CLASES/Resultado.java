@@ -63,6 +63,10 @@ public class Resultado implements Serializable {
 		return modo;
 	}
 	
+	public String getDific() {
+		return dificultad;
+	}
+	
 	/**
 	 * Metodo que muestra por pantalla el resultado.
 	 */
